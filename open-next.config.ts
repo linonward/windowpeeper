@@ -6,4 +6,6 @@ const cloudflare = defineCloudflareConfig();
 
 // `pnpm build` stays `next build`, which CI and E2E use; Workers Builds
 // runs `pnpm cf:build`, and OpenNext calls `pnpm build` from it.
-export default { ...cloudflare, buildCommand: "pnpm build" };
+const config = { ...cloudflare, buildCommand: "pnpm build" };
+
+export default config;
