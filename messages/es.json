@@ -464,7 +464,8 @@
     "creditsBuy": "= {videos, plural, one {# video} other {# videos}}",
     "buyCredits": "Comprar créditos",
     "balanceShort": "{count} CR",
-    "balancePill": "{count, plural, one {# crédito} other {# créditos}}. Comprar créditos"
+    "balancePill": "{count, plural, one {# crédito} other {# créditos}}. Comprar créditos",
+    "adminBroadcasts": "Avisos"
   },
   "Billing": {
     "title": "Créditos y facturación",
@@ -696,6 +697,31 @@
       "empty": "Todavía no hay comentarios.",
       "openImage": "Abrir la imagen {number}",
       "image": "Imagen de comentario {number}"
+    },
+    "broadcasts": {
+      "title": "Avisos",
+      "description": "Envía una notificación a todos los usuarios o a uno. Aparece bajo su campana.",
+      "formTitle": "Nueva notificación",
+      "audience": "Enviar a",
+      "everyone": "Todos los usuarios",
+      "oneUser": "Un usuario",
+      "email": "Correo del usuario",
+      "titleLabel": "Título",
+      "bodyLabel": "Mensaje",
+      "send": "Enviar",
+      "confirmTitle": "¿Enviar esta notificación?",
+      "confirmEveryone": "La recibe cada usuario que tiene cuenta ahora. No se puede deshacer.",
+      "confirmOne": "La recibe {email}. No se puede deshacer.",
+      "confirm": "Enviar",
+      "cancel": "Cancelar",
+      "sent": "{count, plural, one {Enviada a # usuario.} other {Enviada a # usuarios.}}",
+      "error": "No se pudo enviar la notificación. Inténtalo de nuevo.",
+      "unknownUser": "Ningún usuario tiene este correo.",
+      "historyTitle": "Notificaciones enviadas",
+      "recipients": "Destinatarios",
+      "sentBy": "Enviada por",
+      "date": "Fecha",
+      "empty": "Aún no se ha enviado ninguna notificación."
     }
   },
   "Credits": {

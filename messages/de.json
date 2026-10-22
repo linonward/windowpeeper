@@ -464,7 +464,8 @@
     "creditsBuy": "= {videos, plural, one {# Video} other {# Videos}}",
     "buyCredits": "Credits kaufen",
     "balanceShort": "{count} CR",
-    "balancePill": "{count, plural, one {# Credit} other {# Credits}}. Credits kaufen"
+    "balancePill": "{count, plural, one {# Credit} other {# Credits}}. Credits kaufen",
+    "adminBroadcasts": "Mitteilungen"
   },
   "Billing": {
     "title": "Credits & Abrechnung",
@@ -696,6 +697,31 @@
       "empty": "Noch kein Feedback.",
       "openImage": "Bild {number} öffnen",
       "image": "Feedback-Bild {number}"
+    },
+    "broadcasts": {
+      "title": "Mitteilungen",
+      "description": "Sende eine Benachrichtigung an alle Nutzer oder an einen. Sie erscheint unter der Glocke.",
+      "formTitle": "Neue Benachrichtigung",
+      "audience": "Senden an",
+      "everyone": "Alle Nutzer",
+      "oneUser": "Einen Nutzer",
+      "email": "E-Mail des Nutzers",
+      "titleLabel": "Titel",
+      "bodyLabel": "Nachricht",
+      "send": "Senden",
+      "confirmTitle": "Diese Benachrichtigung senden?",
+      "confirmEveryone": "Jeder Nutzer, der jetzt ein Konto hat, erhält sie. Das lässt sich nicht rückgängig machen.",
+      "confirmOne": "{email} erhält sie. Das lässt sich nicht rückgängig machen.",
+      "confirm": "Senden",
+      "cancel": "Abbrechen",
+      "sent": "{count, plural, one {An # Nutzer gesendet.} other {An # Nutzer gesendet.}}",
+      "error": "Die Benachrichtigung konnte nicht gesendet werden. Versuch es noch einmal.",
+      "unknownUser": "Kein Nutzer hat diese E-Mail.",
+      "historyTitle": "Gesendete Benachrichtigungen",
+      "recipients": "Empfänger",
+      "sentBy": "Gesendet von",
+      "date": "Datum",
+      "empty": "Noch keine Benachrichtigungen gesendet."
     }
   },
   "Credits": {

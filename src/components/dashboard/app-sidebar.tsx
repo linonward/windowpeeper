@@ -54,6 +54,7 @@ const ADMIN_ITEMS = [
       { href: "/admin/orders", key: "adminOrders" },
       { href: "/admin/metrics", key: "adminMetrics" },
       { href: "/admin/feedback", key: "adminFeedback" },
+      { href: "/admin/notifications", key: "adminBroadcasts" },
     ],
   },
 ] as const;

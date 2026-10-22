@@ -63,7 +63,7 @@ export type GeneratedVideo = {
 };
 
 // An in-app notification. The page writes the text from `type` and `data`.
-// The image and broadcast types are only on older rows.
+// The image types are only on older rows.
 export type AppNotification = { id: string; readAt: Date | null; createdAt: Date } & (
   | { type: "image_succeeded"; data: { imageId: string; prompt: string } }
   | { type: "image_failed"; data: { imageId: string; prompt: string; credits: number } }
@@ -83,6 +83,7 @@ export type BalanceResponse = { balance: number };
 export type NotificationsResponse = { notifications: AppNotification[]; unread: number };
 export type UnreadResponse = { unread: number };
 export type FeedbackResponse = { feedback: { id: string } };
+export type BroadcastResponse = { broadcast: { id: string; recipients: number } };
 // Where to send the browser: a checkout or the provider's portal.
 export type RedirectResponse = { url: string };
 

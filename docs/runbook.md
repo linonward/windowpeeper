@@ -156,7 +156,7 @@ The sign-in form then shows the challenge, and the send button waits for it. The
 
 Signed-in users submit feedback from the fixed bottom-right link in the signed-in layout at `/feedback`. Apply the committed migrations with `pnpm db:migrate` before deploying this feature. Users can select image files or paste images into the feedback box. They can send text, images, or both: up to 2,000 characters and three JPEG, PNG or WebP files totaling 4 MB, at most five requests per minute. Retries of the same submission create one record.
 
-Set `ADMIN_EMAILS` to allow administrators to read `/admin/feedback`. The list includes account names, emails, full messages and timestamps, 20 per page. Configure `STORAGE_*` for image uploads; locally, `docker compose up -d --wait storage` starts MinIO. Without storage, text submissions still work. The list shows image thumbnails and full-size links. Deleting an account also deletes its feedback and stored attachments.
+Set `ADMIN_EMAILS` to allow administrators to read `/admin/feedback` and send notifications from `/admin/notifications`. The list includes account names, emails, full messages and timestamps, 20 per page. Configure `STORAGE_*` for image uploads; locally, `docker compose up -d --wait storage` starts MinIO. Without storage, text submissions still work. The list shows image thumbnails and full-size links. Deleting an account also deletes its feedback and stored attachments.
 
 ## Credits
 

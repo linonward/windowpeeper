@@ -1,4 +1,3 @@
-import { randomUUID } from "node:crypto";
 import { sql } from "drizzle-orm";
 import {
   bigint,
@@ -15,8 +14,8 @@ import {
 import { user } from "@/server/auth/schema";
 import { generationColumns } from "@/server/generations/columns";
 
-// Tables of features the app no longer has: AI chat, text-to-image, API
-// keys and admin broadcasts. No code writes them. They stay defined until a
+// Tables of features the app no longer has: AI chat, text-to-image and API
+// keys. No code writes them. They stay defined until a
 // deliberate migration drops them, so the schema matches the migrations and
 // `pnpm db:generate` finds no change. Chats, messages, images and their
 // rows cascade with the user; afterDeleteUser (src/server/account) still
@@ -129,24 +128,4 @@ export const apikey = pgTable(
     index("apikey_referenceId_idx").on(table.referenceId),
     index("apikey_key_idx").on(table.key),
   ],
-);
-
-// A notification an admin sent. Each recipient gets a `broadcast`
-// notification keyed `broadcast:<id>:<userId>`.
-export const broadcast = pgTable(
-  "broadcast",
-  {
-    id: text("id").primaryKey().$defaultFn(() => randomUUID()),
-    // One per form submission, so a double click sends once.
-    requestId: text("request_id").notNull().unique(),
-    title: text("title").notNull(),
-    body: text("body").notNull(),
-    // The one recipient, or null for every user.
-    email: text("email"),
-    // The admin's email.
-    sentBy: text("sent_by").notNull(),
-    recipients: integer("recipients").default(0).notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-  },
-  (table) => [index("broadcast_createdAt_idx").on(table.createdAt)],
 );
