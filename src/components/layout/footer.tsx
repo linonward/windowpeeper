@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { projectConfig } from "project.config";
 import { Link } from "@/i18n/navigation";
-import { GUIDES } from "@/lib/guides";
+import type { Guide } from "@/lib/guides";
 import { Brand } from "./brand";
 import { CurrentYear } from "./current-year";
 import { LocaleLinks } from "./locale-switcher";
@@ -30,9 +30,9 @@ export function Footer() {
       id: "footer-learn",
       title: t("learn"),
       links: [
-        { href: "/#faq", label: t("trend") },
-        { href: `/${GUIDES[0]}`, label: t("howTo") },
-        { href: "/#faq", label: t("filter") },
+        { href: `/${"window-peeper-trend" satisfies Guide}`, label: t("trend") },
+        { href: `/${"how-to-make-window-peeper-video" satisfies Guide}`, label: t("howTo") },
+        { href: `/${"window-peeper-capcut-template" satisfies Guide}`, label: t("filter") },
         { href: "/blog", label: blog("title") },
       ],
     },

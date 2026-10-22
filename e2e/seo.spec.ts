@@ -12,6 +12,8 @@ test("the sitemap lists the public pages in every locale", async ({ request, bas
   const pages = [
     "",
     "/how-to-make-window-peeper-video",
+    "/window-peeper-trend",
+    "/window-peeper-capcut-template",
     "/privacy",
     "/terms",
     "/refund",
@@ -98,9 +100,9 @@ test("the home, guide and legal pages name their canonical URL and every locale"
 // Search titles lead with the keyword; the home title is the keyword alone.
 test("marketing pages carry keyword-first titles", async ({ page }) => {
   const titles = {
-    "/": "Window Peeper AI Video – Make the TikTok Trend From a Photo",
-    "/es": "Window Peeper IA – El video de la tendencia con una foto",
-    "/es/pricing": "Precios del video de window peeper | WindowPeeper",
+    "/": "Window Peeper AI Video Generator – Make the TikTok Trend From a Photo",
+    "/es": "Generador de videos Window Peeper con IA – La tendencia con una foto",
+    "/es/pricing": "Precios del video de window peeper – Desde 9,90 US$ | WindowPeeper",
     "/how-to-make-window-peeper-video": "How to Make the Window Peeper Video | WindowPeeper",
   };
   for (const [path, title] of Object.entries(titles)) {

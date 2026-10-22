@@ -7,9 +7,10 @@ import { Cta } from "@/components/home/cta";
 import { Glow } from "@/components/home/section-heading";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { GUIDES, type Guide } from "@/lib/guides";
+import { GUIDE_DATES, GUIDES, type Guide } from "@/lib/guides";
 import type { ImageLimits } from "@/lib/image-limits";
 import { localePath, type Locale } from "@/i18n/routing";
+import { article, howTo, jsonLd } from "@/lib/seo";
 
 type Pack = { credits: number; amount: number; currency: string };
 
@@ -35,6 +36,7 @@ type Section = {
 type Translate = {
   (key: string, values?: Record<string, string | number>): string;
   rich: (key: string, values: Record<string, unknown>) => ReactNode;
+  markup: (key: string, values: Record<string, unknown>) => string;
   raw: (key: string) => unknown;
 };
 
@@ -43,8 +45,10 @@ const LINK = "font-medium text-primary-text underline underline-offset-4";
 // A guide: the query in the h1, a call to action that leads to the home
 // page's generator (no second generator here), the copy in sections, links to
 // the other guides and the closing call to action. Prices and photo limits
-// come from the server config, which the page passes in.
-export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts }) {
+// come from the server config, which the page passes in. The page is an
+// Article in structured data, and each section with steps a HowTo; `base`
+// is the site URL for their links.
+export function GuidePage({ guide, facts, base }: { guide: Guide; facts: GuideFacts; base?: string }) {
   // Guides.pages.<guide> has the same shape for every guide, but not the same
   // section keys, so its keys are built at runtime.
   const t = useTranslations("Guides") as unknown as Translate;
@@ -82,11 +86,48 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
     ),
   };
   const rich = (key: string) => t.rich(key, values);
+  // The same copy as plain text: links keep only their words.
+  const plain = (key: string) =>
+    t.markup(key, {
+      ...values,
+      ...Object.fromEntries(
+        Object.entries(values)
+          .filter(([, value]) => typeof value === "function")
+          .map(([name]) => [name, (chunks: string) => (name === "email" ? projectConfig.supportEmail : chunks)]),
+      ),
+    });
   const sections = t.raw(page("sections")) as Record<string, Section>;
   const others = GUIDES.filter((each) => each !== guide);
+  const data = [
+    article(
+      {
+        title: t(page("metaTitle")),
+        description: t(page("metaDescription")),
+        ...GUIDE_DATES[guide],
+        path: localePath(locale as Locale, `/${guide}`),
+      },
+      locale as Locale,
+      base,
+    ),
+    ...Object.entries(sections)
+      .filter(([, section]) => section.steps)
+      .map(([key, section]) =>
+        howTo(
+          locale as Locale,
+          t(page(`sections.${key}.title`)),
+          Object.keys(section.steps ?? {}).map((n) => ({
+            name: t(page(`sections.${key}.steps.${n}.title`)),
+            text: plain(page(`sections.${key}.steps.${n}.body`)),
+          })),
+        ),
+      ),
+  ];
 
   return (
     <main id="main-content" className="mx-auto w-full max-w-6xl flex-1 px-5 sm:px-8">
+      {data.map((item, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(item) }} />
+      ))}
       <header className="relative isolate flex flex-col items-start gap-6 pt-10 pb-16 sm:pt-16">
         <Glow className="top-10" />
         <p className="eyebrow">{t("eyebrow")}</p>

@@ -1,14 +1,14 @@
 {
   "Metadata": {
     "title": "WindowPeeper",
-    "homeTitle": "Window Peeper AI Video – Make the TikTok Trend From a Photo",
+    "homeTitle": "Window Peeper AI Video Generator – Make the TikTok Trend From a Photo",
     "tagline": "Window peeper AI video from one photo",
     "description": "Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. Six scenes, no CapCut template."
   },
   "Home": {
     "hero": {
       "badge": "Now trending on TikTok · Reels · Shorts",
-      "heading": "Window peeper AI video",
+      "heading": "Window peeper AI video generator",
       "title": "Someone's watching you eat.",
       "body": "WindowPeeper is an AI video generator for the window peeper TikTok meme. Upload a photo of yourself and get a 14-second, PG-rated horror-comedy clip of you eating at night, noticing the camera and closing the curtain.",
       "clip": {
@@ -303,7 +303,7 @@
   },
   "Pricing": {
     "nav": "Pricing",
-    "metaTitle": "Window Peeper Video Pricing",
+    "metaTitle": "Window Peeper Video Pricing – From {price}",
     "metaDescription": "Window peeper videos from {price}: pay once per pack, no subscription. Credits never expire, and a failed video gives them back.",
     "eyebrow": "Pricing",
     "title": "Pay for the videos you make",
@@ -431,6 +431,127 @@
             }
           }
         }
+      },
+      "window-peeper-trend": {
+        "metaTitle": "Window Peeper Trend Meaning, Explained",
+        "metaDescription": "The window peeper trend explained: a camera creeps up to a lit window at night, and the person inside freezes mid-bite, stares and closes the curtain.",
+        "nav": "What is the window peeper trend?",
+        "title": "What is the window peeper trend?",
+        "tagline": "A creepy setup with a silly payoff.",
+        "lead": "The window peeper trend is a staged comedy bit on TikTok, Reels and Shorts. It looks like a horror clip for a few seconds, then turns into a joke about being caught eating.",
+        "sections": {
+          "beats": {
+            "title": "The trend in five beats",
+            "steps": {
+              "1": {
+                "title": "The approach",
+                "body": "A camera at night slowly pushes in on a dark apartment building, toward the one window that's lit."
+              },
+              "2": {
+                "title": "The bite",
+                "body": "Through the glass, someone sits at a table and eats: a burger, noodles, a slice of pizza. They don't know they're being filmed."
+              },
+              "3": {
+                "title": "The freeze",
+                "body": "Mid-bite, they notice the camera and stop chewing."
+              },
+              "4": {
+                "title": "The stare",
+                "body": "They look straight into the lens, without blinking, for longer than is comfortable. This is the joke."
+              },
+              "5": {
+                "title": "The curtain",
+                "body": "They stand up and yank the curtain shut. The window glows behind it, and the clip ends."
+              }
+            }
+          },
+          "why": {
+            "title": "Why the joke works",
+            "list": {
+              "1": "It flips the horror setup: the person being watched catches the watcher, and wins.",
+              "2": "The stare runs a beat too long, which makes it awkward rather than scary.",
+              "3": "Eating is ordinary and a little embarrassing to be caught doing, so anyone can play the part.",
+              "4": "The whole bit fits in about 14 seconds, a vertical frame and one sound, so it's easy to remix."
+            }
+          },
+          "origin": {
+            "title": "Where it comes from",
+            "text": {
+              "1": "Clips in this format circulate on TikTok, Instagram Reels and YouTube Shorts. We don't know who posted the first one, so we don't name an origin, a date or a sound we can't check. The format is the same across versions: the night building, the lit window, the meal, the stare and the curtain."
+            }
+          },
+          "make": {
+            "title": "How to make your own",
+            "text": {
+              "1": "You don't need a building, a long lens or a second person. Upload a photo of yourself to the <generator>generator on the home page</generator>, pick a scene, and you get a new 14-second vertical video of you in the window, with music. A Standard video costs {credits} credits, from {price}.",
+              "2": "The <howto>step-by-step guide</howto> covers the photo, the scenes, pricing and posting. Six scenes change the meal and the ending: a burger, midnight noodles, a pizza slice, a small wave instead of the curtain, rain on the glass, and a dinner for two where only you notice the camera."
+            }
+          },
+          "fair": {
+            "title": "Keep it a joke",
+            "text": {
+              "1": "The trend is about pretending to be watched. Don't film real people through their windows, and don't make a video of someone else. On this site you may only upload a photo of yourself, and only if you're 18 or older. Every scene is fixed and PG-rated; there are no prompts to write. The <terms>Terms</terms> have the full rules."
+            }
+          }
+        }
+      },
+      "window-peeper-capcut-template": {
+        "metaTitle": "Window Peeper CapCut Template vs AI",
+        "metaDescription": "How a window peeper CapCut template works, why it may not show up for you, and how it compares with making the video from one photo with AI.",
+        "nav": "Window peeper CapCut template",
+        "title": "Window peeper CapCut template",
+        "tagline": "Template or one photo: which one fits you.",
+        "lead": "Searching for a window peeper CapCut template? Here's how templates work, what to try when one won't open, and when making the video from one photo is the easier route.",
+        "sections": {
+          "how": {
+            "title": "How a CapCut template works",
+            "text": {
+              "1": "A CapCut template is someone else's edit with empty slots. You fill the slots with your own clips or photos, and CapCut keeps the cuts, effects and sound. For this trend, that means you still need footage that fits each slot."
+            }
+          },
+          "use": {
+            "title": "Use a CapCut template",
+            "steps": {
+              "1": {
+                "title": "Search in CapCut",
+                "body": "Open the CapCut app and search for \"window peeper\". Templates come and go, and some only show up in certain regions, so we don't link one here."
+              },
+              "2": {
+                "title": "Check the preview",
+                "body": "Play the preview and count the slots. Make sure it's the night window, the stare and the curtain, not a different trend with a similar name."
+              },
+              "3": {
+                "title": "Add your media",
+                "body": "Tap Use template and fill each slot with clips or photos that match it."
+              },
+              "4": {
+                "title": "Export and post",
+                "body": "Export the video and post it. Add the trending sound in the app if the template doesn't carry it."
+              }
+            }
+          },
+          "missing": {
+            "title": "If the template doesn't work",
+            "list": {
+              "1": "Update the CapCut app; old versions hide newer templates.",
+              "2": "Search other names for the trend, such as \"window stare\" or \"curtain close\".",
+              "3": "Templates can be limited by region or removed by their creator. If it's gone, it's gone.",
+              "4": "Open a window peeper clip in TikTok and use its sound or template link from there."
+            }
+          },
+          "compare": {
+            "title": "Template or AI from one photo?",
+            "list": {
+              "1": "What you need: a template needs clips that fit its slots. This site needs one photo of yourself.",
+              "2": "What you get: a template puts your media into its edit. Here you get a new 14-second video of you in the window, eating, staring and closing the curtain, with original music.",
+              "3": "Control: a template lets you edit the cuts in CapCut. Here you pick one of six fixed scenes; there are no prompts to write.",
+              "4": "Cost: CapCut's own terms apply to templates. Here a Standard video costs {credits} credits, from {price}, and a failed video gives its credits back."
+            },
+            "more": {
+              "1": "Want the exact edit someone else made? Use the template. Want the trend starring you without filming anything? Use the <generator>generator on the home page</generator>, or read <howto>how to make a window peeper video</howto> first."
+            }
+          }
+        }
       }
     }
   },
@@ -442,7 +563,7 @@
     "learn": "Learn",
     "trend": "Window peeper trend",
     "howTo": "How to make it",
-    "filter": "Is there a filter?",
+    "filter": "CapCut template",
     "legal": "Legal",
     "acceptableUse": "Acceptable use",
     "rights": "© <year></year> {name}",

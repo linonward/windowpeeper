@@ -10,10 +10,11 @@ import messages from "../../../messages/en.json";
 
 const keys = <T extends object>(items: T) => Object.keys(items) as (keyof T & string)[];
 
-// A Markdown summary of the product for language models (llmstxt.org): what
-// it is, its FAQ in the default locale, and links to the
-// public pages, guides included, in every locale. The text comes from messages/*.json, so it
-// follows the landing page.
+// A Markdown index of the site for language models (llmstxt.org): what it
+// is and how it works, the guides with what each covers, the full text in
+// llms-full.txt, the FAQ in the default locale, and links to the public
+// pages in every locale. The text comes from messages/*.json, so it follows
+// the pages.
 export async function GET() {
   // Read BETTER_AUTH_URL per request, as the sitemap does.
   await connection();
@@ -28,7 +29,19 @@ export async function GET() {
   const values = {
     price: format.number(smallest.amount / 100, { style: "currency", currency: smallest.currency.toUpperCase() }),
     size: maxPickBytes / 1024 / 1024,
+    email: projectConfig.supportEmail,
   };
+  const steps = keys(messages.Home.steps.items).map(
+    (key, i) => `${i + 1}. ${t(`steps.items.${key}.title`)}: ${t(`steps.items.${key}.body`)}`,
+  );
+  const guides = await getTranslations({ locale: routing.defaultLocale, namespace: "Guides" });
+  const guideIndex = [
+    ...GUIDES.map(
+      (guide) =>
+        `- [${guides(`pages.${guide}.metaTitle`)}](${url(localePath(routing.defaultLocale, `/${guide}`))}): ${guides(`pages.${guide}.metaDescription`)}`,
+    ),
+    `- [Full text of every guide](${url("/llms-full.txt")}): the guides and the FAQ above, as one Markdown file.`,
+  ];
   const faq = keys(messages.Home.faq.items).map(
     (key) => `- ${t(`faq.items.${key}.title`)}: ${t(`faq.items.${key}.body`, values)}`,
   );
@@ -60,6 +73,8 @@ export async function GET() {
     `# ${projectConfig.name}`,
     `> ${meta("description")}`,
     t("hero.body"),
+    section(t("steps.title"), steps),
+    section("Guides", guideIndex),
     section(t("faq.title"), faq),
     ...(await Promise.all(routing.locales.map(async (locale) => section(LOCALE_NAMES[locale], await pages(locale))))),
     section("Optional", [`- [Sitemap](${url("/sitemap.xml")})`]),

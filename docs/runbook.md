@@ -396,7 +396,7 @@ The app ships in English (`en`), Spanish (`es`) and German (`de`). Blog posts ex
   4. Add `src/app/[locale]/(marketing)/(legal)/<doc>/page.tsx`, copying an existing one.
   5. Add a Lucide icon for it to `ICONS` in `src/components/legal/legal-nav.tsx` (typecheck fails until you do).
 
-  The sitemap and `/llms.txt` pick it up from `LEGAL_DOCS`. A guide (a page that answers one search and leads to the home generator) needs only its slug in `GUIDES` (`src/lib/guides.ts`), its copy under `Guides.pages.<slug>` in every `messages/*.json` and a three-line `src/app/[locale]/(marketing)/<slug>/page.tsx` like the others; the sitemap, `/llms.txt`, the footer and analytics read `GUIDES`. For any other public page, add its path to `PAGES` in `src/app/sitemap.ts` and a link in `src/app/llms.txt/route.ts`. `/llms.txt` reads the landing page's copy from `Home`, so replacing that copy updates it too.
+  The sitemap and `/llms.txt` pick it up from `LEGAL_DOCS`. A guide (a page that answers one search and leads to the home generator) needs only its slug in `GUIDES` (`src/lib/guides.ts`), its dates in `GUIDE_DATES` (update `modified` when the copy changes), its copy under `Guides.pages.<slug>` in every `messages/*.json` and a three-line `src/app/[locale]/(marketing)/<slug>/page.tsx` like the others; the sitemap, `/llms.txt`, `/llms-full.txt`, the other guides' related links and analytics read `GUIDES`. Link it from the footer's Learn column by hand. For any other public page, add its path to `PAGES` in `src/app/sitemap.ts` and a link in `src/app/llms.txt/route.ts`. `/llms.txt` reads the landing page's copy from `Home`, so replacing that copy updates it too.
 
 ## Translations
 

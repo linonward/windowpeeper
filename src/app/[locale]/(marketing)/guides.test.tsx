@@ -15,6 +15,8 @@ vi.mock("next-intl/server", () => ({
 
 const pages = {
   "how-to-make-window-peeper-video": await import("./how-to-make-window-peeper-video/page"),
+  "window-peeper-trend": await import("./window-peeper-trend/page"),
+  "window-peeper-capcut-template": await import("./window-peeper-capcut-template/page"),
 };
 type Slug = keyof typeof pages;
 const slugs = Object.keys(pages) as Slug[];
@@ -27,10 +29,11 @@ const metadata = (slug: Slug, locale: "en" | "es") =>
     Promise.resolve({ openGraph: { images: [{ url: "/og.png" }] } }) as never,
   );
 
-// The copy a reader sees, without the h1.
+// The copy a reader sees, without the h1 or the structured data.
 function bodyText() {
   const main = screen.getByRole("main").cloneNode(true) as HTMLElement;
   main.querySelector("h1")?.remove();
+  main.querySelectorAll("script").forEach((script) => script.remove());
   return main.textContent ?? "";
 }
 
@@ -38,6 +41,8 @@ const words = (text: string) => text.split(/\s+/).filter(Boolean).length;
 
 test.each([
   ["how-to-make-window-peeper-video", "How to make a window peeper video — One photo, six steps, one stare."],
+  ["window-peeper-trend", "What is the window peeper trend? — A creepy setup with a silly payoff."],
+  ["window-peeper-capcut-template", "Window peeper CapCut template — Template or one photo: which one fits you."],
 ] as const)("/%s has one h1 that names its query", (slug, name) => {
   const { default: Page } = pages[slug];
   renderWithIntl(<Page />);

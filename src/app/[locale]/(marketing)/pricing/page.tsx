@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/pricing"
   const [{ amount, currency }] = [...CREDIT_PACKS].sort((a, b) => a.amount - b.amount);
   const price = format.number(amount / 100, { style: "currency", currency: currency.toUpperCase() });
   return {
-    title: t("metaTitle"),
+    title: t("metaTitle", { price }),
     description: t("metaDescription", { price }),
     alternates: { canonical: localePath(locale as Locale, "/pricing"), languages: languageAlternates("/pricing") },
   };

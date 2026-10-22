@@ -16,7 +16,7 @@ test("signed-out visitors see the price list: the packs, what a video costs and 
   expect(response?.status()).toBe(200);
   await expect(page).toHaveURL("/pricing");
   await expect(page.getByRole("heading", { level: 1, name: "Pay for the videos you make" })).toBeVisible();
-  await expect(page).toHaveTitle("Window Peeper Video Pricing | WindowPeeper");
+  await expect(page).toHaveTitle("Window Peeper Video Pricing – From $9.90 | WindowPeeper");
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Window peeper videos from \$9\.90:/);
   const cards = cardsIn(page);
   for (const [index, [name, price, line]] of PACKS.entries()) {

@@ -52,7 +52,13 @@ test("names the site and its publisher for the home page", () => {
   expect(website("es", "What it does.", "https://x.test")).toEqual({
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": "https://x.test/#organization", name: "WindowPeeper", url: "https://x.test/" },
+      {
+        "@type": "Organization",
+        "@id": "https://x.test/#organization",
+        name: "WindowPeeper",
+        url: "https://x.test/",
+        contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "support@windowpeeper.org" },
+      },
       {
         "@type": "WebSite",
         "@id": "https://x.test/#website",
@@ -75,7 +81,7 @@ test("leaves the site's URLs out without a base URL", () => {
   expect(website("en", "What it does.")).toEqual({
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", name: "WindowPeeper" },
+      { "@type": "Organization", name: "WindowPeeper", contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "support@windowpeeper.org" } },
       { "@type": "WebSite", name: "WindowPeeper", description: "What it does.", inLanguage: "en", publisher: { name: "WindowPeeper" } },
     ],
   });

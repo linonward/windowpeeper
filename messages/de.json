@@ -1,14 +1,14 @@
 {
   "Metadata": {
     "title": "WindowPeeper",
-    "homeTitle": "Window Peeper KI-Video – Der TikTok-Trend aus einem Foto",
+    "homeTitle": "Window Peeper KI-Videogenerator – Der TikTok-Trend aus einem Foto",
     "tagline": "Window-Peeper-KI-Video aus einem Foto",
     "description": "Mach das Window-Peeper-Trendvideo aus einem Foto: beim Essen im hellen Fenster erwischt, ein langer Blick, dann der Vorhang. Sechs Szenen, ohne CapCut-Vorlage."
   },
   "Home": {
     "hero": {
       "badge": "Gerade im Trend auf TikTok · Reels · Shorts",
-      "heading": "Window-Peeper-KI-Video",
+      "heading": "Window-Peeper-KI-Videogenerator",
       "title": "Jemand sieht dir beim Essen zu.",
       "body": "WindowPeeper ist ein KI-Videogenerator für das TikTok-Meme „Window Peeper“. Lade ein Foto von dir hoch und bekomm einen 14-sekündigen, jugendfreien Horror-Comedy-Clip: Du isst nachts, bemerkst die Kamera und ziehst den Vorhang zu.",
       "clip": {
@@ -303,7 +303,7 @@
   },
   "Pricing": {
     "nav": "Preise",
-    "metaTitle": "Window-Peeper-Video: Preise",
+    "metaTitle": "Window-Peeper-Video: Preise – ab {price}",
     "metaDescription": "Window-Peeper-Videos ab {price}: einmal pro Paket zahlen, kein Abo. Credits verfallen nie, und ein fehlgeschlagenes Video gibt sie zurück.",
     "eyebrow": "Preise",
     "title": "Zahl für die Videos, die du machst",
@@ -431,6 +431,127 @@
             }
           }
         }
+      },
+      "window-peeper-trend": {
+        "metaTitle": "Was ist der Window-Peeper-Trend?",
+        "metaDescription": "Der Window-Peeper-Trend erklärt: Nachts nähert sich eine Kamera einem erleuchteten Fenster, die Person drinnen erstarrt mitten im Bissen, starrt in die Linse und zieht den Vorhang zu.",
+        "nav": "Was ist der Window-Peeper-Trend?",
+        "title": "Was ist der Window-Peeper-Trend?",
+        "tagline": "Ein gruseliger Anfang mit albernem Ende.",
+        "lead": "Der Window-Peeper-Trend ist ein inszenierter Comedy-Clip für TikTok, Reels und Shorts. Ein paar Sekunden lang wirkt er wie Horror, dann wird daraus ein Witz übers Ertapptwerden beim Essen.",
+        "sections": {
+          "beats": {
+            "title": "Der Trend in fünf Momenten",
+            "steps": {
+              "1": {
+                "title": "Die Annäherung",
+                "body": "Nachts fährt eine Kamera langsam auf ein dunkles Wohnhaus zu, auf das einzige erleuchtete Fenster."
+              },
+              "2": {
+                "title": "Der Bissen",
+                "body": "Hinter der Scheibe sitzt jemand am Tisch und isst: einen Burger, Nudeln, ein Stück Pizza. Die Person weiß nicht, dass sie gefilmt wird."
+              },
+              "3": {
+                "title": "Das Erstarren",
+                "body": "Mitten im Bissen bemerkt sie die Kamera und hört auf zu kauen."
+              },
+              "4": {
+                "title": "Der Blick",
+                "body": "Sie starrt direkt in die Linse, ohne zu blinzeln, länger als angenehm ist. Das ist der Witz."
+              },
+              "5": {
+                "title": "Der Vorhang",
+                "body": "Sie steht auf und reißt den Vorhang zu. Das Fenster leuchtet dahinter weiter, und der Clip endet."
+              }
+            }
+          },
+          "why": {
+            "title": "Warum der Witz funktioniert",
+            "list": {
+              "1": "Er dreht den Horror um: Die beobachtete Person ertappt den Beobachter und gewinnt.",
+              "2": "Der Blick dauert einen Moment zu lang, dadurch wird er peinlich statt gruselig.",
+              "3": "Essen ist alltäglich und ein bisschen peinlich, wenn man dabei erwischt wird, also kann jeder die Rolle spielen.",
+              "4": "Alles passt in etwa 14 Sekunden, ein Hochformat und einen Sound, darum ist der Trend leicht nachzumachen."
+            }
+          },
+          "origin": {
+            "title": "Woher er kommt",
+            "text": {
+              "1": "Clips in diesem Format kursieren auf TikTok, Instagram Reels und YouTube Shorts. Wir wissen nicht, wer den ersten gepostet hat, darum nennen wir keinen Ursprung, kein Datum und keinen Sound, den wir nicht prüfen können. Das Format ist in allen Versionen gleich: das Haus bei Nacht, das erleuchtete Fenster, das Essen, der Blick und der Vorhang."
+            }
+          },
+          "make": {
+            "title": "So machst du deinen eigenen",
+            "text": {
+              "1": "Du brauchst kein Haus, kein Teleobjektiv und keine zweite Person. Lade ein Foto von dir in den <generator>Generator auf der Startseite</generator>, wähl eine Szene, und du bekommst ein neues 14-sekündiges Video im Hochformat mit dir im Fenster, mit Musik. Ein Standard-Video kostet {credits} Credits, ab {price}.",
+              "2": "Die <howto>Schritt-für-Schritt-Anleitung</howto> erklärt Foto, Szenen, Preise und das Posten. Sechs Szenen ändern das Essen und das Ende: ein Burger, Mitternachtsnudeln, ein Stück Pizza, ein kleines Winken statt des Vorhangs, Regen auf der Scheibe und ein Abendessen zu zweit, bei dem nur du die Kamera bemerkst."
+            }
+          },
+          "fair": {
+            "title": "Lass es ein Witz bleiben",
+            "text": {
+              "1": "Der Trend spielt damit, beobachtet zu werden. Filme keine echten Menschen durch ihre Fenster und mach kein Video von jemand anderem. Auf dieser Website darfst du nur ein Foto von dir hochladen, und nur wenn du mindestens 18 bist. Jede Szene ist fest vorgegeben und jugendfrei; es gibt keine Prompts zum Schreiben. Die vollständigen Regeln stehen in den <terms>Nutzungsbedingungen</terms>."
+            }
+          }
+        }
+      },
+      "window-peeper-capcut-template": {
+        "metaTitle": "Window-Peeper-CapCut-Vorlage vs. KI",
+        "metaDescription": "Wie eine Window-Peeper-Vorlage in CapCut funktioniert, warum sie bei dir vielleicht nicht erscheint und wie sie sich von einem KI-Video aus einem Foto unterscheidet.",
+        "nav": "Window-Peeper-CapCut-Vorlage",
+        "title": "Window-Peeper-CapCut-Vorlage",
+        "tagline": "Vorlage oder ein Foto: was besser zu dir passt.",
+        "lead": "Du suchst eine Window-Peeper-Vorlage für CapCut? So funktionieren Vorlagen, das kannst du tun, wenn sich eine nicht öffnet, und so ist ein Video aus einem Foto oft der einfachere Weg.",
+        "sections": {
+          "how": {
+            "title": "So funktioniert eine CapCut-Vorlage",
+            "text": {
+              "1": "Eine CapCut-Vorlage ist der Schnitt einer anderen Person mit leeren Plätzen. Du füllst die Plätze mit deinen Clips oder Fotos, und CapCut behält Schnitte, Effekte und Sound bei. Für diesen Trend heißt das: Du brauchst trotzdem Material, das in jeden Platz passt."
+            }
+          },
+          "use": {
+            "title": "Eine CapCut-Vorlage verwenden",
+            "steps": {
+              "1": {
+                "title": "In CapCut suchen",
+                "body": "Öffne die CapCut-App und such nach \"window peeper\". Vorlagen kommen und gehen, und manche sind nur in bestimmten Regionen sichtbar, darum verlinken wir hier keine."
+              },
+              "2": {
+                "title": "Vorschau prüfen",
+                "body": "Spiel die Vorschau ab und zähl die Plätze. Prüf, ob es das Fenster bei Nacht, der Blick und der Vorhang ist und kein anderer Trend mit ähnlichem Namen."
+              },
+              "3": {
+                "title": "Medien einfügen",
+                "body": "Tipp auf Vorlage verwenden und füll jeden Platz mit passenden Clips oder Fotos."
+              },
+              "4": {
+                "title": "Exportieren und posten",
+                "body": "Exportier das Video und poste es. Füg den Trend-Sound in der App hinzu, falls die Vorlage ihn nicht mitbringt."
+              }
+            }
+          },
+          "missing": {
+            "title": "Wenn die Vorlage nicht funktioniert",
+            "list": {
+              "1": "Aktualisier die CapCut-App; ältere Versionen zeigen neuere Vorlagen nicht an.",
+              "2": "Such nach anderen Namen für den Trend, etwa \"window stare\" oder \"curtain close\".",
+              "3": "Vorlagen können auf Regionen beschränkt sein oder von ihren Erstellern entfernt werden. Ist sie weg, ist sie weg.",
+              "4": "Öffne einen Window-Peeper-Clip in TikTok und nutz von dort seinen Sound oder seinen Vorlagen-Link."
+            }
+          },
+          "compare": {
+            "title": "Vorlage oder KI aus einem Foto?",
+            "list": {
+              "1": "Was du brauchst: Eine Vorlage braucht Clips, die in ihre Plätze passen. Diese Website braucht ein Foto von dir.",
+              "2": "Was du bekommst: Eine Vorlage setzt deine Medien in ihren Schnitt. Hier bekommst du ein neues 14-sekündiges Video mit dir im Fenster, wie du isst, starrst und den Vorhang zuziehst, mit eigener Musik.",
+              "3": "Kontrolle: Mit einer Vorlage kannst du die Schnitte in CapCut bearbeiten. Hier wählst du eine von sechs festen Szenen; es gibt keine Prompts zum Schreiben.",
+              "4": "Kosten: Für Vorlagen gelten die Bedingungen von CapCut. Hier kostet ein Standard-Video {credits} Credits, ab {price}, und ein fehlgeschlagenes Video gibt seine Credits zurück."
+            },
+            "more": {
+              "1": "Du willst genau den Schnitt, den jemand anderes gemacht hat? Nimm die Vorlage. Du willst den Trend mit dir in der Hauptrolle, ohne etwas zu filmen? Nutz den <generator>Generator auf der Startseite</generator> oder lies zuerst, <howto>wie man ein Window-Peeper-Video macht</howto>."
+            }
+          }
+        }
       }
     }
   },
@@ -442,7 +563,7 @@
     "learn": "Wissen",
     "trend": "Window-Peeper-Trend",
     "howTo": "So geht’s",
-    "filter": "Gibt es einen Filter?",
+    "filter": "CapCut-Vorlage",
     "legal": "Rechtliches",
     "acceptableUse": "Nutzungsrichtlinie",
     "rights": "© <year></year> {name}",

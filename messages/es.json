@@ -1,14 +1,14 @@
 {
   "Metadata": {
     "title": "WindowPeeper",
-    "homeTitle": "Window Peeper IA – El video de la tendencia con una foto",
+    "homeTitle": "Generador de videos Window Peeper con IA – La tendencia con una foto",
     "tagline": "Video de window peeper con IA desde una foto",
     "description": "Haz el video de la tendencia window peeper con una foto: te pillan comiendo en una ventana iluminada, una mirada larga y la cortina. Seis escenas, sin plantilla de CapCut."
   },
   "Home": {
     "hero": {
       "badge": "En tendencia en TikTok · Reels · Shorts",
-      "heading": "Video de window peeper con IA",
+      "heading": "Generador de videos de window peeper con IA",
       "title": "Alguien te está mirando comer.",
       "body": "WindowPeeper es un generador de videos con IA para el meme de TikTok del window peeper. Sube una foto tuya y recibe un clip de 14 segundos de terror y comedia, apto para todo público: tú cenando de noche, notando la cámara y cerrando la cortina.",
       "clip": {
@@ -303,7 +303,7 @@
   },
   "Pricing": {
     "nav": "Precios",
-    "metaTitle": "Precios del video de window peeper",
+    "metaTitle": "Precios del video de window peeper – Desde {price}",
     "metaDescription": "Videos de window peeper desde {price}: pagas una vez por paquete, sin suscripción. Los créditos no caducan y un video fallido te los devuelve.",
     "eyebrow": "Precios",
     "title": "Paga por los videos que haces",
@@ -431,6 +431,127 @@
             }
           }
         }
+      },
+      "window-peeper-trend": {
+        "metaTitle": "¿Qué es la tendencia window peeper?",
+        "metaDescription": "La tendencia window peeper explicada: una cámara se acerca de noche a una ventana iluminada, la persona de dentro se congela a mitad de bocado, mira a la lente y cierra la cortina.",
+        "nav": "¿Qué es la tendencia window peeper?",
+        "title": "¿Qué es la tendencia window peeper?",
+        "tagline": "Un comienzo inquietante con un final absurdo.",
+        "lead": "La tendencia window peeper es un sketch de comedia montado para TikTok, Reels y Shorts. Durante unos segundos parece un clip de terror y luego se convierte en una broma sobre que te pillen comiendo.",
+        "sections": {
+          "beats": {
+            "title": "La tendencia en cinco momentos",
+            "steps": {
+              "1": {
+                "title": "El acercamiento",
+                "body": "De noche, una cámara se acerca despacio a un edificio oscuro, hacia la única ventana con luz."
+              },
+              "2": {
+                "title": "El bocado",
+                "body": "A través del cristal, alguien está sentado a la mesa comiendo: una hamburguesa, fideos, una porción de pizza. No sabe que lo están grabando."
+              },
+              "3": {
+                "title": "El congelado",
+                "body": "A mitad de bocado, nota la cámara y deja de masticar."
+              },
+              "4": {
+                "title": "La mirada",
+                "body": "Mira directo a la lente, sin parpadear, durante más tiempo del cómodo. Esa es la broma."
+              },
+              "5": {
+                "title": "La cortina",
+                "body": "Se levanta y cierra la cortina de un tirón. La ventana sigue brillando detrás y el clip termina."
+              }
+            }
+          },
+          "why": {
+            "title": "Por qué funciona la broma",
+            "list": {
+              "1": "Le da la vuelta al terror: la persona observada pilla al que observa, y gana.",
+              "2": "La mirada dura un instante de más, y eso la vuelve incómoda en vez de aterradora.",
+              "3": "Comer es algo cotidiano y un poco vergonzoso si te pillan, así que cualquiera puede hacer el papel.",
+              "4": "Todo cabe en unos 14 segundos, en formato vertical y con un solo sonido, así que es fácil de recrear."
+            }
+          },
+          "origin": {
+            "title": "De dónde viene",
+            "text": {
+              "1": "Los clips con este formato circulan por TikTok, Instagram Reels y YouTube Shorts. No sabemos quién publicó el primero, así que no nombramos un origen, una fecha ni un sonido que no podamos comprobar. El formato es el mismo en todas las versiones: el edificio de noche, la ventana iluminada, la comida, la mirada y la cortina."
+            }
+          },
+          "make": {
+            "title": "Cómo hacer el tuyo",
+            "text": {
+              "1": "No necesitas un edificio, un teleobjetivo ni otra persona. Sube una foto tuya al <generator>generador de la página de inicio</generator>, elige una escena y recibirás un video vertical nuevo de 14 segundos contigo en la ventana, con música. Un video Estándar cuesta {credits} créditos, desde {price}.",
+              "2": "La <howto>guía paso a paso</howto> explica la foto, las escenas, los precios y cómo publicarlo. Seis escenas cambian la comida y el final: una hamburguesa, fideos de medianoche, una porción de pizza, un pequeño saludo en lugar de la cortina, lluvia en el cristal y una cena para dos en la que solo tú notas la cámara."
+            }
+          },
+          "fair": {
+            "title": "Que siga siendo una broma",
+            "text": {
+              "1": "La tendencia trata de fingir que te observan. No grabes a personas reales a través de sus ventanas ni hagas un video de otra persona. En este sitio solo puedes subir una foto tuya, y solo si tienes 18 años o más. Todas las escenas son fijas y aptas para todo público; no hay prompts que escribir. Los <terms>Términos</terms> tienen las reglas completas."
+            }
+          }
+        }
+      },
+      "window-peeper-capcut-template": {
+        "metaTitle": "Plantilla de CapCut de window peeper vs IA",
+        "metaDescription": "Cómo funciona una plantilla de CapCut de window peeper, por qué puede no aparecerte y en qué se diferencia de crear el video con IA a partir de una foto.",
+        "nav": "Plantilla de CapCut de window peeper",
+        "title": "Plantilla de CapCut de window peeper",
+        "tagline": "Plantilla o una foto: cuál te conviene.",
+        "lead": "¿Buscas una plantilla de CapCut de window peeper? Así funcionan las plantillas, qué probar cuando una no se abre y cuándo es más fácil crear el video a partir de una foto.",
+        "sections": {
+          "how": {
+            "title": "Cómo funciona una plantilla de CapCut",
+            "text": {
+              "1": "Una plantilla de CapCut es la edición de otra persona con huecos vacíos. Rellenas los huecos con tus clips o fotos, y CapCut mantiene los cortes, los efectos y el sonido. Para esta tendencia, eso significa que sigues necesitando material que encaje en cada hueco."
+            }
+          },
+          "use": {
+            "title": "Usar una plantilla de CapCut",
+            "steps": {
+              "1": {
+                "title": "Busca en CapCut",
+                "body": "Abre la app de CapCut y busca \"window peeper\". Las plantillas aparecen y desaparecen, y algunas solo se ven en ciertas regiones, así que no enlazamos ninguna aquí."
+              },
+              "2": {
+                "title": "Revisa la vista previa",
+                "body": "Reproduce la vista previa y cuenta los huecos. Comprueba que sea la ventana de noche, la mirada y la cortina, y no otra tendencia con un nombre parecido."
+              },
+              "3": {
+                "title": "Añade tus archivos",
+                "body": "Toca Usar plantilla y rellena cada hueco con clips o fotos que encajen."
+              },
+              "4": {
+                "title": "Exporta y publica",
+                "body": "Exporta el video y publícalo. Añade el sonido de la tendencia en la app si la plantilla no lo trae."
+              }
+            }
+          },
+          "missing": {
+            "title": "Si la plantilla no funciona",
+            "list": {
+              "1": "Actualiza la app de CapCut; las versiones antiguas ocultan plantillas nuevas.",
+              "2": "Busca otros nombres de la tendencia, como \"window stare\" o \"curtain close\".",
+              "3": "Las plantillas pueden estar limitadas por región o retiradas por su creador. Si ya no está, no hay forma de recuperarla.",
+              "4": "Abre un clip de window peeper en TikTok y usa desde ahí su sonido o su enlace a la plantilla."
+            }
+          },
+          "compare": {
+            "title": "¿Plantilla o IA a partir de una foto?",
+            "list": {
+              "1": "Qué necesitas: una plantilla necesita clips que encajen en sus huecos. Este sitio necesita una foto tuya.",
+              "2": "Qué obtienes: una plantilla mete tus archivos en su edición. Aquí obtienes un video nuevo de 14 segundos contigo en la ventana, comiendo, mirando y cerrando la cortina, con música original.",
+              "3": "Control: una plantilla te deja editar los cortes en CapCut. Aquí eliges una de seis escenas fijas; no hay prompts que escribir.",
+              "4": "Costo: a las plantillas se les aplican las condiciones de CapCut. Aquí un video Estándar cuesta {credits} créditos, desde {price}, y un video fallido te devuelve los créditos."
+            },
+            "more": {
+              "1": "¿Quieres exactamente la edición que hizo otra persona? Usa la plantilla. ¿Quieres la tendencia contigo de protagonista sin grabar nada? Usa el <generator>generador de la página de inicio</generator> o lee primero <howto>cómo hacer un video de window peeper</howto>."
+            }
+          }
+        }
       }
     }
   },
@@ -442,7 +563,7 @@
     "learn": "Aprende",
     "trend": "Tendencia window peeper",
     "howTo": "Cómo hacerlo",
-    "filter": "¿Hay un filtro?",
+    "filter": "Plantilla de CapCut",
     "legal": "Legal",
     "acceptableUse": "Uso aceptable",
     "rights": "© <year></year> {name}",
