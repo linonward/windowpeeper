@@ -57,7 +57,7 @@ async function Shell({ children }: { children: React.ReactNode }) {
             <AppSidebar user={{ name, email }} isAdmin={isAdmin(email)} videos={videos} standardCredits={prices.standard} />
             <SidebarInset id="main-content" className="bg-background">
               <MobileBar />
-              <div className="flex w-full max-w-[1240px] flex-1 flex-col gap-7 px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-8 sm:pt-8 lg:px-12">
+              <div className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col gap-7 px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-8 sm:pt-8 lg:px-12">
                 {children}
               </div>
             </SidebarInset>
