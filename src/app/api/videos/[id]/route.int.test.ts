@@ -25,6 +25,9 @@ vi.mock("@/server/ai/video", async (importOriginal) => ({
   getEffectVideoProvider: () => motion,
 }));
 vi.mock("@/server/storage", () => storage);
+// withSession accepts a cookie POST only from BETTER_AUTH_URL's origin. CI
+// has no .env, so each test sets it.
+const ORIGIN = "http://localhost:3000";
 
 const { POST } = await import("./route");
 
@@ -32,6 +35,7 @@ const { POST } = await import("./route");
 const jpeg = new Uint8Array([0xff, 0xd8, 0xff, 0xc0, 0, 17, 8, 720 >> 8, 720 & 0xff, 1280 >> 8, 1280 & 0xff, 3]);
 
 beforeEach(async () => {
+  vi.stubEnv("BETTER_AUTH_URL", ORIGIN);
   const ctx = await auth.$context;
   const user = await ctx.internalAdapter.createUser(
     { email: `user-${randomUUID()}@example.com`, name: "Dancer" },
@@ -53,8 +57,7 @@ function post(fields: Record<string, string>, image = jpeg) {
   const form = new FormData();
   form.set("image1", new File([image], "me.jpg", { type: "image/jpeg" }));
   for (const [name, value] of Object.entries(fields)) form.set(name, value);
-  const origin = new URL(process.env.BETTER_AUTH_URL ?? "http://localhost:3000").origin;
-  return POST(new Request(`${origin}/api/videos/windowpeeper`, { method: "POST", body: form, headers: { origin } }), {
+  return POST(new Request(`${ORIGIN}/api/videos/windowpeeper`, { method: "POST", body: form, headers: { origin: ORIGIN } }), {
     params: Promise.resolve({ id: "windowpeeper" }),
   });
 }
