@@ -90,7 +90,7 @@ export function AppSidebar({
   return (
     <Sidebar collapsible="icon" className="border-r">
       <SidebarHeader className="flex-row items-center justify-between gap-1 pt-6 pr-2 pb-2 pl-[22px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2">
-        <Brand href="/videos" className="text-xl group-data-[collapsible=icon]:hidden" />
+        <Brand className="text-xl group-data-[collapsible=icon]:hidden" />
         <SidebarBell />
         <CollapseState />
       </SidebarHeader>

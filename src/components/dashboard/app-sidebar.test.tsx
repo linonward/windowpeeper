@@ -131,3 +131,9 @@ test("the credits card shows the balance and what it buys, and opens the buy-cre
   fireEvent.click(screen.getByRole("button", { name: "Buy credits" }));
   expect(openBuy).toHaveBeenCalled();
 });
+
+test("the lockup leads back to the home page", () => {
+  renderSidebar(false);
+
+  expect(screen.getByRole("link", { name: "WindowPeeper" }).getAttribute("href")).toBe("/en/");
+});
