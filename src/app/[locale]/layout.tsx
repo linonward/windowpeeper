@@ -15,10 +15,13 @@ const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
 });
 
-// Display face for titles and numbers.
+// Display face for titles and numbers. Next.js has no metrics for it, so it
+// can't make a fallback face and warns; globals.css declares one instead.
 const bigShoulders = Big_Shoulders({
   variable: "--font-big-shoulders",
   subsets: ["latin"],
+  adjustFontFallback: false,
+  fallback: ["Big Shoulders Fallback", "sans-serif"],
 });
 
 // Labels, timecodes and code.

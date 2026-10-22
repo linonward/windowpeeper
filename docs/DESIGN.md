@@ -80,6 +80,7 @@ The chart tokens hold five series colors. No chart uses them yet.
 ## 3. Typography
 
 Fonts load with `next/font/google` in `src/app/[locale]/layout.tsx`.
+Next.js makes a metric-matched Arial fallback for Instrument Sans and JetBrains Mono. It has no metrics for Big Shoulders, so `src/app/globals.css` declares `Big Shoulders Fallback` (Arial at `size-adjust: 84.5%`, measured at weight 800) and the layout turns Next.js's off for it (`adjustFontFallback: false`). Measure again if the display font or the title weights change.
 
 | Variable | Font | Use |
 |---|---|---|
