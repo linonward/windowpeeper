@@ -1684,6 +1684,12 @@
               "alignItems": "center",
               "children": [
                 {
+                  "id": "JdEuk",
+                  "type": "ref",
+                  "ref": "H1Drdv",
+                  "name": "Language"
+                },
+                {
                   "type": "text",
                   "id": "fZNlm",
                   "name": "Sign in",
@@ -1711,6 +1717,176 @@
                       "enabled": false
                     }
                   }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hDhQf",
+          "name": "Row 3",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "H1Drdv",
+              "name": "Locale switcher",
+              "reusable": true,
+              "height": 36,
+              "cornerRadius": "$r-md",
+              "stroke": "$w-border",
+              "strokeWidth": 1,
+              "gap": 6,
+              "padding": [
+                0,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "TC3K8",
+                  "name": "Globe",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "globe",
+                  "library": "lucide",
+                  "fill": "$w-text"
+                },
+                {
+                  "type": "text",
+                  "id": "lY0Ib",
+                  "name": "Code",
+                  "fill": "$w-text",
+                  "content": "EN",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "l6yJQu",
+              "name": "Locale switcher · open",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "end",
+              "children": [
+                {
+                  "id": "bYj4m",
+                  "type": "ref",
+                  "ref": "H1Drdv",
+                  "name": "Trigger",
+                  "fill": "$w-surface-2",
+                  "descendants": {
+                    "lY0Ib": {
+                      "content": "DE"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "OSig1",
+                  "name": "Menu",
+                  "width": 176,
+                  "fill": "$w-surface",
+                  "cornerRadius": "$r-md",
+                  "stroke": "$w-border",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IkyPg",
+                      "name": "English",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 6,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HsK7O",
+                          "name": "Label",
+                          "fill": "$w-text",
+                          "content": "English",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ce7oL",
+                      "name": "Español",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 6,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "FpNyV",
+                          "name": "Label",
+                          "fill": "$w-text",
+                          "content": "Español",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XCtvl",
+                      "name": "Deutsch",
+                      "width": "fill_container",
+                      "height": 36,
+                      "cornerRadius": 6,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dESx8",
+                          "name": "Label",
+                          "fill": "$w-text",
+                          "content": "Deutsch",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "F7JPr",
+                          "name": "Check",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$w-lamp-text"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -2145,7 +2321,8 @@
                               "width": "fill_container",
                               "content": "Noodles",
                               "fontFamily": "$font-body",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -2182,7 +2359,8 @@
                               "width": "fill_container",
                               "content": "Pizza",
                               "fontFamily": "$font-body",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -2219,7 +2397,8 @@
                               "width": "fill_container",
                               "content": "Wave",
                               "fontFamily": "$font-body",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -2256,7 +2435,8 @@
                               "width": "fill_container",
                               "content": "Thru glass",
                               "fontFamily": "$font-body",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         },
@@ -2293,7 +2473,8 @@
                               "width": "fill_container",
                               "content": "Couple",
                               "fontFamily": "$font-body",
-                              "fontSize": 12
+                              "fontSize": 12,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -8941,6 +9122,7 @@
                       "content": "Quality",
                       "fontFamily": "$font-mono",
                       "fontSize": 11,
+                      "fontWeight": "normal",
                       "letterSpacing": 1.5
                     },
                     {
@@ -8953,6 +9135,7 @@
                       "content": "Resolution",
                       "fontFamily": "$font-mono",
                       "fontSize": 11,
+                      "fontWeight": "normal",
                       "letterSpacing": 1.5
                     },
                     {
@@ -8965,6 +9148,7 @@
                       "content": "Ready in",
                       "fontFamily": "$font-mono",
                       "fontSize": 11,
+                      "fontWeight": "normal",
                       "letterSpacing": 1.5
                     },
                     {
@@ -8978,6 +9162,7 @@
                       "textAlign": "right",
                       "fontFamily": "$font-mono",
                       "fontSize": 11,
+                      "fontWeight": "normal",
                       "letterSpacing": 1.5
                     }
                   ]
@@ -9006,7 +9191,8 @@
                       "width": "fill_container",
                       "content": "Standard",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -9017,7 +9203,8 @@
                       "width": "fill_container",
                       "content": "720p · 9:16",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -9028,7 +9215,8 @@
                       "width": "fill_container",
                       "content": "~3 min",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -9066,7 +9254,8 @@
                       "width": "fill_container",
                       "content": "Pro",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -9077,7 +9266,8 @@
                       "width": "fill_container",
                       "content": "1080p · 9:16",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -9088,7 +9278,8 @@
                       "width": "fill_container",
                       "content": "~6 min",
                       "fontFamily": "$font-body",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -12597,7 +12788,8 @@
                           "fill": "$w-muted",
                           "content": "Noodles",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -12632,7 +12824,8 @@
                           "fill": "$w-muted",
                           "content": "Pizza",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -12667,7 +12860,8 @@
                           "fill": "$w-muted",
                           "content": "Wave",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -12702,7 +12896,8 @@
                           "fill": "$w-muted",
                           "content": "Glass",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -16309,7 +16504,8 @@
                           "fill": "$w-muted",
                           "content": "Noodles",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -16345,7 +16541,8 @@
                           "fill": "$w-muted",
                           "content": "Pizza",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -16390,7 +16587,8 @@
                           "fill": "$w-muted",
                           "content": "Wave",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -16426,7 +16624,8 @@
                           "fill": "$w-muted",
                           "content": "Glass",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -16462,7 +16661,8 @@
                           "fill": "$w-muted",
                           "content": "Couple",
                           "fontFamily": "$font-body",
-                          "fontSize": 12
+                          "fontSize": 12,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
