@@ -133,7 +133,8 @@ test("the sidebar opens the window peeper video, off while Bailian is not set up
 
   await expect(page).toHaveURL("/videos/windowpeeper");
   await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
-  await expect(page.getByText("The window peeper video isn't set up yet.")).toBeVisible();
+  // Next.js may keep the page it came from in the DOM, hidden.
+  await expect(page.getByText("The window peeper video isn't set up yet.").filter({ visible: true })).toBeVisible();
 });
 
 // /api/videos/<kind> serves every photo effect; any other segment is no route.
