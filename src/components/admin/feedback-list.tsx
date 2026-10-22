@@ -1,10 +1,10 @@
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 
 export type FeedbackItem = { id: string; message: string; createdAt: Date; name: string; email: string; imageCount: number };
 
 export function FeedbackList({ items }: { items: FeedbackItem[] }) {
   const t = useTranslations("Admin.feedback");
-  const format = useFormatter();
   if (!items.length) return <p className="rounded-xl border border-dashed p-8 text-muted-foreground">{t("empty")}</p>;
   return (
     <ul aria-label={t("title")} className="flex flex-col gap-4">
@@ -15,9 +15,7 @@ export function FeedbackList({ items }: { items: FeedbackItem[] }) {
               <p className="font-medium">{item.name}</p>
               <p className="text-muted-foreground">{item.email}</p>
             </div>
-            <time dateTime={item.createdAt.toISOString()} className="text-muted-foreground">
-              {format.dateTime(item.createdAt, { dateStyle: "medium", timeStyle: "short" })}
-            </time>
+            <LocalDate value={item.createdAt} dateStyle="medium" timeStyle="short" className="text-muted-foreground" />
           </div>
           {item.message && <p className="whitespace-pre-wrap [overflow-wrap:anywhere]">{item.message}</p>}
           {item.imageCount > 0 && (

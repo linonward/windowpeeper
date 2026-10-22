@@ -1,5 +1,6 @@
 import { Coins } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 import { cn } from "@/lib/utils";
 
 export type Transaction = { id: string; amount: number; reason: string; createdAt: Date };
@@ -53,7 +54,7 @@ export function CreditTransactions({ transactions }: { transactions: Transaction
             </thead>
             <tbody className="divide-y border-t">
               {transactions.map((entry) => {
-                const date = format.dateTime(entry.createdAt, { dateStyle: "medium" });
+                const date = <LocalDate value={entry.createdAt} dateStyle="medium" />;
                 return (
                 <tr key={entry.id}>
                   <td className="hidden px-5 py-3 whitespace-nowrap text-muted-foreground sm:table-cell">

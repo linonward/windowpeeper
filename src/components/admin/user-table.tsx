@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 import { Link } from "@/i18n/navigation";
 import { AddCredits } from "./add-credits";
 
@@ -58,7 +59,7 @@ export function UserTable({ users, query = "" }: { users: User[]; query?: string
                   {format.number(user.balance)}
                 </td>
                 <td className="hidden px-4 py-3 text-right whitespace-nowrap text-muted-foreground tabular-nums sm:table-cell">
-                  {format.dateTime(user.createdAt, { dateStyle: "medium" })}
+                  <LocalDate value={user.createdAt} dateStyle="medium" />
                 </td>
                 <td className="px-2 py-1.5">
                   <AddCredits userId={user.id} email={user.email} />

@@ -1,5 +1,6 @@
 import { Megaphone } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 
 // Mirrors the broadcast table in src/server/notifications/schema.ts.
 export type BroadcastRow = {
@@ -53,7 +54,7 @@ export function BroadcastTable({ broadcasts }: { broadcasts: BroadcastRow[] }) {
                 <td className="px-4 py-3 text-right tabular-nums">{format.number(b.recipients)}</td>
                 <td className="hidden px-4 py-3 break-all text-muted-foreground md:table-cell">{b.sentBy}</td>
                 <td className="hidden px-4 py-3 text-right whitespace-nowrap text-muted-foreground sm:table-cell">
-                  {format.dateTime(b.createdAt, { dateStyle: "medium", timeStyle: "short" })}
+                  <LocalDate value={b.createdAt} dateStyle="medium" timeStyle="short" />
                 </td>
               </tr>
             ))}

@@ -1,5 +1,6 @@
 import { Clapperboard, Download } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 import { firstFrame } from "@/components/videos/player-frame";
 import { Link } from "@/i18n/navigation";
 import type { GeneratedVideo } from "@/lib/api";
@@ -18,7 +19,6 @@ export function VideoList({
   ...props
 }: { videos: GeneratedVideo[] } & Pick<React.ComponentProps<"ul">, "aria-label" | "aria-labelledby">) {
   const t = useTranslations("Videos");
-  const format = useFormatter();
 
   return (
     <ul {...props} className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -61,7 +61,7 @@ export function VideoList({
               </Link>
               <p className="text-xs text-muted-foreground">
                 {t("seconds", { count: video.duration })} · {video.resolution} · {video.ratio} ·{" "}
-                {format.dateTime(video.createdAt, { dateStyle: "medium", timeStyle: "short" })}
+                <LocalDate value={video.createdAt} dateStyle="medium" timeStyle="short" />
               </p>
             </div>
             {video.url && (
