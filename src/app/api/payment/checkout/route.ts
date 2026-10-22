@@ -6,11 +6,14 @@ import { log } from "@/server/log";
 import { createCheckout, PaymentsDisabledError, UnknownPackError } from "@/server/payment/orders";
 
 // Where checkout sends the buyer back to, by `returnTo`: the home page's
-// generator, which then makes the video it was bought for, or billing.
-// Only these two; any other value, URLs included, means billing.
+// generator, which then makes the video it was bought for; the price list;
+// the home page's packs; or billing. Only these; any other value, URLs
+// included, means billing.
 const RETURNS = {
   billing: { path: "/billing", query: "", hash: "" },
   home: { path: "", query: "&try=1", hash: "#generator" },
+  pricing: { path: "/pricing", query: "", hash: "" },
+  packs: { path: "", query: "", hash: "#pricing" },
 };
 
 // Starts a checkout for a credit pack. Body: { packId, locale, returnTo? }.
@@ -19,7 +22,7 @@ export const POST = withSession(async (request, { session }) => {
   const body = await request.json().catch(() => ({}));
   const packId = typeof body.packId === "string" ? body.packId : "";
   const locale = hasLocale(routing.locales, body.locale) ? body.locale : routing.defaultLocale;
-  const back = body.returnTo === "home" ? RETURNS.home : RETURNS.billing;
+  const back = Object.hasOwn(RETURNS, body.returnTo) ? RETURNS[body.returnTo as keyof typeof RETURNS] : RETURNS.billing;
   const page = new URL(localePath(locale, back.path), process.env.BETTER_AUTH_URL ?? request.url);
 
   try {

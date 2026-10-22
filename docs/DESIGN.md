@@ -169,7 +169,7 @@ Checked options (scenes, quality, packs) get a 2px `--primary` border on `--prim
 3. **Before / after** (`before-after.tsx`, large screens): the photo, a lamp arrow with "~3 min", three beat frames with REC timecodes, the label and a note that the example is AI-generated.
 4. **Scenes** (`scenes.tsx`, `#scenes`, `bg-card`): the original large with a 2px lamp border, "The original" tag and a full-width "Use this scene" button; the other five in a grid with their timecode, name and a lamp "Use this scene" link; a "See all scenes" tile links the how-to guide.
 5. **How it works** (`how-it-works.tsx`): the title on the left; three ruled rows with a 56px lamp number, a title, a body and a faint icon.
-6. **Pricing** (`pricing.tsx`, `#pricing`): one card per pack: a strip of stacked frames with "×5 VIDEOS", then the name, the price and the price per video; the recommended card is lamp-soft with a lamp border. `PackBenefits` in a bar, the CTA and a link to `/pricing`.
+6. **Pricing** (`pricing.tsx`, `#pricing`): one card per pack: a strip of stacked frames with "×5 VIDEOS", then the name, the price, the price per video and a buy button (`BuyPack`: lamp on the recommended card, outline on the others); the recommended card is lamp-soft with a lamp border. Above the cards, `CheckoutNotice` after a checkout. `PackBenefits` in a bar, the CTA and a link to `/pricing`.
 7. **Shot list** (`shot-list.tsx`): a track with a lamp progress bar over the first three beats, then five beats (mono timecode, display title, body). A ruled list on phones.
 8. **FAQ** (`faq.tsx`): the title on the left; ruled `<details>` rows, the first two open, with a plus that turns lamp and 45° when open (`.icon-turn`).
 9. **Final CTA** (`cta.tsx`): a lamp glow, the REC badge, the big title, a line and the lamp button up to the generator.
@@ -179,7 +179,11 @@ The scene stills and the before/after frames in `public/landing/` are AI placeho
 
 ### Pricing (`pricing/pricing.tsx`)
 
-A centered head over a lamp glow, three plan cards (mono name, 60px price, credits, who it's for, three checked lines, a button to `/billing?pack=<id>`; the recommended card is lamp-soft and comes first on phones), the cost table (mono head, Standard and Pro rows, credits in lamp mono) and three promises in lamp-soft tiles.
+A centered head over a lamp glow, three plan cards (mono name, 60px price, credits, who it's for, three checked lines, a buy button; the recommended card is lamp-soft and comes first on phones), the cost table (mono head, Standard and Pro rows, credits in lamp mono) and three promises in lamp-soft tiles.
+
+### Buy a pack (`billing/buy-pack.tsx`)
+
+`BuyPack` is a pack's button on `/pricing` and the home page's packs: it opens checkout straight away, and checkout comes back to the same page. Signed out, a sign-in dialog opens on the page ("Sign in to buy credits"); sign-in returns with `?buy=<pack>` and checkout opens. While it opens, the button reads "Opening checkout…"; a checkout that can't start shows a `text-destructive` line under it. `CheckoutNotice` is a `bg-card` status row above the packs after a checkout: "Payment received…" with a lamp "Make a video" link to the generator, or "Checkout canceled…".
 
 ### Buy credits (`billing/buy-credits.tsx`)
 

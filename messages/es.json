@@ -69,7 +69,7 @@
     "pricing": {
       "eyebrow": "Precios",
       "title": "Empieza con un video.",
-      "body": "Pagas una vez, sin suscripción. Eliges un paquete después de subir tu foto.",
+      "body": "Pagas una vez, sin suscripción. Compra un paquete aquí o después de subir tu foto.",
       "cta": "Hacer mi video",
       "more": "Ver todos los precios"
     },
@@ -546,7 +546,13 @@
       "failed": "Fallidos gratis"
     },
     "videosLabel": "{videos, plural, one {video} other {videos}}",
-    "perVideoSave": "{price} por video · ahorra un {percent} %"
+    "perVideoSave": "{price} por video · ahorra un {percent} %",
+    "arriving": "Pago recibido. Tus créditos llegan en menos de un minuto.",
+    "makeVideo": "Hacer un video",
+    "signIn": {
+      "title": "Inicia sesión para comprar créditos",
+      "body": "El pago se abre justo después de iniciar sesión."
+    }
   },
   "Admin": {
     "title": "Administración",
