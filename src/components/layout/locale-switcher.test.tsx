@@ -1,7 +1,7 @@
 import { afterEach, expect, test, vi } from "vitest";
-import { cleanup, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
 import { renderWithIntl } from "@/test/intl";
-import { LocaleLinks } from "./locale-switcher";
+import { LocaleLinks, LocaleSwitcher } from "./locale-switcher";
 
 // A third locale shows the list doesn't assume two languages.
 vi.mock("@/i18n/routing", async (importOriginal) => {
@@ -37,4 +37,21 @@ test("lists every language, keeps the page and marks the current one", () => {
   ]);
   expect(links[0].getAttribute("aria-current")).toBe("true");
   expect(links[1].getAttribute("lang")).toBe("es");
+});
+
+test("the header's menu shows the current language's code and links every language", async () => {
+  renderWithIntl(<LocaleSwitcher />, "es");
+
+  const trigger = screen.getByRole("button", { name: "Idioma: Español" });
+  expect(trigger.textContent).toBe("ES");
+
+  fireEvent.click(trigger);
+
+  const items = await screen.findAllByRole("menuitem");
+  expect(items.map((item) => [item.textContent, item.getAttribute("href")])).toEqual([
+    ["English", "/sign-in"],
+    ["Español", "/es/sign-in"],
+    ["日本語", "/ja/sign-in"],
+  ]);
+  expect(items[1].getAttribute("aria-current")).toBe("true");
 });

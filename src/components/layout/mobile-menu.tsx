@@ -6,8 +6,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { LocaleLinks } from "./locale-switcher";
 
-// The header's links on phones, in a sheet from the right. The header, a
+// The header's links and languages on phones, in a sheet from the right. The header, a
 // server component, passes the copy in.
 export function MobileMenu({
   links,
@@ -47,6 +48,7 @@ export function MobileMenu({
         >
           {cta}
         </Link>
+        <LocaleLinks className="mt-6 text-sm text-muted-foreground" />
       </SheetContent>
     </Sheet>
   );
