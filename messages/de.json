@@ -887,5 +887,31 @@
       "download": "MP4 herunterladen",
       "retry": "Nochmal versuchen"
     }
+  },
+  "Notifications": {
+    "title": "Benachrichtigungen",
+    "description": "Neuigkeiten zu deinen Videos, Zahlungen und Credits, die neuesten zuerst.",
+    "bellUnread": "Benachrichtigungen, {count} ungelesen",
+    "markAllRead": "Alle als gelesen markieren",
+    "viewAll": "Alle ansehen",
+    "loading": "Benachrichtigungen werden geladen…",
+    "empty": "Noch keine Benachrichtigungen.",
+    "unread": "Ungelesen",
+    "refunded": "{count, plural, one {# Credit wurde erstattet.} other {# Credits wurden erstattet.}}",
+    "types": {
+      "image_succeeded": "Dein Bild ist fertig",
+      "image_failed": "Dein Bild ist fehlgeschlagen",
+      "video_succeeded": "Dein Video ist fertig",
+      "video_failed": "Dein Video ist fehlgeschlagen",
+      "order_paid": "Zahlung erhalten",
+      "subscription_paid": "Abo-Zahlung erhalten",
+      "subscription_past_due": "Abo-Zahlung fehlgeschlagen",
+      "subscription_ended": "Dein Abo ist beendet",
+      "credits_added": "Credits hinzugefügt"
+    },
+    "added": "{count, plural, one {# Credit wurde hinzugefügt.} other {# Credits wurden hinzugefügt.}}",
+    "planCredits": "Plan {plan}: {count, plural, one {# Credit wurde hinzugefügt.} other {# Credits wurden hinzugefügt.}}",
+    "pastDue": "Aktualisiere deine Zahlungsmethode, um den Plan {plan} zu behalten.",
+    "ended": "Der Plan {plan} ist beendet. Deine Credits bleiben dir."
   }
 }

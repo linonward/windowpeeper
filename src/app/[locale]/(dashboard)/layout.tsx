@@ -10,9 +10,11 @@ import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { CreditsProvider } from "@/components/dashboard/credits";
 import { MobileBar } from "@/components/dashboard/mobile-trigger";
 import { ShellSkeleton } from "@/components/dashboard/shell-skeleton";
+import { NotificationsProvider } from "@/components/notifications/notifications";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { redirect } from "@/i18n/navigation";
 import { isAdmin } from "@/server/admin/access";
+import { unreadCount } from "@/server/notifications";
 import { CREDIT_PACKS, DEFAULT_PACK_ID } from "@/server/payment/packs";
 import { countVideos } from "@/server/videos";
 
@@ -37,7 +39,12 @@ async function Shell({ children }: { children: React.ReactNode }) {
   if (!session) return redirect({ href: "/sign-in", locale: await getLocale() });
 
   const { id, name, email } = session.user;
-  const [balance, videos, cookieStore] = await Promise.all([userBalance(id), countVideos(id), cookies()]);
+  const [balance, videos, unread, cookieStore] = await Promise.all([
+    userBalance(id),
+    countVideos(id),
+    unreadCount(id),
+    cookies(),
+  ]);
   const prices = videoPrices();
   // SidebarProvider saves the collapsed state in this cookie.
   const open = cookieStore.get("sidebar_state")?.value !== "false";
@@ -45,15 +52,17 @@ async function Shell({ children }: { children: React.ReactNode }) {
   return (
     <CreditsProvider balance={balance}>
       <BuyCreditsProvider packs={CREDIT_PACKS} prices={prices} featured={DEFAULT_PACK_ID}>
-        <SidebarProvider defaultOpen={open}>
-          <AppSidebar user={{ name, email }} isAdmin={isAdmin(email)} videos={videos} standardCredits={prices.standard} />
-          <SidebarInset id="main-content" className="bg-background">
-            <MobileBar />
-            <div className="flex w-full max-w-[1240px] flex-1 flex-col gap-7 px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-8 sm:pt-8 lg:px-12">
-              {children}
-            </div>
-          </SidebarInset>
-        </SidebarProvider>
+        <NotificationsProvider unread={unread}>
+          <SidebarProvider defaultOpen={open}>
+            <AppSidebar user={{ name, email }} isAdmin={isAdmin(email)} videos={videos} standardCredits={prices.standard} />
+            <SidebarInset id="main-content" className="bg-background">
+              <MobileBar />
+              <div className="flex w-full max-w-[1240px] flex-1 flex-col gap-7 px-4 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-8 sm:pt-8 lg:px-12">
+                {children}
+              </div>
+            </SidebarInset>
+          </SidebarProvider>
+        </NotificationsProvider>
       </BuyCreditsProvider>
     </CreditsProvider>
   );

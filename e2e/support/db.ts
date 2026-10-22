@@ -43,6 +43,24 @@ export async function addFailedVideos(userId: string, count: number) {
   );
 }
 
+// Failed videos with their notifications, unread, newest first, as the
+// sweep stores them. The prompts read "Notified 1", "Notified 2", ...
+export async function addFailedVideoNotifications(userId: string, count: number) {
+  await query(
+    `with videos as (
+       insert into video (id, user_id, prompt, duration, provider, resolution, credits, status, created_at)
+       select gen_random_uuid()::text, $1, 'Notified ' || n, 9, 'dashscope', '720p', 10, 'failed', now() - n * interval '1 minute'
+       from generate_series(1, $2) as n
+       returning id, prompt, created_at
+     )
+     insert into notification (id, user_id, type, data, key, created_at)
+     select gen_random_uuid()::text, $1, 'video_failed',
+       jsonb_build_object('videoId', id, 'prompt', prompt, 'credits', 10), 'video:' || id, created_at
+     from videos`,
+    [userId, count],
+  );
+}
+
 // Credit-pack orders for the user with this email, newest first, in the given
 // statuses. Returns their IDs in the same order.
 export async function addOrders(email: string, statuses: string[]) {

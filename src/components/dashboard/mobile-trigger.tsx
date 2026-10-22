@@ -5,12 +5,14 @@ import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useBuyCredits } from "@/components/billing/buy-credits";
 import { Brand } from "@/components/layout/brand";
+import { NotificationBell } from "@/components/notifications/notification-bell";
 import { useSidebar } from "@/components/ui/sidebar";
 import { usePathname } from "@/i18n/navigation";
 import { useCredits } from "./credits";
 
-// Phones only: the menu button that opens the sidebar sheet, the lockup, and
-// the balance as a lamp pill that opens the buy-credits dialog. The sheet
+// Phones only: the menu button that opens the sidebar sheet, the lockup, the
+// notification bell, and the balance as a lamp pill that opens the
+// buy-credits dialog. The sheet
 // closes once a link in it opens another page.
 export function MobileBar() {
   const t = useTranslations("Dashboard");
@@ -33,16 +35,19 @@ export function MobileBar() {
         </button>
         <Brand href="/videos" className="text-xl" />
       </div>
-      <button
-        type="button"
-        onClick={() => buy?.open()}
-        aria-label={t("balancePill", { count: balance })}
-        className="flex shrink-0 items-center gap-1.5 rounded-full border border-primary bg-primary-soft px-2.5 py-1.5 font-mono text-[11px] font-semibold text-primary-text focus-visible:outline-2 focus-visible:outline-ring"
-      >
-        <Coins aria-hidden className="size-3.5" />
-        {t("balanceShort", { count: balance })}
-        <Plus aria-hidden className="size-3.5" />
-      </button>
+      <div className="flex shrink-0 items-center gap-2">
+        <NotificationBell />
+        <button
+          type="button"
+          onClick={() => buy?.open()}
+          aria-label={t("balancePill", { count: balance })}
+          className="flex shrink-0 items-center gap-1.5 rounded-full border border-primary bg-primary-soft px-2.5 py-1.5 font-mono text-[11px] font-semibold text-primary-text focus-visible:outline-2 focus-visible:outline-ring"
+        >
+          <Coins aria-hidden className="size-3.5" />
+          {t("balanceShort", { count: balance })}
+          <Plus aria-hidden className="size-3.5" />
+        </button>
+      </div>
     </div>
   );
 }

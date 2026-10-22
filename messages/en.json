@@ -887,5 +887,31 @@
       "download": "Download MP4",
       "retry": "Try again"
     }
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Updates about your videos, payments and credits, newest first.",
+    "bellUnread": "Notifications, {count} unread",
+    "markAllRead": "Mark all as read",
+    "viewAll": "View all",
+    "loading": "Loading notifications…",
+    "empty": "No notifications yet.",
+    "unread": "Unread",
+    "refunded": "{count, plural, one {# credit was refunded.} other {# credits were refunded.}}",
+    "types": {
+      "image_succeeded": "Your image is ready",
+      "image_failed": "Your image failed",
+      "video_succeeded": "Your video is ready",
+      "video_failed": "Your video failed",
+      "order_paid": "Payment received",
+      "subscription_paid": "Subscription payment received",
+      "subscription_past_due": "Subscription payment failed",
+      "subscription_ended": "Your subscription ended",
+      "credits_added": "Credits added"
+    },
+    "added": "{count, plural, one {# credit was added.} other {# credits were added.}}",
+    "planCredits": "{plan} plan: {count, plural, one {# credit was added.} other {# credits were added.}}",
+    "pastDue": "Update your payment method to keep the {plan} plan.",
+    "ended": "The {plan} plan has ended. You keep your credits."
   }
 }

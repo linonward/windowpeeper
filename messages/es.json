@@ -887,5 +887,31 @@
       "download": "Descargar MP4",
       "retry": "Intentar de nuevo"
     }
+  },
+  "Notifications": {
+    "title": "Notificaciones",
+    "description": "Novedades sobre tus videos, pagos y créditos, de la más reciente a la más antigua.",
+    "bellUnread": "Notificaciones, {count} sin leer",
+    "markAllRead": "Marcar todo como leído",
+    "viewAll": "Ver todas",
+    "loading": "Cargando notificaciones…",
+    "empty": "Aún no tienes notificaciones.",
+    "unread": "Sin leer",
+    "refunded": "{count, plural, one {Se devolvió # crédito.} other {Se devolvieron # créditos.}}",
+    "types": {
+      "image_succeeded": "Tu imagen está lista",
+      "image_failed": "Tu imagen falló",
+      "video_succeeded": "Tu video está listo",
+      "video_failed": "Tu video falló",
+      "order_paid": "Pago recibido",
+      "subscription_paid": "Pago de suscripción recibido",
+      "subscription_past_due": "Falló el pago de la suscripción",
+      "subscription_ended": "Tu suscripción terminó",
+      "credits_added": "Créditos añadidos"
+    },
+    "added": "{count, plural, one {Se añadió # crédito.} other {Se añadieron # créditos.}}",
+    "planCredits": "Plan {plan}: {count, plural, one {se añadió # crédito.} other {se añadieron # créditos.}}",
+    "pastDue": "Actualiza tu método de pago para mantener el plan {plan}.",
+    "ended": "El plan {plan} terminó. Conservas tus créditos."
   }
 }
