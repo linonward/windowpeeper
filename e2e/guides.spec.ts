@@ -1,15 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-// The guides answer searches about the meme and lead to the generator on the
+// The guides answer searches about the trend and lead to the generator on the
 // home page; they have no generator of their own.
 const GUIDES = [
-  { slug: "tip-toe-in-my-jordans", en: "Tip Toe in My Jordans", zh: "Tip Toe in My Jordans" },
-  { slug: "rumpelstiltskin-meme", en: "Rumpelstiltskin meme", zh: "侏儒怪表情包" },
-  { slug: "how-to-make-rumpelstiltskin-video", en: "How to make a Rumpelstiltskin video", zh: "怎么做侏儒怪视频" },
-  { slug: "who-is-rumpelstiltskin", en: "Who is Rumpelstiltskin?", zh: "侏儒怪是谁？" },
-  { slug: "rumpelstiltskin-movie", en: "Rumpelstiltskin movie", zh: "侏儒怪电影" },
-  { slug: "rumpelstiltskin-1987-movie", en: "Rumpelstiltskin 1987 movie", zh: "1987 年电影《侏儒怪》" },
-  { slug: "rumpelstiltskin-dance-scene", en: "Rumpelstiltskin dance scene", zh: "侏儒怪跳舞片段" },
+  { slug: "how-to-make-window-peeper-video", en: "How to make a window peeper video", zh: "如何制作 Window Peeper 视频" },
 ] as const;
 
 for (const guide of GUIDES) {
@@ -41,7 +35,7 @@ for (const guide of GUIDES) {
   }
 }
 
-// Spanish and German: long words (Rumpelstilzchen) must still fit a phone.
+// Spanish and German: long words must still fit a phone.
 for (const guide of GUIDES) {
   for (const locale of ["es", "de"] as const) {
     test(`/${locale}/${guide.slug} fits a 320px phone without horizontal scrolling`, async ({ page }) => {
@@ -59,8 +53,8 @@ test("the footer links every guide", async ({ page }) => {
   await page.goto("/zh");
 
   const guides = page.getByRole("contentinfo").getByRole("navigation", { name: "指南" });
-  await guides.getByRole("link", { name: "怎么做侏儒怪视频" }).click();
+  await guides.getByRole("link", { name: "如何制作 Window Peeper 视频" }).click();
 
-  await expect(page).toHaveURL("/zh/how-to-make-rumpelstiltskin-video");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("怎么做侏儒怪视频");
+  await expect(page).toHaveURL("/zh/how-to-make-window-peeper-video");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("如何制作 Window Peeper 视频");
 });

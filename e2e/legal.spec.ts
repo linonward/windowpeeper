@@ -14,10 +14,10 @@ for (const { path, heading } of pages) {
     await page.goto(path);
 
     await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
-    await expect(page).toHaveTitle(`${heading} | AIRumpelstiltskinVideo`);
+    await expect(page).toHaveTitle(`${heading} | WindowPeeper`);
     await expect(
-      page.getByRole("main").getByRole("link", { name: "support@airumpelstiltskinvideo.com" }).last(),
-    ).toHaveAttribute("href", "mailto:support@airumpelstiltskinvideo.com");
+      page.getByRole("main").getByRole("link", { name: "support@windowpeeper.org" }).last(),
+    ).toHaveAttribute("href", "mailto:support@windowpeeper.org");
     await expect(page.getByRole("note")).toHaveCount(0);
   });
 }
@@ -29,7 +29,7 @@ test("footer links to the legal pages in the current locale", async ({ page }) =
   await footer.getByRole("link", { name: "退款政策" }).click();
 
   await expect(page).toHaveURL("/zh/refund");
-  await expect(footer.getByRole("link", { name: "support@airumpelstiltskinvideo.com" })).toBeVisible();
+  await expect(footer.getByRole("link", { name: "support@windowpeeper.org" })).toBeVisible();
 });
 
 test("legal pages share the visual system", async ({ page }) => {

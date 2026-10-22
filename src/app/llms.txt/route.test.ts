@@ -27,13 +27,9 @@ test("links each guide in every locale, with its title and description", async (
   const text = await (await GET()).text();
 
   expect(text).toContain(
-    "- [Tip Toe in My Jordans Meme](https://x.test/en/tip-toe-in-my-jordans): Make the viral tip-toe dance meme",
+    "- [How to Make the Window Peeper Video](https://x.test/en/how-to-make-window-peeper-video): Turn one photo into a window peeper trend video",
   );
-  expect(text).toContain("- [Rumpelstiltskin Meme Explained](https://x.test/en/rumpelstiltskin-meme): ");
-  expect(text).toContain(
-    "- [How to Make a Rumpelstiltskin Video](https://x.test/en/how-to-make-rumpelstiltskin-video): ",
-  );
-  expect(text).toContain("- [怎么做侏儒怪踮脚舞视频：六步教程](https://x.test/zh/how-to-make-rumpelstiltskin-video): ");
+  expect(text).toContain("- [如何制作 Window Peeper 视频](https://x.test/zh/how-to-make-window-peeper-video): ");
   // No ICU or markup left over.
   expect(text).not.toMatch(/[{}]|<\/?\w/);
 });

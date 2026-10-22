@@ -11,23 +11,13 @@ test("the sitemap lists the public pages in every locale", async ({ request, bas
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   const pages = [
     "",
-    "/tip-toe-in-my-jordans",
-    "/rumpelstiltskin-meme",
-    "/how-to-make-rumpelstiltskin-video",
-    "/who-is-rumpelstiltskin",
-    "/rumpelstiltskin-movie",
-    "/rumpelstiltskin-1987-movie",
-    "/rumpelstiltskin-dance-scene",
+    "/how-to-make-window-peeper-video",
     "/privacy",
     "/terms",
     "/refund",
     "/pricing",
   ];
-  const posts = [
-    "/blog/introducing-ai-rumpelstiltskin-video-generator",
-    "/blog/turn-16-9-video-into-9-16-for-tiktok",
-    "/blog/is-it-safe-to-upload-a-photo",
-  ];
+  const posts = ["/blog/is-it-safe-to-upload-a-photo"];
   expect(locs.sort()).toEqual(
     [
       ...pages.flatMap((page) => ["en", "zh", "es", "de"].map((locale) => `${baseURL}/${locale}${page}`)),
@@ -67,10 +57,10 @@ test("the home page names the site and its publisher", async ({ page, baseURL })
   const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
   const data = scripts.map((text) => JSON.parse(text)).find((item) => item["@graph"]);
   expect(data["@graph"]).toEqual([
-    expect.objectContaining({ "@type": "Organization", name: "AIRumpelstiltskinVideo", url: `${baseURL}/` }),
+    expect.objectContaining({ "@type": "Organization", name: "WindowPeeper", url: `${baseURL}/` }),
     expect.objectContaining({
       "@type": "WebSite",
-      name: "AIRumpelstiltskinVideo",
+      name: "WindowPeeper",
       inLanguage: "zh",
       url: `${baseURL}/`,
       description: await page.locator('head meta[name="description"]').getAttribute("content"),
@@ -90,13 +80,7 @@ test("the blog index names its canonical URL and every locale", async ({ page, b
 test("the home, guide and legal pages name their canonical URL and every locale", async ({ page, baseURL }) => {
   for (const path of [
     "",
-    "/tip-toe-in-my-jordans",
-    "/rumpelstiltskin-meme",
-    "/how-to-make-rumpelstiltskin-video",
-    "/who-is-rumpelstiltskin",
-    "/rumpelstiltskin-movie",
-    "/rumpelstiltskin-1987-movie",
-    "/rumpelstiltskin-dance-scene",
+    "/how-to-make-window-peeper-video",
     "/privacy",
     "/terms",
     "/refund",
@@ -116,12 +100,11 @@ test("the home, guide and legal pages name their canonical URL and every locale"
 // Search titles lead with the keyword; the home title is the keyword alone.
 test("marketing pages carry keyword-first titles", async ({ page }) => {
   const titles = {
-    "/zh": "侏儒怪表情包 AI 视频 – Tiptoeing in My Jordans",
-    "/zh/pricing": "侏儒怪表情包视频价格 | AIRumpelstiltskinVideo",
-    "/zh/blog": "AI 侏儒怪视频博客：教程与动态 | AIRumpelstiltskinVideo",
-    "/en/tip-toe-in-my-jordans": "Tip Toe in My Jordans Meme | AIRumpelstiltskinVideo",
-    "/en/rumpelstiltskin-meme": "Rumpelstiltskin Meme Explained | AIRumpelstiltskinVideo",
-    "/en/how-to-make-rumpelstiltskin-video": "How to Make a Rumpelstiltskin Video | AIRumpelstiltskinVideo",
+    "/en": "Window Peeper AI Video – Make the TikTok Trend From a Photo",
+    "/zh": "Window Peeper AI 视频：一张照片做出 TikTok 窗户梗",
+    "/zh/pricing": "Window Peeper 视频价格 | WindowPeeper",
+    "/zh/blog": "Window Peeper 视频博客：教程与动态 | WindowPeeper",
+    "/en/how-to-make-window-peeper-video": "How to Make the Window Peeper Video | WindowPeeper",
   };
   for (const [path, title] of Object.entries(titles)) {
     await page.goto(path);
@@ -143,9 +126,9 @@ test("responses carry no hreflang Link header", async ({ request }) => {
 // Each page's own summary, not the site's: search results show it under the title.
 test("the legal and sign-in pages describe themselves", async ({ page }) => {
   const descriptions = {
-    "/en/privacy": "How AIRumpelstiltskinVideo collects, uses, shares and protects your personal information.",
-    "/zh/terms": "使用 AIRumpelstiltskinVideo 的条款：你的账户、可接受的使用、你的内容和付款。",
-    "/en/refund": "When AIRumpelstiltskinVideo refunds a purchase, and how to ask for a refund.",
+    "/en/privacy": "How WindowPeeper collects, uses, shares and protects your personal information.",
+    "/zh/terms": "使用 WindowPeeper 的条款：你的账户、可接受的使用、你的内容和付款。",
+    "/en/refund": "When WindowPeeper refunds a purchase, and how to ask for a refund.",
     "/en/sign-in": "No password to remember. We email you a link, or you continue with Google.",
   };
   for (const [path, description] of Object.entries(descriptions)) {
@@ -192,22 +175,22 @@ test("llms.txt describes the product and links the public pages", async ({ reque
   expect(response.headers()["content-type"]).toBe("text/markdown; charset=utf-8");
   const text = await response.text();
   const lines = text.split("\n");
-  expect(lines[0]).toBe("# AIRumpelstiltskinVideo");
+  expect(lines[0]).toBe("# WindowPeeper");
   expect(lines[2]).toBe(
-    "> Star in the Rumpelstiltskin meme: upload one photo and get the 12-second Tiptoeing in My Jordans video for TikTok. Free preview, pay once, no subscription.",
+    "> Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. No CapCut template. Free preview.",
   );
   expect(text).toMatch(
-    /- How much does it cost\?: A tip-toe video costs \d+ credits\. .* one-time packs: \d+ credits for \$\d+\.\d\d, .* See the pricing page\./,
+    /- How much does it cost\?: A window peeper video costs \d+ credits\. .* one-time packs: \d+ credits for \$\d+\.\d\d, .* See the pricing page\./,
   );
-  expect(text).toContain("- How do I contact support?: Email support@airumpelstiltskinvideo.com.");
+  expect(text).toContain("- How do I contact support?: Email support@windowpeeper.org.");
   // The largest photo a visitor may pick; the browser shrinks it to upload.
   expect(text).toContain("JPEG, PNG or WebP, up to 5 MB.");
   expect(text).toContain(`- [Privacy Policy](${baseURL}/en/privacy)`);
   expect(text).toContain(`- [隐私政策](${baseURL}/zh/privacy)`);
-  expect(text).toContain(`- [Rumpelstiltskin meme videos, from $4.99](${baseURL}/en/pricing): Try a free 5-second preview first.`);
+  expect(text).toContain(`- [Window peeper videos, from $4.99](${baseURL}/en/pricing): Try a free 5-second preview first.`);
   expect(text).toContain(`- [Blog](${baseURL}/en/blog): `);
-  expect(text).toContain(`- [Rumpelstiltskin Meme Explained](${baseURL}/en/rumpelstiltskin-meme): `);
-  expect(text).toContain(`(${baseURL}/zh/how-to-make-rumpelstiltskin-video): `);
+  expect(text).toContain(`- [How to Make the Window Peeper Video](${baseURL}/en/how-to-make-window-peeper-video): `);
+  expect(text).toContain(`(${baseURL}/zh/how-to-make-window-peeper-video): `);
   expect(text).toContain(
     `- [Is it safe to upload your photo to an AI video generator?](${baseURL}/en/blog/is-it-safe-to-upload-a-photo): `,
   );
@@ -217,7 +200,7 @@ test("llms.txt describes the product and links the public pages", async ({ reque
 });
 
 test("every public page shares a preview image", async ({ page, request }) => {
-  for (const path of ["/en", "/zh/pricing", "/en/blog", "/zh/rumpelstiltskin-meme"]) {
+  for (const path of ["/en", "/zh/pricing", "/en/blog", "/zh/how-to-make-window-peeper-video"]) {
     await page.goto(path);
 
     const head = page.locator("head");
@@ -240,24 +223,24 @@ test("the home page's FAQ is structured data", async ({ page }) => {
   expect(faq.mainEntity[3]).toEqual({
     "@type": "Question",
     name: "How much does it cost?",
-    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^A tip-toe video costs \d+ credits\. .* See the pricing page\.$/) },
+    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^A window peeper video costs \d+ credits\. .* See the pricing page\.$/) },
   });
 });
 
 test("a guide shares its own title in social metadata", async ({ page, baseURL }) => {
-  await page.goto("/en/how-to-make-rumpelstiltskin-video");
+  await page.goto("/en/how-to-make-window-peeper-video");
 
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "How to Make a Rumpelstiltskin Video");
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "How to Make the Window Peeper Video");
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
     "content",
-    `${baseURL}/en/how-to-make-rumpelstiltskin-video`,
+    `${baseURL}/en/how-to-make-window-peeper-video`,
   );
 });
 
 test("home pages identify the same site in social metadata", async ({ page, baseURL }) => {
   for (const locale of ["en", "zh"]) {
     await page.goto(`/${locale}`);
-    await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "AIRumpelstiltskinVideo");
+    await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "WindowPeeper");
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", `${baseURL}/${locale}`);
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", await page.title());
   }

@@ -15,7 +15,7 @@ const { default: sitemap } = await import("./sitemap");
 test("lists each guide in every locale, with its languages", async () => {
   const entries = await sitemap();
 
-  for (const guide of ["tip-toe-in-my-jordans", "rumpelstiltskin-meme", "how-to-make-rumpelstiltskin-video"]) {
+  for (const guide of ["how-to-make-window-peeper-video"]) {
     const languages = {
       en: `https://x.test/en/${guide}`,
       zh: `https://x.test/zh/${guide}`,

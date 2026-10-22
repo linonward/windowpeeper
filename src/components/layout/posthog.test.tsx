@@ -113,10 +113,10 @@ it("retries failed identification on navigation without repeating successful ide
 
 it("records each guide under its own route", async () => {
   const fetcher = enabled();
-  pathname = "/zh/rumpelstiltskin-meme";
+  pathname = "/zh/how-to-make-window-peeper-video";
   render(<PostHogPageviews />);
   await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(1));
-  expect(JSON.parse(fetcher.mock.calls[0][1].body).properties.$pathname).toBe("/zh/rumpelstiltskin-meme");
+  expect(JSON.parse(fetcher.mock.calls[0][1].body).properties.$pathname).toBe("/zh/how-to-make-window-peeper-video");
 });
 it("sets the visitor's first touch once on the person with $identify and page views", async () => {
   const fetcher = enabled();
@@ -136,10 +136,10 @@ it("sets the visitor's first touch once on the person with $identify and page vi
 });
 it("tags the landing page view with its UTM tags and referring site, and later views with neither", async () => {
   const fetcher = enabled();
-  window.history.replaceState(null, "", "/en/how-to-make-rumpelstiltskin-video?utm_source=chatgpt.com&utm_medium=referral&ref=secret&email=a%40b.c#top");
+  window.history.replaceState(null, "", "/en/how-to-make-window-peeper-video?utm_source=chatgpt.com&utm_medium=referral&ref=secret&email=a%40b.c#top");
   const referrer = vi.spyOn(document, "referrer", "get").mockReturnValue("https://chatgpt.com/c/abc?q=private");
   try {
-    pathname = "/en/how-to-make-rumpelstiltskin-video";
+    pathname = "/en/how-to-make-window-peeper-video";
     const view = render(<PostHogPageviews />);
     await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(1));
     const landing = JSON.parse(fetcher.mock.calls[0][1].body);

@@ -1,10 +1,12 @@
 import { useTranslations } from "next-intl";
+import { cn } from "cn";
 import { projectConfig } from "project.config";
 import { Example, type HomeExample } from "./example";
 import { WindowPeeperTryout, type WindowPeeperTryoutProps } from "./window-peeper-tryout";
 
-// The first screen: the window peeper video plays full width behind the headline,
-// then the generator and the example sit side by side on large screens.
+// The first screen: the example clip, if any, plays full width behind the
+// headline, then the generator and the example sit side by side on large
+// screens. Without a clip, the generator stands alone in one column.
 // Nothing stands between the headline and the generator, so the photo zone
 // shows in the first screen on phones and laptops alike.
 // The band slides under the glass header (-mt-16).
@@ -23,7 +25,7 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
             <span className="text-muted-foreground">{t("eyebrow")}</span>
           </p>
           {/* The h1 leads with the query the page targets, then the tagline.
-              "Rumpelstiltskin" can't wrap, so the size follows the width. */}
+              The size follows the width, so long words fit on phones. */}
           <h1 className="display-tight flex flex-col items-center gap-3 hyphens-auto [overflow-wrap:break-word] font-display font-bold text-balance break-keep">
             <span className="block text-[clamp(1.75rem,8.2vw,4.5rem)] leading-[1.05] lg:max-w-[20ch] lg:text-[4.75rem] [text-shadow:0_2px_24px_var(--background)]">
               {t("heading")}
@@ -39,7 +41,12 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
           <p className="max-w-[52ch] text-base leading-7 text-pretty text-foreground/80 sm:text-xl sm:leading-8">{t("body")}</p>
         </div>
       </div>
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-6 px-5 sm:px-8 lg:grid-cols-2">
+      <div
+        className={cn(
+          "mx-auto grid w-full grid-cols-1 items-start gap-6 px-5 sm:px-8",
+          example ? "max-w-6xl lg:grid-cols-2" : "max-w-2xl",
+        )}
+      >
         <WindowPeeperTryout {...tryout} />
         <Example example={example} />
       </div>
@@ -47,7 +54,7 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
   );
 }
 
-// The dance behind the headline, faded into the page at the bottom. With
+// The example clip behind the headline, faded into the page at the bottom. With
 // reduced motion the video hides and its poster stays.
 function Backdrop({ example }: { example: HomeExample }) {
   return (

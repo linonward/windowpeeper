@@ -1,22 +1,22 @@
 {
   "Metadata": {
-    "title": "AIRumpelstiltskinVideo",
-    "homeTitle": "Video IA del meme de Rumpelstiltskin – Tiptoeing in My Jordans",
-    "tagline": "Baile de puntillas de Rumpelstiltskin con IA",
-    "description": "Protagoniza el meme de Rumpelstiltskin: sube una foto y obtén el video de 12 segundos de Tiptoeing in My Jordans para TikTok. Vista previa gratis, pago único, sin suscripción."
+    "title": "WindowPeeper",
+    "homeTitle": "Window Peeper IA – El video de la tendencia con una foto",
+    "tagline": "Video de window peeper con IA desde una foto",
+    "description": "Haz el video de la tendencia window peeper con una foto: te pillan comiendo en una ventana iluminada, miras fijo y cierras la cortina. Sin CapCut."
   },
   "Home": {
     "hero": {
-      "eyebrow": "Tendencia en TikTok",
-      "heading": "Video IA del meme de Rumpelstiltskin",
-      "title": "Protagoniza Tiptoeing in My Jordans con una foto.",
-      "body": "Sube una foto. Cruzas la paja de puntillas, pides silencio, sonríes y bailas mientras una mujer mira asombrada. 12 segundos, en vertical, listo para TikTok."
+      "eyebrow": "La tendencia window peeper de TikTok",
+      "heading": "Video de window peeper con IA",
+      "title": "Que te pillen en la ventana con una sola foto.",
+      "body": "Sube una foto. Te pillan comiendo en una ventana iluminada de noche, miras fijo a la cámara y cierras la cortina. 12 segundos, listo para TikTok."
     },
     "example": {
-      "eyebrow": "Mira el baile",
+      "eyebrow": "Mira la escena",
       "title": "Así se ve tu video",
-      "video": "La escena de puntillas: un hombre con polo rojo avanza a escondidas por un pajar, le pide silencio a la cámara y pasa de puntillas junto a un hombre con visera que se queda boquiabierto, con música",
-      "note": "Tu video cuenta esta historia con la persona de tu foto: 12 segundos, en vertical 9:16, con música. Las tomas cambian de un video a otro."
+      "video": "La escena window peeper: de noche, la cámara se acerca a una ventana iluminada, la persona de dentro se congela a mitad de bocado, mira fijo a la cámara y cierra la cortina.",
+      "note": "Tu video cuenta esta historia con la persona de tu foto: 12 segundos, vertical 9:16, con música. Los planos cambian un poco de un video a otro."
     },
     "strip": {
       "label": "Lo que recibes",
@@ -28,19 +28,19 @@
     },
     "steps": {
       "eyebrow": "Cómo funciona",
-      "title": "Tres pasos para que tu foto baile",
+      "title": "Tres pasos para tu video de window peeper",
       "items": {
         "1": {
           "title": "Sube tu foto",
-          "body": "Elige una foto nítida de un solo adulto, de cuerpo entero o de cintura para arriba, mirando a la cámara."
+          "body": "Elige una foto nítida de un adulto, de cintura para arriba y mirando a la cámara. Tu ropa se mantiene en el video."
         },
         "2": {
-          "title": "La hacemos bailar",
-          "body": "La IA pone a la persona de tu foto en la escena de puntillas, con frac y con música. Tarda unos minutos."
+          "title": "Filmamos la escena",
+          "body": "La IA pone a la persona de tu foto tras una ventana iluminada de noche: el bocado, la mirada y la cortina, con música. Tarda unos minutos."
         },
         "3": {
-          "title": "Descarga y comparte",
-          "body": "Míralo aquí, descarga el MP4 y envía el enlace a tus amigos."
+          "title": "Descarga y publica",
+          "body": "Descarga el MP4 y publícalo en TikTok, Reels o Shorts con #windowpeeper."
         }
       }
     },
@@ -52,63 +52,63 @@
     },
     "faq": {
       "eyebrow": "Preguntas frecuentes",
-      "title": "Preguntas sobre el video IA de Rumpelstiltskin",
+      "title": "Preguntas sobre el video de window peeper",
       "pack": "{credits, plural, one {# crédito} other {# créditos}} por {price}",
       "items": {
         "1": {
-          "title": "¿Qué es el generador de video IA de Rumpelstiltskin?",
-          "body": "Crea un video meme: la persona de tu foto, con frac color crema, avanza a escondidas por un pajar y camina de puntillas como el enano del cuento, con música original. Subes una foto y rumpelstiltskin crea con ella un video de 12 segundos."
+          "title": "¿Qué es la tendencia window peeper?",
+          "body": "Es un sketch de humor en TikTok. De noche, una cámara se acerca a la única ventana iluminada de un edificio oscuro. La persona de dentro está comiendo, ve la cámara, se congela, mira fijo al objetivo demasiado tiempo y cierra la cortina. La persona de la ventana es quien publica el video."
         },
         "2": {
           "title": "¿Qué fotos puedo usar?",
-          "body": "Una foto tuya o de un adulto que te haya dado permiso. No subas fotos de niños. Una sola persona, de cuerpo entero o de cintura para arriba, mirando a la cámara y con buena luz. JPEG, PNG o WebP, de hasta {size} MB."
+          "body": "Una foto tuya o de un adulto que te dio permiso. No subas fotos de niños ni de personajes públicos. Una sola persona, de cintura para arriba, mirando a la cámara y con buena luz. JPEG, PNG o WebP, de hasta {size} MB."
         },
         "3": {
-          "title": "¿Cuánto dura el video y cuánto tarda en estar listo?",
-          "body": "Unos 12 segundos, con música. Crearlo suele tardar unos minutos. Deja la página abierta y el video se reproducirá ahí cuando esté listo."
+          "title": "¿Cuánto dura el video y cuánto tarda?",
+          "body": "Unos 12 segundos, con música. Hacerlo suele tardar unos minutos. Deja la página abierta y el video se reproduce ahí cuando esté listo."
         },
         "4": {
           "title": "¿Cuánto cuesta?",
-          "body": "Un video de puntillas cuesta {credits, plural, one {# crédito} other {# créditos}}. Un video Pro, con mayor nitidez en 1080p, cuesta {proCredits, plural, one {# crédito} other {# créditos}}. Los créditos se venden en paquetes de pago único: {packs}. No hay suscripción y los créditos nunca caducan. Si un video falla, te devolvemos los créditos. Además, cada cuenta tiene una vista previa gratis: 5 segundos con marca de agua. Consulta la <pricing>página de precios</pricing>."
+          "body": "Un video de window peeper cuesta {credits, plural, one {# crédito} other {# créditos}}. Un video Pro, en 1080p más nítido, cuesta {proCredits, plural, one {# crédito} other {# créditos}}. Los créditos se compran en paquetes de pago único: {packs}. No hay suscripción y los créditos no caducan. Si un video falla, se te devuelven los créditos. Cada cuenta tiene además una vista previa gratis: 5 segundos con marca de agua. Mira la <pricing>página de precios</pricing>."
         },
         "5": {
-          "title": "¿Necesito una cuenta?",
-          "body": "Sí, para crear un video. Inicia sesión con un enlace por correo electrónico o con tu cuenta de Google, sin contraseña. Tu foto sigue seleccionada mientras inicias sesión."
+          "title": "¿El video de window peeper es gratis?",
+          "body": "La vista previa sí. Cada cuenta tiene una vista previa gratis de 5 segundos con marca de agua, para que veas tu foto en la escena antes de pagar. El video completo de 12 segundos sin marca de agua cuesta créditos."
         },
         "6": {
-          "title": "¿Cómo contacto con soporte?",
-          "body": "Escribe a <email></email>. Respondemos en un plazo de 3 días hábiles."
+          "title": "¿Necesito la plantilla de CapCut?",
+          "body": "No. Una plantilla window peeper de CapCut pega tu cara en el video de otra persona, dentro de la app. Este sitio hace un video nuevo de la persona de tu foto, con tu propia ropa, en el navegador del móvil o del ordenador. Solo descargas el MP4."
         },
         "7": {
-          "title": "¿Puedo publicarlo en TikTok, Reels o Shorts?",
-          "body": "Sí. Cada video es un MP4 vertical 9:16 que ocupa toda la pantalla del teléfono, así que se publica en TikTok, Reels y Shorts sin que se corte nada."
+          "title": "¿Hay un filtro de window peeper en TikTok?",
+          "body": "No uno que monte toda la escena. Un filtro de cámara cambia la imagen en directo; no puede filmar un edificio de noche, acercarse a una ventana y cerrar una cortina. Por eso la gente usa plantillas o video con IA para esta tendencia. Aquí subes una foto y recibes el clip terminado."
         },
         "8": {
-          "title": "¿El baile es de la película de Rumpelstiltskin de 1987?",
-          "body": "No. En 1987 se estrenó una película de Rumpelstiltskin con actores reales, pero el clip viral del baile de puntillas se hizo con IA. Los videos que se crean aquí se generan con IA a partir de tu foto, con música original."
+          "title": "¿Puedo publicarlo en TikTok, Reels o Shorts?",
+          "body": "Sí. Cada video de la página de inicio es un MP4 vertical 9:16 que llena la pantalla del móvil. Publícalo con #windowpeeper y añade el sonido de la tendencia en la app si lo quieres."
         },
         "9": {
-          "title": "¿Hay un filtro de TikTok para esto?",
-          "body": "No, esto no es un filtro ni un efecto de TikTok. Funciona en el navegador de tu teléfono: subes una foto, esperas unos minutos y descargas el MP4. Luego lo publicas en TikTok y le añades un sonido allí. Elige Vertical para que ocupe toda la pantalla."
+          "title": "¿El video tiene sonido?",
+          "body": "Sí. Cada video trae música original hecha para él. No incluye el sonido de la tendencia. Para usarlo, añádelo en TikTok, Reels o Shorts al publicar y baja ahí el audio original."
         },
         "10": {
-          "title": "¿El video tiene sonido?",
-          "body": "Sí. Cada video incluye música original creada para él. No incluye la canción de moda del meme. Si quieres usar un sonido de moda, añádelo en TikTok, Reels o Shorts al publicar y baja allí el volumen del audio original."
+          "title": "¿Necesito una cuenta?",
+          "body": "Sí, para hacer un video. Entra con un enlace por email o con tu cuenta de Google, sin contraseña. Tu foto sigue elegida mientras inicias sesión."
         },
         "11": {
           "title": "¿Mis fotos son privadas?",
-          "body": "Tu foto se usa solo para crear tu video y se elimina unas 24 horas después de subirla. No usamos fotos ni videos para entrenar modelos de IA. Tus videos se quedan en tu biblioteca, que solo tú puedes ver, hasta que elimines tu cuenta."
+          "body": "Tu foto solo se usa para hacer tu video y se borra unas 24 horas después de subirla. No usamos fotos ni videos para entrenar modelos de IA. Tus videos quedan en tu biblioteca, que solo ves tú, hasta que borres tu cuenta."
         },
         "12": {
-          "title": "¿En qué se diferencia de Veo o Kling?",
-          "body": "Veo y Kling son modelos de video generales: escribes un prompt, eliges los ajustes y lo intentas de nuevo hasta que quede bien. Aquí solo subes una foto. La escena, las tomas y la música ya están preparadas para el baile de puntillas, y pagas por video, con los créditos de vuelta si alguno falla."
+          "title": "¿Cómo contacto con soporte?",
+          "body": "Escribe a <email></email>. Respondemos en un máximo de 3 días hábiles."
         }
       }
     },
     "cta": {
       "eyebrow": "Pruébalo",
-      "title": "Te toca bailar de puntillas.",
-      "body": "Una foto, unos 12 segundos de baile, listos para compartir.",
+      "title": "Te toca salir en la ventana.",
+      "body": "Una foto, un video de window peeper de 12 segundos, listo para publicar.",
       "button": "Crear mi video",
       "points": {
         "1": "Una foto, un video de 12 segundos",
@@ -118,55 +118,55 @@
     },
     "about": {
       "eyebrow": "La respuesta completa",
-      "title": "Sobre el generador de video IA de Rumpelstiltskin",
+      "title": "Sobre el video de window peeper con IA",
       "sections": {
         "makes": {
-          "title": "Qué crea el generador",
+          "title": "Qué hace el generador",
           "text": {
-            "1": "Este generador de video IA de Rumpelstiltskin convierte una foto en un video corto de baile. Subes la imagen de un adulto y la IA convierte a esa persona en la estrella de una escena de Rumpelstiltskin: con frac color crema, avanza a escondidas por un pajar, le pide silencio a la cámara y camina de puntillas con una sonrisa pícara mientras una amiga se queda boquiabierta. El video dura unos 12 segundos, en horizontal 16:9 o vertical 9:16, con música original, y lo descargas como MP4.",
-            "2": "No tienes que grabar nada ni saber editar. El <generator>generador de la parte superior de esta página</generator> hace todo el trabajo: elige una foto, escoge Estándar o Pro y pulsa Generar. Crear un video suele tardar unos minutos, y se reproduce en la página en cuanto está listo."
+            "1": "Este generador de window peeper con IA convierte una foto en el video de la tendencia. Subes la foto de un adulto y la IA filma a esa persona en una ventana iluminada de noche: la cámara se acerca, se congela a mitad de bocado, mira fijo al objetivo y cierra la cortina. El video dura unos 12 segundos, en vertical 9:16 o panorámico 16:9, con música original, y lo descargas en MP4.",
+            "2": "No filmas nada ni necesitas saber editar. El <generator>generador de arriba</generator> lo hace todo: elige una foto, escoge Estándar o Pro y pulsa Generar. La <howto>guía paso a paso</howto> lo explica."
           }
         },
-        "motion": {
-          "title": "Un video nuevo, no un cambio de cara",
+        "template": {
+          "title": "Un video nuevo, no una plantilla de CapCut",
           "text": {
-            "1": "Muchos videos del meme del baile de puntillas que circulan en internet son cambios de cara: una app de edición pega una cara nueva sobre un clip existente, y esa cara a menudo se ve plana o se desliza. Este generador funciona de otra manera. La IA estudia tu foto y crea una película nueva alrededor de esa persona: el pajar, el vestuario, los primeros planos y el baile. La cara, el cuerpo y la ropa se mueven a la vez.",
-            "2": "El resultado es un video nuevo, no una copia editada del clip de otra persona. Por eso también importa la foto. La IA necesita ver bien la cara, así que una foto de una sola persona mirando a la cámara y con buena luz da el mayor parecido. Una selfi sirve. La <howto>guía paso a paso</howto> explica qué hace que una foto funcione bien."
+            "1": "La mayoría de los videos window peeper se hacen con una plantilla de CapCut: un montaje terminado con un hueco para tu cara. El cuerpo, la mesa y la habitación son del video de otra persona, y por eso tantas publicaciones se parecen.",
+            "2": "Este generador filma una escena nueva con la persona de tu foto. Tu cara, tu pelo y tu ropa se mueven juntos. Por eso importa la foto: una sola persona, mirando a la cámara y con buena luz da el mejor parecido."
           }
         },
-        "meme": {
-          "title": "De dónde viene el meme del baile de puntillas",
+        "trend": {
+          "title": "Qué es la tendencia window peeper",
           "text": {
-            "1": "El meme de Rumpelstiltskin es un clip corto de un pequeño personaje de cuento, con ropa antigua, que avanza sigilosamente de puntillas como si se acabara de salir con la suya. La gente lo bautizó como Rumpelstiltskin, el hombrecillo del cuento de los hermanos Grimm, también conocido como el enano saltarín, que hila paja hasta convertirla en oro y baila alrededor de una hoguera, convencido de que nadie adivinará nunca su nombre.",
-            "2": "El clip se difundió en las apps de videos cortos en 2026, y pronto la gente empezó a meter en el baile a amigos, padres y compañeros de trabajo. Lee <meme>qué es el meme de Rumpelstiltskin</meme> para conocer toda la historia, o la <trend>guía de la tendencia del baile de puntillas</trend> para ver cómo la gente hace sus versiones."
+            "1": "La tendencia window peeper es un sketch corto. Desde el otro lado de la calle, una ventana brilla en un edificio oscuro. Dentro, alguien come solo. Ve la cámara, deja de masticar, mira demasiado tiempo y luego se levanta y cierra la cortina.",
+            "2": "El chiste es la mirada. Nadie espía de verdad: la persona de la ventana es quien hizo el clip, y el video lo deja claro. Mantenlo así y haz videos tuyos o de amigos que estén en la broma."
           }
         },
-        "movie": {
-          "title": "¿Es de la película de Rumpelstiltskin de 1987?",
+        "filter": {
+          "title": "¿Filtro, efecto o video con IA?",
           "text": {
-            "1": "Mucha gente busca la película de Rumpelstiltskin de 1987 porque el clip viral parece una escena de una vieja película de cuentos de hadas. Es cierto que en 1987 se estrenó una película de Rumpelstiltskin con actores reales, con Billy Barty en el papel principal y Amy Irving como la hija del molinero. Sin embargo, el clip de puntillas que se hizo viral en 2026 se creó con IA. No son imágenes de esa película ni de ninguna otra.",
-            "2": "Los videos creados en este sitio también se generan con IA, y lo decimos claramente. No usamos imágenes de ninguna película ni del clip viral original. Comparte tu video como una broma, no como imágenes reales."
+            "1": "La gente busca un filtro o un efecto window peeper, pero un filtro de cámara solo cambia la imagen en directo. No puede montar un edificio de noche, acercarse a una ventana y cerrar una cortina en el momento justo.",
+            "2": "Los clips que ves son plantillas de CapCut o videos con IA como los de aquí. Sube una foto en el <back>generador</back> y recibes todo el efecto en un solo archivo de video."
           }
         },
         "music": {
-          "title": "La música y el sonido de puntillas",
+          "title": "La música y el sonido de la tendencia",
           "text": {
-            "1": "En TikTok y Reels, el baile se suele publicar con un sonido de puntillas de moda. En cambio, cada video creado aquí incluye su propia música original, así que puedes publicarlo en cualquier sitio sin usar la pista de otra persona.",
-            "2": "Si quieres el sonido de moda, añádelo en la app al publicar. La mayoría de las apps de videos cortos te permiten bajar el volumen del audio original o silenciarlo, y elegir un sonido de su biblioteca."
+            "1": "En TikTok la tendencia suele publicarse con un sonido de moda. Cada video hecho aquí trae su propia música original, así que puedes publicarlo en cualquier sitio sin usar la pista de otra persona.",
+            "2": "Si quieres el sonido de moda, añádelo en la app al publicar. Casi todas las apps de videos cortos te dejan bajar o silenciar el audio original y elegir un sonido de su biblioteca."
           }
         },
         "social": {
           "title": "Publicar en TikTok, Reels y Shorts",
           "text": {
-            "1": "Cada video se graba en 9:16, el formato de la pantalla del teléfono, así ocupa toda la pantalla en TikTok, Instagram Reels y YouTube Shorts sin que se corte nada.",
-            "2": "También puedes enviar el MP4 directamente a un chat de grupo, o pulsar Compartir debajo del video para abrir el menú de compartir de tu teléfono."
+            "1": "Los videos de la página de inicio son 9:16, la forma de la pantalla del móvil, así que llenan TikTok, Instagram Reels y YouTube Shorts sin cortes.",
+            "2": "También puedes mandar el MP4 directo a un chat de grupo, o pulsar Compartir debajo del video para abrir el menú de compartir del móvil."
           }
         },
         "quality": {
           "title": "Estándar o Pro",
           "text": {
-            "1": "Las dos calidades crean la misma escena de puntillas con música. Un video Estándar cuesta {credits} créditos y está en 720p. Un video Pro cuesta {proCredits} créditos y está en 1080p, con más nitidez en pantallas grandes, lo que ayuda si piensas publicarlo.",
-            "2": "Los créditos se venden en paquetes de pago único, sin suscripción, y nunca caducan. Si un video falla, sus créditos se devuelven automáticamente. Consulta la <pricing>página de precios</pricing> para ver todos los paquetes, o <back>vuelve al generador</back> para crear el tuyo."
+            "1": "Las dos calidades hacen la misma escena window peeper con música. Un video Estándar cuesta {credits} créditos y es 720p. Un video Pro cuesta {proCredits} créditos y es 1080p, más nítido en pantallas grandes.",
+            "2": "Los créditos vienen en paquetes de pago único, sin suscripción, y no caducan. Si un video falla, los créditos vuelven solos. Mira la <pricing>página de precios</pricing> para ver todos los paquetes."
           }
         }
       }
@@ -310,7 +310,7 @@
   "Blog": {
     "title": "Blog",
     "metaTitle": "Blog: guías y novedades",
-    "metaDescription": "Guías y novedades de rumpelstiltskin: cómo hacer el meme del baile de puntillas con una foto, cómo lograr buenos resultados y qué hay de nuevo.",
+    "metaDescription": "Guías y novedades de WindowPeeper: cómo hacer el video de window peeper con una foto, cómo lograr buenos resultados y qué hay de nuevo en el sitio.",
     "eyebrow": "Blog",
     "description": "Notas sobre lo que estamos construyendo y cómo usarlo.",
     "empty": "Todavía no hay publicaciones.",
@@ -320,9 +320,9 @@
   },
   "Pricing": {
     "nav": "Precios",
-    "title": "Videos del meme de Rumpelstiltskin, desde {price}",
-    "metaTitle": "Precios del video del meme de Rumpelstiltskin",
-    "metaDescription": "Videos del meme de Rumpelstiltskin desde {price}: prueba una vista previa gratis de 5 segundos y paga una vez por el video completo de 12 segundos. Sin suscripción.",
+    "title": "Videos de window peeper desde {price}",
+    "metaTitle": "Precios del video de window peeper",
+    "metaDescription": "Videos de window peeper desde {price}: prueba una vista previa gratis de 5 segundos y paga una vez por el video completo de 12 segundos. Sin suscripción.",
     "eyebrow": "Lista de precios",
     "description": "Prueba primero una vista previa gratis de 5 segundos. Un video completo de 12 segundos cuesta desde {price}. Pagas una vez: sin suscripción, y los créditos no caducan.",
     "packsTitle": "Elige tu paquete",
@@ -376,158 +376,20 @@
     "ctaNote": "Desde {credits} créditos. Si un video falla, recuperas los créditos.",
     "pack": "{credits, plural, one {# crédito} other {# créditos}} por {price}",
     "related": "Más guías",
-    "note": "Este sitio es una herramienta independiente de video con IA. No está afiliado a ninguna marca, artista ni a los creadores del video original, ni cuenta con su respaldo o patrocinio. Los videos creados aquí son videos nuevos generados con IA y con música original; nunca usan el clip original.",
+    "note": "Este sitio es una herramienta independiente de video con IA. No está afiliado, respaldado ni patrocinado por TikTok, CapCut ni por los creadores de ninguna plantilla o clip. Los videos hechos aquí son videos nuevos con IA y música original; nunca usan imágenes de otras personas.",
     "pages": {
-      "tip-toe-in-my-jordans": {
-        "metaTitle": "Meme Tip Toe in My Jordans",
-        "metaDescription": "Crea el meme viral del baile de puntillas con una foto: qué es la tendencia, cómo lo hace la gente y cómo convertir una imagen en un baile de 12 segundos.",
-        "nav": "La tendencia del meme del baile de puntillas",
-        "title": "Tip Toe in My Jordans",
-        "tagline": "El meme del baile de puntillas, hecho con tu foto.",
-        "lead": "Un pequeño personaje de cuento camina de puntillas sin moverse del sitio con una sonrisa pícara, y la gente no para de ponerle caras nuevas. Esta guía explica la tendencia, cómo la gente hace sus propias versiones y cómo crear una a partir de una sola foto.",
-        "sections": {
-          "what": {
-            "title": "Qué es la tendencia",
-            "text": {
-              "1": "El meme del baile de puntillas es un bucle corto: un personaje avanza a escondidas de puntillas, con las rodillas dobladas y los brazos pegados al cuerpo, muy satisfecho de sí mismo. Las versiones más conocidas muestran a un hombrecillo barbudo que se parece a Rumpelstiltskin, el del cuento, por eso mucha gente lo llama el <meme>meme de Rumpelstiltskin</meme>.",
-              "2": "La gracia está en el contraste entre los pasos sigilosos y exagerados y la persona que los da. La foto seria de un amigo, de un padre o de un compañero de trabajo de repente camina de puntillas como un villano de dibujos animados que se acaba de salir con la suya. El clip es corto y el movimiento se reconoce fácilmente, así que funciona en cualquier feed de videos cortos.",
-              "3": "La gente lo busca con varios nombres. El baile de puntillas, el meme de Rumpelstiltskin y el apodo del título de esta página se refieren a la misma tendencia."
-            }
-          },
-          "how": {
-            "title": "Cómo lo hace la gente",
-            "text": {
-              "1": "La mayoría de las versiones que ves se hacen de una de estas tres formas:"
-            },
-            "list": {
-              "1": "Se graban haciendo el baile y copian los pasos a mano.",
-              "2": "Recortan un clip existente y cambian la cara con una app de edición.",
-              "3": "Usan una herramienta de video con IA que convierte una foto en un video nuevo del baile."
-            },
-            "more": {
-              "1": "Grabarse requiere práctica y una tarde libre. Los cambios de cara suelen verse pegados. Un generador de video con IA crea toda la escena alrededor de la persona, así que parece que de verdad está bailando."
-            }
-          },
-          "make": {
-            "title": "Crea el tuyo con una foto",
-            "text": {
-              "1": "Aquí subes una foto y recibes un video con IA de unos 12 segundos, con música. La persona de tu foto hace el baile de puntillas y tú no tienes que grabar nada."
-            },
-            "steps": {
-              "1": {
-                "title": "Elige una foto",
-                "body": "Un solo adulto, de cuerpo entero o de cintura para arriba, mirando a la cámara."
-              },
-              "2": {
-                "title": "Confirma el consentimiento",
-                "body": "La foto es tuya, o el adulto que aparece en ella dio su permiso."
-              },
-              "3": {
-                "title": "Elige una calidad",
-                "body": "Estándar cuesta {credits} créditos; Pro cuesta {proCredits} créditos, con más nitidez en 1080p."
-              },
-              "4": {
-                "title": "Inicia sesión y paga si hace falta",
-                "body": "Usa un enlace por correo electrónico o Google. Compra un paquete de créditos si no tienes saldo suficiente."
-              },
-              "5": {
-                "title": "Descarga y comparte",
-                "body": "Después de unos minutos, guarda el MP4 o compártelo."
-              }
-            },
-            "more": {
-              "1": "La <howto>guía paso a paso</howto> explica cada paso y qué hace que una foto funcione bien. Si un video falla, tus créditos se devuelven automáticamente."
-            }
-          },
-          "tips": {
-            "title": "Consejos para un resultado divertido",
-            "list": {
-              "1": "Usa una foto en la que la persona esté de pie y derecha, con los brazos a la vista. La IA necesita ver el cuerpo para moverlo.",
-              "2": "Una cara seria hace que el baile sigiloso sea más divertido.",
-              "3": "Los fondos lisos y la buena luz dan un movimiento más limpio que las fotos oscuras o recargadas.",
-              "4": "Elige Pro para una imagen más nítida, por ejemplo, para un video que piensas publicar."
-            }
-          },
-          "fair": {
-            "title": "Úsalo con responsabilidad",
-            "text": {
-              "1": "Sube solo fotos tuyas o de un adulto que haya dicho que sí. No uses fotos de niños ni hagas videos que puedan hacer creer a la gente que algo pasó de verdad. Los <terms>Términos del servicio</terms> indican lo que no está permitido."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-meme": {
-        "metaTitle": "Meme de Rumpelstiltskin explicado",
-        "metaDescription": "Qué es el meme de Rumpelstiltskin, dónde empezó, por qué se difundió el baile de puntillas y si los videos son reales o de IA. Después, crea tu versión con una foto.",
-        "nav": "¿Qué es el meme de Rumpelstiltskin?",
-        "title": "El meme de Rumpelstiltskin",
-        "tagline": "Qué es el baile de puntillas y por qué se hizo viral.",
-        "lead": "El meme de Rumpelstiltskin es un video corto de un pequeño personaje de cuento que hace un travieso baile de puntillas. Aquí te contamos qué muestra, dónde empezó, por qué la gente lo comparte y cómo se crean los videos de este sitio.",
-        "sections": {
-          "what": {
-            "title": "Qué muestra el meme",
-            "text": {
-              "1": "El clip muestra a un personaje pequeño y barbudo con ropa antigua. Camina de puntillas sin moverse del sitio o avanza sigilosamente con las rodillas dobladas y una sonrisa pícara, como si guardara un secreto. La gente lo llama Rumpelstiltskin porque se parece al hombrecillo del cuento.",
-              "2": "En el cuento de los hermanos Grimm, Rumpelstiltskin hila paja hasta convertirla en oro para la hija de un molinero y, a cambio, le pide su primer hijo. Más tarde baila alrededor de una hoguera, convencido de que nadie adivinará nunca su nombre. Esa imagen de un pequeño bailarín feliz e intrigante es la razón por la que el nombre encaja tan bien con el meme."
-            }
-          },
-          "origin": {
-            "title": "Dónde empezó el meme",
-            "list": {
-              "1": "27 de agosto de 2026: un artista de IA publica el clip en Instagram, con el estilo de una película de fantasía de los años 80.",
-              "2": "29 de septiembre: un usuario de TikTok le pone una canción de rap y un texto sobre sueños raros. Supera las 850.000 visualizaciones en una semana.",
-              "3": "1 de octubre: una publicación del clip en X alcanza 9,8 millones de visualizaciones en cinco días.",
-              "4": "Principios de octubre: la gente pone caras y personajes nuevos en el baile, y muchos creen que el clip es de la película de 1987 o de una vieja película soviética.",
-              "5": "7 de octubre: <nbc>NBC News</nbc> informa de que el clip está generado con IA.",
-              "6": "18 de octubre: jugadores de fútbol americano hacen el baile tras un touchdown en Londres."
-            },
-            "more": {
-              "1": "La <dance>guía de la escena del baile</dance> cuenta el clip paso a paso, y la <film1987>guía sobre la película de 1987</film1987> explica la confusión con la película real."
-            }
-          },
-          "why": {
-            "title": "Por qué se difundió",
-            "text": {
-              "1": "Nadie puede señalar una sola razón, pero hay algunas cosas que ayudan a que un clip así circule:"
-            },
-            "list": {
-              "1": "Es corto, así que funciona bien en bucle en las apps de videos cortos.",
-              "2": "El movimiento se reconoce fácilmente, incluso con una cara nueva o un personaje nuevo.",
-              "3": "Sirve como reacción: la gente lo publica cuando se sale con la suya en algo pequeño, como quedarse con la última porción de pizza.",
-              "4": "Cualquiera puede sumarse metiendo en el baile a un amigo, a una mascota o a sí mismo."
-            },
-            "more": {
-              "1": "Como muchos memes, se ha copiado, reeditado y vuelto a subir muchas veces."
-            }
-          },
-          "real": {
-            "title": "¿Es real o es IA?",
-            "text": {
-              "1": "Depende del clip. Algunas versiones en internet son personas que se graban a sí mismas, otras son ediciones, y muchas de las más recientes parecen generadas con IA. Si no estás seguro de un clip, da por hecho que puede estar editado.",
-              "2": "Los videos creados en este sitio se generan con IA. Subes una foto y un modelo de IA crea una escena nueva protagonizada por la persona que aparece en ella, con música original. No usamos el clip viral original ni su audio. El resultado es un video nuevo de unos 12 segundos que muestra un baile que nunca ocurrió, así que compártelo como una broma, no como imágenes reales."
-            }
-          },
-          "make": {
-            "title": "Crea el tuyo",
-            "text": {
-              "1": "Sube una foto nítida tuya, o de un adulto que haya dado su permiso, al <generator>generador de la página de inicio</generator>. Un video Estándar cuesta {credits} créditos, y un video Pro, con más nitidez en 1080p, cuesta {proCredits}. Los paquetes de créditos empiezan en {price}, sin suscripción.",
-              "2": "La <howto>guía práctica</howto> explica cada paso, y la <jordans>guía de la tendencia del baile de puntillas</jordans> explica cómo la gente hace el meme."
-            }
-          }
-        }
-      },
-      "how-to-make-rumpelstiltskin-video": {
-        "metaTitle": "Cómo hacer un video Rumpelstiltskin",
-        "metaDescription": "Convierte una foto en un video del baile de puntillas de Rumpelstiltskin: elige la foto y Estándar o Pro, inicia sesión, paga si hace falta y compártelo.",
-        "nav": "Cómo hacer un video de Rumpelstiltskin",
-        "title": "Cómo hacer un video de Rumpelstiltskin",
-        "tagline": "Una foto, seis pasos, un video bailando.",
-        "lead": "Necesitas una foto y unos minutos. Esta guía explica cada paso en el generador, cuánto cuesta y cómo conseguir un buen resultado.",
+      "how-to-make-window-peeper-video": {
+        "metaTitle": "Cómo hacer un video de window peeper",
+        "metaDescription": "Convierte una foto en un video de la tendencia window peeper: elige foto, Estándar o Pro, inicia sesión, paga si hace falta y publícalo en TikTok.",
+        "nav": "Cómo hacer un video de window peeper",
+        "title": "Cómo hacer un video de window peeper",
+        "tagline": "Una foto, seis pasos, una mirada.",
+        "lead": "Necesitas una foto y unos minutos. Esta guía repasa cada paso del generador, lo que cuesta y cómo lograr un buen resultado.",
         "sections": {
           "before": {
             "title": "Antes de empezar",
             "text": {
-              "1": "Necesitas una foto, una dirección de correo electrónico o una cuenta de Google para iniciar sesión, y créditos suficientes para un video. Las cuentas nuevas empiezan sin créditos. Los paquetes de créditos son pagos únicos, no una suscripción, y los créditos nunca caducan."
+              "1": "Necesitas una foto, un email o una cuenta de Google para iniciar sesión y créditos para un video, o tu única vista previa gratis. Los paquetes de créditos son pagos únicos, no una suscripción, y los créditos no caducan."
             }
           },
           "steps": {
@@ -535,269 +397,52 @@
             "steps": {
               "1": {
                 "title": "Elige una foto",
-                "body": "Abre el <generator>generador de la página de inicio</generator> y elige una foto de un solo adulto, de cuerpo entero o de cintura para arriba, mirando a la cámara y con buena luz. Debe ser JPEG, PNG o WebP de hasta {size} MB, y medir entre {min, number} y {maxSide, number} píxeles por lado."
+                "body": "Abre el <generator>generador de la página de inicio</generator> y elige la foto de un adulto, de cintura para arriba, mirando a la cámara y con buena luz. Debe ser JPEG, PNG o WebP de hasta {size} MB, de {min, number} a {maxSide, number} píxeles por lado."
               },
               "2": {
-                "title": "Confirma que puedes usar la foto",
-                "body": "Al pulsar el botón confirmas que la foto es tuya o que el adulto que aparece dio su permiso. Una nota debajo del botón lo indica."
+                "title": "Confirma que puedes usarla",
+                "body": "Al pulsar el botón confirmas que la foto es tuya o que el adulto que aparece aceptó. Una nota debajo del botón lo indica."
               },
               "3": {
                 "title": "Elige Estándar o Pro",
-                "body": "Estándar cuesta {credits} créditos y está en 720p. Pro cuesta {proCredits} créditos y está en 1080p. Los dos crean la misma escena, de unos 12 segundos, con música."
+                "body": "Estándar cuesta {credits} créditos y es 720p. Pro cuesta {proCredits} créditos y es 1080p. Las dos hacen la misma escena, de unos 12 segundos, con música. Para ver antes tu foto en la escena, prueba la vista previa gratis de 5 segundos."
               },
               "4": {
                 "title": "Inicia sesión",
-                "body": "Pulsa Generar. Si no has iniciado sesión, hazlo con un enlace por correo electrónico o con Google en la ventana que se abre. Tu foto sigue seleccionada mientras tanto."
+                "body": "Pulsa Generar. Si no has iniciado sesión, entra con un enlace por email o con Google en la ventana que se abre. Tu foto sigue elegida mientras tanto."
               },
               "5": {
-                "title": "Paga si necesitas créditos",
-                "body": "Si no tienes saldo suficiente, el generador te ofrece los paquetes: {packs}. Después del pago vuelves a la página y el video empieza en cuanto llegan los créditos."
+                "title": "Paga si te faltan créditos",
+                "body": "Si tu saldo no alcanza, el generador te ofrece los paquetes: {packs}. Tras el pago vuelves a la página y el video empieza en cuanto llegan los créditos."
               },
               "6": {
-                "title": "Espera y luego descarga o comparte",
-                "body": "Un video suele tardar unos minutos. Deja la página abierta y se reproducirá ahí cuando esté listo. Descargar guarda el MP4. Compartir abre el menú de compartir de tu dispositivo o copia un enlace a este sitio."
+                "title": "Espera, descarga y publica",
+                "body": "Un video suele tardar unos minutos. Deja la página abierta y se reproduce ahí cuando esté listo. Descargar guarda el MP4. Publícalo en TikTok con #windowpeeper y añade el sonido de moda en la app si lo quieres."
               }
             }
           },
           "tips": {
-            "title": "Consejos para buenos resultados",
+            "title": "Consejos para una buena mirada",
             "list": {
-              "1": "Una sola persona. Las fotos de grupo confunden el movimiento.",
-              "2": "Muestra el cuerpo: de cuerpo entero o de cintura para arriba, con los brazos a la vista.",
-              "3": "Mira a la cámara, sin nada que te tape la cara.",
-              "4": "Usa una luz uniforme. Las fotos oscuras o a contraluz dan un movimiento borroso.",
+              "1": "Una sola persona. En la escena hay una persona a la mesa.",
+              "2": "De cintura para arriba, mirando a la cámara, sin nada que tape la cara.",
+              "3": "Ponte la ropa que quieras en el video. La ropa sale de la foto.",
+              "4": "Usa luz uniforme. Las fotos oscuras o a contraluz dan una cara borrosa.",
               "5": "Evita filtros fuertes, stickers y texto sobre la foto."
             }
           },
           "wrong": {
             "title": "Si algo sale mal",
             "text": {
-              "1": "Si un video falla o no termina en 24 horas, sus créditos vuelven a tu saldo automáticamente. No tienes que contactarnos. Si se rechaza una foto, prueba con otra; no pierdes créditos por ello.",
-              "2": "Si sales de la página, el video se sigue creando. Aparecerá en tu biblioteca de videos y te enviaremos un correo cuando esté listo. Para cualquier otra cosa, escribe a <email></email>."
+              "1": "Si un video falla o no termina en 24 horas, sus créditos vuelven solos a tu saldo. No hace falta escribirnos. Si se rechaza una foto, prueba con otra; no pierdes créditos por ello.",
+              "2": "Si sales de la página, el video se termina igual. Aparece en tu biblioteca de videos y te avisamos por email cuando esté listo. Para cualquier otra cosa, escribe a <email></email>."
             }
           },
           "privacy": {
-            "title": "Tu foto y el uso responsable",
+            "title": "Tu foto y el uso justo",
             "text": {
-              "1": "Tu foto se usa solo para crear tu video y se elimina unas 24 horas después de subirla. El video terminado se queda en tu biblioteca hasta que elimines tu cuenta. La <privacy>Política de privacidad</privacy> tiene todos los detalles.",
-              "2": "Sube solo fotos tuyas o de un adulto que haya dado su permiso. Nada de fotos de niños, ni nada pensado para engañar, acosar o suplantar a nadie. Para saber de dónde viene el baile, lee <meme>qué es el meme de Rumpelstiltskin</meme>, o descubre <jordans>cómo la gente hace el meme del baile de puntillas</jordans>."
-            }
-          }
-        }
-      },
-      "who-is-rumpelstiltskin": {
-        "metaTitle": "¿Quién es Rumpelstiltskin?",
-        "metaDescription": "¿Quién es Rumpelstiltskin? El duende del cuento de los Grimm: su historia, sus dos finales, qué significa su nombre y cómo llegó a ser un meme viral.",
-        "nav": "¿Quién es Rumpelstiltskin?",
-        "title": "¿Quién es Rumpelstiltskin?",
-        "tagline": "El duende del cuento detrás del baile de puntillas.",
-        "lead": "Rumpelstiltskin es el hombrecillo de un cuento recopilado por los hermanos Grimm: hila paja hasta convertirla en oro y luego pide un precio terrible. Aquí tienes su historia, el significado de su nombre y cómo acabó convertido en un meme que baila.",
-        "sections": {
-          "story": {
-            "title": "La historia en resumen",
-            "text": {
-              "1": "Los hermanos Grimm publicaron el cuento en 1812, en la primera edición de sus Cuentos de la infancia y del hogar, donde es el número 55. Un molinero presume ante el rey de que su hija sabe hilar paja hasta convertirla en oro. El rey la encierra en una habitación llena de paja y le ordena que la hile antes del amanecer.",
-              "2": "Aparece un hombrecillo y hila la paja por ella. La primera noche ella le paga con su collar; la segunda, con su anillo. La tercera noche ya no le queda nada, así que le promete su primer hijo. El rey se casa con ella y, un año después, tiene un bebé.",
-              "3": "El hombrecillo vuelve a por el niño. Cuando la reina le suplica, le da tres días para adivinar su nombre. El último día, un mensajero lo encuentra en el bosque, bailando alrededor de una hoguera y cantando que nadie sabe que se llama Rumpelstiltskin. La reina acierta."
-            }
-          },
-          "ending": {
-            "title": "Cómo termina el cuento",
-            "text": {
-              "1": "El final cambió de una edición a otra. En la edición de 1812, huye furioso y nunca vuelve. En la versión oral que los Grimm recopilaron primero, sale volando por la ventana montado en un cucharón.",
-              "2": "En la edición de 1857, la que más se lee hoy, da un pisotón tan fuerte con el pie derecho que se hunde en la tierra hasta la cintura; luego se agarra el pie izquierdo y se parte en dos."
-            }
-          },
-          "name": {
-            "title": "Qué significa el nombre",
-            "text": {
-              "1": "El nombre alemán es Rumpelstilzchen. Se suele explicar como “pequeño zanco que traquetea”: “-chen” es un diminutivo, y un rumpelstilt era una especie de duende que hace ruido con las cosas. La palabra está emparentada con rumpelgeist y poltergeist, espíritus traviesos que hacen ruido en las casas.",
-              "2": "El nombre es clave en la historia porque es su secreto. Mientras nadie lo sepa, tiene poder sobre la reina. En cuanto ella lo dice, él pierde."
-            }
-          },
-          "relatives": {
-            "title": "Cuentos parecidos",
-            "text": {
-              "1": "Los folcloristas clasifican la historia como el tipo de cuento ATU 500, “El nombre del ayudante sobrenatural”. Otros países tienen sus propias versiones:"
-            },
-            "list": {
-              "1": "Tom Tit Tot, de Inglaterra, en English Fairy Tales (1890), de Joseph Jacobs.",
-              "2": "Whuppity Stoorie, de Escocia, en Popular Rhymes of Scotland (1826), de Robert Chambers."
-            }
-          },
-          "screen": {
-            "title": "Rumpelstiltskin en la pantalla",
-            "text": {
-              "1": "Ha aparecido en muchas películas y series. Billy Barty lo interpretó en una película musical de 1987. Es el villano principal de Shrek Forever After (2010), y Robert Carlyle interpreta una versión escrita Rumplestiltskin en la serie Once Upon a Time. La <movie>guía de todas las películas de Rumpelstiltskin</movie> las enumera en orden."
-            }
-          },
-          "meme": {
-            "title": "Del cuento al meme",
-            "text": {
-              "1": "En 2026, un clip generado con IA de un pequeño duende caminando de puntillas en un pajar se hizo viral, y la gente lo bautizó con su nombre. Lee <meme>qué es el meme de Rumpelstiltskin</meme>, o <film1987>por qué el clip no es de la película de 1987</film1987>.",
-              "2": "Para meterte tú en el baile, sube una foto al <generator>generador de la página de inicio</generator>. Los videos cuestan desde {credits} créditos."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-movie": {
-        "metaTitle": "Películas de Rumpelstiltskin",
-        "metaDescription": "Todas las películas de Rumpelstiltskin en orden: las alemanas, el musical de 1987 con Billy Barty, la de terror de 1995, las series y el clip viral de IA.",
-        "nav": "Todas las películas de Rumpelstiltskin",
-        "title": "La película de Rumpelstiltskin",
-        "tagline": "Las películas y versiones para TV, en orden.",
-        "lead": "¿Buscas la película de Rumpelstiltskin? Hay varias, desde películas alemanas de los años cuarenta y cincuenta hasta un musical de 1987 y una película de terror de 1995. Aquí las tienes en orden, y cuál es la que la gente suele buscar.",
-        "sections": {
-          "versions": {
-            "title": "Todas las versiones, en orden",
-            "list": {
-              "1": "1940: Rumpelstilzchen, película alemana dirigida por Alf Zengerling.",
-              "2": "1955: Rumpelstilzchen, película alemana dirigida por Herbert B. Fredersdorf.",
-              "3": "1982: un episodio de la serie Faerie Tale Theatre, dirigido por Emile Ardolino, con Hervé Villechaize como Rumpelstiltskin.",
-              "4": "1987: Rumpelstiltskin, película musical dirigida por David Irving, con Amy Irving y Billy Barty.",
-              "5": "1995: Rumpelstiltskin, comedia de terror dirigida por Mark Jones, con Max Grodénchik en el papel principal.",
-              "6": "2009: Rumpelstilzchen, telefilme alemán dirigido por Ulrich König, con Robert Stadlober.",
-              "7": "2010: Shrek Forever After, película de animación en la que Rumpelstiltskin es el villano principal."
-            },
-            "more": {
-              "1": "También es un personaje principal de la serie Once Upon a Time, donde Robert Carlyle lo interpreta con la grafía Rumplestiltskin."
-            }
-          },
-          "musical": {
-            "title": "El musical de 1987",
-            "text": {
-              "1": "La película de 1987 es la que más busca la gente. David Irving la dirigió y escribió el guion. Amy Irving interpreta a Katie, la hija del molinero, y Billy Barty a Rumpelstiltskin, con Clive Revill como el rey y Priscilla Pointer como la reina.",
-              "2": "Es un musical, con música de Max Robert, y dura 84 minutos. Cannon Group la produjo como parte de sus películas de cuentos de hadas y la estrenó en Estados Unidos en abril de 1987. La <film1987>guía sobre la película de 1987</film1987> la analiza en detalle."
-            }
-          },
-          "horror": {
-            "title": "La película de terror de 1995",
-            "text": {
-              "1": "El Rumpelstiltskin de 1995 convierte el cuento en una comedia de terror. La dirigió Mark Jones, Max Grodénchik interpreta al duende y tuvo un estreno limitado en noviembre de 1995. Es una película muy distinta del musical, así que comprueba el año antes de verla."
-            }
-          },
-          "which": {
-            "title": "¿Cuál busca la gente?",
-            "text": {
-              "1": "Muchas búsquedas recientes vienen del meme viral del baile de puntillas. El clip de ese meme parece una escena de una vieja película de cuentos de hadas, así que mucha gente fue a buscarla. No es de ninguna de estas películas: se hizo con IA. Consulta <meme>qué es el meme de Rumpelstiltskin</meme> y <who>quién es Rumpelstiltskin</who> en el cuento original."
-            }
-          },
-          "make": {
-            "title": "Crea tu propia versión",
-            "text": {
-              "1": "No puedes meterte en la película de 1987, pero sí puedes crear un video con IA en el que bailas de puntillas. Sube una foto al <generator>generador de la página de inicio</generator>. Un video cuesta {credits} créditos y los paquetes empiezan en {price}."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-1987-movie": {
-        "metaTitle": "Rumpelstiltskin 1987: película o IA",
-        "metaDescription": "¿El clip viral de puntillas es de la película de Rumpelstiltskin de 1987? No. La película real con Billy Barty, dónde verla legalmente y de dónde salió el clip de IA.",
-        "nav": "¿El clip es de la película de 1987?",
-        "title": "Rumpelstiltskin, la película de 1987",
-        "tagline": "La película real y el clip de IA con el que la confunden.",
-        "lead": "Un clip de un pequeño duende caminando de puntillas en un pajar hizo que mucha gente buscara la película de Rumpelstiltskin de 1987. Aquí tienes la película real, dónde verla legalmente, el verdadero origen del clip y cómo distinguir uno de otro.",
-        "sections": {
-          "answer": {
-            "title": "La respuesta corta",
-            "text": {
-              "1": "No. El clip viral de puntillas no es de la película de 1987 ni de ninguna otra. Se hizo con IA. <kym>Know Your Meme</kym>, que documenta los memes de internet, confirma que el clip está generado con IA."
-            }
-          },
-          "film": {
-            "title": "La película real de 1987",
-            "text": {
-              "1": "Rumpelstiltskin (1987) es un musical con actores reales de la serie de películas de cuentos de hadas de Cannon Group. La dirigió David Irving. Amy Irving interpreta a Katie, la hija del molinero, y Billy Barty a Rumpelstiltskin. Clive Revill y Priscilla Pointer interpretan al rey y a la reina.",
-              "2": "La película dura 84 minutos, con canciones de Max Robert. Se estrenó en Estados Unidos en abril de 1987 y abrió el festival de cine familiar de Cannon en Cannes en mayo de ese año. Sigue el cuento de los Grimm: la paja convertida en oro, el hijo prometido y el juego de adivinar el nombre."
-            }
-          },
-          "clip": {
-            "title": "De dónde salió el clip de IA",
-            "text": {
-              "1": "Un artista de IA publicó el clip por primera vez en Instagram el 27 de agosto de 2026, como ejemplo de lo real que puede parecer una película fantástica hecha con IA. En él, el duende baila para una mujer que llora en un pajar, convierte la paja en monedas de oro y se transforma en príncipe tras el beso de ella. Esa última parte no aparece en el cuento de los Grimm ni en la película de 1987.",
-              "2": "A finales de septiembre de 2026, un usuario de TikTok combinó el clip con una canción de rap de 2014, y en octubre se difundió por TikTok y X. Los espectadores creyeron que venía del musical de 1987 o de una vieja película soviética, y pasaron días hasta que la mayoría supo que era IA."
-            }
-          },
-          "tell": {
-            "title": "Cómo distinguirlos",
-            "list": {
-              "1": "Reparto: en la película de 1987, Billy Barty interpreta a Rumpelstiltskin. El duende del clip viral está generado con IA y no lo interpreta ningún actor.",
-              "2": "Historia: la película no tiene ninguna escena en la que un beso convierta a Rumpelstiltskin en príncipe.",
-              "3": "Origen: la película tiene reparto, director y fecha de estreno. El clip apareció primero en redes sociales, en 2026.",
-              "4": "Si no estás seguro, busca la primera publicación de un clip antes de compartirlo como real."
-            }
-          },
-          "watch": {
-            "title": "Dónde verla legalmente",
-            "text": {
-              "1": "En EE. UU., a octubre de 2026, la película de 1987 se puede ver gratis con anuncios en Tubi y The Roku Channel. También está en servicios de suscripción como MGM+, y se puede comprar en DVD.",
-              "2": "La oferta cambia según el país y el mes, así que consulta <justwatch>JustWatch</justwatch> antes de pagar: indica dónde se puede ver la película en tu país. Las subidas completas de la película a sitios de video no suelen tener licencia."
-            }
-          },
-          "make": {
-            "title": "Crea tu propia versión con IA",
-            "text": {
-              "1": "Los videos creados en este sitio también se generan con IA, y lo decimos claramente. Sube una foto al <generator>generador de la página de inicio</generator> y la persona que aparece en ella hará el baile de puntillas, con música original. Un video cuesta {credits} créditos. Compártelo como una broma, no como una película perdida.",
-              "2": "Para ver las otras películas, consulta <movie>todas las películas de Rumpelstiltskin</movie>. Para conocer la historia que hay detrás, lee <who>quién es Rumpelstiltskin</who>."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-dance-scene": {
-        "metaTitle": "La escena del baile de Rumpelstiltskin",
-        "metaDescription": "La escena del baile de Rumpelstiltskin, paso a paso: qué pasa en el clip viral de IA, por qué funciona el baile de puntillas y cómo se compara un video hecho aquí.",
-        "nav": "La escena del baile, paso a paso",
-        "title": "Escena del baile de Rumpelstiltskin",
-        "tagline": "El clip viral, paso a paso, y cómo se compara un video hecho aquí.",
-        "lead": "La escena que todos comparten muestra a un pequeño duende bailando de puntillas para una mujer que llora en un pajar. Aquí tienes lo que pasa en ella, por qué funciona el baile y cómo se compara un video hecho con tu foto.",
-        "sections": {
-          "origin": {
-            "title": "De dónde viene la escena",
-            "text": {
-              "1": "La escena no es de ninguna película. Un artista de IA la creó y la publicó en Instagram el 27 de agosto de 2026, con el estilo de una película de fantasía de los años 80. La <film1987>guía de la película de 1987</film1987> explica por qué tanta gente creyó que era real.",
-              "2": "El cuento tiene un baile más antiguo. En la versión de los hermanos Grimm, Rumpelstiltskin baila de noche alrededor de una hoguera y canta su propio nombre, seguro de que nadie lo adivinará. El clip toma a ese pequeño bailarín satisfecho y le añade los pasos de puntillas."
-            }
-          },
-          "beats": {
-            "title": "La escena, paso a paso",
-            "list": {
-              "1": "Una mujer está sentada en la paja de un pajar, llorando.",
-              "2": "Un duende pequeño y barbudo, con ropa antigua, se acerca a ella.",
-              "3": "Baila para ella de puntillas, con las rodillas dobladas y una sonrisa pícara.",
-              "4": "La paja se convierte en monedas de oro.",
-              "5": "Ella lo besa y él se convierte en un príncipe."
-            },
-            "more": {
-              "1": "El beso y el príncipe no están en el cuento de los Grimm, donde el duende nunca se queda con la hija del molinero. Lo que la gente copia es el baile del medio: los memes ponen caras y personajes nuevos en él."
-            }
-          },
-          "why": {
-            "title": "Por qué funciona el baile",
-            "list": {
-              "1": "Los pasos son amplios y lentos, así que se ven bien en una pantalla de móvil pequeña.",
-              "2": "La sonrisa y la postura sigilosa dicen «me salí con la mía» sin una palabra.",
-              "3": "Los pasos ridículos chocan con una escena seria y antigua.",
-              "4": "El movimiento se repite, así que unos segundos se repiten en bucle sin cortes."
-            }
-          },
-          "compare": {
-            "title": "El clip viral y un video hecho aquí",
-            "text": {
-              "1": "Los videos creados en este sitio también se generan con IA, pero no copian el clip. Así se diferencian:"
-            },
-            "list": {
-              "1": "Quién baila: en el clip, un duende que inventó la IA. Aquí, la persona de tu foto, con un frac color crema.",
-              "2": "Escena: los dos ocurren en un pajar con alguien que mira. Aquí, quien baila se acerca a escondidas, pide silencio a la cámara, sonríe y baila de puntillas, sin oro y sin beso.",
-              "3": "Sonido: cada video de aquí lleva una melodía original de cuento. Nunca usa el clip ni las canciones que le añaden los memes.",
-              "4": "Duración y formato: 12 segundos, vertical (9:16), en 720p, o 1080p con Pro.",
-              "5": "Etiqueta: el clip se difundió como si fuera una película antigua. Comparte el tuyo como lo que es, un video de IA."
-            }
-          },
-          "make": {
-            "title": "Crea tu propia escena de baile",
-            "text": {
-              "1": "Sube una foto nítida tuya, o de un adulto que haya dado su permiso, al <generator>generador de la página de inicio</generator>. Standard cuesta {credits} créditos y Pro cuesta {proCredits}. Los paquetes empiezan en {price}, sin suscripción.",
-              "2": "La <howto>guía paso a paso</howto> explica cada paso, y <meme>qué es el meme de Rumpelstiltskin</meme> explica la tendencia en torno a la escena."
+              "1": "Tu foto solo se usa para hacer tu video y se borra unas 24 horas después de subirla. El video terminado queda en tu biblioteca hasta que borres tu cuenta. La <privacy>Política de privacidad</privacy> tiene los detalles.",
+              "2": "Sube solo fotos tuyas o de un adulto que aceptó. Nada de fotos de niños ni de personajes públicos, y nada para engañar, acosar o asustar a nadie. La tendencia es una broma sobre sentirse observado; que siga siéndolo."
             }
           }
         }
@@ -805,7 +450,7 @@
     }
   },
   "Footer": {
-    "blurb": "Videos IA del baile de puntillas de Rumpelstiltskin a partir de una foto.",
+    "blurb": "Videos de la tendencia window peeper con una foto.",
     "product": "Producto",
     "support": "Soporte",
     "legal": "Legal",

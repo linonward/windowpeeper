@@ -21,18 +21,12 @@ test("the product links lead to pricing and the blog", () => {
   ]);
 });
 
-test("the guides column links each guide, without naming the meme's nickname", () => {
+test("the guides column links each guide", () => {
   renderWithIntl(<Footer />);
 
   const guides = screen.getByRole("navigation", { name: "Guides" });
   expect(within(guides).getAllByRole("link").map((link) => [link.textContent, link.getAttribute("href")])).toEqual([
-    ["The tip-toe dance meme trend", "/en/tip-toe-in-my-jordans"],
-    ["What is the Rumpelstiltskin meme?", "/en/rumpelstiltskin-meme"],
-    ["How to make a Rumpelstiltskin video", "/en/how-to-make-rumpelstiltskin-video"],
-    ["Who is Rumpelstiltskin?", "/en/who-is-rumpelstiltskin"],
-    ["Every Rumpelstiltskin movie", "/en/rumpelstiltskin-movie"],
-    ["Is the clip from the 1987 movie?", "/en/rumpelstiltskin-1987-movie"],
-    ["The dance scene, beat by beat", "/en/rumpelstiltskin-dance-scene"],
+    ["How to make a window peeper video", "/en/how-to-make-window-peeper-video"],
   ]);
 });
 
@@ -52,8 +46,8 @@ test("groups support and legal links under headings", () => {
   renderWithIntl(<Footer />);
 
   const support = screen.getByRole("navigation", { name: "Support" });
-  expect(within(support).getByRole("link", { name: "support@airumpelstiltskinvideo.com" }).getAttribute("href")).toBe(
-    "mailto:support@airumpelstiltskinvideo.com",
+  expect(within(support).getByRole("link", { name: "support@windowpeeper.org" }).getAttribute("href")).toBe(
+    "mailto:support@windowpeeper.org",
   );
   const legal = screen.getByRole("navigation", { name: "Legal" });
   expect(within(legal).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual([
@@ -66,9 +60,9 @@ test("groups support and legal links under headings", () => {
 test("shows the brand, a blurb, the copyright and the theme switch", () => {
   renderWithIntl(<Footer />);
 
-  expect(screen.getByRole("link", { name: "AIRumpelstiltskinVideo" }).getAttribute("href")).toBe("/en");
-  expect(screen.getByText("AI Rumpelstiltskin tip-toe dance videos from one photo.")).toBeDefined();
-  expect(screen.getByText("© AIRumpelstiltskinVideo. All rights reserved.")).toBeDefined();
+  expect(screen.getByRole("link", { name: "WindowPeeper" }).getAttribute("href")).toBe("/en");
+  expect(screen.getByText("Window peeper trend videos from one photo.")).toBeDefined();
+  expect(screen.getByText("© WindowPeeper. All rights reserved.")).toBeDefined();
   expect(screen.getByRole("group", { name: "Theme" })).toBeDefined();
 });
 
@@ -76,5 +70,5 @@ test("is translated", () => {
   renderWithIntl(<Footer />, "zh");
 
   expect(screen.getByRole("navigation", { name: "支持" })).toBeDefined();
-  expect(screen.getByText("© AIRumpelstiltskinVideo，保留所有权利。")).toBeDefined();
+  expect(screen.getByText("© WindowPeeper，保留所有权利。")).toBeDefined();
 });

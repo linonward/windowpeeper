@@ -71,18 +71,7 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
         {chunks}
       </a>
     ),
-    meme: guideLink("rumpelstiltskin-meme"),
-    howto: guideLink("how-to-make-rumpelstiltskin-video"),
-    jordans: guideLink("tip-toe-in-my-jordans"),
-    who: guideLink("who-is-rumpelstiltskin"),
-    movie: guideLink("rumpelstiltskin-movie"),
-    film1987: guideLink("rumpelstiltskin-1987-movie"),
-    dance: guideLink("rumpelstiltskin-dance-scene"),
-    // Sources the copy cites, off the site.
-    kym: sourceLink("https://knowyourmeme.com/memes/ai-rumpelstiltskin-tip-toein-in-my-jordans"),
-    nbc: sourceLink("https://www.nbcnews.com/tech/internet/ai-generated-rumpelstiltskin-meme-freaking-much-internet-rcna602132"),
-    // Lists where the 1987 film streams now, as the copy's own list ages.
-    justwatch: sourceLink("https://www.justwatch.com/us/movie/rumpelstiltskin"),
+    howto: guideLink("how-to-make-window-peeper-video"),
     terms: pageLink("/terms"),
     privacy: pageLink("/privacy"),
     email: () => (
@@ -100,8 +89,8 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
       <header className="relative isolate flex flex-col items-start gap-6 pt-10 pb-16 sm:pt-16">
         <Glow className="top-10" />
         <p className="eyebrow">{t("eyebrow")}</p>
-        {/* As on the home page: the query, then the tagline. "Rumpelstiltskin"
-            can't wrap, so the size follows the width on phones. */}
+        {/* As on the home page: the query, then the tagline. The size follows
+            the width on phones, so long words fit. */}
         <h1 className="display-tight max-w-4xl hyphens-auto [overflow-wrap:break-word] font-display text-[clamp(1.5rem,8.2vw,2.25rem)] leading-[1.15] font-bold text-balance break-keep sm:text-5xl sm:leading-[1.2]">
           <span className="block">{t(page("title"))}</span>
           {" "}
@@ -179,24 +168,26 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
         {t("note")}
       </p>
 
-      <nav aria-labelledby="guide-related" className="flex flex-col gap-6 border-t py-12">
-        <h2 id="guide-related" className="display-tight font-display text-2xl leading-tight font-bold sm:text-3xl">
-          {t("related")}
-        </h2>
-        <ul className="grid gap-4 md:grid-cols-2">
-          {others.map((other) => (
-            <li key={other}>
-              <Link
-                href={`/${other}`}
-                className="flex h-full flex-col gap-2 rounded-xl border bg-card p-5 [@media(hover:hover)]:hover:border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)]"
-              >
-                <span className="font-display text-lg font-semibold">{t(`pages.${other}.nav`)}</span>
-                <span className="text-sm text-pretty text-muted-foreground">{t(`pages.${other}.metaDescription`)}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {others.length > 0 && (
+        <nav aria-labelledby="guide-related" className="flex flex-col gap-6 border-t py-12">
+          <h2 id="guide-related" className="display-tight font-display text-2xl leading-tight font-bold sm:text-3xl">
+            {t("related")}
+          </h2>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {others.map((other) => (
+              <li key={other}>
+                <Link
+                  href={`/${other}`}
+                  className="flex h-full flex-col gap-2 rounded-xl border bg-card p-5 [@media(hover:hover)]:hover:border-[color-mix(in_oklch,var(--border),var(--foreground)_20%)]"
+                >
+                  <span className="font-display text-lg font-semibold">{t(`pages.${other}.nav`)}</span>
+                  <span className="text-sm text-pretty text-muted-foreground">{t(`pages.${other}.metaDescription`)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       <Cta href={generator} />
     </main>
@@ -205,17 +196,6 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
 
 function guideLink(guide: Guide) {
   return pageLink(`/${guide}`);
-}
-
-function sourceLink(href: string) {
-  function SourceLink(chunks: ReactNode) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={LINK}>
-        {chunks}
-      </a>
-    );
-  }
-  return SourceLink;
 }
 
 function pageLink(href: string) {

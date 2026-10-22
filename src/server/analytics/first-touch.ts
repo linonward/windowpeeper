@@ -20,7 +20,7 @@ export type FirstTouch = {
   firstUtmCampaign: string | null;
   firstUtmTerm: string | null;
   firstUtmContent: string | null;
-  // Path only, such as "/en/tip-toe-in-my-jordans".
+  // Path only, such as "/en/how-to-make-window-peeper-video".
   firstLandingPath: string | null;
   // The browser's language, such as "en-US".
   firstLocale: string | null;

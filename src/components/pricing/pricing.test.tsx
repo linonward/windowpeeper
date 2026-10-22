@@ -22,10 +22,10 @@ const render = () => renderWithIntl(<Pricing packs={packs} featured="small" pric
 const cards = () =>
   Array.from(screen.getByRole("region", { name: "Pick your pack" }).querySelector("ul")!.children) as HTMLElement[];
 
-test("the h1 names the meme and the lowest price, and the free preview comes first", () => {
+test("the h1 names the trend and the lowest price, and the free preview comes first", () => {
   render();
 
-  expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Rumpelstiltskin meme videos, from $4.99");
+  expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Window peeper videos, from $4.99");
   const intro = screen.getByRole("heading", { level: 1 }).nextElementSibling?.textContent ?? "";
   expect(intro).toMatch(/^Try a free 5-second preview first\./);
   expect(intro).toContain("no subscription");
@@ -105,6 +105,6 @@ test("the questions cover the preview, quality, expiry, billing, failures, refun
 test("renders in Chinese", () => {
   renderWithIntl(<Pricing packs={packs} featured="small" prices={prices} />, "zh");
 
-  expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(/侏儒怪表情包视频/);
+  expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(/Window Peeper 视频/);
   expect(screen.getByRole("region", { name: "选择套餐" })).toBeDefined();
 });

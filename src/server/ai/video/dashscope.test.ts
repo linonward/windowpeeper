@@ -22,7 +22,7 @@ const task = (output: object) => json({ request_id: "req-1", output: { task_id: 
 
 const job: ReferenceVideoJob = {
   image: { bytes: new Uint8Array([1, 2, 3]), mime: "image/jpeg", url: "https://storage.test/me.jpg?signed" },
-  prompt: "Image 1 tip-toes through a barn.",
+  prompt: "Image 1 stares out of a lit window.",
   resolution: "720P",
   ratio: "16:9",
   watermark: false,

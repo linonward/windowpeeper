@@ -58,7 +58,7 @@ export function Faq({
       className="grid grid-cols-1 gap-10 border-t py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]"
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(data) }} />
-      {/* "Rumpelstiltskin" can't wrap: smaller on phones and in the narrow column. */}
+      {/* Smaller on phones and in the narrow column, so long words fit. */}
       <SectionHeading
         eyebrow={t("eyebrow")}
         id="faq"
