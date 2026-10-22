@@ -50,15 +50,15 @@ test("signs out from the account menu", async ({ page }) => {
 test("on phones the sidebar opens from a menu button", async ({ page }) => {
   await signIn(page);
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("/zh/videos");
+  await page.goto("/es/videos");
 
-  const nav = page.getByRole("navigation", { name: "控制台导航" });
+  const nav = page.getByRole("navigation", { name: "Navegación del panel" });
   await expect(nav).toBeHidden();
-  await page.getByRole("button", { name: "打开菜单" }).click();
+  await page.getByRole("button", { name: "Abrir menú" }).click();
   await expect(nav).toBeVisible();
 
   // The account menu opens above its button and stays on screen.
-  await page.getByRole("button", { name: "账户菜单" }).click();
+  await page.getByRole("button", { name: "Menú de la cuenta" }).click();
   const box = await page.getByRole("menu").boundingBox();
   expect(box!.x).toBeGreaterThanOrEqual(0);
   expect(box!.x + box!.width).toBeLessThanOrEqual(375);
@@ -87,9 +87,9 @@ test("the account menu shows the balance and switches the language", async ({
   // keyboard opens it every time.
   await menu.getByRole("menuitem", { name: "Language: English" }).focus();
   await page.keyboard.press("ArrowRight");
-  await page.getByRole("menuitem", { name: "中文" }).click();
-  await expect(page).toHaveURL("/zh/videos/windowpeeper");
-  await expect(page.getByRole("heading", { level: 1, name: "制作 Window Peeper 视频" })).toBeVisible();
+  await page.getByRole("menuitem", { name: "Español" }).click();
+  await expect(page).toHaveURL("/es/videos/windowpeeper");
+  await expect(page.getByRole("heading", { level: 1, name: "Haz un video de window peeper" })).toBeVisible();
 });
 
 test("the sidebar collapses to icons and stays collapsed after a reload", async ({ page }) => {

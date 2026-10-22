@@ -74,7 +74,7 @@ test("FAQ plus icon turns into a close mark when open", async ({ page }) => {
 });
 
 for (const width of [320, 375]) {
-  for (const path of ["/en/sign-in", "/zh/sign-in"]) {
+  for (const path of ["/en/sign-in", "/es/sign-in"]) {
     test(`${path} fits ${width}px without horizontal scrolling`, async ({
       page,
     }) => {
@@ -92,7 +92,7 @@ for (const width of [320, 375]) {
 test("profile fits 320px without horizontal scrolling", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 812 });
   await signIn(page);
-  await page.goto("/zh/profile");
+  await page.goto("/es/profile");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   const overflow = await page.evaluate(

@@ -62,11 +62,11 @@ test("says when the user has no name, no subscription and an unverified email", 
       subscription={null}
       transactions={[]}
     />,
-    "zh",
+    "es",
   );
 
-  const profile = screen.getByRole("region", { name: "资料" });
-  expect(within(profile).getByText("未设置")).toBeTruthy();
-  expect(within(profile).getByText("未验证")).toBeTruthy();
-  expect(screen.getByRole("region", { name: "订阅" }).textContent).toContain("没有订阅。");
+  const profile = screen.getByRole("region", { name: "Perfil" });
+  expect(within(profile).getByText("Sin definir")).toBeTruthy();
+  expect(within(profile).getByText("Sin verificar")).toBeTruthy();
+  expect(screen.getByRole("region", { name: "Suscripción" }).textContent).toContain("Sin suscripción.");
 });

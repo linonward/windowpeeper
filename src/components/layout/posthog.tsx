@@ -6,6 +6,7 @@ import { authClient } from "@/lib/auth-client";
 import { landingProperties } from "@/lib/first-touch";
 import { GUIDES } from "@/lib/guides";
 import { photoEffectKinds } from "@/lib/photo-effects";
+import { routing } from "@/i18n/routing";
 // Analytics needs the locale-prefixed URL, not the locale-stripped navigation helper.
 // eslint-disable-next-line no-restricted-imports
 import { usePathname } from "next/navigation";
@@ -23,7 +24,7 @@ const ROUTES = new Set([
 ]);
 function routeName(pathname: string) {
   const [, language, ...parts] = pathname.split("/");
-  const locale = language === "en" || language === "zh" ? language : "unknown";
+  const locale = (routing.locales as readonly string[]).includes(language) ? language : "unknown";
   const path = parts.join("/").replace(/\/$/, "");
   if (ROUTES.has(path)) return `/${locale}${path ? `/${path}` : ""}`;
   for (const prefix of ["videos", "admin/users", "blog/tags", "blog"]) {

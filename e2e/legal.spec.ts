@@ -4,9 +4,9 @@ const pages = [
   { path: "/en/privacy", heading: "Privacy Policy" },
   { path: "/en/terms", heading: "Terms of Service" },
   { path: "/en/refund", heading: "Refund Policy" },
-  { path: "/zh/privacy", heading: "隐私政策" },
-  { path: "/zh/terms", heading: "服务条款" },
-  { path: "/zh/refund", heading: "退款政策" },
+  { path: "/es/privacy", heading: "Política de privacidad" },
+  { path: "/es/terms", heading: "Términos del servicio" },
+  { path: "/es/refund", heading: "Política de reembolsos" },
 ];
 
 for (const { path, heading } of pages) {
@@ -23,12 +23,12 @@ for (const { path, heading } of pages) {
 }
 
 test("footer links to the legal pages in the current locale", async ({ page }) => {
-  await page.goto("/zh");
+  await page.goto("/es");
 
   const footer = page.getByRole("contentinfo");
-  await footer.getByRole("link", { name: "退款政策" }).click();
+  await footer.getByRole("link", { name: "Reembolsos" }).click();
 
-  await expect(page).toHaveURL("/zh/refund");
+  await expect(page).toHaveURL("/es/refund");
   await expect(footer.getByRole("link", { name: "support@windowpeeper.org" })).toBeVisible();
 });
 
@@ -62,11 +62,11 @@ test("document nav marks the current page and switches documents", async ({
 });
 
 for (const width of [320, 375]) {
-  test(`/zh/privacy fits ${width}px without horizontal scrolling`, async ({
+  test(`/es/privacy fits ${width}px without horizontal scrolling`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 812 });
-    await page.goto("/zh/privacy");
+    await page.goto("/es/privacy");
 
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - window.innerWidth,

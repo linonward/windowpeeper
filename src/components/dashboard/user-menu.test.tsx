@@ -42,9 +42,9 @@ const user = { name: "Ada Lovelace", email: "ada@example.com" };
 
 const withCredits = (ui: React.ReactElement) => <CreditsProvider balance={10}>{ui}</CreditsProvider>;
 
-function open(props: Partial<typeof user> = {}, locale: "en" | "zh" = "en") {
+function open(props: Partial<typeof user> = {}, locale: "en" | "es" = "en") {
   renderWithIntl(withCredits(<UserMenu {...user} {...props} />), locale);
-  fireEvent.click(screen.getByRole("button", { name: /Account menu|账户菜单/ }));
+  fireEvent.click(screen.getByRole("button", { name: /Account menu|Menú de la cuenta/ }));
 }
 
 test("the trigger shows the user's initial and email", () => {
@@ -81,8 +81,8 @@ test("switches the language on the current page", async () => {
 
   fireEvent.click(await screen.findByRole("menuitem", { name: "Language: English" }));
 
-  expect((await screen.findByRole("menuitem", { name: "中文" })).getAttribute("href")).toBe(
-    "/zh/dashboard",
+  expect((await screen.findByRole("menuitem", { name: "Español" })).getAttribute("href")).toBe(
+    "/es/dashboard",
   );
 });
 
@@ -108,7 +108,7 @@ test("signs out, loading the auth client only then", async () => {
 });
 
 test("is translated", async () => {
-  open({}, "zh");
+  open({}, "es");
 
-  expect(await screen.findByRole("menuitem", { name: "10 剩余积分" })).toBeTruthy();
+  expect(await screen.findByRole("menuitem", { name: "10 créditos restantes" })).toBeTruthy();
 });

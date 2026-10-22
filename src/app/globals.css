@@ -117,9 +117,9 @@
 }
 
 /* Big Shoulders for titles and numbers; Instrument Sans for sentences;
-   JetBrains Mono for labels and timecodes. CJK falls back to the system sans. */
+   JetBrains Mono for labels and timecodes. */
 @theme {
-  --font-display: var(--font-big-shoulders), "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-display: var(--font-big-shoulders), sans-serif;
   --color-surface: var(--card);
 }
 
@@ -132,7 +132,7 @@
 }
 
 @layer components {
-  /* Latin display text gets tighter tracking; CJK keeps normal spacing. */
+  /* English display text gets tighter tracking. */
   .display-tight:lang(en) {
     letter-spacing: -0.022em;
   }
@@ -146,16 +146,10 @@
     text-transform: uppercase;
     color: var(--primary-text);
   }
-  .eyebrow:lang(zh) {
-    letter-spacing: 0.08em;
-  }
 
-  /* Long-form legal text: Latin reads at 1.75, CJK needs a little more. */
+  /* Long-form legal text reads at 1.75. */
   .legal-prose {
     line-height: 1.75;
-  }
-  .legal-prose:lang(zh) {
-    line-height: 1.85;
   }
 
   /* Icon motion: the signature interaction. Transform and opacity only. */

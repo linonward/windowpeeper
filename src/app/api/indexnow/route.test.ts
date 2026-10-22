@@ -17,7 +17,7 @@ const post = (authorization?: string) =>
 beforeEach(() => {
   vi.resetAllMocks();
   vi.stubEnv("INDEXNOW_KEY", "0123456789abcdef");
-  vi.mocked(sitemap).mockResolvedValue([{ url: "https://example.com/en" }, { url: "https://example.com/zh" }]);
+  vi.mocked(sitemap).mockResolvedValue([{ url: "https://example.com/en" }, { url: "https://example.com/es" }]);
   vi.mocked(submitUrls).mockResolvedValue({ submitted: 2, status: 200 });
 });
 
@@ -26,7 +26,7 @@ test("submits every sitemap URL", async () => {
 
   expect(response.status).toBe(200);
   expect(await response.json()).toEqual({ submitted: 2, status: 200 });
-  expect(submitUrls).toHaveBeenCalledWith(["https://example.com/en", "https://example.com/zh"]);
+  expect(submitUrls).toHaveBeenCalledWith(["https://example.com/en", "https://example.com/es"]);
 });
 
 test("answers 502 when the search engines refuse", async () => {

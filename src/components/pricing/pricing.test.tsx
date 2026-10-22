@@ -17,7 +17,7 @@ const packs = [
   { id: "large", credits: 250, amount: 9990, currency: "usd" },
 ];
 const prices = { standard: 10, pro: 20 };
-const render = (locale?: "en" | "zh") =>
+const render = (locale?: "en" | "es") =>
   renderWithIntl(<Pricing packs={packs} featured="medium" prices={prices} />, locale);
 const cards = () =>
   Array.from(document.querySelector('[aria-labelledby="pricing-packs"] ul')!.children) as HTMLElement[];
@@ -80,7 +80,7 @@ test("the cost table lists each quality's resolution, wait and credits", () => {
 });
 
 test("renders in Chinese", () => {
-  render("zh");
+  render("es");
 
   expect(screen.getByRole("heading", { level: 1 }).textContent).not.toBe("Pay for the videos you make");
   expect(cards()).toHaveLength(3);

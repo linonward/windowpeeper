@@ -30,12 +30,12 @@ const urls = () => {
 };
 
 test("checkout returns to billing by default", async () => {
-  const response = await post({ packId: "small", locale: "zh" });
+  const response = await post({ packId: "small", locale: "es" });
 
   expect(await response.json()).toEqual({ url: "https://checkout.test/s" });
   expect(urls()).toEqual({
-    successUrl: "https://app.test/zh/billing?checkout=success",
-    cancelUrl: "https://app.test/zh/billing?checkout=cancel",
+    successUrl: "https://app.test/es/billing?checkout=success",
+    cancelUrl: "https://app.test/es/billing?checkout=cancel",
   });
 });
 

@@ -28,7 +28,7 @@ Icons: `lucide-react` only, stroke width set in `globals.css`. Tests sit next to
 
 ## Routes
 
-Every page sits under `src/app/[locale]/`. Locales are `en` (default) and `zh`; `/` redirects to `/en`. API routes have no locale prefix.
+Every page sits under `src/app/[locale]/`. Locales are `en` (default), `es` and `de`; `/` redirects to `/en`. Chinese (`zh`) was dropped: `next.config.ts` redirects `/zh/*` to `/en/*` permanently. API routes have no locale prefix.
 
 | Group         | Pages                         | Notes                                                                 |
 | ------------- | ----------------------------- | --------------------------------------------------------------------- |
@@ -39,7 +39,7 @@ Every page sits under `src/app/[locale]/`. Locales are `en` (default) and `zh`; 
 | —             | `[...rest]`                   | Calls `notFound()` for the localized 404 (`[locale]/not-found.tsx`). `src/app/not-found.tsx` covers paths outside a locale |
 | —             | `/indexnow.txt` | The IndexNow key, `INDEXNOW_KEY`, as plain text; 404 without it. `POST /api/indexnow` names it as `keyLocation` |
 | —             | `/sitemap.xml`, `/robots.txt`, `/llms.txt` | The sitemap lists home, legal, pricing, blog and each locale's posts, with `hreflang` alternates (a post links only its locales). The home pages share a domain-root `WebSite` identity and name the brand in Open Graph metadata. Pages name the same canonical URL and alternates (`languageAlternates`, `src/lib/seo.ts`); next-intl's `hreflang` Link header is off (`alternateLinks: false`). `robots.txt` allows all but `/api/`. `llms.txt` ([llmstxt.org](https://llmstxt.org)) gives the name, description, landing copy and links to public pages and posts. All three read `BETTER_AUTH_URL` per request |
-| —             | `opengraph-image`, `blog/[slug]/opengraph-image-<hash>` | 1200×630 PNGs rendered by `next/og` from `src/app/_lib/og-image.tsx` at build time. Chinese text loads Noto Sans SC from Google Fonts when the image renders |
+| —             | `opengraph-image`, `blog/[slug]/opengraph-image-<hash>` | 1200×630 PNGs rendered by `next/og` from `src/app/_lib/og-image.tsx` at build time |
 | `api/`        | `auth/[...all]`, `health`, `admin/credits`, `admin/feedback/[id]/images/[index]`, `videos/[id]`, `videos/[id]/download`, `notifications`, `notifications/read`, `feedback`, `cron/sweep`, `indexnow`, `payment/{checkout,subscribe,portal}`, `webhooks/payment/[provider]` | Handlers call `src/server`. Signed-in routes use `withSession` (`api/_lib/with-session.ts`): 401 without a session; 403 `FORBIDDEN_ORIGIN` for a POST, PUT, PATCH or DELETE whose `Origin` is missing or not `BETTER_AUTH_URL`; 429 `RATE_LIMITED` with `Retry-After` past a per-user limit (`api/_lib/limits.ts`). Webhooks, cron, `indexnow` (the `CRON_SECRET` bearer; sends the sitemap URLs to IndexNow), health and `/api/auth` check their own callers |
 
 `next.config.ts` sends `Content-Security-Policy: frame-ancestors 'none'`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Strict-Transport-Security: max-age=63072000` (without `includeSubDomains` or `preload`) and `Referrer-Policy: strict-origin-when-cross-origin` with every response. To embed a page elsewhere, relax the frame headers for that path only.

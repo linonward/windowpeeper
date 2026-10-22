@@ -36,7 +36,7 @@ A minimal project template with a workflow for people and AI coding agents.
 
 ## Stack
 
-Next.js (App Router, TypeScript, `src/`), Tailwind CSS, shadcn/ui (Base UI), next-intl (en, zh, es, de), MDX, Better Auth (magic link, Google), Resend, Stripe or Waffo Pancake payments, PostgreSQL + Drizzle ORM (Docker Compose), the window peeper video with Alibaba Cloud Model Studio (Bailian wan2.7-r2v), S3-compatible storage (MinIO locally), pnpm, Vitest, Playwright.
+Next.js (App Router, TypeScript, `src/`), Tailwind CSS, shadcn/ui (Base UI), next-intl (en, es, de), MDX, Better Auth (magic link, Google), Resend, Stripe or Waffo Pancake payments, PostgreSQL + Drizzle ORM (Docker Compose), the window peeper video with Alibaba Cloud Model Studio (Bailian wan2.7-r2v), S3-compatible storage (MinIO locally), pnpm, Vitest, Playwright.
 
 ## Requirements
 

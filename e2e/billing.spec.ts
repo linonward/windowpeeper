@@ -76,9 +76,9 @@ test("subscribing and the portal need a session and a subscription", async ({ pa
 test("shows the result of a checkout the provider sent back", async ({ page }) => {
   await signIn(page);
 
-  await page.goto("/zh/billing?checkout=cancel");
+  await page.goto("/es/billing?checkout=cancel");
 
-  await expect(page.getByRole("status")).toHaveText("已取消支付，未扣款。");
+  await expect(page.getByRole("status")).toHaveText("Pago cancelado. No se te ha cobrado nada.");
 });
 
 test("checkout needs a session, then reports payments off", async ({ page, request }) => {

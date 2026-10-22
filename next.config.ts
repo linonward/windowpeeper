@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
   // Moved pages. Keeps old links, bookmarks and search results working.
   redirects: async () => [
+    // Chinese was dropped; its old pages go to the English ones.
+    { source: "/zh", destination: "/en", permanent: true },
+    { source: "/zh/:path*", destination: "/en/:path*", permanent: true },
     // The credit history moved into /billing.
     {
       source: `/:locale(${routing.locales.join("|")})/credits`,

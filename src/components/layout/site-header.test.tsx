@@ -37,11 +37,11 @@ test("both buttons are translated", () => {
       <AccountLink signedIn={false} />
       <AccountLink signedIn />
     </>,
-    "zh",
+    "es",
   );
 
-  expect(screen.getByRole("link", { name: "登录" }).getAttribute("href")).toBe("/zh/sign-in");
-  expect(screen.getByRole("link", { name: "控制台" }).getAttribute("href")).toBe("/zh/videos");
+  expect(screen.getByRole("link", { name: "Iniciar sesión" }).getAttribute("href")).toBe("/es/sign-in");
+  expect(screen.getByRole("link", { name: "Panel" }).getAttribute("href")).toBe("/es/videos");
 });
 
 test.each([

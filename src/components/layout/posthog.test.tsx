@@ -92,7 +92,7 @@ it("rotates expired identifiers and tolerates blocked storage", async () => {
     const view = render(<PostHogPageviews />);
     await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(2));
     const id = JSON.parse(fetcher.mock.calls[1][1].body).distinct_id;
-    pathname = "/zh/pricing"; view.rerender(<PostHogPageviews />);
+    pathname = "/es/pricing"; view.rerender(<PostHogPageviews />);
     await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(3));
     expect(JSON.parse(fetcher.mock.calls[2][1].body).distinct_id).toBe(id);
   } finally { read.mockRestore(); write.mockRestore(); }
@@ -113,10 +113,10 @@ it("retries failed identification on navigation without repeating successful ide
 
 it("records each guide under its own route", async () => {
   const fetcher = enabled();
-  pathname = "/zh/how-to-make-window-peeper-video";
+  pathname = "/es/how-to-make-window-peeper-video";
   render(<PostHogPageviews />);
   await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(1));
-  expect(JSON.parse(fetcher.mock.calls[0][1].body).properties.$pathname).toBe("/zh/how-to-make-window-peeper-video");
+  expect(JSON.parse(fetcher.mock.calls[0][1].body).properties.$pathname).toBe("/es/how-to-make-window-peeper-video");
 });
 it("sets the visitor's first touch once on the person with $identify and page views", async () => {
   const fetcher = enabled();

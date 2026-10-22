@@ -137,16 +137,16 @@ test("an unknown user id gets the 404 page", async ({ page }) => {
 test("the admin page fits a phone in Chinese", async ({ page }) => {
   await signIn(page, ADMIN);
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("/zh/admin/users");
+  await page.goto("/es/admin/users");
 
-  await expect(page.getByRole("heading", { level: 1, name: "用户" })).toBeVisible();
-  await expect(page.getByRole("table", { name: "用户" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Usuarios" })).toBeVisible();
+  await expect(page.getByRole("table", { name: "Usuarios" })).toBeVisible();
   const overflow = () =>
     page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(await overflow()).toBeLessThanOrEqual(0);
 
-  await page.getByRole("table", { name: "用户" }).getByRole("link").first().click();
-  await expect(page.getByRole("region", { name: "资料" })).toBeVisible();
+  await page.getByRole("table", { name: "Usuarios" }).getByRole("link").first().click();
+  await expect(page.getByRole("region", { name: "Perfil" })).toBeVisible();
   expect(await overflow()).toBeLessThanOrEqual(0);
 });
 
@@ -234,10 +234,10 @@ test("the orders page fits a phone in Chinese", async ({ page }) => {
   await signIn(page, ADMIN);
   await page.setViewportSize({ width: 375, height: 812 });
 
-  await page.goto(`/zh/admin/orders?q=${encodeURIComponent(buyer)}`);
+  await page.goto(`/es/admin/orders?q=${encodeURIComponent(buyer)}`);
 
-  await expect(page.getByRole("heading", { level: 1, name: "订单" })).toBeVisible();
-  await expect(page.getByRole("table", { name: "订单" })).toContainText("已支付");
+  await expect(page.getByRole("heading", { level: 1, name: "Pedidos" })).toBeVisible();
+  await expect(page.getByRole("table", { name: "Pedidos" })).toContainText("Pagado");
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 });
 
@@ -268,10 +268,10 @@ test("the metrics page fits a phone in Chinese", async ({ page }) => {
   await signIn(page, ADMIN);
   await page.setViewportSize({ width: 375, height: 812 });
 
-  await page.goto("/zh/admin/metrics");
+  await page.goto("/es/admin/metrics");
 
-  await expect(page.getByRole("heading", { level: 1, name: "运营指标" })).toBeVisible();
-  await expect(page.getByRole("table", { name: "生成任务" })).toContainText("视频");
+  await expect(page.getByRole("heading", { level: 1, name: "Métricas" })).toBeVisible();
+  await expect(page.getByRole("table", { name: "Generaciones" })).toContainText("Videos");
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 });
 

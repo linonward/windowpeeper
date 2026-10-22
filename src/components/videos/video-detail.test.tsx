@@ -65,10 +65,10 @@ test("explains a pending or failed video and has nothing to play or download", (
 });
 
 test("renders in Chinese", () => {
-  renderWithIntl(<VideoDetail video={done} />, "zh");
+  renderWithIntl(<VideoDetail video={done} />, "es");
 
-  expect(screen.getByRole("heading", { level: 1, name: "视频详情" })).toBeTruthy();
-  expect(screen.getByText("已完成")).toBeTruthy();
+  expect(screen.getByRole("heading", { level: 1, name: "Detalles del video" })).toBeTruthy();
+  expect(screen.getByText("Listo")).toBeTruthy();
 });
 
 test("the player shows the video's own poster frame when it has one", () => {

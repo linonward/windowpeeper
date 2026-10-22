@@ -13,7 +13,7 @@ test("announces loading without showing text", () => {
 });
 
 test("is translated", () => {
-  renderWithIntl(<ListSkeleton controls="filters" columns={["w-40"]} />, "zh");
+  renderWithIntl(<ListSkeleton controls="filters" columns={["w-40"]} />, "es");
 
-  expect(screen.getByRole("status", { name: "加载中…" })).toBeTruthy();
+  expect(screen.getByRole("status", { name: "Cargando…" })).toBeTruthy();
 });

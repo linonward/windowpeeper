@@ -56,10 +56,10 @@ test("explains an empty list, with or without filters", () => {
   expect(screen.getByText("No orders match these filters.")).toBeTruthy();
 });
 
-test("renders in Chinese", () => {
-  renderWithIntl(<OrderTable orders={orders} />, "zh");
+test("renders in Spanish", () => {
+  renderWithIntl(<OrderTable orders={orders} />, "es");
 
-  expect(screen.getByRole("table", { name: "订单" })).toBeTruthy();
-  expect(screen.getByText("已支付")).toBeTruthy();
-  expect(screen.getByText("1,200 积分")).toBeTruthy();
+  expect(screen.getByRole("table", { name: "Pedidos" })).toBeTruthy();
+  expect(screen.getByText("Pagado")).toBeTruthy();
+  expect(screen.getByText(/^1\.?200 créditos$/)).toBeTruthy();
 });

@@ -35,7 +35,7 @@ export function ogImage({
   return new ImageResponse(
     (
       <div
-        lang={locale === "zh" ? "zh-CN" : locale}
+        lang={locale}
         style={{
           width: "100%",
           height: "100%",

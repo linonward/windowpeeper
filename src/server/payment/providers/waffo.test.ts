@@ -77,9 +77,9 @@ test("creates a checkout session for the pack's own product, priced from the pac
     orderId: "order-1",
     pack: { id: "small", credits: 10, amount: 990, currency: "usd" },
     email: "ada@example.com",
-    locale: "zh",
-    successUrl: "https://app.test/zh/billing?checkout=success",
-    cancelUrl: "https://app.test/zh/billing?checkout=cancel",
+    locale: "es",
+    successUrl: "https://app.test/es/billing?checkout=success",
+    cancelUrl: "https://app.test/es/billing?checkout=cancel",
   });
 
   expect(session).toEqual({ sessionId: "cs_1", url: "https://pancake.waffo.ai/store/s/checkout/cs_1" });
@@ -90,8 +90,8 @@ test("creates a checkout session for the pack's own product, priced from the pac
       priceSnapshot: expect.objectContaining({ amount: "9.90" }),
       buyerEmail: "ada@example.com",
       orderMerchantExternalId: "order-1",
-      successUrl: "https://app.test/zh/billing?checkout=success",
-      language: "zh-Hans",
+      successUrl: "https://app.test/es/billing?checkout=success",
+      language: "es-MX",
     }),
     { idempotencyKey: "order-1" },
   );

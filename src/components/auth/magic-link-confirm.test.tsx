@@ -24,8 +24,8 @@ test("leaves the callback out when the link has none", () => {
 });
 
 test("a link without a token sends the visitor back to sign in", () => {
-  renderWithIntl(<MagicLinkConfirm />, "zh");
+  renderWithIntl(<MagicLinkConfirm />, "es");
 
   expect(screen.queryByRole("button")).toBeNull();
-  expect(screen.getByRole("link", { name: "重新登录" }).getAttribute("href")).toBe("/zh/sign-in");
+  expect(screen.getByRole("link", { name: "Volver a iniciar sesión" }).getAttribute("href")).toBe("/es/sign-in");
 });
