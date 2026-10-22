@@ -182,3 +182,21 @@ test("a short balance turns the button into Buy credits, which opens the dialog"
   expect(openBuy).toHaveBeenCalled();
   expect(fetchMock).not.toHaveBeenCalled();
 });
+
+// next-intl reports ENVIRONMENT_FALLBACK when relativeTime gets no `now`.
+test("a ready video says how long ago it was made, with the current time passed in", () => {
+  vi.useFakeTimers({ now: new Date("2026-10-15T00:05:00.000Z"), toFake: ["Date"] });
+  const errors = vi.spyOn(console, "error").mockImplementation(() => {});
+  const ready = {
+    ...pending,
+    status: "succeeded" as const,
+    url: "https://storage.test/new.mp4",
+    createdAt: new Date("2026-10-15T00:00:00.000Z"),
+  };
+  renderWithIntl(<EffectGenerator {...props} videos={[ready]} />);
+
+  const recent = screen.getByRole("region", { name: "Recent videos" });
+  expect(within(recent).getByText("Ready · 5 minutes ago")).toBeTruthy();
+  expect(errors.mock.calls.flat().join(" ")).not.toContain("ENVIRONMENT_FALLBACK");
+  errors.mockRestore();
+});
