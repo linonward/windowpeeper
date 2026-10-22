@@ -13,9 +13,9 @@ vi.mock("@/i18n/navigation", () => ({
 afterEach(cleanup);
 
 const surfaces = {
-  tiptoe: (
+  windowpeeper: (
     <EffectGenerator
-      kind="tiptoe"
+      kind="windowpeeper"
       balance={100}
       credits={10}
       maxPickBytes={5 * 1024 * 1024}

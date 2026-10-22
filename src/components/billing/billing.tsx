@@ -28,7 +28,7 @@ export type BillingProps = {
   packs: readonly Pack[];
   // The pack recommended to start with, unless the pricing page chose one.
   featured: string;
-  // The tip-toe dance's prices, to say what each pack buys.
+  // The window peeper video's prices, to say what each pack buys.
   prices: VideoPrices;
   orders: Order[];
   // The newest credit ledger rows.

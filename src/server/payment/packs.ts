@@ -1,6 +1,6 @@
 // Credit packs for sale. Checkout prices them inline, so Stripe needs no
 // products or prices set up. Amounts are in the currency's smallest unit.
-// A tip-toe video costs 10 credits, a Pro one 20 (src/server/videos/tiptoe.ts):
+// A window peeper video costs 10 credits, a Pro one 20 (src/server/videos/window-peeper.ts):
 // small buys one video, medium one Pro video or two videos, large three
 // videos. Waffo sells each pack as the product its ID maps to, so keep the IDs.
 export const CREDIT_PACKS = [

@@ -208,7 +208,7 @@ test("estimates each model's cost from the jobs that succeeded", async () => {
     row: { prompt?: string; credits?: number; provider?: string; resolution?: string; duration?: number } = {},
   ) => ({
     userId,
-    prompt: "Tip-toe dance",
+    prompt: "Window peeper",
     duration: 12,
     provider: "dashscope",
     resolution: "720p",
@@ -220,7 +220,7 @@ test("estimates each model's cost from the jobs that succeeded", async () => {
   await getDb()
     .insert(video)
     .values([
-      // Tip-toe dances: 10 credits buy 720p, 20 buy 1080p. One made with
+      // Window peeper videos: 10 credits buy 720p, 20 buy 1080p. One made with
       // animate-move (9 seconds, Pro at 720p) counts as 720P.
       clip("succeeded", 1),
       clip("succeeded", 2),

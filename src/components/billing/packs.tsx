@@ -3,10 +3,10 @@ import { useTranslations } from "next-intl";
 // Shared by the pricing page (a server component) and billing, so no hooks
 // beyond translations.
 
-// The tip-toe dance's prices in credits, standard and Pro.
+// The window peeper video's prices in credits, standard and Pro.
 export type VideoPrices = { standard: number; pro: number };
 
-// What a pack buys in tip-toe videos: "3 videos", or "1 Pro video or 2
+// What a pack buys in window peeper videos: "3 videos", or "1 Pro video or 2
 // videos" when Pro videos use up its credits exactly.
 export function usePackBuys(prices: VideoPrices) {
   const t = useTranslations("Billing");

@@ -10,15 +10,15 @@ test("signed-out visitors are redirected before the page renders", async ({
   expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fdashboard");
 });
 
-test("the dashboard opens the tip-toe dance in a sidebar shell", async ({ page }) => {
+test("the dashboard opens the window peeper video in a sidebar shell", async ({ page }) => {
   const email = await signIn(page);
   await page.goto("/en/dashboard");
 
   // /dashboard opens /videos, which opens the first photo effect.
-  await expect(page).toHaveURL("/en/videos/tiptoe");
-  await expect(page.getByRole("heading", { level: 1, name: "Tip-toe dance" })).toBeVisible();
+  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page.getByRole("heading", { level: 1, name: "Window peeper" })).toBeVisible();
   const sidebar = page.getByRole("navigation", { name: "Dashboard navigation" });
-  await expect(sidebar.getByRole("link", { name: "Tip-toe dance", exact: true })).toHaveAttribute(
+  await expect(sidebar.getByRole("link", { name: "Window peeper", exact: true })).toHaveAttribute(
     "aria-current",
     "page",
   );
@@ -96,8 +96,8 @@ test("the account menu shows the balance and switches the language", async ({
   await menu.getByRole("menuitem", { name: "Language: English" }).focus();
   await page.keyboard.press("ArrowRight");
   await page.getByRole("menuitem", { name: "中文" }).click();
-  await expect(page).toHaveURL("/zh/videos/tiptoe");
-  await expect(page.getByRole("heading", { level: 1, name: "踮脚舞" })).toBeVisible();
+  await expect(page).toHaveURL("/zh/videos/windowpeeper");
+  await expect(page.getByRole("heading", { level: 1, name: "Window Peeper" })).toBeVisible();
 });
 
 test("the sidebar collapses to icons and stays collapsed after a reload", async ({ page }) => {

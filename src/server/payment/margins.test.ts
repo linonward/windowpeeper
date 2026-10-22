@@ -19,8 +19,8 @@ const qualities = (PHOTO_EFFECTS as readonly PhotoEffect[]).flatMap(({ kind, dur
   ...(pro ? [{ kind, duration, ...pro }] : []),
 ]);
 
-test("the tip-toe dance sells in both qualities", () => {
-  expect(qualities.map(({ kind, resolution }) => `${kind} ${resolution}`)).toEqual(["tiptoe 720P", "tiptoe 1080P"]);
+test("the window peeper video sells in both qualities", () => {
+  expect(qualities.map(({ kind, resolution }) => `${kind} ${resolution}`)).toEqual(["windowpeeper 720P", "windowpeeper 1080P"]);
 });
 
 test.each(offers)("$id sells every photo effect quality for at least 1.5 times its cost", ({ perCredit }) => {

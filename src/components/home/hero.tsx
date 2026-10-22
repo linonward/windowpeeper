@@ -1,14 +1,14 @@
 import { useTranslations } from "next-intl";
 import { projectConfig } from "project.config";
 import { Example, type HomeExample } from "./example";
-import { TiptoeTryout, type TiptoeTryoutProps } from "./tiptoe-tryout";
+import { WindowPeeperTryout, type WindowPeeperTryoutProps } from "./window-peeper-tryout";
 
-// The first screen: the tip-toe dance plays full width behind the headline,
+// The first screen: the window peeper video plays full width behind the headline,
 // then the generator and the example sit side by side on large screens.
 // Nothing stands between the headline and the generator, so the photo zone
 // shows in the first screen on phones and laptops alike.
 // The band slides under the glass header (-mt-16).
-export function Hero({ tryout, example }: { tryout: TiptoeTryoutProps; example?: HomeExample }) {
+export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; example?: HomeExample }) {
   const t = useTranslations("Home.hero");
 
   return (
@@ -40,7 +40,7 @@ export function Hero({ tryout, example }: { tryout: TiptoeTryoutProps; example?:
         </div>
       </div>
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-6 px-5 sm:px-8 lg:grid-cols-2">
-        <TiptoeTryout {...tryout} />
+        <WindowPeeperTryout {...tryout} />
         <Example example={example} />
       </div>
     </section>

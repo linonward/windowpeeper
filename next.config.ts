@@ -38,12 +38,12 @@ const nextConfig: NextConfig = {
       destination: "/:locale/billing",
       permanent: true,
     },
-    // The image-to-video generator is gone; /videos opens the tip-toe dance,
+    // The image-to-video generator is gone; /videos opens the window peeper video,
     // the only photo effect. Sign-in returns to /videos by default. Not
     // permanent, so /videos can become a page again.
     {
       source: `/:locale(${routing.locales.join("|")})/videos`,
-      destination: "/:locale/videos/tiptoe",
+      destination: "/:locale/videos/windowpeeper",
       permanent: false,
     },
   ],

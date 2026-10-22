@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-// The tip-toe dance a video follows, from public/: its MP4 and a poster
+// The window peeper video a video follows, from public/: its MP4 and a poster
 // frame. The copy describes that clip as the dance, not as a result.
 export type HomeExample = { sample: string; poster: string };
 

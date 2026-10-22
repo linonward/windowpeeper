@@ -173,7 +173,7 @@
     }
   },
   "HomeTryout": {
-    "title": "Make your Rumpelstiltskin meme video",
+    "title": "Make your window peeper video",
     "body": "One photo is all it takes. We make the whole 12-second scene.",
     "photo": {
       "choose": "Choose a photo",
@@ -219,13 +219,13 @@
       "title": "Your video is on its way",
       "body": "It usually takes a few minutes. Keep this page open, and the video plays here when it's ready."
     },
-    "ready": "Your tip-toe video is ready",
-    "video": "Your tip-toe dance video",
+    "ready": "Your window peeper video is ready",
+    "video": "Your window peeper video",
     "download": "Download",
     "share": {
       "button": "Share",
-      "title": "AI Rumpelstiltskin tip-toe dance",
-      "text": "I made my photo do the tip-toe dance. Make yours:",
+      "title": "Window peeper video",
+      "text": "I got caught in the window peeper trend. Make yours:",
       "copied": "Link copied"
     },
     "failed": "This video didn't work out. Your {credits, plural, one {# credit} other {# credits}} were refunded.",
@@ -1120,15 +1120,15 @@
       "moderation": "{photos, plural, one {The photo couldn't be checked right now. No credits were spent. Try again in a minute.} other {The photos couldn't be checked right now. No credits were spent. Try again in a minute.}}"
     },
     "kinds": {
-      "tiptoe": {
-        "title": "Tip-toe dance",
-        "description": "One photo becomes a 12-second video: in a cream tailcoat, you sneak through a hay barn and tip-toe like a storybook dwarf, to original music.",
+      "windowpeeper": {
+        "title": "Window peeper",
+        "description": "One photo becomes a 12-second video: a camera creeps up to your lit window at night, you freeze mid-bite, stare into the lens and pull the curtain shut. With original music.",
         "left": {
           "photo": "Your photo",
           "preview": "Your photo preview"
         },
-        "photoHint": "JPEG, PNG or WebP, up to {size} MB. One person, full body or waist up, facing the camera, in good light.",
-        "disabled": "The tip-toe dance isn't set up yet."
+        "photoHint": "JPEG, PNG or WebP, up to {size} MB. One person, waist up, facing the camera, in good light. Your outfit stays the same in the video.",
+        "disabled": "The window peeper video isn't set up yet."
       }
     }
   },

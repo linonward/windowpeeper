@@ -112,7 +112,7 @@ beforeEach(async () => {
     { method: "admin" },
   );
   userId = user.id;
-  // Enough for several tip-toe dances on top of the signup credits.
+  // Enough for several window peeper videos on top of the signup credits.
   await grantCredits({ userId, amount: 80, reason: "test", idempotencyKey: randomUUID() });
   vi.stubGlobal("fetch", vi.fn(async () => new Response(mp4, { headers: { "content-type": "video/mp4" } })));
 });
@@ -132,7 +132,7 @@ afterEach(async () => {
 
 const rows = () => getDb().select().from(video).where(eq(video.userId, userId));
 const create = (image: Uint8Array = jpeg, quality?: "standard" | "pro" | "preview", ratio?: "16:9" | "9:16") =>
-  createEffectVideo({ userId, kind: "tiptoe", images: [image], quality, ratio });
+  createEffectVideo({ userId, kind: "windowpeeper", images: [image], quality, ratio });
 
 test("with image moderation on, checks the stored photo before spending", async () => {
   moderation.enabled.mockReturnValue(true);
@@ -264,7 +264,7 @@ test("refresh copies a finished video to storage", async () => {
   await refreshVideo(userId, created.id);
   expect(dashscope.result).toHaveBeenCalledTimes(1);
   expect((await pageNotifications(userId)).notifications).toMatchObject([
-    { type: "video_succeeded", data: { videoId: created.id, prompt: "Tip-toe dance" } },
+    { type: "video_succeeded", data: { videoId: created.id, prompt: "Window peeper" } },
   ]);
 });
 
@@ -290,7 +290,7 @@ test("refresh refunds what was spent on a failed video, once", async () => {
   expect(await getBalance(userId)).toBe(before);
   expect(await rows()).toMatchObject([{ status: "failed", error: "Bailian task failed" }]);
   expect((await pageNotifications(userId)).notifications).toMatchObject([
-    { type: "video_failed", data: { videoId: created.id, prompt: "Tip-toe dance", credits: 20 } },
+    { type: "video_failed", data: { videoId: created.id, prompt: "Window peeper", credits: 20 } },
   ]);
 });
 
@@ -633,7 +633,7 @@ test("an upload that can't be deleted keeps its key, so a later run retries", as
 
 test.each([
   ["an unknown effect", "not-an-effect", [jpeg]],
-  ["two photos for a one-photo effect", "tiptoe", [jpeg, png]],
+  ["two photos for a one-photo effect", "windowpeeper", [jpeg, png]],
 ] as const)("%s spends nothing", async (_, kind, images) => {
   const before = await getBalance(userId);
 
@@ -643,16 +643,16 @@ test.each([
   expect(await getBalance(userId)).toBe(before);
 });
 
-test("the tip-toe dance is on with a Bailian key and storage", () => {
-  expect(effectOptions("tiptoe")).toEqual({ enabled: true, credits: 10, proCredits: 20 });
+test("the window peeper video is on with a Bailian key and storage", () => {
+  expect(effectOptions("windowpeeper")).toEqual({ enabled: true, credits: 10, proCredits: 20 });
   ai.state.motion = false;
-  expect(effectOptions("tiptoe").enabled).toBe(false);
+  expect(effectOptions("windowpeeper").enabled).toBe(false);
   ai.state.motion = true;
   storage.storageConfigured.mockReturnValue(false);
-  expect(effectOptions("tiptoe").enabled).toBe(false);
+  expect(effectOptions("windowpeeper").enabled).toBe(false);
 });
 
-test("a tip-toe dance stores one photo, queues one 12-second 720P job with the effect's prompt and spends 10 credits", async () => {
+test("a window peeper video stores one photo, queues one 12-second 720P job with the effect's prompt and spends 10 credits", async () => {
   const before = await getBalance(userId);
 
   const result = await create();
@@ -668,7 +668,7 @@ test("a tip-toe dance stores one photo, queues one 12-second 720P job with the e
     duration: 12,
   });
   expect(result).toMatchObject({
-    prompt: "Tip-toe dance",
+    prompt: "Window peeper",
     duration: 12,
     resolution: "720p",
     ratio: "16:9",
@@ -679,17 +679,17 @@ test("a tip-toe dance stores one photo, queues one 12-second 720P job with the e
   expect(await rows()).toMatchObject([{ provider: "dashscope", requestId: "dashscope-motion-1", imageKey: photo }]);
 });
 
-test("a Pro tip-toe dance queues a 1080P job and spends 20 credits", async () => {
+test("a Pro window peeper video queues a 1080P job and spends 20 credits", async () => {
   const before = await getBalance(userId);
 
   const result = await create(jpeg, "pro");
 
   expect(ai.motion.submit).toHaveBeenCalledWith(expect.objectContaining({ resolution: "1080P" }));
-  expect(result).toMatchObject({ prompt: "Tip-toe dance", resolution: "1080p", credits: 20, status: "pending" });
+  expect(result).toMatchObject({ prompt: "Window peeper", resolution: "1080p", credits: 20, status: "pending" });
   expect(await getBalance(userId)).toBe(before - 20);
 });
 
-test("a vertical tip-toe dance queues a 9:16 job at the same price and keeps its ratio", async () => {
+test("a vertical window peeper video queues a 9:16 job at the same price and keeps its ratio", async () => {
   const before = await getBalance(userId);
 
   const result = await create(jpeg, "pro", "9:16");
@@ -761,7 +761,7 @@ test("the database refuses a second live preview even when two arrive together",
   expect((await rows()).filter((row) => row.status !== "failed")).toHaveLength(1);
 });
 
-test("a tip-toe dance finishes through the dashscope provider, like any video", async () => {
+test("a window peeper video finishes through the dashscope provider, like any video", async () => {
   const created = await create();
   dashscope.result.mockResolvedValueOnce({ status: "succeeded", url: "https://dashscope.test/out.mp4" });
 
@@ -778,7 +778,7 @@ const jpegOfBytes = (bytes: number) => {
   return padded;
 };
 
-test("a tip-toe dance takes a 3.5 MB photo, under the 4 MB upload limit", async () => {
+test("a window peeper video takes a 3.5 MB photo, under the 4 MB upload limit", async () => {
   await expect(create(jpegOfBytes(3.5 * 1024 * 1024))).resolves.toMatchObject({ status: "pending" });
 });
 
@@ -786,7 +786,7 @@ test.each([
   ["a photo that isn't an image", new Uint8Array([1, 2, 3])],
   ["a photo over 4 MB", jpegOfBytes(4 * 1024 * 1024 + 1)],
   ["a photo whose size can't be read", png.slice(0, 12)],
-] as const)("a tip-toe dance rejects %s and spends nothing", async (_, image) => {
+] as const)("a window peeper video rejects %s and spends nothing", async (_, image) => {
   const before = await getBalance(userId);
 
   await expect(create(image)).rejects.toThrow(InvalidVideoRequestError);
@@ -795,7 +795,7 @@ test.each([
   expect(ai.motion.submit).not.toHaveBeenCalled();
 });
 
-test("a tip-toe dance's photo is deleted after a day, without looking for a second", async () => {
+test("a window peeper video's photo is deleted after a day, without looking for a second", async () => {
   const { id } = await create();
   await getDb()
     .update(video)

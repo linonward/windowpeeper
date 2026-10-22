@@ -48,7 +48,7 @@ Start when the effect is live at `/videos/<kind>` and has a good real result.
 ### Page
 
 - [ ] Route `src/app/[locale]/(marketing)/<path>/page.tsx` and `opengraph-image.tsx`.
-- [ ] Build the hero form. No shared landing components exist now: `EffectLanding`, `LandingTryout` and `MoreEffects` were removed with the old effect pages. The home page's `TiptoeTryout` (`src/components/home/tiptoe-tryout.tsx`) and `src/lib/photo-draft.ts` show the pattern.
+- [ ] Build the hero form. No shared landing components exist now: `EffectLanding`, `LandingTryout` and `MoreEffects` were removed with the old effect pages. The home page's `WindowPeeperTryout` (`src/components/home/window-peeper-tryout.tsx`) and `src/lib/photo-draft.ts` show the pattern.
 - [ ] Unit tests: the H1, the form, the real video and frames, the cost, the FAQ heading, en and zh.
 - [ ] E2E: the signed-out flow (pick photos, sign in in the dialog, the job starts on return).
 

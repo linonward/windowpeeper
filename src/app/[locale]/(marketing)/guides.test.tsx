@@ -159,7 +159,7 @@ test("the dance scene page says the scene is AI, tells it in order and compares 
     .map((item) => item.textContent);
   expect(beats[0]).toContain("barn");
   expect(beats.at(-1)).toContain("prince");
-  // The comparison states what the tip-toe effect makes (src/server/videos/tiptoe.ts).
+  // The comparison states what the tip-toe effect makes (src/server/videos/window-peeper.ts).
   const compare = screen.getByRole("region", { name: "The viral clip and a video made here" }).textContent;
   expect(compare).toContain("the person in your photo");
   expect(compare).toContain("no gold and no kiss");
