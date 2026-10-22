@@ -36,5 +36,11 @@ export default function ConfirmSignInPage({ searchParams }: PageProps<"/[locale]
 
 async function Confirm({ searchParams }: { searchParams: Query }) {
   const query = await searchParams;
-  return <MagicLinkConfirm token={one(query.token)} callbackURL={one(query.callbackURL)} />;
+  return (
+    <MagicLinkConfirm
+      token={one(query.token)}
+      callbackURL={one(query.callbackURL)}
+      errorCallbackURL={one(query.errorCallbackURL)}
+    />
+  );
 }

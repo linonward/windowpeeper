@@ -25,7 +25,7 @@ test("sign-in uses the shared visual system", async ({ page }) => {
     "font-family",
     /Big Shoulders/,
   );
-  const submit = page.getByRole("button", { name: "Send magic link" });
+  const submit = page.getByRole("button", { name: "Email me a sign-in link" });
   await expect(submit).toHaveCSS("border-top-left-radius", "10px");
   await expect(submit).toHaveCSS("background-color", await primaryColor(page));
   await expect(submit.locator("svg.lucide").first()).toHaveCSS("stroke-width", "1.75px");

@@ -26,7 +26,7 @@ afterEach(() => {
 
 function sendMagicLink() {
   fireEvent.change(screen.getByLabelText("Email"), { target: { value: "ada@example.com" } });
-  fireEvent.click(screen.getByRole("button", { name: "Send magic link" }));
+  fireEvent.click(screen.getByRole("button", { name: "Email me a sign-in link" }));
 }
 
 test("starts Google sign-in and returns to the videos page", async () => {
@@ -35,7 +35,11 @@ test("starts Google sign-in and returns to the videos page", async () => {
 
   fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
 
-  expect(social).toHaveBeenCalledWith({ provider: "google", callbackURL: "/videos" });
+  expect(social).toHaveBeenCalledWith({
+    provider: "google",
+    callbackURL: "/videos",
+    errorCallbackURL: "/sign-in?next=%2Fvideos",
+  });
 });
 
 test("explains when Google sign-in isn't configured", async () => {
@@ -69,7 +73,7 @@ test.each([
 
   fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
 
-  expect(social).toHaveBeenCalledWith({ provider: "google", callbackURL });
+  expect(social).toHaveBeenCalledWith(expect.objectContaining({ provider: "google", callbackURL }));
   window.history.replaceState(null, "", "/");
 });
 
@@ -81,7 +85,7 @@ test("a form in a dialog returns to the page that opened it, not to ?next=", asy
 
   renderWithIntl(<LoginForm returnTo={callbackURL} />);
   fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
-  expect(social).toHaveBeenCalledWith({ provider: "google", callbackURL });
+  expect(social).toHaveBeenCalledWith(expect.objectContaining({ provider: "google", callbackURL }));
 
   cleanup();
   renderWithIntl(<LoginForm returnTo={callbackURL} />);
@@ -101,6 +105,7 @@ test("without Turnstile, sends the magic link with no challenge", async () => {
   expect(magicLink).toHaveBeenCalledWith({
     email: "ada@example.com",
     callbackURL: "/videos",
+    errorCallbackURL: "/sign-in?next=%2Fvideos",
     fetchOptions: { headers: {} },
   });
 });
@@ -109,7 +114,7 @@ test("with Turnstile, waits for the challenge and sends its token", async () => 
   magicLink.mockResolvedValue({ data: { status: true }, error: null });
   renderWithIntl(<LoginForm turnstileSiteKey="site-key" />);
 
-  const send = screen.getByRole("button", { name: "Send magic link" });
+  const send = screen.getByRole("button", { name: "Email me a sign-in link" });
   expect(send).toHaveProperty("disabled", true);
 
   fireEvent.click(screen.getByRole("button", { name: "Solve challenge" }));
@@ -120,6 +125,7 @@ test("with Turnstile, waits for the challenge and sends its token", async () => 
   expect(magicLink).toHaveBeenCalledWith({
     email: "ada@example.com",
     callbackURL: "/videos",
+    errorCallbackURL: "/sign-in?next=%2Fvideos",
     fetchOptions: { headers: { "x-captcha-response": "turnstile-token" } },
   });
 });
@@ -132,5 +138,60 @@ test("a token is used once: after a failed send, the challenge runs again", asyn
   sendMagicLink();
 
   await screen.findByRole("alert");
-  expect(screen.getByRole("button", { name: "Send magic link" })).toHaveProperty("disabled", true);
+  expect(screen.getByRole("button", { name: "Email me a sign-in link" })).toHaveProperty("disabled", true);
+});
+
+// The method is kept in this browser only, never sent to the server.
+test("tags the method used last on this device", async () => {
+  localStorage.setItem("windowpeeper:last-sign-in", "email");
+  social.mockResolvedValue({ data: { redirect: true }, error: null });
+  renderWithIntl(<LoginForm />);
+
+  const send = screen.getByRole("button", { name: "Email me a sign-in link" });
+  expect(send.parentElement?.textContent).toContain("Last used");
+  expect(screen.getAllByText("Last used")).toHaveLength(1);
+
+  fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
+  expect(localStorage.getItem("windowpeeper:last-sign-in")).toBe("google");
+  localStorage.clear();
+});
+
+test("with no method used yet, nothing is tagged", () => {
+  renderWithIntl(<LoginForm />);
+
+  expect(screen.queryByText("Last used")).toBeNull();
+});
+
+test("shows an example address and links the terms and the privacy policy", () => {
+  renderWithIntl(<LoginForm />);
+
+  expect(screen.getByLabelText("Email").getAttribute("placeholder")).toBe("you@example.com");
+  expect(screen.getByRole("link", { name: "Terms" }).getAttribute("href")).toBe("/terms");
+  expect(screen.getByRole("link", { name: "Privacy Policy" }).getAttribute("href")).toBe("/privacy");
+});
+
+test("says where the link went and how long it lasts", async () => {
+  magicLink.mockResolvedValue({ data: {}, error: null });
+  renderWithIntl(<LoginForm />);
+
+  sendMagicLink();
+
+  const status = await screen.findByRole("status");
+  expect(status.textContent).toContain("ada@example.com");
+  expect(status.textContent).toContain("expires in 5 minutes");
+  expect(localStorage.getItem("windowpeeper:last-sign-in")).toBe("email");
+  localStorage.clear();
+});
+
+// Better Auth adds ?error= to errorCallbackURL when a sign-in fails.
+test.each([
+  ["EXPIRED_TOKEN", "That sign-in link has expired or was already used. Send a new one."],
+  ["INVALID_TOKEN", "That sign-in link has expired or was already used. Send a new one."],
+  ["access_denied", "Sign-in didn't finish. Try again."],
+])("back from a failed sign-in (%s), says why", (error, message) => {
+  window.history.replaceState(null, "", `/sign-in?next=%2Fbilling&error=${error}`);
+  renderWithIntl(<LoginForm />);
+
+  expect(screen.getByRole("alert").textContent).toBe(message);
+  window.history.replaceState(null, "", "/");
 });

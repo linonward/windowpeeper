@@ -218,16 +218,22 @@
   },
   "SignIn": {
     "title": "Anmelden",
-    "subtitle": "Kein Passwort, das du dir merken musst. Wir schicken dir einen Link per E-Mail, oder du machst mit Google weiter."
+    "subtitle": "Neu hier? Mit der Anmeldung entsteht dein Konto. Ohne Passwort.",
+    "heading": "Bei WindowPeeper anmelden"
   },
   "LoginForm": {
     "google": "Weiter mit Google",
     "googleError": "Die Anmeldung mit Google ist nicht verfügbar. Nutze stattdessen einen Magic Link.",
     "or": "oder",
     "email": "E-Mail",
-    "send": "Magic Link senden",
-    "sent": "Schau in deine E-Mails, dort wartet ein Anmeldelink.",
-    "sendError": "Der Link konnte nicht gesendet werden. Versuch es nochmal."
+    "send": "Anmeldelink per E-Mail senden",
+    "sent": "Schau in deine E-Mails. Wir haben einen Anmeldelink an {email} geschickt. Er funktioniert einmal und läuft nach 5 Minuten ab.",
+    "sendError": "Der Link konnte nicht gesendet werden. Versuch es nochmal.",
+    "placeholder": "du@beispiel.de",
+    "lastUsed": "Zuletzt genutzt",
+    "terms": "Mit der Anmeldung stimmst du unseren <terms>Nutzungsbedingungen</terms> und der <privacy>Datenschutzerklärung</privacy> zu.",
+    "linkError": "Dieser Anmeldelink ist abgelaufen oder wurde schon benutzt. Fordere einen neuen an.",
+    "signInError": "Die Anmeldung wurde nicht abgeschlossen. Versuch es nochmal."
   },
   "MagicLinkConfirm": {
     "title": "Anmeldung abschließen",

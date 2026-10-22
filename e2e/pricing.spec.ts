@@ -68,7 +68,7 @@ test("a signed-out visitor signs in on the price list, then checkout opens for t
 
   const dialog = page.getByRole("dialog", { name: "Sign in to buy credits" });
   await dialog.getByLabel("Email").fill(email);
-  await dialog.getByRole("button", { name: "Send magic link" }).click();
+  await dialog.getByRole("button", { name: "Email me a sign-in link" }).click();
   await page.goto(await readMagicLink(email));
   const checkout = checkoutFrom(page);
   await page.getByRole("button", { name: "Continue signing in" }).click();

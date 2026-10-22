@@ -4,7 +4,15 @@ import { Link } from "@/i18n/navigation";
 
 // The step between the email and Better Auth's verify endpoint. A plain GET
 // form, so it works without JavaScript; only a press sends the token.
-export function MagicLinkConfirm({ token, callbackURL }: { token?: string; callbackURL?: string }) {
+export function MagicLinkConfirm({
+  token,
+  callbackURL,
+  errorCallbackURL,
+}: {
+  token?: string;
+  callbackURL?: string;
+  errorCallbackURL?: string;
+}) {
   const t = useTranslations("MagicLinkConfirm");
 
   if (!token) {
@@ -22,6 +30,7 @@ export function MagicLinkConfirm({ token, callbackURL }: { token?: string; callb
     <form method="get" action="/api/auth/magic-link/verify" className="flex flex-col gap-4">
       <input type="hidden" name="token" value={token} />
       {callbackURL && <input type="hidden" name="callbackURL" value={callbackURL} />}
+      {errorCallbackURL && <input type="hidden" name="errorCallbackURL" value={errorCallbackURL} />}
       <Button type="submit" size="lg">
         {t("continue")}
       </Button>

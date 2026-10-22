@@ -126,7 +126,7 @@ test("the legal and sign-in pages describe themselves", async ({ page }) => {
     "/privacy": "How WindowPeeper collects, uses, shares and protects your personal information.",
     "/es/terms": "Las condiciones para usar WindowPeeper: tu cuenta, el uso aceptable, tu contenido y los pagos.",
     "/refund": "When WindowPeeper refunds a purchase, and how to ask for a refund.",
-    "/sign-in": "No password to remember. We email you a link, or you continue with Google.",
+    "/sign-in": "New here? Signing in creates your account. No password needed.",
   };
   for (const [path, description] of Object.entries(descriptions)) {
     await page.goto(path);
