@@ -27,7 +27,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 const user = { name: "Ada Lovelace", email: "ada@example.com" };
-const TIPTOE = en.PhotoEffects.kinds.tiptoe.title;
+const WINDOW_PEEPER = en.PhotoEffects.kinds.windowpeeper.title;
 
 function renderSidebar(isAdmin: boolean) {
   renderWithIntl(
@@ -80,15 +80,15 @@ test("the video library sits under the video generator", () => {
   expect(library.getAttribute("aria-current")).toBe("page");
 });
 
-test("the tip-toe dance sits under the video generator", () => {
-  pathname = "/videos/tiptoe";
+test("the window peeper video sits under the video generator", () => {
+  pathname = "/videos/windowpeeper";
   const nav = renderSidebar(false);
 
   const videos = within(nav).getByRole("link", { name: "Video generator" });
-  const tiptoe = within(nav).getByRole("link", { name: TIPTOE });
-  expect(tiptoe.getAttribute("href")).toBe("/en/videos/tiptoe");
-  expect(videos.closest("li")?.contains(tiptoe)).toBe(true);
-  expect(tiptoe.getAttribute("aria-current")).toBe("page");
+  const windowpeeper = within(nav).getByRole("link", { name: WINDOW_PEEPER });
+  expect(windowpeeper.getAttribute("href")).toBe("/en/videos/windowpeeper");
+  expect(videos.closest("li")?.contains(windowpeeper)).toBe(true);
+  expect(windowpeeper.getAttribute("aria-current")).toBe("page");
 });
 
 // The loading skeleton reads this attribute on the next full page load.
@@ -123,7 +123,7 @@ test("groups the tools under Create, and billing under Account", () => {
   // Every photo effect, by its title, before the library.
   const effects = photoEffectKinds.map((kind) => en.PhotoEffects.kinds[kind].title);
   expect(names("Create")).toEqual(["Video generator", ...effects, "All videos"]);
-  expect(effects).toEqual([TIPTOE]);
+  expect(effects).toEqual([WINDOW_PEEPER]);
   expect(names("Account")).toEqual(["Credits & billing"]);
   expect(within(nav).queryByRole("link", { name: "Feedback" })).toBeNull();
   expect(within(nav).queryByRole("link", { name: "Dashboard" })).toBeNull();

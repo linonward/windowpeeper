@@ -173,7 +173,7 @@
     }
   },
   "HomeTryout": {
-    "title": "做你的侏儒怪表情包视频",
+    "title": "制作你的 Window Peeper 视频",
     "body": "一张照片就够，整段 12 秒的场景由我们来做。",
     "photo": {
       "choose": "选择照片",
@@ -219,13 +219,13 @@
       "title": "视频正在生成",
       "body": "通常需要几分钟。保持页面打开，视频好了会在这里播放。"
     },
-    "ready": "你的踮脚舞视频好了",
-    "video": "你的踮脚舞视频",
+    "ready": "你的 Window Peeper 视频已生成",
+    "video": "你的 Window Peeper 视频",
     "download": "下载",
     "share": {
       "button": "分享",
-      "title": "AI 侏儒怪踮脚舞",
-      "text": "我让照片跳起了踮脚舞，你也来试试：",
+      "title": "Window Peeper 视频",
+      "text": "我被 Window Peeper 镜头抓到了。你也来做一个：",
       "copied": "链接已复制"
     },
     "failed": "这段视频没有生成成功，{credits} 积分已退回。",
@@ -1120,15 +1120,15 @@
       "moderation": "暂时无法检查照片，没有扣积分。请一分钟后重试。"
     },
     "kinds": {
-      "tiptoe": {
-        "title": "踮脚舞",
-        "description": "上传一张照片，生成一段 12 秒的视频：你穿上米白色燕尾服，在干草谷仓里像童话里的小矮人一样踮脚跳舞，配原创音乐。",
+      "windowpeeper": {
+        "title": "Window Peeper",
+        "description": "上传一张照片，生成一段 12 秒的视频：夜里镜头慢慢推近你亮着灯的窗户，你吃到一半突然僵住，盯着镜头，然后拉上窗帘。配原创音乐。",
         "left": {
           "photo": "你的照片",
           "preview": "你的照片预览"
         },
-        "photoHint": "JPEG、PNG 或 WebP，不超过 {size} MB。照片里一个人，全身或半身，正脸，光线充足。",
-        "disabled": "踮脚舞尚未配置。"
+        "photoHint": "JPEG、PNG 或 WebP，不超过 {size} MB。照片里一个人，半身，正脸，光线充足。视频里会保留你照片中的衣服。",
+        "disabled": "Window Peeper 视频尚未配置。"
       }
     }
   },

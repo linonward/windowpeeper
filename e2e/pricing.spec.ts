@@ -1,8 +1,8 @@
 import { expect, type Page, test } from "@playwright/test";
 import { signIn } from "./support/auth";
 
-// CREDIT_PACKS (src/server/payment/packs.ts) and the tip-toe dance's prices
-// (src/server/videos/tiptoe.ts): each pack is titled by the videos it buys.
+// CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper video's prices
+// (src/server/videos/window-peeper.ts): each pack is titled by the videos it buys.
 const PACKS = [
   ["1 video", "$4.99", "10 credits"],
   ["1 Pro video", "$7.99", "or 2 videos"],

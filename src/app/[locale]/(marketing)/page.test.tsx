@@ -38,7 +38,7 @@ test("the badge above the h1 names the brand and where the meme trends", () => {
 test("the generator sits in the hero, with the video's price on its button", () => {
   renderWithIntl(<Page />);
 
-  const generator = screen.getByRole("region", { name: "Make your Rumpelstiltskin meme video" });
+  const generator = screen.getByRole("region", { name: "Make your window peeper video" });
   expect(screen.getByRole("heading", { level: 1 }).closest("section")?.contains(generator)).toBe(true);
   expect(within(generator).getByLabelText("Your photo")).toBeDefined();
   expect(within(generator).getByRole("button", { name: /^Generate \(\d+ credits\)$/ })).toBeDefined();
@@ -54,7 +54,7 @@ test("the hero plays the dance behind the headline, with no buttons before the g
   const backdrop = hero.querySelector("video[aria-hidden='true']") as HTMLVideoElement;
   expect(backdrop.getAttribute("src")).toBe("/landing/tiptoe/sample.mp4");
   expect(backdrop.muted && backdrop.loop && backdrop.autoplay).toBe(true);
-  const generator = screen.getByRole("region", { name: "Make your Rumpelstiltskin meme video" });
+  const generator = screen.getByRole("region", { name: "Make your window peeper video" });
   // Links in the hero belong to the generator (sign-in, terms), never above it.
   expect(within(hero).queryAllByRole("link").filter((link) => !generator.contains(link))).toEqual([]);
 });
@@ -63,7 +63,7 @@ test("the sections follow the generator: the example, steps, the explainer, pric
   renderWithIntl(<Page />);
 
   expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual([
-    "Make your Rumpelstiltskin meme video",
+    "Make your window peeper video",
     "What your video looks like",
     "Three steps to a dancing photo",
     "About the Rumpelstiltskin AI video generator",
@@ -83,7 +83,7 @@ test("the example video sits in the hero beside the generator", () => {
   const video = within(example).getByLabelText(/^The tip-toe scene:/);
   expect(video.getAttribute("src")).toBe("/landing/tiptoe/sample.mp4");
   expect(video.getAttribute("poster")).toBe("/landing/tiptoe/poster.jpg");
-  expect(screen.getByRole("region", { name: "Make your Rumpelstiltskin meme video" }).nextElementSibling).toBe(example);
+  expect(screen.getByRole("region", { name: "Make your window peeper video" }).nextElementSibling).toBe(example);
 });
 
 test("a strip under the hero names what a video is", () => {
@@ -223,8 +223,8 @@ test("names the meme by its nickname, and no brand, artist or song", () => {
 });
 
 test.each([
-  ["es", "Video IA del meme de Rumpelstiltskin — Protagoniza Tiptoeing in My Jordans con una foto.", "Crea tu video del meme de Rumpelstiltskin"],
-  ["de", "Rumpelstilzchen-Meme als KI-Video — Spiel mit einem Foto die Hauptrolle in Tiptoeing in My Jordans.", "Erstelle dein Rumpelstilzchen-Meme-Video"],
+  ["es", "Video IA del meme de Rumpelstiltskin — Protagoniza Tiptoeing in My Jordans con una foto.", "Haz tu video de window peeper"],
+  ["de", "Rumpelstilzchen-Meme als KI-Video — Spiel mit einem Foto die Hauptrolle in Tiptoeing in My Jordans.", "Mach dein Window-Peeper-Video"],
 ] as const)("renders in %s, the h1 and the generator translated", (locale, h1, generator) => {
   renderWithIntl(<Page />, locale);
 
@@ -238,7 +238,7 @@ test("renders in Chinese", () => {
   expect(
     screen.getByRole("heading", { level: 1, name: "侏儒怪表情包 AI 视频 — 一张照片，主演 Tiptoeing in My Jordans。" }),
   ).toBeDefined();
-  expect(screen.getByRole("region", { name: "做你的侏儒怪表情包视频" })).toBeDefined();
+  expect(screen.getByRole("region", { name: "制作你的 Window Peeper 视频" })).toBeDefined();
 });
 
 // Search engines read the FAQ the page shows, word for word, without links.

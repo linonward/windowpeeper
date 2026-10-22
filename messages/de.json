@@ -173,7 +173,7 @@
     }
   },
   "HomeTryout": {
-    "title": "Erstelle dein Rumpelstilzchen-Meme-Video",
+    "title": "Mach dein Window-Peeper-Video",
     "body": "Ein Foto reicht. Die ganze 12-Sekunden-Szene machen wir.",
     "photo": {
       "choose": "Foto auswählen",
@@ -219,13 +219,13 @@
       "title": "Dein Video ist unterwegs",
       "body": "Das dauert meist ein paar Minuten. Lass diese Seite offen, dann läuft das Video hier, sobald es fertig ist."
     },
-    "ready": "Dein Zehenspitzen-Video ist fertig",
-    "video": "Dein Zehenspitzentanz-Video",
+    "ready": "Dein Window-Peeper-Video ist fertig",
+    "video": "Dein Window-Peeper-Video",
     "download": "Herunterladen",
     "share": {
       "button": "Teilen",
-      "title": "KI-Rumpelstilzchen-Zehenspitzentanz",
-      "text": "Ich hab mein Foto auf Zehenspitzen tanzen lassen. Mach deins:",
+      "title": "Window-Peeper-Video",
+      "text": "Ich wurde beim Window-Peeper-Trend erwischt. Mach deins:",
       "copied": "Link kopiert"
     },
     "failed": "Dieses Video hat leider nicht geklappt. Deine {credits, plural, one {# Credit wurde} other {# Credits wurden}} erstattet.",
@@ -1120,15 +1120,15 @@
       "moderation": "{photos, plural, one {Das Foto konnte gerade nicht geprüft werden. Es wurden keine Credits verbraucht. Versuch es in einer Minute nochmal.} other {Die Fotos konnten gerade nicht geprüft werden. Es wurden keine Credits verbraucht. Versuch es in einer Minute nochmal.}}"
     },
     "kinds": {
-      "tiptoe": {
-        "title": "Zehenspitzentanz",
-        "description": "Aus einem Foto wird ein 12-Sekunden-Video: Im cremefarbenen Frack schleichst du durch eine Heuscheune und tanzt auf Zehenspitzen wie ein Märchenzwerg, zu Originalmusik.",
+      "windowpeeper": {
+        "title": "Window Peeper",
+        "description": "Aus einem Foto wird ein 12-Sekunden-Video: Nachts fährt eine Kamera auf dein erleuchtetes Fenster zu, du erstarrst mitten im Bissen, starrst in die Linse und ziehst den Vorhang zu. Mit Originalmusik.",
         "left": {
           "photo": "Dein Foto",
           "preview": "Vorschau deines Fotos"
         },
-        "photoHint": "JPEG, PNG oder WebP, bis {size} MB. Eine Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht.",
-        "disabled": "Der Zehenspitzentanz ist noch nicht eingerichtet."
+        "photoHint": "JPEG, PNG oder WebP, bis {size} MB. Eine Person, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Deine Kleidung bleibt im Video gleich.",
+        "disabled": "Das Window-Peeper-Video ist noch nicht eingerichtet."
       }
     }
   },

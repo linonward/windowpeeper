@@ -5,7 +5,7 @@
 // posts to /api/videos/<kind>, the page is /videos/<kind>, and the copy is
 // PhotoEffects.kinds.<kind> in messages/*.json.
 export const PHOTO_EFFECT_KINDS = {
-  tiptoe: { photos: 1 },
+  windowpeeper: { photos: 1 },
 } as const satisfies Record<string, { photos: 1 | 2 }>;
 
 export type PhotoEffectKind = keyof typeof PHOTO_EFFECT_KINDS;

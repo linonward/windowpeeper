@@ -54,8 +54,8 @@ function post(fields: Record<string, string>, image = jpeg) {
   form.set("image1", new File([image], "me.jpg", { type: "image/jpeg" }));
   for (const [name, value] of Object.entries(fields)) form.set(name, value);
   const origin = new URL(process.env.BETTER_AUTH_URL ?? "http://localhost:3000").origin;
-  return POST(new Request(`${origin}/api/videos/tiptoe`, { method: "POST", body: form, headers: { origin } }), {
-    params: Promise.resolve({ id: "tiptoe" }),
+  return POST(new Request(`${origin}/api/videos/windowpeeper`, { method: "POST", body: form, headers: { origin } }), {
+    params: Promise.resolve({ id: "windowpeeper" }),
   });
 }
 

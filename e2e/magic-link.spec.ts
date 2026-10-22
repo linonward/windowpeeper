@@ -15,8 +15,8 @@ test("signs in with a magic link", async ({ page }) => {
   await page.goto(await readMagicLink(email));
   await page.getByRole("button", { name: "Continue signing in" }).click();
 
-  // Sign-in returns to /videos, which opens the tip-toe dance.
-  await expect(page).toHaveURL("/en/videos/tiptoe");
+  // Sign-in returns to /videos, which opens the window peeper video.
+  await expect(page).toHaveURL("/en/videos/windowpeeper");
   expect((await getSession(page))?.user.email).toBe(email);
 });
 
@@ -62,7 +62,7 @@ test("opening the link alone, as an email scanner does, signs nobody in and keep
 
   await page.goto(link);
   await page.getByRole("button", { name: "Continue signing in" }).click();
-  // Sign-in returns to /videos, which opens the tip-toe dance.
-  await expect(page).toHaveURL("/en/videos/tiptoe");
+  // Sign-in returns to /videos, which opens the window peeper video.
+  await expect(page).toHaveURL("/en/videos/windowpeeper");
   expect((await getSession(page))?.user.email).toBe(email);
 });

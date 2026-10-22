@@ -11,7 +11,7 @@ const MB = 1024 * 1024;
 
 async function pickPhoto(page: Page, file: { name: string; mimeType: string; buffer: Buffer }) {
   await signIn(page);
-  await page.goto("/en/videos/tiptoe");
+  await page.goto("/en/videos/windowpeeper");
   const photo = page.getByLabel("Your photo");
   const preview = page.getByRole("img", { name: "Your photo preview" });
   // A pick before hydration has no handler yet, so repeat a light one until

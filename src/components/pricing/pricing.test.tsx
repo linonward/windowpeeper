@@ -10,7 +10,7 @@ const { Pricing } = await import("./pricing");
 
 afterEach(cleanup);
 
-// CREDIT_PACKS (src/server/payment/packs.ts) and the tip-toe prices.
+// CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper prices.
 const packs = [
   { id: "small", credits: 10, amount: 499, currency: "usd" },
   { id: "medium", credits: 20, amount: 799, currency: "usd" },

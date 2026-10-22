@@ -39,7 +39,7 @@ export const GET = withSession<Params>(async (_request, { session, params }) => 
 // POST /api/videos/<kind> queues one photo effect video (PHOTO_EFFECTS):
 // here the segment is the effect's kind, which never looks like a video ID.
 // Multipart body: image1, the photo; optional quality, "standard" (the
-// default), "pro" for an effect that sells Pro (the tip-toe dance), or
+// default), "pro" for an effect that sells Pro (the window peeper video), or
 // "preview" for the account's one free preview (409 PREVIEW_USED after); optional
 // ratio, "16:9" (the default) or "9:16" for a vertical video; and consent,
 // "yes" when the user confirmed the photos are theirs or that the adults in

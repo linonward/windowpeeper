@@ -17,14 +17,14 @@ test("hero states the value over the dance, with the generator starting in the f
   ).toBeVisible();
   // The dance plays full width behind the headline; the photo zone shows
   // under it in the first screen.
-  await expect(page.getByRole("region", { name: "Make your Rumpelstiltskin meme video" }).getByText("Choose a photo")).toBeInViewport();
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
 });
 
 test("on a phone, the photo zone shows in the first screen", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/en");
 
-  await expect(page.getByRole("region", { name: "Make your Rumpelstiltskin meme video" }).getByText("Choose a photo")).toBeInViewport();
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
 });
 
 test("the example dance plays beside the generator, served from public/", async ({ page, request }) => {
@@ -49,7 +49,7 @@ test("the header offers sign-in to visitors and the dashboard once signed in", a
   await page.goto("/en/pricing");
   await expect(banner.getByRole("link", { name: "Sign in" })).toHaveCount(0);
   await banner.getByRole("link", { name: "Dashboard" }).click();
-  await expect(page).toHaveURL("/en/videos/tiptoe");
+  await expect(page).toHaveURL("/en/videos/windowpeeper");
 });
 
 test("landing has the example, steps, pricing, FAQ and a closing call to action back to the generator", async ({
@@ -68,7 +68,7 @@ test("landing has the example, steps, pricing, FAQ and a closing call to action 
   }
   await page.getByRole("link", { name: "Make my video" }).click();
   await expect(page).toHaveURL("/en#generator");
-  await expect(page.getByRole("region", { name: "Make your Rumpelstiltskin meme video" }).getByText("Choose a photo")).toBeInViewport();
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
 });
 
 test("the header's links scroll to the home page's sections", async ({ page }) => {

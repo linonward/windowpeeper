@@ -17,7 +17,7 @@ vi.mock("@/i18n/navigation", () => ({
   Link: ({ href, ...props }: React.ComponentProps<"a">) => <a href={`/en${href}`} {...props} />,
 }));
 
-const { TiptoeTryout } = await import("./tiptoe-tryout");
+const { WindowPeeperTryout } = await import("./window-peeper-tryout");
 
 const fetchMock = vi.fn();
 const signedIn = { data: { user: { id: "u1" } }, isPending: false };
@@ -38,7 +38,7 @@ const props = {
 const reply = (status: number, body: object) => ({ ok: status < 300, status, json: async () => body });
 const pending = {
   id: "v1",
-  prompt: "Tip-toe dance",
+  prompt: "Window peeper",
   duration: 9,
   resolution: "720p",
   ratio: "16:9",
@@ -88,7 +88,7 @@ async function pick() {
 test("generating needs only a photo; the button's note says it confirms consent", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(200, { video: pending }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
   const button = screen.getByRole("button", { name: GENERATE });
 
   expect(button.hasAttribute("disabled")).toBe(true);
@@ -105,7 +105,7 @@ test("generating needs only a photo; the button's note says it confirms consent"
 
 test("standard is the default; Pro costs more and the button says so", () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const group = screen.getByRole("radiogroup", { name: "Quality" });
   expect(within(group).getAllByRole("radio")).toHaveLength(2);
@@ -125,7 +125,7 @@ test("standard is the default; Pro costs more and the button says so", () => {
 test("a Pro video sends quality pro, and without credits names the Pro price", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
@@ -138,14 +138,14 @@ test("a Pro video sends quality pro, and without credits names the Pro price", a
 
 test("a signed-out visitor's Pro choice is saved and sent after sign-in", async () => {
   useSession.mockReturnValue(signedOut);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
   fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:tiptoe", {
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
     fields: { consent: "yes", quality: "pro", ratio: "9:16" },
   });
@@ -155,10 +155,10 @@ test("a signed-out visitor's Pro choice is saved and sent after sign-in", async 
   loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes", quality: "pro", ratio: "16:9" } });
   fetchMock.mockResolvedValue(reply(200, { video: { ...pending, credits: 20 } }));
   window.history.replaceState(null, "", "/en?try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("status");
-  const [, init] = fetchMock.mock.calls.find(([url]) => url === "/api/videos/tiptoe")!;
+  const [, init] = fetchMock.mock.calls.find(([url]) => url === "/api/videos/windowpeeper")!;
   expect((init.body as FormData).get("quality")).toBe("pro");
   // The form hides while the video renders, keeping the choice.
   expect((screen.getByRole("radio", { name: /^Pro/, hidden: true }) as HTMLInputElement).checked).toBe(true);
@@ -171,13 +171,13 @@ test("every video is vertical 9:16, with no format to pick, and plays in a tall 
   fetchMock.mockResolvedValueOnce(
     reply(200, { video: { ...pending, ratio: "9:16", status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(screen.queryByRole("radiogroup", { name: "Format" })).toBeNull();
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
 
-  const player = await screen.findByLabelText("Your tip-toe dance video");
+  const player = await screen.findByLabelText("Your window peeper video");
   expect((fetchMock.mock.calls[0][1].body as FormData).get("ratio")).toBe("9:16");
   expect(player.className).toContain("aspect-[9/16]");
 });
@@ -185,7 +185,7 @@ test("every video is vertical 9:16, with no format to pick, and plays in a tall 
 // The free preview is a quiet link under the one button, not a third choice.
 test("offers one free preview under the button, never free credits", async () => {
   useSession.mockReturnValue(signedOut);
-  const { container } = renderWithIntl(<TiptoeTryout {...props} />);
+  const { container } = renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const preview = screen.getByRole("button", { name: PREVIEW });
   expect(preview.hasAttribute("disabled")).toBe(true);
@@ -202,7 +202,7 @@ test("a free preview sends quality preview and, once ready, offers the full vide
       video: { ...pending, preview: true, credits: 0, duration: 5, status: "succeeded", url: "https://storage.test/v1.mp4" },
     }),
   );
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
@@ -215,13 +215,13 @@ test("a free preview sends quality preview and, once ready, offers the full vide
 
 test("a signed-out visitor's free preview is saved and signs in", async () => {
   useSession.mockReturnValue(signedOut);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:tiptoe", {
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
     fields: { consent: "yes", quality: "preview", ratio: "9:16" },
   });
@@ -230,7 +230,7 @@ test("a signed-out visitor's free preview is saved and signs in", async () => {
 test("a used free preview says so and leaves Standard picked", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(409, { error: "PREVIEW_USED" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
@@ -243,7 +243,7 @@ test("a used free preview says so and leaves Standard picked", async () => {
 
 test("a photo over the 5 MB pick limit is dropped with a clear error", () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(screen.getByText(/^JPEG, PNG or WebP, up to 5 MB\./)).toBeDefined();
   const big = new File([new Uint8Array(5 * 1024 * 1024 + 1)], "big.jpg", { type: "image/jpeg" });
@@ -257,7 +257,7 @@ test("a photo over the 5 MB pick limit is dropped with a clear error", () => {
 // can't decode, so a photo over the 4 MB upload limit stays too large.
 test("a photo still over the upload limit after shrinking is dropped", async () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const big = new File([new Uint8Array(4.5 * 1024 * 1024)], "big.jpg", { type: "image/jpeg" });
   fireEvent.change(screen.getByLabelText("Your photo"), { target: { files: [big] } });
@@ -272,7 +272,7 @@ test("a photo still over the upload limit after shrinking is dropped", async () 
 // browser's "Choose File / No file chosen" never shows.
 test("the photo zone asks for a photo, then shows it with its name and a way to change it", async () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const input = screen.getByLabelText("Your photo");
   expect(input.className).toContain("sr-only");
@@ -288,7 +288,7 @@ test("the photo zone asks for a photo, then shows it with its name and a way to 
 
 test("dropping an image on the zone picks it; another file type shows the error", async () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
   const zone = screen.getByText("Choose a photo").closest("label") as HTMLElement;
 
   const pdf = new File([new Uint8Array(10)], "cv.pdf", { type: "application/pdf" });
@@ -306,7 +306,7 @@ test("dropping an image on the zone picks it; another file type shows the error"
 test("a signed-out visitor keeps the photo and consent, and signs in on this page", async () => {
   useSession.mockReturnValue(signedOut);
   window.history.replaceState(null, "", "/en");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -314,20 +314,20 @@ test("a signed-out visitor keeps the photo and consent, and signs in on this pag
   const dialog = await screen.findByRole("dialog", { name: "Sign in to make your video" });
   expect(dialog.textContent).toContain("Your photo stays picked");
   expect(within(dialog).getByRole("button", { name: "Continue with Google" })).toBeDefined();
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:tiptoe", { photos: [photo], fields: { consent: "yes", quality: "standard", ratio: "9:16" } });
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", { photos: [photo], fields: { consent: "yes", quality: "standard", ratio: "9:16" } });
   expect(fetchMock).not.toHaveBeenCalled();
 });
 
 test("a session that ended answers 401, which also opens sign-in with the draft saved", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(401, { error: "UNAUTHORIZED" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:tiptoe", {
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
     fields: { consent: "yes", quality: "standard", ratio: "9:16" },
   });
@@ -339,17 +339,17 @@ test("back from sign-in, the saved photo and consent return and go out once", as
   loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes" } });
   fetchMock.mockResolvedValue(reply(200, { video: pending }));
   window.history.replaceState(null, "", "/en?try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("status");
   // Later renders don't send it again.
   await new Promise((resolve) => setTimeout(resolve, 50));
-  expect(loadPhotoDraft).toHaveBeenCalledWith("home:tiptoe");
-  const posts = fetchMock.mock.calls.filter(([url]) => url === "/api/videos/tiptoe");
+  expect(loadPhotoDraft).toHaveBeenCalledWith("home:windowpeeper");
+  const posts = fetchMock.mock.calls.filter(([url]) => url === "/api/videos/windowpeeper");
   expect(posts).toHaveLength(1);
   expect((posts[0][1].body as FormData).get("image1")).toBe(photo);
   expect((posts[0][1].body as FormData).get("consent")).toBe("yes");
-  expect(clearPhotoDraft).toHaveBeenCalledWith("home:tiptoe");
+  expect(clearPhotoDraft).toHaveBeenCalledWith("home:windowpeeper");
   expect(window.location.search).toBe("");
 });
 
@@ -359,7 +359,7 @@ test("a draft without consent comes back but waits for the button", async () => 
   useSession.mockReturnValue(signedIn);
   loadPhotoDraft.mockResolvedValue({ photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })], fields: {} });
   window.history.replaceState(null, "", "/en?try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("img", { name: "Your photo preview" });
   expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(false);
@@ -369,7 +369,7 @@ test("a draft without consent comes back but waits for the button", async () => 
 test("without enough credits, it names the price and offers the packs, the smallest that pays picked", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -397,7 +397,7 @@ test("without enough credits, it names the price and offers the packs, the small
 test("for a Pro video, the medium pack is picked", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
@@ -415,7 +415,7 @@ test("paying saves the draft, then opens checkout that returns to the generator"
   fetchMock
     .mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }))
     .mockResolvedValueOnce(reply(200, { url: "https://checkout.test/s" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
@@ -423,7 +423,7 @@ test("paying saves the draft, then opens checkout that returns to the generator"
   fireEvent.click(await screen.findByRole("button", { name: "Pay $7.99 and make my video" }));
 
   await waitFor(() => expect(assign).toHaveBeenCalledWith("https://checkout.test/s"));
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:tiptoe", {
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
     fields: { consent: "yes", quality: "pro", ratio: "9:16" },
   });
@@ -438,7 +438,7 @@ test("a checkout that can't start says why, in the generator", async () => {
   fetchMock
     .mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }))
     .mockResolvedValueOnce(reply(503, { error: "PAYMENTS_DISABLED" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -461,7 +461,7 @@ test("back from a payment, the draft returns and goes out once the credits arriv
     .mockResolvedValueOnce(short)
     .mockResolvedValueOnce(reply(200, { video: { ...pending, credits: 20 } }));
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect((await screen.findByRole("status")).textContent).toContain("Payment received");
   expect(window.location.search).toBe("");
@@ -471,10 +471,10 @@ test("back from a payment, the draft returns and goes out once the credits arriv
   expect((await screen.findByRole("status")).textContent).toContain("Your video is on its way");
   // Sent once it succeeded; no more tries after that.
   await vi.advanceTimersByTimeAsync(30_000);
-  const posts = fetchMock.mock.calls.filter(([url]) => url === "/api/videos/tiptoe");
+  const posts = fetchMock.mock.calls.filter(([url]) => url === "/api/videos/windowpeeper");
   expect(posts).toHaveLength(3);
   expect((posts[2][1].body as FormData).get("quality")).toBe("pro");
-  expect(clearPhotoDraft).toHaveBeenCalledWith("home:tiptoe");
+  expect(clearPhotoDraft).toHaveBeenCalledWith("home:windowpeeper");
 });
 
 test("credits that don't arrive in time leave the form ready, with a message", async () => {
@@ -486,7 +486,7 @@ test("credits that don't arrive in time leave the form ready, with a message", a
   });
   fetchMock.mockResolvedValue(reply(402, { error: "INSUFFICIENT_CREDITS" }));
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("status");
   await vi.advanceTimersByTimeAsync(95_000);
@@ -511,7 +511,7 @@ test("back from a canceled payment, the draft and the packs return, and nothing 
     fields: { consent: "yes", quality: "pro", ratio: "16:9" },
   });
   window.history.replaceState(null, "", "/en?checkout=cancel&try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(await screen.findByText("Payment canceled. You weren't charged.")).toBeDefined();
   expect(screen.getByRole("img", { name: "Your photo preview" })).toBeDefined();
@@ -529,7 +529,7 @@ test("back from a payment without a session, sign-in opens and nothing is sent",
     fields: { consent: "yes", quality: "standard", ratio: "16:9" },
   });
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
   expect(fetchMock).not.toHaveBeenCalled();
@@ -546,14 +546,14 @@ test("sends the photo, shows progress, then plays the video with download and sh
       reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
     );
   window.history.replaceState(null, "", "/en");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
 
   expect((await screen.findByRole("status")).textContent).toContain("Your video is on its way");
   const [url, init] = fetchMock.mock.calls[0];
-  expect(url).toBe("/api/videos/tiptoe");
+  expect(url).toBe("/api/videos/windowpeeper");
   expect((init.body as FormData).get("image1")).toBe(photo);
   expect((init.body as FormData).get("quality")).toBe("standard");
   // The server records the consent the box gave.
@@ -561,7 +561,7 @@ test("sends the photo, shows progress, then plays the video with download and sh
 
   await vi.advanceTimersByTimeAsync(5000);
   expect(fetchMock.mock.calls[1][0]).toBe("/api/videos/v1");
-  const player = await screen.findByLabelText("Your tip-toe dance video");
+  const player = await screen.findByLabelText("Your window peeper video");
   expect(player.tagName).toBe("VIDEO");
   expect(player.getAttribute("src")).toBe("https://storage.test/v1.mp4");
   expect(player.hasAttribute("controls")).toBe(true);
@@ -580,7 +580,7 @@ test("without the share sheet, sharing copies the home page link", async () => {
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
   window.history.replaceState(null, "", "/en");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -596,7 +596,7 @@ test("a failed video says the credits came back and lets them try again", async 
   fetchMock
     .mockResolvedValueOnce(reply(200, { video: pending }))
     .mockResolvedValueOnce(reply(200, { video: { ...pending, status: "failed" } }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -612,9 +612,9 @@ test("a failed video says the credits came back and lets them try again", async 
 
 test("when the effect is off, it says so and the form stays inert", () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<TiptoeTryout {...props} enabled={false} />);
+  renderWithIntl(<WindowPeeperTryout {...props} enabled={false} />);
 
-  expect(screen.getByText("The tip-toe dance isn't set up yet.")).toBeDefined();
+  expect(screen.getByText("The window peeper video isn't set up yet.")).toBeDefined();
   expect(screen.getByLabelText("Your photo").matches(":disabled")).toBe(true);
   expect(screen.getByRole("button", { name: PREVIEW }).hasAttribute("disabled")).toBe(true);
   expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(true);
@@ -622,9 +622,9 @@ test("when the effect is off, it says so and the form stays inert", () => {
 
 test("renders in Chinese", () => {
   useSession.mockReturnValue(signedOut);
-  renderWithIntl(<TiptoeTryout {...props} />, "zh");
+  renderWithIntl(<WindowPeeperTryout {...props} />, "zh");
 
-  expect(screen.getByRole("heading", { level: 2, name: "做你的侏儒怪表情包视频" })).toBeDefined();
+  expect(screen.getByRole("heading", { level: 2, name: "制作你的 Window Peeper 视频" })).toBeDefined();
   expect(screen.getByRole("button", { name: "生成（10 积分）" })).toBeDefined();
   expect(screen.getByRole("radio", { name: /^高画质/ })).toBeDefined();
 });
@@ -638,7 +638,7 @@ test("records each funnel step once per action, without the photo", async () => 
   fetchMock
     .mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }))
     .mockResolvedValueOnce(reply(200, { url: "https://checkout.test/s" }));
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
@@ -665,11 +665,11 @@ test("a restored draft and the retries after a payment record no clicks or paywa
     .mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }))
     .mockResolvedValueOnce(reply(200, { video: pending }));
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect((await screen.findByRole("status")).textContent).toContain("Payment received");
   await vi.advanceTimersByTimeAsync(4000);
-  expect(fetchMock.mock.calls.filter(([url]) => url === "/api/videos/tiptoe")).toHaveLength(2);
+  expect(fetchMock.mock.calls.filter(([url]) => url === "/api/videos/windowpeeper")).toHaveLength(2);
   expect(track).not.toHaveBeenCalled();
 });
 
@@ -681,7 +681,7 @@ test("records downloading and sharing the video, with how it was shared", async 
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
   window.history.replaceState(null, "", "/en");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
@@ -707,7 +707,7 @@ test("records a copied link as shared by copy", async () => {
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
   window.history.replaceState(null, "", "/en");
-  renderWithIntl(<TiptoeTryout {...props} />);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));

@@ -164,7 +164,7 @@ New accounts start with no credits: `signupCredits` in `src/server/credits/confi
 
 ## Payments
 
-Users buy one-time credit packs on `/billing`. Packs live in `src/server/payment/packs.ts` (amounts in cents): `small` 10 credits for $4.99, `medium` 20 for $7.99, `large` 30 for $11.99. A tip-toe video costs 10 credits and a Pro one 20 (`src/server/videos/tiptoe.ts`), so the packs buy one video, one Pro video or two videos, and three videos. `/pricing` lists the packs, what each buys and what a video costs, and recommends `DEFAULT_PACK_ID` (`small`); its buttons open `/billing?pack=<id>`, which signs visitors in first and focuses the chosen pack. The home page's generator also sells packs: when a video costs more than the balance, it lists the packs, picks the smallest that pays for it, and checkout returns to the generator, which makes the video once the webhook adds the credits (it retries every 3 seconds for 90 seconds). Set `PAYMENT_PROVIDER` to switch providers, then restart. Orders and subscriptions from the old provider keep working while its webhook stays configured.
+Users buy one-time credit packs on `/billing`. Packs live in `src/server/payment/packs.ts` (amounts in cents): `small` 10 credits for $4.99, `medium` 20 for $7.99, `large` 30 for $11.99. A tip-toe video costs 10 credits and a Pro one 20 (`src/server/videos/window-peeper.ts`), so the packs buy one video, one Pro video or two videos, and three videos. `/pricing` lists the packs, what each buys and what a video costs, and recommends `DEFAULT_PACK_ID` (`small`); its buttons open `/billing?pack=<id>`, which signs visitors in first and focuses the chosen pack. The home page's generator also sells packs: when a video costs more than the balance, it lists the packs, picks the smallest that pays for it, and checkout returns to the generator, which makes the video once the webhook adds the credits (it retries every 3 seconds for 90 seconds). Set `PAYMENT_PROVIDER` to switch providers, then restart. Orders and subscriptions from the old provider keep working while its webhook stays configured.
 
 Subscriptions aren't sold. `PLANS_ON_SALE` in `src/server/payment/plans.ts` is empty, so no page shows a plan and `POST /api/payment/subscribe` answers 400 `UNKNOWN_PLAN`. Subscriptions already bought keep renewing, and `/billing` shows them to their subscribers. To sell a plan again, add its ID to `PLANS_ON_SALE`, restore the plan copy on `/pricing` and run `pnpm test`. The rest of this list covers subscriptions already bought.
 
@@ -236,7 +236,7 @@ Leave `STORAGE_FORCE_PATH_STYLE` empty for both.
 
 ## Video generation
 
-Signed-in users make videos on `/videos/<kind>` (`/videos` opens the tip-toe dance) and on the home page. Every video is a photo effect on Bailian; a failed generation refunds its credits.
+Signed-in users make videos on `/videos/<kind>` (`/videos` opens the window peeper video) and on the home page. Every video is a photo effect on Bailian; a failed generation refunds its credits.
 
 - `REFERENCE_COST_PER_SECOND` holds what Bailian charges per second of wan2.7-r2v with sound: 720P $0.10, 1080P $0.15 (Singapore; Beijing charges less). The photo isn't billed.
 - `src/server/payment/margins.test.ts` fails if any pack sells a photo effect video in either quality for less than 1.5 times that cost. When you change a price or a pack, run `pnpm test` and raise the credits if it fails.
@@ -246,7 +246,7 @@ Signed-in users make videos on `/videos/<kind>` (`/videos` opens the tip-toe dan
 
 ### Photo effects: the tip-toe dance (Bailian wan2.7-r2v)
 
-`/videos/<kind>` and the home page turn one photo into a video: Bailian makes the effect's prompt into a multi-shot video that stars the photo's subject, with generated music. `PHOTO_EFFECTS` (`src/server/videos/photo-effects.ts`) lists the effects; the tip-toe dance (`src/server/videos/tiptoe.ts`) is the only one. It lasts 12 seconds and costs 10 credits at 720P, or 20 in Pro (1080P), refunded on failure. Each video is new: the shots differ from one photo to the next.
+`/videos/<kind>` and the home page turn one photo into a video: Bailian makes the effect's prompt into a multi-shot video that stars the photo's subject, with generated music. `PHOTO_EFFECTS` (`src/server/videos/photo-effects.ts`) lists the effects; the window peeper video (`src/server/videos/window-peeper.ts`) is the only one. It lasts 12 seconds and costs 10 credits at 720P, or 20 in Pro (1080P), refunded on failure. Each video is new: the shots differ from one photo to the next.
 
 1. Set `DASHSCOPE_API_KEY` (and `DASHSCOPE_BASE_URL` outside Beijing) and the `STORAGE_*` variables, as in [Bailian and storage](#bailian-and-storage). Photo effects use Bailian `wan2.7-r2v`.
 2. Rebuild and restart: the prerendered home page reads these at build time.
@@ -259,7 +259,7 @@ Signed-in users make videos on `/videos/<kind>` (`/videos` opens the tip-toe dan
 
 Ship the effect first and check it on real photos.
 
-1. Add `src/server/videos/<kind>.ts`: the definition, as in `tiptoe.ts`, with its prompt.
+1. Add `src/server/videos/<kind>.ts`: the definition, as in `window-peeper.ts`, with its prompt.
 2. Add the definition to `PHOTO_EFFECTS`, and the kind and its number of photos to `PHOTO_EFFECT_KINDS` (`src/lib/photo-effects.ts`), in the same order.
 3. Add `PhotoEffects.kinds.<kind>` to `messages/en.json` and `messages/zh.json`: `title`, `description`, `left`, `photoHint` and `disabled`.
 4. Run `pnpm test`. `src/test/photo-effects.test.ts` checks the two lists and the copy; `src/server/payment/margins.test.ts` checks every pack sells it above cost.

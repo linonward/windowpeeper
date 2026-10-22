@@ -1,14 +1,14 @@
 import { expect, type Page, test } from "@playwright/test";
 import { signIn } from "./support/auth";
 
-// E2E builds without Bailian (playwright.config.ts), so the tip-toe dance is
+// E2E builds without Bailian (playwright.config.ts), so the window peeper video is
 // off: the home generator says so and stays inert. Its flow (consent, sign-in
 // in a dialog, sending on return, progress, the player, download and share)
-// is covered by src/components/home/tiptoe-tryout.test.tsx, as is paying
+// is covered by src/components/home/window-peeper-tryout.test.tsx, as is paying
 // from it (payments are off here too).
 async function expectInert(page: Page) {
-  const generator = page.getByRole("region", { name: "Make your Rumpelstiltskin meme video" });
-  await expect(generator).toContainText("The tip-toe dance isn't set up yet.");
+  const generator = page.getByRole("region", { name: "Make your window peeper video" });
+  await expect(generator).toContainText("The window peeper video isn't set up yet.");
   await expect(generator.getByLabel("Your photo")).toBeDisabled();
   await expect(generator.getByRole("button", { name: "Try a free 5-second preview" })).toBeDisabled();
   await expect(generator.getByRole("button", { name: /^Generate \(\d+ credits\)$/ })).toBeDisabled();
@@ -47,6 +47,6 @@ test("back from checkout, the page drops the checkout from its address and sends
 test("the generator is translated", async ({ page }) => {
   await page.goto("/zh");
 
-  const generator = page.getByRole("region", { name: "做你的侏儒怪表情包视频" });
-  await expect(generator).toContainText("踮脚舞尚未配置。");
+  const generator = page.getByRole("region", { name: "制作你的 Window Peeper 视频" });
+  await expect(generator).toContainText("Window Peeper 视频尚未配置。");
 });

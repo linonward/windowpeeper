@@ -25,7 +25,7 @@ const PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 type Pack = { id: string; credits: number; amount: number; currency: string };
 
-export type TiptoeTryoutProps = {
+export type WindowPeeperTryoutProps = {
   // The fixed price of one video, standard and Pro.
   credits: number;
   proCredits: number;
@@ -40,8 +40,8 @@ export type TiptoeTryoutProps = {
   packs: readonly Pack[];
 };
 
-const ENDPOINT = "/api/videos/tiptoe";
-const DRAFT_KEY = "home:tiptoe";
+const ENDPOINT = "/api/videos/windowpeeper";
+const DRAFT_KEY = "home:windowpeeper";
 // Sign-in and checkout return with it, so the page sends the saved photo.
 const RESUME = "try";
 // Checkout adds it: success or cancel (src/app/api/payment/checkout/route.ts).
@@ -80,7 +80,7 @@ const parse = (video: Serialized<GeneratedVideo>): GeneratedVideo => ({
   createdAt: new Date(video.createdAt),
 });
 
-// The tip-toe dance on the home page, from photo to finished video, with as
+// The window peeper video on the home page, from photo to finished video, with as
 // few controls as it takes: the photo, Standard or Pro, and one button whose
 // note says pressing it confirms consent; the free preview is a link under it.
 // A signed-out visitor signs in from a dialog; the photo and the choice wait
@@ -89,8 +89,8 @@ const parse = (video: Serialized<GeneratedVideo>): GeneratedVideo => ({
 // credits arrive. The video then renders in place: progress, then a player
 // with download and share. Each step the visitor takes is a funnel event
 // (src/lib/analytics.ts), sent from its handler so it counts once.
-export function TiptoeTryout(props: TiptoeTryoutProps) {
-  const t = useEffectMessages("tiptoe");
+export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
+  const t = useEffectMessages("windowpeeper");
   const tt = useTranslations("HomeTryout");
   const tb = useTranslations("Billing");
   const locale = useLocale();

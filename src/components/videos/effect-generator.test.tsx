@@ -20,7 +20,7 @@ afterEach(() => {
 });
 
 const props: EffectGeneratorProps = {
-  kind: "tiptoe",
+  kind: "windowpeeper",
   balance: 100,
   credits: 10,
   maxPickBytes: 5 * 1024 * 1024,
@@ -33,7 +33,7 @@ const props: EffectGeneratorProps = {
 const reply = (status: number, body: object) => ({ ok: status < 300, status, json: async () => body });
 const pending = {
   id: "new",
-  prompt: "Tip-toe dance",
+  prompt: "Window peeper",
   duration: 9,
   resolution: "720p",
   credits: 10,
@@ -82,7 +82,7 @@ test("sends the photo as image1 to its own route, then polls until the video is 
 
   await waitFor(() => expect(screen.getByText("90 credits left")).toBeTruthy());
   const [url, init] = fetchMock.mock.calls[0];
-  expect(url).toBe("/api/videos/tiptoe");
+  expect(url).toBe("/api/videos/windowpeeper");
   const form = init.body as FormData;
   expect(form.get("image1")).toBe(photo);
   expect(form.has("image2")).toBe(false);
@@ -145,6 +145,6 @@ test.each([
 test("links to billing when the balance is short, and says when it is off", () => {
   renderWithIntl(<EffectGenerator {...props} balance={5} enabled={false} />);
 
-  expect(screen.getByText("The tip-toe dance isn't set up yet.")).toBeTruthy();
+  expect(screen.getByText("The window peeper video isn't set up yet.")).toBeTruthy();
   expect(screen.getByRole("link", { name: "Buy credits" }).getAttribute("href")).toBe("/en/billing");
 });

@@ -1,5 +1,5 @@
 import type { VideoRatio, VideoResolution } from "@/server/ai/video";
-import { tiptoe } from "./tiptoe";
+import { windowpeeper } from "./window-peeper";
 
 // A photo effect: one photo and no words from the user become one video
 // (createEffectVideo). Bailian wan2.7-r2v makes the effect's prompt into a
@@ -27,7 +27,7 @@ export type PhotoEffect = {
   preview?: { resolution: VideoResolution; duration: number; prompt: string };
 };
 
-export const PHOTO_EFFECTS = [tiptoe] as const satisfies readonly PhotoEffect[];
+export const PHOTO_EFFECTS = [windowpeeper] as const satisfies readonly PhotoEffect[];
 
 export type PhotoEffectKind = (typeof PHOTO_EFFECTS)[number]["kind"];
 

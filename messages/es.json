@@ -173,7 +173,7 @@
     }
   },
   "HomeTryout": {
-    "title": "Crea tu video del meme de Rumpelstiltskin",
+    "title": "Haz tu video de window peeper",
     "body": "Una foto basta. Nosotros hacemos toda la escena de 12 segundos.",
     "photo": {
       "choose": "Elegir una foto",
@@ -219,13 +219,13 @@
       "title": "Tu video está en camino",
       "body": "Suele tardar unos minutos. Deja esta página abierta y el video se reproducirá aquí cuando esté listo."
     },
-    "ready": "Tu video de puntillas está listo",
-    "video": "Tu video del baile de puntillas",
+    "ready": "Tu video de window peeper está listo",
+    "video": "Tu video de window peeper",
     "download": "Descargar",
     "share": {
       "button": "Compartir",
-      "title": "Baile de puntillas de Rumpelstiltskin con IA",
-      "text": "Hice que mi foto bailara de puntillas. Haz la tuya:",
+      "title": "Video de window peeper",
+      "text": "Me pillaron en la tendencia window peeper. Haz el tuyo:",
       "copied": "Enlace copiado"
     },
     "failed": "Este video no salió bien. Te devolvimos {credits, plural, one {tu # crédito} other {tus # créditos}}.",
@@ -1120,15 +1120,15 @@
       "moderation": "{photos, plural, one {No se pudo revisar la foto en este momento. No se gastó ningún crédito. Inténtalo de nuevo en un minuto.} other {No se pudieron revisar las fotos en este momento. No se gastó ningún crédito. Inténtalo de nuevo en un minuto.}}"
     },
     "kinds": {
-      "tiptoe": {
-        "title": "Baile de puntillas",
-        "description": "Una foto se convierte en un video de 12 segundos: con frac color crema, avanzas a escondidas por un pajar y caminas de puntillas como un enano de cuento, con música original.",
+      "windowpeeper": {
+        "title": "Window peeper",
+        "description": "Una foto se convierte en un video de 12 segundos: de noche, una cámara se acerca a tu ventana iluminada, te congelas a mitad de bocado, miras fijo a la cámara y cierras la cortina. Con música original.",
         "left": {
           "photo": "Tu foto",
           "preview": "Vista previa de tu foto"
         },
-        "photoHint": "JPEG, PNG o WebP, de hasta {size} MB. Una sola persona, de cuerpo entero o de cintura para arriba, mirando a la cámara y con buena luz.",
-        "disabled": "El baile de puntillas todavía no está configurado."
+        "photoHint": "JPEG, PNG o WebP, de hasta {size} MB. Una sola persona, de cintura para arriba, mirando a la cámara y con buena luz. Tu ropa se mantiene en el video.",
+        "disabled": "El video de window peeper todavía no está configurado."
       }
     }
   },
