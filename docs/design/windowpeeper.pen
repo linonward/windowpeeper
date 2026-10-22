@@ -1017,7 +1017,7 @@
                   "id": "nlpzx",
                   "name": "Sample",
                   "fill": "$w-lamp-text",
-                  "content": "REC ● 02:14:07 AM   CAM 03   14S   9:16",
+                  "content": "REC ● 01:28:00 AM   CAM 03   14S   9:16",
                   "fontFamily": "$font-mono",
                   "fontSize": 12,
                   "fontWeight": "500",
@@ -1333,7 +1333,7 @@
                   "id": "a8tqI",
                   "name": "Label",
                   "fill": "$w-text",
-                  "content": "REC 02:14:07 AM",
+                  "content": "REC 01:28:00 AM",
                   "fontFamily": "$font-mono",
                   "fontSize": 11,
                   "fontWeight": "500",
@@ -1566,7 +1566,7 @@
                       "id": "yQDYP",
                       "name": "Time",
                       "fill": "$w-text",
-                      "content": "02:14 AM",
+                      "content": "01:28 AM",
                       "fontFamily": "$font-mono",
                       "fontSize": 11,
                       "fontWeight": "normal",
@@ -1885,6 +1885,58 @@
                           "fill": "$w-lamp-text"
                         }
                       ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iKgs4",
+              "name": "Notification bell",
+              "reusable": true,
+              "width": 32,
+              "height": 32,
+              "cornerRadius": 8,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Mb95D",
+                  "x": 8,
+                  "y": 8,
+                  "name": "Bell",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "bell",
+                  "library": "lucide",
+                  "fill": "$w-muted"
+                },
+                {
+                  "type": "frame",
+                  "id": "b087m",
+                  "x": 18,
+                  "y": -2,
+                  "name": "Badge",
+                  "height": 16,
+                  "fill": "$w-lamp",
+                  "cornerRadius": 8,
+                  "padding": [
+                    0,
+                    4
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zl6pu",
+                      "name": "Count",
+                      "fill": "$w-on-lamp",
+                      "content": "3",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "700"
                     }
                   ]
                 }
@@ -3147,7 +3199,7 @@
                           "name": "REC",
                           "descendants": {
                             "a8tqI": {
-                              "content": "02:14 AM · CAM 01"
+                              "content": "01:28 AM · CAM 01"
                             }
                           }
                         },
@@ -4198,7 +4250,7 @@
                       "fill": "$w-muted",
                       "textGrowth": "fixed-width",
                       "width": 380,
-                      "content": "Pay once, no subscription. You pick a pack after you upload your photo.",
+                      "content": "Pay once, no subscription. Buy a pack here, or once your photo is in.",
                       "lineHeight": 1.5,
                       "textAlign": "right",
                       "fontFamily": "$font-body",
@@ -4374,6 +4426,23 @@
                               "fontWeight": "normal"
                             }
                           ]
+                        },
+                        {
+                          "id": "k2mAZQ",
+                          "type": "ref",
+                          "ref": "NzvlR",
+                          "name": "Buy",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            16
+                          ],
+                          "descendants": {
+                            "u1jsoi": {
+                              "content": "Buy 1 video",
+                              "fontSize": 14
+                            }
+                          }
                         }
                       ]
                     }
@@ -4616,6 +4685,26 @@
                               "fontWeight": "normal"
                             }
                           ]
+                        },
+                        {
+                          "id": "E3VXO3",
+                          "type": "ref",
+                          "ref": "X3THzN",
+                          "name": "Buy",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            16
+                          ],
+                          "descendants": {
+                            "nom4t": {
+                              "content": "Buy 5 videos",
+                              "fontSize": 14
+                            },
+                            "fEFyQ": {
+                              "enabled": false
+                            }
+                          }
                         }
                       ]
                     }
@@ -4871,6 +4960,23 @@
                               "fontWeight": "normal"
                             }
                           ]
+                        },
+                        {
+                          "id": "UYRpj",
+                          "type": "ref",
+                          "ref": "NzvlR",
+                          "name": "Buy",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            16
+                          ],
+                          "descendants": {
+                            "u1jsoi": {
+                              "content": "Buy 25 videos",
+                              "fontSize": 14
+                            }
+                          }
                         }
                       ]
                     }
@@ -5933,7 +6039,7 @@
               "fill": "$w-surface",
               "descendants": {
                 "a8tqI": {
-                  "content": "REC 02:14:07 AM · CAM 03"
+                  "content": "REC 01:28:00 AM · CAM 03"
                 }
               }
             },
@@ -6236,7 +6342,7 @@
                   "id": "C07nM4",
                   "name": "Lang",
                   "fill": "$w-faint",
-                  "content": "English · 中文 · Español · Deutsch",
+                  "content": "English · Español · Deutsch",
                   "fontFamily": "$font-body",
                   "fontSize": 13,
                   "fontWeight": "normal"
@@ -6280,16 +6386,39 @@
               "type": "frame",
               "id": "HD3TB",
               "name": "Logo",
+              "width": "fill_container",
               "padding": [
+                4,
+                0,
                 4,
                 8
               ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
               "children": [
                 {
                   "id": "FVV6I",
                   "type": "ref",
                   "ref": "V7ysk2",
-                  "name": "Lockup"
+                  "name": "Lockup",
+                  "descendants": {
+                    "ih0eq": {
+                      "width": 24,
+                      "height": 24
+                    },
+                    "eJCcZ": {
+                      "fontSize": 20
+                    },
+                    "ahv2S": {
+                      "fontSize": 20
+                    }
+                  }
+                },
+                {
+                  "id": "bwC8G",
+                  "type": "ref",
+                  "ref": "iKgs4",
+                  "name": "Bell"
                 }
               ]
             },
@@ -9545,16 +9674,39 @@
               "type": "frame",
               "id": "F1woGk",
               "name": "Logo",
+              "width": "fill_container",
               "padding": [
+                4,
+                0,
                 4,
                 8
               ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
               "children": [
                 {
                   "id": "LoTjU",
                   "type": "ref",
                   "ref": "V7ysk2",
-                  "name": "Lockup"
+                  "name": "Lockup",
+                  "descendants": {
+                    "ih0eq": {
+                      "width": 24,
+                      "height": 24
+                    },
+                    "eJCcZ": {
+                      "fontSize": 20
+                    },
+                    "ahv2S": {
+                      "fontSize": 20
+                    }
+                  }
+                },
+                {
+                  "id": "iRnys",
+                  "type": "ref",
+                  "ref": "iKgs4",
+                  "name": "Bell"
                 }
               ]
             },
@@ -13084,7 +13236,7 @@
                       "name": "REC",
                       "descendants": {
                         "a8tqI": {
-                          "content": "02:14 AM",
+                          "content": "01:28 AM",
                           "fontSize": 10
                         }
                       }
@@ -13942,7 +14094,7 @@
                   "fill": "$w-muted",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Pay once, no subscription. You pick a pack after you upload your photo.",
+                  "content": "Pay once, no subscription. Buy a pack here, or once your photo is in.",
                   "lineHeight": 1.5,
                   "fontFamily": "$font-body",
                   "fontSize": 14,
@@ -13966,7 +14118,7 @@
                   "id": "j0NYLt",
                   "name": "Strip",
                   "width": 104,
-                  "height": 150,
+                  "height": "fill_container",
                   "fill": "$w-bg",
                   "stroke": "$w-border",
                   "strokeWidth": {
@@ -14099,6 +14251,23 @@
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
+                    },
+                    {
+                      "id": "zA5hD",
+                      "type": "ref",
+                      "ref": "NzvlR",
+                      "name": "Buy",
+                      "width": "fill_container",
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "descendants": {
+                        "u1jsoi": {
+                          "content": "Buy 1 video",
+                          "fontSize": 14
+                        }
+                      }
                     }
                   ]
                 }
@@ -14120,7 +14289,7 @@
                   "id": "EOhTj",
                   "name": "Strip",
                   "width": 104,
-                  "height": 150,
+                  "height": "fill_container",
                   "fill": "$w-bg",
                   "stroke": "$w-lamp",
                   "strokeWidth": {
@@ -14329,6 +14498,26 @@
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
+                    },
+                    {
+                      "id": "Gp9sx",
+                      "type": "ref",
+                      "ref": "X3THzN",
+                      "name": "Buy",
+                      "width": "fill_container",
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "descendants": {
+                        "nom4t": {
+                          "content": "Buy 5 videos",
+                          "fontSize": 14
+                        },
+                        "fEFyQ": {
+                          "enabled": false
+                        }
+                      }
                     }
                   ]
                 }
@@ -14350,7 +14539,7 @@
                   "id": "gd6PS",
                   "name": "Strip",
                   "width": 104,
-                  "height": 150,
+                  "height": "fill_container",
                   "fill": "$w-bg",
                   "stroke": "$w-border",
                   "strokeWidth": {
@@ -14575,6 +14764,23 @@
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
+                    },
+                    {
+                      "id": "S4gpE",
+                      "type": "ref",
+                      "ref": "NzvlR",
+                      "name": "Buy",
+                      "width": "fill_container",
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "descendants": {
+                        "u1jsoi": {
+                          "content": "Buy 25 videos",
+                          "fontSize": 14
+                        }
+                      }
                     }
                   ]
                 }
@@ -16046,7 +16252,7 @@
               "fill": "$w-faint",
               "textGrowth": "fixed-width",
               "width": "fill_container",
-              "content": "© 2026 WindowPeeper · English · 中文 · Español · Deutsch",
+              "content": "© 2026 WindowPeeper · English · Español · Deutsch",
               "fontFamily": "$font-body",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -16110,49 +16316,64 @@
             },
             {
               "type": "frame",
-              "id": "u5pAKM",
-              "name": "Credits",
-              "fill": "$w-lamp-soft",
-              "cornerRadius": 999,
-              "stroke": "$w-lamp",
-              "strokeWidth": 1,
-              "gap": 6,
-              "padding": [
-                6,
-                10
-              ],
+              "id": "I2JmAk",
+              "name": "Right",
+              "gap": 8,
               "alignItems": "center",
               "children": [
                 {
-                  "type": "icon",
-                  "id": "kwXju",
-                  "name": "Icon",
-                  "width": 14,
-                  "height": 14,
-                  "icon": "coins",
-                  "library": "lucide",
-                  "fill": "$w-lamp-text"
+                  "id": "ysdym",
+                  "type": "ref",
+                  "ref": "iKgs4",
+                  "name": "Bell"
                 },
                 {
-                  "type": "text",
-                  "id": "LcgHG",
-                  "name": "V",
-                  "fill": "$w-lamp-text",
-                  "content": "20 CR",
-                  "fontFamily": "$font-mono",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 1
-                },
-                {
-                  "type": "icon",
-                  "id": "IWlXk",
-                  "name": "Plus",
-                  "width": 14,
-                  "height": 14,
-                  "icon": "plus",
-                  "library": "lucide",
-                  "fill": "$w-lamp-text"
+                  "type": "frame",
+                  "id": "u5pAKM",
+                  "name": "Credits",
+                  "fill": "$w-lamp-soft",
+                  "cornerRadius": 999,
+                  "stroke": "$w-lamp",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "kwXju",
+                      "name": "Icon",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "coins",
+                      "library": "lucide",
+                      "fill": "$w-lamp-text"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LcgHG",
+                      "name": "V",
+                      "fill": "$w-lamp-text",
+                      "content": "20 CR",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "icon",
+                      "id": "IWlXk",
+                      "name": "Plus",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "$w-lamp-text"
+                    }
+                  ]
                 }
               ]
             }
@@ -18399,7 +18620,7 @@
                       "name": "REC",
                       "descendants": {
                         "a8tqI": {
-                          "content": "02:14 AM",
+                          "content": "01:28 AM",
                           "fontSize": 10
                         }
                       }
@@ -19252,7 +19473,7 @@
                           "fill": "$w-muted",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Mono timecodes (REC ● 02:14 AM) frame every video. They are the brand's voice, not decoration.",
+                          "content": "Mono timecodes (REC ● 01:28 AM) frame every video. They are the brand's voice, not decoration.",
                           "lineHeight": 1.4,
                           "fontFamily": "$font-body",
                           "fontSize": 15,
@@ -19363,7 +19584,7 @@
                       "id": "X8YZ89",
                       "name": "Stamp",
                       "fill": "$w-text",
-                      "content": "REC ● 02:14 AM · CAM 03",
+                      "content": "REC ● 01:28 AM · CAM 03",
                       "fontFamily": "$font-mono",
                       "fontSize": 12,
                       "fontWeight": "normal",
