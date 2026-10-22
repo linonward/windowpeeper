@@ -4,8 +4,8 @@ import { CircleAlert, Clapperboard, CreditCard, Gem, ImageIcon, Megaphone } from
 import { useFormatter, useTranslations } from "next-intl";
 import type { AppNotification } from "@/lib/api";
 
-// Where a notification leads, by type. Images and broadcasts are only on
-// older rows, and this app has no image pages, so they stay on the list.
+// Where a notification leads, by type. Images are only on older rows, and
+// this app has no image pages, so they stay on the list, as broadcasts do.
 export function notificationLink(n: AppNotification): string {
   switch (n.type) {
     case "image_succeeded":

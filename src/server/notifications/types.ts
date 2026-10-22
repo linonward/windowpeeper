@@ -13,8 +13,8 @@ export const NOTIFICATION_TYPES = [
 
 // What happened, by type. Failed generations name the credits refunded;
 // payments and admin grants name the credits added. A broadcast carries the
-// admin's own text, which isn't translated. Nothing sends the image and
-// broadcast types any more; they stay for the rows already stored.
+// admin's own text, which isn't translated. Nothing sends the image types
+// any more; they stay for the rows already stored.
 export type NotificationContent =
   | { type: "image_succeeded"; data: { imageId: string; prompt: string } }
   | { type: "image_failed"; data: { imageId: string; prompt: string; credits: number } }

@@ -300,3 +300,42 @@ test("users submit feedback from the corner link and admins read it", async ({ p
   expect(image.headers()["content-type"]).toContain("image/png");
   expect(await image.body()).toEqual(feedbackPng.buffer);
 });
+
+// Only to one user: a broadcast to everyone would change the unread counts
+// other tests expect.
+test("admins send a notification to one user, who reads it under the bell", async ({ page }) => {
+  const user = await signIn(page);
+  const blocked = await page.request.post("/api/admin/broadcasts", {
+    data: { title: "x", body: "x", email: user, requestId: "x" },
+    headers: { origin: BASE_URL },
+  });
+  expect(blocked.status()).toBe(404);
+
+  await signIn(page, ADMIN);
+  await page.goto("/admin/users");
+  await sidebar(page).getByRole("link", { name: "Broadcasts" }).click();
+  await expect(page).toHaveURL("/admin/notifications");
+  await expect(page.getByRole("heading", { level: 1, name: "Broadcasts" })).toBeVisible();
+
+  await page.getByRole("radio", { name: "One user" }).check({ force: true });
+  await page.getByLabel("User's email").fill(user.toUpperCase());
+  await page.getByLabel("Title").fill("Maintenance tonight");
+  await page.getByLabel("Message").fill("We restart at 02:00 UTC.\nIt takes five minutes.");
+  await page.getByRole("button", { name: "Send" }).click();
+  const dialog = page.getByRole("alertdialog");
+  await expect(dialog).toContainText(`${user.toUpperCase()} gets it.`);
+  await dialog.getByRole("button", { name: "Send" }).click();
+
+  await expect(page.getByRole("status")).toHaveText("Sent to 1 user.");
+  const history = page.getByRole("table", { name: "Sent notifications" });
+  await expect(history.getByRole("row").nth(1)).toContainText("Maintenance tonight");
+  await expect(history.getByRole("row").nth(1)).toContainText(user);
+
+  await signIn(page, user);
+  await page.goto("/videos/library");
+  await page.getByRole("button", { name: "Notifications, 1 unread" }).click();
+  await page.getByRole("menuitem", { name: /Maintenance tonight/ }).click();
+  await expect(page).toHaveURL("/notifications");
+  await expect(page.getByRole("list", { name: "Notifications" })).toContainText("It takes five minutes.");
+  await expect(page.getByRole("button", { name: "Notifications", exact: true })).toBeVisible();
+});

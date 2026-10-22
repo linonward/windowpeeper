@@ -464,7 +464,8 @@
     "creditsBuy": "= {videos, plural, one {# video} other {# videos}}",
     "buyCredits": "Buy credits",
     "balanceShort": "{count} CR",
-    "balancePill": "{count, plural, one {# credit} other {# credits}}. Buy credits"
+    "balancePill": "{count, plural, one {# credit} other {# credits}}. Buy credits",
+    "adminBroadcasts": "Broadcasts"
   },
   "Billing": {
     "title": "Credits & billing",
@@ -696,6 +697,31 @@
       "empty": "No feedback yet.",
       "openImage": "Open image {number}",
       "image": "Feedback image {number}"
+    },
+    "broadcasts": {
+      "title": "Broadcasts",
+      "description": "Send a notification to every user or to one user. It appears under their bell.",
+      "formTitle": "New notification",
+      "audience": "Send to",
+      "everyone": "All users",
+      "oneUser": "One user",
+      "email": "User's email",
+      "titleLabel": "Title",
+      "bodyLabel": "Message",
+      "send": "Send",
+      "confirmTitle": "Send this notification?",
+      "confirmEveryone": "Every user who has an account now gets it. You can't take it back.",
+      "confirmOne": "{email} gets it. You can't take it back.",
+      "confirm": "Send",
+      "cancel": "Cancel",
+      "sent": "{count, plural, one {Sent to # user.} other {Sent to # users.}}",
+      "error": "Couldn't send the notification. Try again.",
+      "unknownUser": "No user has this email.",
+      "historyTitle": "Sent notifications",
+      "recipients": "Recipients",
+      "sentBy": "Sent by",
+      "date": "Date",
+      "empty": "No notifications sent yet."
     }
   },
   "Credits": {
