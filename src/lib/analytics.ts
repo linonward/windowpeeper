@@ -5,15 +5,18 @@
 // emails or raw errors.
 import { initialProperties, readFirstTouch } from "./first-touch";
 
-// The funnel's browser steps. Properties carry choices, never content.
+// The funnel's browser steps. Properties carry choices, never content;
+// `surface` says where the step happened.
 export type FunnelEvent =
+  | "sign_in_started"
   | "photo_selected"
   | "generate_clicked"
   | "paywall_viewed"
   | "checkout_clicked"
   | "video_downloaded"
   | "video_shared";
-export type FunnelProperties = Record<string, string | number>;
+export type Surface = "home" | "dashboard" | "pricing" | "packs" | "billing" | "buy_dialog";
+export type FunnelProperties = { surface?: Surface } & Record<string, string | number>;
 
 const STORAGE_KEY = "windowpeeper:analytics";
 const MAX_AGE = 30 * 24 * 60 * 60 * 1000;

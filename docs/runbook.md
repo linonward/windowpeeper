@@ -659,14 +659,25 @@ All events carry `app=windowpeeper`; filter by it in a shared PostHog project. T
 | `generation_succeeded` | The result has been stored and the job changed to succeeded |
 | `generation_failed` | A pending job failed and its refund committed |
 | `payment_succeeded` | Verified payment webhook fulfills a pack or a subscription charge |
-| `photo_selected` | Home generator: the visitor picked a photo in the file input. A photo restored after sign-in or checkout doesn't count |
-| `generate_clicked` | Home generator: the Make my video button was pressed with a photo and the consent box ticked. `quality`: `standard`; `ratio`: `9:16` |
-| `paywall_viewed` | Home generator: a send the visitor started answered 402 and the packs showed. `quality` (`standard`), `credits_needed` (10). The retries after a payment don't count |
-| `checkout_clicked` | Home generator: the pay button was pressed. `pack_id` (`small`, `medium`, `large`), `quality` |
-| `video_downloaded` | Home generator: the Download link of the finished video was clicked |
+| `sign_in_started` | Sign-in form, on the sign-in page or in a dialog: Google's button was pressed, or a magic link was sent. `method`: `google` or `email`. A link that failed to send doesn't count |
+| `photo_selected` | Generator: the visitor picked a photo in the file input. A photo restored after sign-in or checkout doesn't count |
+| `generate_clicked` | Generator: the Make my video button was pressed with a photo and the consent box ticked. `quality`: `standard` or `pro`; `ratio`: `9:16` |
+| `paywall_viewed` | Generator: a send the visitor started answered 402 and the packs showed, or (dashboard) the Buy credits button opened the dialog. `quality`, `credits_needed`. The retries after a payment don't count |
+| `checkout_clicked` | A pay or buy button was pressed. `pack_id` (`small`, `medium`, `large`); `quality` on the home generator. On the price list, a click that asks to sign in counts; the checkout that opens after sign-in doesn't count again |
+| `video_downloaded` | Generator: the Download link of a finished video was clicked. The video details page's Download doesn't count |
 | `video_shared` | Home generator: the video was shared. `method`: `native` (the share sheet completed; closing it doesn't count) or `copy` (the link was copied) |
 
-The six home generator events are sent from the browser, from the handler of the action, so each fires once per action and never on a re-render. They carry choices only, never the photo, its name or an error message.
+The browser events are sent from the handler of the action, so each fires once per action and never on a re-render. They carry choices only, never the photo, its name, an email address or an error message. Each carries `surface`, where it happened:
+
+| `surface` | Where |
+| --- | --- |
+| `home` | The home page generator |
+| `dashboard` | The dashboard's new video page |
+| `pricing`, `packs` | A pack's buy button on the price list, or in the home page's pricing section |
+| `billing` | The billing page's pay button |
+| `buy_dialog` | The dashboard's buy-credits dialog |
+
+`sign_in_started` has no `surface`; the page view before it shows the page. Events sent before `surface` existed have none: they all came from `home`.
 
 Generation properties include `kind` and `credits`. Payment properties include `payment_kind`, `provider`, `product_id`, `credits`, `catalogue_amount_minor`, `currency` and subscription `interval`. The catalogue amount is not net revenue or the actual tax-adjusted charge. Refunds are not revenue adjustments in PostHog.
 

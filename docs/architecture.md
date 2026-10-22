@@ -190,12 +190,14 @@ src/
 
 ### Product analytics
 
-`src/server/analytics` sends explicit signup, generation and verified payment events to PostHog with bounded, best-effort HTTP calls. In the browser, `src/lib/analytics.ts` is the one sender: it keeps the anonymous ID, and `track` sends the home generator's funnel events. `src/components/layout/posthog.tsx` uses it for sanitized page routes and `$identify`. Every event attaches `app=windowpeeper`, as the PostHog project is shared. See [PostHog operations](runbook.md#posthog) for the event contract and delivery limits.
+`src/server/analytics` sends explicit signup, generation and verified payment events to PostHog with bounded, best-effort HTTP calls. In the browser, `src/lib/analytics.ts` is the one sender: it keeps the anonymous ID, and `track` sends the funnel events, each with the `surface` it happened on. `src/components/layout/posthog.tsx` uses it for sanitized page routes and `$identify`. Every event attaches `app=windowpeeper`, as the PostHog project is shared. See [PostHog operations](runbook.md#posthog) for the event contract and delivery limits.
 
 | Event | Sent by |
 | ----- | ------- |
 | `$pageview`, `$identify` | `PostHogPageviews`, on navigation and once the session is known |
-| `photo_selected`, `generate_clicked`, `paywall_viewed`, `checkout_clicked`, `video_downloaded`, `video_shared` | `WindowPeeperTryout`, from each action's handler, so once per action |
+| `photo_selected`, `generate_clicked`, `paywall_viewed`, `checkout_clicked`, `video_downloaded`, `video_shared` | `WindowPeeperTryout` and `EffectGenerator`, from each action's handler, so once per action |
+| `checkout_clicked` | Also `BuyPack`, `Billing` and the buy-credits dialog |
+| `sign_in_started` | `LoginForm`, on Google's button or a sent magic link |
 | `signup_completed` | Auth's `user.create.after` hook |
 | `checkout_started`, `payment_succeeded` | `payment/orders.ts` and `payment/subscriptions.ts` |
 | `generation_started`, `generation_succeeded`, `generation_failed` | The `generations` lifecycle |

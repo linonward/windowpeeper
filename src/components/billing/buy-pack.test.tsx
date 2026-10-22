@@ -9,6 +9,9 @@ vi.mock("@/components/auth/login-form", () => ({
   LoginForm: ({ returnTo }: { returnTo?: string }) => <p data-testid="return-to">{returnTo}</p>,
 }));
 
+const track = vi.fn();
+vi.mock("@/lib/analytics", () => ({ track }));
+
 const { BuyPack, CheckoutNotice } = await import("./buy-pack");
 
 const fetchMock = vi.fn();
@@ -62,6 +65,7 @@ test("a signed-in buyer goes straight to checkout and comes back to this page", 
   const [url, init] = fetchMock.mock.calls[0];
   expect(url).toBe("/api/payment/checkout");
   expect(JSON.parse(init.body)).toEqual({ packId: "medium", locale: "en", returnTo: "pricing" });
+  expect(track.mock.calls).toEqual([["checkout_clicked", { surface: "pricing", pack_id: "medium" }]]);
 });
 
 test("a signed-out visitor signs in on this page, which then opens checkout for the pack", async () => {
@@ -73,6 +77,7 @@ test("a signed-out visitor signs in on this page, which then opens checkout for 
   await screen.findByRole("dialog", { name: "Sign in to buy credits" });
   expect(screen.getByTestId("return-to").textContent).toBe("/pricing?buy=medium");
   expect(fetchMock).not.toHaveBeenCalled();
+  expect(track.mock.calls).toEqual([["checkout_clicked", { surface: "packs", pack_id: "medium" }]]);
 });
 
 test("back from sign-in with ?buy, checkout opens for that pack", async () => {
@@ -83,6 +88,8 @@ test("back from sign-in with ?buy, checkout opens for that pack", async () => {
 
   await waitFor(() => expect(assign).toHaveBeenCalledWith("https://checkout.test/s"));
   expect(replaced()).toBe("/pricing");
+  // The click before sign-in counted already.
+  expect(track).not.toHaveBeenCalled();
 });
 
 test("?buy for another pack opens nothing", async () => {

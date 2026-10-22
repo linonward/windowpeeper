@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useCreditBalance } from "@/components/dashboard/credits";
 import { CreditTransactions, type Transaction } from "@/components/credits/credit-transactions";
 import { Button } from "@/components/ui/button";
+import { track } from "@/lib/analytics";
 import { useAwaitCredits } from "./await-credits";
 import { type Pack, PackBenefits, PackOptions, useMoney, type VideoPrices } from "./packs";
 import { redirectFrom } from "./redirect";
@@ -75,6 +76,7 @@ export function Billing({
   const price = (amount: number, currency: string) => money(amount, currency);
 
   async function buy() {
+    track("checkout_clicked", { surface: "billing", pack_id: pack.id });
     setBuying(true);
     setError(false);
     if ((await redirectFrom("/api/payment/checkout", { packId: pack.id, locale })) === null) return;

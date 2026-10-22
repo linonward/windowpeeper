@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 import { type Locale, localePath } from "@/i18n/routing";
 import { authClient } from "@/lib/auth-client";
 import { signInReturnPath } from "@/lib/sign-in";
@@ -100,6 +101,7 @@ export function LoginForm({ turnstileSiteKey, returnTo }: { turnstileSiteKey?: s
     });
     setState(error ? "error" : "sent");
     if (!error) {
+      track("sign_in_started", { method: "email" });
       remember("email");
       setSentTo(email);
     }
@@ -110,6 +112,7 @@ export function LoginForm({ turnstileSiteKey, returnTo }: { turnstileSiteKey?: s
   }
 
   async function onGoogle() {
+    track("sign_in_started", { method: "google" });
     remember("google");
     setState("sending");
     // On success the browser navigates to Google, so only errors land here.

@@ -6,6 +6,7 @@ import { LoginForm } from "@/components/auth/login-form";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 import { authClient } from "@/lib/auth-client";
 import type { Pack } from "./packs";
 import { redirectFrom } from "./redirect";
@@ -48,6 +49,12 @@ export function BuyPack({
     setError(t(code === "PAYMENTS_DISABLED" ? "disabled" : "checkoutError"));
   }
 
+  // The click counts, not the checkout it resumes after sign-in.
+  function click() {
+    track("checkout_clicked", { surface: returnTo, pack_id: pack.id });
+    void buy();
+  }
+
   // Once, back from sign-in, on this pack's button.
   useEffect(() => {
     if (session.isPending || resumed.current) return;
@@ -65,7 +72,7 @@ export function BuyPack({
 
   return (
     <>
-      <Button type="button" disabled={buying} onClick={buy} {...props}>
+      <Button type="button" disabled={buying} onClick={click} {...props}>
         {buying ? t("paying") : children}
       </Button>
       {error && (
