@@ -44,30 +44,48 @@ test("the generator sits in the hero, with the video's price on its button", () 
   expect(within(generator).getByRole("button", { name: /^Generate \(\d+ credits\)$/ })).toBeDefined();
 });
 
-// No example clip yet: the hero shows no video, and the generator follows
-// the headline at once, with no buttons in between.
-test("the hero has no clip yet, and no buttons before the generator", () => {
+// The example clip plays full width behind the headline. It only sets the
+// scene: screen readers skip it, and the example card holds the labeled
+// clip. The generator follows the headline at once, with no buttons in between.
+test("the hero plays the example behind the headline, with no buttons before the generator", () => {
   renderWithIntl(<Page />);
 
   const hero = screen.getByRole("heading", { level: 1 }).closest("section") as HTMLElement;
-  expect(hero.querySelector("video")).toBeNull();
-  expect(within(hero).queryByRole("region", { name: "What your video looks like" })).toBeNull();
+  const backdrop = hero.querySelector("video[aria-hidden='true']") as HTMLVideoElement;
+  expect(backdrop.getAttribute("src")).toBe("/landing/windowpeeper/sample.mp4");
+  expect(backdrop.muted && backdrop.loop && backdrop.autoplay).toBe(true);
   const generator = screen.getByRole("region", { name: "Make your window peeper video" });
   // Links in the hero belong to the generator (sign-in, terms), never above it.
   expect(within(hero).queryAllByRole("link").filter((link) => !generator.contains(link))).toEqual([]);
 });
 
-test("the sections follow the generator: steps, the explainer, pricing, FAQ, then the closing call to action", () => {
+test("the sections follow the generator: the example, steps, the explainer, pricing, FAQ, then the closing call to action", () => {
   renderWithIntl(<Page />);
 
   expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual([
     "Make your window peeper video",
+    "What your video looks like",
     "Three steps to your window peeper video",
     "About the window peeper AI video",
     "Start with one video.",
     "Window peeper video questions",
     "Your turn in the window.",
   ]);
+});
+
+// The headline spans the page; the generator and the example sit side by
+// side under it. The example is a real result, made from an AI-generated
+// person, and says so.
+test("the example video sits in the hero beside the generator and says the person is AI-generated", () => {
+  renderWithIntl(<Page />);
+
+  const hero = screen.getByRole("heading", { level: 1 }).closest("section") as HTMLElement;
+  const example = within(hero).getByRole("region", { name: "What your video looks like" });
+  const video = within(example).getByLabelText(/^The window peeper scene:/);
+  expect(video.getAttribute("src")).toBe("/landing/windowpeeper/sample.mp4");
+  expect(video.getAttribute("poster")).toBe("/landing/windowpeeper/poster.jpg");
+  expect(example.textContent).toContain("The person in this example is AI-generated.");
+  expect(screen.getByRole("region", { name: "Make your window peeper video" }).nextElementSibling).toBe(example);
 });
 
 test("a strip under the hero names what a video is", () => {
@@ -160,14 +178,14 @@ test("FAQ answers whether the video works on short-video apps", () => {
 });
 
 // The site's names and the three steps, for search engines, as the page shows them.
-test.each(["en", "zh"] as const)("the site and the steps are structured data in %s", (locale) => {
+test.each(["en", "zh"] as const)("the site, the example clip and the steps are structured data in %s", (locale) => {
   renderWithIntl(<Page />, locale);
 
   const items = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) =>
     JSON.parse(script.textContent ?? ""),
   );
-  // No example clip yet, so no VideoObject.
-  expect(items.find((item) => item["@type"] === "VideoObject")).toBeUndefined();
+  const video = items.find((item) => item["@type"] === "VideoObject");
+  expect(video).toMatchObject({ duration: "PT12S", inLanguage: locale, uploadDate: "2026-10-22" });
   const site = items.find((item) => item["@graph"])["@graph"].find((node: { "@type": string }) => node["@type"] === "WebSite");
   expect(site.alternateName).toEqual(["Window Peeper AI Video Generator", "AI Window Peeper Video Generator"]);
   const howTo = items.find((item) => item["@type"] === "HowTo");

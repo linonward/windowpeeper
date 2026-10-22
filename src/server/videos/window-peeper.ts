@@ -9,25 +9,29 @@ import type { PhotoEffect } from "./photo-effects";
 // It sells two qualities at 12 seconds: standard (720P) and Pro (1080P).
 // margins.test.ts checks both prices against REFERENCE_COST_PER_SECOND. Each
 // account also gets one free 5-second preview: the push-in, the bite and the
-// stare, at 720P, with Bailian's watermark.
+// stare, at 720P, with Bailian's watermark. In test generations the camera
+// drifted into the room, so the prompts keep every shot outside, through
+// the glass; window-peeper.test.ts checks it.
 const PROMPT = [
-  "Cinematic comedic short film, handheld night footage shot from across the street, slight film grain. A dark apartment block at night; every window is dark except one, glowing warm yellow.",
+  "Cinematic comedic short film, handheld night footage shot from across the street with a long zoom lens, slight film grain. A dark apartment block at night; every window is dark except one, glowing warm yellow.",
+  "Every shot is filmed from outside, through that window: the dark window frame and faint reflections on the glass stay visible at the edges of every frame. The camera never enters the room.",
   "The person in the lit window is the person from Image 1: keep exactly the same face, hair, skin tone, age, body and clothing.",
-  "Shot 1 wide shot: the camera slowly pushes in toward the single lit window.",
+  "Shot 1 wide shot: the camera slowly zooms in toward the single lit window.",
   "Shot 2 medium shot through the window glass: Image 1's person sits alone at a small kitchen table and takes a big bite of a burger, relaxed, unaware.",
-  "Shot 3 medium close-up: mid-chew, they notice the camera and freeze with the burger still raised.",
-  "Shot 4 close-up through the glass: they stare straight into the lens without blinking, for an awkwardly long beat, deadpan.",
-  "Shot 5 medium shot: they slowly put the burger down, stand up, and yank the curtain shut.",
+  "Shot 3 medium close-up through the glass: mid-chew, with a bite missing from the burger, they notice the camera and freeze with the burger still raised.",
+  "Shot 4 tight zoomed close-up through the glass, window frame visible: they stare straight into the lens without blinking, for an awkwardly long beat, deadpan.",
+  "Shot 5 medium shot through the glass: they put the burger down, stand up, grab the curtain with one hand and yank it shut across the window in one quick motion, on screen.",
   "Shot 6 wide shot: the window glows behind the closed curtain in the dark building.",
   "Music: an original quiet, suspenseful synth tune with a low pulse that cuts out when the curtain closes. No dialogue, no text, no logos, no subtitles.",
 ].join(" ");
 
 const PREVIEW_PROMPT = [
-  "Cinematic comedic short film, handheld night footage shot from across the street. A dark apartment block at night with one window glowing warm yellow.",
+  "Cinematic comedic short film, handheld night footage shot from across the street with a long zoom lens. A dark apartment block at night with one window glowing warm yellow.",
+  "Every shot is filmed from outside, through that window: the dark window frame and faint reflections on the glass stay visible at the edges of every frame.",
   "The person in the lit window is the person from Image 1: keep exactly the same face, hair, skin tone, age, body and clothing.",
-  "Shot 1 wide shot: the camera slowly pushes in toward the lit window.",
+  "Shot 1 wide shot: the camera slowly zooms in toward the lit window.",
   "Shot 2 medium shot through the glass: Image 1's person takes a big bite of a burger at a small kitchen table.",
-  "Shot 3 close-up: mid-chew, they freeze and stare straight into the lens, deadpan.",
+  "Shot 3 zoomed close-up through the glass: mid-chew, they freeze and stare straight into the lens, deadpan.",
   "Music: an original quiet, suspenseful synth tune with a low pulse. No dialogue, no text, no logos, no subtitles.",
 ].join(" ");
 
