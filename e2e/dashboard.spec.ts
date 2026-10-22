@@ -126,6 +126,8 @@ test("on wide screens the content column is centered beside the sidebar", async 
   await page.setViewportSize({ width: 1720, height: 900 });
   await signIn(page);
   await page.goto("/videos/library");
+  // The shell streams in; measure once the page is there.
+  await expect(page.getByRole("heading", { level: 1, name: "All videos" })).toBeVisible();
 
   const inset = await page.locator("#main-content").boundingBox();
   const column = await page.locator("#main-content > div").last().boundingBox();
