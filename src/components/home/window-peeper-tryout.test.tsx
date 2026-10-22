@@ -615,3 +615,16 @@ test("records a copied link as shared by copy", async () => {
   await screen.findByText("Link copied");
   expect(steps().at(-1)).toEqual(["video_shared", { method: "copy" }]);
 });
+
+// The 404 page's scene cards link here with ?scene=.
+test("?scene= picks that scene, and an unknown one keeps the default", () => {
+  useSession.mockReturnValue(signedOut);
+  window.history.replaceState(null, "", "/?scene=pizza");
+  renderWithIntl(<WindowPeeperTryout {...props} />);
+  expect((screen.getByRole("radio", { name: "Pizza" }) as HTMLInputElement).checked).toBe(true);
+  cleanup();
+
+  window.history.replaceState(null, "", "/?scene=nope");
+  renderWithIntl(<WindowPeeperTryout {...props} />);
+  expect((screen.getByRole("radio", { name: "Burger" }) as HTMLInputElement).checked).toBe(true);
+});

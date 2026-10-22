@@ -54,7 +54,7 @@ test("a tag lists the locale's posts with it", async ({ page }) => {
 test("a post that doesn't exist gets the 404 page", async ({ page }) => {
   await page.goto("/es/blog/photo-to-video-ai");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Página no encontrada" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Esta ventana está a oscuras." })).toBeVisible();
 });
 
 test("the header links to the blog in the current locale", async ({ page }) => {
@@ -67,5 +67,5 @@ test("the header links to the blog in the current locale", async ({ page }) => {
 test("a tag no post in the locale has gets the 404 page", async ({ page }) => {
   await page.goto("/es/blog/tags/guides");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Página no encontrada" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Esta ventana está a oscuras." })).toBeVisible();
 });

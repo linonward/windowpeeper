@@ -213,8 +213,15 @@
     "close": "Close menu"
   },
   "NotFound": {
-    "title": "Page not found",
-    "home": "Go to the home page"
+    "eyebrow": "Error 404",
+    "title": "This window is dark.",
+    "body": "Nobody's home at this address. The page may have moved, or the link has a typo.",
+    "cta": "Make a video",
+    "home": "Go to the home page",
+    "scenes": "Or start from a scene",
+    "rec": "REC 01:28:00 AM",
+    "caption": "CAM 404 · NO SIGNAL",
+    "still": "A dark window at night"
   },
   "SignIn": {
     "title": "Sign in",
