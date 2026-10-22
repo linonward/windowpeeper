@@ -40223,32 +40223,266 @@
           "name": "Content",
           "width": "fill_container",
           "layout": "vertical",
-          "gap": 16,
+          "gap": 88,
           "padding": [
-            200,
-            0
+            72,
+            184,
+            104,
+            184
           ],
-          "alignItems": "center",
           "children": [
             {
-              "type": "text",
-              "id": "CI24K",
-              "name": "H1",
-              "fill": "$w-text",
-              "content": "Page not found",
-              "fontFamily": "$font-display",
-              "fontSize": 40,
-              "fontWeight": "800"
+              "type": "frame",
+              "id": "DvtEz",
+              "name": "Hero",
+              "width": "fill_container",
+              "gap": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tPYfd",
+                  "name": "Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "q4Eg3",
+                      "name": "Eyebrow",
+                      "fill": "$w-lamp-text",
+                      "content": "ERROR 404",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "LdlXB",
+                      "name": "H1",
+                      "fill": "$w-text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "This window is dark.",
+                      "lineHeight": 0.95,
+                      "fontFamily": "$font-display",
+                      "fontSize": 72,
+                      "fontWeight": "900"
+                    },
+                    {
+                      "type": "text",
+                      "id": "empJ0",
+                      "name": "Body",
+                      "fill": "$w-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Nobody's home at this address. The page may have moved, or the link has a typo.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GTXzE",
+                      "name": "Actions",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "id": "CYsLs",
+                          "type": "ref",
+                          "ref": "X3THzN",
+                          "name": "Make a video",
+                          "descendants": {
+                            "nom4t": {
+                              "content": "Make a video"
+                            }
+                          }
+                        },
+                        {
+                          "id": "DZWMr",
+                          "type": "ref",
+                          "ref": "NzvlR",
+                          "name": "Home",
+                          "descendants": {
+                            "u1jsoi": {
+                              "content": "Go to the home page"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "xpZh7",
+                  "type": "ref",
+                  "ref": "LIaQW",
+                  "name": "Dark window",
+                  "descendants": {
+                    "oiMGf": {
+                      "fill": [
+                        {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "generated-6.png",
+                          "mode": "cover"
+                        },
+                        "#090C13D9"
+                      ]
+                    },
+                    "Holxz/a8tqI": {
+                      "content": "REC 01:28:00 AM"
+                    },
+                    "VHxUc": {
+                      "content": "CAM 404 · NO SIGNAL"
+                    }
+                  }
+                }
+              ]
             },
             {
-              "type": "text",
-              "id": "SsTTY",
-              "name": "Link",
-              "fill": "$w-lamp-text",
-              "content": "Go to the home page",
-              "fontFamily": "$font-body",
-              "fontSize": 17,
-              "fontWeight": "normal"
+              "type": "frame",
+              "id": "y2oyZ",
+              "name": "Scenes",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Dgbqj",
+                  "name": "H2",
+                  "fill": "$w-text",
+                  "content": "Or start from a scene",
+                  "fontFamily": "$font-display",
+                  "fontSize": 32,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "frame",
+                  "id": "yxmTa",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "id": "tz4NC",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Burger at night",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 360,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-2.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "01:28 AM"
+                        },
+                        "vteLC": {
+                          "content": "Burger at night",
+                          "fontSize": 16
+                        },
+                        "aQ2Cx": {
+                          "content": "The original"
+                        }
+                      }
+                    },
+                    {
+                      "id": "u41q0S",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Midnight noodles",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 360,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-1.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "01:47 AM"
+                        },
+                        "vteLC": {
+                          "content": "Midnight noodles",
+                          "fontSize": 16
+                        },
+                        "aQ2Cx": {
+                          "content": "A big slurp"
+                        }
+                      }
+                    },
+                    {
+                      "id": "v1QaF",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Pizza slice",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 360,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-3.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "11:58 PM"
+                        },
+                        "vteLC": {
+                          "content": "Pizza slice",
+                          "fontSize": 16
+                        },
+                        "aQ2Cx": {
+                          "content": "Cheese pull"
+                        }
+                      }
+                    },
+                    {
+                      "id": "o8fedJ",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Caught and wave",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 360,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-4.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "12:05 AM"
+                        },
+                        "vteLC": {
+                          "content": "Caught and wave",
+                          "fontSize": 16
+                        },
+                        "aQ2Cx": {
+                          "content": "Caught, then a wave"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -40594,32 +40828,245 @@
           "name": "Content",
           "width": "fill_container",
           "layout": "vertical",
-          "gap": 16,
+          "gap": 48,
           "padding": [
-            120,
+            48,
+            20,
+            64,
             20
           ],
           "alignItems": "center",
           "children": [
             {
-              "type": "text",
-              "id": "r4leb",
-              "name": "H1",
-              "fill": "$w-text",
-              "content": "Page not found",
-              "fontFamily": "$font-display",
-              "fontSize": 34,
-              "fontWeight": "800"
+              "type": "frame",
+              "id": "J8b5ou",
+              "name": "Text",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cPUcn",
+                  "name": "Eyebrow",
+                  "fill": "$w-lamp-text",
+                  "content": "ERROR 404",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "pvRXy",
+                  "name": "H1",
+                  "fill": "$w-text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "This window is dark.",
+                  "lineHeight": 0.95,
+                  "fontFamily": "$font-display",
+                  "fontSize": 48,
+                  "fontWeight": "900"
+                },
+                {
+                  "type": "text",
+                  "id": "pu4fo",
+                  "name": "Body",
+                  "fill": "$w-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nobody's home at this address. The page may have moved, or the link has a typo.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "xeEDF",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "a0rlY",
+                      "type": "ref",
+                      "ref": "X3THzN",
+                      "name": "Make a video",
+                      "width": "fill_container",
+                      "descendants": {
+                        "nom4t": {
+                          "content": "Make a video"
+                        }
+                      }
+                    },
+                    {
+                      "id": "sNQdQ",
+                      "type": "ref",
+                      "ref": "NzvlR",
+                      "name": "Home",
+                      "width": "fill_container",
+                      "descendants": {
+                        "u1jsoi": {
+                          "content": "Go to the home page"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "type": "text",
-              "id": "y7DrdD",
-              "name": "Link",
-              "fill": "$w-lamp-text",
-              "content": "Go to the home page",
-              "fontFamily": "$font-body",
-              "fontSize": 17,
-              "fontWeight": "normal"
+              "type": "frame",
+              "id": "EHJrT",
+              "name": "Scenes",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ke0p9",
+                  "name": "H2",
+                  "fill": "$w-text",
+                  "content": "Or start from a scene",
+                  "fontFamily": "$font-display",
+                  "fontSize": 26,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "frame",
+                  "id": "Kr0rb",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "edEKc",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Burger at night",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 260,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-2.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "01:28 AM"
+                        },
+                        "vteLC": {
+                          "content": "Burger at night",
+                          "fontSize": 14
+                        },
+                        "aQ2Cx": {
+                          "content": "The original"
+                        }
+                      }
+                    },
+                    {
+                      "id": "srEvf",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Midnight noodles",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 260,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-1.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "01:47 AM"
+                        },
+                        "vteLC": {
+                          "content": "Midnight noodles",
+                          "fontSize": 14
+                        },
+                        "aQ2Cx": {
+                          "content": "A big slurp"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wTfq7",
+                  "name": "Row",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "omBVr",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Pizza slice",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 260,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-3.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "11:58 PM"
+                        },
+                        "vteLC": {
+                          "content": "Pizza slice",
+                          "fontSize": 14
+                        },
+                        "aQ2Cx": {
+                          "content": "Cheese pull"
+                        }
+                      }
+                    },
+                    {
+                      "id": "W40By",
+                      "type": "ref",
+                      "ref": "h8jC9",
+                      "name": "Caught and wave",
+                      "width": "fill_container",
+                      "descendants": {
+                        "b4Wnbf": {
+                          "height": 260,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-4.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "yQDYP": {
+                          "content": "12:05 AM"
+                        },
+                        "vteLC": {
+                          "content": "Caught and wave",
+                          "fontSize": 14
+                        },
+                        "aQ2Cx": {
+                          "content": "Caught, then a wave"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
