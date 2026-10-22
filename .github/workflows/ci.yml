@@ -104,7 +104,9 @@ jobs:
         id: minio
         with:
           path: ~/.cache/starter-minio
-          key: minio-linux-amd64-9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a-go1.24.8
+          # The cache keeps absolute paths, and $HOME in the container is
+          # /github/home, not the runner's /home/runner.
+          key: minio-linux-amd64-9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a-go1.24.8-container
       - name: Build test storage
         if: steps.minio.outputs.cache-hit != 'true'
         run: |
