@@ -45,9 +45,16 @@ git push --force-with-lease -u origin <type>/<topic>
 gh pr create --base main --template pull_request_template.md
 ```
 
-Fill in every section of the [PR template](../.github/pull_request_template.md). Write `N/A` if a section doesn't apply. If `main` moves, rebase again.
+Fill in every section of the [PR template](../.github/pull_request_template.md). Write `N/A` if a section doesn't apply.
 
-CI ([`.github/workflows/ci.yml`](../.github/workflows/ci.yml)) runs lint, typecheck, unit, integration and E2E on every PR and on `main`. A change that touches only Markdown (`*.md`) skips CI, except `docs/DESIGN.md` and `docs/runbook.md`, which unit tests check against the code. Otherwise, merge only when it passes.
+CI ([`.github/workflows/ci.yml`](../.github/workflows/ci.yml)) runs lint, typecheck, unit, integration and E2E on every PR and on `main`. E2E runs in the Playwright image, so no step installs browsers. A change that touches only Markdown (`*.md`) skips CI, except `docs/DESIGN.md` and `docs/runbook.md`, which unit tests check against the code. Otherwise, merge only when it passes.
+
+**When `main` moves, don't rebase by default.** A green PR can merge after `main` moves. Rebase (and let CI run again) only if:
+
+- GitHub reports a merge conflict, or
+- `main` gained changes to something this PR also depends on: `package.json`, `pnpm-lock.yaml`, `next.config.ts`, `src/app/[locale]/layout.tsx`, `drizzle/`, a shared component the PR uses, or the same section of a doc.
+
+The CI run on `main` after each merge checks that the merged PRs work together. If it fails, fix `main` before you merge anything else.
 
 ## 6. Merge and clean up
 
