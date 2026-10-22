@@ -232,7 +232,7 @@ Cards change only their border color on hover. Hover styles apply only on device
 
 ```
 ┌──────── 248px ────────┬────────────────── fluid ──────────────────┐
-│ Lockup                │ Crumb · title                 | status    │
+│ Lockup                │ Title                         | status    │
 │ CREATE  New video     │                                           │
 │         My videos  12 │ Content (max 1240px, gap 28px)            │
 │ ACCOUNT Billing …     │                                           │
