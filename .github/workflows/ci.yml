@@ -69,6 +69,9 @@ jobs:
     env:
       # In a container job, a service is reached by its name.
       DATABASE_URL: postgres://starter:starter@db:5432/starter
+      # SWC's native addon won't load from a cache under /github/home: its
+      # parent is writable by other users. /root is the container user's own.
+      SWC_NATIVE_BINDING_CACHE: /root/.cache/swc
       STORAGE_ENDPOINT: http://localhost:9000
       STORAGE_REGION: us-east-1
       STORAGE_BUCKET: starter
