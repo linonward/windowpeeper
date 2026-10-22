@@ -1,4 +1,6 @@
 allowBuilds:
+  # wrangler (Workers preview and deploy) needs workerd to download its runtime.
+  workerd: true
   sharp: false
   unrs-resolver: false
   esbuild: false
