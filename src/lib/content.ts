@@ -1,6 +1,5 @@
-import { readdir } from "node:fs/promises";
-import { join } from "node:path";
 import type { MDXContent } from "mdx/types";
+import { POSTS } from "@content/blog/posts";
 import { type Locale, routing } from "@/i18n/routing";
 
 export const LEGAL_DOCS = ["privacy", "terms", "refund"] as const;
@@ -31,12 +30,9 @@ const RESERVED_SLUGS = ["tags"];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
-// The slugs of content/blog/<locale>/*.mdx. Cached, so pages that list
-// posts can prerender: posts change only with a deploy.
+// The slugs of content/blog/<locale>/*.mdx, from content/blog/posts.ts.
 async function postSlugs(locale: Locale): Promise<string[]> {
-  "use cache";
-  const files = await readdir(join(process.cwd(), "content/blog", locale)).catch(() => []);
-  const slugs = files.filter((file) => file.endsWith(".mdx")).map((file) => file.slice(0, -4));
+  const slugs = [...(POSTS[locale] ?? [])];
   const reserved = slugs.find((slug) => RESERVED_SLUGS.includes(slug));
   if (reserved) throw new Error(`content/blog/${locale}/${reserved}.mdx: "${reserved}" is reserved; rename the post`);
   return slugs;

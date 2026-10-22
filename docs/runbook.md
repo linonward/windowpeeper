@@ -294,7 +294,7 @@ Each run also deletes uploaded photos (photo effect photos, and start images of 
 Videos, yearly grants and uploads run independently. If one throws, the others finish and stay committed; the sweep logs `cron.task_failed` and returns 500. Check the error and retry; the idempotency keys make retries safe.
 
 1. Generate a secret with `openssl rand -base64 32`. Set it as `CRON_SECRET`, then restart.
-2. Schedule a call every 10 minutes. On Vercel Pro, `vercel.json` already does this ([Deploy to Vercel](#deploy-to-vercel)). Elsewhere, call `curl -X POST -H "Authorization: Bearer $CRON_SECRET" <BETTER_AUTH_URL>/api/cron/sweep` from any scheduler, such as a Cloudflare Cron Trigger.
+2. Schedule a call every 10 minutes. On Cloudflare Workers, the Cron Trigger in `wrangler.jsonc` already does this ([Deploy to Cloudflare Workers](#deploy-to-cloudflare-workers)). Elsewhere, call `curl -X POST -H "Authorization: Bearer $CRON_SECRET" <BETTER_AUTH_URL>/api/cron/sweep` from any scheduler.
 
 Without `CRON_SECRET`, the route answers 404 to everyone.
 
@@ -342,7 +342,8 @@ To test it, send a message the same way: `curl -X POST -H 'Content-Type: applica
 Posts are MDX files in `content/blog/<locale>/<slug>.mdx`; the file name is the URL (`/blog/<slug>` in English, `/es/blog/<slug>` in Spanish). Each language has its own posts. Give two translations the same file name, so they share a URL.
 
 1. Add the file. Use lowercase letters, digits and hyphens for the slug.
-2. Start it with its metadata:
+2. Add the slug to its locale in [`content/blog/posts.ts`](../content/blog/posts.ts). A Worker can't list a directory; `src/lib/content.test.ts` fails when the list and the files differ.
+3. Start it with its metadata:
 
    ```mdx
    export const metadata = {
@@ -353,7 +354,7 @@ Posts are MDX files in `content/blog/<locale>/<slug>.mdx`; the file name is the 
    };
    ```
 
-3. Write the body in Markdown. Start headings at `##`; the title is the page's `#`. Code blocks (```) scroll sideways on phones instead of widening the page.
+4. Write the body in Markdown. Start headings at `##`; the title is the page's `#`. Code blocks (```) scroll sideways on phones instead of widening the page.
 
 - `/blog` lists posts newest first. A missing title, description or `YYYY-MM-DD` date fails the build, and so does a post called `tags`.
 - Posts appear in the sitemap and `/llms.txt`. Each post's page names its canonical URL, links only the translations that exist, carries schema.org `BlogPosting` JSON-LD (`blogPosting` in `src/lib/seo.ts`) and has its own preview image.
@@ -432,70 +433,100 @@ The server writes one line per event to stdout, and warnings and errors to stder
 
 The startup check of the environment throws instead of logging, so its message is plain text.
 
-## Deploy to Vercel
+## Deploy to Cloudflare Workers
 
-The production setup: Vercel runs the app and the sweep, Neon hosts Postgres and Cloudflare R2 stores the generated files.
+The production setup: a Cloudflare Worker runs the app and the sweep ([`wrangler.jsonc`](../wrangler.jsonc)), Neon hosts Postgres and Cloudflare R2 stores the generated files. `@opennextjs/cloudflare` turns the `next build` output into the Worker (`pnpm cf:build`, [`open-next.config.ts`](../open-next.config.ts)); [`worker.ts`](../worker.ts) wraps it and adds the Cron Trigger.
 
-> **Warning:** use the Vercel **Pro** plan. `vercel.json` runs the sweep every 10 minutes, and on Hobby any cron job that runs more than once a day fails the deployment. Hobby is also for non-commercial use only. To try the app on Hobby, delete `crons` from `vercel.json` and call the sweep from an external scheduler ([Pending sweep](#pending-sweep)).
+> **Warning:** use the Workers **Paid** plan. The Worker is about 6 MB gzipped (the Free plan allows 3 MB), and rendering a page takes more than the Free plan's 10 ms of CPU. `pnpm exec wrangler deploy --dry-run` prints the size after `pnpm cf:build`.
+
+What differs from a Node.js server:
+
+- **Database connections**: a Worker can't use a socket another request opened. In a Worker, `getDb()` ([`src/server/db/index.ts`](../src/server/db/index.ts)) returns a client that forwards each use to the current request's own pool, keyed by its execution context. `pg` reaches the database through `pg-cloudflare` (TCP sockets, `nodejs_compat`); `next.config.ts` adds that package to the build, because file tracing misses it.
+- **No Cache Components**: with `cacheComponents` on, page renders hang in a Worker ([vercel/next.js#94880](https://github.com/vercel/next.js/issues/94880)), so `next.config.ts` leaves it off.
+- **No file system**: the blog's post list is [`content/blog/posts.ts`](../content/blog/posts.ts), not a directory listing ([Blog](#blog)). Without `RESEND_API_KEY` the app can't save emails to `EMAIL_OUTBOX_DIR`, so production needs the key.
+- **Cron**: a Cron Trigger (`triggers` in `wrangler.jsonc`) calls `/api/cron/sweep` through the app every 10 minutes with `CRON_SECRET` ([`src/server/cron/scheduled.ts`](../src/server/cron/scheduled.ts)). Without `CRON_SECRET` it logs `cron.skipped` and does nothing.
+- **Environment**: `wrangler.jsonc` `vars` holds the settings that aren't secret; the rest are Worker secrets. `next build` reads `BETTER_AUTH_URL` and the `NEXT_PUBLIC_*` variables, so the build needs them too.
 
 ### 1. Database (Neon)
 
-1. Create a Neon project in the region closest to your Vercel functions.
-2. Copy two connection strings from **Connect**: the pooled one (host contains `-pooler`) and the direct one. In both, change `sslmode=require` to `sslmode=verify-full`. `pg` 8 already treats `require` as `verify-full` and warns about it; `pg` 9 will make `require` skip the certificate check. Neon's certificates come from a public CA, so Node.js verifies them without extra setup.
-3. Apply the migrations from your machine with the direct string:
+The project is `windowpeeper` (`super-frost-35071364`), `aws-us-east-1`, PostgreSQL 18.
+
+1. Copy two connection strings from **Connect**: the pooled one (host contains `-pooler`) and the direct one. In both, change `sslmode=require` to `sslmode=verify-full`. `pg` 8 already treats `require` as `verify-full` and warns about it; `pg` 9 will make `require` skip the certificate check.
+2. Apply the migrations from your machine with the direct string:
 
    ```sh
    DATABASE_URL='<direct connection string>' pnpm db:migrate
    ```
 
-4. Use the pooled string as `DATABASE_URL` in Vercel. Each serverless instance opens its own connections; the pooler keeps them under Neon's limit.
+3. Use the pooled string as the Worker's `DATABASE_URL` secret ([3. Secrets](#3-secrets)).
 
-Run step 3 again before you deploy a change that adds a migration.
+Run step 2 again before you deploy a change that adds a migration.
 
 ### 2. Storage (Cloudflare R2)
 
-1. In Cloudflare, create a private R2 bucket. Keep public access off: the app serves files through signed URLs.
+1. In Cloudflare, create a private R2 bucket. Keep public access off: the app serves files through signed URLs. Production uses `windowpeeper-prod`.
 2. Create an R2 API token with **Object Read & Write** on that bucket.
-3. Set `STORAGE_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com`, `STORAGE_BUCKET`, `STORAGE_ACCESS_KEY_ID` and `STORAGE_SECRET_ACCESS_KEY`. Leave `STORAGE_REGION` (default `auto`) and `STORAGE_FORCE_PATH_STYLE` empty.
+3. `wrangler.jsonc` sets `STORAGE_BUCKET` and `STORAGE_REGION` (`auto`). Set `STORAGE_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com`, `STORAGE_ACCESS_KEY_ID` and `STORAGE_SECRET_ACCESS_KEY` as secrets. Leave `STORAGE_FORCE_PATH_STYLE` unset.
 
 The bucket needs no CORS rules: the server uploads the files, and browsers only open signed URLs in `<img>`, `<video>` and download links.
 
-### 3. Vercel project
+### 3. Secrets
 
-1. Import the repository in Vercel. It detects Next.js; keep the default build settings.
-2. Add the environment variables for Production ([Environment variables](#environment-variables)). At minimum: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`, `RESEND_API_KEY` and `EMAIL_FROM`. With videos, also `CRON_SECRET` and the `STORAGE_*` variables; with payments, `CRON_SECRET` too, for yearly plans.
-3. Set `BETTER_AUTH_URL` to the production URL, such as `https://your-domain.com`. The build reads it too, so set it before the first deploy.
-4. Deploy. The app checks the variables at startup and lists every problem in the function logs.
-5. Add your domain under **Settings → Domains**. If it changes `BETTER_AUTH_URL`, update the variable and redeploy.
+Set each with `pnpm exec wrangler secret put <NAME>` (needs `wrangler login`), or in the dashboard under **Workers & Pages → windowpeeper → Settings → Variables and Secrets**. Never commit one. The minimum ([Environment variables](#environment-variables)):
 
-Vercel sends `Authorization: Bearer $CRON_SECRET` with each cron call, and `/api/cron/sweep` accepts it. Check the runs under **Settings → Cron Jobs → View Logs**. A missed or doubled run is safe: each run settles whatever is still pending, and every refund and grant has an idempotency key.
+- `DATABASE_URL`, `BETTER_AUTH_SECRET`, `RESEND_API_KEY`, `CRON_SECRET`, `ADMIN_EMAILS`
+- `STORAGE_ENDPOINT`, `STORAGE_ACCESS_KEY_ID`, `STORAGE_SECRET_ACCESS_KEY`, `DASHSCOPE_API_KEY`
+- `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
+- Payments: `PAYMENT_PROVIDER`, `WAFFO_ENVIRONMENT`, `WAFFO_MERCHANT_ID`, `WAFFO_PRIVATE_KEY` and the `WAFFO_PACK_*_PRODUCT_ID`s ([Waffo Pancake](#waffo-pancake))
 
-### 4. Connect the services
+The app checks the variables when the Worker starts and answers every request with 500 while one is wrong; the message is in [Workers Logs](#6-logs).
 
-Point each service at the production URL:
+### 4. Builds
+
+Cloudflare builds and deploys each push to `main` (Workers Builds). Setup, done once in the Cloudflare dashboard:
+
+1. **Workers & Pages → Create → Import a repository** → `linonward/windowpeeper`. For an existing `windowpeeper` Worker, use **Settings → Builds → Connect** instead.
+2. Build settings:
+   - Build command: `pnpm cf:build`
+   - Deploy command: `npx wrangler deploy`
+   - Production branch: `main`; preview builds off
+   - Build variables: `BETTER_AUTH_URL=https://windowpeeper.org` and any `NEXT_PUBLIC_*` you use. `next build` reads them; the Worker's own `vars` and secrets don't reach the build.
+   - Node.js comes from [`.node-version`](../.node-version); pnpm from `packageManager` in `package.json`.
+3. Push to `main` and confirm in **Deployments** that the commit builds and deploys.
+
+> **Warning:** OpenNext copies `.env` files into the Worker bundle. Don't run `pnpm cf:deploy` from a checkout whose `.env` holds secrets: they would ship inside the code. Workers Builds has no `.env`. To test the Worker locally, run `pnpm cf:preview` with the settings in a git-ignored `.dev.vars`.
+
+Roll back a bad deploy with `pnpm exec wrangler rollback`, then fix `main`.
+
+### 5. Domain and services
+
+`windowpeeper.org` is a Cloudflare zone. The `routes` entry in `wrangler.jsonc` (`custom_domain: true`) creates its DNS record and certificate on deploy; don't add it in the dashboard too. Then point each service at it:
 
 - Resend: verify the sending domain ([Email (Resend)](#email-resend)).
-- Google sign-in: add `https://<your-domain>/api/auth/callback/google` ([Google sign-in](#google-sign-in)).
-- Payments: add the webhook endpoint for your provider ([Stripe](#stripe) or [Waffo Pancake](#waffo-pancake)).
-- Admins: set `ADMIN_EMAILS`.
+- Google sign-in: add `https://windowpeeper.org/api/auth/callback/google` ([Google sign-in](#google-sign-in)).
+- Payments: add the webhook endpoint `https://windowpeeper.org/api/webhooks/payment/waffo` ([Waffo Pancake](#waffo-pancake)).
 
-Redeploy after you change a variable; Vercel applies variables to new deployments only.
+If the domain changes, change `BETTER_AUTH_URL` in `wrangler.jsonc` and in the build variables, and the route.
 
-### 5. Each deploy
+### 6. Logs
 
-1. If the change adds a migration, apply it first ([Database (Neon)](#1-database-neon), step 3).
-2. Deploy with `vercel deploy --prod`. Check that the deployment is `Ready` and the domain serves it.
+Workers Logs is on (`observability` in `wrangler.jsonc`), with query strings removed, because sign-in links carry their token there. The app's JSON lines ([Logs](#logs)) are in **Workers & Pages → windowpeeper → Logs**. For a live stream: `pnpm exec wrangler tail windowpeeper --format pretty`.
+
+### 7. Each deploy
+
+1. If the change adds a migration, apply it first ([1. Database (Neon)](#1-database-neon), step 2).
+2. Merge to `main`. Check the deployment in the dashboard and that the domain serves it.
 3. If the change adds or changes public pages, submit the sitemap to [IndexNow](#indexnow):
 
    ```sh
-   curl -fsS -X POST -H "Authorization: Bearer $CRON_SECRET" <BETTER_AUTH_URL>/api/indexnow
+   curl -fsS -X POST -H "Authorization: Bearer $CRON_SECRET" https://windowpeeper.org/api/indexnow
    ```
 
-   Expect `{"submitted":<count>,"status":200}`. Vercel hides sensitive values, and `vercel env pull` returns placeholders for them. Keep a copy of `CRON_SECRET` outside Vercel, such as in the git-ignored `.env.production`.
+   Expect `{"submitted":<count>,"status":200}`. Cloudflare doesn't show a secret again, so keep a copy of `CRON_SECRET` in a password manager.
 
 ## Self-host with Docker
 
-The `Dockerfile` builds a single image that runs the app with Node.js on any host: a VPS, Fly.io, Railway, Kubernetes. Bring your own Postgres (Neon works) and S3-compatible storage (R2 works, [Deploy to Vercel § Storage](#2-storage-cloudflare-r2)).
+The `Dockerfile` builds a single image that runs the app with Node.js on any host: a VPS, Fly.io, Railway, Kubernetes. Bring your own Postgres (Neon works) and S3-compatible storage (R2 works, [Deploy to Cloudflare Workers § Storage](#2-storage-cloudflare-r2)).
 
 > **Warning:** run one instance. Next.js keeps its cache on the container's disk, so several instances can serve different versions of a cached page. Running more needs a shared cache handler ([Next.js self-hosting guide](https://nextjs.org/docs/app/guides/self-hosting#multi-server-deployments)).
 
@@ -520,7 +551,7 @@ The `Dockerfile` builds a single image that runs the app with Node.js on any hos
 
    Run it again before you start an image that adds a migration.
 
-3. Put the run-time variables in a file, such as `.env.production`. The minimum is the same as on Vercel ([3. Vercel project](#3-vercel-project)).
+3. Put the run-time variables in a file, such as `.env.production`. The minimum is the same as on Workers ([3. Secrets](#3-secrets)), plus `BETTER_AUTH_URL`.
 
 4. Start the container. It listens on port 3000 and reports its health from `/api/health`:
 
@@ -536,7 +567,7 @@ The `Dockerfile` builds a single image that runs the app with Node.js on any hos
    */10 * * * * curl -fsS -X POST -H "Authorization: Bearer <CRON_SECRET>" https://your-domain.com/api/cron/sweep > /dev/null
    ```
 
-7. Point Resend, Google sign-in and your payment provider at the domain ([Deploy to Vercel § Connect the services](#4-connect-the-services)).
+7. Point Resend, Google sign-in and your payment provider at the domain ([Deploy to Cloudflare Workers § Domain and services](#5-domain-and-services)).
 
 Vercel Web Analytics and Speed Insights work only on Vercel: leave `NEXT_PUBLIC_VERCEL_ANALYTICS` and `NEXT_PUBLIC_VERCEL_SPEED_INSIGHTS` empty. The build sets `BUILD_STANDALONE`, which makes `next build` write `.next/standalone`; other builds leave it unset.
 
@@ -546,7 +577,7 @@ Sentry groups errors and alerts you. With a DSN set, it reports errors thrown wh
 
 1. In Sentry, create a Next.js project. Copy its DSN into `NEXT_PUBLIC_SENTRY_DSN`.
 2. Rebuild and restart the app. The browser reads the DSN at build time.
-3. Optional, for readable stack traces: in Sentry, create an organization auth token (**Settings → Auth Tokens**). Set `SENTRY_AUTH_TOKEN`, `SENTRY_ORG` and `SENTRY_PROJECT` where the app builds (on Vercel, as environment variables). The build then uploads source maps.
+3. Optional, for readable stack traces: in Sentry, create an organization auth token (**Settings → Auth Tokens**). Set `SENTRY_AUTH_TOKEN`, `SENTRY_ORG` and `SENTRY_PROJECT` where the app builds (on Workers Builds, as build variables). The build then uploads source maps.
 
 Without a DSN, the app never loads the Sentry SDK, on the server or in the browser.
 

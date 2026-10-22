@@ -65,7 +65,7 @@ A module that owns tables keeps them in its `schema.ts`; `db/schema.ts` re-expor
 
 | Module   | Files                                                    |
 | -------- | -------------------------------------------------------- |
-| `db`     | `index.ts` (client), `schema.ts`, `legacy-schema.ts` |
+| `db`     | `index.ts` (client: one pool per process, or per request in a Cloudflare Worker), `schema.ts`, `legacy-schema.ts` |
 | `auth`   | `index.ts` (Better Auth; production rate limits per IP in `rate_limit`), `magic-link.ts` (`confirmLink`), `client-ip.ts` (the one trusted IP header, `CLIENT_IP_HEADER`), `schema.ts`, `session.ts`, `social-providers.ts` |
 | `account` | `index.ts`: `beforeDeleteUser` throws `LiveSubscriptionError` while a subscription is live; `afterDeleteUser` deletes the user's stored files, and the `apikey` rows (no foreign key) and `images/<userId>/` files left from dropped features. A new module that stores a user's files adds itself here, not to `auth` |
 | `admin`  | `access.ts` (`isAdmin`, `ADMIN_EMAILS`), `users.ts`, `credits.ts` (`addCredits`, idempotent per request ID), `orders.ts`, `metrics.ts` (users, credits, orders, revenue, paid orders and revenue by the buyer's first-touch source, video outcomes, median and p95 time and top failures, and model costs from `videoCosts`, over a window) |
@@ -80,7 +80,7 @@ A module that owns tables keeps them in its `schema.ts`; `db/schema.ts` re-expor
 | `indexnow` | `index.ts` (`submitUrls`: posts one host's URLs to `api.indexnow.org` in batches of 10,000 with `INDEXNOW_KEY`) |
 | `log`    | `index.ts` (`log.debug/info/warn/error`): one line per event, `<area>.<what happened>`, JSON in production. Server code never uses `console.*`. `onErrorLogged` lets a tracker see errors. [runbook § Logs](runbook.md#logs) |
 | `monitoring` | `index.ts`: Sentry, off unless `NEXT_PUBLIC_SENTRY_DSN` is set. `src/instrumentation.ts` starts it; the browser starts its own in `src/instrumentation-client.ts` |
-| `cron`   | `index.ts` (`isCronRequest`, `sweepPending`): settles pending videos, grants yearly months and deletes uploads past `UPLOAD_RETENTION_MS` (`expireUploads`), for `/api/cron/*` (`GET` from Vercel Cron per `vercel.json`, or `POST`). The tasks run independently; any failure is logged and the route returns 500 without skipping the others. Then `checkFailureRate` runs, whatever failed |
+| `cron`   | `index.ts` (`isCronRequest`, `sweepPending`): settles pending videos, grants yearly months and deletes uploads past `UPLOAD_RETENTION_MS` (`expireUploads`), for `/api/cron/*` (`POST` from the Worker's Cron Trigger via `scheduled.ts` (`sweepRequest`), or `GET`). The tasks run independently; any failure is logged and the route returns 500 without skipping the others. Then `checkFailureRate` runs, whatever failed |
 | `generations` | `columns.ts` (`generationColumns`, shared by every kind's table), `index.ts` (`lifecycle`, typed on those columns only). `start` inserts the pending row and spends credits in one transaction, then fails and refunds if submitting throws. Failing sets the status and refunds in one transaction; only the call that changed the status refunds. `refresh` polls the provider, stores the result and notifies. `sweep` fails at most 100 lost jobs per run, oldest first, then polls a batch, least recently checked first, 4 at a time. A kind (`GenerationKind`) supplies its name, table, job ID column, cost, poll, output type and notifications. The credit keys (`<kind>:<id>`, `<kind>-refund:<id>`) and reasons are fixed: jobs in flight during a deploy rely on them `unwatched` (optional) runs once when the sweep settles a job, as no page was open: videos email the owner |
 | `videos` | `index.ts` (create a photo effect video, refresh, get, download URL, list, page, count, metrics, costs, sweep, delete), `schema.ts`, `config.ts` (`REFERENCE_COST_PER_SECOND` dollars per second by resolution, photo limits, page size), `photo-effects.ts` and `window-peeper.ts` |
 | `notifications` | `index.ts` (`notify`, `pageNotifications`, `unreadCount`, `markRead`), `broadcasts.ts` (`sendBroadcast`, `listBroadcasts`), `schema.ts` (`notification`, `broadcast`), `types.ts` (`NotificationContent`), `config.ts` |
@@ -166,7 +166,7 @@ To add a provider, implement `PaymentProvider` in `src/server/payment/providers/
 Planned directories, merged with what exists. Create each planned one in the slice that first needs it.
 
 ```
-content/                   # Git-managed content: templates/, prompts/, blog/, legal/
+content/                   # Git-managed content: templates/, prompts/, blog/ (posts.ts lists the posts), legal/
 public/                    # og/, posters/, samples/
 scripts/                   # seed-templates.ts, generate-posters.ts
 src/

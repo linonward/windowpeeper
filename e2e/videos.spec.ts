@@ -45,7 +45,9 @@ test("there is no generic generator route, and unknown videos are not found", as
   const headers = { origin: BASE_URL };
   expect((await page.request.post("/api/videos", { data: {}, headers })).status()).toBe(404);
   const form = await page.request.post("/api/videos", { multipart, headers });
-  expect([400, 404]).toContain(form.status());
+  // A multipart POST with no route reads as a Server Action Next.js can't
+  // find: 409.
+  expect([400, 404, 409]).toContain(form.status());
   expect(await form.text()).not.toContain("pending");
 
   const missing = await page.request.get("/api/videos/00000000-0000-0000-0000-000000000000");

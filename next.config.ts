@@ -25,10 +25,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /* config options here */
-  cacheComponents: true,
+  // No cacheComponents: in a Cloudflare Worker its renders hang
+  // (vercel/next.js#94880).
   // The Dockerfile sets BUILD_STANDALONE: .next/standalone then holds a
   // server.js and only the node_modules files it needs.
   output: process.env.BUILD_STANDALONE ? "standalone" : undefined,
+  // pg loads pg-cloudflare only in a Worker ("workerd" export condition),
+  // which file tracing doesn't follow, so the OpenNext build can't find it.
+  outputFileTracingIncludes: { "/**": ["./node_modules/pg-cloudflare/**/*"] },
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
   // Moved pages. Keeps old links, bookmarks and search results working.
   redirects: async () => [

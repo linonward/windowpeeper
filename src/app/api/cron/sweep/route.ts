@@ -8,8 +8,8 @@ export const maxDuration = 300;
 // Settles videos left pending and grants yearly plans their
 // monthly credits (sweepPending). A scheduler calls this every few
 // minutes with "Authorization: Bearer <CRON_SECRET>". Returns the counts.
-// GET is for Vercel Cron (vercel.json), which sends GET with that header;
-// POST is for any other scheduler.
+// POST comes from the Worker's Cron Trigger (src/server/cron/scheduled.ts);
+// GET or POST for any other scheduler.
 async function sweep(request: Request) {
   // Same answer whether the secret is wrong or unset: the route isn't there.
   if (!isCronRequest(request.headers)) return apiError("NOT_FOUND", 404);
