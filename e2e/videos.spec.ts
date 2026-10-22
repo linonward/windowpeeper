@@ -23,9 +23,10 @@ test("/videos opens the window peeper video, the only photo effect", async ({ pa
   await page.goto("/en/videos");
 
   await expect(page).toHaveURL("/en/videos/windowpeeper");
-  await expect(page.getByRole("heading", { level: 1, name: "Window peeper" })).toBeVisible();
-  // New accounts start with no credits (signupCredits in src/server/credits/config.ts).
-  await expect(page.getByRole("main").getByText("0 credits left")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
+  // New accounts start with no credits (signupCredits in src/server/credits/config.ts),
+  // so the button buys credits.
+  await expect(page.getByRole("complementary", { name: "Preview" }).getByRole("button", { name: "Buy credits" })).toBeVisible();
 });
 
 // The image-to-video generator is gone; only GET answers at /api/videos/<id>.
@@ -58,12 +59,12 @@ test("the library pages through every video from the sidebar and the generator",
   await addFailedVideos(user.id, 25);
   await page.goto("/en/videos/windowpeeper");
 
-  await page.getByRole("link", { name: "View all" }).click();
+  await page.getByRole("link", { name: "All videos →" }).click();
   await expect(page).toHaveURL("/en/videos/library");
   await page.goto("/en/videos/windowpeeper");
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
-    .getByRole("link", { name: "All videos" })
+    .getByRole("link", { name: /My videos/ })
     .click();
 
   await expect(page).toHaveURL("/en/videos/library");
@@ -125,13 +126,12 @@ test("the sidebar opens the window peeper video, off while Bailian is not set up
 
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
-    .getByRole("link", { name: "Window peeper", exact: true })
+    .getByRole("link", { name: "New video", exact: true })
     .click();
 
   await expect(page).toHaveURL("/en/videos/windowpeeper");
-  await expect(page.getByRole("heading", { level: 1, name: "Window peeper" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   await expect(page.getByText("The window peeper video isn't set up yet.")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Generate (10 credits)" })).toBeDisabled();
 });
 
 // /api/videos/<kind> serves every photo effect; any other segment is no route.
@@ -187,7 +187,7 @@ test("a photo effect's quality is standard or pro", async ({ page }) => {
 test("a photo too small for Bailian is turned away as soon as it is picked", async ({ page }) => {
   await signIn(page);
   await page.goto("/en/videos/windowpeeper");
-  const photo = page.getByLabel("Your photo");
+  const photo = page.locator("#new-photo-input");
   const preview = page.getByRole("img", { name: "Your photo preview" });
   // A pick before hydration has no handler yet, so repeat it until the preview shows.
   await expect(async () => {

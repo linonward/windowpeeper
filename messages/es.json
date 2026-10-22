@@ -3,199 +3,161 @@
     "title": "WindowPeeper",
     "homeTitle": "Window Peeper IA – El video de la tendencia con una foto",
     "tagline": "Video de window peeper con IA desde una foto",
-    "description": "Haz el video de la tendencia window peeper con una foto: te pillan comiendo en una ventana iluminada, miras fijo y cierras la cortina. Sin CapCut."
+    "description": "Haz el video de la tendencia window peeper con una foto: te pillan comiendo en una ventana iluminada, una mirada larga y la cortina. Seis escenas, sin plantilla de CapCut."
   },
   "Home": {
     "hero": {
-      "eyebrow": "La tendencia window peeper de TikTok",
+      "badge": "En tendencia en TikTok · Reels · Shorts",
       "heading": "Video de window peeper con IA",
-      "title": "Que te pillen en la ventana con una sola foto.",
-      "body": "Sube una foto. Te pillan comiendo en una ventana iluminada de noche, miras fijo a la cámara y cierras la cortina. 12 segundos, listo para TikTok."
-    },
-    "example": {
-      "eyebrow": "Mira la escena",
-      "title": "Así se ve tu video",
-      "video": "La escena window peeper: de noche, la cámara se acerca a una ventana iluminada, la persona de dentro se congela a mitad de bocado, mira fijo a la cámara y cierra la cortina.",
-      "note": "Tu video cuenta esta historia con la persona de tu foto: 12 segundos, vertical 9:16, con música. Los planos cambian un poco de un video a otro. La persona de este ejemplo está generada con IA."
-    },
-    "strip": {
-      "label": "Lo que recibes",
-      "items": {
-        "1": "Una foto",
-        "2": "12 segundos",
-        "3": "Música original"
+      "title": "Alguien te está mirando comer.",
+      "body": "Sube una foto. Recibe el clip de 14 segundos de la tendencia, contigo de protagonista.",
+      "clip": {
+        "rec": "REC 02:14:07 AM",
+        "caption": "CAM 03 · 0:14 · 9:16",
+        "name": "Un video de window peeper hecho con una foto",
+        "description": "Un video de window peeper hecho aquí: de noche, una cámara se acerca a una ventana iluminada, la persona de dentro se congela a mitad de bocado, mira fijo a la cámara y cierra la cortina. La persona está generada con IA.",
+        "note": "Un video real hecho aquí. La persona que aparece está generada con IA."
       }
+    },
+    "beforeAfter": {
+      "eyebrow": "Antes / después",
+      "title": "Una foto. Tú, en la ventana.",
+      "aside": "La misma cara, el mismo pelo. La escena, la luz y la mirada vienen de la tendencia.",
+      "photo": "Tu foto",
+      "photoAlt": "La foto con la que se hizo el ejemplo: una mujer de cintura para arriba, mirando a la cámara.",
+      "time": "~3 min",
+      "beats": {
+        "bite": "El bocado",
+        "freeze": "La pausa",
+        "curtain": "La cortina"
+      },
+      "beatAlt": "{beat}: un fotograma del video de ejemplo.",
+      "label": "Tu video · 14 s · 9:16 · música original",
+      "note": "Ejemplo hecho con la foto de una persona generada por IA.",
+      "short": "Tu video · 14 s"
+    },
+    "scenes": {
+      "eyebrow": "Seis ventanas",
+      "title": "Elige tu ventana",
+      "aside": "Elige una aquí y quedará lista en el generador.",
+      "rec": "02:14 AM · CAM 01",
+      "original": "La original",
+      "use": "Usar esta escena",
+      "useLabel": "Usar la escena {scene}",
+      "all": "Ver todas las escenas",
+      "allNote": "Prompts, consejos y ejemplos"
     },
     "steps": {
       "eyebrow": "Cómo funciona",
-      "title": "Tres pasos para tu video de window peeper",
+      "title": "Cómo hacer la tendencia window peeper",
+      "body": "Sin app de edición y sin prompt que escribir. Tarda unos minutos.",
       "items": {
         "1": {
-          "title": "Sube tu foto",
-          "body": "Elige una foto nítida de un adulto, de cintura para arriba y mirando a la cámara. Tu ropa se mantiene en el video."
+          "title": "Sube una foto",
+          "body": "Un adulto, con la cara bien visible, de cintura para arriba y con buena luz. Tu foto o una que tengas permiso para usar."
         },
         "2": {
-          "title": "Filmamos la escena",
-          "body": "La IA pone a la persona de tu foto tras una ventana iluminada de noche: el bocado, la mirada y la cortina, con música. Tarda unos minutos."
+          "title": "Elige una ventana",
+          "body": "Seis escenas: hamburguesa, fideos, pizza, un saludo, cristal con lluvia o una pareja cenando."
         },
         "3": {
           "title": "Descarga y publica",
-          "body": "Descarga el MP4 y publícalo en TikTok, Reels o Shorts con #windowpeeper."
+          "body": "Recibe un MP4 de 14 segundos en 9:16 con música original. Publícalo en TikTok, Reels o Shorts."
         }
       }
     },
     "pricing": {
       "eyebrow": "Precios",
       "title": "Empieza con un video.",
-      "body": "El paquete más pequeño alcanza para un video. Pagas una vez y usas los créditos cuando quieras.",
+      "body": "Pagas una vez, sin suscripción. Eliges un paquete después de subir tu foto.",
+      "cta": "Hacer mi video",
       "more": "Ver todos los precios"
+    },
+    "shots": {
+      "eyebrow": "La lista de planos",
+      "title": "14 segundos, cinco momentos",
+      "aside": "Los mismos momentos del clip que todos copian. Tu cara, tu ventana.",
+      "items": {
+        "1": {
+          "time": "00:00",
+          "title": "La ventana",
+          "body": "Una ventana iluminada en una calle oscura. Estás dentro, comiendo."
+        },
+        "2": {
+          "time": "00:03",
+          "title": "El bocado",
+          "body": "Das un buen bocado. Todavía no pasa nada."
+        },
+        "3": {
+          "time": "00:06",
+          "title": "La pausa",
+          "body": "Dejas de masticar. Hay algo ahí fuera."
+        },
+        "4": {
+          "time": "00:09",
+          "title": "La mirada",
+          "body": "Miras directo a la cámara. Y aguantas."
+        },
+        "5": {
+          "time": "00:12",
+          "title": "La cortina",
+          "body": "Cierras la cortina. Negro."
+        }
+      }
     },
     "faq": {
       "eyebrow": "Preguntas frecuentes",
-      "title": "Preguntas sobre el video de window peeper",
-      "pack": "{credits, plural, one {# crédito} other {# créditos}} por {price}",
+      "title": "Preguntas sobre el video de window peeper con IA",
       "items": {
         "1": {
-          "title": "¿Qué es la tendencia window peeper?",
-          "body": "Es un sketch de humor en TikTok. De noche, una cámara se acerca a la única ventana iluminada de un edificio oscuro. La persona de dentro está comiendo, ve la cámara, se congela, mira fijo al objetivo demasiado tiempo y cierra la cortina. La persona de la ventana es quien publica el video."
+          "title": "¿Qué pasa con mi foto?",
+          "body": "Solo se usa para hacer tu video y se borra unas 24 horas después de subirla. Nunca usamos fotos ni videos para entrenar IA. Tus videos se quedan en tu biblioteca privada."
         },
         "2": {
-          "title": "¿Qué fotos puedo usar?",
-          "body": "Una foto tuya o de un adulto que te dio permiso. No subas fotos de niños ni de personajes públicos. Una sola persona, de cintura para arriba, mirando a la cámara y con buena luz. JPEG, PNG o WebP, de hasta {size} MB."
+          "title": "¿Puedo ver el video antes de pagar?",
+          "body": "No. Cada video cuesta créditos, desde {price} por uno. Si la generación falla, los créditos vuelven a tu saldo."
         },
         "3": {
-          "title": "¿Cuánto dura el video y cuánto tarda?",
-          "body": "Unos 12 segundos, con música. Hacerlo suele tardar unos minutos. Deja la página abierta y el video se reproduce ahí cuando esté listo."
+          "title": "¿Y si mi video falla?",
+          "body": "Los créditos vuelven a tu saldo automáticamente y puedes intentarlo de nuevo. No hace falta que nos escribas. Si se rechaza una foto, prueba con otra; no pierdes créditos por eso."
         },
         "4": {
-          "title": "¿Cuánto cuesta?",
-          "body": "Un video de window peeper cuesta {credits, plural, one {# crédito} other {# créditos}}. Un video Pro, en 1080p más nítido, cuesta {proCredits, plural, one {# crédito} other {# créditos}}. Los créditos se compran en paquetes de pago único: {packs}. No hay suscripción y los créditos no caducan. Si un video falla, se te devuelven los créditos. Cada cuenta tiene además una vista previa gratis: 5 segundos con marca de agua. Mira la <pricing>página de precios</pricing>."
+          "title": "¿Qué es la tendencia window peeper?",
+          "body": "Es un sketch de humor en TikTok. De noche, una cámara se acerca despacio a la única ventana iluminada de un edificio oscuro. La persona de dentro está comiendo, ve la cámara, se congela, mira fijo al objetivo demasiado tiempo y cierra la cortina."
         },
         "5": {
-          "title": "¿El video de window peeper es gratis?",
-          "body": "La vista previa sí. Cada cuenta tiene una vista previa gratis de 5 segundos con marca de agua, para que veas tu foto en la escena antes de pagar. El video completo de 12 segundos sin marca de agua cuesta créditos."
+          "title": "¿Hay un filtro o una plantilla de CapCut de window peeper?",
+          "body": "No te hace falta. Un filtro no puede filmar un edificio de noche y acercarse a una ventana, y una plantilla de CapCut pega tu cara en las imágenes de otra persona. Este sitio hace un video nuevo de la persona de tu foto, con su propia ropa, en el navegador."
         },
         "6": {
-          "title": "¿Necesito la plantilla de CapCut?",
-          "body": "No. Una plantilla window peeper de CapCut pega tu cara en el video de otra persona, dentro de la app. Este sitio hace un video nuevo de la persona de tu foto, con tu propia ropa, en el navegador del móvil o del ordenador. Solo descargas el MP4."
+          "title": "¿Qué fotos funcionan mejor?",
+          "body": "Una foto de un adulto, de cintura para arriba, mirando a la cámara, con buena luz y sin nada que tape la cara: tuya, o de un adulto que haya dado su permiso. Nada de niños ni personajes públicos. JPG, PNG o WebP, de hasta {size} MB."
         },
         "7": {
-          "title": "¿Hay un filtro de window peeper en TikTok?",
-          "body": "No uno que monte toda la escena. Un filtro de cámara cambia la imagen en directo; no puede filmar un edificio de noche, acercarse a una ventana y cerrar una cortina. Por eso la gente usa plantillas o video con IA para esta tendencia. Aquí subes una foto y recibes el clip terminado."
-        },
-        "8": {
-          "title": "¿Puedo publicarlo en TikTok, Reels o Shorts?",
-          "body": "Sí. Cada video de la página de inicio es un MP4 vertical 9:16 que llena la pantalla del móvil. Publícalo con #windowpeeper y añade el sonido de la tendencia en la app si lo quieres."
-        },
-        "9": {
-          "title": "¿El video tiene sonido?",
-          "body": "Sí. Cada video trae música original hecha para él. No incluye el sonido de la tendencia. Para usarlo, añádelo en TikTok, Reels o Shorts al publicar y baja ahí el audio original."
-        },
-        "10": {
-          "title": "¿Necesito una cuenta?",
-          "body": "Sí, para hacer un video. Entra con un enlace por email o con tu cuenta de Google, sin contraseña. Tu foto sigue elegida mientras inicias sesión."
-        },
-        "11": {
-          "title": "¿Mis fotos son privadas?",
-          "body": "Tu foto solo se usa para hacer tu video y se borra unas 24 horas después de subirla. No usamos fotos ni videos para entrenar modelos de IA. Tus videos quedan en tu biblioteca, que solo ves tú, hasta que borres tu cuenta."
-        },
-        "12": {
-          "title": "¿Cómo contacto con soporte?",
-          "body": "Escribe a <email></email>. Respondemos en un máximo de 3 días hábiles."
+          "title": "¿Cuánto tarda?",
+          "body": "Un video Estándar suele estar listo en unos 3 minutos y uno Pro en unos 6. Deja la página abierta y se reproduce ahí; si te vas, igual se termina en tu biblioteca de videos."
         }
       }
     },
     "cta": {
-      "eyebrow": "Pruébalo",
-      "title": "Te toca salir en la ventana.",
-      "body": "Una foto, un video de window peeper de 12 segundos, listo para publicar.",
-      "button": "Crear mi video",
-      "points": {
-        "1": "Una foto, un video de 12 segundos",
-        "2": "Si falla, recuperas tus créditos",
-        "3": "Español, English, Deutsch y 中文"
-      }
+      "rec": "REC 02:14:07 AM · CAM 03",
+      "title": "Tu ventana está abierta.",
+      "body": "Una foto. 14 segundos. Alguien está mirando.",
+      "button": "Crear mi video"
     },
-    "about": {
-      "eyebrow": "La respuesta completa",
-      "title": "Sobre el video de window peeper con IA",
-      "sections": {
-        "makes": {
-          "title": "Qué hace el generador",
-          "text": {
-            "1": "Este generador de window peeper con IA convierte una foto en el video de la tendencia. Subes la foto de un adulto y la IA filma a esa persona en una ventana iluminada de noche: la cámara se acerca, se congela a mitad de bocado, mira fijo al objetivo y cierra la cortina. El video dura unos 12 segundos, en vertical 9:16 o panorámico 16:9, con música original, y lo descargas en MP4.",
-            "2": "No filmas nada ni necesitas saber editar. El <generator>generador de arriba</generator> lo hace todo: elige una foto, escoge Estándar o Pro y pulsa Generar. La <howto>guía paso a paso</howto> lo explica."
-          }
-        },
-        "template": {
-          "title": "Un video nuevo, no una plantilla de CapCut",
-          "text": {
-            "1": "La mayoría de los videos window peeper se hacen con una plantilla de CapCut: un montaje terminado con un hueco para tu cara. El cuerpo, la mesa y la habitación son del video de otra persona, y por eso tantas publicaciones se parecen.",
-            "2": "Este generador filma una escena nueva con la persona de tu foto. Tu cara, tu pelo y tu ropa se mueven juntos. Por eso importa la foto: una sola persona, mirando a la cámara y con buena luz da el mejor parecido."
-          }
-        },
-        "trend": {
-          "title": "Qué es la tendencia window peeper",
-          "text": {
-            "1": "La tendencia window peeper es un sketch corto. Desde el otro lado de la calle, una ventana brilla en un edificio oscuro. Dentro, alguien come solo. Ve la cámara, deja de masticar, mira demasiado tiempo y luego se levanta y cierra la cortina.",
-            "2": "El chiste es la mirada. Nadie espía de verdad: la persona de la ventana es quien hizo el clip, y el video lo deja claro. Mantenlo así y haz videos tuyos o de amigos que estén en la broma."
-          }
-        },
-        "filter": {
-          "title": "¿Filtro, efecto o video con IA?",
-          "text": {
-            "1": "La gente busca un filtro o un efecto window peeper, pero un filtro de cámara solo cambia la imagen en directo. No puede montar un edificio de noche, acercarse a una ventana y cerrar una cortina en el momento justo.",
-            "2": "Los clips que ves son plantillas de CapCut o videos con IA como los de aquí. Sube una foto en el <back>generador</back> y recibes todo el efecto en un solo archivo de video."
-          }
-        },
-        "music": {
-          "title": "La música y el sonido de la tendencia",
-          "text": {
-            "1": "En TikTok la tendencia suele publicarse con un sonido de moda. Cada video hecho aquí trae su propia música original, así que puedes publicarlo en cualquier sitio sin usar la pista de otra persona.",
-            "2": "Si quieres el sonido de moda, añádelo en la app al publicar. Casi todas las apps de videos cortos te dejan bajar o silenciar el audio original y elegir un sonido de su biblioteca."
-          }
-        },
-        "social": {
-          "title": "Publicar en TikTok, Reels y Shorts",
-          "text": {
-            "1": "Los videos de la página de inicio son 9:16, la forma de la pantalla del móvil, así que llenan TikTok, Instagram Reels y YouTube Shorts sin cortes.",
-            "2": "También puedes mandar el MP4 directo a un chat de grupo, o pulsar Compartir debajo del video para abrir el menú de compartir del móvil."
-          }
-        },
-        "quality": {
-          "title": "Estándar o Pro",
-          "text": {
-            "1": "Las dos calidades hacen la misma escena window peeper con música. Un video Estándar cuesta {credits} créditos y es 720p. Un video Pro cuesta {proCredits} créditos y es 1080p, más nítido en pantallas grandes.",
-            "2": "Los créditos vienen en paquetes de pago único, sin suscripción, y no caducan. Si un video falla, los créditos vuelven solos. Mira la <pricing>página de precios</pricing> para ver todos los paquetes."
-          }
-        }
-      }
+    "sticky": {
+      "title": "Tu video en la ventana",
+      "body": "Desde {price} · 14 s",
+      "button": "Hacer mi video"
     }
   },
   "HomeTryout": {
-    "title": "Haz tu video de window peeper",
-    "body": "Una foto basta. Nosotros hacemos toda la escena de 12 segundos.",
     "photo": {
-      "choose": "Elegir una foto",
-      "hint": "Haz clic para buscarla o suéltala aquí",
-      "change": "Cambiar foto"
-    },
-    "quality": {
-      "legend": "Calidad",
-      "standard": {
-        "label": "Estándar",
-        "description": "720p, listo para compartir."
-      },
-      "pro": {
-        "label": "Pro",
-        "description": "1080p, una imagen más nítida."
-      },
-      "credits": "{count, plural, one {# crédito} other {# créditos}}"
-    },
-    "consentNote": "Al crear el video, confirmas que la foto es tuya o que el adulto que aparece dio su permiso.",
-    "preview": {
-      "button": "Prueba una vista previa gratis de 5 segundos",
-      "note": "5 segundos con marca de agua, una por cuenta."
+      "step": "Añade tu foto",
+      "choose": "Suelta una foto o haz clic para elegirla",
+      "hint": "Un adulto, cara visible, de cintura para arriba · JPG, PNG, WebP de hasta {size} MB",
+      "change": "Haz clic para cambiar la foto",
+      "size": "Foto lista · {size} MB"
     },
     "signIn": {
       "title": "Inicia sesión para crear tu video",
@@ -204,16 +166,13 @@
     "close": "Cerrar",
     "credits": "Este video cuesta {credits, plural, one {# crédito} other {# créditos}} y no tienes suficientes.",
     "packs": {
-      "legend": "Paquete de créditos",
       "body": "Compra un paquete y el video empezará en cuanto se confirme el pago.",
       "pay": "Pagar {price} y crear mi video",
-      "paying": "Abriendo el pago…",
-      "note": "Pago seguro. Pago único, sin suscripción. Los créditos nunca caducan.",
       "canceled": "Pago cancelado. No se te ha cobrado nada."
     },
     "paid": {
       "waiting": "Pago recibido. Esperando tus créditos; después empezará tu video.",
-      "late": "Tu pago se está procesando. Tus créditos aparecerán en breve; pulsa Generar para intentarlo de nuevo."
+      "late": "Tu pago se está procesando. Tus créditos aparecerán en breve; pulsa Hacer mi video para intentarlo de nuevo."
     },
     "pending": {
       "title": "Tu video está en camino",
@@ -231,8 +190,14 @@
     "failed": "Este video no salió bien. Te devolvimos {credits, plural, one {tu # crédito} other {tus # créditos}}.",
     "tryAgain": "Intentar de nuevo",
     "another": "Crear otro",
-    "previewUsed": "Ya usaste tu vista previa gratis. Elige Estándar o Pro para crear el video completo.",
-    "previewNote": "Esta es tu vista previa gratis: 5 segundos con marca de agua. Para el video completo de 12 segundos sin marca de agua, elige Estándar o Pro y crea otro."
+    "privacy": {
+      "deleted": "La foto se borra a las 24 horas",
+      "training": "Nunca se usa para entrenar IA"
+    },
+    "scene": "Elige una escena",
+    "submit": "Hacer mi video",
+    "finePrint": "Desde {price} por un video · Sin app, sin CapCut · Entra con tu correo o con Google",
+    "label": "Haz tu video de window peeper"
   },
   "LocaleSwitcher": {
     "label": "Idioma",
@@ -240,9 +205,12 @@
   },
   "Nav": {
     "label": "Principal",
+    "scenes": "Escenas",
     "howItWorks": "Cómo funciona",
     "pricing": "Precios",
-    "faq": "Preguntas frecuentes"
+    "cta": "Hacer un video",
+    "menu": "Menú",
+    "close": "Cerrar menú"
   },
   "NotFound": {
     "title": "Página no encontrada",
@@ -314,53 +282,55 @@
   },
   "Pricing": {
     "nav": "Precios",
-    "title": "Videos de window peeper desde {price}",
     "metaTitle": "Precios del video de window peeper",
-    "metaDescription": "Videos de window peeper desde {price}: prueba una vista previa gratis de 5 segundos y paga una vez por el video completo de 12 segundos. Sin suscripción.",
-    "eyebrow": "Lista de precios",
-    "description": "Prueba primero una vista previa gratis de 5 segundos. Un video completo de 12 segundos cuesta desde {price}. Pagas una vez: sin suscripción, y los créditos no caducan.",
+    "metaDescription": "Videos de window peeper desde {price}: pagas una vez por paquete, sin suscripción. Los créditos no caducan y un video fallido te los devuelve.",
+    "eyebrow": "Precios",
+    "title": "Paga por los videos que haces",
+    "description": "Un video Estándar cuesta {standard} créditos. Un video Pro cuesta {pro}. Los créditos no caducan y un video fallido te los devuelve.",
     "packsTitle": "Elige tu paquete",
-    "spend": "Los créditos sirven para las dos calidades: Estándar usa {standard} por video y Pro usa {pro}.",
-    "includesLabel": "Cada paquete",
-    "includes": {
-      "1": "Pago seguro",
-      "2": "Créditos en pocos minutos",
-      "3": "Reembolso en 14 días si no se usan",
-      "4": "Créditos de vuelta si un video falla"
+    "subs": {
+      "small": "Para probar una vez",
+      "medium": "Ideal con amigos",
+      "large": "Para creadores que publican mucho"
     },
-    "faqTitle": "Preguntas sobre el pago",
-    "faq": {
-      "preview": {
-        "title": "¿Puedo probarlo gratis primero?",
-        "body": "Sí. Cada cuenta tiene una vista previa gratis: 5 segundos con marca de agua, una por cuenta. Ves cómo queda tu foto en la escena antes de pagar."
+    "features": {
+      "one": "1 video Estándar",
+      "scenes": "Cualquiera de las 6 escenas",
+      "download": "Descarga en MP4, sin marca de agua",
+      "videos": "{videos} videos Estándar o {pro} Pro",
+      "perVideo": "{price} por video, ahorras un {percent} %",
+      "expire": "Los créditos no caducan"
+    },
+    "buy": "{videos, plural, one {Comprar # video} other {Comprar # videos}}",
+    "cost": {
+      "title": "Lo que cuesta un video",
+      "quality": "Calidad",
+      "resolution": "Resolución",
+      "ready": "Listo en",
+      "credits": "Créditos",
+      "standard": {
+        "name": "Estándar",
+        "resolution": "720p · 9:16",
+        "time": "~3 min"
       },
-      "quality": {
-        "title": "¿En qué se diferencia Pro de Estándar?",
-        "body": "Los dos crean la misma escena de 12 segundos con música. Estándar está en 720p y usa {standard} créditos. Pro está en 1080p, se ve más nítido en pantallas grandes y usa {pro} créditos."
+      "pro": {
+        "name": "Pro",
+        "resolution": "1080p · 9:16",
+        "time": "~6 min"
+      }
+    },
+    "trust": {
+      "failed": {
+        "title": "¿Falló el video? Créditos de vuelta",
+        "body": "Si un video no se puede hacer, los créditos vuelven a tu saldo."
       },
       "expire": {
-        "title": "¿Caducan los créditos?",
-        "body": "No. Los créditos no caducan nunca. Úsalos cuando quieras."
+        "title": "Los créditos no caducan",
+        "body": "Los créditos del paquete siguen ahí hasta que los uses."
       },
-      "monthly": {
-        "title": "¿Me cobrarán cada mes?",
-        "body": "No. Cada paquete es un pago único. No hay nada que cancelar; compra otro paquete solo cuando quieras más videos."
-      },
-      "failed": {
-        "title": "¿Qué pasa si un video falla?",
-        "body": "Los créditos vuelven a tu saldo automáticamente. No necesitas contactarnos."
-      },
-      "refund": {
-        "title": "¿Puedo pedir un reembolso?",
-        "body": "Sí, dentro de los 14 días siguientes a la compra si no has usado ninguno de sus créditos. Lee la <refund>política de reembolso</refund> y los <terms>Términos del servicio</terms> para los detalles y cómo pedirlo."
-      },
-      "watermark": {
-        "title": "¿Tiene marca de agua?",
-        "body": "Solo la vista previa gratis. Los videos completos Estándar y Pro no tienen marca de agua."
-      },
-      "sound": {
-        "title": "¿El video tiene sonido?",
-        "body": "Sí. Cada video trae su propia música original. Si prefieres un sonido de moda, añádelo en la app al publicar."
+      "secure": {
+        "title": "Pago seguro",
+        "body": "Pago con tarjeta en una pasarela segura. Nunca vemos el número de tu tarjeta."
       }
     }
   },
@@ -383,7 +353,7 @@
           "before": {
             "title": "Antes de empezar",
             "text": {
-              "1": "Necesitas una foto, un email o una cuenta de Google para iniciar sesión y créditos para un video, o tu única vista previa gratis. Los paquetes de créditos son pagos únicos, no una suscripción, y los créditos no caducan."
+              "1": "Necesitas una foto, un email o una cuenta de Google para iniciar sesión y créditos para un video. Los paquetes de créditos son pagos únicos, no una suscripción, y los créditos no caducan."
             }
           },
           "steps": {
@@ -395,15 +365,15 @@
               },
               "2": {
                 "title": "Confirma que puedes usarla",
-                "body": "Al pulsar el botón confirmas que la foto es tuya o que el adulto que aparece aceptó. Una nota debajo del botón lo indica."
+                "body": "Marca la casilla debajo de las escenas para confirmar que la foto es tuya o que el adulto que aparece aceptó. Sin ella, el botón no se activa."
               },
               "3": {
                 "title": "Elige Estándar o Pro",
-                "body": "Estándar cuesta {credits} créditos y es 720p. Pro cuesta {proCredits} créditos y es 1080p. Las dos hacen la misma escena, de unos 12 segundos, con música. Para ver antes tu foto en la escena, prueba la vista previa gratis de 5 segundos."
+                "body": "Estándar cuesta {credits} créditos y es 720p. Pro cuesta {proCredits} créditos y es 1080p. Las dos hacen la escena que elijas, de unos 14 segundos, con música."
               },
               "4": {
                 "title": "Inicia sesión",
-                "body": "Pulsa Generar. Si no has iniciado sesión, entra con un enlace por email o con Google en la ventana que se abre. Tu foto sigue elegida mientras tanto."
+                "body": "Pulsa Hacer mi video. Si no has iniciado sesión, entra con un enlace por email o con Google en la ventana que se abre. Tu foto sigue elegida mientras tanto."
               },
               "5": {
                 "title": "Paga si te faltan créditos",
@@ -444,14 +414,20 @@
     }
   },
   "Footer": {
-    "blurb": "Videos de la tendencia window peeper con una foto.",
+    "blurb": "Una herramienta independiente. Sin relación con TikTok, CapCut ni los autores del clip original.",
     "product": "Producto",
-    "support": "Soporte",
+    "makeVideo": "Hacer un video",
+    "scenes": "Escenas",
+    "learn": "Aprende",
+    "trend": "Tendencia window peeper",
+    "howTo": "Cómo hacerlo",
+    "filter": "¿Hay un filtro?",
     "legal": "Legal",
-    "guides": "Guías",
-    "report": "Denunciar un abuso",
-    "reportSubject": "Denuncia de contenido",
-    "rights": "© {name}. Todos los derechos reservados."
+    "acceptableUse": "Uso aceptable",
+    "rights": "© <year></year> {name}",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "refunds": "Reembolsos"
   },
   "Layout": {
     "skip": "Saltar al contenido principal"
@@ -466,12 +442,9 @@
     },
     "openMenu": "Abrir menú",
     "signOut": "Cerrar sesión",
-    "billing": "Créditos y facturación",
+    "billing": "Facturación",
     "admin": "Administración",
     "adminUsers": "Usuarios",
-    "videos": "Generador de video",
-    "collapse": "Contraer la barra lateral",
-    "expand": "Expandir la barra lateral",
     "account": "Menú de la cuenta",
     "creditsLeft": "{count, plural, one {crédito restante} other {créditos restantes}}",
     "profile": "Perfil",
@@ -480,12 +453,18 @@
     "pageOf": "Página {page} de {pages}",
     "previous": "Anterior",
     "next": "Siguiente",
-    "videoLibrary": "Todos los videos",
     "adminOrders": "Pedidos",
     "examples": "Ejemplos",
     "adminMetrics": "Métricas",
     "feedback": "Comentarios",
-    "adminFeedback": "Comentarios de usuarios"
+    "adminFeedback": "Comentarios de usuarios",
+    "newVideo": "Nuevo video",
+    "myVideos": "Mis videos",
+    "credits": "Créditos",
+    "creditsBuy": "= {videos, plural, one {# video} other {# videos}}",
+    "buyCredits": "Comprar créditos",
+    "balanceShort": "{count} CR",
+    "balancePill": "{count, plural, one {# crédito} other {# créditos}}. Comprar créditos"
   },
   "Billing": {
     "title": "Créditos y facturación",
@@ -543,10 +522,31 @@
     "perVideo": "{price} por video",
     "bestValue": "Mejor precio",
     "buyFor": "Comprar por {price}",
-    "perks": {
-      "1": "Los créditos no caducan",
-      "2": "La escena completa de 12 segundos, con música"
-    }
+    "packName": "{videos, plural, =1 {Individual · 1 video} other {Paquete de # · # videos}}",
+    "packShort": "{videos, plural, =1 {Individual} other {Paquete de #}}",
+    "packMeta": "{credits} · {price} por video",
+    "save": "Ahorra un {percent} %",
+    "have": "Tienes {credits} · alcanza para {videos, plural, =0 {ningún video Estándar} one {# video Estándar} other {# videos Estándar}}",
+    "after": "Saldo tras la compra",
+    "afterValue": "{credits} · {videos, plural, one {# video} other {# videos}}",
+    "pay": "Pagar {price}",
+    "paying": "Abriendo el pago…",
+    "secure": "Pago seguro. Pago único, sin suscripción.",
+    "close": "Cerrar",
+    "benefits": {
+      "watermark": "Sin marca de agua",
+      "post": "Descarga y publica donde quieras",
+      "expire": "Los créditos no caducan",
+      "failed": "Los videos fallidos no cuestan nada"
+    },
+    "benefitsShort": {
+      "watermark": "Sin marca de agua",
+      "post": "Publica donde quieras",
+      "expire": "No caducan",
+      "failed": "Fallidos gratis"
+    },
+    "videosLabel": "{videos, plural, one {video} other {videos}}",
+    "perVideoSave": "{price} por video · ahorra un {percent} %"
   },
   "Admin": {
     "title": "Administración",
@@ -761,13 +761,51 @@
     "kinds": {
       "windowpeeper": {
         "title": "Window peeper",
-        "description": "Una foto se convierte en un video de 12 segundos: de noche, una cámara se acerca a tu ventana iluminada, te congelas a mitad de bocado, miras fijo a la cámara y cierras la cortina. Con música original.",
+        "description": "Una foto se convierte en un video de 14 segundos: de noche, una cámara se acerca a tu ventana iluminada, te congelas a mitad de bocado, miras fijo a la cámara y cierras la cortina. Con música original.",
         "left": {
           "photo": "Tu foto",
           "preview": "Vista previa de tu foto"
         },
         "photoHint": "JPEG, PNG o WebP, de hasta {size} MB. Una sola persona, de cintura para arriba, mirando a la cámara y con buena luz. Tu ropa se mantiene en el video.",
         "disabled": "El video de window peeper todavía no está configurado."
+      }
+    },
+    "scenes": {
+      "burger": {
+        "name": "Hamburguesa de noche",
+        "short": "Hamburguesa",
+        "time": "02:14 AM",
+        "note": "El clip que todos copian: bocado, pausa, mirada, cortina."
+      },
+      "noodles": {
+        "name": "Fideos a medianoche",
+        "short": "Fideos",
+        "time": "01:47 AM",
+        "note": "Un buen sorbo y luego la mirada, con los fideos colgando."
+      },
+      "pizza": {
+        "name": "Porción de pizza",
+        "short": "Pizza",
+        "time": "11:58 PM",
+        "note": "Queso que se estira, pausa, mirada, cortina."
+      },
+      "wave": {
+        "name": "Pillado y saludo",
+        "short": "Saludo",
+        "time": "03:02 AM",
+        "note": "Sin cortina: una mirada larga y luego un saludo pequeño y educado."
+      },
+      "glass": {
+        "name": "A través del cristal",
+        "short": "Cristal",
+        "time": "12:31 AM",
+        "note": "Lluvia en la ventana y una mirada que se acerca."
+      },
+      "couple": {
+        "name": "Cena en pareja",
+        "short": "Pareja",
+        "time": "10:40 PM",
+        "note": "Cena para dos. Solo tú ves la cámara."
       }
     }
   },
@@ -788,5 +826,66 @@
     "removeImage": "Quitar {name}",
     "remove": "Quitar",
     "storageDisabled": "La subida de imágenes no está disponible. Inténtalo más tarde o envía solo texto."
+  },
+  "Generator": {
+    "crumb": "Crear / Nuevo video",
+    "title": "Haz un video de window peeper",
+    "rendering": "{count, plural, one {# video en proceso} other {# videos en proceso}}",
+    "photo": {
+      "title": "Tu foto",
+      "hint": "1 foto · cara visible · de cintura para arriba",
+      "choose": "Suelta una foto o haz clic para elegirla",
+      "ready": "Foto lista · {size} MB",
+      "replace": "Cambiar"
+    },
+    "scene": {
+      "title": "Escena",
+      "hint": "{count} ventanas",
+      "original": "Original"
+    },
+    "quality": {
+      "title": "Calidad",
+      "standard": {
+        "name": "Estándar",
+        "description": "720p · listo en ~3 min",
+        "summary": "Estándar 720p"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "1080p · cara más nítida · ~6 min",
+        "summary": "Pro 1080p"
+      }
+    },
+    "cr": "{count} cr",
+    "summary": {
+      "label": "Vista previa",
+      "scene": "Escena {number}",
+      "caption": "{scene} · 0:{seconds} · 9:16",
+      "length": "Duración",
+      "lengthValue": "{seconds} s",
+      "format": "Formato",
+      "formatValue": "MP4 · 9:16 · música original",
+      "quality": "Calidad",
+      "cost": "Coste",
+      "costValue": "{count, plural, one {# crédito} other {# créditos}}",
+      "after": "Saldo después",
+      "note": "Si el video falla, {count, plural, one {te devolvemos # crédito} other {te devolvemos # créditos}}."
+    },
+    "submit": "Hacer mi video · {count} cr",
+    "buy": "Comprar créditos",
+    "bar": {
+      "line": "{scene} · {quality}",
+      "cost": "{count} cr · te quedan {left} después"
+    },
+    "recent": {
+      "title": "Videos recientes",
+      "all": "Todos los videos",
+      "empty": "Todavía no hay videos. El primero aparecerá aquí.",
+      "rendering": "En proceso",
+      "ready": "Listo · {time}",
+      "failed": "Falló · {count, plural, one {# crédito devuelto} other {# créditos devueltos}}",
+      "download": "Descargar MP4",
+      "retry": "Intentar de nuevo"
+    }
   }
 }

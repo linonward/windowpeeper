@@ -1,38 +1,22 @@
 import { ImageResponse } from "next/og";
 import { projectConfig } from "project.config";
-import { VIEWFINDER } from "@/components/layout/logo-mark";
+import { PANES } from "@/components/layout/logo-mark";
 
 // The size social sites expect. Each opengraph-image route exports these.
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
-// Dark-theme values of --film and --primary-text (docs/DESIGN.md).
-const FILM = "#f0b04a";
-const PINE = "#62b995";
-const HOLES = Array.from({ length: 22 }, (_, i) => i);
+// Values of --background, --foreground, --muted-foreground, --primary and
+// --primary-hover (docs/DESIGN.md).
+const NIGHT = "#090c13";
+const TEXT = "#f3eee4";
+const MUTED = "#98a0b3";
+const LAMP = "#ffb445";
+const LAMP_HOVER = "#ffc56b";
 
-// A strip of film perforations, lit from behind by the projector.
-function Perforations() {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: 56,
-        padding: "0 22px",
-        backgroundColor: "#141414",
-      }}
-    >
-      {HOLES.map((i) => (
-        <div key={i} style={{ width: 26, height: 18, borderRadius: 4, backgroundColor: "rgba(240, 176, 74, 0.2)" }} />
-      ))}
-    </div>
-  );
-}
-
-// The preview image a shared link shows: a frame of film with the logo,
-// the project name, a title and a line of text (docs/DESIGN.md, Logo).
+// The preview image a shared link shows: the lit window and the project
+// name, a title and a line of text, on the night canvas with a lamp glow
+// (docs/DESIGN.md, Logo).
 // `photo`, a data URL of a 16:9 result made with the product, goes beside
 // the title in place of the text.
 // The default font is Geist; next/og fetches Noto Sans from Google Fonts
@@ -57,11 +41,10 @@ export function ogImage({
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "#0d0d0d",
-          color: "#f3f4eb",
+          backgroundColor: NIGHT,
+          color: TEXT,
         }}
       >
-        <Perforations />
         <div
           style={{
             flex: 1,
@@ -69,18 +52,17 @@ export function ogImage({
             alignItems: "center",
             gap: 48,
             padding: "56px 80px",
-            backgroundImage: [
-              "radial-gradient(ellipse 60% 80% at 100% 0%, rgba(240, 176, 74, 0.16), rgba(240, 176, 74, 0))",
-              "radial-gradient(ellipse 50% 70% at 0% 100%, rgba(98, 185, 149, 0.1), rgba(98, 185, 149, 0))",
-            ].join(", "),
+            backgroundImage:
+              "radial-gradient(ellipse 60% 80% at 100% 0%, rgba(255, 180, 69, 0.16), rgba(255, 180, 69, 0))",
           }}
         >
           <div style={{ flex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 34 }}>
-              <svg width={48} height={48} viewBox="0 0 32 32">
-                <path d={VIEWFINDER} fill="none" stroke={FILM} strokeWidth={3} strokeLinecap="round" />
-                <rect x={9} y={13.5} width={9} height={5} rx={2.5} fill={PINE} fillOpacity={0.35} />
-                <circle cx={18} cy={16} r={5} fill={PINE} />
+              <svg width={48} height={48} viewBox="0 0 28 28">
+                <rect width={28} height={28} rx={3} fill={LAMP} />
+                {PANES.map(({ x, y, lit }) => (
+                  <rect key={`${x}-${y}`} x={x} y={y} width={10} height={10} rx={1} fill={lit ? LAMP_HOVER : NIGHT} />
+                ))}
               </svg>
               {projectConfig.name}
             </div>
@@ -97,7 +79,7 @@ export function ogImage({
                 {title}
               </div>
               {!photo && (
-                <div style={{ display: "block", fontSize: 30, color: "#a4a69b", lineHeight: 1.4, lineClamp: 3 }}>
+                <div style={{ display: "block", fontSize: 30, color: MUTED, lineHeight: 1.4, lineClamp: 3 }}>
                   {description}
                 </div>
               )}
@@ -109,7 +91,6 @@ export function ogImage({
             <img src={photo} alt="" width={560} height={315} style={{ borderRadius: 16 }} />
           )}
         </div>
-        <Perforations />
       </div>
     ),
     OG_SIZE,

@@ -2,8 +2,9 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "vitest";
 import { routing } from "@/i18n/routing";
-import { PHOTO_EFFECT_KINDS } from "@/lib/photo-effects";
+import { PHOTO_EFFECT_KINDS, SCENES } from "@/lib/photo-effects";
 import { PHOTO_EFFECTS } from "@/server/videos/photo-effects";
+import { SCENES as SERVER_SCENES } from "@/server/videos/window-peeper";
 
 // A photo effect lives in two lists: the server's definitions and the UI's
 // kinds, which may not import the server. A new effect needs both, and its
@@ -32,5 +33,17 @@ test.each(routing.locales.flatMap((locale) => PHOTO_EFFECTS.map((effect) => [loc
     const copy = messages(locale).PhotoEffects.kinds[kind];
     expect(Object.keys(copy).sort()).toEqual(["description", "disabled", "left", "photoHint", "title"]);
     expect(Object.keys(copy.left).sort()).toEqual(["photo", "preview"]);
+  },
+);
+
+test("the UI lists the window peeper video's scenes, in the server's order", () => {
+  expect(SCENES).toEqual(SERVER_SCENES.map(({ id }) => id));
+});
+
+test.each(routing.locales.flatMap((locale) => SCENES.map((scene) => [locale, scene] as const)))(
+  "%s names the %s scene",
+  (locale, scene) => {
+    const copy = messages(locale).PhotoEffects.scenes[scene];
+    expect(Object.keys(copy).sort()).toEqual(["name", "note", "short", "time"]);
   },
 );

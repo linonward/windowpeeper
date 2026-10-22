@@ -18,18 +18,16 @@ test("renders Chinese under /zh", async ({ page }) => {
 test("switches language and keeps the page", async ({ page }) => {
   await page.goto("/en/sign-in");
 
-  await page.getByRole("button", { name: "Language: English" }).click();
-  await page.getByRole("menuitem", { name: "中文" }).click();
+  await page.getByRole("contentinfo").getByRole("link", { name: "中文" }).click();
 
   await expect(page).toHaveURL("/zh/sign-in");
   await expect(page.getByRole("heading", { name: "登录" })).toBeVisible();
 });
 
-test("switches to Spanish and German from the language menu", async ({ page }) => {
+test("switches to Spanish and German from the footer's languages", async ({ page }) => {
   await page.goto("/en/sign-in");
 
-  await page.getByRole("button", { name: "Language: English" }).click();
-  await page.getByRole("menuitem", { name: "Español" }).click();
+  await page.getByRole("contentinfo").getByRole("link", { name: "Español" }).click();
   await expect(page).toHaveURL("/es/sign-in");
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
   await expect(page).toHaveTitle("Iniciar sesión | WindowPeeper");

@@ -9,9 +9,8 @@ import { signIn } from "./support/auth";
 async function expectInert(page: Page) {
   const generator = page.getByRole("region", { name: "Make your window peeper video" });
   await expect(generator).toContainText("The window peeper video isn't set up yet.");
-  await expect(generator.getByLabel("Your photo")).toBeDisabled();
-  await expect(generator.getByRole("button", { name: "Try a free 5-second preview" })).toBeDisabled();
-  await expect(generator.getByRole("button", { name: /^Generate \(\d+ credits\)$/ })).toBeDisabled();
+  await expect(generator.getByLabel("Add your photo", { exact: true }).and(generator.locator("input"))).toBeDisabled();
+  await expect(generator.getByRole("button", { name: "Make my video" })).toBeDisabled();
 }
 
 test("a visitor finds the generator on the home page, off until it is set up", async ({ page }) => {
@@ -47,6 +46,6 @@ test("back from checkout, the page drops the checkout from its address and sends
 test("the generator is translated", async ({ page }) => {
   await page.goto("/zh");
 
-  const generator = page.getByRole("region", { name: "制作你的 Window Peeper 视频" });
+  const generator = page.locator("#generator");
   await expect(generator).toContainText("Window Peeper 视频尚未配置。");
 });

@@ -14,7 +14,7 @@ const done: GeneratedVideo = {
   id: "done",
   prompt: "The fox turns\nand runs",
   duration: 10,
-  resolution: "720p", ratio: "16:9", preview: false,
+  resolution: "720p", ratio: "16:9", preview: false, scene: "burger",
   credits: 80,
   status: "succeeded",
   createdAt: new Date("2026-10-01T08:30:00Z"),

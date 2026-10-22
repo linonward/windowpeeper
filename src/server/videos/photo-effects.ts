@@ -18,6 +18,9 @@ export type PhotoEffect = {
   credits: number;
   // What happens in the video. It calls the photo's subject "Image 1".
   prompt: string;
+  // Scenes the buyer picks from, each its own prompt; the first is the
+  // default and `prompt` is its prompt.
+  scenes?: readonly { id: string; prompt: string }[];
   // The resolution `credits` buys. With `pro`, the effect also sells the Pro
   // quality: another resolution at its own price.
   resolution: VideoResolution;

@@ -124,8 +124,8 @@ test("the how-to states the prices and photo size from the config", () => {
 
   const text = bodyText();
   expect(text).toContain("Standard costs 10 credits and is 720p. Pro costs 20 credits and is 1080p");
-  expect(text).toContain("10 credits for $4.99, 20 credits for $7.99, and 30 credits for $11.99");
-  expect(text).toContain("up to 5 MB, from 240 to 8,000 pixels on each side");
+  expect(text).toContain("10 credits for $9.90, 50 credits for $29.90, and 250 credits for $99.90");
+  expect(text).toContain("up to 10 MB, from 240 to 8,000 pixels on each side");
   expect(text).toContain("its credits go back to your balance automatically");
   expect(screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent)).toEqual([
     "Pick a photo",

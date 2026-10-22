@@ -49,6 +49,8 @@ export type GeneratedVideo = {
   ratio: string;
   // The account's free preview: short and watermarked.
   preview: boolean;
+  // The photo effect's scene ("burger", "noodles", ...), or null on older videos.
+  scene: string | null;
   // Credits spent, refunded if the video failed.
   credits: number;
   status: GenerationStatus;

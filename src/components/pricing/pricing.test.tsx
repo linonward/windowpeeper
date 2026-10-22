@@ -12,99 +12,76 @@ afterEach(cleanup);
 
 // CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper prices.
 const packs = [
-  { id: "small", credits: 10, amount: 499, currency: "usd" },
-  { id: "medium", credits: 20, amount: 799, currency: "usd" },
-  { id: "large", credits: 30, amount: 1199, currency: "usd" },
+  { id: "small", credits: 10, amount: 990, currency: "usd" },
+  { id: "medium", credits: 50, amount: 2990, currency: "usd" },
+  { id: "large", credits: 250, amount: 9990, currency: "usd" },
 ];
 const prices = { standard: 10, pro: 20 };
-const render = () => renderWithIntl(<Pricing packs={packs} featured="small" prices={prices} />);
-// The cards, without the perks listed inside each.
+const render = (locale?: "en" | "zh") =>
+  renderWithIntl(<Pricing packs={packs} featured="medium" prices={prices} />, locale);
 const cards = () =>
-  Array.from(screen.getByRole("region", { name: "Pick your pack" }).querySelector("ul")!.children) as HTMLElement[];
+  Array.from(document.querySelector('[aria-labelledby="pricing-packs"] ul')!.children) as HTMLElement[];
 
-test("the h1 names the trend and the lowest price, and the free preview comes first", () => {
+test("the head says what a video costs, from the config", () => {
   render();
 
-  expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Window peeper videos, from $4.99");
-  const intro = screen.getByRole("heading", { level: 1 }).nextElementSibling?.textContent ?? "";
-  expect(intro).toMatch(/^Try a free 5-second preview first\./);
-  expect(intro).toContain("no subscription");
+  expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Pay for the videos you make");
+  expect(
+    screen.getByText(
+      "One Standard video costs 10 credits. A Pro video costs 20. Credits never expire, and a failed video gives them back.",
+    ),
+  ).toBeTruthy();
 });
 
-// A pack reads as what it buys, not as credits: the title is videos, the
-// credits are the small print.
-test("each pack is titled by the videos it buys, with its price, the price per video and its credits", () => {
+test("each card names the pack, its price and credits, who it's for and what it buys", () => {
   render();
 
-  const items = cards();
-  expect(items.map((card) => within(card).getByRole("heading", { level: 3 }).textContent)).toEqual([
-    "1 video",
-    "1 Pro video",
-    "3 videos",
-  ]);
-  expect(items[0].textContent).toContain("$4.99");
-  expect(items[0].textContent).toContain("10 credits");
-  expect(items[1].textContent).toContain("or 2 videos");
-  expect(items[2].textContent).toContain("$4.00 a video");
-  // One video needs no price per video.
-  expect(items[0].textContent).not.toMatch(/\$\d+\.\d\d a video/);
+  const [single, five, twentyFive] = cards();
+  expect(within(single).getByRole("heading", { level: 3 }).textContent).toBe("Single");
+  expect(single.textContent).toContain("$9.90");
+  expect(single.textContent).toContain("10 credits");
+  expect(single.textContent).toContain("For one try");
+  expect(single.textContent).toContain("Any of the 6 scenes");
+  expect(within(five).getByRole("heading", { level: 3 }).textContent).toBe("5-pack");
+  expect(five.textContent).toContain("5 Standard or 2 Pro videos");
+  expect(five.textContent).toContain("$5.98 a video, save 40%");
+  expect(twentyFive.textContent).toContain("25 Standard or 12 Pro videos");
+  expect(twentyFive.textContent).toContain("$4.00 a video, save 60%");
 });
 
-// Badges state facts: the pack to start with, and the lowest price per video
-// (medium: $7.99 for 2 videos is $3.995 each; large: $11.99 for 3, $3.997).
-test("the small pack is recommended and the cheapest per video is the best value; nothing claims popularity", () => {
+test("only the featured pack is recommended; nothing claims popularity", () => {
   const { container } = render();
 
-  const items = cards();
-  expect(items[0].textContent).toContain("Recommended");
-  expect(items[1].textContent).toContain("Best value");
-  expect(items[2].textContent).not.toMatch(/Recommended|Best value/);
+  const [single, five, twentyFive] = cards();
+  expect(five.textContent).toContain("Recommended");
+  expect(single.textContent).not.toContain("Recommended");
+  expect(twentyFive.textContent).not.toContain("Recommended");
   expect(container.textContent).not.toMatch(/most popular/i);
 });
 
-test("each pack's button names its price and leads to billing for that pack", () => {
+test("each pack's button names the videos and leads to billing for that pack", () => {
   render();
 
-  const buy = screen.getByRole("link", { name: "Buy 20 credits for $7.99" });
-  expect(buy.textContent).toBe("Buy for $7.99");
+  const buy = screen.getByRole("link", { name: "Buy 50 credits for $29.90" });
+  expect(buy.textContent).toBe("Buy 5 videos");
   expect(buy.getAttribute("href")).toBe("/en/billing?pack=medium");
   expect(buy.getAttribute("rel")).toBe("nofollow");
 });
 
-test("what every pack includes sits under the packs", () => {
+test("the cost table lists each quality's resolution, wait and credits", () => {
   render();
 
-  const includes = screen.getByRole("list", { name: "Every pack" });
-  expect(within(includes).getAllByRole("listitem").map((item) => item.textContent)).toEqual([
-    "Secure checkout",
-    "Credits arrive within minutes",
-    "Refund within 14 days if unused",
-    "Credits back if a video fails",
+  const rows = within(screen.getByRole("table")).getAllByRole("row");
+  expect(rows.map((row) => Array.from(row.children).map((cell) => cell.textContent))).toEqual([
+    ["Quality", "Resolution", "Ready in", "Credits"],
+    ["Standard", "720p · 9:16", "~3 min", "10"],
+    ["Pro", "1080p · 9:16", "~6 min", "20"],
   ]);
-  expect(screen.getByText("Spend credits on either quality: Standard takes 10 per video, Pro takes 20.")).toBeDefined();
-});
-
-test("the questions cover the preview, quality, expiry, billing, failures, refunds, watermark and music", () => {
-  render();
-
-  const faq = screen.getByRole("region", { name: "Questions about paying" });
-  expect(within(faq).getAllByRole("term").map((term) => term.textContent)).toEqual([
-    "Can I try it for free first?",
-    "How is Pro different from Standard?",
-    "Do credits expire?",
-    "Will I be charged every month?",
-    "What if a video fails?",
-    "Can I get a refund?",
-    "Is there a watermark?",
-    "Does the video have sound?",
-  ]);
-  expect(faq.textContent).toContain("5 seconds with a watermark, once per account");
-  expect(within(faq).getByRole("link", { name: "refund policy" }).getAttribute("href")).toBe("/en/refund");
 });
 
 test("renders in Chinese", () => {
-  renderWithIntl(<Pricing packs={packs} featured="small" prices={prices} />, "zh");
+  render("zh");
 
-  expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(/Window Peeper 视频/);
-  expect(screen.getByRole("region", { name: "选择套餐" })).toBeDefined();
+  expect(screen.getByRole("heading", { level: 1 }).textContent).not.toBe("Pay for the videos you make");
+  expect(cards()).toHaveLength(3);
 });

@@ -11,3 +11,13 @@ export const PHOTO_EFFECT_KINDS = {
 export type PhotoEffectKind = keyof typeof PHOTO_EFFECT_KINDS;
 
 export const photoEffectKinds = Object.keys(PHOTO_EFFECT_KINDS) as PhotoEffectKind[];
+
+// The window peeper video's scenes, the original first, as the server's
+// SCENES (src/server/videos/window-peeper.ts) lists them. Their copy is
+// PhotoEffects.scenes.<scene>; their placeholder stills are
+// public/landing/scenes/<scene>.jpg.
+export const SCENES = ["burger", "noodles", "pizza", "wave", "glass", "couple"] as const;
+
+export type Scene = (typeof SCENES)[number];
+
+export const sceneImage = (scene: Scene) => `/landing/scenes/${scene}.jpg`;

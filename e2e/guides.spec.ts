@@ -49,11 +49,11 @@ for (const guide of GUIDES) {
   }
 }
 
-test("the footer links every guide", async ({ page }) => {
+test("the footer links the how-to guide", async ({ page }) => {
   await page.goto("/zh");
 
-  const guides = page.getByRole("contentinfo").getByRole("navigation", { name: "指南" });
-  await guides.getByRole("link", { name: "如何制作 Window Peeper 视频" }).click();
+  const learn = page.getByRole("contentinfo").getByRole("navigation", { name: "了解" });
+  await learn.getByRole("link", { name: "怎么做" }).click();
 
   await expect(page).toHaveURL("/zh/how-to-make-window-peeper-video");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("如何制作 Window Peeper 视频");

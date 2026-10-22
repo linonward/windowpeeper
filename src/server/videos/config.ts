@@ -11,7 +11,7 @@ export const REFERENCE_COST_PER_SECOND: Record<VideoResolution, number> = {
 
 // The largest photo a visitor may pick, as the copy states it. The browser
 // shrinks it (src/lib/shrink-photo.ts) to fit EFFECT_MAX_IMAGE_BYTES.
-export const EFFECT_MAX_PICK_BYTES = 5 * 1024 * 1024;
+export const EFFECT_MAX_PICK_BYTES = 10 * 1024 * 1024;
 
 // The largest photo the server takes. Vercel refuses a function request
 // body over 4.5 MB, so this leaves room for the rest of the multipart body.

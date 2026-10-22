@@ -41,7 +41,8 @@ export const GET = withSession<Params>(async (_request, { session, params }) => 
 // Multipart body: image1, the photo; optional quality, "standard" (the
 // default), "pro" for an effect that sells Pro (the window peeper video), or
 // "preview" for the account's one free preview (409 PREVIEW_USED after); optional
-// ratio, "16:9" (the default) or "9:16" for a vertical video; and consent,
+// ratio, "16:9" (the default) or "9:16" for a vertical video; optional scene,
+// one of the effect's scenes (the first by default, 400 if unknown); and consent,
 // "yes" when the user confirmed the photos are theirs or that the adults in
 // them agreed: without it, 400 before anything is stored or spent. The row
 // records when. Returns { video }
@@ -60,6 +61,8 @@ export const POST = withSession<Params>(async (request, { session, params }) => 
   const ratio = VIDEO_RATIOS.find((value) => value === (form?.get("ratio") ?? "16:9"));
   if (!ratio) return apiError("INVALID_REQUEST", 400);
   if (form?.get("consent") !== "yes") return apiError("INVALID_REQUEST", 400);
+  const scene = form?.get("scene");
+  if (scene !== null && scene !== undefined && typeof scene !== "string") return apiError("INVALID_REQUEST", 400);
 
   try {
     const video = await createEffectVideo({
@@ -67,6 +70,7 @@ export const POST = withSession<Params>(async (request, { session, params }) => 
       kind: effect.kind,
       quality,
       ratio,
+      scene: scene ?? undefined,
       consentedAt: new Date(),
       images: await Promise.all(images.map(async (image) => new Uint8Array(await image.arrayBuffer()))),
     });

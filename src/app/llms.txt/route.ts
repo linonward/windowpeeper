@@ -22,25 +22,15 @@ export async function GET() {
   const t = await getTranslations({ locale: routing.defaultLocale, namespace: "Home" });
   const meta = await getTranslations({ locale: routing.defaultLocale, namespace: "Metadata" });
   // The values the home page's FAQ fills in, as plain text.
-  const { credits, proCredits, packs, maxPickBytes } = homeFacts();
+  const { packs, maxPickBytes, prices } = homeFacts();
   const format = await getFormatter({ locale: routing.defaultLocale });
+  const [smallest] = packs;
   const values = {
-    email: () => projectConfig.supportEmail,
-    pricing: (chunks: string) => chunks,
-    credits,
-    proCredits,
-    packs: format.list(
-      packs.map((pack) =>
-        t("faq.pack", {
-          credits: pack.credits,
-          price: format.number(pack.amount / 100, { style: "currency", currency: pack.currency.toUpperCase() }),
-        }),
-      ),
-    ),
+    price: format.number(smallest.amount / 100, { style: "currency", currency: smallest.currency.toUpperCase() }),
     size: maxPickBytes / 1024 / 1024,
   };
   const faq = keys(messages.Home.faq.items).map(
-    (key) => `- ${t(`faq.items.${key}.title`)}: ${t.markup(`faq.items.${key}.body`, values)}`,
+    (key) => `- ${t(`faq.items.${key}.title`)}: ${t(`faq.items.${key}.body`, values)}`,
   );
 
   const pages = async (locale: Locale) => {
@@ -49,12 +39,6 @@ export async function GET() {
     const pricing = await getTranslations({ locale, namespace: "Pricing" });
     const blog = await getTranslations({ locale, namespace: "Blog" });
     const guides = await getTranslations({ locale, namespace: "Guides" });
-    // The pricing page's h1 and intro name the cheapest pack's price.
-    const [cheapest] = [...packs].sort((one, other) => one.amount - other.amount);
-    const price = (await getFormatter({ locale })).number(cheapest.amount / 100, {
-      style: "currency",
-      currency: cheapest.currency.toUpperCase(),
-    });
     return [
       `- [${projectConfig.name}](${url(`/${locale}`)}): ${home("hero.title")}`,
       ...GUIDES.map(
@@ -62,7 +46,7 @@ export async function GET() {
           `- [${guides(`pages.${guide}.metaTitle`)}](${url(`/${locale}/${guide}`)}): ${guides(`pages.${guide}.metaDescription`)}`,
       ),
       ...LEGAL_DOCS.map((doc) => `- [${legal(doc)}](${url(`/${locale}/${doc}`)})`),
-      `- [${pricing("title", { price })}](${url(`/${locale}/pricing`)}): ${pricing("description", { price })}`,
+      `- [${pricing("title")}](${url(`/${locale}/pricing`)}): ${pricing("description", { standard: prices.standard, pro: prices.pro })}`,
       `- [${blog("title")}](${url(`/${locale}/blog`)}): ${blog("description")}`,
       ...(await listPosts(locale)).map(
         (post) => `- [${post.title}](${url(`/${locale}/blog/${post.slug}`)}): ${post.description}`,

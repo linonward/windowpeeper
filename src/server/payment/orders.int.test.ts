@@ -91,7 +91,7 @@ test("records a pending order with the active provider's session", async () => {
   expect(row).toMatchObject({
     packId: "small",
     credits: 10,
-    amount: 499,
+    amount: 990,
     currency: "usd",
     status: "pending",
     provider: "stripe",
@@ -236,7 +236,7 @@ test("lists a user's orders, newest first", async () => {
   await checkout("small");
   await checkout("large");
 
-  expect((await listOrders(userId)).map((o) => o.credits)).toEqual([30, 10]);
+  expect((await listOrders(userId)).map((o) => o.credits)).toEqual([250, 10]);
 });
 
 // The billing page sends the list to the browser: only what its table shows.
@@ -250,7 +250,7 @@ test("lists only the columns the billing table shows", async () => {
 test("lists at most the newest orders it's asked for", async () => {
   for (const pack of ["small", "medium", "large"]) await checkout(pack);
 
-  expect((await listOrders(userId, { limit: 2 })).map((o) => o.credits)).toEqual([30, 20]);
+  expect((await listOrders(userId, { limit: 2 })).map((o) => o.credits)).toEqual([250, 50]);
 });
 
 test("rejects an unknown pack without calling the provider", async () => {
@@ -278,5 +278,5 @@ test("deleting the user removes their orders and credits", async () => {
 
 test("captures checkout only after the provider creates it", async () => {
   await checkout("small");
-  expect(capture).toHaveBeenCalledWith("checkout_started", userId, { payment_kind: "pack", provider: "stripe", product_id: "small", credits: 10, catalogue_amount_minor: 499, currency: "usd" });
+  expect(capture).toHaveBeenCalledWith("checkout_started", userId, { payment_kind: "pack", provider: "stripe", product_id: "small", credits: 10, catalogue_amount_minor: 990, currency: "usd" });
 });

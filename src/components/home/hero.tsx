@@ -1,77 +1,85 @@
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { cn } from "cn";
-import { projectConfig } from "project.config";
-import { Example, type HomeExample } from "./example";
+import { RecBadge } from "./rec-badge";
+import { Viewfinder } from "./viewfinder";
 import { WindowPeeperTryout, type WindowPeeperTryoutProps } from "./window-peeper-tryout";
 
-// The first screen: the example clip, if any, plays full width behind the
-// headline, then the generator and the example sit side by side on large
-// screens. Without a clip, the generator stands alone in one column.
-// Nothing stands between the headline and the generator, so the photo zone
-// shows in the first screen on phones and laptops alike.
-// The band slides under the glass header (-mt-16).
-export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; example?: HomeExample }) {
+// The first screen: the REC badge, the headline and the generator on the
+// left, the example clip in a viewfinder on the right. Phones show a small
+// before/after strip in place of the clip, above the generator.
+// A real window peeper video from public/: the clip and its poster.
+export type HomeExample = { sample: string; poster: string };
+
+export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; example: HomeExample }) {
   const t = useTranslations("Home.hero");
 
   return (
-    <section className="relative isolate -mt-16 flex flex-col gap-4 pb-20 lg:gap-6">
-      <div className="relative isolate flex items-center overflow-hidden pt-16">
-        {example && <Backdrop example={example} />}
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-5 pt-6 pb-2 text-center sm:px-8 lg:gap-5 lg:py-10">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary-text/60 bg-background/55 px-3 py-1 text-sm backdrop-blur-md">
-            <span aria-hidden className="size-1.5 rounded-full bg-primary-text" />
-            {/* On phones the badge keeps to one line: the trend, not the name the header shows. */}
-            <span className="font-medium max-sm:hidden">{projectConfig.name}</span>{" "}
-            <span className="text-muted-foreground">{t("eyebrow")}</span>
-          </p>
-          {/* The h1 leads with the query the page targets, then the tagline.
-              The size follows the width, so long words fit on phones. */}
-          <h1 className="display-tight flex flex-col items-center gap-3 hyphens-auto [overflow-wrap:break-word] font-display font-bold text-balance break-keep">
-            <span className="block text-[clamp(1.75rem,8.2vw,4.5rem)] leading-[1.05] lg:max-w-[20ch] lg:text-[4.75rem] [text-shadow:0_2px_24px_var(--background)]">
-              {t("heading")}
-            </span>
-            {/* Search engines and screen readers read the h1 as one line; the
-                dash keeps the query apart from the tagline. */}
-            {" "}
+    <section className="relative isolate overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_55%_at_80%_0%,color-mix(in_oklab,var(--primary)_14%,transparent),transparent)]"
+      />
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-[72px] px-5 pt-6 pb-14 sm:px-8 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="flex min-w-0 flex-col gap-[18px]">
+          <RecBadge className="border bg-card max-sm:text-[10px]">{t("badge")}</RecBadge>
+          {/* The h1 leads with the query the page targets, then the tagline. */}
+          <h1 className="flex flex-col gap-2.5 font-display hyphens-auto [overflow-wrap:break-word] text-balance">
+            <span className="text-[clamp(2.5rem,11.4vw,3.875rem)] leading-none font-black">{t("heading")}</span>{" "}
+            {/* Search engines and screen readers read the h1 as one line. */}
             <span className="sr-only">—</span>{" "}
-            <span className="block text-[clamp(1.125rem,4.4vw,2rem)] leading-tight text-primary-text">
+            <span className="text-[clamp(1.5rem,6.5vw,2.25rem)] leading-tight font-bold text-primary-text">
               {t("title")}
             </span>
           </h1>
-          <p className="max-w-[52ch] text-base leading-7 text-pretty text-foreground/80 sm:text-xl sm:leading-8">{t("body")}</p>
+          <p className="text-[17px] leading-[1.55] text-pretty text-muted-foreground">{t("body")}</p>
+          <PhoneStrip />
+          <WindowPeeperTryout {...tryout} />
         </div>
-      </div>
-      <div
-        className={cn(
-          "mx-auto grid w-full grid-cols-1 items-start gap-6 px-5 sm:px-8",
-          example ? "max-w-6xl lg:grid-cols-2" : "max-w-2xl",
-        )}
-      >
-        <WindowPeeperTryout {...tryout} />
-        <Example example={example} />
+        <figure className="hidden flex-col gap-3 lg:flex">
+          <Viewfinder
+            src={example.poster}
+            video={example.sample}
+            alt={t("clip.description")}
+            rec={t("clip.rec")}
+            caption={t("clip.caption")}
+            sizes="340px"
+            priority
+            className="h-[604px] w-[340px]"
+          />
+          <figcaption className="text-xs text-faint">{t("clip.note")}</figcaption>
+        </figure>
       </div>
     </section>
   );
 }
 
-// The example clip behind the headline, faded into the page at the bottom. With
-// reduced motion the video hides and its poster stays.
-function Backdrop({ example }: { example: HomeExample }) {
+// On phones, in place of the clip: the photo, an arrow and two frames of
+// the video it makes.
+function PhoneStrip() {
+  const t = useTranslations("Home.beforeAfter");
+  const frames = ["/landing/beat-bite.jpg", "/landing/beat-curtain.jpg"];
   return (
-    <div aria-hidden className="absolute inset-0 -z-10">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${example.poster})` }} />
-      <video
-        src={example.sample}
-        poster={example.poster}
-        aria-hidden="true"
-        tabIndex={-1}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 size-full object-cover motion-reduce:hidden"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--background)_45%,transparent),color-mix(in_oklab,var(--background)_70%,transparent)_55%,var(--background))]" />
+    <div className="flex items-center gap-2.5 lg:hidden" aria-hidden>
+      <div className="flex flex-col gap-1.5">
+        <span className="relative block h-[100px] w-[76px] overflow-hidden rounded-sm border border-border-strong">
+          <Image src="/landing/before.jpg" alt="" fill sizes="76px" className="object-cover" />
+        </span>
+        <span className="font-mono text-[9px] tracking-[0.1em] text-muted-foreground uppercase">{t("photo")}</span>
+      </div>
+      <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary">
+        <ArrowRight className="size-3.5 text-primary-foreground" />
+      </span>
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <span className="flex gap-1.5">
+          {frames.map((src) => (
+            <span key={src} className="relative block h-[132px] w-[74px] overflow-hidden rounded-sm border">
+              <Image src={src} alt="" fill sizes="74px" className="object-cover" />
+            </span>
+          ))}
+        </span>
+        <span className="truncate font-mono text-[9px] tracking-[0.1em] text-primary-text uppercase">{t("short")}</span>
+      </div>
     </div>
   );
 }

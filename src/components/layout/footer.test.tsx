@@ -1,75 +1,65 @@
 import { projectConfig } from "project.config";
-import { afterEach, beforeEach, expect, test } from "vitest";
+import { afterEach, expect, test, vi } from "vitest";
 import { cleanup, screen, within } from "@testing-library/react";
 import { renderWithIntl } from "@/test/intl";
 import { Footer } from "./footer";
 
-// The root layout renders dark by default.
-beforeEach(() => {
-  document.documentElement.className = "dark";
-});
+// The language links read the current path, which jsdom doesn't provide.
+vi.mock("next/navigation", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("next/navigation")>()),
+  usePathname: () => "/en/pricing",
+}));
 
 afterEach(cleanup);
 
-test("the product links lead to pricing and the blog", () => {
+const links = (name: string) =>
+  within(screen.getByRole("navigation", { name }))
+    .getAllByRole("link")
+    .map((link) => [link.textContent, link.getAttribute("href")]);
+
+test("the product column leads to the generator, the scenes and pricing", () => {
   renderWithIntl(<Footer />);
 
-  const product = screen.getByRole("navigation", { name: "Product" });
-  expect(within(product).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual([
-    "/en/pricing",
-    "/en/blog",
+  expect(links("Product")).toEqual([
+    ["Make a video", "/en#generator"],
+    ["Scenes", "/en#scenes"],
+    ["Pricing", "/en/pricing"],
   ]);
 });
 
-test("the guides column links each guide", () => {
+test("the learn column leads to the FAQ, the guide and the blog", () => {
   renderWithIntl(<Footer />);
 
-  const guides = screen.getByRole("navigation", { name: "Guides" });
-  expect(within(guides).getAllByRole("link").map((link) => [link.textContent, link.getAttribute("href")])).toEqual([
-    ["How to make a window peeper video", "/en/how-to-make-window-peeper-video"],
+  expect(links("Learn")).toEqual([
+    ["Window peeper trend", "/en#faq"],
+    ["How to make it", "/en/how-to-make-window-peeper-video"],
+    ["Is there a filter?", "/en#faq"],
+    ["Blog", "/en/blog"],
   ]);
 });
 
-test.each([
-  ["en", "Report abuse", "Content report"],
-  ["zh", "举报", "内容举报"],
-] as const)("support offers a report link in %s, an email with its subject", (locale, name, subject) => {
-  renderWithIntl(<Footer />, locale);
+test("the legal column links each document; acceptable use is in the terms", () => {
+  renderWithIntl(<Footer />);
 
-  const support = screen.getByRole("navigation", { name: locale === "en" ? "Support" : "支持" });
-  expect(within(support).getByRole("link", { name }).getAttribute("href")).toBe(
-    `mailto:${projectConfig.supportEmail}?subject=${encodeURIComponent(subject)}`,
+  expect(links("Legal")).toEqual([
+    ["Terms", "/en/terms"],
+    ["Privacy", "/en/privacy"],
+    ["Refunds", "/en/refund"],
+    ["Acceptable use", "/en/terms"],
+  ]);
+});
+
+test("the bottom bar has the copyright, the support email and every language on this page", () => {
+  renderWithIntl(<Footer />);
+
+  expect(screen.getByText(`© ${new Date().getFullYear()} WindowPeeper`, { exact: false })).toBeTruthy();
+  expect(screen.getByRole("link", { name: projectConfig.supportEmail }).getAttribute("href")).toBe(
+    `mailto:${projectConfig.supportEmail}`,
   );
-});
-
-test("groups support and legal links under headings", () => {
-  renderWithIntl(<Footer />);
-
-  const support = screen.getByRole("navigation", { name: "Support" });
-  expect(within(support).getByRole("link", { name: "support@windowpeeper.org" }).getAttribute("href")).toBe(
-    "mailto:support@windowpeeper.org",
-  );
-  const legal = screen.getByRole("navigation", { name: "Legal" });
-  expect(within(legal).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual([
-    "/en/privacy",
-    "/en/terms",
-    "/en/refund",
+  expect(links("Language")).toEqual([
+    ["English", "/en/pricing"],
+    ["中文", "/zh/pricing"],
+    ["Español", "/es/pricing"],
+    ["Deutsch", "/de/pricing"],
   ]);
-});
-
-test("shows the brand, a blurb and the copyright, with no theme switch", () => {
-  renderWithIntl(<Footer />);
-
-  expect(screen.getByRole("link", { name: "WindowPeeper" }).getAttribute("href")).toBe("/en");
-  expect(screen.getByText("Window peeper trend videos from one photo.")).toBeDefined();
-  expect(screen.getByText("© WindowPeeper. All rights reserved.")).toBeDefined();
-  // Dark only (docs/DESIGN.md, Visual Identity).
-  expect(screen.queryByRole("group", { name: "Theme" })).toBeNull();
-});
-
-test("is translated", () => {
-  renderWithIntl(<Footer />, "zh");
-
-  expect(screen.getByRole("navigation", { name: "支持" })).toBeDefined();
-  expect(screen.getByText("© WindowPeeper，保留所有权利。")).toBeDefined();
 });

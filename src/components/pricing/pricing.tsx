@@ -1,79 +1,167 @@
-import { Check } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
-import type { VideoPrices } from "@/components/billing/packs";
+import { Check, Infinity as InfinityIcon, RotateCcw, ShieldCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { type Pack, packFacts, Recommended, useMoney, type VideoPrices } from "@/components/billing/packs";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { type Pack, PackCards } from "./pack-cards";
+import { cn } from "@/lib/utils";
 
-const INCLUDES = ["1", "2", "3", "4"] as const;
-const QUESTIONS = ["preview", "quality", "expire", "monthly", "failed", "refund", "watermark", "sound"] as const;
+const TRUST = [
+  { key: "failed", icon: RotateCcw },
+  { key: "expire", icon: InfinityIcon },
+  { key: "secure", icon: ShieldCheck },
+] as const;
 
-// The public price list, laid out like the price lists people compare it
-// with: the meme and the lowest price in the h1, the packs titled by the
-// videos they buy, what every pack includes, then the questions buyers ask.
-// One-time credit packs only, no subscription. `featured` is the pack
-// recommended to start with.
+// The public price list (docs/DESIGN.md, Pricing): a centered head over a
+// lamp glow, one card per pack, what each quality costs, and three
+// promises. One-time credit packs only, no subscription. `featured` is the
+// pack recommended to start with; on phones it comes first.
 export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
   const t = useTranslations("Pricing");
-  const format = useFormatter();
-  const [cheapest] = [...packs].sort((a, b) => a.amount - b.amount);
-  const price = format.number(cheapest.amount / 100, { style: "currency", currency: cheapest.currency.toUpperCase() });
 
   return (
-    <main id="main-content" className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-12 px-5 py-12 sm:px-8 sm:py-16">
-      <header className="flex flex-col items-center gap-4 text-center">
-        <p className="eyebrow">{t("eyebrow")}</p>
-        <h1 className="display-tight max-w-3xl font-display text-3xl font-bold text-balance sm:text-5xl">
-          {t("title", { price })}
-        </h1>
-        <p className="max-w-2xl text-lg text-pretty text-muted-foreground">{t("description", { price })}</p>
+    <main id="main-content" className="w-full flex-1">
+      <header className="bg-linear-to-b from-primary/10 to-transparent">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 pt-14 pb-10 sm:px-8 sm:items-center sm:pt-[88px] sm:pb-12 sm:text-center">
+          <p className="eyebrow">{t("eyebrow")}</p>
+          <h1 className="font-display text-[clamp(2.75rem,12vw,4.5rem)] leading-none font-black text-balance">
+            {t("title")}
+          </h1>
+          <p className="max-w-[600px] text-[17px] leading-normal text-pretty text-muted-foreground">
+            {t("description", { standard: prices.standard, pro: prices.pro })}
+          </p>
+        </div>
       </header>
 
-      <section aria-labelledby="pricing-packs" className="flex flex-col gap-5">
+      <section aria-labelledby="pricing-packs" className="mx-auto w-full max-w-6xl px-5 pt-4 pb-8 sm:px-8">
         <h2 id="pricing-packs" className="sr-only">
           {t("packsTitle")}
         </h2>
-        <PackCards packs={packs} featured={featured} prices={prices} />
-        <p className="text-center text-sm text-muted-foreground">
-          {t("spend", { standard: prices.standard, pro: prices.pro })}
-        </p>
-        <ul aria-label={t("includesLabel")} className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {INCLUDES.map((key) => (
-            <li key={key} className="flex items-center gap-2 text-sm font-medium">
-              <Check aria-hidden className="size-4 text-primary-text" />
-              {t(`includes.${key}`)}
-            </li>
-          ))}
-        </ul>
+        <PlanCards packs={packs} featured={featured} prices={prices} />
       </section>
 
-      <section aria-labelledby="pricing-faq" className="flex flex-col gap-4">
-        <h2 id="pricing-faq" className="display-tight font-display text-2xl font-bold">
-          {t("faqTitle")}
+      <section aria-labelledby="pricing-cost" className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-5 py-14 sm:px-8">
+        <h2 id="pricing-cost" className="font-display text-[2.5rem] leading-none font-extrabold">
+          {t("cost.title")}
         </h2>
-        <dl className="border-b">
-          {QUESTIONS.map((key) => (
-            <div key={key} className="flex flex-col gap-2 border-t py-5">
-              <dt className="font-semibold">{t(`faq.${key}.title`)}</dt>
-              <dd className="max-w-[65ch] leading-7 text-pretty text-muted-foreground">
-                {t.rich(`faq.${key}.body`, {
-                  standard: prices.standard,
-                  pro: prices.pro,
-                  refund: (chunks) => <BodyLink href="/refund">{chunks}</BodyLink>,
-                  terms: (chunks) => <BodyLink href="/terms">{chunks}</BodyLink>,
-                })}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <CostTable prices={prices} />
       </section>
+
+      <ul className="mx-auto grid w-full max-w-6xl gap-5 px-5 pt-2 pb-24 sm:px-8 lg:grid-cols-3">
+        {TRUST.map(({ key, icon: Icon }) => (
+          <li key={key} className="flex gap-3.5">
+            <span aria-hidden className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-primary-soft">
+              <Icon className="size-5 text-primary-text" />
+            </span>
+            <span className="flex flex-col gap-1">
+              <span className="text-[15px] font-semibold">{t(`trust.${key}.title`)}</span>
+              <span className="text-sm leading-normal text-pretty text-muted-foreground">{t(`trust.${key}.body`)}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
 
-function BodyLink({ href, children }: { href: string; children: React.ReactNode }) {
+// One card per pack: its name, the price and credits, who it's for, what it
+// buys, and a button to billing for that pack. The links are nofollow:
+// signed out, /billing redirects to the noindex sign-in page.
+function PlanCards({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
+  const t = useTranslations("Pricing");
+  const billing = useTranslations("Billing");
+  const money = useMoney();
+
   return (
-    <Link href={href} className="font-medium text-primary-text underline underline-offset-4">
-      {children}
-    </Link>
+    <ul className="grid gap-5 lg:grid-cols-3">
+      {packs.map((pack) => {
+        const facts = packFacts(pack, packs, prices);
+        const lit = pack.id === featured;
+        const price = money(pack.amount, pack.currency);
+        const credits = billing("credits", { count: pack.credits });
+        const features =
+          facts.videos === 1
+            ? [t("features.one"), t("features.scenes"), t("features.download")]
+            : [
+                t("features.videos", { videos: facts.videos, pro: facts.proVideos }),
+                t("features.perVideo", { price: money(facts.perVideo, pack.currency), percent: facts.save }),
+                t("features.expire"),
+              ];
+        return (
+          <li
+            key={pack.id}
+            className={cn(
+              "flex flex-col gap-5 rounded-xl border bg-card p-6",
+              lit && "border-2 border-primary bg-primary-soft p-[23px] max-lg:order-first",
+            )}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <h3 className={cn("font-mono text-xs tracking-[0.12em] uppercase", lit ? "text-primary-text" : "text-muted-foreground")}>
+                {billing("packShort", { videos: facts.videos })}
+              </h3>
+              {lit && <Recommended className="px-2 py-1 text-[10px]" />}
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-display text-[3.75rem] leading-none font-black tabular-nums">{price}</span>
+              <span className="text-sm text-muted-foreground">{credits}</span>
+            </div>
+            <p className="text-sm font-semibold">{t(`subs.${pack.id as "small" | "medium" | "large"}`)}</p>
+            <ul className="flex flex-col gap-2.5 border-t pt-4">
+              {features.map((feature) => (
+                <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check aria-hidden className="size-4 shrink-0 text-primary-text" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/billing?pack=${pack.id}`}
+              rel="nofollow"
+              aria-label={billing("buyLabel", { credits, price })}
+              className={cn(buttonVariants({ variant: lit ? "default" : "outline", size: "lg" }), "mt-auto w-full")}
+            >
+              {t("buy", { videos: facts.videos })}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+// Each quality's resolution, wait and credits.
+function CostTable({ prices }: { prices: VideoPrices }) {
+  const t = useTranslations("Pricing.cost");
+  const rows = [
+    { key: "standard", credits: prices.standard },
+    { key: "pro", credits: prices.pro },
+  ] as const;
+  const head = "px-4 py-4 text-left font-mono text-[11px] font-normal tracking-[0.12em] text-faint uppercase sm:px-6";
+  const cell = "px-4 py-4 text-[15px] sm:px-6";
+
+  return (
+    <div className="overflow-x-auto rounded-xl border">
+      <table className="w-full">
+        <thead className="border-b bg-card">
+          <tr>
+            <th className={head}>{t("quality")}</th>
+            <th className={head}>{t("resolution")}</th>
+            <th className={cn(head, "max-sm:hidden")}>{t("ready")}</th>
+            <th className={cn(head, "text-right")}>{t("credits")}</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y">
+          {rows.map(({ key, credits }) => (
+            <tr key={key}>
+              <th scope="row" className={cn(cell, "text-left font-normal")}>
+                {t(`${key}.name`)}
+              </th>
+              <td className={cell}>{t(`${key}.resolution`)}</td>
+              <td className={cn(cell, "max-sm:hidden")}>{t(`${key}.time`)}</td>
+              <td className={cn(cell, "text-right font-mono font-semibold text-primary-text")}>{credits}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

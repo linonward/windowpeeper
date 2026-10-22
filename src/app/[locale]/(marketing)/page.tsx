@@ -1,15 +1,17 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { projectConfig } from "project.config";
-import { useLocale, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { homeFacts } from "@/app/_lib/home-facts";
-import { About } from "@/components/home/about";
+import { BeforeAfter } from "@/components/home/before-after";
 import { Cta } from "@/components/home/cta";
 import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { Pricing } from "@/components/home/pricing";
-import { Strip } from "@/components/home/strip";
+import { Scenes } from "@/components/home/scenes";
+import { ShotList } from "@/components/home/shot-list";
+import { StickyCta } from "@/components/home/sticky-cta";
 import type { Locale } from "@/i18n/routing";
 import { howTo, jsonLd, languageAlternates, videoObject, website } from "@/lib/seo";
 
@@ -36,8 +38,8 @@ export async function generateMetadata(
   };
 }
 
-// A real window peeper video beside the generator, from public/, made from
-// an AI-generated person, and when it was added, for its structured data.
+// A real window peeper video in the hero, from public/, made from an
+// AI-generated person, and when it was added, for its structured data.
 // Change the date and the seconds with the clip.
 const EXAMPLE = { sample: "/landing/windowpeeper/sample.mp4", poster: "/landing/windowpeeper/poster.jpg" };
 const EXAMPLE_ADDED = "2026-10-22";
@@ -47,25 +49,26 @@ const EXAMPLE_SECONDS = 12;
 // sections below explain it. The session is read in the browser, so the
 // page stays prerendered.
 export default function Home() {
-  const { featured, prices, ...tryout } = homeFacts();
-  // The hero runs full width; the sections below keep the page's column.
+  const { prices, ...tryout } = homeFacts();
+  const format = useFormatter();
+  const t = useTranslations("Home.sticky");
+  // The smallest pack's price, which the FAQ and the phone's sticky bar state.
+  // Amounts are in the currency's smallest unit; packs use two-decimal currencies.
+  const [smallest] = tryout.packs;
+  const from = format.number(smallest.amount / 100, { style: "currency", currency: smallest.currency.toUpperCase() });
+  // Each section runs full width and keeps its own column.
   return (
     <main id="main-content" className="w-full flex-1">
       <SiteData />
       <Hero tryout={tryout} example={EXAMPLE} />
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <Strip />
-        <HowItWorks />
-        <About credits={tryout.credits} proCredits={tryout.proCredits} />
-        <Pricing packs={tryout.packs} featured={featured} prices={prices} />
-        <Faq
-          credits={tryout.credits}
-          proCredits={tryout.proCredits}
-          packs={tryout.packs}
-          size={tryout.maxPickBytes / 1024 / 1024}
-        />
-        <Cta />
-      </div>
+      <BeforeAfter />
+      <Scenes />
+      <HowItWorks />
+      <Pricing packs={tryout.packs} featured={tryout.featured} prices={prices} />
+      <ShotList />
+      <Faq price={from} size={tryout.maxPickBytes / 1024 / 1024} />
+      <Cta />
+      <StickyCta title={t("title")} body={t("body", { price: from })} button={t("button")} />
     </main>
   );
 }
@@ -89,8 +92,8 @@ function SiteData() {
     site: website(locale, t("Metadata.description"), base, SITE_NAMES),
     video: videoObject(
       {
-        name: t("Home.example.title"),
-        description: t("Home.example.video"),
+        name: t("Home.hero.clip.name"),
+        description: t("Home.hero.clip.description"),
         contentPath: EXAMPLE.sample,
         thumbnailPath: EXAMPLE.poster,
         uploadDate: EXAMPLE_ADDED,

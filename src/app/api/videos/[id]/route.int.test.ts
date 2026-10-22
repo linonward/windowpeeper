@@ -108,6 +108,23 @@ test("quality=preview makes the free preview once; the second answers 409 PREVIE
   expect(await again.json()).toEqual({ error: "PREVIEW_USED" });
 });
 
+test("scene=noodles makes the noodles scene; the scene defaults to burger", async () => {
+  const made = await post({ consent: "yes", scene: "noodles" });
+  expect(made.status).toBe(200);
+  expect((await made.json()).video.scene).toBe("noodles");
+  expect(motion.submit).toHaveBeenLastCalledWith(expect.objectContaining({ prompt: expect.stringContaining("noodles") }));
+  expect((await (await post({ consent: "yes" })).json()).video.scene).toBe("burger");
+});
+
+test("an unknown scene answers 400 and stores or spends nothing", async () => {
+  const response = await post({ consent: "yes", scene: "sushi" });
+
+  expect(response.status).toBe(400);
+  expect(await getBalance(session.userId)).toBe(20);
+  expect(await rows()).toEqual([]);
+  expect(storage.putObject).not.toHaveBeenCalled();
+});
+
 test("an unknown ratio answers 400 and stores or spends nothing", async () => {
   const response = await post({ consent: "yes", ratio: "1:1" });
 

@@ -21,7 +21,7 @@ test("signed-out visitors are redirected before the page renders", async ({ requ
 test("non-admins see no admin link and get the 404 page", async ({ page }) => {
   await signIn(page);
   await page.goto("/en/videos");
-  await expect(sidebar(page).getByRole("link", { name: "Credits & billing" })).toBeVisible();
+  await expect(sidebar(page).getByRole("link", { name: "Billing" })).toBeVisible();
   await expect(sidebar(page).getByRole("link", { name: "Admin" })).toHaveCount(0);
 
   for (const path of ["/en/admin", "/en/admin/users", "/en/admin/users/some-id", "/en/admin/orders", "/en/admin/metrics"]) {

@@ -15,10 +15,11 @@ test("feedback requires sign-in and administrator access for the list", async ({
   await expect(page.getByRole("list", { name: "User feedback" })).toHaveCount(0);
 });
 
-test("submits Chinese feedback from the mobile corner link", async ({ page }) => {
+test("submits Chinese feedback from the phone's sidebar", async ({ page }) => {
   await signIn(page);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/zh/videos");
+  await page.getByRole("button", { name: "打开菜单" }).click();
   await page.getByRole("link", { name: "意见反馈", exact: true }).click();
   await expect(page).toHaveURL("/zh/feedback");
   await page.getByLabel("图片", { exact: true }).setInputFiles(feedbackPng);
@@ -59,32 +60,15 @@ test("rejects a disguised SVG and oversized uploads before storage", async ({ pa
 });
 
 
-test("the feedback link stays in the layout's bottom-right corner across pages and scrolling", async ({ page }) => {
+test("the sidebar's Feedback item opens the feedback page from any dashboard page", async ({ page }) => {
   await signIn(page);
-  for (const viewport of [{ width: 1280, height: 800 }, { width: 390, height: 844 }]) {
-    await page.setViewportSize(viewport);
-    for (const path of ["/en/videos", "/en/billing"]) {
-      await page.goto(path);
-      const link = page.getByRole("link", { name: "Feedback", exact: true });
-      await expect(link).toHaveCount(1);
-      await expect(link).toBeVisible();
-      await expect(link).toHaveAttribute("href", "/en/feedback");
-      const before = (await link.boundingBox())!;
-      const width = await page.evaluate(() => document.documentElement.clientWidth);
-      expect(width - before.x - before.width).toBeCloseTo(16, 0);
-      expect(viewport.height - before.y - before.height).toBeCloseTo(16, 0);
-      expect(before.height).toBeGreaterThanOrEqual(44);
-      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-      const after = (await link.boundingBox())!;
-      expect(after.y).toBeCloseTo(before.y, 0);
-    }
-    await page.getByRole("link", { name: "Feedback", exact: true }).click();
-    await expect(page).toHaveURL("/en/feedback");
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    const submit = (await page.getByRole("button", { name: "Submit feedback" }).boundingBox())!;
-    const link = (await page.getByRole("link", { name: "Feedback", exact: true }).boundingBox())!;
-    expect(submit.y + submit.height).toBeLessThan(link.y);
+  const nav = page.getByRole("navigation", { name: "Dashboard navigation" });
+  for (const path of ["/en/videos", "/en/billing"]) {
+    await page.goto(path);
+    await expect(nav.getByRole("link", { name: "Feedback", exact: true })).toHaveAttribute("href", "/en/feedback");
   }
+  await nav.getByRole("link", { name: "Feedback", exact: true }).click();
+  await expect(page).toHaveURL("/en/feedback");
 });
 
 test("pastes text and a clipboard image, previews it and submits", async ({ page, context }) => {

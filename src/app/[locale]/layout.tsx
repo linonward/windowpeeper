@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import { Geist, Geist_Mono, Martian_Mono } from "next/font/google";
+import { Big_Shoulders, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { SidebarStateScript } from "@/components/dashboard/sidebar-state-script";
 import { Analytics } from "@/components/layout/analytics";
 import { LocalTimeZone } from "@/components/layout/local-time-zone";
@@ -9,19 +9,21 @@ import { clientMessages } from "@/i18n/client-messages";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-const geistSans = Geist({
+// Body and UI (docs/DESIGN.md, Typography).
+const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-// Display face for titles, labels and numbers (docs/DESIGN.md, Typography).
-const martianMono = Martian_Mono({
-  variable: "--font-martian",
+// Display face for titles and numbers.
+const bigShoulders = Big_Shoulders({
+  variable: "--font-big-shoulders",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Labels, timecodes and code.
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -50,7 +52,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${martianMono.variable} dark h-full antialiased`}
+      className={`${instrumentSans.variable} ${bigShoulders.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
       style={{ colorScheme: "dark" }}
       // Dark only (docs/DESIGN.md). SidebarStateScript may change it before hydration.
       suppressHydrationWarning
