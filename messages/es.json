@@ -244,12 +244,6 @@
     "pricing": "Precios",
     "faq": "Preguntas frecuentes"
   },
-  "Theme": {
-    "label": "Tema",
-    "light": "Claro",
-    "dark": "Oscuro",
-    "system": "Sistema"
-  },
   "NotFound": {
     "title": "Página no encontrada",
     "home": "Ir a la página de inicio"

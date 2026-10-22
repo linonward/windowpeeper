@@ -4,7 +4,6 @@ import { Link } from "@/i18n/navigation";
 import { LEGAL_DOCS } from "@/lib/content";
 import { GUIDES } from "@/lib/guides";
 import { Brand } from "./brand";
-import { ThemeSwitcher } from "./theme-switcher";
 
 const LINK = "text-sm text-muted-foreground [@media(hover:hover)]:hover:text-foreground";
 
@@ -94,7 +93,6 @@ export function Footer() {
           <p className="text-xs tracking-[0.08em] text-muted-foreground uppercase">
             {t("rights", { name: projectConfig.name })}
           </p>
-          <ThemeSwitcher />
         </div>
       </div>
     </footer>

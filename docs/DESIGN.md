@@ -6,27 +6,27 @@ Change a value here and in the code together. When they disagree, the code wins 
 
 ## 1. Visual Identity
 
-**Keywords:** dark-first · pine accent · monospace headlines · developer-tool feel
+**Keywords:** dark only · pine accent · monospace headlines · developer-tool feel
 
-Near-black canvas with one accent, pine (2.2). Mono titles, sans sentences (3). An example clip behind the hero, once there is one; a pine glow behind the final CTA (5). Dark is the default theme; users can pick light, dark or system.
+Near-black canvas with one accent, pine (2.2). Mono titles, sans sentences (3). An example clip behind the hero, once there is one; a pine glow behind the final CTA (5). The site is dark only: there is no light theme and no theme choice.
 
 ## 2. Color Tokens
 
-Tokens are plain CSS colors (hex or `oklch()`) with shadcn names, declared in `:root` (light) and `.dark` (dark). `@theme inline` maps each one to a Tailwind color, so `--card` is `bg-card` and `--primary-text` is `text-primary-text`. Use the utilities; don't wrap the tokens in `hsl()`.
+Tokens are plain CSS colors (hex or `oklch()`) with shadcn names, declared once in `:root`. `<html>` keeps the `dark` class so shadcn's `dark:` variants apply. `@theme inline` maps each one to a Tailwind color, so `--card` is `bg-card` and `--primary-text` is `text-primary-text`. Use the utilities; don't wrap the tokens in `hsl()`.
 
 ### 2.1 Neutrals
 
-| Token | Dark (default) | Light | Use |
-|---|---|---|---|
-| `--background` | `#0D0D0D` | `#F7F7F3` | Page background, dashboard content |
-| `--foreground` | `#F3F4EB` | `#181914` | Primary text (warm off-white / near-black) |
-| `--card` | `#171717` | `#FFFFFF` | Cards, panels. Also `bg-surface` |
-| `--popover` | `#10110E` | `#FFFFFF` | Menus, popovers |
-| `--secondary` / `--muted` | `#212121` | `#F2F3ED` | Secondary buttons, quiet fills, skeletons |
-| `--accent` | `#2B2B2B` | `#F2F3ED` | Hover and selected fills in menus |
-| `--muted-foreground` | `#A4A69B` | `#65675F` | Secondary text |
-| `--border` / `--input` | `#2E2E2E` | `#DDE0D6` | Borders, input borders |
-| `--destructive` | `#DF4949` | `#DF4949` | Errors, delete actions |
+| Token | Value | Use |
+|---|---|---|
+| `--background` | `#0D0D0D` | Page background, dashboard content |
+| `--foreground` | `#F3F4EB` | Primary text (warm off-white) |
+| `--card` | `#171717` | Cards, panels. Also `bg-surface` |
+| `--popover` | `#10110E` | Menus, popovers |
+| `--secondary` / `--muted` | `#212121` | Secondary buttons, quiet fills, skeletons |
+| `--accent` | `#2B2B2B` | Hover and selected fills in menus |
+| `--muted-foreground` | `#A4A69B` | Secondary text |
+| `--border` / `--input` | `#2E2E2E` | Borders, input borders |
+| `--destructive` | `#DF4949` | Errors, delete actions |
 
 Each `*-foreground` pair (`--card-foreground`, `--popover-foreground`, `--secondary-foreground`, `--accent-foreground`) equals `--foreground`.
 
@@ -36,24 +36,24 @@ A bordered card on hover mixes its border toward the text color instead of using
 
 Pine on near-black has a contrast of 2.9:1, so on dark surfaces it is a fill only. Text, icons and focus rings use `--primary-text`, which keeps the hue and reaches 8.7:1.
 
-| Token | Dark | Light | Notes |
-|---|---|---|---|
-| `--primary` | `#1F634A` (oklch 0.45 0.08 165) | same | Fills: primary buttons, the avatar |
-| `--primary-hover` | `#358264` (oklch 0.55 0.09 165) | `#0A553D` (oklch 0.40 0.08 165) | Lighter on dark, darker on light |
-| `--primary-foreground` | `#F7FBF9` (oklch 0.985 0.006 165) | same | Text on pine (6.8:1) |
-| `--primary-text` | `#62B995` (oklch 0.72 0.1 165) | `#1F634A` | Pine text, icons, links, eyebrows, active nav |
-| `--primary-soft` | `#0D2D21` (oklch 0.27 0.045 165) | `#D6EFE3` (oklch 0.93 0.03 165) | Solid pine-tinted background |
-| `--ring` | `#62B995` | `#1F634A` | Focus ring. Equals `--primary-text` |
+| Token | Value | Notes |
+|---|---|---|
+| `--primary` | `#1F634A` (oklch 0.45 0.08 165) | Fills: primary buttons, the avatar |
+| `--primary-hover` | `#358264` (oklch 0.55 0.09 165) | Lighter than `--primary` |
+| `--primary-foreground` | `#F7FBF9` (oklch 0.985 0.006 165) | Text on pine (6.8:1) |
+| `--primary-text` | `#62B995` (oklch 0.72 0.1 165) | Pine text, icons, links, eyebrows, active nav |
+| `--primary-soft` | `#0D2D21` (oklch 0.27 0.045 165) | Solid pine-tinted background |
+| `--ring` | `#62B995` | Focus ring. Equals `--primary-text` |
 
 For a pine tint, use `--primary-text` at low alpha (`bg-primary-text/10`); pine itself at low alpha disappears on near-black.
 
-| Token | Dark | Light | Notes |
-|---|---|---|---|
-| `--film` | `#F0B04A` | `#D9901F` | Film amber, the projector light. Brand only: the logo's viewfinder and the preview image. Not for UI text or buttons |
+| Token | Value | Notes |
+|---|---|---|
+| `--film` | `#F0B04A` | Film amber, the projector light. Brand only: the logo's viewfinder and the preview image. Not for UI text or buttons |
 
 ### 2.3 Signal colors
 
-Icon tiles and status accents use Tailwind's palette with a fixed recipe: background `<color>-400/12`, icon `<color>-600` on light and `<color>-300` on dark (cyan uses `cyan-700` on light). Pine tiles use `bg-primary-text/12 text-primary-text`. Lists take the colors in this order:
+Icon tiles and status accents use Tailwind's palette with a fixed recipe: background `<color>-400/12`, icon `<color>-300`. Pine tiles use `bg-primary-text/12 text-primary-text`. Lists take the colors in this order:
 
 | Order | Signal | Also means |
 |---|---|---|
@@ -65,26 +65,26 @@ Icon tiles and status accents use Tailwind's palette with a fixed recipe: backgr
 
 The chart tokens hold the same five as chart series. No chart uses them yet.
 
-| Token | Dark | Light |
-|---|---|---|
-| `--chart-1` (pine) | `#62B995` | `#1F634A` |
-| `--chart-2` (cyan) | `#67E8F9` | `#19B3BE` |
-| `--chart-3` (violet) | `#C4B5FD` | `#A72AEF` |
-| `--chart-4` (amber) | `#FCD34D` | `#FFA929` |
-| `--chart-5` (pink) | `#F65A96` | `#E9206D` |
+| Token | Value |
+|---|---|
+| `--chart-1` (pine) | `#62B995` |
+| `--chart-2` (cyan) | `#67E8F9` |
+| `--chart-3` (violet) | `#C4B5FD` |
+| `--chart-4` (amber) | `#FCD34D` |
+| `--chart-5` (pink) | `#F65A96` |
 
 ### 2.4 Sidebar
 
-| Token | Dark | Light |
-|---|---|---|
-| `--sidebar` | `#080908` | `#F2F3ED` |
-| `--sidebar-foreground` | `#F3F4EB` | `#181914` |
-| `--sidebar-accent` | `#1F1F1F` | `#E3E5DC` |
-| `--sidebar-accent-foreground` | `#F3F4EB` | `#181914` |
-| `--sidebar-border` | `rgb(255 255 255 / 0.08)` | `#DDE0D6` |
-| `--sidebar-primary` | pine | pine |
-| `--sidebar-primary-foreground` | `#F7FBF9` | `#F7FBF9` |
-| `--sidebar-ring` | `#62B995` | `#1F634A` |
+| Token | Value |
+|---|---|
+| `--sidebar` | `#080908` |
+| `--sidebar-foreground` | `#F3F4EB` |
+| `--sidebar-accent` | `#1F1F1F` |
+| `--sidebar-accent-foreground` | `#F3F4EB` |
+| `--sidebar-border` | `rgb(255 255 255 / 0.08)` |
+| `--sidebar-primary` | pine |
+| `--sidebar-primary-foreground` | `#F7FBF9` |
+| `--sidebar-ring` | `#62B995` |
 
 ## 3. Typography
 
@@ -126,7 +126,7 @@ Pairing rule: **mono for anything that is a title, label or number; sans for sen
 | Buttons, inputs, sidebar sub-items | `rounded-lg` 12px. Small buttons 10px |
 | Cards, panels, sidebar items, icon tiles | `rounded-xl` 16px |
 | Large panels (final CTA, user menu) | `rounded-2xl` 20px |
-| Pills, badges, avatars, theme switcher | `rounded-full` |
+| Pills, badges, avatars | `rounded-full` |
 | Skeleton blocks | `rounded-md` 10px |
 
 Nest at least one step smaller than the container.
@@ -167,11 +167,7 @@ Base card: `rounded-xl border bg-card p-5`. Empty states use `rounded-xl border 
 ### Site header and footer (`layout/`)
 
 - Header: `Brand` (the logo mark (7.1) and the project name in `font-display font-semibold`), then a `nav` of links to the home page's sections (How it works, Pricing and FAQ, as `/#how-it-works`, `/#pricing` and `/#faq`) and the Blog, the language menu and an account button: Sign in for visitors, Dashboard once signed in. Links are `text-sm font-semibold` and underline on hover; the account button is a primary button, `h-9 px-2.5` below `sm`. Below `md` every link but Pricing hides; below `sm` the language menu shows only its icon and the gaps shrink from 24px to 8px, so the header fits a 320px phone.
-- Footer: brand and blurb, then link columns (Product, Guides, Support with the "Report abuse" link, Legal) with `.eyebrow` titles and the theme switcher; a bottom bar with the copyright in `text-xs uppercase tracking-[0.08em]`.
-
-### Theme switcher (`layout/theme-switcher.tsx`)
-
-A `rounded-full bg-muted p-1` group of three icon buttons: Sun (light), Moon (dark), Monitor (system). The checked one gets `bg-accent`.
+- Footer: brand and blurb, then link columns (Product, Guides, Support with the "Report abuse" link, Legal) with `.eyebrow` titles; a bottom bar with the copyright in `text-xs uppercase tracking-[0.08em]`.
 
 ### Home (`home/`)
 
@@ -207,7 +203,7 @@ Posts list as base cards: date, a card title (3) that links the whole card, desc
 ### 7.1 Logo
 
 - **Mark** (`layout/logo-mark.tsx`): four rounded viewfinder corners in `--film` around the brand dot in `--primary-text`, which leaves a short `--primary-text/35` trail to its left: a frame, and a picture that moves. 32-unit grid, 3-unit strokes. Shown at 24px (`size-6`) next to the name.
-- **Favicon** (`src/app/icon.svg`, `favicon.ico`, `apple-icon.png`): the dark-theme mark on a `#0D0D0D` tile with a 7-unit radius, so it reads on light and dark browser tabs.
+- **Favicon** (`src/app/icon.svg`, `favicon.ico`, `apple-icon.png`): the mark on a `#0D0D0D` tile with a 7-unit radius, so it reads on light and dark browser tabs.
 - **Preview image** (`src/app/_lib/og-image.tsx`): film strip perforations along the top and bottom edges, lit in `--film`; the mark and the name, then the title and description, on the dark canvas.
 
 ## 8. Motion
@@ -251,7 +247,7 @@ Cards change only their border color on hover. Hover styles apply only on device
 1. Profile row: avatar, name, email.
 2. Credits row: balance in `font-display text-lg font-bold`, linking to `/billing`.
 3. Profile item.
-4. Language and theme.
+4. Language.
 5. Sign out.
 
 It shows no plan and no upgrade: subscriptions aren't sold. Subscribers manage theirs on `/billing`.

@@ -1,23 +1,15 @@
 "use client";
 
-import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import {
   ChevronRight,
   ChevronsUpDown,
   Gem,
   Languages,
   LogOut,
-  Palette,
   UserRound,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { LocaleItems } from "@/components/layout/locale-switcher";
-import {
-  setThemePreference,
-  useThemePreference,
-  type ThemePreference,
-} from "@/components/layout/theme";
-import { THEME_OPTIONS } from "@/components/layout/theme-switcher";
 import { useCredits } from "./credits";
 import {
   DropdownMenu,
@@ -42,8 +34,6 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
   const tLocale = useTranslations("LocaleSwitcher");
   const locale = useLocale() as Locale;
   const router = useRouter();
-  const tTheme = useTranslations("Theme");
-  const theme = useThemePreference();
   // Beside the sidebar on desktop; above the trigger in the phone sheet,
   // where there is no room to the right.
   const isMobile = useIsMobile();
@@ -115,30 +105,6 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
             <LocaleItems />
           </DropdownMenuSubContent>
         </DropdownMenuSub>
-        <div className={`flex items-center ${ROW}`}>
-          <Palette className="size-[18px] text-muted-foreground" />
-          {tTheme("label")}
-          <MenuPrimitive.RadioGroup
-            value={theme}
-            onValueChange={(value: ThemePreference) => setThemePreference(value)}
-            aria-label={tTheme("label")}
-            className="ml-auto flex rounded-full bg-muted p-1"
-          >
-            {THEME_OPTIONS.map(({ value, icon: Icon }) => (
-              <MenuPrimitive.RadioItem
-                key={value}
-                value={value}
-                closeOnClick={false}
-                aria-label={tTheme(value)}
-                title={tTheme(value)}
-                className="flex size-7 items-center justify-center rounded-full text-muted-foreground outline-hidden select-none focus-visible:ring-2 focus-visible:ring-ring data-checked:bg-accent data-checked:text-foreground"
-              >
-                <Icon className="size-4" />
-              </MenuPrimitive.RadioItem>
-            ))}
-          </MenuPrimitive.RadioGroup>
-        </div>
-
         <DropdownMenuSeparator className="mx-0" />
 
         <DropdownMenuItem onClick={signOut} className={ROW}>

@@ -52,50 +52,11 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* Color tokens: docs/DESIGN.md, Color Tokens. Dark is the default theme;
-   light is the opt-in. The primary is the same pine in both. */
+/* Color tokens: docs/DESIGN.md, Color Tokens. The site is dark only; <html>
+   keeps the dark class so shadcn's dark: variants apply. Pine is a fill on
+   dark surfaces; it is too dark for text (2.9:1). Text, icons and focus
+   rings use --primary-text (8.7:1). */
 :root {
-  --background: #f7f7f3;
-  --foreground: #181914;
-  --card: #ffffff;
-  --card-foreground: #181914;
-  --popover: #ffffff;
-  --popover-foreground: #181914;
-  --primary: oklch(0.45 0.08 165);
-  --primary-foreground: oklch(0.985 0.006 165);
-  --primary-hover: oklch(0.4 0.08 165);
-  --primary-text: oklch(0.45 0.08 165);
-  --primary-soft: oklch(0.93 0.03 165);
-  --film: #d9901f;
-  --secondary: #f2f3ed;
-  --secondary-foreground: #181914;
-  --muted: #f2f3ed;
-  --muted-foreground: #65675f;
-  --accent: #f2f3ed;
-  --accent-foreground: #181914;
-  --destructive: #df4949;
-  --border: #dde0d6;
-  --input: #dde0d6;
-  --ring: oklch(0.45 0.08 165);
-  --chart-1: oklch(0.45 0.08 165);
-  --chart-2: #19b3be;
-  --chart-3: #a72aef;
-  --chart-4: #ffa929;
-  --chart-5: #e9206d;
-  --radius: 0.75rem;
-  --sidebar: #f2f3ed;
-  --sidebar-foreground: #181914;
-  --sidebar-primary: oklch(0.45 0.08 165);
-  --sidebar-primary-foreground: oklch(0.985 0.006 165);
-  --sidebar-accent: #e3e5dc;
-  --sidebar-accent-foreground: #181914;
-  --sidebar-border: #dde0d6;
-  --sidebar-ring: oklch(0.45 0.08 165);
-}
-
-/* Pine is a fill on dark surfaces; it is too dark for text (2.9:1).
-   Text, icons and focus rings use --primary-text (8.7:1). */
-.dark {
   --background: #0d0d0d;
   --foreground: #f3f4eb;
   --card: #171717;
@@ -131,6 +92,7 @@
   --sidebar-accent-foreground: #f3f4eb;
   --sidebar-border: rgb(255 255 255 / 0.08);
   --sidebar-ring: oklch(0.72 0.1 165);
+  --radius: 0.75rem;
 }
 
 @layer base {

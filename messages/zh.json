@@ -244,12 +244,6 @@
     "pricing": "价格",
     "faq": "常见问题"
   },
-  "Theme": {
-    "label": "主题",
-    "light": "浅色",
-    "dark": "深色",
-    "system": "跟随系统"
-  },
   "NotFound": {
     "title": "页面不存在",
     "home": "返回首页"

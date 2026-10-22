@@ -244,12 +244,6 @@
     "pricing": "Preise",
     "faq": "FAQ"
   },
-  "Theme": {
-    "label": "Design",
-    "light": "Hell",
-    "dark": "Dunkel",
-    "system": "System"
-  },
   "NotFound": {
     "title": "Seite nicht gefunden",
     "home": "Zur Startseite"
