@@ -1,6 +1,7 @@
 import { ArrowLeft, Clapperboard, Download } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { PageHeader } from "@/components/dashboard/page-header";
+import { LocalDate } from "@/components/layout/local-date";
 import { buttonVariants } from "@/components/ui/button";
 import { firstFrame, playerFrame } from "@/components/videos/player-frame";
 import { Link } from "@/i18n/navigation";
@@ -9,7 +10,6 @@ import { cn } from "@/lib/utils";
 
 export function VideoDetail({ video }: { video: GeneratedVideo }) {
   const t = useTranslations("Videos");
-  const format = useFormatter();
 
   const fields = [
     { label: t("prompt"), value: <span className="whitespace-pre-wrap [overflow-wrap:anywhere]">{video.prompt}</span> },
@@ -18,7 +18,7 @@ export function VideoDetail({ video }: { video: GeneratedVideo }) {
     { label: t("ratio"), value: video.ratio },
     { label: t("spent"), value: t("credits", { count: video.credits }) },
     { label: t("status"), value: t(`statuses.${video.status}`) },
-    { label: t("created"), value: format.dateTime(video.createdAt, { dateStyle: "medium", timeStyle: "short" }) },
+    { label: t("created"), value: <LocalDate value={video.createdAt} dateStyle="medium" timeStyle="short" /> },
   ];
 
   return (

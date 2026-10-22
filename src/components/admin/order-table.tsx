@@ -1,5 +1,6 @@
 import { Receipt } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { LocalDate } from "@/components/layout/local-date";
 import { Link } from "@/i18n/navigation";
 import { cn } from "cn";
 
@@ -102,7 +103,7 @@ export function OrderTable({ orders, filtered = false }: { orders: OrderRow[]; f
                   </span>
                 </td>
                 <td className="hidden px-4 py-3 text-right whitespace-nowrap text-muted-foreground tabular-nums sm:table-cell">
-                  {format.dateTime(order.createdAt, { dateStyle: "medium", timeStyle: "short" })}
+                  <LocalDate value={order.createdAt} dateStyle="medium" timeStyle="short" />
                 </td>
                 <td className="hidden px-4 py-3 font-mono text-xs text-muted-foreground lg:table-cell">
                   <span title={order.id}>{order.id.slice(0, 8)}</span>

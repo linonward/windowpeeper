@@ -1,7 +1,8 @@
 import { ArrowLeft } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { CreditTransactions, type Transaction } from "@/components/credits/credit-transactions";
 import { PageHeader } from "@/components/dashboard/page-header";
+import { LocalDate } from "@/components/layout/local-date";
 import { Link } from "@/i18n/navigation";
 import { AddCredits } from "./add-credits";
 
@@ -34,8 +35,7 @@ export function UserDetail({
 }) {
   const t = useTranslations("Admin");
   const tc = useTranslations("Credits");
-  const format = useFormatter();
-  const date = (value: Date) => format.dateTime(value, { dateStyle: "medium" });
+  const date = (value: Date) => <LocalDate value={value} dateStyle="medium" />;
 
   const fields = [
     { label: t("email"), value: <span className="break-all">{user.email}</span> },

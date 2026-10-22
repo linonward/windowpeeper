@@ -206,3 +206,25 @@ test("a photo too small for Bailian is turned away as soon as it is picked", asy
   ).toBeVisible();
   await expect(preview).toHaveCount(0);
 });
+
+test.describe("in Shanghai", () => {
+  test.use({ timezoneId: "Asia/Shanghai" });
+
+  test("the library and a video's page show times in the reader's time zone", async ({ page }) => {
+    await signIn(page);
+    const { user } = await getSession(page);
+    await addFailedVideos(user.id, 1);
+    await page.goto("/videos/library");
+
+    const local = (at: Date, timeZone: string) =>
+      new Intl.DateTimeFormat("en", { dateStyle: "medium", timeStyle: "short", timeZone }).format(at);
+    const card = page.getByRole("main").locator("time").first();
+    const at = new Date((await card.getAttribute("datetime")) as string);
+    expect(local(at, "Asia/Shanghai")).not.toBe(local(at, "UTC"));
+    await expect(card).toHaveText(local(at, "Asia/Shanghai"));
+
+    await page.getByRole("link", { name: "Seeded video 1" }).click();
+    await expect(page.getByRole("heading", { level: 1, name: "Video details" })).toBeVisible();
+    await expect(page.getByText(local(at, "Asia/Shanghai"), { exact: true }).filter({ visible: true })).toBeVisible();
+  });
+});
