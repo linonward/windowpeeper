@@ -5,7 +5,7 @@ const POSTS = {
 };
 
 test("the blog lists each locale's posts", async ({ page }) => {
-  await page.goto("/en/blog");
+  await page.goto("/blog");
 
   await expect(page.getByRole("heading", { level: 1, name: "Blog" })).toBeVisible();
   await expect(page).toHaveTitle("Blog: Guides and News | WindowPeeper");
@@ -18,10 +18,10 @@ test("the blog lists each locale's posts", async ({ page }) => {
 });
 
 test("a post opens from the list and describes itself for search", async ({ page }) => {
-  await page.goto("/en/blog");
+  await page.goto("/blog");
   await page.getByRole("main").getByRole("link", { name: POSTS.en[0] }).click();
 
-  await expect(page).toHaveURL("/en/blog/is-it-safe-to-upload-a-photo");
+  await expect(page).toHaveURL("/blog/is-it-safe-to-upload-a-photo");
   await expect(page.getByRole("heading", { level: 1, name: POSTS.en[0] })).toBeVisible();
   await expect(page).toHaveTitle(POSTS.en[0]);
   // No translation, so no other language is linked.
@@ -45,7 +45,7 @@ for (const locale of ["en"] as const) {
 }
 
 test("a tag lists the locale's posts with it", async ({ page }) => {
-  await page.goto("/en/blog/tags/guides");
+  await page.goto("/blog/tags/guides");
 
   await expect(page.getByRole("main").getByRole("link", { name: POSTS.en[0] })).toBeVisible();
   await expect(page.locator('head meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");

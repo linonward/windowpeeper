@@ -7,7 +7,7 @@ import { Footer } from "./footer";
 // The language links read the current path, which jsdom doesn't provide.
 vi.mock("next/navigation", async (importOriginal) => ({
   ...(await importOriginal<typeof import("next/navigation")>()),
-  usePathname: () => "/en/pricing",
+  usePathname: () => "/pricing",
 }));
 
 afterEach(cleanup);
@@ -21,9 +21,9 @@ test("the product column leads to the generator, the scenes and pricing", () => 
   renderWithIntl(<Footer />);
 
   expect(links("Product")).toEqual([
-    ["Make a video", "/en#generator"],
-    ["Scenes", "/en#scenes"],
-    ["Pricing", "/en/pricing"],
+    ["Make a video", "/#generator"],
+    ["Scenes", "/#scenes"],
+    ["Pricing", "/pricing"],
   ]);
 });
 
@@ -31,10 +31,10 @@ test("the learn column leads to the FAQ, the guide and the blog", () => {
   renderWithIntl(<Footer />);
 
   expect(links("Learn")).toEqual([
-    ["Window peeper trend", "/en#faq"],
-    ["How to make it", "/en/how-to-make-window-peeper-video"],
-    ["Is there a filter?", "/en#faq"],
-    ["Blog", "/en/blog"],
+    ["Window peeper trend", "/#faq"],
+    ["How to make it", "/how-to-make-window-peeper-video"],
+    ["Is there a filter?", "/#faq"],
+    ["Blog", "/blog"],
   ]);
 });
 
@@ -42,10 +42,10 @@ test("the legal column links each document; acceptable use is in the terms", () 
   renderWithIntl(<Footer />);
 
   expect(links("Legal")).toEqual([
-    ["Terms", "/en/terms"],
-    ["Privacy", "/en/privacy"],
-    ["Refunds", "/en/refund"],
-    ["Acceptable use", "/en/terms"],
+    ["Terms", "/terms"],
+    ["Privacy", "/privacy"],
+    ["Refunds", "/refund"],
+    ["Acceptable use", "/terms"],
   ]);
 });
 
@@ -57,7 +57,7 @@ test("the bottom bar has the copyright, the support email and every language on 
     `mailto:${projectConfig.supportEmail}`,
   );
   expect(links("Language")).toEqual([
-    ["English", "/en/pricing"],
+    ["English", "/pricing"],
     ["Español", "/es/pricing"],
     ["Deutsch", "/de/pricing"],
   ]);

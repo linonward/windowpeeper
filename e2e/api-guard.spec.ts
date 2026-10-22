@@ -20,7 +20,7 @@ test("refuses a request that changes data from another site or no site", async (
 
 test("the app's own pages pass the Origin check", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/billing");
+  await page.goto("/billing");
 
   // A same-origin fetch from the page.
   const status = await page.evaluate(async () => {

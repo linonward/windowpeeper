@@ -4,6 +4,7 @@ import { createTranslator } from "next-intl";
 import { renderWithIntl } from "@/test/intl";
 import en from "../../../../messages/en.json";
 import es from "../../../../messages/es.json";
+import { localePath } from "@/i18n/routing";
 
 // generateMetadata reads messages on the server; here they come straight
 // from the files.
@@ -51,10 +52,10 @@ test.each(slugs)("/%s names its title, canonical URL, languages and preview", as
   expect(data.alternates).toEqual({
     canonical: `/es/${slug}`,
     languages: {
-      en: `/en/${slug}`,
+      en: `/${slug}`,
       es: `/es/${slug}`,
       de: `/de/${slug}`,
-      "x-default": `/en/${slug}`,
+      "x-default": `/${slug}`,
     },
   });
   expect(data.openGraph).toMatchObject({
@@ -90,9 +91,9 @@ test.each(slugs.flatMap((slug) => (["en", "es"] as const).map((locale) => [slug,
     const main = screen.getByRole("main");
     const hrefs = within(main).getAllByRole("link").map((link) => link.getAttribute("href"));
     // The call to action at the top, and the closing one.
-    expect(hrefs.filter((href) => href === `/${locale}#generator`).length).toBeGreaterThanOrEqual(2);
-    for (const other of slugs.filter((each) => each !== slug)) expect(hrefs).toContain(`/${locale}/${other}`);
-    expect(hrefs).not.toContain(`/${locale}/${slug}`);
+    expect(hrefs.filter((href) => href === `${localePath(locale)}#generator`).length).toBeGreaterThanOrEqual(2);
+    for (const other of slugs.filter((each) => each !== slug)) expect(hrefs).toContain(localePath(locale, `/${other}`));
+    expect(hrefs).not.toContain(localePath(locale, `/${slug}`));
     // No second generator: the page leads to the one on the home page.
     expect(screen.queryByRole("region", { name: /window peeper video|Window Peeper 视频/ })).toBeNull();
     expect(main.querySelector('input[type="file"]')).toBeNull();

@@ -11,10 +11,10 @@ afterEach(cleanup);
 
 test("submits q, status and provider to the orders page, keeping the current values", () => {
   renderWithIntl(
-    <OrderFilters action="/en/admin/orders" query="ada" status="paid" provider="waffo" />,
+    <OrderFilters action="/admin/orders" query="ada" status="paid" provider="waffo" />,
   );
 
-  expect(screen.getByRole("search").getAttribute("action")).toBe("/en/admin/orders");
+  expect(screen.getByRole("search").getAttribute("action")).toBe("/admin/orders");
   const search = screen.getByRole("searchbox", { name: "Search orders" }) as HTMLInputElement;
   expect([search.name, search.value]).toEqual(["q", "ada"]);
   const status = screen.getByRole("combobox", { name: "Status" }) as HTMLSelectElement;
@@ -33,12 +33,12 @@ test("submits q, status and provider to the orders page, keeping the current val
 });
 
 test("offers a reset link only while a filter is set", () => {
-  renderWithIntl(<OrderFilters action="/en/admin/orders" query="" />);
+  renderWithIntl(<OrderFilters action="/admin/orders" query="" />);
   expect(screen.queryByRole("link", { name: "Clear filters" })).toBeNull();
   cleanup();
 
-  renderWithIntl(<OrderFilters action="/en/admin/orders" query="" status="failed" />);
+  renderWithIntl(<OrderFilters action="/admin/orders" query="" status="failed" />);
   expect(screen.getByRole("link", { name: "Clear filters" }).getAttribute("href")).toBe(
-    "/en/admin/orders",
+    "/admin/orders",
   );
 });

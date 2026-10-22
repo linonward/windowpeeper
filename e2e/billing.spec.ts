@@ -5,22 +5,22 @@ import { readEmail, signIn } from "./support/auth";
 import { addSubscription } from "./support/db";
 
 test("signed-out visitors are redirected before the page renders", async ({ request }) => {
-  const response = await request.get("/en/billing", { maxRedirects: 0 });
+  const response = await request.get("/billing", { maxRedirects: 0 });
 
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fbilling");
+  expect(response.headers().location).toBe("/sign-in?next=%2Fbilling");
 });
 
 test("the sidebar opens billing with the balance, the packs and the credit history", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
     .getByRole("link", { name: "Billing" })
     .click();
 
-  await expect(page).toHaveURL("/en/billing");
+  await expect(page).toHaveURL("/billing");
   await expect(page.getByRole("heading", { level: 1, name: "Credits & billing" })).toBeVisible();
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts).
   await expect(page.getByText("Credit balance").locator("+ p")).toHaveText("0 credits");
@@ -35,7 +35,7 @@ test("the sidebar opens billing with the balance, the packs and the credit histo
 test("offers the three packs with what each buys, and no subscription", async ({ page }) => {
   await signIn(page);
 
-  await page.goto("/en/billing");
+  await page.goto("/billing");
 
   const main = page.getByRole("main");
   const packs = main.getByRole("radiogroup", { name: "Buy credits" });
@@ -168,7 +168,7 @@ test.describe("payment webhooks", () => {
     const link = text.match(/https?:\/\/\S+/)?.[0];
     expect(link).toBe(`${BASE_URL}/billing`);
     await page.goto(link!);
-    await expect(page).toHaveURL(/\/en\/billing$/);
+    await expect(page).toHaveURL(/\/billing$/);
   });
 
   test("reject an unsigned event", async ({ request }) => {

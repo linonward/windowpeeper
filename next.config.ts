@@ -32,15 +32,17 @@ const nextConfig: NextConfig = {
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
   // Moved pages. Keeps old links, bookmarks and search results working.
   redirects: async () => [
-    // Chinese was dropped; its old pages go to the English ones.
-    { source: "/zh", destination: "/en", permanent: true },
-    { source: "/zh/:path*", destination: "/en/:path*", permanent: true },
+    // Chinese was dropped; its old pages go to the English ones, which have
+    // no prefix.
+    { source: "/zh", destination: "/", permanent: true },
+    { source: "/zh/:path*", destination: "/:path*", permanent: true },
     // The credit history moved into /billing.
     {
       source: `/:locale(${routing.locales.join("|")})/credits`,
       destination: "/:locale/billing",
       permanent: true,
     },
+    { source: "/credits", destination: "/billing", permanent: true },
     // The image-to-video generator is gone; /videos opens the window peeper video,
     // the only photo effect. Sign-in returns to /videos by default. Not
     // permanent, so /videos can become a page again.
@@ -49,6 +51,7 @@ const nextConfig: NextConfig = {
       destination: "/:locale/videos/windowpeeper",
       permanent: false,
     },
+    { source: "/videos", destination: "/videos/windowpeeper", permanent: false },
   ],
   // Off, so a page's first request for a path generateStaticParams didn't
   // list waits for the render. When on, Next.js streams the route's App

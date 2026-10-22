@@ -2,7 +2,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { projectConfig } from "project.config";
 import { homeFacts } from "@/app/_lib/home-facts";
-import { LOCALE_NAMES, type Locale, routing } from "@/i18n/routing";
+import { LOCALE_NAMES, type Locale, localePath, routing } from "@/i18n/routing";
 import { LEGAL_DOCS, listPosts } from "@/lib/content";
 import { GUIDES } from "@/lib/guides";
 // Every locale has the same keys (a unit test checks), so en's list them all.
@@ -40,16 +40,16 @@ export async function GET() {
     const blog = await getTranslations({ locale, namespace: "Blog" });
     const guides = await getTranslations({ locale, namespace: "Guides" });
     return [
-      `- [${projectConfig.name}](${url(`/${locale}`)}): ${home("hero.title")}`,
+      `- [${projectConfig.name}](${url(localePath(locale))}): ${home("hero.title")}`,
       ...GUIDES.map(
         (guide) =>
-          `- [${guides(`pages.${guide}.metaTitle`)}](${url(`/${locale}/${guide}`)}): ${guides(`pages.${guide}.metaDescription`)}`,
+          `- [${guides(`pages.${guide}.metaTitle`)}](${url(localePath(locale, `/${guide}`))}): ${guides(`pages.${guide}.metaDescription`)}`,
       ),
-      ...LEGAL_DOCS.map((doc) => `- [${legal(doc)}](${url(`/${locale}/${doc}`)})`),
-      `- [${pricing("title")}](${url(`/${locale}/pricing`)}): ${pricing("description", { standard: prices.standard, pro: prices.pro })}`,
-      `- [${blog("title")}](${url(`/${locale}/blog`)}): ${blog("description")}`,
+      ...LEGAL_DOCS.map((doc) => `- [${legal(doc)}](${url(localePath(locale, `/${doc}`))})`),
+      `- [${pricing("title")}](${url(localePath(locale, "/pricing"))}): ${pricing("description", { standard: prices.standard, pro: prices.pro })}`,
+      `- [${blog("title")}](${url(localePath(locale, "/blog"))}): ${blog("description")}`,
       ...(await listPosts(locale)).map(
-        (post) => `- [${post.title}](${url(`/${locale}/blog/${post.slug}`)}): ${post.description}`,
+        (post) => `- [${post.title}](${url(localePath(locale, `/blog/${post.slug}`))}): ${post.description}`,
       ),
     ];
   };

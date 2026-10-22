@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { projectConfig } from "project.config";
 import { homeFacts } from "@/app/_lib/home-facts";
 import { GuidePage } from "@/components/guides/guide-page";
-import type { Locale } from "@/i18n/routing";
+import { type Locale, localePath } from "@/i18n/routing";
 import type { Guide } from "@/lib/guides";
 import { languageAlternates } from "@/lib/seo";
 
@@ -22,7 +22,7 @@ export function guideMetadata(guide: Guide) {
     return {
       title,
       description,
-      alternates: { canonical: `/${locale}/${guide}`, languages: languageAlternates(`/${guide}`) },
+      alternates: { canonical: localePath(locale as Locale, `/${guide}`), languages: languageAlternates(`/${guide}`) },
       openGraph: {
         // Keep the layout's generated preview image when extending Open Graph.
         images: (await parent).openGraph?.images,
@@ -30,7 +30,7 @@ export function guideMetadata(guide: Guide) {
         siteName: projectConfig.name,
         title,
         description,
-        url: `/${locale}/${guide}`,
+        url: localePath(locale as Locale, `/${guide}`),
       },
     };
   };

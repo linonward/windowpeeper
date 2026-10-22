@@ -25,7 +25,7 @@ const firstTouch = {
   utm_source: "tiktok",
   utm_medium: "social",
   utm_campaign: "launch",
-  landing_path: "/en/how-to-make-window-peeper-video",
+  landing_path: "/how-to-make-window-peeper-video",
   locale: "en-US",
   seen_at: "2026-10-01T08:00:00.000Z",
 };
@@ -64,7 +64,7 @@ test("signing up stores the visitor's first touch on the user", async () => {
     firstUtmCampaign: "launch",
     firstUtmTerm: null,
     firstUtmContent: null,
-    firstLandingPath: "/en/how-to-make-window-peeper-video",
+    firstLandingPath: "/how-to-make-window-peeper-video",
     firstLocale: "en-US",
     firstSeenAt: new Date("2026-10-01T08:00:00.000Z"),
   });
@@ -107,7 +107,7 @@ test("signup_completed sets the first touch once on the PostHog person", async (
         $initial_referring_domain: "www.google.com",
         $initial_utm_source: "tiktok",
         $initial_utm_campaign: "launch",
-        $initial_pathname: "/en/how-to-make-window-peeper-video",
+        $initial_pathname: "/how-to-make-window-peeper-video",
       },
     },
   });

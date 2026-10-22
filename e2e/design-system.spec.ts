@@ -19,7 +19,7 @@ async function primaryColor(page: Page) {
 }
 
 test("sign-in uses the shared visual system", async ({ page }) => {
-  await page.goto("/en/sign-in");
+  await page.goto("/sign-in");
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveCSS(
     "font-family",
@@ -34,7 +34,7 @@ test("sign-in uses the shared visual system", async ({ page }) => {
 
 test("profile uses the shared visual system", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/profile");
+  await page.goto("/profile");
 
   // Dashboard titles are Big Shoulders 800 (docs/DESIGN.md, Dashboard).
   const title = page.getByRole("heading", { level: 1 });
@@ -48,7 +48,7 @@ test("profile uses the shared visual system", async ({ page }) => {
 
 test("the site is dark only, whatever the system's theme", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });
-  await page.goto("/en");
+  await page.goto("/");
 
   await expect(page.locator("html")).toHaveClass(/\bdark\b/);
   await expect(page.locator("body")).toHaveCSS("background-color", "rgb(9, 12, 19)");
@@ -56,7 +56,7 @@ test("the site is dark only, whatever the system's theme", async ({ page }) => {
 });
 
 test("landing uses Lucide icons and a lamp primary action", async ({ page }) => {
-  await page.goto("/en");
+  await page.goto("/");
 
   const cta = page.getByRole("region", { name: "Your window is open." }).getByRole("link", { name: "Make my video" });
   await expect(cta).toHaveCSS("background-color", await primaryColor(page));
@@ -64,7 +64,7 @@ test("landing uses Lucide icons and a lamp primary action", async ({ page }) => 
 });
 
 test("FAQ plus icon turns into a close mark when open", async ({ page }) => {
-  await page.goto("/en");
+  await page.goto("/");
 
   const item = page.locator("details").filter({ hasText: "What if my video fails?" });
   const icon = item.locator("summary svg.lucide-plus");
@@ -74,7 +74,7 @@ test("FAQ plus icon turns into a close mark when open", async ({ page }) => {
 });
 
 for (const width of [320, 375]) {
-  for (const path of ["/en/sign-in", "/es/sign-in"]) {
+  for (const path of ["/sign-in", "/es/sign-in"]) {
     test(`${path} fits ${width}px without horizontal scrolling`, async ({
       page,
     }) => {

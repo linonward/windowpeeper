@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { projectConfig } from "project.config";
 import { LegalPage } from "@/components/legal/legal-page";
 import { languageAlternates } from "@/lib/seo";
+import { localePath, type Locale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
   const { locale } = await params;
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/privacy"
   return {
     title: t("privacy"),
     description: t("descriptions.privacy", { name: projectConfig.name }),
-    alternates: { canonical: `/${locale}/privacy`, languages: languageAlternates("/privacy") },
+    alternates: { canonical: localePath(locale as Locale, "/privacy"), languages: languageAlternates("/privacy") },
   };
 }
 

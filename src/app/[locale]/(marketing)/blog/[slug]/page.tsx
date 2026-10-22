@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PostPage } from "@/components/blog/post-page";
-import { type Locale, routing } from "@/i18n/routing";
+import { type Locale, routing, localePath } from "@/i18n/routing";
 import { listPosts, loadPost, postLocales } from "@/lib/content";
 import { blogPosting, jsonLd, languageAlternates } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[sl
   return {
     title: { absolute: found.title },
     description: found.description,
-    alternates: { canonical: `/${locale}${path}`, languages: languageAlternates(path, await postLocales(found.slug)) },
+    alternates: { canonical: localePath(locale as Locale, path), languages: languageAlternates(path, await postLocales(found.slug)) },
     openGraph: { type: "article", title: found.title, description: found.description, publishedTime: found.date },
   };
 }

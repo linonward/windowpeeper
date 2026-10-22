@@ -28,7 +28,7 @@ Icons: `lucide-react` only, stroke width set in `globals.css`. Tests sit next to
 
 ## Routes
 
-Every page sits under `src/app/[locale]/`. Locales are `en` (default), `es` and `de`; `/` redirects to `/en`. Chinese (`zh`) was dropped: `next.config.ts` redirects `/zh/*` to `/en/*` permanently. API routes have no locale prefix.
+Every page sits under `src/app/[locale]/`. Locales are `en` (default), `es` and `de`. English URLs have no prefix (`/`, `/pricing`); the others do (`/es/pricing`) (`localePrefix: "as-needed"` in `src/i18n/routing.ts`). `/en/*` redirects to the unprefixed page. There is no language detection: an unprefixed URL is always English. Build hand-made paths (canonical and hreflang URLs, redirects, return URLs) with `localePath`. Chinese (`zh`) was dropped: `next.config.ts` redirects `/zh/*` to the English pages permanently. API routes have no locale prefix.
 
 | Group         | Pages                         | Notes                                                                 |
 | ------------- | ----------------------------- | --------------------------------------------------------------------- |

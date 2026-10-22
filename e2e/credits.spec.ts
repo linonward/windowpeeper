@@ -4,10 +4,10 @@ import { addPurchase } from "./support/db";
 
 // The credit history moved into /billing (next.config.ts redirects).
 test("the old credits page redirects to billing", async ({ request }) => {
-  const response = await request.get("/en/credits", { maxRedirects: 0 });
+  const response = await request.get("/credits", { maxRedirects: 0 });
 
   expect(response.status()).toBe(308);
-  expect(response.headers().location).toBe("/en/billing");
+  expect(response.headers().location).toBe("/billing");
 });
 
 test("the credit history fits a phone in Chinese", async ({ page }) => {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BlogIndex } from "@/components/blog/blog-index";
 import { blogLocales } from "@/lib/content";
-import type { Locale } from "@/i18n/routing";
+import { type Locale, localePath } from "@/i18n/routing";
 import { languageAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/blog">): Promise<Metadata> {
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog">):
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: { canonical: `/${locale}/blog`, languages: languageAlternates("/blog", withPosts) },
+    alternates: { canonical: localePath(locale as Locale, "/blog"), languages: languageAlternates("/blog", withPosts) },
     ...(!withPosts.includes(locale as Locale) && { robots: { index: false, follow: true } }),
   };
 }

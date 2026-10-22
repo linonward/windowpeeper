@@ -45,7 +45,7 @@ export async function signIn(page: Page, email = uniqueEmail()) {
   // Fixed emails (the admin) reuse an outbox file; drop the old link first.
   await rm(outboxFile(email), { force: true });
   const response = await page.request.post("/api/auth/sign-in/magic-link", {
-    data: { email, callbackURL: "/en/videos" },
+    data: { email, callbackURL: "/videos" },
     // Once the browser holds cookies (e.g. NEXT_LOCALE), Better Auth's CSRF
     // check requires an Origin header, as a real browser would send.
     headers: { origin: BASE_URL },

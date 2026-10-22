@@ -7,22 +7,22 @@ import { greyPng } from "./support/images";
 const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0]);
 
 test("signed-out visitors are redirected before the page renders", async ({ request }) => {
-  const response = await request.get("/en/videos/windowpeeper", { maxRedirects: 0 });
+  const response = await request.get("/videos/windowpeeper", { maxRedirects: 0 });
 
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fvideos%2Fwindowpeeper");
+  expect(response.headers().location).toBe("/sign-in?next=%2Fvideos%2Fwindowpeeper");
 });
 
 test("/videos opens the window peeper video, the only photo effect", async ({ page, request }) => {
   // Before the session check, so old links and sign-in's default return land there.
-  const response = await request.get("/en/videos", { maxRedirects: 0 });
+  const response = await request.get("/videos", { maxRedirects: 0 });
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/videos/windowpeeper");
+  expect(response.headers().location).toBe("/videos/windowpeeper");
 
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
-  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/windowpeeper");
   await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts),
   // so the button buys credits.
@@ -57,25 +57,25 @@ test("the library pages through every video from the sidebar and the generator",
   const { user } = await getSession(page);
   // VIDEOS_PAGE_SIZE in src/server/videos/config.ts, plus one.
   await addFailedVideos(user.id, 25);
-  await page.goto("/en/videos/windowpeeper");
+  await page.goto("/videos/windowpeeper");
 
   await page.getByRole("link", { name: "All videos →" }).click();
-  await expect(page).toHaveURL("/en/videos/library");
-  await page.goto("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/library");
+  await page.goto("/videos/windowpeeper");
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
     .getByRole("link", { name: /My videos/ })
     .click();
 
-  await expect(page).toHaveURL("/en/videos/library");
+  await expect(page).toHaveURL("/videos/library");
   await expect(page.getByRole("heading", { level: 1, name: "All videos" })).toBeVisible();
   const items = page.getByRole("list", { name: "All videos" }).getByRole("listitem");
   await expect(items).toHaveCount(24);
   await page.getByRole("link", { name: "Next" }).click();
-  await expect(page).toHaveURL("/en/videos/library?page=2");
+  await expect(page).toHaveURL("/videos/library?page=2");
   await expect(items).toHaveCount(1);
 
-  await page.goto("/en/videos/library?page=3");
+  await page.goto("/videos/library?page=3");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
 });
 
@@ -83,11 +83,11 @@ test("a card opens the video's page, and unknown videos are not found", async ({
   await signIn(page);
   const { user } = await getSession(page);
   await addFailedVideos(user.id, 1);
-  await page.goto("/en/videos/library");
+  await page.goto("/videos/library");
 
   await page.getByRole("link", { name: "Seeded video 1" }).click();
 
-  await expect(page).toHaveURL(/\/en\/videos\/[0-9a-f-]{36}$/);
+  await expect(page).toHaveURL(/\/videos\/[0-9a-f-]{36}$/);
   await expect(page.getByRole("heading", { level: 1, name: "Video details" })).toBeVisible();
   // Next.js keeps the library page in the DOM, hidden, for the back button.
   const visible = { visible: true };
@@ -95,9 +95,9 @@ test("a card opens the video's page, and unknown videos are not found", async ({
   await expect(page.getByText("Failed", { exact: true }).filter(visible)).toBeVisible();
 
   await page.getByRole("main").getByRole("link", { name: "All videos" }).filter(visible).click();
-  await expect(page).toHaveURL("/en/videos/library");
+  await expect(page).toHaveURL("/videos/library");
 
-  await page.goto("/en/videos/00000000-0000-0000-0000-000000000000");
+  await page.goto("/videos/00000000-0000-0000-0000-000000000000");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
 });
 
@@ -110,7 +110,7 @@ test("downloads need a session and a stored video of one's own", async ({ page, 
   await signIn(page);
   const { user } = await getSession(page);
   await addFailedVideos(user.id, 1);
-  await page.goto("/en/videos/library");
+  await page.goto("/videos/library");
   const href = await page.getByRole("link", { name: "Seeded video 1" }).getAttribute("href");
 
   for (const path of [unknown, `/api/videos/${href!.split("/").at(-1)}/download`]) {
@@ -122,14 +122,14 @@ test("downloads need a session and a stored video of one's own", async ({ page, 
 
 test("the sidebar opens the window peeper video, off while Bailian is not set up", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
     .getByRole("link", { name: "New video", exact: true })
     .click();
 
-  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/windowpeeper");
   await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   await expect(page.getByText("The window peeper video isn't set up yet.")).toBeVisible();
 });
@@ -186,7 +186,7 @@ test("a photo effect's quality is standard or pro", async ({ page }) => {
 
 test("a photo too small for Bailian is turned away as soon as it is picked", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos/windowpeeper");
+  await page.goto("/videos/windowpeeper");
   const photo = page.locator("#new-photo-input");
   const preview = page.getByRole("img", { name: "Your photo preview" });
   // A pick before hydration has no handler yet, so repeat it until the preview shows.

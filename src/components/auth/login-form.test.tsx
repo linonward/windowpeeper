@@ -35,7 +35,7 @@ test("starts Google sign-in and returns to the videos page", async () => {
 
   fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
 
-  expect(social).toHaveBeenCalledWith({ provider: "google", callbackURL: "/en/videos" });
+  expect(social).toHaveBeenCalledWith({ provider: "google", callbackURL: "/videos" });
 });
 
 test("explains when Google sign-in isn't configured", async () => {
@@ -54,16 +54,16 @@ test("explains when Google sign-in isn't configured", async () => {
 });
 
 test.each([
-  ["/en/billing", "/en/billing"],
-  ["/en/videos/library?page=2", "/en/videos/library?page=2"],
+  ["/billing", "/billing"],
+  ["/videos/library?page=2", "/videos/library?page=2"],
   // Anything that could leave the site falls back to the dashboard.
-  ["//evil.example", "/en/videos"],
-  ["https://evil.example", "/en/videos"],
-  ["/\\evil.example", "/en/videos"],
-  ["/\t/evil.example", "/en/videos"],
-  ["", "/en/videos"],
+  ["//evil.example", "/videos"],
+  ["https://evil.example", "/videos"],
+  ["/\\evil.example", "/videos"],
+  ["/\t/evil.example", "/videos"],
+  ["", "/videos"],
 ])("with ?next=%j, signs in and returns to %s", async (next, callbackURL) => {
-  window.history.replaceState(null, "", `/en/sign-in?next=${encodeURIComponent(next)}`);
+  window.history.replaceState(null, "", `/sign-in?next=${encodeURIComponent(next)}`);
   social.mockResolvedValue({ data: { redirect: true }, error: null });
   renderWithIntl(<LoginForm />);
 
@@ -74,8 +74,8 @@ test.each([
 });
 
 test("a form in a dialog returns to the page that opened it, not to ?next=", async () => {
-  window.history.replaceState(null, "", "/en/sign-in?next=%2Fen%2Fbilling");
-  const callbackURL = "/en/pricing?try=1";
+  window.history.replaceState(null, "", "/sign-in?next=%2Fen%2Fbilling");
+  const callbackURL = "/pricing?try=1";
   social.mockResolvedValue({ data: { redirect: true }, error: null });
   magicLink.mockResolvedValue({ data: { status: true }, error: null });
 
@@ -100,7 +100,7 @@ test("without Turnstile, sends the magic link with no challenge", async () => {
   await screen.findByRole("status");
   expect(magicLink).toHaveBeenCalledWith({
     email: "ada@example.com",
-    callbackURL: "/en/videos",
+    callbackURL: "/videos",
     fetchOptions: { headers: {} },
   });
 });
@@ -119,7 +119,7 @@ test("with Turnstile, waits for the challenge and sends its token", async () => 
   await screen.findByRole("status");
   expect(magicLink).toHaveBeenCalledWith({
     email: "ada@example.com",
-    callbackURL: "/en/videos",
+    callbackURL: "/videos",
     fetchOptions: { headers: { "x-captcha-response": "turnstile-token" } },
   });
 });

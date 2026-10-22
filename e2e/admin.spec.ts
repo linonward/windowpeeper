@@ -12,19 +12,19 @@ const sidebar = (page: import("@playwright/test").Page) =>
 test.describe.configure({ mode: "serial" });
 
 test("signed-out visitors are redirected before the page renders", async ({ request }) => {
-  const response = await request.get("/en/admin", { maxRedirects: 0 });
+  const response = await request.get("/admin", { maxRedirects: 0 });
 
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fadmin");
+  expect(response.headers().location).toBe("/sign-in?next=%2Fadmin");
 });
 
 test("non-admins see no admin link and get the 404 page", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
   await expect(sidebar(page).getByRole("link", { name: "Billing" })).toBeVisible();
   await expect(sidebar(page).getByRole("link", { name: "Admin" })).toHaveCount(0);
 
-  for (const path of ["/en/admin", "/en/admin/users", "/en/admin/users/some-id", "/en/admin/orders", "/en/admin/metrics"]) {
+  for (const path of ["/admin", "/admin/users", "/admin/users/some-id", "/admin/orders", "/admin/metrics"]) {
     await page.goto(path);
 
     await expect(page.getByRole("heading", { level: 1, name: "Page not found" })).toBeVisible();
@@ -40,12 +40,12 @@ test("non-admins see no admin link and get the 404 page", async ({ page }) => {
 test("admins open the user list from the sidebar", async ({ page }) => {
   const user = await signIn(page);
   await signIn(page, ADMIN);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await sidebar(page).getByRole("link", { name: "Admin" }).click();
 
   // Admin opens its first sub page.
-  await expect(page).toHaveURL("/en/admin/users");
+  await expect(page).toHaveURL("/admin/users");
   await expect(page.getByRole("heading", { level: 1, name: "Users" })).toBeVisible();
   await expect(sidebar(page).getByRole("link", { name: "Users" })).toHaveAttribute(
     "aria-current",
@@ -60,13 +60,13 @@ test("admins open the user list from the sidebar", async ({ page }) => {
 test("admins search users by email and page through the list", async ({ page }) => {
   const user = await signIn(page);
   await signIn(page, ADMIN);
-  await page.goto("/en/admin/users");
+  await page.goto("/admin/users");
 
   const search = page.getByRole("searchbox", { name: "Search users" });
   await search.fill(user.toUpperCase());
   await search.press("Enter");
 
-  await expect(page).toHaveURL(`/en/admin/users?q=${encodeURIComponent(user.toUpperCase())}`);
+  await expect(page).toHaveURL(`/admin/users?q=${encodeURIComponent(user.toUpperCase())}`);
   const table = page.getByRole("table", { name: "Users" });
   await expect(table.getByRole("row")).toHaveCount(2);
   await expect(table.getByRole("cell", { name: user, exact: true })).toBeVisible();
@@ -78,10 +78,10 @@ test("admins search users by email and page through the list", async ({ page }) 
 
   // More users than one page holds (50).
   await ensureUsers(51);
-  await page.goto("/en/admin/users");
+  await page.goto("/admin/users");
   const pages = page.getByRole("navigation", { name: "Pages" });
   await pages.getByRole("link", { name: "Next" }).click();
-  await expect(page).toHaveURL("/en/admin/users?page=2");
+  await expect(page).toHaveURL("/admin/users?page=2");
   await expect(pages).toContainText("Page 2 of");
   await expect(pages.getByRole("link", { name: "Previous" })).toBeVisible();
 });
@@ -89,11 +89,11 @@ test("admins search users by email and page through the list", async ({ page }) 
 test("admins open a user's details from the list and add credits there", async ({ page }) => {
   const user = await signIn(page);
   await signIn(page, ADMIN);
-  await page.goto(`/en/admin/users?q=${encodeURIComponent(user)}`);
+  await page.goto(`/admin/users?q=${encodeURIComponent(user)}`);
 
   await page.getByRole("table", { name: "Users" }).getByRole("link", { name: user }).click();
 
-  await expect(page).toHaveURL(/\/en\/admin\/users\/[^/?]+$/);
+  await expect(page).toHaveURL(/\/admin\/users\/[^/?]+$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(user.split("@")[0]);
   await expect(page.getByRole("region", { name: "Profile" })).toContainText(user);
   await expect(page.getByRole("region", { name: "Subscription" })).toContainText(
@@ -114,7 +114,7 @@ test("admins open a user's details from the list and add credits there", async (
   await expect(history.getByRole("row").nth(1)).toContainText("Added by an admin");
 
   await page.getByRole("link", { name: "All users" }).click();
-  await expect(page).toHaveURL("/en/admin/users");
+  await expect(page).toHaveURL("/admin/users");
 });
 
 // The broadcast UI is gone; the API still answers only admins.
@@ -129,7 +129,7 @@ test("the broadcasts API answers only admins", async ({ page }) => {
 
 test("an unknown user id gets the 404 page", async ({ page }) => {
   await signIn(page, ADMIN);
-  await page.goto("/en/admin/users/no-such-id");
+  await page.goto("/admin/users/no-such-id");
 
   await expect(page.getByRole("heading", { level: 1, name: "Page not found" })).toBeVisible();
 });
@@ -153,7 +153,7 @@ test("the admin page fits a phone in Chinese", async ({ page }) => {
 test("admins add credits to a user, who sees them in their history", async ({ page }) => {
   const user = await signIn(page);
   await signIn(page, ADMIN);
-  await page.goto("/en/admin/users");
+  await page.goto("/admin/users");
 
   const row = page.getByRole("table", { name: "Users" }).getByRole("row").filter({ hasText: user });
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts).
@@ -169,7 +169,7 @@ test("admins add credits to a user, who sees them in their history", async ({ pa
   expect(await row.getByRole("cell", { name: "25", exact: true }).isVisible()).toBe(true);
 
   await signIn(page, user);
-  await page.goto("/en/billing");
+  await page.goto("/billing");
   const latest = page.getByRole("table", { name: "Credit history" }).getByRole("row").nth(1);
   await expect(latest).toContainText("Added by an admin");
   await expect(latest).toContainText("+25");
@@ -193,11 +193,11 @@ test("admins list orders, filter them and open the buyer", async ({ page }) => {
   const buyer = await signIn(page);
   await addOrders(buyer, ["paid", "pending", "failed"]);
   await signIn(page, ADMIN);
-  await page.goto("/en/admin/users");
+  await page.goto("/admin/users");
 
   await sidebar(page).getByRole("link", { name: "Orders" }).click();
 
-  await expect(page).toHaveURL("/en/admin/orders");
+  await expect(page).toHaveURL("/admin/orders");
   await expect(page.getByRole("heading", { level: 1, name: "Orders" })).toBeVisible();
   await expect(sidebar(page).getByRole("link", { name: "Orders" })).toHaveAttribute(
     "aria-current",
@@ -208,7 +208,7 @@ test("admins list orders, filter them and open the buyer", async ({ page }) => {
   await page.getByRole("combobox", { name: "Status" }).selectOption("paid");
   await page.getByRole("button", { name: "Filter" }).click();
 
-  await expect(page).toHaveURL(`/en/admin/orders?q=${encodeURIComponent(buyer)}&status=paid&provider=`);
+  await expect(page).toHaveURL(`/admin/orders?q=${encodeURIComponent(buyer)}&status=paid&provider=`);
   await expect(page.getByText("1 order matches these filters.")).toBeVisible();
   const table = page.getByRole("table", { name: "Orders" });
   await expect(table.getByRole("row")).toHaveCount(2);
@@ -220,11 +220,11 @@ test("admins list orders, filter them and open the buyer", async ({ page }) => {
   await expect(page.getByText("No orders match these filters.")).toBeVisible();
 
   await page.getByRole("link", { name: "Clear filters" }).click();
-  await expect(page).toHaveURL("/en/admin/orders");
+  await expect(page).toHaveURL("/admin/orders");
 
-  await page.goto(`/en/admin/orders?q=${encodeURIComponent(buyer)}`);
+  await page.goto(`/admin/orders?q=${encodeURIComponent(buyer)}`);
   await table.getByRole("link", { name: buyer }).first().click();
-  await expect(page).toHaveURL(/\/en\/admin\/users\/[^/?]+$/);
+  await expect(page).toHaveURL(/\/admin\/users\/[^/?]+$/);
   await expect(page.getByRole("region", { name: "Profile" })).toContainText(buyer);
 });
 
@@ -243,11 +243,11 @@ test("the orders page fits a phone in Chinese", async ({ page }) => {
 
 test("admins open metrics from the sidebar and switch the range", async ({ page }) => {
   await signIn(page, ADMIN);
-  await page.goto("/en/admin/users");
+  await page.goto("/admin/users");
 
   await sidebar(page).getByRole("link", { name: "Metrics" }).click();
 
-  await expect(page).toHaveURL("/en/admin/metrics");
+  await expect(page).toHaveURL("/admin/metrics");
   await expect(page.getByRole("heading", { level: 1, name: "Metrics" })).toBeVisible();
   const range = page.getByRole("navigation", { name: "Range" });
   await expect(range.getByRole("link", { name: "7 days" })).toHaveAttribute("aria-current", "page");
@@ -256,11 +256,11 @@ test("admins open metrics from the sidebar and switch the range", async ({ page 
   await expect(table.getByRole("rowheader")).toHaveText(["Videos"]);
 
   await range.getByRole("link", { name: "30 days" }).click();
-  await expect(page).toHaveURL("/en/admin/metrics?days=30");
+  await expect(page).toHaveURL("/admin/metrics?days=30");
   await expect(range.getByRole("link", { name: "30 days" })).toHaveAttribute("aria-current", "page");
 
   // An unknown range shows 7 days.
-  await page.goto("/en/admin/metrics?days=365");
+  await page.goto("/admin/metrics?days=365");
   await expect(range.getByRole("link", { name: "7 days" })).toHaveAttribute("aria-current", "page");
 });
 
@@ -277,7 +277,7 @@ test("the metrics page fits a phone in Chinese", async ({ page }) => {
 
 test("users submit feedback from the corner link and admins read it", async ({ page }) => {
   const email = await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
   await page.getByRole("link", { name: "Feedback", exact: true }).click();
   await page.getByLabel("Your feedback").fill("Please add export.\nKeep the original format.");
   await page.getByLabel("Images", { exact: true }).setInputFiles(feedbackPng);
@@ -288,7 +288,7 @@ test("users submit feedback from the corner link and admins read it", async ({ p
   const imagePath = `/api/admin/feedback/${feedback.id}/images/0`;
   expect((await page.request.get(imagePath, { maxRedirects: 0 })).status()).toBe(404);
   await signIn(page, ADMIN);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
   await sidebar(page).getByRole("link", { name: "User feedback", exact: true }).click();
   const item = page.getByRole("list", { name: "User feedback" }).getByRole("listitem").filter({ hasText: email });
   await expect(item).toContainText("Please add export.");

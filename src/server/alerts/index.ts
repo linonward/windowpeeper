@@ -88,7 +88,7 @@ export async function sendAlert(kind: AlertKind, subject: string, text: string, 
 
 function metricsUrl() {
   const base = URL.parse(process.env.BETTER_AUTH_URL ?? "");
-  return base ? new URL("/en/admin/metrics?days=1", base).href : "/en/admin/metrics?days=1";
+  return base ? new URL("/admin/metrics?days=1", base).href : "/admin/metrics?days=1";
 }
 
 // How the videos that finished in the hour before `now` went, and an alert

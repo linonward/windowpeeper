@@ -11,10 +11,10 @@ const PACKS = [
 const cardsIn = (page: Page) => page.locator('[aria-labelledby="pricing-packs"] > ul > li');
 
 test("signed-out visitors see the price list: the packs, what a video costs and the promises", async ({ page }) => {
-  const response = await page.goto("/en/pricing");
+  const response = await page.goto("/pricing");
 
   expect(response?.status()).toBe(200);
-  await expect(page).toHaveURL("/en/pricing");
+  await expect(page).toHaveURL("/pricing");
   await expect(page.getByRole("heading", { level: 1, name: "Pay for the videos you make" })).toBeVisible();
   await expect(page).toHaveTitle("Window Peeper Video Pricing | WindowPeeper");
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Window peeper videos from \$9\.90:/);
@@ -32,7 +32,7 @@ test("signed-out visitors see the price list: the packs, what a video costs and 
 });
 
 test("only the pack to start with is recommended", async ({ page }) => {
-  await page.goto("/en/pricing");
+  await page.goto("/pricing");
   const main = page.getByRole("main");
 
   const cards = cardsIn(page);
@@ -45,23 +45,23 @@ test("only the pack to start with is recommended", async ({ page }) => {
 
 test("buying opens billing for a signed-in user with the pack picked", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/pricing");
+  await page.goto("/pricing");
 
   await page.getByRole("link", { name: "Buy 250 credits for $99.90" }).click();
 
   // Payments are off in E2E, so the pay button is disabled.
-  await expect(page).toHaveURL("/en/billing?pack=large");
+  await expect(page).toHaveURL("/billing?pack=large");
   await expect(page.getByRole("radio", { name: /25-pack/ })).toBeChecked();
   await expect(page.getByRole("button", { name: "Buy 250 credits for $99.90" })).toBeDisabled();
 });
 
 test("signed-out visitors keep their choice through sign-in", async ({ page, request }) => {
-  await page.goto("/en/pricing");
+  await page.goto("/pricing");
   await page.getByRole("link", { name: "Buy 10 credits for $9.90" }).click();
 
-  await expect(page).toHaveURL("/en/sign-in?next=%2Fen%2Fbilling%3Fpack%3Dsmall");
-  const response = await request.get("/en/billing?pack=small", { maxRedirects: 0 });
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fbilling%3Fpack%3Dsmall");
+  await expect(page).toHaveURL("/sign-in?next=%2Fbilling%3Fpack%3Dsmall");
+  const response = await request.get("/billing?pack=small", { maxRedirects: 0 });
+  expect(response.headers().location).toBe("/sign-in?next=%2Fbilling%3Fpack%3Dsmall");
 });
 
 test("renders in Spanish, linked from the footer", async ({ page }) => {

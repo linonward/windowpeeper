@@ -77,7 +77,7 @@ test("alerts when at least 30% of at least 5 jobs that finished in the last hour
     subject: "[WindowPeeper] Generation failure rate 38%",
     text: expect.stringContaining("3 of 8 videos (38%)"),
   });
-  expect(sendEmail.mock.calls[0][0].text).toContain("https://app.example.com/en/admin/metrics?days=1");
+  expect(sendEmail.mock.calls[0][0].text).toContain("https://app.example.com/admin/metrics?days=1");
   expect(fetcher).toHaveBeenCalledExactlyOnceWith("https://hooks.slack.test/services/T0/B0/x", expect.objectContaining({ method: "POST" }));
   expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({ text: expect.stringMatching(/^\[WindowPeeper\] 3 of 8/) });
 });

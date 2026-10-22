@@ -12,7 +12,7 @@ import { Pricing } from "@/components/home/pricing";
 import { Scenes } from "@/components/home/scenes";
 import { ShotList } from "@/components/home/shot-list";
 import { StickyCta } from "@/components/home/sticky-cta";
-import type { Locale } from "@/i18n/routing";
+import { type Locale, localePath } from "@/i18n/routing";
 import { howTo, jsonLd, languageAlternates, videoObject, website } from "@/lib/seo";
 
 // The description comes from the locale layout. The title says what the site
@@ -32,9 +32,9 @@ export async function generateMetadata(
       siteName: projectConfig.name,
       title: t("homeTitle"),
       description: t("description"),
-      url: `/${locale}`,
+      url: localePath(locale as Locale),
     },
-    alternates: { canonical: `/${locale}`, languages: languageAlternates("") },
+    alternates: { canonical: localePath(locale as Locale), languages: languageAlternates("") },
   };
 }
 

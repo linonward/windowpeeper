@@ -7,7 +7,7 @@ test("signs in with a magic link", async ({ page }) => {
   // Better Auth rate-limits per IP.
   await page.context().setExtraHTTPHeaders({ "x-forwarded-for": randomIp() });
 
-  await page.goto("/en/sign-in");
+  await page.goto("/sign-in");
   await page.getByLabel("Email").fill(email);
   await page.getByRole("button", { name: "Send magic link" }).click();
   await expect(page.getByText("Check your email")).toBeVisible();
@@ -16,15 +16,15 @@ test("signs in with a magic link", async ({ page }) => {
   await page.getByRole("button", { name: "Continue signing in" }).click();
 
   // Sign-in returns to /videos, which opens the window peeper video.
-  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/windowpeeper");
   expect((await getSession(page))?.user.email).toBe(email);
 });
 
 test("returns to the page that asked for sign-in", async ({ page }) => {
   const email = uniqueEmail();
 
-  await page.goto("/en/billing");
-  await expect(page).toHaveURL("/en/sign-in?next=%2Fen%2Fbilling");
+  await page.goto("/billing");
+  await expect(page).toHaveURL("/sign-in?next=%2Fbilling");
   await page.getByLabel("Email").fill(email);
   await page.getByRole("button", { name: "Send magic link" }).click();
   await expect(page.getByText("Check your email")).toBeVisible();
@@ -32,7 +32,7 @@ test("returns to the page that asked for sign-in", async ({ page }) => {
   await page.goto(await readMagicLink(email));
   await page.getByRole("button", { name: "Continue signing in" }).click();
 
-  await expect(page).toHaveURL("/en/billing");
+  await expect(page).toHaveURL("/billing");
 });
 
 test("opening the link alone, as an email scanner does, signs nobody in and keeps the link usable", async ({
@@ -43,7 +43,7 @@ test("opening the link alone, as an email scanner does, signs nobody in and keep
   // Its own client IP, past Better Auth's per-IP magic-link limit.
   const ip = `10.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}.${Math.floor(Math.random() * 250)}`;
   await page.context().setExtraHTTPHeaders({ "x-forwarded-for": ip });
-  await page.goto("/en/sign-in");
+  await page.goto("/sign-in");
   await page.getByLabel("Email").fill(email);
   await page.getByRole("button", { name: "Send magic link" }).click();
   await expect(page.getByText("Check your email")).toBeVisible();
@@ -63,6 +63,6 @@ test("opening the link alone, as an email scanner does, signs nobody in and keep
   await page.goto(link);
   await page.getByRole("button", { name: "Continue signing in" }).click();
   // Sign-in returns to /videos, which opens the window peeper video.
-  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/windowpeeper");
   expect((await getSession(page))?.user.email).toBe(email);
 });

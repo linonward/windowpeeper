@@ -1,15 +1,15 @@
 import { getSessionCookie } from "better-auth/cookies";
 import createMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
-import { routing } from "@/i18n/routing";
+import { type Locale, localePath, routing } from "@/i18n/routing";
 
 const intl = createMiddleware(routing);
 
 // Paths in the (dashboard) group. Add new signed-in pages here.
 const PROTECTED = ["/dashboard", "/videos", "/profile", "/billing", "/feedback", "/admin"];
-const protectedPath = new RegExp(
-  `^/(${routing.locales.join("|")})(${PROTECTED.join("|")})(/|$)`,
-);
+// English paths have no prefix; "/en/..." still matches, and next-intl
+// redirects it once signed in.
+const protectedPath = new RegExp(`^(?:/(${routing.locales.join("|")}))?(${PROTECTED.join("|")})(/|$)`);
 
 export function proxy(request: NextRequest) {
   // Optimistic check: only looks for the session cookie. The (dashboard) layout
@@ -17,7 +17,8 @@ export function proxy(request: NextRequest) {
   const match = request.nextUrl.pathname.match(protectedPath);
   if (match && !getSessionCookie(request)) {
     // Sign-in returns here afterwards.
-    const signIn = new URL(`/${match[1]}/sign-in`, request.url);
+    const locale = (match[1] ?? routing.defaultLocale) as Locale;
+    const signIn = new URL(localePath(locale, "/sign-in"), request.url);
     signIn.searchParams.set("next", request.nextUrl.pathname + request.nextUrl.search);
     return NextResponse.redirect(signIn);
   }

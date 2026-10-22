@@ -3,10 +3,10 @@ import { blogPosting, faqPage, howTo, jsonLd, languageAlternates, videoObject, w
 
 test("links every locale and defaults to English", () => {
   expect(languageAlternates("/blog")).toEqual({
-    en: "/en/blog",
+    en: "/blog",
     es: "/es/blog",
     de: "/de/blog",
-    "x-default": "/en/blog",
+    "x-default": "/blog",
   });
 });
 

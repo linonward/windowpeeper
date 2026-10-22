@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 const pages = [
-  { path: "/en/privacy", heading: "Privacy Policy" },
-  { path: "/en/terms", heading: "Terms of Service" },
-  { path: "/en/refund", heading: "Refund Policy" },
+  { path: "/privacy", heading: "Privacy Policy" },
+  { path: "/terms", heading: "Terms of Service" },
+  { path: "/refund", heading: "Refund Policy" },
   { path: "/es/privacy", heading: "Política de privacidad" },
   { path: "/es/terms", heading: "Términos del servicio" },
   { path: "/es/refund", heading: "Política de reembolsos" },
@@ -33,7 +33,7 @@ test("footer links to the legal pages in the current locale", async ({ page }) =
 });
 
 test("legal pages share the visual system", async ({ page }) => {
-  await page.goto("/en/privacy");
+  await page.goto("/privacy");
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveCSS(
     "font-family",
@@ -44,7 +44,7 @@ test("legal pages share the visual system", async ({ page }) => {
 test("document nav marks the current page and switches documents", async ({
   page,
 }) => {
-  await page.goto("/en/privacy");
+  await page.goto("/privacy");
 
   const nav = page.getByRole("navigation", { name: "Legal documents" });
   await expect(nav.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
@@ -53,7 +53,7 @@ test("document nav marks the current page and switches documents", async ({
   );
   await nav.getByRole("link", { name: "Terms of Service" }).click();
 
-  await expect(page).toHaveURL("/en/terms");
+  await expect(page).toHaveURL("/terms");
   await expect(
     page
       .getByRole("navigation", { name: "Legal documents" })

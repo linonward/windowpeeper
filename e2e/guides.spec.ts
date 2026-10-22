@@ -6,10 +6,13 @@ const GUIDES = [
   { slug: "how-to-make-window-peeper-video", en: "How to make a window peeper video", es: "Cómo hacer un video de window peeper" },
 ] as const;
 
+// English pages have no prefix.
+const prefix = (locale: "en" | "es") => (locale === "en" ? "" : `/${locale}`);
+
 for (const guide of GUIDES) {
   for (const locale of ["en", "es"] as const) {
-    test(`/${locale}/${guide.slug} leads to the home generator`, async ({ page }) => {
-      await page.goto(`/${locale}/${guide.slug}`);
+    test(`${prefix(locale)}/${guide.slug} leads to the home generator`, async ({ page }) => {
+      await page.goto(`${prefix(locale)}/${guide.slug}`);
 
       await expect(page.getByRole("heading", { level: 1 })).toContainText(guide[locale]);
       await expect(page.getByRole("main").locator('input[type="file"]')).toHaveCount(0);
@@ -18,16 +21,16 @@ for (const guide of GUIDES) {
         .getByRole("main")
         .getByRole("link", { name: locale === "en" ? "Make my video" : "Crear mi video" })
         .first();
-      await expect(cta).toHaveAttribute("href", `/${locale}#generator`);
+      await expect(cta).toHaveAttribute("href", `${prefix(locale) || "/"}#generator`);
 
       await cta.click();
-      await expect(page).toHaveURL(`/${locale}#generator`);
+      await expect(page).toHaveURL(`${prefix(locale) || "/"}#generator`);
       await expect(page.locator("#generator")).toBeInViewport();
     });
 
-    test(`/${locale}/${guide.slug} fits a 320px phone without horizontal scrolling`, async ({ page }) => {
+    test(`${prefix(locale)}/${guide.slug} fits a 320px phone without horizontal scrolling`, async ({ page }) => {
       await page.setViewportSize({ width: 320, height: 812 });
-      await page.goto(`/${locale}/${guide.slug}`);
+      await page.goto(`${prefix(locale)}/${guide.slug}`);
 
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow).toBeLessThanOrEqual(0);
