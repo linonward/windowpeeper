@@ -62,7 +62,16 @@ jobs:
 
   e2e:
     name: E2E
+    # The image has the browsers and their system packages. Installing them
+    # with apt took up to 9 minutes. Keep the tag at the installed
+    # @playwright/test version (src/test/ci.test.ts checks it).
+    container: mcr.microsoft.com/playwright:v1.64.0-noble
     env:
+      # In a container job, a service is reached by its name.
+      DATABASE_URL: postgres://starter:starter@db:5432/starter
+      # SWC's native addon won't load from a cache under /github/home: its
+      # parent is writable by other users. /root is the container user's own.
+      SWC_NATIVE_BINDING_CACHE: /root/.cache/swc
       STORAGE_ENDPOINT: http://localhost:9000
       STORAGE_REGION: us-east-1
       STORAGE_BUCKET: starter
@@ -77,7 +86,6 @@ jobs:
           POSTGRES_USER: starter
           POSTGRES_PASSWORD: starter
           POSTGRES_DB: starter
-        ports: ["5432:5432"]
         options: >-
           --health-cmd "pg_isready -U starter -d starter"
           --health-interval 2s --health-timeout 5s --health-retries 15
@@ -99,7 +107,9 @@ jobs:
         id: minio
         with:
           path: ~/.cache/starter-minio
-          key: minio-linux-amd64-9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a-go1.24.8
+          # The cache keeps absolute paths, and $HOME in the container is
+          # /github/home, not the runner's /home/runner.
+          key: minio-linux-amd64-9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a-go1.24.8-container
       - name: Build test storage
         if: steps.minio.outputs.cache-hit != 'true'
         run: |
@@ -118,7 +128,6 @@ jobs:
             > "$RUNNER_TEMP/minio.log" 2>&1 &
           curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 \
             http://localhost:9000/minio/health/ready
-      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm db:migrate
       # playwright.config.ts sets the rest of the server's environment.
       - run: pnpm test:e2e
