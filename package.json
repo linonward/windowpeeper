@@ -15,7 +15,10 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "auth:generate": "pnpm dlx auth@1.7.7 generate --config src/server/auth/index.ts --output src/server/auth/schema.ts --yes"
+    "auth:generate": "pnpm dlx auth@1.7.7 generate --config src/server/auth/index.ts --output src/server/auth/schema.ts --yes",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1149.0",
@@ -24,6 +27,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.4.0",
+    "@opennextjs/cloudflare": "1.20.12",
     "@sentry/nextjs": "11.6.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
@@ -36,6 +40,7 @@
     "next": "16.4.0",
     "next-intl": "^4.14.9",
     "pg": "^8.23.1",
+    "pg-cloudflare": "1.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "resend": "^6.32.1",
@@ -62,7 +67,8 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.3",
+    "wrangler": "^4.151.3"
   },
   "packageManager": "pnpm@12.9.1"
 }

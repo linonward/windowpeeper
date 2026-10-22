@@ -1,0 +1,28 @@
+// Cloudflare Worker built by @opennextjs/cloudflare: Next.js runs in the
+// Worker, and static files are Workers static assets (docs/runbook.md).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "windowpeeper",
+  // worker.ts wraps .open-next/worker.js and adds the Cron Trigger.
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-19",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "windowpeeper" }],
+  // Apex only. workers.dev stays on until the domain serves the site.
+  "routes": [{ "pattern": "windowpeeper.org", "custom_domain": true }],
+  "preview_urls": false,
+  // Sweep pending videos every 10 minutes (src/server/cron/scheduled.ts).
+  "triggers": { "crons": ["*/10 * * * *"] },
+  // Workers Logs. Query strings are dropped: sign-in links carry tokens.
+  "observability": { "enabled": true, "redact_query_string": true },
+  // Not secret; the rest are secrets: `pnpm exec wrangler secret put <NAME>`
+  // (docs/runbook.md).
+  "vars": {
+    "BETTER_AUTH_URL": "https://windowpeeper.org",
+    "CLIENT_IP_HEADER": "cf-connecting-ip",
+    "EMAIL_FROM": "WindowPeeper <hello@windowpeeper.org>",
+    "STORAGE_REGION": "auto",
+    "STORAGE_BUCKET": "windowpeeper-prod"
+  }
+}

@@ -22,7 +22,7 @@ A minimal project template with a workflow for people and AI coding agents.
    - The worktree folder `../starter-<topic>` in `AGENTS.md` and `docs/workflow.md`.
    - `AGENTS.md` § Reply Style, which asks agents to answer in Chinese.
 
-4. Deploy: [runbook § Deploy to Vercel](docs/runbook.md#deploy-to-vercel).
+4. Deploy: [runbook § Deploy to Cloudflare Workers](docs/runbook.md#deploy-to-cloudflare-workers).
 
 ## Docs
 
