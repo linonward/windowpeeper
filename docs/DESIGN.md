@@ -237,7 +237,7 @@ Cards change only their border color on hover. Hover styles apply only on device
 └───────────────────────┴───────────────────────────────────────────┘
 ```
 
-- **Sidebar** (`dashboard/app-sidebar.tsx`, shadcn `Sidebar` with `collapsible="icon"`): 248px (`SIDEBAR_WIDTH` 15.5rem), `bg-card` with a right border, 288px as a sheet on phones. The rail toggles it; the `sidebar_state` cookie keeps it collapsed or open. The header has the lockup and the notification bell. Groups under mono labels: Create (New video, My videos with the video count) and Account (Billing, Profile, Feedback), then Admin for admins.
+- **Sidebar** (`dashboard/app-sidebar.tsx`, shadcn `Sidebar` with `collapsible="icon"`): 248px (`SIDEBAR_WIDTH` 15.5rem), `bg-card` with a right border, 288px as a sheet on phones. The rail toggles it; the `sidebar_state` cookie keeps it collapsed or open. The header has the lockup and the notification bell. Groups under mono labels: Create (New video, My videos with the video count) and Account (Billing, Profile, Feedback), then Admin (Users, Orders, Metrics, User feedback, Broadcasts) for admins. Every item has an icon; the current page and the pages under it are lamp-soft, and only the page itself is `aria-current`.
 - **Nav item:** `rounded-sm px-2.5 py-[9px]`, 18px icon, 14px/500 muted. Active: `bg-primary-soft text-primary-text font-semibold`.
 - **Credits card:** a `--background` well with "CREDITS", the balance in a 36px display number, "= N videos" and an outline Buy credits button.
 - **User menu** (`dashboard/user-menu.tsx`): the trigger is a `--curtain` avatar, the email and a faint up-down chevron. The menu holds the profile row, the credits row, Profile, Language and Sign out.

@@ -22,7 +22,7 @@ test("non-admins see no admin link and get the 404 page", async ({ page }) => {
   await signIn(page);
   await page.goto("/videos");
   await expect(sidebar(page).getByRole("link", { name: "Billing" })).toBeVisible();
-  await expect(sidebar(page).getByRole("link", { name: "Admin" })).toHaveCount(0);
+  await expect(sidebar(page).getByRole("link", { name: "Users" })).toHaveCount(0);
 
   for (const path of ["/admin", "/admin/users", "/admin/users/some-id", "/admin/orders", "/admin/metrics"]) {
     await page.goto(path);
@@ -42,9 +42,8 @@ test("admins open the user list from the sidebar", async ({ page }) => {
   await signIn(page, ADMIN);
   await page.goto("/videos");
 
-  await sidebar(page).getByRole("link", { name: "Admin" }).click();
+  await sidebar(page).getByRole("link", { name: "Users" }).click();
 
-  // Admin opens its first sub page.
   await expect(page).toHaveURL("/admin/users");
   await expect(page.getByRole("heading", { level: 1, name: "Users" })).toBeVisible();
   await expect(sidebar(page).getByRole("link", { name: "Users" })).toHaveAttribute(

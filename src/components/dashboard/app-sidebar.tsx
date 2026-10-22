@@ -1,6 +1,17 @@
 "use client";
 
-import { Clapperboard, CreditCard, Film, MessageSquare, ShieldCheck, UserRound } from "lucide-react";
+import {
+  ChartLine,
+  Clapperboard,
+  CreditCard,
+  Film,
+  Megaphone,
+  MessageSquare,
+  MessagesSquare,
+  Receipt,
+  UserRound,
+  Users,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useId } from "react";
 import { useBuyCredits } from "@/components/billing/buy-credits";
@@ -18,9 +29,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
@@ -42,21 +50,14 @@ const ACCOUNT = [
   { href: "/feedback", key: "feedback", icon: MessageSquare },
 ] as const;
 
-// Shown only to admins. The admin pages check access themselves. /admin
-// opens the first sub page, so Admin still works in the collapsed sidebar.
+// Shown only to admins, as a group like the others. The admin pages check
+// access themselves.
 const ADMIN_ITEMS = [
-  {
-    href: "/admin",
-    key: "admin",
-    icon: ShieldCheck,
-    children: [
-      { href: "/admin/users", key: "adminUsers" },
-      { href: "/admin/orders", key: "adminOrders" },
-      { href: "/admin/metrics", key: "adminMetrics" },
-      { href: "/admin/feedback", key: "adminFeedback" },
-      { href: "/admin/notifications", key: "adminBroadcasts" },
-    ],
-  },
+  { href: "/admin/users", key: "adminUsers", icon: Users },
+  { href: "/admin/orders", key: "adminOrders", icon: Receipt },
+  { href: "/admin/metrics", key: "adminMetrics", icon: ChartLine },
+  { href: "/admin/feedback", key: "adminFeedback", icon: MessagesSquare },
+  { href: "/admin/notifications", key: "adminBroadcasts", icon: Megaphone },
 ] as const;
 
 type Key = Parameters<ReturnType<typeof useTranslations<"Dashboard">>>[0];
@@ -66,7 +67,6 @@ type Item = {
   key: Key;
   icon: React.ComponentType;
   count?: boolean;
-  children?: readonly { href: string; key: Key }[];
 };
 
 type User = { name: string; email: string };
@@ -98,7 +98,7 @@ export function AppSidebar({
         <nav aria-label={t("nav")} className="flex flex-col gap-6">
           <NavGroup label={t("groups.create")} items={CREATE} videos={videos} />
           <NavGroup label={t("groups.account")} items={ACCOUNT} />
-          {isAdmin && <NavGroup items={ADMIN_ITEMS} />}
+          {isAdmin && <NavGroup label={t("groups.admin")} items={ADMIN_ITEMS} />}
         </nav>
       </SidebarContent>
       <SidebarFooter className="gap-4 px-3.5 pb-5">
@@ -128,10 +128,11 @@ function NavGroup({ label, items, videos }: { label?: string; items: readonly It
       )}
       <SidebarGroupContent>
         <SidebarMenu className="gap-0.5" aria-labelledby={label ? labelId : undefined}>
-          {items.map(({ href, key, icon: Icon, count, children }) => {
+          {items.map(({ href, key, icon: Icon, count }) => {
+            // Highlighted on its own page and the pages under it (a user's
+            // page under Users), but only its own page is the current one.
             const within = pathname === href || pathname.startsWith(`${href}/`);
-            // A parent with sub pages is highlighted, but the sub item is the page.
-            const current = within && !children?.some((c) => pathname === c.href);
+            const current = pathname === href;
             return (
               <SidebarMenuItem key={href}>
                 <SidebarMenuButton
@@ -146,21 +147,6 @@ function NavGroup({ label, items, videos }: { label?: string; items: readonly It
                     <span className="font-mono text-[11px] text-faint group-data-[collapsible=icon]:hidden">{videos}</span>
                   )}
                 </SidebarMenuButton>
-                {children && (
-                  <SidebarMenuSub className="mt-1">
-                    {children.map((child) => (
-                      <SidebarMenuSubItem key={child.href}>
-                        <SidebarMenuSubButton
-                          isActive={pathname === child.href || pathname.startsWith(`${child.href}/`)}
-                          className="h-8 rounded-sm data-active:bg-transparent data-active:font-semibold data-active:text-primary-text"
-                          render={<Link href={child.href} aria-current={pathname === child.href ? "page" : undefined} />}
-                        >
-                          <span>{t(child.key)}</span>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                )}
               </SidebarMenuItem>
             );
           })}

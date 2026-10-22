@@ -47,25 +47,39 @@ test("non-admins see no admin links", () => {
   expect(within(nav).queryByRole("link", { name: "Users" })).toBeNull();
 });
 
-test("admins see the admin pages nested under Admin", () => {
+test("admins see an Admin group with every admin page, like the other groups", () => {
   const nav = renderSidebar(true);
 
-  const admin = within(nav).getByRole("link", { name: "Admin" });
-  const users = within(nav).getByRole("link", { name: "Users" });
-  expect(admin.getAttribute("href")).toBe("/en/admin");
-  expect(users.getAttribute("href")).toBe("/en/admin/users");
-  expect(admin.closest("li")?.contains(users)).toBe(true);
+  const group = within(nav).getByRole("list", { name: "Admin" });
+  expect(
+    within(group)
+      .getAllByRole("link")
+      .map((link) => [link.textContent, link.getAttribute("href")]),
+  ).toEqual([
+    ["Users", "/en/admin/users"],
+    ["Orders", "/en/admin/orders"],
+    ["Metrics", "/en/admin/metrics"],
+    ["User feedback", "/en/admin/feedback"],
+    ["Broadcasts", "/en/admin/notifications"],
+  ]);
+  expect(within(nav).queryByRole("link", { name: "Admin" })).toBeNull();
 });
 
-test("on an admin page, the sub item is the current page and Admin stays highlighted", () => {
-  pathname = "/admin/users";
+test("on a user's page, Users is highlighted but isn't the current page", () => {
+  pathname = "/admin/users/u1";
   const nav = renderSidebar(true);
 
-  const admin = within(nav).getByRole("link", { name: "Admin" });
   const users = within(nav).getByRole("link", { name: "Users" });
-  expect(users.getAttribute("aria-current")).toBe("page");
-  expect(admin.hasAttribute("aria-current")).toBe(false);
-  expect(admin.hasAttribute("data-active")).toBe(true);
+  expect(users.hasAttribute("data-active")).toBe(true);
+  expect(users.hasAttribute("aria-current")).toBe(false);
+});
+
+test("on an admin page, its item is the current page", () => {
+  pathname = "/admin/notifications";
+  const nav = renderSidebar(true);
+
+  expect(within(nav).getByRole("link", { name: "Broadcasts" }).getAttribute("aria-current")).toBe("page");
+  expect(within(nav).getByRole("link", { name: "Users" }).hasAttribute("data-active")).toBe(false);
 });
 
 test("the new video page is current on the generator", () => {

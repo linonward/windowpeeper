@@ -438,7 +438,8 @@
     "nav": "Navegación del panel",
     "groups": {
       "create": "Crear",
-      "account": "Cuenta"
+      "account": "Cuenta",
+      "admin": "Administración"
     },
     "openMenu": "Abrir menú",
     "signOut": "Cerrar sesión",
