@@ -4,7 +4,7 @@ import { signIn } from "./support/auth";
 test("hero states the value, with the generator starting in the first screen", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page).toHaveTitle("Window Peeper AI Video – Make the TikTok Trend From a Photo");
+  await expect(page).toHaveTitle("Window Peeper AI Video Generator – Make the TikTok Trend From a Photo");
   await expect(page.locator('head meta[name="description"]')).toHaveAttribute(
     "content",
     "Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. Six scenes, no CapCut template.",
@@ -12,7 +12,7 @@ test("hero states the value, with the generator starting in the first screen", a
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Window peeper AI video — Someone's watching you eat.",
+      name: "Window peeper AI video generator — Someone's watching you eat.",
     }),
   ).toBeVisible();
   // The photo zone shows under the headline in the first screen.
@@ -118,7 +118,7 @@ test("landing is translated", async ({ page }) => {
   await page.goto("/es");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: /^Video de window peeper con IA — / }),
+    page.getByRole("heading", { level: 1, name: /^Generador de videos de window peeper con IA — / }),
   ).toBeVisible();
 });
 

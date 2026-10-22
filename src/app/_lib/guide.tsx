@@ -36,9 +36,15 @@ export function guideMetadata(guide: Guide) {
   };
 }
 
-// The guide, with the prices and photo limits the home page states.
-// Prerendered, like the home page.
+// The guide, with the prices and photo limits the home page states, and the
+// site URL for its structured data. Prerendered, like the home page.
 export function GuideRoute({ guide }: { guide: Guide }) {
   const { credits, proCredits, packs, maxPickBytes, imageLimits } = homeFacts();
-  return <GuidePage guide={guide} facts={{ credits, proCredits, packs, maxPickBytes, imageLimits }} />;
+  return (
+    <GuidePage
+      guide={guide}
+      facts={{ credits, proCredits, packs, maxPickBytes, imageLimits }}
+      base={process.env.BETTER_AUTH_URL}
+    />
+  );
 }

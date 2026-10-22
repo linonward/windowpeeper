@@ -32,3 +32,16 @@ test("links each guide in every locale, with its title and description", async (
   // No ICU or markup left over.
   expect(text).not.toMatch(/[{}]|<\/?\w/);
 });
+
+// Language models read llms.txt as an index: each guide with what it covers,
+// and the full text one link away.
+test("is an index of the guides and points to the full text", async () => {
+  const text = await (await GET()).text();
+
+  expect(text).toMatch(/^# WindowPeeper\n\n> /);
+  expect(text).toContain("- [Window Peeper Trend Meaning, Explained](https://x.test/window-peeper-trend): ");
+  expect(text).toContain("- [Window Peeper CapCut Template vs AI](https://x.test/window-peeper-capcut-template): ");
+  expect(text).toContain("- [Full text of every guide](https://x.test/llms-full.txt)");
+  expect(text).toContain("A photo of yourself only");
+  expect(text).not.toContain("agreed to");
+});

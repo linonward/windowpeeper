@@ -4,6 +4,12 @@ import { expect, test } from "@playwright/test";
 // home page; they have no generator of their own.
 const GUIDES = [
   { slug: "how-to-make-window-peeper-video", en: "How to make a window peeper video", es: "Cómo hacer un video de window peeper" },
+  { slug: "window-peeper-trend", en: "What is the window peeper trend?", es: "¿Qué es la tendencia window peeper?" },
+  {
+    slug: "window-peeper-capcut-template",
+    en: "Window peeper CapCut template",
+    es: "Plantilla de CapCut de window peeper",
+  },
 ] as const;
 
 // English pages have no prefix.

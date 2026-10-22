@@ -27,13 +27,13 @@ test("the product column leads to the generator, the scenes and pricing", () => 
   ]);
 });
 
-test("the learn column leads to the FAQ, the guide and the blog", () => {
+test("the learn column leads to the guides and the blog", () => {
   renderWithIntl(<Footer />);
 
   expect(links("Learn")).toEqual([
-    ["Window peeper trend", "/#faq"],
+    ["Window peeper trend", "/window-peeper-trend"],
     ["How to make it", "/how-to-make-window-peeper-video"],
-    ["Is there a filter?", "/#faq"],
+    ["CapCut template", "/window-peeper-capcut-template"],
     ["Blog", "/blog"],
   ]);
 });

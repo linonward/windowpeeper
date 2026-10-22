@@ -20,7 +20,7 @@ test("the only h1 is the large headline: the query, then the tagline", () => {
 
   expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
   expect(
-    screen.getByRole("heading", { level: 1, name: "Window peeper AI video — Someone's watching you eat." }),
+    screen.getByRole("heading", { level: 1, name: "Window peeper AI video generator — Someone's watching you eat." }),
   ).toBeDefined();
   expect(screen.getByText("Now trending on TikTok · Reels · Shorts").tagName).toBe("SPAN");
 });

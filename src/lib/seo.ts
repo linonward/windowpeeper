@@ -54,7 +54,13 @@ export function website(locale: Locale, description: string, base?: string, alte
   return {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", ...(organization && { "@id": organization }), name, ...(base && { url: url("/") }) },
+      {
+        "@type": "Organization",
+        ...(organization && { "@id": organization }),
+        name,
+        ...(base && { url: url("/") }),
+        contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: projectConfig.supportEmail },
+      },
       {
         "@type": "WebSite",
         ...(base && { "@id": id("website") }),
@@ -111,6 +117,30 @@ export function videoObject(
       contentUrl: new URL(clip.contentPath, base).href,
       thumbnailUrl: new URL(clip.thumbnailPath, base).href,
     }),
+  };
+}
+
+// schema.org Article for a guide, from what the page shows: its title,
+// description and dates, by the site. `path` is the page's path in its
+// locale; `base` is the site URL, without which the URLs are left out.
+export function article(
+  page: { title: string; description: string; published: string; modified: string; path: string },
+  locale: Locale,
+  base?: string,
+) {
+  const url = base ? new URL(page.path, base).href : undefined;
+  const organization = { "@type": "Organization", name: projectConfig.name, ...(base && { url: new URL("/", base).href }) };
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: page.title,
+    description: page.description,
+    datePublished: page.published,
+    dateModified: page.modified,
+    inLanguage: locale,
+    ...(url && { url, mainEntityOfPage: url }),
+    author: organization,
+    publisher: organization,
   };
 }
 
