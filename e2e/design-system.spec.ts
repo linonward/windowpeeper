@@ -100,3 +100,17 @@ test("profile fits 320px without horizontal scrolling", async ({ page }) => {
   );
   expect(overflow).toBeLessThanOrEqual(0);
 });
+
+// Next.js has no metrics for Big Shoulders, so it can't build a fallback
+// itself. Until the font loads, titles use Arial sized to its width
+// (src/app/globals.css), so they don't jump when it arrives.
+test("titles fall back to Arial sized like Big Shoulders", async ({ page }) => {
+  await page.goto("/");
+
+  const family = await page.locator("h1").evaluate((h1) => getComputedStyle(h1).fontFamily);
+  expect(family).toMatch(/^"?Big Shoulders"?, "?Big Shoulders Fallback"?/);
+  const fallback = await page.evaluate(() =>
+    [...document.fonts].find((face) => face.family.replaceAll('"', "") === "Big Shoulders Fallback"),
+  );
+  expect(fallback).toBeDefined();
+});
