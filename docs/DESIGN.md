@@ -8,7 +8,7 @@ Change a value here and in the code together. When they disagree, the code wins 
 
 **Keywords:** dark only · one lit window · lamp amber · condensed display type · mono timecodes
 
-One lit window at night: warm light, a curious stare, no horror. A night canvas with one warm accent, lamp (2.2). Big Shoulders titles, Instrument Sans sentences, JetBrains Mono labels and timecodes (3). Timecodes like `REC ● 02:14 AM` frame every video; they are the brand's voice, not decoration. The site is dark only: there is no light theme and no theme choice.
+One lit window at night: warm light, a curious stare, no horror. A night canvas with one warm accent, lamp (2.2). Big Shoulders titles, Instrument Sans sentences, JetBrains Mono labels and timecodes (3). Timecodes like `REC ● 01:28 AM` frame every video; they are the brand's voice, not decoration. The site is dark only: there is no light theme and no theme choice.
 
 Voice: short, plain, a little deadpan. Talk about the clip and the stare, not about AI.
 
@@ -142,7 +142,7 @@ Text is 14px/600. Sizes: `default` 40px, `lg` 48px (`px-[22px] text-[15px]`, 18p
 
 ### REC badge (`home/rec-badge.tsx`)
 
-A `--rec` dot and a mono timecode on `bg-background/70`, 4px radius, `text-[11px] tracking-[0.11em] uppercase`. Above the hero H1 it has a border and `bg-card`.
+A blinking `--rec` dot (`.rec-blink`) and a mono timecode on `bg-background/70`, 4px radius, `text-[11px] tracking-[0.11em] uppercase`. Above the hero H1 it has a border and `bg-card`.
 
 ### Viewfinder (`home/viewfinder.tsx`)
 
@@ -206,13 +206,14 @@ They keep their structure on the new tokens: `.eyebrow`, display titles, base ca
 
 ## 8. Motion
 
-Transform and opacity only, 120-200ms. Every class below turns off under `prefers-reduced-motion`.
+Transform and opacity only, 120-200ms; `.rec-blink` is the one loop. Every class below turns off under `prefers-reduced-motion`.
 
 | Class | Motion |
 |---|---|
 | `.icon-nudge` | Arrow moves 3px right when its link or button is hovered |
 | `.icon-turn` | Plus turns 45° inside an open `<details>` |
 | `.icon-swap` | Cross-fade and scale between two icons |
+| `.rec-blink` | The REC dot fades to 20% and back every 1.6s, like a recording camera |
 
 Cards change only their border color on hover. Hover styles apply only on devices that hover (`@media (hover: hover)`).
 

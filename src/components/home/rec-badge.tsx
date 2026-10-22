@@ -2,7 +2,7 @@ import { cn } from "cn";
 
 // The REC stamp: a red dot and a mono timecode on a dark glass tile
 // (docs/DESIGN.md, REC badge). Timecodes frame every video; red marks the
-// recording state only.
+// recording state only, and the dot blinks.
 export function RecBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <span
@@ -11,7 +11,7 @@ export function RecBadge({ children, className }: { children: React.ReactNode; c
         className,
       )}
     >
-      <span aria-hidden className="size-2 shrink-0 rounded-full bg-rec" />
+      <span aria-hidden className="rec-blink size-2 shrink-0 rounded-full bg-rec" />
       {children}
     </span>
   );

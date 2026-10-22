@@ -12,7 +12,7 @@
       "title": "Someone's watching you eat.",
       "body": "Upload one photo. Get the 14-second trend clip, starring you.",
       "clip": {
-        "rec": "REC 02:14:07 AM",
+        "rec": "REC 01:28:00 AM",
         "caption": "CAM 03 · 0:14 · 9:16",
         "name": "A window peeper video made from one photo",
         "description": "A window peeper video made here: a camera zooms in on one lit window at night, the person inside freezes mid-bite, stares into the lens and pulls the curtain. The person is AI-generated.",
@@ -40,7 +40,7 @@
       "eyebrow": "Six windows",
       "title": "Pick your window",
       "aside": "Pick one here and it's ready in the generator.",
-      "rec": "02:14 AM · CAM 01",
+      "rec": "01:28 AM · CAM 01",
       "original": "The original",
       "use": "Use this scene",
       "useLabel": "Use the {scene} scene",
@@ -140,7 +140,7 @@
       }
     },
     "cta": {
-      "rec": "REC 02:14:07 AM · CAM 03",
+      "rec": "REC 01:28:00 AM · CAM 03",
       "title": "Your window is open.",
       "body": "One photo. 14 seconds. Someone's watching.",
       "button": "Make my video"
@@ -774,7 +774,7 @@
       "burger": {
         "name": "Burger at night",
         "short": "Burger",
-        "time": "02:14 AM",
+        "time": "01:28 AM",
         "note": "The clip everyone is copying: bite, freeze, stare, curtain."
       },
       "noodles": {

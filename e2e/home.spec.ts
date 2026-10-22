@@ -160,6 +160,24 @@ test("turns off icon motion for reduced motion", async ({ browser }) => {
   await page.close();
 });
 
+test("the REC dot blinks, but not for reduced motion", async ({ browser }) => {
+  for (const [reducedMotion, name] of [["no-preference", "rec-blink"], ["reduce", "none"]] as const) {
+    const page = await browser.newPage({ reducedMotion });
+    await page.goto("/");
+    await expect(page.locator(".bg-rec").first(), reducedMotion).toHaveCSS("animation-name", name);
+    await page.close();
+  }
+});
+
+test("the home page's timecodes read 01:28", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  await expect(page.getByText("REC 01:28:00 AM", { exact: true })).toBeVisible();
+  await expect(page.getByText("REC 01:28:00 AM · CAM 03", { exact: true })).toBeVisible();
+  await expect(page.getByText("02:14")).toHaveCount(0);
+});
+
 test("body uses the Instrument Sans font", async ({ page }) => {
   await page.goto("/");
 
