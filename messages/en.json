@@ -10,7 +10,7 @@
       "badge": "Now trending on TikTok · Reels · Shorts",
       "heading": "Window peeper AI video",
       "title": "Someone's watching you eat.",
-      "body": "Upload one photo. Get the 14-second trend clip, starring you.",
+      "body": "WindowPeeper is an AI video generator for the window peeper TikTok meme. Upload a photo of yourself and get a 14-second, PG-rated horror-comedy clip of you eating at night, noticing the camera and closing the curtain.",
       "clip": {
         "rec": "REC 01:28:00 AM",
         "caption": "CAM 03 · 0:14 · 9:16",
@@ -54,7 +54,7 @@
       "items": {
         "1": {
           "title": "Upload one photo",
-          "body": "One adult, face clearly visible, waist up, in good light. Your photo or one you have permission to use."
+          "body": "A photo of yourself only: one adult (18+), face clearly visible, waist up, in good light. No photos of other people, children or public figures."
         },
         "2": {
           "title": "Pick a window",
@@ -131,11 +131,19 @@
         },
         "6": {
           "title": "Which photos work best?",
-          "body": "A photo of one adult, waist up, facing the camera, in good light, with nothing covering the face: yours, or one the adult in it agreed to. No children or public figures. JPG, PNG or WebP, up to {size} MB."
+          "body": "A photo of yourself, waist up, facing the camera, in good light, with nothing covering the face. You must be 18 or older. Photos of other people, children or public figures aren't allowed. JPG, PNG or WebP, up to {size} MB."
         },
         "7": {
           "title": "How long does it take?",
           "body": "A Standard video is usually ready in about 3 minutes, a Pro video in about 6. Keep the page open and it plays there; if you leave, it still finishes in your video library."
+        },
+        "8": {
+          "title": "Is WindowPeeper safe? What can it make?",
+          "body": "Every video is one of six fixed comedy scenes of you eating at night, fully clothed and PG-rated; there are no prompts to write. It never makes nude, sexual or intimate content, and it must not be used to make intimate images of anyone or videos of real people without their consent. That's why you may only upload a photo of yourself, 18 or older. Photos are deleted about 24 hours after upload and never used to train AI. Report misuse to {email}."
+        },
+        "9": {
+          "title": "How do you use my Google data?",
+          "body": "Sign in with Google only creates your account. We get your name, email address and profile picture, and nothing else. We don't access your Google Photos, Drive or any other Google data. We never sell it, and we share your email only with the services that run the site, such as email delivery and checkout."
         }
       }
     },
@@ -155,7 +163,7 @@
     "photo": {
       "step": "Add your photo",
       "choose": "Drop a photo or click to choose",
-      "hint": "One adult, face visible, waist up · JPG, PNG, WebP up to {size} MB",
+      "hint": "A photo of yourself only (18+), face visible, waist up · JPG, PNG, WebP up to {size} MB",
       "change": "Click to change the photo",
       "size": "Photo ready · {size} MB"
     },
@@ -374,11 +382,11 @@
             "steps": {
               "1": {
                 "title": "Pick a photo",
-                "body": "Open the <generator>generator on the home page</generator> and choose a photo of one adult, waist up, facing the camera, in good light. It must be a JPEG, PNG or WebP up to {size} MB, from {min, number} to {maxSide, number} pixels on each side."
+                "body": "Open the <generator>generator on the home page</generator> and choose a photo of yourself, waist up, facing the camera, in good light. You must be 18 or older. It must be a JPEG, PNG or WebP up to {size} MB, from {min, number} to {maxSide, number} pixels on each side."
               },
               "2": {
                 "title": "Confirm it's OK to use",
-                "body": "Tick the box under the scenes to confirm the photo is yours, or that the adult in it agreed. Without it, the button stays off."
+                "body": "Tick the box under the scenes to confirm the photo is of you and that you're 18 or older. Without it, the button stays off."
               },
               "3": {
                 "title": "Choose Standard or Pro",
@@ -419,7 +427,7 @@
             "title": "Your photo and fair use",
             "text": {
               "1": "Your photo is used only to make your video, and it is deleted about 24 hours after upload. The finished video stays in your library until you delete your account. The <privacy>Privacy Policy</privacy> has the details.",
-              "2": "Only upload photos of yourself, or of an adult who agreed. No photos of children or public figures, and nothing meant to deceive, harass or frighten anyone. The trend is a joke about being watched; keep it one."
+              "2": "Only upload photos of yourself, and only if you're 18 or older. No photos of other people, children or public figures, and nothing meant to deceive, harass or frighten anyone. The trend is a joke about being watched; keep it one."
             }
           }
         }
@@ -791,7 +799,7 @@
     "generating": "Sending…",
     "balance": "{count, plural, one {# credit left} other {# credits left}}",
     "buyCredits": "Buy credits",
-    "consent": "{photos, plural, one {I confirm this is my photo, or I have permission from the adult in it.} other {I confirm these are my photos, or I have permission from the adults in them.}}",
+    "consent": "{photos, plural, one {I confirm this is a photo of me and I am 18 or older.} other {I confirm these are photos of me and I am 18 or older.}}",
     "historyTitle": "Your videos",
     "empty": "No videos yet.",
     "viewAll": "View all",
@@ -881,7 +889,7 @@
       "choose": "Drop a photo or click to choose",
       "ready": "Photo ready · {size} MB",
       "replace": "Replace",
-      "tip": "One adult, waist up, facing the camera."
+      "tip": "A photo of you, waist up, facing the camera."
     },
     "scene": {
       "title": "Pick a window"

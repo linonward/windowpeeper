@@ -175,7 +175,7 @@ test.each(["en", "es"] as const)("the FAQ is structured data in %s, the same que
     question: row.querySelector("summary span")?.textContent,
     answer: row.querySelector("p")?.textContent,
   }));
-  expect(rows).toHaveLength(7);
+  expect(rows).toHaveLength(9);
   expect(data).toEqual({
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -186,4 +186,28 @@ test.each(["en", "es"] as const)("the FAQ is structured data in %s, the same que
       acceptedAnswer: { "@type": "Answer", text: answer },
     })),
   });
+});
+
+// Google's OAuth review reads the home page: it must say what the app is
+// for, that uploads are of yourself only, and how Google data is used.
+test("the home page says what the app is for and who may be in the photo", () => {
+  renderWithIntl(<Page />);
+
+  expect(screen.getAllByText(/AI video generator for the window peeper TikTok meme/).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/PG-rated/).length).toBeGreaterThan(0);
+  const steps = screen.getByRole("region", { name: "How to do the window peeper trend" });
+  expect(steps.textContent).toContain("A photo of yourself only");
+  expect(steps.textContent).not.toContain("permission");
+});
+
+test("the FAQ covers safety and Google data", () => {
+  renderWithIntl(<Page />);
+
+  const faq = screen.getByRole("region", { name: "Window peeper AI video questions" });
+  const safety = within(faq).getByText("Is WindowPeeper safe? What can it make?").closest("details") as HTMLElement;
+  expect(safety.textContent).toContain("no prompts");
+  expect(safety.textContent).toContain("support@windowpeeper.org");
+  const google = within(faq).getByText("How do you use my Google data?").closest("details") as HTMLElement;
+  expect(google.textContent).toContain("name, email address and profile picture");
+  expect(google.textContent).toContain("Google Photos, Drive");
 });

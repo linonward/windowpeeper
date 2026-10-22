@@ -53,7 +53,7 @@ const pending = {
   imageUrl: "https://storage.test/v1.jpg",
   posterUrl: null,
 };
-const CONSENT = "I confirm this is my photo, or I have permission from the adult in it.";
+const CONSENT = "I confirm this is a photo of me and I am 18 or older.";
 const GENERATE = "Make my video";
 const PAY = "Pay $29.90 and make my video";
 
@@ -160,7 +160,7 @@ test("a photo over the 10 MB pick limit is dropped with a clear error", () => {
   useSession.mockReturnValue(signedIn);
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
-  expect(screen.getByText("One adult, face visible, waist up · JPG, PNG, WebP up to 10 MB")).toBeDefined();
+  expect(screen.getByText("A photo of yourself only (18+), face visible, waist up · JPG, PNG, WebP up to 10 MB")).toBeDefined();
   const big = new File([new Uint8Array(10 * 1024 * 1024 + 1)], "big.jpg", { type: "image/jpeg" });
   fireEvent.change(photoInput(), { target: { files: [big] } });
 
