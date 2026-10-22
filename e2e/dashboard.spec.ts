@@ -119,3 +119,19 @@ test("the sidebar collapses to icons and stays collapsed after a reload", async 
   await page.getByRole("button", { name: "Toggle Sidebar" }).click();
   await expect(page.locator("html")).not.toHaveAttribute("data-sidebar-collapsed");
 });
+
+// Past 1240px of content, the column sits in the middle of the space beside
+// the sidebar, not against its left edge.
+test("on wide screens the content column is centered beside the sidebar", async ({ page }) => {
+  await page.setViewportSize({ width: 1720, height: 900 });
+  await signIn(page);
+  await page.goto("/videos/library");
+
+  const inset = await page.locator("#main-content").boundingBox();
+  const column = await page.locator("#main-content > div").last().boundingBox();
+  if (!inset || !column) throw new Error("No layout");
+  expect(column.width).toBe(1240);
+  const left = column.x - inset.x;
+  const right = inset.x + inset.width - (column.x + column.width);
+  expect(Math.abs(left - right)).toBeLessThanOrEqual(1);
+});

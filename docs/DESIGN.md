@@ -104,7 +104,7 @@ Next.js makes a metric-matched Arial fallback for Instrument Sans and JetBrains 
 
 ## 4. Spacing, Layout & Radius
 
-- **Containers:** marketing sections run full width and keep a `max-w-6xl` column with `px-5 sm:px-8`. Dashboard content is `max-w-[1240px]` with `px-4 sm:px-8 lg:px-12` and `gap-7`.
+- **Containers:** marketing sections run full width and keep a `max-w-6xl` column with `px-5 sm:px-8`. Dashboard content is `max-w-[1240px]`, centered beside the sidebar, with `px-4 sm:px-8 lg:px-12` and `gap-7`.
 - **Sections:** home sections are `py-20` on phones and `py-24`-`py-28` on large screens, split by `border-t`.
 - **Header:** sticky, 56px on phones, 73px from `md`.
 - **Radius:** `--radius: 0.625rem` (10px). The boards' `r-sm` 6, `r-md` 10 and `r-lg` 16 are `rounded-sm`, `rounded-lg` and `rounded-xl`. The scale: `rounded-sm` 6px, `rounded-md` 8px, `rounded-lg` 10px, `rounded-xl` 16px, `rounded-2xl` 20px, `rounded-3xl` 24px, `rounded-4xl` 28px (`globals.css`, `@theme inline`).
