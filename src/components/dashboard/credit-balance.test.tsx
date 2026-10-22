@@ -19,7 +19,6 @@ const surfaces = {
       balance={100}
       credits={10}
       proCredits={20}
-      duration={14}
       maxPickBytes={10 * 1024 * 1024}
       maxUploadBytes={4 * 1024 * 1024}
       imageLimits={{ minSide: 240, maxSide: 8000, maxRatio: 8 }}
@@ -40,12 +39,12 @@ const surfaces = {
   ),
 };
 
-function SpendAndNavigate({ surface }: { surface: keyof typeof surfaces }) {
+function SpendAndNavigate({ surface, spend }: { surface: keyof typeof surfaces; spend: number }) {
   const credits = useCredits();
   const [open, setOpen] = useState(false);
   return open ? surfaces[surface] : (
     <button onClick={() => {
-      credits?.adjust(-4);
+      credits?.adjust(-spend);
       setOpen(true);
     }}>
       Spend and navigate
@@ -53,15 +52,18 @@ function SpendAndNavigate({ surface }: { surface: keyof typeof surfaces }) {
   );
 }
 
-test.each(Object.keys(surfaces) as (keyof typeof surfaces)[])(
-  "%s shows the shared balance after spending on another page, even with stale route props",
-  (surface) => {
-    renderWithIntl(<CreditsProvider balance={100}><SpendAndNavigate surface={surface} /></CreditsProvider>);
-    fireEvent.click(screen.getByRole("button", { name: "Spend and navigate" }));
-    // The generator states the balance after a 10-credit video.
-    expect(screen.getAllByText(surface === "billing" ? "96 credits" : "86 credits").length).toBeGreaterThan(0);
-  },
-);
+test("billing shows the shared balance after spending on another page, even with stale route props", () => {
+  renderWithIntl(<CreditsProvider balance={100}><SpendAndNavigate surface="billing" spend={4} /></CreditsProvider>);
+  fireEvent.click(screen.getByRole("button", { name: "Spend and navigate" }));
+  expect(screen.getAllByText("96 credits").length).toBeGreaterThan(0);
+});
+
+test("the generator prices against the shared balance, even with stale route props", () => {
+  renderWithIntl(<CreditsProvider balance={100}><SpendAndNavigate surface="windowpeeper" spend={95} /></CreditsProvider>);
+  fireEvent.click(screen.getByRole("button", { name: "Spend and navigate" }));
+  // 5 credits left can't pay for a 10-credit video, though the props say 100.
+  expect(screen.getByRole("button", { name: "Buy credits" })).toBeTruthy();
+});
 
 function Refund() {
   const credits = useCredits();

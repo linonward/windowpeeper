@@ -232,7 +232,7 @@ Cards change only their border color on hover. Hover styles apply only on device
 
 ```
 ┌──────── 248px ────────┬────────────────── fluid ──────────────────┐
-│ Lockup                │ Crumb · title                 | status    │
+│ Lockup                │ Title                         | status    │
 │ CREATE  New video     │                                           │
 │         My videos  12 │ Content (max 1240px, gap 28px)            │
 │ ACCOUNT Billing …     │                                           │
@@ -251,7 +251,7 @@ Cards change only their border color on hover. Hover styles apply only on device
 
 ### 9.2 New video (`videos/effect-generator.tsx`)
 
-A mono crumb and the display title, with a REC badge while videos render. Then, on large screens, three numbered cards on the left (Your photo; Scene as a 3×2 grid of 120px stills with a lamp check; Quality as two option rows with their price in mono credits) and a 340px summary on the right: the picked scene's still with "SCENE 01" and its caption, the length, format, quality, cost (lamp) and balance after, the lamp button ("Make my video · 10 cr", or Buy credits when the balance is short) and the refund note. On phones the summary is a bar fixed at the bottom. Under them, the four newest videos as tiles: a 54×96 poster with a spinner, a play icon or a `--rec` warning, the scene's name, the status (a lamp progress bar while rendering) and Download MP4 or Try again.
+The display title, with a REC badge while videos render. Then two choices: on large screens a 320px Your photo card beside a Pick a window card, stacked on phones. Your photo is a drop zone; once picked, it shows the photo tall with a "Photo ready" chip, the one-line tip and Replace (on phones, a 88×110 thumbnail, the file name and Replace). Pick a window is a 3×2 grid of 120px stills with a lamp check. Under them, one action row: the consent box, the quality as a two-part switch (Standard 720p / Pro 1080p, lamp-soft when picked) and the lamp button with the price ("Make my video · 10 credits", or Buy credits when the balance is short). On large screens it is a card, with a note for the wait and the refund; on phones it is a bar fixed at the bottom, showing only 720p / 1080p and "10 cr". Then the four newest videos as tiles: a 54×96 poster with a spinner, a play icon or a `--rec` warning, the scene's name, the status (a lamp progress bar while rendering) and Download MP4 or Try again.
 
 ### 9.3 Components
 

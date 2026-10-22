@@ -56,7 +56,6 @@ async function VideoContent({ params }: { params: Params }) {
 async function EffectContent({ kind, userId }: { kind: PhotoEffectKind; userId: string }) {
   const [balance, videos] = await Promise.all([userBalance(userId), listVideos(userId)]);
   const options = effectOptions(kind);
-  const effect = photoEffect(kind);
 
   return (
     <EffectGenerator
@@ -64,7 +63,6 @@ async function EffectContent({ kind, userId }: { kind: PhotoEffectKind; userId: 
       balance={balance}
       credits={options.credits}
       proCredits={options.proCredits ?? options.credits}
-      duration={effect?.duration ?? 0}
       maxPickBytes={EFFECT_MAX_PICK_BYTES}
       maxUploadBytes={EFFECT_MAX_IMAGE_BYTES}
       imageLimits={EFFECT_IMAGE_LIMITS}

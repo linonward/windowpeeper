@@ -874,55 +874,36 @@
     "storageDisabled": "Image uploads are unavailable. Try again later or submit text only."
   },
   "Generator": {
-    "crumb": "Create / New video",
     "title": "Make a window peeper video",
     "rendering": "{count, plural, one {# video rendering} other {# videos rendering}}",
     "photo": {
       "title": "Your photo",
-      "hint": "1 photo · face visible · waist up",
       "choose": "Drop a photo or click to choose",
       "ready": "Photo ready · {size} MB",
-      "replace": "Replace"
+      "replace": "Replace",
+      "tip": "One adult, waist up, facing the camera."
     },
     "scene": {
-      "title": "Scene",
-      "hint": "{count} windows",
-      "original": "Original"
+      "title": "Pick a window"
     },
     "quality": {
       "title": "Quality",
       "standard": {
         "name": "Standard",
-        "description": "720p · ready in ~3 min",
-        "summary": "Standard 720p"
+        "resolution": "720p",
+        "time": "Ready in about 3 min."
       },
       "pro": {
         "name": "Pro",
-        "description": "1080p · sharper face · ~6 min",
-        "summary": "Pro 1080p"
+        "resolution": "1080p",
+        "time": "Sharper face. Ready in about 6 min."
       }
     },
-    "cr": "{count} cr",
-    "summary": {
-      "label": "Preview",
-      "scene": "Scene {number}",
-      "caption": "{scene} · 0:{seconds} · 9:16",
-      "length": "Length",
-      "lengthValue": "{seconds} s",
-      "format": "Format",
-      "formatValue": "MP4 · 9:16 · original music",
-      "quality": "Quality",
-      "cost": "Cost",
-      "costValue": "{count, plural, one {# credit} other {# credits}}",
-      "after": "Balance after",
-      "note": "If the video fails, the {count, plural, one {# credit comes} other {# credits come}} back."
-    },
     "submit": "Make my video · {count} cr",
+    "submitLong": "Make my video · {count, plural, one {# credit} other {# credits}}",
+    "note": "If the video fails, the {count, plural, one {# credit comes} other {# credits come}} back.",
+    "action": "Your video",
     "buy": "Buy credits",
-    "bar": {
-      "line": "{scene} · {quality}",
-      "cost": "{count} cr · {left} left after"
-    },
     "recent": {
       "title": "Recent videos",
       "all": "All videos",

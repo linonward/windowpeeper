@@ -874,55 +874,36 @@
     "storageDisabled": "Bild-Uploads sind nicht verfügbar. Versuch es später nochmal oder sende nur Text."
   },
   "Generator": {
-    "crumb": "Erstellen / Neues Video",
     "title": "Mach ein Window-Peeper-Video",
     "rendering": "{count, plural, one {# Video wird erstellt} other {# Videos werden erstellt}}",
     "photo": {
       "title": "Dein Foto",
-      "hint": "1 Foto · Gesicht sichtbar · ab der Hüfte",
       "choose": "Foto hierher ziehen oder klicken zum Auswählen",
       "ready": "Foto bereit · {size} MB",
-      "replace": "Ersetzen"
+      "replace": "Ersetzen",
+      "tip": "Ein Erwachsener, ab der Hüfte, mit Blick in die Kamera."
     },
     "scene": {
-      "title": "Szene",
-      "hint": "{count} Fenster",
-      "original": "Original"
+      "title": "Wähl ein Fenster"
     },
     "quality": {
       "title": "Qualität",
       "standard": {
         "name": "Standard",
-        "description": "720p · fertig in ~3 Min.",
-        "summary": "Standard 720p"
+        "resolution": "720p",
+        "time": "Fertig in etwa 3 Min."
       },
       "pro": {
         "name": "Pro",
-        "description": "1080p · schärferes Gesicht · ~6 Min.",
-        "summary": "Pro 1080p"
+        "resolution": "1080p",
+        "time": "Schärferes Gesicht. Fertig in etwa 6 Min."
       }
     },
-    "cr": "{count} Cr",
-    "summary": {
-      "label": "Vorschau",
-      "scene": "Szene {number}",
-      "caption": "{scene} · 0:{seconds} · 9:16",
-      "length": "Länge",
-      "lengthValue": "{seconds} s",
-      "format": "Format",
-      "formatValue": "MP4 · 9:16 · Originalmusik",
-      "quality": "Qualität",
-      "cost": "Kosten",
-      "costValue": "{count, plural, one {# Credit} other {# Credits}}",
-      "after": "Guthaben danach",
-      "note": "Schlägt das Video fehl, bekommst du {count, plural, one {# Credit} other {# Credits}} zurück."
-    },
     "submit": "Mein Video machen · {count} Cr",
+    "submitLong": "Mein Video machen · {count, plural, one {# Credit} other {# Credits}}",
+    "note": "Schlägt das Video fehl, bekommst du {count, plural, one {# Credit} other {# Credits}} zurück.",
+    "action": "Dein Video",
     "buy": "Credits kaufen",
-    "bar": {
-      "line": "{scene} · {quality}",
-      "cost": "{count} Cr · danach {left} übrig"
-    },
     "recent": {
       "title": "Letzte Videos",
       "all": "Alle Videos",

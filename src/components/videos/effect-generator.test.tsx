@@ -27,7 +27,6 @@ const props: EffectGeneratorProps = {
   balance: 100,
   credits: 10,
   proCredits: 20,
-  duration: 14,
   maxPickBytes: 10 * 1024 * 1024,
   maxUploadBytes: 4 * 1024 * 1024,
   imageLimits: { minSide: 240, maxSide: 8000, maxRatio: 8 },
@@ -66,8 +65,7 @@ const agree = () =>
   fireEvent.click(
     screen.getByRole("checkbox", { name: "I confirm this is my photo, or I have permission from the adult in it." }),
   );
-// The desktop summary's button; phones get the same in a bottom bar.
-const submit = (name = "Make my video · 10 cr") => screen.getAllByRole("button", { name })[0];
+const submit = (name = "Make my video · 10 credits") => screen.getByRole("button", { name });
 
 test("needs the photo and the consent box before it makes a video", async () => {
   renderWithIntl(<EffectGenerator {...props} />);
@@ -79,10 +77,10 @@ test("needs the photo and the consent box before it makes a video", async () => 
   expect(screen.getByText("me.jpg")).toBeTruthy();
 });
 
-test("offers the six scenes, the original first and picked", () => {
+test("offers the six windows, the original first and picked", () => {
   renderWithIntl(<EffectGenerator {...props} />);
 
-  const scenes = within(screen.getByRole("radiogroup", { name: "Scene" })).getAllByRole("radio");
+  const scenes = within(screen.getByRole("radiogroup", { name: "Pick a window" })).getAllByRole("radio");
   expect(scenes.map((radio) => (radio as HTMLInputElement).value)).toEqual([
     "burger",
     "noodles",
@@ -94,15 +92,24 @@ test("offers the six scenes, the original first and picked", () => {
   expect((scenes[0] as HTMLInputElement).checked).toBe(true);
 });
 
-test("Pro changes the price on the button and in the summary", () => {
+// One place for what's left to do: the consent box, the quality and the button.
+test("keeps the consent box, the quality and the button together", () => {
   renderWithIntl(<EffectGenerator {...props} />);
 
-  fireEvent.click(within(screen.getByRole("radiogroup", { name: "Quality" })).getAllByRole("radio")[1]);
+  const action = screen.getByRole("region", { name: "Your video" });
+  expect(within(action).getByRole("checkbox")).toBeTruthy();
+  expect(within(action).getByRole("radiogroup", { name: "Quality" })).toBeTruthy();
+  expect(within(action).getByRole("button", { name: "Make my video · 10 credits" })).toBeTruthy();
+});
 
-  expect(submit("Make my video · 20 cr")).toBeTruthy();
-  const summary = screen.getByRole("complementary", { name: "Preview" });
-  expect(within(summary).getByText("Pro 1080p")).toBeTruthy();
-  expect(within(summary).getByText("80 credits")).toBeTruthy();
+test("Pro changes the price on the button and the wait in the note", () => {
+  renderWithIntl(<EffectGenerator {...props} />);
+
+  expect(screen.getByText(/^Ready in about 3 min\./)).toBeTruthy();
+  fireEvent.click(screen.getByRole("radio", { name: "Pro 1080p" }));
+
+  expect(submit("Make my video · 20 credits")).toBeTruthy();
+  expect(screen.getByText("Sharper face. Ready in about 6 min. If the video fails, the 20 credits come back.")).toBeTruthy();
 });
 
 test("sends the photo, scene, quality and a vertical frame, then polls until the video is ready", async () => {
@@ -126,7 +133,6 @@ test("sends the photo, scene, quality and a vertical frame, then polls until the
   expect(form.get("quality")).toBe("standard");
   expect(form.get("ratio")).toBe("9:16");
   expect(form.get("consent")).toBe("yes");
-  expect(within(screen.getByRole("complementary", { name: "Preview" })).getByText("80 credits")).toBeTruthy();
 
   await vi.advanceTimersByTimeAsync(5000);
   const recent = screen.getByRole("region", { name: "Recent videos" });
@@ -162,7 +168,7 @@ test.each([
   [422, "CONTENT_BLOCKED", "The photo was blocked by content moderation. Try a different one."],
   [400, "INVALID_IMAGE_SIZE", "Use a photo 240 to 8,000 pixels on each side"],
   [503, "VIDEOS_DISABLED", "isn't set up yet"],
-])("explains a %s reply and spends nothing", async (status, error, text) => {
+])("explains a %s reply", async (status, error, text) => {
   fetchMock.mockResolvedValueOnce(reply(status, { error }));
   renderWithIntl(<EffectGenerator {...props} />);
 
@@ -171,14 +177,13 @@ test.each([
   fireEvent.click(submit());
 
   await waitFor(() => expect(screen.getByRole("alert").textContent).toContain(text));
-  expect(within(screen.getByRole("complementary", { name: "Preview" })).getByText("90 credits")).toBeTruthy();
 });
 
 test("a short balance turns the button into Buy credits, which opens the dialog", () => {
   renderWithIntl(<EffectGenerator {...props} balance={5} enabled={false} />);
 
   expect(screen.getByText("The window peeper video isn't set up yet.")).toBeTruthy();
-  fireEvent.click(screen.getAllByRole("button", { name: "Buy credits" })[0]);
+  fireEvent.click(screen.getByRole("button", { name: "Buy credits" }));
   expect(openBuy).toHaveBeenCalled();
   expect(fetchMock).not.toHaveBeenCalled();
 });
