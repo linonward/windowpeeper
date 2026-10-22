@@ -92,6 +92,8 @@ export type Video = {
   credits: number;
   // The account's free preview: short and watermarked.
   preview: boolean;
+  // The photo effect's scene, or null on older videos.
+  scene: string | null;
   status: "pending" | "succeeded" | "failed";
   createdAt: Date;
   // Signed URLs, valid for an hour. url is null until the MP4 is stored.
@@ -152,9 +154,10 @@ export function effectOptions(kind: PhotoEffectKind): { enabled: boolean; credit
 }
 
 // A photo effect's photo becomes its video, in the quality bought (standard
-// by default) and the ratio picked (16:9 by default): Bailian wan2.7-r2v makes the effect's prompt into a video
+// by default), the scene picked (the effect's first by default) and the ratio
+// picked (16:9 by default): Bailian wan2.7-r2v makes the scene's prompt into a video
 // that stars the photo's subject. An unknown kind, the wrong number
-// of photos, or Pro or a preview for an effect without it, is an
+// of photos, an unknown scene, or Pro or a preview for an effect without it, is an
 // InvalidVideoRequestError. A preview is free, once per account (a second is
 // PreviewUsedError), with the effect's preview prompt, seconds and watermark.
 // `consentedAt` is when the user confirmed they may use the photo; the row
@@ -166,6 +169,7 @@ export async function createEffectVideo(input: {
   images: Uint8Array[];
   quality?: VideoQuality;
   ratio?: VideoRatio;
+  scene?: string;
   consentedAt?: Date;
 }): Promise<Video> {
   const effect = photoEffect(input.kind);
@@ -176,6 +180,12 @@ export async function createEffectVideo(input: {
   if (input.quality === "pro" && !pro) throw new InvalidVideoRequestError(`${input.kind} has no Pro quality`);
   const preview = input.quality === "preview" ? effect.preview : undefined;
   if (input.quality === "preview" && !preview) throw new InvalidVideoRequestError(`${input.kind} has no preview`);
+  const scene = effect.scenes
+    ? effect.scenes.find((each) => each.id === (input.scene ?? effect.scenes?.[0].id))
+    : undefined;
+  if (effect.scenes ? !scene : input.scene !== undefined) {
+    throw new InvalidVideoRequestError(`${input.kind} has no scene ${input.scene}`);
+  }
   const ratio = input.ratio ?? "16:9";
   if (!VIDEO_RATIOS.includes(ratio)) throw new InvalidVideoRequestError(`${ratio} isn't a video ratio`);
   const provider = getEffectVideoProvider();
@@ -213,12 +223,13 @@ export async function createEffectVideo(input: {
           credits,
           consentedAt: input.consentedAt ?? null,
           preview: Boolean(preview),
+          scene: scene?.id ?? null,
         }),
       async () => {
         if (!moderated) await storeFiles(files);
         const requestId = await provider.submit({
           image: { bytes, mime: type.mime, url: await signedUrl(imageKey) },
-          prompt: preview?.prompt ?? effect.prompt,
+          prompt: preview?.prompt ?? scene?.prompt ?? effect.prompt,
           resolution,
           ratio,
           watermark: Boolean(preview),
@@ -463,6 +474,7 @@ async function withUrls(row: Row): Promise<Video> {
     ratio: row.ratio,
     credits: row.credits,
     preview: row.preview,
+    scene: row.scene,
     status: row.status,
     createdAt: row.createdAt,
     url: row.status === "succeeded" && row.storageKey ? await signedUrl(row.storageKey) : null,

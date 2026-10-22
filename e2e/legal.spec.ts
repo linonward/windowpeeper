@@ -37,7 +37,7 @@ test("legal pages share the visual system", async ({ page }) => {
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveCSS(
     "font-family",
-    /Martian Mono/,
+    /Big Shoulders/,
   );
 });
 

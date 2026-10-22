@@ -37,6 +37,9 @@ export const video = pgTable(
     // them agreed. POST /api/videos/<kind> requires it; null on older rows
     // and on videos made without photos of people.
     consentedAt: timestamp("consented_at"),
+    // The photo effect's scene ("burger", "noodles", ...); null on older rows
+    // and for effects without scenes.
+    scene: text("scene"),
     // The account's free preview: no credits, short and watermarked.
     preview: boolean("preview").notNull().default(false),
   },

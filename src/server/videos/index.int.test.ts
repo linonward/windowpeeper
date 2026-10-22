@@ -652,7 +652,7 @@ test("the window peeper video is on with a Bailian key and storage", () => {
   expect(effectOptions("windowpeeper").enabled).toBe(false);
 });
 
-test("a window peeper video stores one photo, queues one 12-second 720P job with the effect's prompt and spends 10 credits", async () => {
+test("a window peeper video stores one photo, queues one 14-second 720P job with the effect's prompt and spends 10 credits", async () => {
   const before = await getBalance(userId);
 
   const result = await create();
@@ -665,11 +665,11 @@ test("a window peeper video stores one photo, queues one 12-second 720P job with
     resolution: "720P",
     ratio: "16:9",
     watermark: false,
-    duration: 12,
+    duration: 14,
   });
   expect(result).toMatchObject({
     prompt: "Window peeper",
-    duration: 12,
+    duration: 14,
     resolution: "720p",
     ratio: "16:9",
     credits: 10,
@@ -698,6 +698,43 @@ test("a vertical window peeper video queues a 9:16 job at the same price and kee
   expect(result).toMatchObject({ resolution: "1080p", ratio: "9:16", credits: 20 });
   expect(await getBalance(userId)).toBe(before - 20);
   expect(await rows()).toMatchObject([{ ratio: "9:16" }]);
+});
+
+test("a window peeper video is the burger scene unless another is picked", async () => {
+  const result = await create();
+
+  expect(ai.motion.submit).toHaveBeenCalledWith(expect.objectContaining({ prompt: expect.stringContaining("burger") }));
+  expect(result.scene).toBe("burger");
+  expect(await rows()).toMatchObject([{ scene: "burger" }]);
+});
+
+test.each([
+  ["noodles", "noodles"],
+  ["pizza", "pizza"],
+  ["wave", "waves"],
+  ["glass", "rain"],
+  ["couple", "partner"],
+])("the %s scene queues its own prompt at the same price and keeps the scene", async (scene, word) => {
+  const before = await getBalance(userId);
+
+  const result = await createEffectVideo({ userId, kind: "windowpeeper", images: [jpeg], scene });
+
+  const { prompt } = ai.motion.submit.mock.calls[0][0];
+  expect(prompt).toContain("Image 1");
+  expect(prompt.toLowerCase()).toContain(word);
+  expect(result).toMatchObject({ scene, duration: 14, credits: 10 });
+  expect(await getBalance(userId)).toBe(before - 10);
+});
+
+test("an unknown scene is refused before anything is stored or spent", async () => {
+  const before = await getBalance(userId);
+
+  await expect(createEffectVideo({ userId, kind: "windowpeeper", images: [jpeg], scene: "sushi" })).rejects.toThrow(
+    InvalidVideoRequestError,
+  );
+
+  expect(storage.putObject).not.toHaveBeenCalled();
+  expect(await getBalance(userId)).toBe(before);
 });
 
 test("an unknown ratio is refused before anything is stored or spent", async () => {

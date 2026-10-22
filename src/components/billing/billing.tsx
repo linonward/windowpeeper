@@ -1,18 +1,14 @@
 "use client";
 
-import { CreditCard } from "lucide-react";
+import { LockKeyhole } from "lucide-react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCreditBalance } from "@/components/dashboard/credits";
 import { CreditTransactions, type Transaction } from "@/components/credits/credit-transactions";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { useAwaitCredits } from "./await-credits";
-import { Chosen, CHOSEN, useRevealChoice } from "./chosen";
-import { Recommended, usePackBuys, type VideoPrices } from "./packs";
+import { type Pack, PackBenefits, PackOptions, useMoney, type VideoPrices } from "./packs";
 import { redirectFrom } from "./redirect";
-
-type Pack = { id: string; credits: number; amount: number; currency: string };
 
 type Order = {
   id: string;
@@ -59,23 +55,30 @@ export function Billing({
   const t = useTranslations("Billing");
   const format = useFormatter();
   const locale = useLocale();
-  const [buying, setBuying] = useState<string | null>(null);
+  const money = useMoney();
+  // A pack chosen on the pricing page starts picked; else the recommended one.
+  const chosen = packs.some((pack) => pack.id === selected) ? selected : undefined;
+  const [picked, setPicked] = useState(chosen ?? featured);
+  const [buying, setBuying] = useState(false);
   const [error, setError] = useState(false);
-  const chosen = useRevealChoice();
   const credited = useAwaitCredits(checkout === "success", balance);
-  const buys = usePackBuys(prices);
-  // A pack chosen on the pricing page takes the recommended one's place.
-  const recommended = packs.some((pack) => pack.id === selected) ? null : featured;
+  const pack = packs.find((each) => each.id === picked) ?? packs[0];
+  const pay = useRef<HTMLButtonElement>(null);
+
+  // Back from the pricing page with a pack: its pay button takes focus, which
+  // scrolls it into view.
+  useEffect(() => {
+    if (chosen) pay.current?.focus();
+  }, [chosen]);
 
   // Amounts are in the currency's smallest unit; packs use two-decimal currencies.
-  const price = (amount: number, currency: string) =>
-    format.number(amount / 100, { style: "currency", currency: currency.toUpperCase() });
+  const price = (amount: number, currency: string) => money(amount, currency);
 
-  async function buy(packId: string) {
-    setBuying(packId);
+  async function buy() {
+    setBuying(true);
     setError(false);
-    if ((await redirectFrom("/api/payment/checkout", { packId, locale })) === null) return;
-    setBuying(null);
+    if ((await redirectFrom("/api/payment/checkout", { packId: pack.id, locale })) === null) return;
+    setBuying(false);
     setError(true);
   }
 
@@ -87,69 +90,61 @@ export function Billing({
         </p>
       )}
 
-      <section className="flex flex-col gap-1 rounded-xl border bg-card px-5 py-4">
-        <h2 className="text-sm text-muted-foreground">{t("balance")}</h2>
-        <p className="font-display text-3xl font-semibold">{t("credits", { count: balance })}</p>
+      <section className="flex w-fit min-w-60 flex-col gap-1 rounded-lg border bg-card px-5 py-4">
+        <h2 className="font-mono text-[10px] tracking-[0.15em] text-faint uppercase">{t("balance")}</h2>
+        <p className="font-display text-4xl leading-none font-extrabold tabular-nums">{t("credits", { count: balance })}</p>
       </section>
 
       {subscription}
 
-      <section className="flex flex-col gap-4">
-        <h2 className="font-display text-lg font-semibold">{t("buyTitle")}</h2>
-        {!enabled && <p className="text-muted-foreground">{t("disabled")}</p>}
-        <ul className="grid gap-3 sm:grid-cols-3">
-          {packs.map((pack) => {
-            const credits = t("credits", { count: pack.credits });
-            const amount = price(pack.amount, pack.currency);
-            return (
-              <li
-                key={pack.id}
-                ref={pack.id === selected ? chosen : undefined}
-                className={cn(
-                  "flex flex-col gap-3 rounded-xl border bg-card p-5",
-                  pack.id === selected && CHOSEN,
-                )}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-xl font-semibold">{credits}</h3>
-                  {pack.id === selected && <Chosen />}
-                  {pack.id === recommended && <Recommended />}
-                </div>
-                <p className="text-muted-foreground">{amount}</p>
-                <p className="text-sm text-muted-foreground">{buys(pack.credits)}</p>
-                <Button
-                  variant={pack.id === recommended || pack.id === selected ? "default" : "outline"}
-                  className="mt-auto"
-                  disabled={!enabled || buying !== null}
-                  aria-label={t("buyLabel", { credits, price: amount })}
-                  onClick={() => buy(pack.id)}
-                >
-                  <CreditCard />
-                  {t("buy")}
-                </Button>
-              </li>
-            );
-          })}
-        </ul>
-        <p className="text-sm text-muted-foreground">{t("packsNote")}</p>
-        {error && (
-          <p role="alert" className="text-sm text-destructive">
-            {t("checkoutError")}
-          </p>
-        )}
-      </section>
+      {pack && (
+        <section aria-labelledby="billing-buy" className="flex max-w-[620px] flex-col gap-5">
+          <h2 id="billing-buy" className="font-display text-[1.75rem] leading-none font-extrabold">
+            {t("buyTitle")}
+          </h2>
+          {!enabled && <p className="text-muted-foreground">{t("disabled")}</p>}
+          <PackOptions
+            packs={packs}
+            prices={prices}
+            featured={featured}
+            picked={pack.id}
+            onPick={setPicked}
+            name="billing-pack"
+            labelledBy="billing-buy"
+            disabled={!enabled}
+          />
+          <Button
+            ref={pay}
+            size="lg"
+            className="h-[52px] w-full"
+            disabled={!enabled || buying}
+            aria-label={t("buyLabel", { credits: t("credits", { count: pack.credits }), price: price(pack.amount, pack.currency) })}
+            onClick={buy}
+          >
+            {buying ? t("paying") : t("pay", { price: price(pack.amount, pack.currency) })}
+            {!buying && <LockKeyhole />}
+          </Button>
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {t("checkoutError")}
+            </p>
+          )}
+          <PackBenefits size="sm" />
+          <p className="text-xs text-faint">{t("secure")}</p>
+        </section>
+      )}
 
       <CreditTransactions transactions={transactions} />
 
       <section className="flex flex-col gap-4">
-        <h2 className="font-display text-lg font-semibold">{t("ordersTitle")}</h2>
+        <h2 className="font-display text-[1.75rem] leading-none font-extrabold">{t("ordersTitle")}</h2>
         {orders.length === 0 ? (
           <p className="text-muted-foreground">{t("noOrders")}</p>
         ) : (
           <div className="overflow-x-auto rounded-xl border bg-card">
             <table className="w-full text-left text-sm">
               <caption className="sr-only">{t("ordersTitle")}</caption>
-              <thead className="text-muted-foreground">
+              <thead className="font-mono text-[11px] tracking-[0.12em] text-faint uppercase">
                 <tr>
                   <th className="px-5 py-3 font-normal">{t("date")}</th>
                   <th className="px-5 py-3 font-normal">{t("pack")}</th>

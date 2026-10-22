@@ -1,57 +1,67 @@
 import { useTranslations } from "next-intl";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 import { Brand } from "./brand";
-import { LocaleSwitcher } from "./locale-switcher";
+import { MobileMenu } from "./mobile-menu";
 
-// The home page's sections, as on the reference landing page. Below `md`
-// only Pricing shows, so the header fits a 320px phone; phones reach the
-// others by scrolling and the blog from the footer.
-const SECTIONS = [
-  { key: "howItWorks", hash: "how-it-works", phone: false },
-  { key: "pricing", hash: "pricing", phone: true },
-  { key: "faq", hash: "faq", phone: false },
+// The nav's links: two of the home page's sections, the price list and the
+// blog. Phones reach them from the menu.
+export const NAV_LINKS = [
+  { key: "scenes", href: "/#scenes" },
+  { key: "howItWorks", href: "/#how-it-works" },
+  { key: "pricing", href: "/pricing" },
+  { key: "blog", href: "/blog" },
 ] as const;
 
-const LINK = "text-sm font-semibold underline-offset-4 [@media(hover:hover)]:hover:underline";
-
-// Sticky glass bar (docs/DESIGN.md, Effects). `account` is the button on the
-// right: the marketing layout passes <AccountLink /> for the visitor.
+// Sticky bar with a bottom border (docs/DESIGN.md, Nav). `account` is the
+// sign-in link: the marketing layout passes <AccountLink /> for the visitor.
 export function SiteHeader({ account }: { account: React.ReactNode }) {
   const t = useTranslations("Nav");
   const tBlog = useTranslations("Blog");
+  const label = (key: (typeof NAV_LINKS)[number]["key"]) => (key === "blog" ? tBlog("title") : t(key));
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/65 backdrop-blur-xl backdrop-saturate-150">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
+    <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-xl backdrop-saturate-150">
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:px-8 md:h-[73px]">
         <Brand />
-        <div className="flex items-center gap-2 sm:gap-6">
-          <nav aria-label={t("label")} className="flex items-center gap-2 sm:gap-6">
-            {SECTIONS.map(({ key, hash, phone }) => (
-              <Link key={key} href={`/#${hash}`} className={cn(LINK, !phone && "hidden md:inline")}>
-                {t(key)}
-              </Link>
-            ))}
-            <Link href="/blog" className={cn(LINK, "hidden md:inline")}>
-              {tBlog("title")}
+        <nav aria-label={t("label")} className="hidden items-center gap-8 md:flex">
+          {NAV_LINKS.map(({ key, href }) => (
+            <Link
+              key={key}
+              href={href}
+              className="text-sm text-muted-foreground transition-colors [@media(hover:hover)]:hover:text-foreground"
+            >
+              {label(key)}
             </Link>
-          </nav>
-          <LocaleSwitcher />
+          ))}
+        </nav>
+        <div className="flex items-center gap-3.5 md:gap-3">
           {account}
+          <Link href="/#generator" className={cn(buttonVariants(), "hidden md:inline-flex")}>
+            {t("cta")}
+          </Link>
+          <MobileMenu
+            links={NAV_LINKS.map(({ key, href }) => ({ href, label: label(key) }))}
+            cta={t("cta")}
+            label={t("label")}
+            menu={t("menu")}
+          />
         </div>
       </div>
     </header>
   );
 }
 
-// Sign in for visitors, the videos page for signed-in users. Smaller on
-// phones, so the header fits 320px.
+// Sign in for visitors, the videos page for signed-in users.
 export function AccountLink({ signedIn }: { signedIn: boolean }) {
   const t = useTranslations(signedIn ? "Dashboard" : "SignIn");
 
   return (
-    <Link href={signedIn ? "/videos" : "/sign-in"} className={cn(buttonVariants(), "h-9 px-2.5 sm:h-10 sm:px-4")}>
+    <Link
+      href={signedIn ? "/videos" : "/sign-in"}
+      className="text-sm font-medium whitespace-nowrap underline-offset-4 [@media(hover:hover)]:hover:underline"
+    >
       {t("title")}
     </Link>
   );

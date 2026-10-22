@@ -16,17 +16,9 @@ test("the dashboard opens the window peeper video in a sidebar shell", async ({ 
 
   // /dashboard opens /videos, which opens the first photo effect.
   await expect(page).toHaveURL("/en/videos/windowpeeper");
-  await expect(page.getByRole("heading", { level: 1, name: "Window peeper" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   const sidebar = page.getByRole("navigation", { name: "Dashboard navigation" });
-  await expect(sidebar.getByRole("link", { name: "Window peeper", exact: true })).toHaveAttribute(
-    "aria-current",
-    "page",
-  );
-  // The parent link is highlighted but isn't the page.
-  await expect(sidebar.getByRole("link", { name: "Video generator", exact: true })).not.toHaveAttribute(
-    "aria-current",
-    "page",
-  );
+  await expect(sidebar.getByRole("link", { name: "New video", exact: true })).toHaveAttribute("aria-current", "page");
   await expect(page.getByText(email).first()).toBeVisible();
   // Marketing header and footer stay out of the app shell.
   await expect(page.getByRole("contentinfo")).toHaveCount(0);
@@ -97,7 +89,7 @@ test("the account menu shows the balance and switches the language", async ({
   await page.keyboard.press("ArrowRight");
   await page.getByRole("menuitem", { name: "中文" }).click();
   await expect(page).toHaveURL("/zh/videos/windowpeeper");
-  await expect(page.getByRole("heading", { level: 1, name: "Window Peeper" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "制作 Window Peeper 视频" })).toBeVisible();
 });
 
 test("the sidebar collapses to icons and stays collapsed after a reload", async ({ page }) => {
@@ -105,15 +97,14 @@ test("the sidebar collapses to icons and stays collapsed after a reload", async 
   await page.goto("/en/videos");
   const link = page
     .getByRole("navigation", { name: "Dashboard navigation" })
-    .getByRole("link", { name: "Credits & billing" });
+    .getByRole("link", { name: "Billing" });
   const width = async () => (await link.boundingBox())?.width ?? 0;
   expect(await width()).toBeGreaterThan(100);
 
-  await page.getByRole("button", { name: "Collapse sidebar" }).click();
+  await page.getByRole("button", { name: "Toggle Sidebar" }).click();
   await expect.poll(width).toBeLessThan(40);
 
   await page.reload();
-  await expect(page.getByRole("button", { name: "Expand sidebar" })).toBeVisible();
   expect(await width()).toBeLessThan(40);
   // The loading skeleton draws the collapsed sidebar too: a script in the
   // server HTML marks <html> from the cookie before first paint.
@@ -125,6 +116,6 @@ test("the sidebar collapses to icons and stays collapsed after a reload", async 
   await link.click();
   await expect(page).toHaveURL("/en/billing");
 
-  await page.getByRole("button", { name: "Expand sidebar" }).click();
+  await page.getByRole("button", { name: "Toggle Sidebar" }).click();
   await expect(page.locator("html")).not.toHaveAttribute("data-sidebar-collapsed");
 });

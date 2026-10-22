@@ -52,13 +52,13 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
     <DropdownMenu>
       <DropdownMenuTrigger
         aria-label={t("account")}
-        className="flex w-full items-center gap-2 overflow-hidden rounded-xl p-1.5 text-left text-sm outline-hidden focus-visible:ring-2 focus-visible:ring-sidebar-ring data-popup-open:bg-sidebar-accent group-data-[collapsible=icon]:p-0 [@media(hover:hover)]:hover:bg-sidebar-accent"
+        className="flex w-full items-center gap-2.5 overflow-hidden rounded-sm px-1.5 py-1 text-left text-[13px] outline-hidden focus-visible:ring-2 focus-visible:ring-sidebar-ring data-popup-open:bg-sidebar-accent group-data-[collapsible=icon]:p-0 [@media(hover:hover)]:hover:bg-sidebar-accent"
       >
         <Avatar initial={initial} className="size-8 text-sm" />
         <span className="min-w-0 flex-1 truncate text-muted-foreground group-data-[collapsible=icon]:hidden">
           {email}
         </span>
-        <ChevronsUpDown className="size-4 shrink-0 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+        <ChevronsUpDown className="size-4 shrink-0 text-faint group-data-[collapsible=icon]:hidden" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         side={isMobile ? "top" : "right"}
@@ -120,7 +120,7 @@ function Avatar({ initial, className }: { initial: string; className: string }) 
   return (
     <span
       aria-hidden
-      className={`flex shrink-0 items-center justify-center rounded-full bg-primary font-display font-bold text-primary-foreground ${className}`}
+      className={`flex shrink-0 items-center justify-center rounded-full bg-curtain font-semibold text-foreground ${className}`}
     >
       {initial}
     </span>

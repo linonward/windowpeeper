@@ -21,12 +21,12 @@ function DialogContent({
     <DialogPrimitive.Portal data-slot="dialog-portal">
       <DialogPrimitive.Backdrop
         data-slot="dialog-overlay"
-        className="fixed inset-0 isolate z-50 bg-foreground/25 duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0"
+        className="fixed inset-0 isolate z-50 bg-[#05070b]/80 backdrop-blur-[4px] duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0"
       />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2.5rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-xl border bg-popover p-6 text-popover-foreground shadow-[0_12px_32px_-12px_oklch(0.21_0.008_75/0.35)] duration-100 outline-none sm:max-w-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2.5rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-xl border border-border-strong bg-card p-6 text-card-foreground shadow-[0_30px_80px_rgb(0_0_0/0.6)] duration-100 outline-none sm:max-w-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}

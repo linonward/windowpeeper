@@ -1,4 +1,4 @@
-// Dashboard page header: heavy sans title, muted description, optional
+// Dashboard page header: Big Shoulders title, muted description, optional
 // action on the right (docs/DESIGN.md, Page header).
 export function PageHeader({
   title,
@@ -12,7 +12,7 @@ export function PageHeader({
   return (
     <header className="flex flex-wrap items-end justify-between gap-4">
       <div className="flex min-w-0 flex-col gap-1">
-        <h1 className="text-3xl leading-tight font-black tracking-[-0.025em] text-balance [overflow-wrap:anywhere] sm:text-4xl">
+        <h1 className="font-display text-3xl leading-tight font-extrabold text-balance [overflow-wrap:anywhere] sm:text-4xl">
           {title}
         </h1>
         {description && <p className="text-sm leading-6 text-muted-foreground">{description}</p>}

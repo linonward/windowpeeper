@@ -158,45 +158,49 @@ test("doesn't refresh without a finished checkout", () => {
   expect(refresh).not.toHaveBeenCalled();
 });
 
-test("marks the pack chosen on the pricing page and focuses its button", () => {
+test("picks the pack chosen on the pricing page and focuses the pay button", () => {
   renderWithIntl(<Billing {...props} selected="large" />);
 
-  const buy = screen.getByRole("button", { name: "Buy 1,200 credits for $40.00" });
-  expect(document.activeElement).toBe(buy);
-  expect(within(buy.closest("li")!).getByText("Selected")).toBeTruthy();
-  expect(screen.getAllByText("Selected")).toHaveLength(1);
+  const pay = screen.getByRole("button", { name: "Buy 1,200 credits for $40.00" });
+  expect(document.activeElement).toBe(pay);
+  expect((screen.getByRole("radio", { name: /120-pack/ }) as HTMLInputElement).checked).toBe(true);
 });
 
-test("ignores an unknown pack", () => {
+test("ignores an unknown pack and picks the recommended one", () => {
   renderWithIntl(<Billing {...props} selected="huge" />);
 
-  expect(screen.queryByText("Selected")).toBeNull();
   expect(document.activeElement).toBe(document.body);
+  expect((screen.getByRole("radio", { name: /10-pack/ }) as HTMLInputElement).checked).toBe(true);
 });
 
-test("says what each pack buys, recommends one and states the terms once", () => {
+test("lists each pack by the videos it buys, with its price per video and what it saves", () => {
   renderWithIntl(
     <Billing
       {...props}
+      featured="medium"
       packs={[
-        { id: "small", credits: 10, amount: 499, currency: "usd" },
-        { id: "medium", credits: 20, amount: 799, currency: "usd" },
-        { id: "large", credits: 30, amount: 1199, currency: "usd" },
+        { id: "small", credits: 10, amount: 990, currency: "usd" },
+        { id: "medium", credits: 50, amount: 2990, currency: "usd" },
+        { id: "large", credits: 250, amount: 9990, currency: "usd" },
       ]}
     />,
   );
 
-  const card = (name: string) => screen.getByRole("button", { name }).closest("li")!;
-  expect(card("Buy 10 credits for $4.99").textContent).toContain("1 video");
-  expect(card("Buy 20 credits for $7.99").textContent).toContain("1 Pro video or 2 videos");
-  expect(card("Buy 30 credits for $11.99").textContent).toContain("3 videos");
-  expect(within(card("Buy 10 credits for $4.99")).getByText("Recommended")).toBeTruthy();
+  const row = (name: RegExp) => screen.getByRole("radio", { name }).closest("label")!;
+  expect(row(/Single · 1 video/).textContent).toContain("10 credits · $9.90 a video");
+  expect(row(/5-pack · 5 videos/).textContent).toContain("Recommended");
+  expect(row(/5-pack · 5 videos/).textContent).toContain("Save 40%");
+  expect(row(/25-pack · 25 videos/).textContent).toContain("$4.00 a video");
   expect(screen.getAllByText("Recommended")).toHaveLength(1);
-  expect(screen.getByText("One-time payment, no subscription. Credits never expire.")).toBeTruthy();
+  // The recommended pack starts picked, and the button pays for it.
+  expect(screen.getByRole("button", { name: "Buy 50 credits for $29.90" }).textContent).toBe("Pay $29.90");
+  expect(screen.getByText("Secure checkout. One-time payment, no subscription.")).toBeTruthy();
 });
 
-test("the chosen pack takes the place of the recommended one", () => {
-  renderWithIntl(<Billing {...props} selected="large" />);
+test("picking another pack changes what the button pays for", () => {
+  renderWithIntl(<Billing {...props} />);
 
-  expect(screen.queryByText("Recommended")).toBeNull();
+  fireEvent.click(screen.getByRole("radio", { name: /120-pack/ }));
+
+  expect(screen.getByRole("button", { name: "Buy 1,200 credits for $40.00" })).toBeTruthy();
 });

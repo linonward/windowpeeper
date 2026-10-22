@@ -4,10 +4,8 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { renderWithIntl } from "@/test/intl";
 import { CreditsProvider } from "./credits";
 import { AppSidebar } from "./app-sidebar";
-import { photoEffectKinds } from "@/lib/photo-effects";
-import en from "../../../messages/en.json";
 
-let pathname = "/videos";
+let pathname = "/videos/windowpeeper";
 vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push() {} }),
   usePathname: () => pathname,
@@ -21,19 +19,21 @@ beforeEach(() => {
   window.matchMedia = vi.fn(
     () => ({ matches: false, addEventListener() {}, removeEventListener() {} }) as never,
   );
-  pathname = "/videos";
+  pathname = "/videos/windowpeeper";
+  openBuy.mockReset();
 });
 
 afterEach(cleanup);
 
 const user = { name: "Ada Lovelace", email: "ada@example.com" };
-const WINDOW_PEEPER = en.PhotoEffects.kinds.windowpeeper.title;
+const openBuy = vi.fn();
+vi.mock("@/components/billing/buy-credits", () => ({ useBuyCredits: () => ({ open: openBuy }) }));
 
 function renderSidebar(isAdmin: boolean) {
   renderWithIntl(
     <CreditsProvider balance={10}>
       <SidebarProvider>
-        <AppSidebar user={user} isAdmin={isAdmin} />
+        <AppSidebar user={user} isAdmin={isAdmin} videos={12} standardCredits={10} />
       </SidebarProvider>
     </CreditsProvider>,
   );
@@ -68,27 +68,22 @@ test("on an admin page, the sub item is the current page and Admin stays highlig
   expect(admin.hasAttribute("data-active")).toBe(true);
 });
 
-test("the video library sits under the video generator", () => {
+test("the new video page is current on the generator", () => {
+  const nav = renderSidebar(false);
+
+  const link = within(nav).getByRole("link", { name: "New video" });
+  expect(link.getAttribute("href")).toBe("/en/videos/windowpeeper");
+  expect(link.getAttribute("aria-current")).toBe("page");
+});
+
+test("My videos leads to the library and counts the user's videos", () => {
   pathname = "/videos/library";
   const nav = renderSidebar(false);
 
-  const videos = within(nav).getByRole("link", { name: "Video generator" });
-  const library = within(nav).getByRole("link", { name: "All videos" });
-  expect(videos.getAttribute("href")).toBe("/en/videos");
-  expect(library.getAttribute("href")).toBe("/en/videos/library");
-  expect(videos.closest("li")?.contains(library)).toBe(true);
-  expect(library.getAttribute("aria-current")).toBe("page");
-});
-
-test("the window peeper video sits under the video generator", () => {
-  pathname = "/videos/windowpeeper";
-  const nav = renderSidebar(false);
-
-  const videos = within(nav).getByRole("link", { name: "Video generator" });
-  const windowpeeper = within(nav).getByRole("link", { name: WINDOW_PEEPER });
-  expect(windowpeeper.getAttribute("href")).toBe("/en/videos/windowpeeper");
-  expect(videos.closest("li")?.contains(windowpeeper)).toBe(true);
-  expect(windowpeeper.getAttribute("aria-current")).toBe("page");
+  const link = within(nav).getByRole("link", { name: /My videos/ });
+  expect(link.getAttribute("href")).toBe("/en/videos/library");
+  expect(link.textContent).toBe("My videos12");
+  expect(link.getAttribute("aria-current")).toBe("page");
 });
 
 // The loading skeleton reads this attribute on the next full page load.
@@ -97,54 +92,28 @@ test("mirrors the collapsed state on <html> for the loading skeleton", () => {
   const html = document.documentElement;
   expect(html.hasAttribute("data-sidebar-collapsed")).toBe(false);
 
-  fireEvent.click(screen.getByRole("button", { name: "Collapse sidebar" }));
+  fireEvent.click(screen.getByRole("button", { name: "Toggle Sidebar" }));
   expect(html.hasAttribute("data-sidebar-collapsed")).toBe(true);
 
-  fireEvent.click(screen.getByRole("button", { name: "Expand sidebar" }));
+  fireEvent.click(screen.getByRole("button", { name: "Toggle Sidebar" }));
   expect(html.hasAttribute("data-sidebar-collapsed")).toBe(false);
 });
 
-test("one item opens credits and billing", () => {
-  const nav = renderSidebar(false);
-
-  expect(within(nav).queryByRole("link", { name: "Credits" })).toBeNull();
-  expect(within(nav).getByRole("link", { name: "Credits & billing" }).getAttribute("href")).toBe(
-    "/en/billing",
-  );
-});
-
-test("groups the tools under Create, and billing under Account", () => {
+test("groups the video pages under Create, and the account pages under Account", () => {
   const nav = renderSidebar(false);
 
   const names = (group: string) =>
     within(within(nav).getByRole("list", { name: group }))
       .getAllByRole("link")
       .map((link) => link.textContent);
-  // Every photo effect, by its title, before the library.
-  const effects = photoEffectKinds.map((kind) => en.PhotoEffects.kinds[kind].title);
-  expect(names("Create")).toEqual(["Video generator", ...effects, "All videos"]);
-  expect(effects).toEqual([WINDOW_PEEPER]);
-  expect(names("Account")).toEqual(["Credits & billing"]);
-  expect(within(nav).queryByRole("link", { name: "Feedback" })).toBeNull();
-  expect(within(nav).queryByRole("link", { name: "Dashboard" })).toBeNull();
+  expect(names("Create")).toEqual(["New video", "My videos12"]);
+  expect(names("Account")).toEqual(["Billing", "Profile", "Feedback"]);
 });
 
-test("group labels are translated", () => {
-  renderWithIntl(
-    <CreditsProvider balance={10}>
-      <SidebarProvider>
-        <AppSidebar user={user} isAdmin={false} />
-      </SidebarProvider>
-    </CreditsProvider>,
-    "zh",
-  );
+test("the credits card shows the balance and what it buys, and opens the buy-credits dialog", () => {
+  renderSidebar(false);
 
-  expect(screen.getByRole("list", { name: "创作" })).toBeTruthy();
-  expect(screen.getByRole("list", { name: "账户" })).toBeTruthy();
-});
-
-test("Profile opens from the user menu, not from the navigation", () => {
-  const nav = renderSidebar(false);
-
-  expect(within(nav).queryByRole("link", { name: "Profile" })).toBeNull();
+  expect(screen.getByText("= 1 video")).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Buy credits" }));
+  expect(openBuy).toHaveBeenCalled();
 });

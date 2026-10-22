@@ -3,199 +3,161 @@
     "title": "WindowPeeper",
     "homeTitle": "Window Peeper AI 视频：一张照片做出 TikTok 窗户梗",
     "tagline": "一张照片生成 Window Peeper AI 视频",
-    "description": "一张照片做出 Window Peeper 窗户梗视频：夜里在亮灯的窗前吃东西被拍到，盯着镜头看很久，然后拉上窗帘。不用 CapCut 模板，可免费预览。"
+    "description": "一张照片做出 Window Peeper 窗户梗视频：夜里在亮灯的窗前吃东西被拍到，盯着镜头看很久，然后拉上窗帘。六个场景，不用 CapCut 模板。"
   },
   "Home": {
     "hero": {
-      "eyebrow": "TikTok 上的 Window Peeper 窗户梗",
+      "badge": "TikTok · Reels · Shorts 正在流行",
       "heading": "Window Peeper AI 视频",
-      "title": "一张照片，让你在窗口被“抓包”。",
-      "body": "上传一张照片。夜里你在亮灯的窗前吃到一半被拍到，盯着镜头，然后一把拉上窗帘。12 秒竖屏，可直接发 TikTok。"
-    },
-    "example": {
-      "eyebrow": "看看场景",
-      "title": "你的视频是这样的",
-      "video": "Window Peeper 场景：夜里镜头推近一扇亮灯的窗户，屋里的人吃到一半僵住，盯着镜头，然后拉上窗帘。",
-      "note": "你的视频用你照片里的人演这段故事：12 秒，竖屏 9:16，有配乐。每段视频的镜头会有细微不同。示例中的人物由 AI 生成。"
-    },
-    "strip": {
-      "label": "你会得到什么",
-      "items": {
-        "1": "一张照片",
-        "2": "12 秒",
-        "3": "原创音乐"
+      "title": "有人在看你吃东西。",
+      "body": "上传一张照片，得到这个梗的 14 秒短片，主角是你。",
+      "clip": {
+        "rec": "REC 02:14:07 AM",
+        "caption": "CAM 03 · 0:14 · 9:16",
+        "name": "用一张照片做的 Window Peeper 视频",
+        "description": "在这里生成的 Window Peeper 视频：夜里镜头推近一扇亮着灯的窗户，窗里的人吃到一半僵住，盯着镜头，然后拉上窗帘。画面中的人物由 AI 生成。",
+        "note": "这是在本站生成的真实视频，画面中的人物由 AI 生成。"
       }
+    },
+    "beforeAfter": {
+      "eyebrow": "前 / 后",
+      "title": "一张照片。你，在窗户里。",
+      "aside": "同一张脸，同样的发型。场景、灯光和那道目光来自这个梗。",
+      "photo": "你的照片",
+      "photoAlt": "制作示例所用的照片：一位女性，半身，正对镜头。",
+      "time": "约 3 分钟",
+      "beats": {
+        "bite": "咬一口",
+        "freeze": "僵住",
+        "curtain": "拉窗帘"
+      },
+      "beatAlt": "{beat}：示例视频截图。",
+      "label": "你的视频 · 14 秒 · 9:16 · 原创音乐",
+      "note": "示例由一张 AI 生成人物的照片制作。",
+      "short": "你的视频 · 14 秒"
+    },
+    "scenes": {
+      "eyebrow": "六扇窗",
+      "title": "选你的窗户",
+      "aside": "在这里选好，生成器里就准备好了。",
+      "rec": "02:14 AM · CAM 01",
+      "original": "原版",
+      "use": "用这个场景",
+      "useLabel": "使用“{scene}”场景",
+      "all": "查看全部场景",
+      "allNote": "提示词、技巧和示例"
     },
     "steps": {
       "eyebrow": "使用流程",
-      "title": "三步做出你的 Window Peeper 视频",
+      "title": "怎么做 Window Peeper 窗户梗",
+      "body": "不用剪辑 App，也不用写提示词。几分钟就好。",
       "items": {
         "1": {
-          "title": "上传照片",
-          "body": "选一张清晰的照片，照片里一个成年人，半身，正脸。视频里会保留你照片中的衣服。"
+          "title": "上传一张照片",
+          "body": "一个成年人，脸部清晰，半身，光线充足。你自己的照片，或你有权使用的照片。"
         },
         "2": {
-          "title": "我们拍出这段场景",
-          "body": "AI 把你照片里的人放到夜里亮灯的窗户后面：咬一口、盯镜头、拉窗帘，配上音乐。几分钟就好。"
+          "title": "选一扇窗",
+          "body": "六个场景：汉堡、面条、披萨、挥手、雨夜玻璃，或情侣晚餐。"
         },
         "3": {
           "title": "下载并发布",
-          "body": "下载 MP4，带上 #windowpeeper 发到 TikTok、Reels 或 Shorts。"
+          "body": "得到一段 14 秒、9:16、带原创音乐的 MP4。发到 TikTok、Reels 或 Shorts。"
         }
       }
     },
     "pricing": {
       "eyebrow": "价格",
       "title": "从一段视频开始。",
-      "body": "最小的积分包能做一段视频。一次付款，积分随时用。",
+      "body": "一次性付款，不是订阅。上传照片后再选积分包。",
+      "cta": "做我的视频",
       "more": "查看完整价格"
+    },
+    "shots": {
+      "eyebrow": "分镜表",
+      "title": "14 秒，五个节拍",
+      "aside": "和大家都在模仿的那段短片节拍一样。你的脸，你的窗户。",
+      "items": {
+        "1": {
+          "time": "00:00",
+          "title": "窗户",
+          "body": "黑暗街道上一扇亮着的窗。你在里面吃东西。"
+        },
+        "2": {
+          "time": "00:03",
+          "title": "咬一口",
+          "body": "你咬了一大口。暂时一切正常。"
+        },
+        "3": {
+          "time": "00:06",
+          "title": "僵住",
+          "body": "你停止咀嚼。外面有东西。"
+        },
+        "4": {
+          "time": "00:09",
+          "title": "对视",
+          "body": "你直直盯着镜头。不移开。"
+        },
+        "5": {
+          "time": "00:12",
+          "title": "拉窗帘",
+          "body": "你拉上窗帘。黑屏。"
+        }
+      }
     },
     "faq": {
       "eyebrow": "常见问题",
-      "title": "Window Peeper 视频常见问题",
-      "pack": "{price} {credits} 积分",
+      "title": "Window Peeper AI 视频常见问题",
       "items": {
         "1": {
-          "title": "Window Peeper 窗户梗是什么？",
-          "body": "这是 TikTok 上一种摆拍的搞笑短片。夜里镜头推近一栋黑楼里唯一亮灯的窗户。屋里的人正在吃东西，发现了镜头，突然僵住，盯着镜头看了很久，然后拉上窗帘。窗户里的人就是发视频的人自己。"
+          "title": "我的照片会怎么处理？",
+          "body": "照片只用来生成你的视频，上传约 24 小时后删除。我们从不用照片或视频训练 AI。你的视频保存在你的私人视频库里。"
         },
         "2": {
-          "title": "可以用哪些照片？",
-          "body": "你自己的照片，或已经同意的成年人的照片。不要上传儿童或公众人物的照片。照片里一个人，半身，正脸，光线充足。JPEG、PNG 或 WebP，不超过 {size} MB。"
+          "title": "付款前能先看到视频吗？",
+          "body": "不能。每段视频需要积分，一段 {price} 起。生成失败的话，积分会退回你的余额。"
         },
         "3": {
-          "title": "视频多长？要等多久？",
-          "body": "约 12 秒，有配乐。生成通常需要几分钟。保持页面打开，视频做好后会直接在页面上播放。"
+          "title": "视频生成失败怎么办？",
+          "body": "积分会自动退回你的余额，你可以再试一次，不需要联系我们。如果照片被拒绝，换一张试试；这不会扣积分。"
         },
         "4": {
-          "title": "多少钱？",
-          "body": "一段 Window Peeper 视频需要 {credits, plural, other {# 积分}}。画面更清晰的 1080p 高画质视频需要 {proCredits, plural, other {# 积分}}。积分按一次性套餐购买：{packs}。没有订阅，积分永不过期。视频生成失败会退还积分。每个账号还可以免费试做一次 5 秒带水印的预览。详见<pricing>价格页</pricing>。"
+          "title": "Window Peeper 窗户梗是什么？",
+          "body": "这是 TikTok 上一种摆拍的搞笑短片。夜里镜头慢慢靠近一栋黑楼里唯一亮灯的窗户。屋里的人正在吃东西，发现了镜头，突然僵住，盯着镜头看了太久，然后拉上窗帘。"
         },
         "5": {
-          "title": "Window Peeper 视频免费吗？",
-          "body": "预览免费。每个账号可以免费做一次 5 秒带水印的预览，付款前先看看你的照片放进场景的效果。完整的 12 秒无水印视频需要积分。"
+          "title": "有 Window Peeper 滤镜或 CapCut 模板吗？",
+          "body": "你不需要。滤镜拍不出夜里的楼，也推不近窗户；CapCut 模板只是把你的脸贴进别人的画面。本站在浏览器里为你照片中的人生成一段新视频，穿的是你自己的衣服。"
         },
         "6": {
-          "title": "需要 CapCut 模板吗？",
-          "body": "不需要。CapCut 的 Window Peeper 模板是在 App 里把你的脸贴到别人的视频上。本站用你照片里的人重新生成一段视频，穿的是你自己的衣服，在手机或电脑浏览器里就能做。你只需要下载 MP4。"
+          "title": "什么样的照片效果最好？",
+          "body": "一个成年人的照片，半身，正对镜头，光线充足，脸部没有遮挡：你自己的，或照片中成年人已同意使用的。不要儿童或公众人物。JPG、PNG 或 WebP，不超过 {size} MB。"
         },
         "7": {
-          "title": "TikTok 上有 Window Peeper 滤镜吗？",
-          "body": "没有能拍出整段场景的滤镜。相机滤镜只改变实时画面，拍不出夜里的楼、推近窗户、再拉上窗帘。所以大家做这个梗时用模板或 AI 视频。在这里上传一张照片，就能拿到完整的视频。"
-        },
-        "8": {
-          "title": "可以发到 TikTok、Reels 或 Shorts 吗？",
-          "body": "可以。首页生成的视频都是 9:16 竖屏 MP4，正好铺满手机屏幕。发布时带上 #windowpeeper，想用热门音效可以在 App 里添加。"
-        },
-        "9": {
-          "title": "视频有声音吗？",
-          "body": "有。每段视频都配有专门制作的原创音乐，不包含这个梗的热门音效。想用热门音效，发布到 TikTok、Reels 或 Shorts 时在 App 里添加，并调低原声。"
-        },
-        "10": {
-          "title": "需要注册账号吗？",
-          "body": "需要，生成视频时要登录。用邮箱链接或 Google 账号登录，不需要密码。登录时你选好的照片会保留。"
-        },
-        "11": {
-          "title": "我的照片安全吗？",
-          "body": "你的照片只用来生成你的视频，上传约 24 小时后删除。我们不会用照片或视频训练 AI 模型。你的视频保存在只有你能看到的视频库里，直到你删除账号。"
-        },
-        "12": {
-          "title": "怎么联系客服？",
-          "body": "发邮件到 <email></email>。我们会在 3 个工作日内回复。"
+          "title": "要等多久？",
+          "body": "标准版视频通常约 3 分钟做好，Pro 版约 6 分钟。保持页面打开，视频会在页面上播放；离开页面也会继续生成，做好后出现在你的视频库里。"
         }
       }
     },
     "cta": {
-      "eyebrow": "试一试",
-      "title": "轮到你在窗口出镜了。",
-      "body": "一张照片，一段 12 秒的 Window Peeper 视频，拿去就能发。",
-      "button": "做我的视频",
-      "points": {
-        "1": "一张照片，一段 12 秒视频",
-        "2": "失败退回积分",
-        "3": "中文、English、Español 和 Deutsch"
-      }
+      "rec": "REC 02:14:07 AM · CAM 03",
+      "title": "你的窗户开着。",
+      "body": "一张照片。14 秒。有人在看。",
+      "button": "做我的视频"
     },
-    "about": {
-      "eyebrow": "详细介绍",
-      "title": "关于 Window Peeper AI 视频",
-      "sections": {
-        "makes": {
-          "title": "生成器能做什么",
-          "text": {
-            "1": "这个 Window Peeper AI 生成器把一张照片变成这个梗的视频。你上传一个成年人的照片，AI 就拍出这个人夜里在亮灯窗户里的场景：镜头慢慢推近，他吃到一半僵住，盯着镜头，然后拉上窗帘。视频约 12 秒，竖屏 9:16 或横屏 16:9，配原创音乐，可下载为 MP4。",
-            "2": "你不用拍摄，也不用会剪辑。<generator>页面顶部的生成器</generator>包办一切：选照片，选标准或高画质，点生成。<howto>分步教程</howto>里有详细说明。"
-          }
-        },
-        "template": {
-          "title": "全新生成的视频，不是 CapCut 模板",
-          "text": {
-            "1": "大多数 Window Peeper 视频用 CapCut 模板做：一段剪好的视频，留一个位置放你的脸。身体、桌子和房间都来自别人的素材，所以很多视频看起来都一样。",
-            "2": "这个生成器围绕你照片里的人拍一段新场景。你的脸、头发和衣服一起动。所以照片很重要：一个人、正脸、光线充足，生成的人最像你。"
-          }
-        },
-        "trend": {
-          "title": "Window Peeper 窗户梗是什么",
-          "text": {
-            "1": "Window Peeper 是一个简短的搞笑梗。从街对面看去，黑楼里只有一扇窗亮着。屋里有人独自吃东西。他发现了镜头，停下咀嚼，回瞪了很久，然后起身拉上窗帘。",
-            "2": "笑点在那一下对视。没有人真的在偷看：窗户里的人就是拍视频的人，视频本身也看得出来。请保持这种玩法，只拍你自己或知情的朋友。"
-          }
-        },
-        "filter": {
-          "title": "滤镜、特效还是 AI 视频？",
-          "text": {
-            "1": "很多人搜 Window Peeper 滤镜或特效，但相机滤镜只能改变实时画面，拍不出夜里的楼、推近一扇窗、再准时拉上窗帘。",
-            "2": "你看到的视频要么是 CapCut 模板，要么是像本站这样的 AI 视频。在<back>生成器</back>里上传一张照片，就能拿到包含完整效果的视频文件。"
-          }
-        },
-        "music": {
-          "title": "配乐和热门音效",
-          "text": {
-            "1": "在 TikTok 上，这个梗通常配热门音效发布。本站的每段视频都配有自己的原创音乐，所以你可以发到任何平台，不用借用别人的音乐。",
-            "2": "想用热门音效的话，发布时在 App 里添加。多数短视频 App 都可以调低或关闭原声，再从音乐库选一个音效。"
-          }
-        },
-        "social": {
-          "title": "发到 TikTok、Reels 和 Shorts",
-          "text": {
-            "1": "首页生成的视频是 9:16，和手机屏幕一样，发到 TikTok、Instagram Reels 和 YouTube Shorts 都能铺满屏幕，不会被裁切。",
-            "2": "你也可以把 MP4 直接发到群聊，或点视频下方的“分享”打开手机的分享菜单。"
-          }
-        },
-        "quality": {
-          "title": "标准还是高画质",
-          "text": {
-            "1": "两种画质生成同样的 Window Peeper 场景，都有配乐。标准视频需要 {credits} 积分，720p。高画质视频需要 {proCredits} 积分，1080p，在大屏幕上更清晰。",
-            "2": "积分按一次性套餐购买，没有订阅，永不过期。视频生成失败会自动退还积分。所有套餐见<pricing>价格页</pricing>。"
-          }
-        }
-      }
+    "sticky": {
+      "title": "你的窗户视频",
+      "body": "{price} 起 · 14 秒",
+      "button": "做我的视频"
     }
   },
   "HomeTryout": {
-    "title": "制作你的 Window Peeper 视频",
-    "body": "一张照片就够，整段 12 秒的场景由我们来做。",
     "photo": {
-      "choose": "选择照片",
-      "hint": "点击选择，或把照片拖到这里",
-      "change": "更换照片"
-    },
-    "quality": {
-      "legend": "画质",
-      "standard": {
-        "label": "标准",
-        "description": "720p，做好就能分享。"
-      },
-      "pro": {
-        "label": "高画质",
-        "description": "1080p，画面更清晰。"
-      },
-      "credits": "{count} 积分"
-    },
-    "consentNote": "点击生成即表示照片是你本人的，或照片中的成年人已同意。",
-    "preview": {
-      "button": "免费试做 5 秒预览",
-      "note": "5 秒，带水印，每个账号一次。"
+      "step": "添加照片",
+      "choose": "拖入照片，或点击选择",
+      "hint": "一个成年人，露脸，半身 · JPG、PNG、WebP，不超过 {size} MB",
+      "change": "点击更换照片",
+      "size": "照片已就绪 · {size} MB"
     },
     "signIn": {
       "title": "登录后生成视频",
@@ -204,16 +166,13 @@
     "close": "关闭",
     "credits": "这段视频需要 {credits} 积分，你的积分不足。",
     "packs": {
-      "legend": "积分包",
       "body": "购买积分包后，付款一完成视频就开始生成。",
       "pay": "支付 {price} 并生成视频",
-      "paying": "正在打开支付页面…",
-      "note": "安全支付。一次性付款，不是订阅。积分永不过期。",
       "canceled": "已取消支付，未扣款。"
     },
     "paid": {
       "waiting": "已收到付款。积分到账后，视频开始生成。",
-      "late": "你的付款正在处理，积分很快会到账。请按“生成”重试。"
+      "late": "你的付款正在处理，积分很快会到账。请按“做我的视频”重试。"
     },
     "pending": {
       "title": "视频正在生成",
@@ -231,8 +190,14 @@
     "failed": "这段视频没有生成成功，{credits} 积分已退回。",
     "tryAgain": "重试",
     "another": "再做一段",
-    "previewUsed": "你已经用过免费预览了。请选择标准或高画质，生成完整视频。",
-    "previewNote": "这是你的免费预览：5 秒，带水印。想要 12 秒、无水印的完整视频，请选择标准或高画质，再生成一次。"
+    "privacy": {
+      "deleted": "照片 24 小时后删除",
+      "training": "从不用于训练 AI"
+    },
+    "scene": "选择场景",
+    "submit": "做我的视频",
+    "finePrint": "一段视频 {price} 起 · 不用 App，不用 CapCut · 用邮箱或 Google 登录",
+    "label": "制作你的 Window Peeper 视频"
   },
   "LocaleSwitcher": {
     "label": "语言",
@@ -240,9 +205,12 @@
   },
   "Nav": {
     "label": "主导航",
+    "scenes": "场景",
     "howItWorks": "使用流程",
     "pricing": "价格",
-    "faq": "常见问题"
+    "cta": "做视频",
+    "menu": "菜单",
+    "close": "关闭菜单"
   },
   "NotFound": {
     "title": "页面不存在",
@@ -314,53 +282,55 @@
   },
   "Pricing": {
     "nav": "价格",
-    "title": "Window Peeper 视频，{price} 起",
     "metaTitle": "Window Peeper 视频价格",
-    "metaDescription": "Window Peeper 视频 {price} 起：先免费试做 5 秒预览，再一次性付款生成完整的 12 秒视频。没有订阅，积分永不过期。",
-    "eyebrow": "价格表",
-    "description": "先免费试做 5 秒预览。完整的 12 秒视频 {price} 起。一次性付费：不是订阅，积分永不过期。",
+    "metaDescription": "Window Peeper 视频 {price} 起：每个积分包一次性付款，没有订阅。积分永不过期，视频生成失败会退回积分。",
+    "eyebrow": "价格",
+    "title": "做多少视频，付多少钱",
+    "description": "一段标准版视频需要 {standard} 积分，Pro 版需要 {pro} 积分。积分永不过期，视频生成失败会退回积分。",
     "packsTitle": "选择套餐",
-    "spend": "积分两种画质通用：标准版每个视频 {standard} 积分，Pro 版 {pro} 积分。",
-    "includesLabel": "每个套餐都包含",
-    "includes": {
-      "1": "安全支付",
-      "2": "积分几分钟内到账",
-      "3": "未使用可在 14 天内退款",
-      "4": "视频失败退回积分"
+    "subs": {
+      "small": "试一次",
+      "medium": "适合和朋友一起玩",
+      "large": "适合经常发视频的创作者"
     },
-    "faqTitle": "付款常见问题",
-    "faq": {
-      "preview": {
-        "title": "可以先免费试试吗？",
-        "body": "可以。每个账号有一次免费预览：5 秒，带水印。付费前就能看到你的照片放进场景里的效果。"
+    "features": {
+      "one": "1 段标准版视频",
+      "scenes": "6 个场景任选",
+      "download": "MP4 下载，无水印",
+      "videos": "{videos} 段标准版或 {pro} 段 Pro 版视频",
+      "perVideo": "每段 {price}，省 {percent}%",
+      "expire": "积分永不过期"
+    },
+    "buy": "{videos, plural, other {购买 # 段视频}}",
+    "cost": {
+      "title": "一段视频的价格",
+      "quality": "画质",
+      "resolution": "分辨率",
+      "ready": "生成用时",
+      "credits": "积分",
+      "standard": {
+        "name": "标准版",
+        "resolution": "720p · 9:16",
+        "time": "约 3 分钟"
       },
-      "quality": {
-        "title": "Pro 版和标准版有什么不同？",
-        "body": "两者生成同一段带音乐的 12 秒场景。标准版 720p，{standard} 积分。Pro 版 1080p，大屏上更清晰，{pro} 积分。"
+      "pro": {
+        "name": "Pro 版",
+        "resolution": "1080p · 9:16",
+        "time": "约 6 分钟"
+      }
+    },
+    "trust": {
+      "failed": {
+        "title": "生成失败？退回积分",
+        "body": "视频做不出来时，积分会退回你的余额。"
       },
       "expire": {
-        "title": "积分会过期吗？",
-        "body": "不会。积分永不过期，随时都能用。"
+        "title": "积分永不过期",
+        "body": "积分包里的积分一直保留，直到你用完。"
       },
-      "monthly": {
-        "title": "会每个月扣费吗？",
-        "body": "不会。每个套餐都是一次性付费，没有需要取消的订阅；想做更多视频时再买一个套餐。"
-      },
-      "failed": {
-        "title": "视频生成失败怎么办？",
-        "body": "积分会自动退回你的余额，不需要联系我们。"
-      },
-      "refund": {
-        "title": "可以退款吗？",
-        "body": "可以。购买后 14 天内，只要这笔购买的积分一个都没用，就能退款。详情和申请方式见<refund>退款政策</refund>和<terms>服务条款</terms>。"
-      },
-      "watermark": {
-        "title": "视频有水印吗？",
-        "body": "只有免费预览有水印。完整的标准版和 Pro 版视频都没有水印。"
-      },
-      "sound": {
-        "title": "视频有声音吗？",
-        "body": "有。每段视频都配有原创音乐。如果想用热门音乐，发布时在 App 里添加即可。"
+      "secure": {
+        "title": "安全支付",
+        "body": "通过安全的支付页面用银行卡付款。我们看不到你的卡号。"
       }
     }
   },
@@ -383,7 +353,7 @@
           "before": {
             "title": "开始之前",
             "text": {
-              "1": "你需要一张照片，一个用于登录的邮箱或 Google 账号，以及够生成一段视频的积分，或者你的一次免费预览。积分套餐是一次性付款，不是订阅，积分永不过期。"
+              "1": "你需要一张照片，一个用于登录的邮箱或 Google 账号，以及够生成一段视频的积分。积分套餐是一次性付款，不是订阅，积分永不过期。"
             }
           },
           "steps": {
@@ -395,15 +365,15 @@
               },
               "2": {
                 "title": "确认可以使用",
-                "body": "点击按钮即表示照片是你本人的，或照片中的成年人已同意。按钮下方有提示。"
+                "body": "勾选场景下方的确认框，表示照片是你本人的，或照片中的成年人已同意。不勾选，按钮无法点击。"
               },
               "3": {
                 "title": "选择标准或高画质",
-                "body": "标准需要 {credits} 积分，720p。高画质需要 {proCredits} 积分，1080p。两者生成同样的场景，约 12 秒，有配乐。想先看看照片放进场景的效果，可以免费试做 5 秒预览。"
+                "body": "标准版需要 {credits} 积分，720p。Pro 版需要 {proCredits} 积分，1080p。两者都生成你选的场景，约 14 秒，有配乐。"
               },
               "4": {
                 "title": "登录",
-                "body": "点击生成。如果还没登录，在弹出的窗口里用邮箱链接或 Google 登录。登录时你选好的照片会保留。"
+                "body": "点击“做我的视频”。如果还没登录，在弹出的窗口里用邮箱链接或 Google 登录。登录时你选好的照片会保留。"
               },
               "5": {
                 "title": "积分不够时付款",
@@ -444,14 +414,20 @@
     }
   },
   "Footer": {
-    "blurb": "一张照片生成 Window Peeper 窗户梗视频。",
+    "blurb": "独立工具。与 TikTok、CapCut 及原始短片的作者无关。",
     "product": "产品",
-    "support": "支持",
+    "makeVideo": "做视频",
+    "scenes": "场景",
+    "learn": "了解",
+    "trend": "Window Peeper 窗户梗",
+    "howTo": "怎么做",
+    "filter": "有滤镜吗？",
     "legal": "法律",
-    "guides": "指南",
-    "report": "举报",
-    "reportSubject": "内容举报",
-    "rights": "© {name}，保留所有权利。"
+    "acceptableUse": "可接受使用政策",
+    "rights": "© <year></year> {name}",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "refunds": "退款政策"
   },
   "Layout": {
     "skip": "跳到主要内容"
@@ -466,12 +442,9 @@
     },
     "openMenu": "打开菜单",
     "signOut": "退出登录",
-    "billing": "积分与账单",
+    "billing": "账单",
     "admin": "管理",
     "adminUsers": "用户",
-    "videos": "视频生成",
-    "collapse": "收起侧边栏",
-    "expand": "展开侧边栏",
     "account": "账户菜单",
     "creditsLeft": "剩余积分",
     "profile": "个人资料",
@@ -480,12 +453,18 @@
     "pageOf": "第 {page} 页，共 {pages} 页",
     "previous": "上一页",
     "next": "下一页",
-    "videoLibrary": "全部视频",
     "adminOrders": "订单",
     "examples": "示例",
     "adminMetrics": "运营指标",
     "feedback": "意见反馈",
-    "adminFeedback": "用户反馈"
+    "adminFeedback": "用户反馈",
+    "newVideo": "新视频",
+    "myVideos": "我的视频",
+    "credits": "积分",
+    "creditsBuy": "= {videos, plural, other {# 段视频}}",
+    "buyCredits": "购买积分",
+    "balanceShort": "{count} 积分",
+    "balancePill": "{count, plural, other {# 积分}}。购买积分"
   },
   "Billing": {
     "title": "积分与账单",
@@ -543,10 +522,31 @@
     "perVideo": "每个视频 {price}",
     "bestValue": "最划算",
     "buyFor": "{price} 购买",
-    "perks": {
-      "1": "积分永不过期",
-      "2": "完整的 12 秒场景，带音乐"
-    }
+    "packName": "{videos, plural, =1 {单段 · 1 段视频} other {# 段装 · # 段视频}}",
+    "packShort": "{videos, plural, =1 {单段} other {# 段装}}",
+    "packMeta": "{credits} · 每段 {price}",
+    "save": "省 {percent}%",
+    "have": "你有 {credits} · {videos, plural, =0 {不够做一段标准版视频} other {够做 # 段标准版视频}}",
+    "after": "购买后余额",
+    "afterValue": "{credits} · {videos, plural, other {# 段视频}}",
+    "pay": "支付 {price}",
+    "paying": "正在打开支付页面…",
+    "secure": "安全支付。一次性付款，不是订阅。",
+    "close": "关闭",
+    "benefits": {
+      "watermark": "无水印",
+      "post": "下载后随处发布",
+      "expire": "积分永不过期",
+      "failed": "生成失败不扣积分"
+    },
+    "benefitsShort": {
+      "watermark": "无水印",
+      "post": "随处发布",
+      "expire": "永不过期",
+      "failed": "失败不扣积分"
+    },
+    "videosLabel": "{videos, plural, other {段视频}}",
+    "perVideoSave": "每段 {price} · 省 {percent}%"
   },
   "Admin": {
     "title": "管理",
@@ -761,13 +761,51 @@
     "kinds": {
       "windowpeeper": {
         "title": "Window Peeper",
-        "description": "上传一张照片，生成一段 12 秒的视频：夜里镜头慢慢推近你亮着灯的窗户，你吃到一半突然僵住，盯着镜头，然后拉上窗帘。配原创音乐。",
+        "description": "上传一张照片，生成一段 14 秒的视频：夜里镜头慢慢推近你亮着灯的窗户，你吃到一半突然僵住，盯着镜头，然后拉上窗帘。配原创音乐。",
         "left": {
           "photo": "你的照片",
           "preview": "你的照片预览"
         },
         "photoHint": "JPEG、PNG 或 WebP，不超过 {size} MB。照片里一个人，半身，正脸，光线充足。视频里会保留你照片中的衣服。",
         "disabled": "Window Peeper 视频尚未配置。"
+      }
+    },
+    "scenes": {
+      "burger": {
+        "name": "深夜汉堡",
+        "short": "汉堡",
+        "time": "02:14 AM",
+        "note": "大家都在模仿的那段：咬一口、僵住、对视、拉窗帘。"
+      },
+      "noodles": {
+        "name": "午夜面条",
+        "short": "面条",
+        "time": "01:47 AM",
+        "note": "大口吸面，然后对视，面条还挂在嘴边。"
+      },
+      "pizza": {
+        "name": "一角披萨",
+        "short": "披萨",
+        "time": "11:58 PM",
+        "note": "拉丝芝士、僵住、对视、拉窗帘。"
+      },
+      "wave": {
+        "name": "被抓包后挥手",
+        "short": "挥手",
+        "time": "03:02 AM",
+        "note": "不拉窗帘：长时间对视，然后礼貌地挥挥手。"
+      },
+      "glass": {
+        "name": "雨夜玻璃",
+        "short": "玻璃",
+        "time": "12:31 AM",
+        "note": "雨打在窗上，目光慢慢凑近。"
+      },
+      "couple": {
+        "name": "情侣晚餐",
+        "short": "情侣",
+        "time": "10:40 PM",
+        "note": "两人晚餐。只有你发现了镜头。"
       }
     }
   },
@@ -788,5 +826,66 @@
     "removeImage": "移除 {name}",
     "remove": "移除",
     "storageDisabled": "图片上传暂不可用。请稍后重试，或仅提交文本。"
+  },
+  "Generator": {
+    "crumb": "创作 / 新视频",
+    "title": "制作 Window Peeper 视频",
+    "rendering": "{count, plural, other {# 段视频生成中}}",
+    "photo": {
+      "title": "你的照片",
+      "hint": "1 张照片 · 露脸 · 半身",
+      "choose": "拖入照片，或点击选择",
+      "ready": "照片已就绪 · {size} MB",
+      "replace": "更换"
+    },
+    "scene": {
+      "title": "场景",
+      "hint": "{count} 扇窗",
+      "original": "原版"
+    },
+    "quality": {
+      "title": "画质",
+      "standard": {
+        "name": "标准版",
+        "description": "720p · 约 3 分钟做好",
+        "summary": "标准版 720p"
+      },
+      "pro": {
+        "name": "Pro 版",
+        "description": "1080p · 脸部更清晰 · 约 6 分钟",
+        "summary": "Pro 版 1080p"
+      }
+    },
+    "cr": "{count} 积分",
+    "summary": {
+      "label": "预览",
+      "scene": "场景 {number}",
+      "caption": "{scene} · 0:{seconds} · 9:16",
+      "length": "时长",
+      "lengthValue": "{seconds} 秒",
+      "format": "格式",
+      "formatValue": "MP4 · 9:16 · 原创音乐",
+      "quality": "画质",
+      "cost": "费用",
+      "costValue": "{count, plural, other {# 积分}}",
+      "after": "生成后余额",
+      "note": "视频生成失败时，{count, plural, other {# 积分}}会退回。"
+    },
+    "submit": "做我的视频 · {count} 积分",
+    "buy": "购买积分",
+    "bar": {
+      "line": "{scene} · {quality}",
+      "cost": "{count} 积分 · 之后剩 {left}"
+    },
+    "recent": {
+      "title": "最近的视频",
+      "all": "全部视频",
+      "empty": "还没有视频。你的第一段视频会显示在这里。",
+      "rendering": "生成中",
+      "ready": "已完成 · {time}",
+      "failed": "失败 · 已退回 {count, plural, other {# 积分}}",
+      "download": "下载 MP4",
+      "retry": "再试一次"
+    }
   }
 }

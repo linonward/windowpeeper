@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import { cleanup, fireEvent, screen, waitFor, within } from "@testing-library/react";
+import { act, cleanup, fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { renderWithIntl } from "@/test/intl";
 
 const useSession = vi.fn();
@@ -18,6 +18,8 @@ vi.mock("@/i18n/navigation", () => ({
 }));
 
 const { WindowPeeperTryout } = await import("./window-peeper-tryout");
+const { SCENE_EVENT } = await import("./scene-event");
+const zh = (await import("../../../messages/zh.json")).default;
 
 const fetchMock = vi.fn();
 const signedIn = { data: { user: { id: "u1" } }, isPending: false };
@@ -25,15 +27,16 @@ const signedOut = { data: null, isPending: false };
 const props = {
   credits: 10,
   proCredits: 20,
-  maxPickBytes: 5 * 1024 * 1024,
+  maxPickBytes: 10 * 1024 * 1024,
   maxUploadBytes: 4 * 1024 * 1024,
   imageLimits: { minSide: 240, maxSide: 8000, maxRatio: 8 },
   enabled: true,
   packs: [
-    { id: "small", credits: 10, amount: 499, currency: "usd" },
-    { id: "medium", credits: 20, amount: 799, currency: "usd" },
-    { id: "large", credits: 30, amount: 1199, currency: "usd" },
+    { id: "small", credits: 10, amount: 990, currency: "usd" },
+    { id: "medium", credits: 50, amount: 2990, currency: "usd" },
+    { id: "large", credits: 250, amount: 9990, currency: "usd" },
   ],
+  featured: "medium",
 };
 const reply = (status: number, body: object) => ({ ok: status < 300, status, json: async () => body });
 const pending = {
@@ -50,10 +53,9 @@ const pending = {
   imageUrl: "https://storage.test/v1.jpg",
   posterUrl: null,
 };
-const CONSENT_NOTE = "By making a video, you confirm the photo is yours, or the adult in it agreed.";
-const PREVIEW = "Try a free 5-second preview";
-const GENERATE = "Generate (10 credits)";
-const GENERATE_PRO = "Generate (20 credits)";
+const CONSENT = "I confirm this is my photo, or I have permission from the adult in it.";
+const GENERATE = "Make my video";
+const PAY = "Pay $29.90 and make my video";
 
 beforeEach(() => {
   vi.stubGlobal("fetch", fetchMock);
@@ -74,94 +76,66 @@ afterEach(() => {
   window.history.replaceState(null, "", "/");
 });
 
+const photoInput = () => screen.getByLabelText("Add your photo", { selector: "input" });
+
 // jsdom can't decode images, so the photo is kept as picked; the form takes
-// it once the (async) shrink step is done.
-async function pick() {
+// it once the (async) shrink step is done. Then it ticks the consent box,
+// unless `agree` is false.
+async function pick({ agree = true } = {}) {
   const file = new File([new Uint8Array(10)], "me.jpg", { type: "image/jpeg" });
-  fireEvent.change(screen.getByLabelText("Your photo"), { target: { files: [file] } });
+  fireEvent.change(photoInput(), { target: { files: [file] } });
   await screen.findByRole("img", { name: "Your photo preview" });
+  const consent = screen.getByRole("checkbox", { name: CONSENT }) as HTMLInputElement;
+  if (agree && !consent.checked) fireEvent.click(consent);
   return file;
 }
 
-// No box to tick: the note under the button says what pressing it confirms,
-// and the request carries the consent the server records.
-test("generating needs only a photo; the button's note says it confirms consent", async () => {
+// The server refuses a video without consent, and records when it was given.
+test("making a video needs a photo and the consent box", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(200, { video: pending }));
   renderWithIntl(<WindowPeeperTryout {...props} />);
   const button = screen.getByRole("button", { name: GENERATE });
 
   expect(button.hasAttribute("disabled")).toBe(true);
-  expect(screen.queryByRole("checkbox")).toBeNull();
-  expect(screen.getByText(CONSENT_NOTE)).toBeDefined();
-  await pick();
+  await pick({ agree: false });
   expect(screen.getByRole("img", { name: "Your photo preview" }).getAttribute("src")).toBe("blob:preview");
+  expect(button.hasAttribute("disabled")).toBe(true);
+  fireEvent.click(screen.getByRole("checkbox", { name: CONSENT }));
   expect(button.hasAttribute("disabled")).toBe(false);
 
   fireEvent.click(button);
   await screen.findByRole("status");
-  expect((fetchMock.mock.calls[0][1].body as FormData).get("consent")).toBe("yes");
+  const form = fetchMock.mock.calls[0][1].body as FormData;
+  expect(form.get("consent")).toBe("yes");
+  expect(form.get("quality")).toBe("standard");
 });
 
-test("standard is the default; Pro costs more and the button says so", () => {
+test("offers the six scenes, the original picked, and sends the one picked", async () => {
   useSession.mockReturnValue(signedIn);
+  fetchMock.mockResolvedValueOnce(reply(200, { video: pending }));
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
-  const group = screen.getByRole("radiogroup", { name: "Quality" });
-  expect(within(group).getAllByRole("radio")).toHaveLength(2);
-  const standard = within(group).getByRole("radio", { name: /^Standard/ }) as HTMLInputElement;
-  const pro = within(group).getByRole("radio", { name: /^Pro/ }) as HTMLInputElement;
-  expect(standard.checked).toBe(true);
-  expect(standard.labels?.[0].textContent).toContain("10 credits");
-  expect(pro.labels?.[0].textContent).toContain("20 credits");
-  expect(pro.labels?.[0].textContent).toContain("1080p, a sharper picture.");
-
-  fireEvent.click(pro);
-
-  expect(screen.getByRole("button", { name: GENERATE_PRO })).toBeDefined();
-  expect(screen.queryByRole("button", { name: GENERATE })).toBeNull();
-});
-
-test("a Pro video sends quality pro, and without credits names the Pro price", async () => {
-  useSession.mockReturnValue(signedIn);
-  fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
+  const scenes = within(screen.getByRole("radiogroup", { name: "Pick a scene" })).getAllByRole("radio") as HTMLInputElement[];
+  expect(scenes.map((radio) => radio.value)).toEqual(["burger", "noodles", "pizza", "wave", "glass", "couple"]);
+  expect(scenes[0].checked).toBe(true);
   await pick();
-  fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
-  fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
-
-  const alert = await screen.findByRole("alert");
-  expect(alert.textContent).toContain("This video costs 20 credits, and you don't have enough.");
-  expect((fetchMock.mock.calls[0][1].body as FormData).get("quality")).toBe("pro");
-});
-
-test("a signed-out visitor's Pro choice is saved and sent after sign-in", async () => {
-  useSession.mockReturnValue(signedOut);
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  const photo = await pick();
-  fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
-  fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
-
-  await screen.findByRole("dialog", { name: "Sign in to make your video" });
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
-    photos: [photo],
-    fields: { consent: "yes", quality: "pro", ratio: "9:16" },
-  });
-  cleanup();
-
-  useSession.mockReturnValue(signedIn);
-  loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes", quality: "pro", ratio: "16:9" } });
-  fetchMock.mockResolvedValue(reply(200, { video: { ...pending, credits: 20 } }));
-  window.history.replaceState(null, "", "/en?try=1");
-  renderWithIntl(<WindowPeeperTryout {...props} />);
+  fireEvent.click(screen.getByRole("radio", { name: "Pizza" }));
+  fireEvent.click(screen.getByRole("button", { name: GENERATE }));
 
   await screen.findByRole("status");
-  const [, init] = fetchMock.mock.calls.find(([url]) => url === "/api/videos/windowpeeper")!;
-  expect((init.body as FormData).get("quality")).toBe("pro");
-  // The form hides while the video renders, keeping the choice.
-  expect((screen.getByRole("radio", { name: /^Pro/, hidden: true }) as HTMLInputElement).checked).toBe(true);
+  expect((fetchMock.mock.calls[0][1].body as FormData).get("scene")).toBe("pizza");
+});
+
+test("\"Use this scene\" on the page picks that scene", () => {
+  useSession.mockReturnValue(signedIn);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
+
+  act(() => {
+    window.dispatchEvent(new CustomEvent(SCENE_EVENT, { detail: "couple" }));
+  });
+
+  expect((screen.getByRole("radio", { name: "Couple" }) as HTMLInputElement).checked).toBe(true);
 });
 
 // Vertical fits TikTok, Reels and Shorts, where the meme lives, so there is
@@ -182,74 +156,15 @@ test("every video is vertical 9:16, with no format to pick, and plays in a tall 
   expect(player.className).toContain("aspect-[9/16]");
 });
 
-// The free preview is a quiet link under the one button, not a third choice.
-test("offers one free preview under the button, never free credits", async () => {
-  useSession.mockReturnValue(signedOut);
-  const { container } = renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  const preview = screen.getByRole("button", { name: PREVIEW });
-  expect(preview.hasAttribute("disabled")).toBe(true);
-  expect(screen.getByText(/with a watermark, once per account/)).toBeDefined();
-  expect(container.textContent).not.toMatch(/free credits/i);
-  await pick();
-  expect(preview.hasAttribute("disabled")).toBe(false);
-});
-
-test("a free preview sends quality preview and, once ready, offers the full video", async () => {
-  useSession.mockReturnValue(signedIn);
-  fetchMock.mockResolvedValueOnce(
-    reply(200, {
-      video: { ...pending, preview: true, credits: 0, duration: 5, status: "succeeded", url: "https://storage.test/v1.mp4" },
-    }),
-  );
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  await pick();
-  fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
-
-  expect(await screen.findByText(/^This is your free preview/)).toBeDefined();
-  const form = fetchMock.mock.calls[0][1].body as FormData;
-  expect(form.get("quality")).toBe("preview");
-  expect(form.get("consent")).toBe("yes");
-});
-
-test("a signed-out visitor's free preview is saved and signs in", async () => {
-  useSession.mockReturnValue(signedOut);
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  const photo = await pick();
-  fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
-
-  await screen.findByRole("dialog", { name: "Sign in to make your video" });
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
-    photos: [photo],
-    fields: { consent: "yes", quality: "preview", ratio: "9:16" },
-  });
-});
-
-test("a used free preview says so and leaves Standard picked", async () => {
-  useSession.mockReturnValue(signedIn);
-  fetchMock.mockResolvedValueOnce(reply(409, { error: "PREVIEW_USED" }));
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  await pick();
-  fireEvent.click(screen.getByRole("button", { name: PREVIEW }));
-
-  const alert = await screen.findByRole("alert");
-  expect(alert.textContent).toContain("You've already used your free preview.");
-  expect((screen.getByRole("radio", { name: /^Standard/ }) as HTMLInputElement).checked).toBe(true);
-  expect(screen.getByRole("button", { name: GENERATE })).toBeDefined();
-});
-
-test("a photo over the 5 MB pick limit is dropped with a clear error", () => {
+test("a photo over the 10 MB pick limit is dropped with a clear error", () => {
   useSession.mockReturnValue(signedIn);
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
-  expect(screen.getByText(/^JPEG, PNG or WebP, up to 5 MB\./)).toBeDefined();
-  const big = new File([new Uint8Array(5 * 1024 * 1024 + 1)], "big.jpg", { type: "image/jpeg" });
-  fireEvent.change(screen.getByLabelText("Your photo"), { target: { files: [big] } });
+  expect(screen.getByText("One adult, face visible, waist up · JPG, PNG, WebP up to 10 MB")).toBeDefined();
+  const big = new File([new Uint8Array(10 * 1024 * 1024 + 1)], "big.jpg", { type: "image/jpeg" });
+  fireEvent.change(photoInput(), { target: { files: [big] } });
 
-  expect(screen.getByRole("alert").textContent).toBe("Use a JPEG, PNG or WebP photo up to 5 MB.");
+  expect(screen.getByRole("alert").textContent).toBe("Use a JPEG, PNG or WebP photo up to 10 MB.");
   expect(screen.queryByRole("img", { name: "Your photo preview" })).toBeNull();
 });
 
@@ -260,7 +175,7 @@ test("a photo still over the upload limit after shrinking is dropped", async () 
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const big = new File([new Uint8Array(4.5 * 1024 * 1024)], "big.jpg", { type: "image/jpeg" });
-  fireEvent.change(screen.getByLabelText("Your photo"), { target: { files: [big] } });
+  fireEvent.change(photoInput(), { target: { files: [big] } });
 
   expect((await screen.findByRole("alert")).textContent).toBe(
     "This photo is too large to upload, even made smaller. Try another photo.",
@@ -268,32 +183,33 @@ test("a photo still over the upload limit after shrinking is dropped", async () 
   expect(screen.queryByRole("img", { name: "Your photo preview" })).toBeNull();
 });
 
-// The file input is hidden behind a dashed zone that names it, so the
-// browser's "Choose File / No file chosen" never shows.
-test("the photo zone asks for a photo, then shows it with its name and a way to change it", async () => {
+// The file input is hidden behind a zone that names it, so the browser's
+// "Choose File / No file chosen" never shows.
+test("the photo zone asks for a photo, then shows it with its name and size", async () => {
   useSession.mockReturnValue(signedIn);
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
-  const input = screen.getByLabelText("Your photo");
+  const input = photoInput();
   expect(input.className).toContain("sr-only");
-  const zone = screen.getByText("Choose a photo").closest("label") as HTMLElement;
+  const zone = screen.getByText("Drop a photo or click to choose").closest("label") as HTMLElement;
   expect(zone.getAttribute("for")).toBe(input.id);
-  expect(zone.textContent).toContain("Click to browse, or drop it here");
+  expect(screen.getByText("Photo deleted after 24 hours")).toBeDefined();
+  expect(screen.getByText("Never used to train AI")).toBeDefined();
 
   await pick();
   expect(zone.textContent).toContain("me.jpg");
-  expect(zone.textContent).toContain("Change photo");
+  expect(zone.textContent).toContain("Photo ready · 0.0 MB");
   expect(within(zone).getByRole("img", { name: "Your photo preview" })).toBeDefined();
 });
 
 test("dropping an image on the zone picks it; another file type shows the error", async () => {
   useSession.mockReturnValue(signedIn);
   renderWithIntl(<WindowPeeperTryout {...props} />);
-  const zone = screen.getByText("Choose a photo").closest("label") as HTMLElement;
+  const zone = screen.getByText("Drop a photo or click to choose").closest("label") as HTMLElement;
 
   const pdf = new File([new Uint8Array(10)], "cv.pdf", { type: "application/pdf" });
   fireEvent.drop(zone, { dataTransfer: { files: [pdf] } });
-  expect(screen.getByRole("alert").textContent).toBe("Use a JPEG, PNG or WebP photo up to 5 MB.");
+  expect(screen.getByRole("alert").textContent).toBe("Use a JPEG, PNG or WebP photo up to 10 MB.");
   expect(screen.queryByRole("img", { name: "Your photo preview" })).toBeNull();
 
   const photo = new File([new Uint8Array(10)], "me.png", { type: "image/png" });
@@ -314,7 +230,7 @@ test("a signed-out visitor keeps the photo and consent, and signs in on this pag
   const dialog = await screen.findByRole("dialog", { name: "Sign in to make your video" });
   expect(dialog.textContent).toContain("Your photo stays picked");
   expect(within(dialog).getByRole("button", { name: "Continue with Google" })).toBeDefined();
-  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", { photos: [photo], fields: { consent: "yes", quality: "standard", ratio: "9:16" } });
+  expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", { photos: [photo], fields: { consent: "yes", scene: "burger", ratio: "9:16" } });
   expect(fetchMock).not.toHaveBeenCalled();
 });
 
@@ -329,7 +245,7 @@ test("a session that ended answers 401, which also opens sign-in with the draft 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
   expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
-    fields: { consent: "yes", quality: "standard", ratio: "9:16" },
+    fields: { consent: "yes", scene: "burger", ratio: "9:16" },
   });
 });
 
@@ -353,20 +269,21 @@ test("back from sign-in, the saved photo and consent return and go out once", as
   expect(window.location.search).toBe("");
 });
 
-// Drafts saved before the box went away may lack consent: they come back,
-// and wait for the visitor to press the button, which confirms it.
-test("a draft without consent comes back but waits for the button", async () => {
+// A draft without consent comes back, and waits for the consent box.
+test("a draft without consent comes back but waits for the box", async () => {
   useSession.mockReturnValue(signedIn);
   loadPhotoDraft.mockResolvedValue({ photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })], fields: {} });
   window.history.replaceState(null, "", "/en?try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("img", { name: "Your photo preview" });
+  expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(true);
+  fireEvent.click(screen.getByRole("checkbox", { name: CONSENT }));
   expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(false);
   expect(fetchMock).not.toHaveBeenCalled();
 });
 
-test("without enough credits, it names the price and offers the packs, the smallest that pays picked", async () => {
+test("without enough credits, it names the price and offers the packs, the recommended one picked", async () => {
   useSession.mockReturnValue(signedIn);
   fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
   renderWithIntl(<WindowPeeperTryout {...props} />);
@@ -376,36 +293,19 @@ test("without enough credits, it names the price and offers the packs, the small
 
   const alert = await screen.findByRole("alert");
   expect(alert.textContent).toContain("This video costs 10 credits, and you don't have enough.");
-  const packs = screen.getByRole("radiogroup", { name: "Credit pack" });
-  const small = within(packs).getByRole("radio", { name: /^10 credits/ }) as HTMLInputElement;
-  expect(small.checked).toBe(true);
-  expect(small.labels?.[0].textContent).toContain("$4.99");
-  expect(small.labels?.[0].textContent).toContain("1 video");
-  expect(within(packs).getByRole("radio", { name: /^20 credits/ }).closest("label")?.textContent).toContain(
-    "1 Pro video or 2 videos",
-  );
-  expect(screen.getByRole("button", { name: "Pay $4.99 and make my video" })).toBeDefined();
-  expect(screen.getByText(/Secure checkout/)).toBeDefined();
-  expect(screen.queryByRole("link", { name: "Buy credits" })).toBeNull();
+  const packs = screen.getByRole("radiogroup", { name: /Buy a pack/ });
+  const five = within(packs).getByRole("radio", { name: /5-pack · 5 videos/ }) as HTMLInputElement;
+  expect(five.checked).toBe(true);
+  expect(five.closest("label")?.textContent).toContain("$29.90");
+  expect(five.closest("label")?.textContent).toContain("Recommended");
+  expect(five.closest("label")?.textContent).toContain("Save 40%");
+  expect(screen.getByRole("button", { name: PAY })).toBeDefined();
+  expect(screen.getByText("Secure checkout. One-time payment, no subscription.")).toBeDefined();
   expect(screen.getByRole("img", { name: "Your photo preview" })).toBeDefined();
 
   // Another pack changes the price on the button.
-  fireEvent.click(within(packs).getByRole("radio", { name: /^30 credits/ }));
-  expect(screen.getByRole("button", { name: "Pay $11.99 and make my video" })).toBeDefined();
-});
-
-test("for a Pro video, the medium pack is picked", async () => {
-  useSession.mockReturnValue(signedIn);
-  fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  renderWithIntl(<WindowPeeperTryout {...props} />);
-
-  await pick();
-  fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
-  fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
-
-  const packs = await screen.findByRole("radiogroup", { name: "Credit pack" });
-  expect((within(packs).getByRole("radio", { name: /^20 credits/ }) as HTMLInputElement).checked).toBe(true);
-  expect(screen.getByRole("button", { name: "Pay $7.99 and make my video" })).toBeDefined();
+  fireEvent.click(within(packs).getByRole("radio", { name: /25-pack/ }));
+  expect(screen.getByRole("button", { name: "Pay $99.90 and make my video" })).toBeDefined();
 });
 
 test("paying saves the draft, then opens checkout that returns to the generator", async () => {
@@ -418,14 +318,14 @@ test("paying saves the draft, then opens checkout that returns to the generator"
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
-  fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
-  fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
-  fireEvent.click(await screen.findByRole("button", { name: "Pay $7.99 and make my video" }));
+  fireEvent.click(screen.getByRole("radio", { name: "Noodles" }));
+  fireEvent.click(screen.getByRole("button", { name: GENERATE }));
+  fireEvent.click(await screen.findByRole("button", { name: PAY }));
 
   await waitFor(() => expect(assign).toHaveBeenCalledWith("https://checkout.test/s"));
   expect(savePhotoDraft).toHaveBeenCalledWith("home:windowpeeper", {
     photos: [photo],
-    fields: { consent: "yes", quality: "pro", ratio: "9:16" },
+    fields: { consent: "yes", scene: "noodles", ratio: "9:16" },
   });
   const [url, init] = fetchMock.mock.calls[1];
   expect(url).toBe("/api/payment/checkout");
@@ -442,17 +342,17 @@ test("a checkout that can't start says why, in the generator", async () => {
 
   await pick();
   fireEvent.click(screen.getByRole("button", { name: GENERATE }));
-  fireEvent.click(await screen.findByRole("button", { name: "Pay $4.99 and make my video" }));
+  fireEvent.click(await screen.findByRole("button", { name: PAY }));
 
   expect(await screen.findByText("Payments aren't set up yet.")).toBeDefined();
-  expect(screen.getByRole("button", { name: "Pay $4.99 and make my video" }).hasAttribute("disabled")).toBe(false);
+  expect(screen.getByRole("button", { name: PAY }).hasAttribute("disabled")).toBe(false);
 });
 
 test("back from a payment, the draft returns and goes out once the credits arrive", async () => {
   vi.useFakeTimers({ shouldAdvanceTime: true });
   useSession.mockReturnValue(signedIn);
   const photo = new File(["a"], "me.jpg", { type: "image/jpeg" });
-  loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes", quality: "pro", ratio: "16:9" } });
+  loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes", scene: "wave", ratio: "9:16" } });
   const short = reply(402, { error: "INSUFFICIENT_CREDITS" });
   fetchMock
     // The progress poll's answer.
@@ -465,7 +365,7 @@ test("back from a payment, the draft returns and goes out once the credits arriv
 
   expect((await screen.findByRole("status")).textContent).toContain("Payment received");
   expect(window.location.search).toBe("");
-  expect(screen.queryByRole("radiogroup", { name: "Credit pack" })).toBeNull();
+  expect(screen.queryByRole("radiogroup", { name: /Buy a pack/ })).toBeNull();
 
   await vi.advanceTimersByTimeAsync(6000);
   expect((await screen.findByRole("status")).textContent).toContain("Your video is on its way");
@@ -473,7 +373,7 @@ test("back from a payment, the draft returns and goes out once the credits arriv
   await vi.advanceTimersByTimeAsync(30_000);
   const posts = fetchMock.mock.calls.filter(([url]) => url === "/api/videos/windowpeeper");
   expect(posts).toHaveLength(3);
-  expect((posts[2][1].body as FormData).get("quality")).toBe("pro");
+  expect((posts[2][1].body as FormData).get("scene")).toBe("wave");
   expect(clearPhotoDraft).toHaveBeenCalledWith("home:windowpeeper");
 });
 
@@ -482,7 +382,7 @@ test("credits that don't arrive in time leave the form ready, with a message", a
   useSession.mockReturnValue(signedIn);
   loadPhotoDraft.mockResolvedValue({
     photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })],
-    fields: { consent: "yes", quality: "standard", ratio: "16:9" },
+    fields: { consent: "yes", scene: "burger", ratio: "9:16" },
   });
   fetchMock.mockResolvedValue(reply(402, { error: "INSUFFICIENT_CREDITS" }));
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
@@ -493,7 +393,7 @@ test("credits that don't arrive in time leave the form ready, with a message", a
 
   expect(
     await screen.findByText(
-      "Your payment is being processed. Your credits will appear shortly; press Generate to try again.",
+      "Your payment is being processed. Your credits will appear shortly; press Make my video to try again.",
     ),
   ).toBeDefined();
   const sent = fetchMock.mock.calls.length;
@@ -508,15 +408,15 @@ test("back from a canceled payment, the draft and the packs return, and nothing 
   useSession.mockReturnValue(signedIn);
   loadPhotoDraft.mockResolvedValue({
     photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })],
-    fields: { consent: "yes", quality: "pro", ratio: "16:9" },
+    fields: { consent: "yes", scene: "couple", ratio: "9:16" },
   });
   window.history.replaceState(null, "", "/en?checkout=cancel&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(await screen.findByText("Payment canceled. You weren't charged.")).toBeDefined();
   expect(screen.getByRole("img", { name: "Your photo preview" })).toBeDefined();
-  expect((screen.getByRole("radio", { name: /^Pro/ }) as HTMLInputElement).checked).toBe(true);
-  expect(screen.getByRole("button", { name: "Pay $7.99 and make my video" })).toBeDefined();
+  expect((screen.getByRole("radio", { name: "Couple" }) as HTMLInputElement).checked).toBe(true);
+  expect(screen.getByRole("button", { name: PAY })).toBeDefined();
   await new Promise((resolve) => setTimeout(resolve, 50));
   expect(fetchMock).not.toHaveBeenCalled();
   expect(window.location.search).toBe("");
@@ -526,7 +426,7 @@ test("back from a payment without a session, sign-in opens and nothing is sent",
   useSession.mockReturnValue(signedOut);
   loadPhotoDraft.mockResolvedValue({
     photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })],
-    fields: { consent: "yes", quality: "standard", ratio: "16:9" },
+    fields: { consent: "yes", scene: "burger", ratio: "9:16" },
   });
   window.history.replaceState(null, "", "/en?checkout=success&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
@@ -615,8 +515,7 @@ test("when the effect is off, it says so and the form stays inert", () => {
   renderWithIntl(<WindowPeeperTryout {...props} enabled={false} />);
 
   expect(screen.getByText("The window peeper video isn't set up yet.")).toBeDefined();
-  expect(screen.getByLabelText("Your photo").matches(":disabled")).toBe(true);
-  expect(screen.getByRole("button", { name: PREVIEW }).hasAttribute("disabled")).toBe(true);
+  expect(photoInput().matches(":disabled")).toBe(true);
   expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(true);
 });
 
@@ -624,9 +523,8 @@ test("renders in Chinese", () => {
   useSession.mockReturnValue(signedOut);
   renderWithIntl(<WindowPeeperTryout {...props} />, "zh");
 
-  expect(screen.getByRole("heading", { level: 2, name: "制作你的 Window Peeper 视频" })).toBeDefined();
-  expect(screen.getByRole("button", { name: "生成（10 积分）" })).toBeDefined();
-  expect(screen.getByRole("radio", { name: /^高画质/ })).toBeDefined();
+  expect(screen.getByRole("button", { name: zh.HomeTryout.submit })).toBeDefined();
+  expect(screen.getByRole("radio", { name: zh.PhotoEffects.scenes.burger.short })).toBeDefined();
 });
 
 const steps = () => track.mock.calls.map(([event, properties]) => (properties ? [event, properties] : [event]));
@@ -641,16 +539,15 @@ test("records each funnel step once per action, without the photo", async () => 
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
-  fireEvent.click(screen.getByRole("radio", { name: /^Pro/ }));
-  fireEvent.click(screen.getByRole("button", { name: GENERATE_PRO }));
-  fireEvent.click(await screen.findByRole("button", { name: "Pay $7.99 and make my video" }));
+  fireEvent.click(screen.getByRole("button", { name: GENERATE }));
+  fireEvent.click(await screen.findByRole("button", { name: PAY }));
   await waitFor(() => expect(assign).toHaveBeenCalled());
 
   expect(steps()).toEqual([
     ["photo_selected"],
-    ["generate_clicked", { quality: "pro", ratio: "9:16" }],
-    ["paywall_viewed", { quality: "pro", credits_needed: 20 }],
-    ["checkout_clicked", { pack_id: "medium", quality: "pro" }],
+    ["generate_clicked", { quality: "standard", ratio: "9:16" }],
+    ["paywall_viewed", { quality: "standard", credits_needed: 10 }],
+    ["checkout_clicked", { pack_id: "medium", quality: "standard" }],
   ]);
   expect(JSON.stringify(track.mock.calls)).not.toContain("me.jpg");
 });

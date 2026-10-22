@@ -177,17 +177,14 @@ test("llms.txt describes the product and links the public pages", async ({ reque
   const lines = text.split("\n");
   expect(lines[0]).toBe("# WindowPeeper");
   expect(lines[2]).toBe(
-    "> Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. No CapCut template. Free preview.",
+    "> Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. Six scenes, no CapCut template.",
   );
-  expect(text).toMatch(
-    /- How much does it cost\?: A window peeper video costs \d+ credits\. .* one-time packs: \d+ credits for \$\d+\.\d\d, .* See the pricing page\./,
-  );
-  expect(text).toContain("- How do I contact support?: Email support@windowpeeper.org.");
+  expect(text).toContain("- Can I see the video before I pay?: No. Each video costs credits, from $9.90 for one.");
   // The largest photo a visitor may pick; the browser shrinks it to upload.
-  expect(text).toContain("JPEG, PNG or WebP, up to 5 MB.");
+  expect(text).toContain("JPG, PNG or WebP, up to 10 MB.");
   expect(text).toContain(`- [Privacy Policy](${baseURL}/en/privacy)`);
   expect(text).toContain(`- [隐私政策](${baseURL}/zh/privacy)`);
-  expect(text).toContain(`- [Window peeper videos, from $4.99](${baseURL}/en/pricing): Try a free 5-second preview first.`);
+  expect(text).toContain(`- [Pay for the videos you make](${baseURL}/en/pricing): One Standard video costs 10 credits.`);
   expect(text).toContain(`- [Blog](${baseURL}/en/blog): `);
   expect(text).toContain(`- [How to Make the Window Peeper Video](${baseURL}/en/how-to-make-window-peeper-video): `);
   expect(text).toContain(`(${baseURL}/zh/how-to-make-window-peeper-video): `);
@@ -219,11 +216,11 @@ test("the home page's FAQ is structured data", async ({ page }) => {
 
   const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
   const faq = scripts.map((text) => JSON.parse(text)).find((data) => data["@type"] === "FAQPage");
-  expect(faq.mainEntity).toHaveLength(12);
-  expect(faq.mainEntity[3]).toEqual({
+  expect(faq.mainEntity).toHaveLength(7);
+  expect(faq.mainEntity[1]).toEqual({
     "@type": "Question",
-    name: "How much does it cost?",
-    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^A window peeper video costs \d+ credits\. .* See the pricing page\.$/) },
+    name: "Can I see the video before I pay?",
+    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^No\. Each video costs credits, from \$9\.90 for one\./) },
   });
 });
 

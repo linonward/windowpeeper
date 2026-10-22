@@ -1,15 +1,11 @@
 "use client";
 
-import {
-  Clapperboard,
-  CreditCard,
-  PanelLeftClose,
-  PanelLeftOpen,
-  ShieldCheck,
-} from "lucide-react";
+import { Clapperboard, CreditCard, Film, MessageSquare, ShieldCheck, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useId } from "react";
+import { useBuyCredits } from "@/components/billing/buy-credits";
 import { Brand } from "@/components/layout/brand";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -28,27 +24,21 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Link, usePathname } from "@/i18n/navigation";
-import { photoEffectKinds, type PhotoEffectKind } from "@/lib/photo-effects";
+import { useCredits } from "./credits";
 import { markSidebarCollapsed } from "./sidebar-state";
 import { UserMenu } from "./user-menu";
 
-// Grouped by what the user came to do, each group under a label (hidden in
-// the collapsed sidebar).
+// Grouped by what the user came to do, each group under a mono label
+// (hidden in the collapsed sidebar). `count` shows the user's videos.
 const CREATE = [
-  {
-    href: "/videos",
-    key: "videos",
-    icon: Clapperboard,
-    children: [
-      // Each photo effect, under its PhotoEffects title.
-      ...photoEffectKinds.map((effect) => ({ href: `/videos/${effect}`, effect })),
-      { href: "/videos/library", key: "videoLibrary" },
-    ],
-  },
+  { href: "/videos/windowpeeper", key: "newVideo", icon: Clapperboard },
+  { href: "/videos/library", key: "myVideos", icon: Film, count: true },
 ] as const;
 
 const ACCOUNT = [
   { href: "/billing", key: "billing", icon: CreditCard },
+  { href: "/profile", key: "profile", icon: UserRound },
+  { href: "/feedback", key: "feedback", icon: MessageSquare },
 ] as const;
 
 // Shown only to admins. The admin pages check access themselves. /admin
@@ -67,34 +57,49 @@ const ADMIN_ITEMS = [
   },
 ] as const;
 
+type Key = Parameters<ReturnType<typeof useTranslations<"Dashboard">>>[0];
+
 type Item = {
   href: string;
-  key: Parameters<ReturnType<typeof useTranslations<"Dashboard">>>[0];
+  key: Key;
   icon: React.ComponentType;
-  children?: readonly ({ href: string; key: Item["key"] } | { href: string; effect: PhotoEffectKind })[];
+  count?: boolean;
+  children?: readonly { href: string; key: Key }[];
 };
 
 type User = { name: string; email: string };
 
-export function AppSidebar({ user, isAdmin }: { user: User; isAdmin: boolean }) {
+// docs/DESIGN.md, Dashboard: the lockup, the nav, then the credits card and
+// the account menu at the bottom. `videos` is how many videos the user has.
+export function AppSidebar({
+  user,
+  isAdmin,
+  videos,
+  standardCredits,
+}: {
+  user: User;
+  isAdmin: boolean;
+  videos: number;
+  // A Standard video's price, to say what the balance buys.
+  standardCredits: number;
+}) {
   const t = useTranslations("Dashboard");
 
   return (
-    <Sidebar variant="inset" collapsible="icon">
-      <SidebarHeader className="flex-row items-center justify-between py-3 pr-2 pl-4 group-data-[collapsible=icon]:flex-col group-data-[collapsible=icon]:px-2">
-        <Brand href="/videos" className="group-data-[collapsible=icon]:hidden" />
-        <div className="flex items-center gap-1 group-data-[collapsible=icon]:flex-col">
-          <CollapseButton />
-        </div>
+    <Sidebar collapsible="icon" className="border-r">
+      <SidebarHeader className="px-[22px] pt-6 pb-2 group-data-[collapsible=icon]:px-2">
+        <Brand href="/videos" className="text-[22px] group-data-[collapsible=icon]:hidden" />
+        <CollapseState />
       </SidebarHeader>
-      <SidebarContent>
-        <nav aria-label={t("nav")}>
-          <NavGroup label={t("groups.create")} items={CREATE} />
+      <SidebarContent className="gap-6 px-3.5 pt-4 group-data-[collapsible=icon]:px-0">
+        <nav aria-label={t("nav")} className="flex flex-col gap-6">
+          <NavGroup label={t("groups.create")} items={CREATE} videos={videos} />
           <NavGroup label={t("groups.account")} items={ACCOUNT} />
           {isAdmin && <NavGroup items={ADMIN_ITEMS} />}
         </nav>
       </SidebarContent>
-      <SidebarFooter className="p-2">
+      <SidebarFooter className="gap-4 px-3.5 pb-5">
+        <CreditsCard standardCredits={standardCredits} />
         <UserMenu {...user} />
       </SidebarFooter>
       <SidebarRail />
@@ -103,18 +108,24 @@ export function AppSidebar({ user, isAdmin }: { user: User; isAdmin: boolean }) 
 }
 
 // One group of links. With a label, the list is named by it.
-function NavGroup({ label, items }: { label?: string; items: readonly Item[] }) {
+function NavGroup({ label, items, videos }: { label?: string; items: readonly Item[]; videos?: number }) {
   const t = useTranslations("Dashboard");
-  const effects = useTranslations("PhotoEffects");
   const pathname = usePathname();
   const labelId = useId();
 
   return (
-    <SidebarGroup>
-      {label && <SidebarGroupLabel id={labelId}>{label}</SidebarGroupLabel>}
+    <SidebarGroup className="p-0">
+      {label && (
+        <SidebarGroupLabel
+          id={labelId}
+          className="h-auto px-0 pb-2 font-mono text-[10px] font-normal tracking-[0.15em] text-faint uppercase"
+        >
+          {label}
+        </SidebarGroupLabel>
+      )}
       <SidebarGroupContent>
-        <SidebarMenu className="gap-1" aria-labelledby={label ? labelId : undefined}>
-          {items.map(({ href, key, icon: Icon, children }) => {
+        <SidebarMenu className="gap-0.5" aria-labelledby={label ? labelId : undefined}>
+          {items.map(({ href, key, icon: Icon, count, children }) => {
             const within = pathname === href || pathname.startsWith(`${href}/`);
             // A parent with sub pages is highlighted, but the sub item is the page.
             const current = within && !children?.some((c) => pathname === c.href);
@@ -123,34 +134,28 @@ function NavGroup({ label, items }: { label?: string; items: readonly Item[] }) 
                 <SidebarMenuButton
                   isActive={within}
                   tooltip={t(key)}
-                  className="h-10 rounded-xl px-3 data-active:bg-primary-text/10 data-active:text-primary-text [&_svg]:size-[18px]"
+                  className="h-auto gap-2.5 rounded-sm px-2.5 py-[9px] text-sm font-medium text-muted-foreground data-active:bg-primary-soft data-active:font-semibold data-active:text-primary-text [&_svg]:size-[18px]"
                   render={<Link href={href} aria-current={current ? "page" : undefined} />}
                 >
                   <Icon />
-                  <span>{t(key)}</span>
+                  <span className="flex-1">{t(key)}</span>
+                  {count && videos !== undefined && (
+                    <span className="font-mono text-[11px] text-faint group-data-[collapsible=icon]:hidden">{videos}</span>
+                  )}
                 </SidebarMenuButton>
                 {children && (
                   <SidebarMenuSub className="mt-1">
-                    {children.map((child) => {
-                      const active =
-                        pathname === child.href || pathname.startsWith(`${child.href}/`);
-                      return (
-                        <SidebarMenuSubItem key={child.href}>
-                          <SidebarMenuSubButton
-                            isActive={active}
-                            className="h-8 rounded-lg data-active:bg-transparent data-active:font-semibold data-active:text-primary-text"
-                            render={
-                              <Link
-                                href={child.href}
-                                aria-current={pathname === child.href ? "page" : undefined}
-                              />
-                            }
-                          >
-                            <span>{"effect" in child ? effects(`kinds.${child.effect}.title`) : t(child.key)}</span>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      );
-                    })}
+                    {children.map((child) => (
+                      <SidebarMenuSubItem key={child.href}>
+                        <SidebarMenuSubButton
+                          isActive={pathname === child.href || pathname.startsWith(`${child.href}/`)}
+                          className="h-8 rounded-sm data-active:bg-transparent data-active:font-semibold data-active:text-primary-text"
+                          render={<Link href={child.href} aria-current={pathname === child.href ? "page" : undefined} />}
+                        >
+                          <span>{t(child.key)}</span>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
                   </SidebarMenuSub>
                 )}
               </SidebarMenuItem>
@@ -162,23 +167,33 @@ function NavGroup({ label, items }: { label?: string; items: readonly Item[] }) 
   );
 }
 
-// Desktop only: phones open the sidebar as a sheet from MobileBar.
-function CollapseButton() {
+// The balance, what it buys, and a button that opens the buy-credits dialog.
+function CreditsCard({ standardCredits }: { standardCredits: number }) {
   const t = useTranslations("Dashboard");
-  const { state, toggleSidebar } = useSidebar();
-  useEffect(() => markSidebarCollapsed(state === "collapsed"), [state]);
-  const label = state === "expanded" ? t("collapse") : t("expand");
-  const Icon = state === "expanded" ? PanelLeftClose : PanelLeftOpen;
+  const balance = useCredits()?.balance ?? 0;
+  const buy = useBuyCredits();
 
   return (
-    <button
-      type="button"
-      onClick={toggleSidebar}
-      aria-label={label}
-      title={label}
-      className="hidden size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-[background-color,color] duration-150 focus-visible:outline-2 focus-visible:outline-ring md:flex [@media(hover:hover)]:hover:bg-sidebar-accent [@media(hover:hover)]:hover:text-foreground"
-    >
-      <Icon className="size-4" />
-    </button>
+    <div className="flex flex-col gap-3 rounded-lg border bg-background p-4 group-data-[collapsible=icon]:hidden">
+      <div className="flex items-end justify-between gap-3">
+        <div className="flex flex-col gap-0.5">
+          <span className="font-mono text-[10px] tracking-[0.15em] text-faint uppercase">{t("credits")}</span>
+          <span className="font-display text-4xl leading-none font-extrabold tabular-nums">{balance}</span>
+        </div>
+        <span className="text-xs text-muted-foreground">
+          {t("creditsBuy", { videos: Math.floor(balance / standardCredits) })}
+        </span>
+      </div>
+      <Button variant="outline" className="h-9 w-full" onClick={() => buy?.open()}>
+        {t("buyCredits")}
+      </Button>
+    </div>
   );
+}
+
+// Keeps the collapsed state in the cookie the server reads (sidebar-state).
+function CollapseState() {
+  const { state } = useSidebar();
+  useEffect(() => markSidebarCollapsed(state === "collapsed"), [state]);
+  return null;
 }

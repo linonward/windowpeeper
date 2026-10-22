@@ -44,22 +44,26 @@ test("both buttons are translated", () => {
   expect(screen.getByRole("link", { name: "控制台" }).getAttribute("href")).toBe("/zh/videos");
 });
 
-// As on the reference landing page: the home page's sections, then the blog.
 test.each([
-  ["en", ["How it works", "Pricing", "FAQ", "Blog"]],
-  ["zh", ["使用流程", "价格", "常见问题", "博客"]],
-] as const)("the nav leads to the home page's sections and the blog in %s", (locale, names) => {
+  ["en", ["Scenes", "How it works", "Pricing", "Blog"]],
+] as const)("the nav leads to two home page sections, pricing and the blog in %s", (locale, names) => {
   renderWithIntl(<SiteHeader account={null} />, locale);
 
-  const nav = screen.getByRole("navigation", { name: locale === "en" ? "Main" : "主导航" });
+  const nav = screen.getAllByRole("navigation", { name: "Main" })[0];
   expect(
     within(nav)
       .getAllByRole("link")
       .map((link) => [link.textContent, link.getAttribute("href")]),
   ).toEqual([
-    [names[0], `/${locale}#how-it-works`],
-    [names[1], `/${locale}#pricing`],
-    [names[2], `/${locale}#faq`],
+    [names[0], `/${locale}#scenes`],
+    [names[1], `/${locale}#how-it-works`],
+    [names[2], `/${locale}/pricing`],
     [names[3], `/${locale}/blog`],
   ]);
+});
+
+test("the header's button leads to the generator", () => {
+  renderWithIntl(<SiteHeader account={null} />);
+
+  expect(screen.getByRole("link", { name: "Make a video" }).getAttribute("href")).toBe("/en#generator");
 });

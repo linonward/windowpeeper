@@ -10,6 +10,7 @@ export const CLIENT_NAMESPACES = [
   "Credits",
   "Dashboard",
   "Feedback",
+  "Generator",
   "HomeTryout",
   "LocaleSwitcher",
   "LoginForm",

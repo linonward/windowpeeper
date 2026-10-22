@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { userBalance } from "@/app/_lib/account";
 import { currentSession } from "@/app/_lib/session";
-import { PageHeader } from "@/components/dashboard/page-header";
 import { PageSkeleton } from "@/components/dashboard/page-skeleton";
 import { EffectGenerator } from "@/components/videos/effect-generator";
 import { VideoDetail } from "@/components/videos/video-detail";
@@ -55,23 +54,22 @@ async function VideoContent({ params }: { params: Params }) {
 }
 
 async function EffectContent({ kind, userId }: { kind: PhotoEffectKind; userId: string }) {
-  const t = await getTranslations("PhotoEffects");
   const [balance, videos] = await Promise.all([userBalance(userId), listVideos(userId)]);
   const options = effectOptions(kind);
+  const effect = photoEffect(kind);
 
   return (
-    <>
-      <PageHeader title={t(`kinds.${kind}.title`)} description={t(`kinds.${kind}.description`)} />
-      <EffectGenerator
-        kind={kind}
-        balance={balance}
-        credits={options.credits}
-        maxPickBytes={EFFECT_MAX_PICK_BYTES}
-        maxUploadBytes={EFFECT_MAX_IMAGE_BYTES}
-        imageLimits={EFFECT_IMAGE_LIMITS}
-        enabled={options.enabled}
-        videos={videos}
-      />
-    </>
+    <EffectGenerator
+      kind={kind}
+      balance={balance}
+      credits={options.credits}
+      proCredits={options.proCredits ?? options.credits}
+      duration={effect?.duration ?? 0}
+      maxPickBytes={EFFECT_MAX_PICK_BYTES}
+      maxUploadBytes={EFFECT_MAX_IMAGE_BYTES}
+      imageLimits={EFFECT_IMAGE_LIMITS}
+      enabled={options.enabled}
+      videos={videos}
+    />
   );
 }

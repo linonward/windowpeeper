@@ -7,35 +7,34 @@ test("hero states the value, with the generator starting in the first screen", a
   await expect(page).toHaveTitle("Window Peeper AI Video – Make the TikTok Trend From a Photo");
   await expect(page.locator('head meta[name="description"]')).toHaveAttribute(
     "content",
-    "Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. No CapCut template. Free preview.",
+    "Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. Six scenes, no CapCut template.",
   );
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Window peeper AI video — Get caught in the window with one photo.",
+      name: "Window peeper AI video — Someone's watching you eat.",
     }),
   ).toBeVisible();
   // The photo zone shows under the headline in the first screen.
-  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Drop a photo or click to choose")).toBeInViewport();
+});
+
+test("the hero plays the example clip, served from public/", async ({ page, request }) => {
+  await page.goto("/en");
+
+  await expect(page.getByText("A real video made here. The person in it is AI-generated.")).toBeVisible();
+  const video = page.locator("main video").first();
+  await expect(video).toBeVisible();
+  const response = await request.get((await video.getAttribute("src")) as string);
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("video/mp4");
 });
 
 test("on a phone, the photo zone shows in the first screen", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/en");
 
-  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
-});
-
-test("the example clip plays beside the generator, served from public/", async ({ page, request }) => {
-  await page.goto("/en");
-
-  const example = page.getByRole("region", { name: "What your video looks like" });
-  await expect(example).toContainText("The person in this example is AI-generated.");
-  const video = example.locator("video");
-  await expect(video).toBeVisible();
-  const response = await request.get((await video.getAttribute("src")) as string);
-  expect(response.status()).toBe(200);
-  expect(response.headers()["content-type"]).toBe("video/mp4");
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Drop a photo or click to choose")).toBeInViewport();
 });
 
 test("the header offers sign-in to visitors and the dashboard once signed in", async ({
@@ -54,23 +53,24 @@ test("the header offers sign-in to visitors and the dashboard once signed in", a
   await expect(page).toHaveURL("/en/videos/windowpeeper");
 });
 
-test("landing has the example, steps, pricing, FAQ and a closing call to action back to the generator", async ({
+test("landing has the scenes, steps, pricing, shot list, FAQ and a closing call to action back to the generator", async ({
   page,
 }) => {
   await page.goto("/en");
 
   for (const name of [
-    "What your video looks like",
-    "Three steps to your window peeper video",
+    "Pick your window",
+    "How to do the window peeper trend",
     "Start with one video.",
-    "Window peeper video questions",
-    "Your turn in the window.",
+    "14 seconds, five beats",
+    "Window peeper AI video questions",
+    "Your window is open.",
   ]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
   }
-  await page.getByRole("link", { name: "Make my video" }).click();
+  await page.getByRole("region", { name: "Your window is open." }).getByRole("link", { name: "Make my video" }).click();
   await expect(page).toHaveURL("/en#generator");
-  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
+  await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Drop a photo or click to choose")).toBeInViewport();
 });
 
 test("the header's links scroll to the home page's sections", async ({ page }) => {
@@ -78,33 +78,47 @@ test("the header's links scroll to the home page's sections", async ({ page }) =
   const banner = page.getByRole("banner");
 
   for (const [link, heading] of [
-    ["Pricing", "Start with one video."],
-    ["How it works", "Three steps to your window peeper video"],
-    ["FAQ", "Window peeper video questions"],
+    ["Scenes", "Pick your window"],
+    ["How it works", "How to do the window peeper trend"],
   ]) {
     await banner.getByRole("link", { name: link }).click();
     await expect(page.getByRole("heading", { level: 2, name: heading })).toBeInViewport();
   }
 });
 
-test("FAQ answers open on click and include the support email", async ({
-  page,
-}) => {
+test("FAQ answers open on click", async ({ page }) => {
   await page.goto("/en");
 
-  const question = page.getByText("How do I contact support?");
-  await question.click();
+  await page.getByText("What if my video fails?").click();
 
-  await expect(
-    page.getByRole("main").getByRole("link", { name: "support@windowpeeper.org" }),
-  ).toBeVisible();
+  await expect(page.getByText("The credits come back to your balance automatically")).toBeVisible();
+});
+
+test("\"Use this scene\" picks the scene in the generator and scrolls up to it", async ({ page }) => {
+  await page.goto("/en");
+
+  await page.getByRole("link", { name: "Use the Couple dinner scene" }).click();
+
+  await expect(page).toHaveURL("/en#generator");
+  await expect(page.getByRole("radio", { name: "Couple" })).toBeChecked();
+});
+
+test("on a phone, a bar leads back to the generator once it scrolls away", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/en");
+  const bar = page.getByText("Your window video");
+  await expect(bar).toBeHidden();
+
+  await page.getByRole("heading", { level: 2, name: "How to do the window peeper trend" }).scrollIntoViewIfNeeded();
+
+  await expect(bar).toBeVisible();
 });
 
 test("landing is translated", async ({ page }) => {
   await page.goto("/zh");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: "Window Peeper AI 视频 — 一张照片，让你在窗口被“抓包”。" }),
+    page.getByRole("heading", { level: 1, name: /^Window Peeper AI 视频 — / }),
   ).toBeVisible();
 });
 
@@ -146,8 +160,8 @@ test("turns off icon motion for reduced motion", async ({ browser }) => {
   await page.close();
 });
 
-test("body uses the Geist font", async ({ page }) => {
+test("body uses the Instrument Sans font", async ({ page }) => {
   await page.goto("/en");
 
-  await expect(page.locator("body")).toHaveCSS("font-family", /Geist/);
+  await expect(page.locator("body")).toHaveCSS("font-family", /Instrument Sans/);
 });

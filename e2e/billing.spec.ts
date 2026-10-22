@@ -17,14 +17,15 @@ test("the sidebar opens billing with the balance, the packs and the credit histo
 
   await page
     .getByRole("navigation", { name: "Dashboard navigation" })
-    .getByRole("link", { name: "Credits & billing" })
+    .getByRole("link", { name: "Billing" })
     .click();
 
   await expect(page).toHaveURL("/en/billing");
   await expect(page.getByRole("heading", { level: 1, name: "Credits & billing" })).toBeVisible();
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts).
   await expect(page.getByText("Credit balance").locator("+ p")).toHaveText("0 credits");
-  await expect(page.getByRole("button", { name: "Buy 10 credits for $4.99" })).toBeDisabled();
+  // The recommended pack starts picked; buying is off without a provider.
+  await expect(page.getByRole("button", { name: "Buy 50 credits for $29.90" })).toBeDisabled();
   await expect(page.getByText("Payments aren't set up yet.")).toBeVisible();
   await expect(page.getByText("No orders yet.")).toBeVisible();
   await expect(page.getByText("No credit activity yet.")).toBeVisible();
@@ -37,15 +38,16 @@ test("offers the three packs with what each buys, and no subscription", async ({
   await page.goto("/en/billing");
 
   const main = page.getByRole("main");
-  for (const [name, buys] of [
-    ["Buy 10 credits for $4.99", "1 video"],
-    ["Buy 20 credits for $7.99", "1 Pro video or 2 videos"],
-    ["Buy 30 credits for $11.99", "3 videos"],
+  const packs = main.getByRole("radiogroup", { name: "Buy credits" });
+  for (const [name, text] of [
+    ["Single · 1 video", "10 credits · $9.90 a video$9.90"],
+    ["5-pack · 5 videos", "50 credits · $5.98 a video$29.90Save 40%"],
+    ["25-pack · 25 videos", "250 credits · $4.00 a video$99.90Save 60%"],
   ]) {
-    await expect(main.getByRole("listitem").filter({ has: page.getByRole("button", { name }) })).toContainText(buys);
+    await expect(packs.locator("label").filter({ hasText: name })).toContainText(text);
   }
-  await expect(main.getByRole("listitem").filter({ has: page.getByRole("button", { name: "Buy 10 credits for $4.99" }) })).toContainText("Recommended");
-  await expect(main).toContainText("One-time payment, no subscription. Credits never expire.");
+  await expect(packs.locator("label").filter({ hasText: "5-pack · 5 videos" })).toContainText("Recommended");
+  await expect(main).toContainText("Secure checkout. One-time payment, no subscription.");
   await expect(main.getByRole("heading", { name: "Subscription" })).toHaveCount(0);
   await expect(main.getByRole("button", { name: /Subscribe/ })).toHaveCount(0);
 });

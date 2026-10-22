@@ -23,7 +23,7 @@ export function CreditTransactions({ transactions }: { transactions: Transaction
 
   return (
     <section className="flex flex-col gap-4">
-      <h2 className="font-display text-lg font-semibold">{t("historyTitle")}</h2>
+      <h2 className="font-display text-[1.75rem] leading-none font-extrabold">{t("historyTitle")}</h2>
       {transactions.length === 0 ? (
         <div className="flex flex-col items-start gap-3 rounded-xl border border-dashed p-8">
           <span className="flex size-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">

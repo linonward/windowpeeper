@@ -169,6 +169,13 @@
       "when": 1792233747865,
       "tag": "0023_video_preview",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1792660930487,
+      "tag": "0024_video-scene",
+      "breakpoints": true
     }
   ]
 }
