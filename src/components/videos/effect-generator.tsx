@@ -22,10 +22,9 @@ type Video = GeneratedVideo;
 export type EffectGeneratorProps = {
   kind: PhotoEffectKind;
   balance: number;
-  // The price of one video, Standard and Pro, and its length in seconds.
+  // The price of one video, Standard and Pro.
   credits: number;
   proCredits: number;
-  duration: number;
   // The largest photo a visitor may pick, which the copy states, and the
   // largest the server takes, which the browser shrinks it to fit.
   maxPickBytes: number;
@@ -57,11 +56,11 @@ const ERRORS = {
 const parse = (video: Serialized<Video>): Video => ({ ...video, createdAt: new Date(video.createdAt) });
 const sceneOf = (value: string | null): Scene => SCENES.find((each) => each === value) ?? SCENES[0];
 
-// The dashboard's video form (docs/DESIGN.md, New video): three numbered
-// cards (the photo, the scene, the quality) and a summary with the scene's
-// preview, what the video will be and costs, and the button; then the
-// newest videos. On phones the summary is a bar at the bottom. Without
-// enough credits the button opens the buy-credits dialog.
+// The dashboard's video form (docs/DESIGN.md, New video): two choices side
+// by side (the photo, the window) and one action row (the consent box, the
+// quality and the button, with the price); then the newest videos. On
+// phones the action row is a bar at the bottom. Without enough credits the
+// button opens the buy-credits dialog.
 export function EffectGenerator(props: EffectGeneratorProps) {
   const endpoint = `/api/videos/${props.kind}`;
   const t = useEffectMessages(props.kind);
@@ -91,8 +90,6 @@ export function EffectGenerator(props: EffectGeneratorProps) {
   const photo = photos.left;
   const ready = props.enabled && photo !== null && consent;
   const pendingIds = videos.filter((video) => video.status === "pending").map((video) => video.id);
-  const sceneName = ts(`${scene}.name`);
-  const qualityName = tg(`quality.${quality}.name`);
 
   // A failure was refunded on the server, so the balance gets the credits back.
   usePendingPoll({
@@ -140,12 +137,21 @@ export function EffectGenerator(props: EffectGeneratorProps) {
   const submitButton = (
     <Button
       type="submit"
-      form="new-video"
       size="lg"
-      className="h-[52px] w-full"
+      aria-label={!submitting && canAfford ? tg("submitLong", { count: cost }) : undefined}
+      className="h-12 min-w-0 flex-1 lg:h-[46px] lg:w-[260px] lg:flex-none"
       disabled={canAfford ? !ready || submitting : !buyCredits}
     >
-      {submitting ? t("generating") : canAfford ? tg("submit", { count: cost }) : tg("buy")}
+      {submitting ? (
+        t("generating")
+      ) : canAfford ? (
+        <>
+          <span className="lg:hidden">{tg("submit", { count: cost })}</span>
+          <span className="max-lg:hidden">{tg("submitLong", { count: cost })}</span>
+        </>
+      ) : (
+        tg("buy")
+      )}
       {!submitting && <ArrowRight className="icon-nudge" />}
     </Button>
   );
@@ -153,21 +159,18 @@ export function EffectGenerator(props: EffectGeneratorProps) {
   return (
     <>
       <header className="flex flex-wrap items-end justify-between gap-4">
-        <div className="flex min-w-0 flex-col gap-1.5">
-          <p className="font-mono text-[11px] tracking-[0.15em] text-faint uppercase max-md:hidden">{tg("crumb")}</p>
-          <h1 className="font-display text-[clamp(1.875rem,8vw,2.5rem)] leading-tight font-extrabold text-balance">
-            {tg("title")}
-          </h1>
-        </div>
+        <h1 className="font-display text-[clamp(1.875rem,8vw,2.5rem)] leading-tight font-extrabold text-balance">
+          {tg("title")}
+        </h1>
         {pendingIds.length > 0 && (
           <RecBadge className="border bg-card">{tg("rendering", { count: pendingIds.length })}</RecBadge>
         )}
       </header>
 
-      <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[minmax(0,1fr)_340px]">
-        <form id="new-video" onSubmit={submit} className="flex min-w-0 flex-col gap-4">
-          {!props.enabled && <p className="text-muted-foreground">{t("disabled")}</p>}
-          <Card number="01" title={tg("photo.title")} hint={tg("photo.hint")} id="new-photo">
+      <form id="new-video" onSubmit={submit} className="flex flex-col gap-4">
+        {!props.enabled && <p className="text-muted-foreground">{t("disabled")}</p>}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
+          <Card title={tg("photo.title")} id="new-photo">
             <input
               id="new-photo-input"
               type="file"
@@ -177,37 +180,46 @@ export function EffectGenerator(props: EffectGeneratorProps) {
               className="peer sr-only"
             />
             {photo && previews.left ? (
-              <div className="flex items-center gap-4">
-                {/* A local object URL, which next/image can't optimize. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={previews.left}
-                  alt={t("left.preview")}
-                  className="h-[110px] w-[88px] shrink-0 rounded-sm border border-border-strong object-cover"
-                />
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <div className="flex items-center gap-4 lg:flex-1 lg:flex-col lg:items-stretch lg:gap-3">
+                <div className="relative shrink-0 lg:min-h-[240px] lg:flex-1">
+                  {/* A local object URL, which next/image can't optimize. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={previews.left}
+                    alt={t("left.preview")}
+                    className="h-[110px] w-[88px] rounded-sm border border-border-strong object-cover lg:absolute lg:inset-0 lg:size-full lg:rounded-lg"
+                  />
+                  <span className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 rounded-sm bg-background/80 px-2 py-1 text-xs font-medium text-ok max-lg:hidden">
+                    <CircleCheck aria-hidden className="size-3.5" />
+                    {tg("photo.ready", { size: megabytes(photo.size) })}
+                  </span>
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col gap-1 lg:hidden">
                   <span className="truncate text-sm font-semibold">{photo.name}</span>
                   <span className="flex items-center gap-1.5 text-xs text-ok">
                     <CircleCheck aria-hidden className="size-3.5" />
-                    {tg("photo.ready", { size: (photo.size / 1024 / 1024).toFixed(1) })}
+                    {tg("photo.ready", { size: megabytes(photo.size) })}
                   </span>
                 </div>
-                <label
-                  htmlFor="new-photo-input"
-                  className={cn(buttonVariants({ variant: "outline" }), "h-9 cursor-pointer px-3.5 peer-focus-visible:ring-3")}
-                >
-                  {tg("photo.replace")}
-                </label>
+                <div className="flex items-center gap-3">
+                  <p className="flex-1 text-xs leading-[1.4] text-faint max-lg:hidden">{tg("photo.tip")}</p>
+                  <label
+                    htmlFor="new-photo-input"
+                    className={cn(buttonVariants({ variant: "outline" }), "h-9 cursor-pointer px-3.5 peer-focus-visible:ring-3")}
+                  >
+                    {tg("photo.replace")}
+                  </label>
+                </div>
               </div>
             ) : (
               <label
                 htmlFor="new-photo-input"
-                className="flex cursor-pointer items-center gap-4 rounded-lg border border-border-strong bg-background px-5 py-[18px] peer-focus-visible:border-ring peer-focus-visible:ring-3 peer-focus-visible:ring-ring/50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 [@media(hover:hover)]:hover:border-primary/60"
+                className="flex cursor-pointer items-center gap-4 rounded-lg border border-border-strong bg-background px-5 py-[18px] peer-focus-visible:border-ring peer-focus-visible:ring-3 peer-focus-visible:ring-ring/50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 lg:flex-1 lg:flex-col lg:justify-center lg:border-dashed lg:text-center [@media(hover:hover)]:hover:border-primary/60"
               >
                 <span aria-hidden className="flex size-12 shrink-0 items-center justify-center rounded-sm bg-primary-soft">
                   <ImagePlus className="size-[22px] text-primary-text" />
                 </span>
-                <span className="flex min-w-0 flex-col gap-0.5">
+                <span className="flex min-w-0 flex-col gap-0.5 lg:gap-1.5">
                   <span className="text-sm font-semibold">{tg("photo.choose")}</span>
                   <span className="text-xs text-faint">{t("photoHint", { size })}</span>
                 </span>
@@ -215,9 +227,9 @@ export function EffectGenerator(props: EffectGeneratorProps) {
             )}
           </Card>
 
-          <Card number="02" title={tg("scene.title")} hint={tg("scene.hint", { count: SCENES.length })} id="new-scene">
+          <Card title={tg("scene.title")} id="new-scene">
             <div role="radiogroup" aria-labelledby="new-scene" className="grid grid-cols-3 gap-2.5 sm:gap-3">
-              {SCENES.map((each, index) => (
+              {SCENES.map((each) => (
                 <label
                   key={each}
                   className="group flex cursor-pointer flex-col gap-2 rounded-lg border p-1.5 has-checked:border-2 has-checked:border-primary has-checked:bg-primary-soft has-checked:p-[5px] has-focus-visible:ring-3 has-focus-visible:ring-ring/50"
@@ -238,28 +250,52 @@ export function EffectGenerator(props: EffectGeneratorProps) {
                       </span>
                     )}
                   </span>
-                  <span className="flex items-baseline justify-between gap-2 px-1 pb-0.5">
-                    <span className="truncate text-[13px] font-medium text-muted-foreground group-has-checked:font-semibold group-has-checked:text-foreground">
-                      <span className="sm:hidden">{ts(`${each}.short`)}</span>
-                      <span className="max-sm:hidden">{ts(`${each}.name`)}</span>
-                    </span>
-                    {index === 0 && (
-                      <span className="font-mono text-[10px] tracking-[0.1em] text-primary-text uppercase max-sm:hidden">
-                        {tg("scene.original")}
-                      </span>
-                    )}
+                  <span className="truncate px-1 pb-0.5 text-[13px] font-medium text-muted-foreground group-has-checked:font-semibold group-has-checked:text-foreground">
+                    <span className="sm:hidden">{ts(`${each}.short`)}</span>
+                    <span className="max-sm:hidden">{ts(`${each}.name`)}</span>
                   </span>
                 </label>
               ))}
             </div>
           </Card>
+        </div>
 
-          <Card number="03" title={tg("quality.title")} id="new-quality">
-            <div role="radiogroup" aria-labelledby="new-quality" className="grid gap-3 sm:grid-cols-2">
+        {error && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
+
+        {/* The consent box, the quality and the button, together: a card on
+            large screens, a bar fixed at the bottom on phones. */}
+        <section
+          aria-label={tg("action")}
+          className="flex flex-col gap-2.5 bg-card max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 max-lg:z-30 max-lg:border-t max-lg:border-border-strong max-lg:px-4 max-lg:pt-3.5 max-lg:pb-6 lg:flex-row lg:items-center lg:gap-6 lg:rounded-xl lg:border lg:px-6 lg:py-5"
+        >
+          <div className="flex min-w-0 flex-col gap-2 lg:flex-1">
+            <label className="flex items-start gap-2.5 text-xs leading-[1.4] text-pretty text-muted-foreground lg:items-center lg:text-[13px]">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(event) => setConsent(event.target.checked)}
+                className="size-[18px] shrink-0 cursor-pointer accent-primary"
+              />
+              {t("consent")}
+            </label>
+            <p className="text-xs text-pretty text-faint max-lg:hidden">
+              {tg(`quality.${quality}.time`)} {tg("note", { count: cost })}
+            </p>
+          </div>
+          <div className="flex items-center gap-2 lg:gap-3">
+            <div
+              role="radiogroup"
+              aria-label={tg("quality.title")}
+              className="flex h-12 shrink-0 gap-1 rounded-lg border bg-background p-1 lg:h-[46px]"
+            >
               {QUALITIES.map((each) => (
                 <label
                   key={each}
-                  className="flex cursor-pointer items-center gap-3 rounded-lg border bg-background p-4 has-checked:border-2 has-checked:border-primary has-checked:bg-primary-soft has-checked:p-[15px]"
+                  className="group flex cursor-pointer items-center gap-1.5 rounded-sm border border-transparent px-2.5 has-checked:border-primary has-checked:bg-primary-soft has-focus-visible:ring-3 has-focus-visible:ring-ring/50 lg:px-3.5"
                 >
                   <input
                     type="radio"
@@ -267,116 +303,39 @@ export function EffectGenerator(props: EffectGeneratorProps) {
                     value={each}
                     checked={quality === each}
                     onChange={() => setQuality(each)}
-                    className="size-4 shrink-0 cursor-pointer appearance-none rounded-full border-[1.5px] border-border-strong checked:border-primary checked:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    className="sr-only"
                   />
-                  <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                    <span className="text-[15px] font-semibold">{tg(`quality.${each}.name`)}</span>
-                    <span className="text-xs text-muted-foreground">{tg(`quality.${each}.description`)}</span>
-                  </span>
-                  <span
-                    className={cn(
-                      "font-mono text-[13px] font-semibold",
-                      quality === each ? "text-primary-text" : "text-muted-foreground",
-                    )}
-                  >
-                    {tg("cr", { count: each === "pro" ? props.proCredits : props.credits })}
+                  <span className="text-[13px] font-semibold text-muted-foreground group-has-checked:text-foreground max-lg:hidden">
+                    {tg(`quality.${each}.name`)}
+                  </span>{" "}
+                  <span className="font-mono text-xs text-faint group-has-checked:text-primary-text max-lg:text-[13px] max-lg:font-semibold max-lg:text-muted-foreground max-lg:group-has-checked:text-foreground">
+                    {tg(`quality.${each}.resolution`)}
                   </span>
                 </label>
               ))}
             </div>
-          </Card>
-
-          <label className="flex items-start gap-2.5 px-1 text-[13px] leading-[1.4] text-pretty text-muted-foreground">
-            <input
-              type="checkbox"
-              checked={consent}
-              onChange={(event) => setConsent(event.target.checked)}
-              className="mt-px size-[18px] shrink-0 cursor-pointer accent-primary"
-            />
-            {t("consent")}
-          </label>
-          {error && (
-            <p role="alert" className="text-sm text-destructive">
-              {error}
-            </p>
-          )}
-        </form>
-
-        <aside
-          aria-label={tg("summary.label")}
-          className="flex flex-col gap-4 rounded-xl border bg-card p-5 max-lg:hidden lg:sticky lg:top-8"
-        >
-          <p className="font-mono text-[11px] tracking-[0.15em] text-faint uppercase">{tg("summary.label")}</p>
-          <div className="relative isolate flex h-[300px] flex-col justify-between overflow-hidden rounded-lg p-3">
-            <Image src={sceneImage(scene)} alt="" fill sizes="300px" className="-z-10 object-cover" />
-            <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-linear-to-b from-transparent to-background/90" />
-            <RecBadge>{tg("summary.scene", { number: String(SCENES.indexOf(scene) + 1).padStart(2, "0") })}</RecBadge>
-            <span className="font-mono text-[11px] tracking-[0.09em]">
-              {tg("summary.caption", { scene: sceneName, seconds: props.duration })}
-            </span>
+            {submitButton}
           </div>
-          <dl className="flex flex-col">
-            {[
-              [tg("summary.length"), tg("summary.lengthValue", { seconds: props.duration })],
-              [tg("summary.format"), tg("summary.formatValue")],
-              [tg("summary.quality"), tg(`quality.${quality}.summary`)],
-              [tg("summary.cost"), tg("summary.costValue", { count: cost })],
-              [tg("summary.after"), tg("summary.costValue", { count: Math.max(balance - cost, 0) })],
-            ].map(([key, value], index) => (
-              <div key={key} className="flex justify-between gap-3 border-b py-[9px] text-[13px] last:border-b-0">
-                <dt className="text-muted-foreground">{key}</dt>
-                <dd className={index === 3 ? "font-semibold text-primary-text" : "font-medium"}>{value}</dd>
-              </div>
-            ))}
-          </dl>
-          {submitButton}
-          <p className="text-xs text-pretty text-faint">{tg("summary.note", { count: cost })}</p>
-        </aside>
-      </div>
+        </section>
+      </form>
 
       <Recent videos={videos} />
 
-      {/* Phones: room for the bar below, then the bar: what the video is and
-          costs, and the button. */}
-      <div aria-hidden className="h-16 lg:hidden" />
-      <div className="fixed inset-x-0 bottom-0 z-30 flex flex-col gap-2.5 border-t border-border-strong bg-card px-4 pt-3.5 pb-6 lg:hidden">
-        <p className="flex justify-between gap-3 text-[13px]">
-          <span className="truncate text-muted-foreground">{tg("bar.line", { scene: sceneName, quality: qualityName })}</span>
-          <span className="shrink-0 font-semibold text-primary-text">
-            {tg("bar.cost", { count: cost, left: Math.max(balance - cost, 0) })}
-          </span>
-        </p>
-        {submitButton}
-      </div>
+      {/* Phones: room for the bar fixed at the bottom. */}
+      <div aria-hidden className="h-24 lg:hidden" />
     </>
   );
 }
 
-// A numbered card with a title and a hint on the right.
-function Card({
-  number,
-  title,
-  hint,
-  id,
-  children,
-}: {
-  number: string;
-  title: string;
-  hint?: string;
-  id: string;
-  children: React.ReactNode;
-}) {
+const megabytes = (bytes: number) => (bytes / 1024 / 1024).toFixed(1);
+
+// A card with a title.
+function Card({ title, id, children }: { title: string; id: string; children: React.ReactNode }) {
   return (
-    <section aria-labelledby={id} className="flex flex-col gap-4 rounded-xl border bg-card p-4 sm:p-6">
-      <div className="flex items-center gap-2.5">
-        <span aria-hidden className="font-mono text-xs text-primary-text">
-          {number}
-        </span>
-        <h2 id={id} className="flex-1 text-base font-semibold">
-          {title}
-        </h2>
-        {hint && <span className="text-xs text-faint max-sm:hidden">{hint}</span>}
-      </div>
+    <section aria-labelledby={id} className="flex min-w-0 flex-col gap-4 rounded-xl border bg-card p-4 sm:p-6">
+      <h2 id={id} className="text-base font-semibold">
+        {title}
+      </h2>
       {children}
     </section>
   );

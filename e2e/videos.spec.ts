@@ -26,7 +26,7 @@ test("/videos opens the window peeper video, the only photo effect", async ({ pa
   await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts),
   // so the button buys credits.
-  await expect(page.getByRole("complementary", { name: "Preview" }).getByRole("button", { name: "Buy credits" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Your video" }).getByRole("button", { name: "Buy credits" })).toBeVisible();
 });
 
 // The image-to-video generator is gone; only GET answers at /api/videos/<id>.
