@@ -213,8 +213,15 @@
     "close": "Menü schließen"
   },
   "NotFound": {
-    "title": "Seite nicht gefunden",
-    "home": "Zur Startseite"
+    "eyebrow": "Fehler 404",
+    "title": "Dieses Fenster ist dunkel.",
+    "body": "Unter dieser Adresse ist niemand zu Hause. Die Seite wurde vielleicht verschoben, oder der Link hat einen Tippfehler.",
+    "cta": "Video machen",
+    "home": "Zur Startseite",
+    "scenes": "Oder starte mit einer Szene",
+    "rec": "REC 01:28:00 AM",
+    "caption": "CAM 404 · KEIN SIGNAL",
+    "still": "Ein dunkles Fenster bei Nacht"
   },
   "SignIn": {
     "title": "Anmelden",

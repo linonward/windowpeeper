@@ -152,6 +152,14 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     },
   });
 
+  // ?scene= from a link elsewhere (the 404 page's scene cards). Read after
+  // hydration, so the server render keeps the default.
+  useEffect(() => {
+    const picked = new URLSearchParams(window.location.search).get(SCENE);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (picked) setScene(sceneOf(picked));
+  }, []);
+
   // "Use this scene" in the Scenes section.
   useEffect(() => {
     const onScene = (event: Event) => setScene(sceneOf((event as CustomEvent<string>).detail));

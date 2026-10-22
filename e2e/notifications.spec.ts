@@ -60,7 +60,7 @@ test("the notifications page pages through every notification and marks them rea
   await expect(items.getByText("Unread")).toHaveCount(0);
 
   await page.goto("/notifications?page=3");
-  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "This window is dark." })).toBeVisible();
 });
 
 test("on phones the bell is in the top bar", async ({ page }) => {

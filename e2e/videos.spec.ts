@@ -76,7 +76,7 @@ test("the library pages through every video from the sidebar and the generator",
   await expect(items).toHaveCount(1);
 
   await page.goto("/videos/library?page=3");
-  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "This window is dark." })).toBeVisible();
 });
 
 test("a card opens the video's page, and unknown videos are not found", async ({ page }) => {
@@ -98,7 +98,7 @@ test("a card opens the video's page, and unknown videos are not found", async ({
   await expect(page).toHaveURL("/videos/library");
 
   await page.goto("/videos/00000000-0000-0000-0000-000000000000");
-  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "This window is dark." })).toBeVisible();
 });
 
 // CI has no storage, so only the refusals run here. The signed download URL

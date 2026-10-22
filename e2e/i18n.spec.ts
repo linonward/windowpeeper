@@ -90,5 +90,5 @@ test("shows a translated 404 for unknown pages", async ({ page }) => {
   const response = await page.goto("/es/does-not-exist");
 
   expect(response?.status()).toBe(404);
-  await expect(page.getByRole("heading", { name: "Página no encontrada" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Esta ventana está a oscuras." })).toBeVisible();
 });

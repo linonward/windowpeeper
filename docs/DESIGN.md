@@ -181,6 +181,10 @@ The scene stills and the before/after frames in `public/landing/` are AI placeho
 
 A centered head over a lamp glow, three plan cards (mono name, 60px price, credits, who it's for, three checked lines, a buy button; the recommended card is lamp-soft and comes first on phones), the cost table (mono head, Standard and Pro rows, credits in lamp mono) and three promises in lamp-soft tiles.
 
+### 404 (`app/[locale]/not-found.tsx`)
+
+The "ERROR 404" eyebrow, "This window is dark." in a 72px black display title, a line and two buttons (lamp "Make a video" to the generator, outline "Go to the home page"). On large screens a 270px viewfinder on the right shows a scene still at 30% brightness, "REC 01:28:00 AM" and "CAM 404 · NO SIGNAL". Below, "Or start from a scene": four scene cards (a 5:7 still with its timecode, the name and "Use this scene") that open the generator with the scene picked (`/?scene=<scene>#generator`).
+
 ### Buy a pack (`billing/buy-pack.tsx`)
 
 `BuyPack` is a pack's button on `/pricing` and the home page's packs: it opens checkout straight away, and checkout comes back to the same page. Signed out, a sign-in dialog opens on the page ("Sign in to buy credits"); sign-in returns with `?buy=<pack>` and checkout opens. While it opens, the button reads "Opening checkout…"; a checkout that can't start shows a `text-destructive` line under it. `CheckoutNotice` is a `bg-card` status row above the packs after a checkout: "Payment received…" with a lamp "Make a video" link to the generator, or "Checkout canceled…".

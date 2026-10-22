@@ -27,7 +27,7 @@ test("non-admins see no admin link and get the 404 page", async ({ page }) => {
   for (const path of ["/admin", "/admin/users", "/admin/users/some-id", "/admin/orders", "/admin/metrics"]) {
     await page.goto(path);
 
-    await expect(page.getByRole("heading", { level: 1, name: "Page not found" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "This window is dark." })).toBeVisible();
     await expect(page.getByRole("table")).toHaveCount(0);
     // The dashboard layout and the 404 page each add a noindex tag.
     for (const robots of await page.locator('head meta[name="robots"]').all()) {
@@ -130,7 +130,7 @@ test("an unknown user id gets the 404 page", async ({ page }) => {
   await signIn(page, ADMIN);
   await page.goto("/admin/users/no-such-id");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Page not found" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "This window is dark." })).toBeVisible();
 });
 
 test("the admin page fits a phone in Chinese", async ({ page }) => {

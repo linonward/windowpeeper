@@ -11,7 +11,7 @@ test("feedback requires sign-in and administrator access for the list", async ({
   expect((await request.post("/api/feedback", { data: {} })).status()).toBe(401);
   await signIn(page);
   await page.goto("/admin/feedback");
-  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "This window is dark." })).toBeVisible();
   await expect(page.getByRole("list", { name: "User feedback" })).toHaveCount(0);
 });
 
