@@ -49,8 +49,17 @@ export default defineConfig({
       // still verify, so signed test events reach the handler.
       PAYMENT_PROVIDER: "",
       STRIPE_WEBHOOK_SECRET,
-      // The tip-toe dance stays off: E2E doesn't call Bailian.
+      // The window peeper video stays off: E2E doesn't call Bailian.
       DASHSCOPE_API_KEY: "",
+      IMAGE_MODERATION: "",
+      // The MinIO in compose.yaml (and in CI), never the bucket in .env, so
+      // uploads from tests stay local. STORAGE_PORT as in compose.yaml.
+      STORAGE_ENDPOINT: `http://localhost:${process.env.STORAGE_PORT || 9000}`,
+      STORAGE_REGION: "us-east-1",
+      STORAGE_BUCKET: "starter",
+      STORAGE_ACCESS_KEY_ID: "starter",
+      STORAGE_SECRET_ACCESS_KEY: "starter-secret",
+      STORAGE_FORCE_PATH_STYLE: "true",
     },
     timeout: 120_000,
   },
