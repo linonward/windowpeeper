@@ -27,7 +27,7 @@ export function Example({ example }: { example?: HomeExample }) {
         playsInline
         controls
         preload="metadata"
-        className="aspect-video w-full rounded-xl border bg-muted"
+        className="mx-auto aspect-[9/16] max-h-[36rem] w-auto max-w-full rounded-xl border bg-muted"
       />
       <p className="text-sm text-muted-foreground">{t("note")}</p>
     </section>

@@ -26,6 +26,18 @@ test("on a phone, the photo zone shows in the first screen", async ({ page }) =>
   await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Choose a photo")).toBeInViewport();
 });
 
+test("the example clip plays beside the generator, served from public/", async ({ page, request }) => {
+  await page.goto("/en");
+
+  const example = page.getByRole("region", { name: "What your video looks like" });
+  await expect(example).toContainText("The person in this example is AI-generated.");
+  const video = example.locator("video");
+  await expect(video).toBeVisible();
+  const response = await request.get((await video.getAttribute("src")) as string);
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("video/mp4");
+});
+
 test("the header offers sign-in to visitors and the dashboard once signed in", async ({
   page,
 }) => {
@@ -42,12 +54,13 @@ test("the header offers sign-in to visitors and the dashboard once signed in", a
   await expect(page).toHaveURL("/en/videos/windowpeeper");
 });
 
-test("landing has the steps, pricing, FAQ and a closing call to action back to the generator", async ({
+test("landing has the example, steps, pricing, FAQ and a closing call to action back to the generator", async ({
   page,
 }) => {
   await page.goto("/en");
 
   for (const name of [
+    "What your video looks like",
     "Three steps to your window peeper video",
     "Start with one video.",
     "Window peeper video questions",
