@@ -14,6 +14,7 @@ export const CLIENT_NAMESPACES = [
   "HomeTryout",
   "LocaleSwitcher",
   "LoginForm",
+  "Notifications",
   "Profile",
   "Videos",
   "PhotoEffects",

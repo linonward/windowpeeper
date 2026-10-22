@@ -6,7 +6,7 @@ import { type Locale, localePath, routing } from "@/i18n/routing";
 const intl = createMiddleware(routing);
 
 // Paths in the (dashboard) group. Add new signed-in pages here.
-const PROTECTED = ["/dashboard", "/videos", "/profile", "/billing", "/feedback", "/admin"];
+const PROTECTED = ["/dashboard", "/videos", "/profile", "/billing", "/notifications", "/feedback", "/admin"];
 // English paths have no prefix; "/en/..." still matches, and next-intl
 // redirects it once signed in.
 const protectedPath = new RegExp(`^(?:/(${routing.locales.join("|")}))?(${PROTECTED.join("|")})(/|$)`);

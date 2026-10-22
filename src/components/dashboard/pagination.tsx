@@ -11,7 +11,7 @@ export function Pagination({
   page,
   pageCount,
 }: {
-  pathname: "/videos/library";
+  pathname: "/videos/library" | "/notifications";
   page: number;
   pageCount: number;
 }) {

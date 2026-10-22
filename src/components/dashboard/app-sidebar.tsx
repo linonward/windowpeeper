@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useId } from "react";
 import { useBuyCredits } from "@/components/billing/buy-credits";
 import { Brand } from "@/components/layout/brand";
+import { NotificationBell } from "@/components/notifications/notification-bell";
 import { Button } from "@/components/ui/button";
 import {
   Sidebar,
@@ -69,8 +70,8 @@ type Item = {
 
 type User = { name: string; email: string };
 
-// docs/DESIGN.md, Dashboard: the lockup, the nav, then the credits card and
-// the account menu at the bottom. `videos` is how many videos the user has.
+// docs/DESIGN.md, Dashboard: the lockup and the notification bell, the nav,
+// then the credits card and the account menu at the bottom. `videos` is how many videos the user has.
 export function AppSidebar({
   user,
   isAdmin,
@@ -87,8 +88,9 @@ export function AppSidebar({
 
   return (
     <Sidebar collapsible="icon" className="border-r">
-      <SidebarHeader className="px-[22px] pt-6 pb-2 group-data-[collapsible=icon]:px-2">
-        <Brand href="/videos" className="text-[22px] group-data-[collapsible=icon]:hidden" />
+      <SidebarHeader className="flex-row items-center justify-between gap-1 pt-6 pr-2 pb-2 pl-[22px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2">
+        <Brand href="/videos" className="text-xl group-data-[collapsible=icon]:hidden" />
+        <SidebarBell />
         <CollapseState />
       </SidebarHeader>
       <SidebarContent className="gap-6 px-3.5 pt-4 group-data-[collapsible=icon]:px-0">
@@ -192,6 +194,13 @@ function CreditsCard({ standardCredits }: { standardCredits: number }) {
 }
 
 // Keeps the collapsed state in the cookie the server reads (sidebar-state).
+// Beside the lockup on desktop, opening to the right. Phones have the bell
+// in the top bar instead.
+function SidebarBell() {
+  const { isMobile } = useSidebar();
+  return isMobile ? null : <NotificationBell side="right" />;
+}
+
 function CollapseState() {
   const { state } = useSidebar();
   useEffect(() => markSidebarCollapsed(state === "collapsed"), [state]);
