@@ -213,7 +213,7 @@ test("the home page's FAQ is structured data", async ({ page }) => {
 
   const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
   const faq = scripts.map((text) => JSON.parse(text)).find((data) => data["@type"] === "FAQPage");
-  expect(faq.mainEntity).toHaveLength(7);
+  expect(faq.mainEntity).toHaveLength(9);
   expect(faq.mainEntity[1]).toEqual({
     "@type": "Question",
     name: "Can I see the video before I pay?",

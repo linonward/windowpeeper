@@ -63,7 +63,7 @@ async function pick() {
 // The consent box, which the server requires (consent=yes).
 const agree = () =>
   fireEvent.click(
-    screen.getByRole("checkbox", { name: "I confirm this is my photo, or I have permission from the adult in it." }),
+    screen.getByRole("checkbox", { name: "I confirm this is a photo of me and I am 18 or older." }),
   );
 const submit = (name = "Make my video · 10 credits") => screen.getByRole("button", { name });
 

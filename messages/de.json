@@ -10,7 +10,7 @@
       "badge": "Gerade im Trend auf TikTok · Reels · Shorts",
       "heading": "Window-Peeper-KI-Video",
       "title": "Jemand sieht dir beim Essen zu.",
-      "body": "Lade ein Foto hoch. Du bekommst den 14-Sekunden-Trendclip, mit dir in der Hauptrolle.",
+      "body": "WindowPeeper ist ein KI-Videogenerator für das TikTok-Meme „Window Peeper“. Lade ein Foto von dir hoch und bekomm einen 14-sekündigen, jugendfreien Horror-Comedy-Clip: Du isst nachts, bemerkst die Kamera und ziehst den Vorhang zu.",
       "clip": {
         "rec": "REC 01:28:00 AM",
         "caption": "CAM 03 · 0:14 · 9:16",
@@ -54,7 +54,7 @@
       "items": {
         "1": {
           "title": "Ein Foto hochladen",
-          "body": "Ein Erwachsener, Gesicht gut sichtbar, ab der Hüfte, bei gutem Licht. Dein Foto oder eines, das du verwenden darfst."
+          "body": "Nur ein Foto von dir: ein Erwachsener (18+), Gesicht gut sichtbar, ab der Hüfte, bei gutem Licht. Keine Fotos anderer Personen, von Kindern oder von Personen des öffentlichen Lebens."
         },
         "2": {
           "title": "Ein Fenster wählen",
@@ -131,11 +131,19 @@
         },
         "6": {
           "title": "Welche Fotos funktionieren am besten?",
-          "body": "Ein Foto eines Erwachsenen, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht und mit freiem Gesicht: deins oder eines, dem der Erwachsene darauf zugestimmt hat. Keine Kinder und keine Personen des öffentlichen Lebens. JPG, PNG oder WebP, bis {size} MB."
+          "body": "Ein Foto von dir, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht und mit freiem Gesicht. Du musst mindestens 18 sein. Fotos anderer Personen, von Kindern oder von Personen des öffentlichen Lebens sind nicht erlaubt. JPG, PNG oder WebP, bis {size} MB."
         },
         "7": {
           "title": "Wie lange dauert es?",
           "body": "Ein Standard-Video ist meist in etwa 3 Minuten fertig, ein Pro-Video in etwa 6. Lass die Seite offen, dann spielt es dort ab; gehst du weg, wird es trotzdem in deiner Videobibliothek fertig."
+        },
+        "8": {
+          "title": "Ist WindowPeeper sicher? Was kann es erstellen?",
+          "body": "Jedes Video ist eine von sechs festen Comedy-Szenen, in denen du nachts isst, bekleidet und jugendfrei; es gibt keine Prompts zum Schreiben. Es erstellt nie nackte, sexuelle oder intime Inhalte und darf nicht genutzt werden, um intime Bilder von jemandem oder Videos realer Personen ohne deren Einwilligung zu erstellen. Darum darfst du nur ein Foto von dir hochladen, ab 18. Fotos werden etwa 24 Stunden nach dem Hochladen gelöscht und nie zum Trainieren von KI verwendet. Missbrauch meldest du an {email}."
+        },
+        "9": {
+          "title": "Wie verwendet ihr meine Google-Daten?",
+          "body": "„Mit Google anmelden“ legt nur dein Konto an. Wir erhalten deinen Namen, deine E-Mail-Adresse und dein Profilbild, sonst nichts. Wir greifen nicht auf Google Fotos, Drive oder andere Google-Daten zu. Wir verkaufen sie nie und geben deine E-Mail-Adresse nur an die Dienste weiter, die die Website betreiben, etwa den E-Mail-Versand und den Bezahlvorgang."
         }
       }
     },
@@ -155,7 +163,7 @@
     "photo": {
       "step": "Foto hinzufügen",
       "choose": "Foto hierher ziehen oder klicken zum Auswählen",
-      "hint": "Ein Erwachsener, Gesicht sichtbar, ab der Hüfte · JPG, PNG, WebP bis {size} MB",
+      "hint": "Nur ein Foto von dir (18+), Gesicht sichtbar, ab der Hüfte · JPG, PNG, WebP bis {size} MB",
       "change": "Klicken, um das Foto zu ändern",
       "size": "Foto bereit · {size} MB"
     },
@@ -374,11 +382,11 @@
             "steps": {
               "1": {
                 "title": "Foto wählen",
-                "body": "Öffne den <generator>Generator auf der Startseite</generator> und wähle ein Foto eines Erwachsenen, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Es muss ein JPEG, PNG oder WebP bis {size} MB sein, mit {min, number} bis {maxSide, number} Pixeln pro Seite."
+                "body": "Öffne den <generator>Generator auf der Startseite</generator> und wähle ein Foto von dir, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Du musst mindestens 18 sein. Es muss ein JPEG, PNG oder WebP bis {size} MB sein, mit {min, number} bis {maxSide, number} Pixeln pro Seite."
               },
               "2": {
                 "title": "Bestätigen, dass du es nutzen darfst",
-                "body": "Setz das Häkchen unter den Szenen, um zu bestätigen, dass das Foto dir gehört oder der Erwachsene darauf zugestimmt hat. Ohne Häkchen bleibt die Schaltfläche aus."
+                "body": "Setz das Häkchen unter den Szenen, um zu bestätigen, dass das Foto dich zeigt und du mindestens 18 bist. Ohne Häkchen bleibt die Schaltfläche aus."
               },
               "3": {
                 "title": "Standard oder Pro wählen",
@@ -419,7 +427,7 @@
             "title": "Dein Foto und faire Nutzung",
             "text": {
               "1": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Das fertige Video bleibt in deiner Bibliothek, bis du dein Konto löschst. Die <privacy>Datenschutzerklärung</privacy> hat die Details.",
-              "2": "Lade nur Fotos von dir hoch oder von einem Erwachsenen, der zugestimmt hat. Keine Fotos von Kindern oder Personen des öffentlichen Lebens, und nichts, was jemanden täuschen, belästigen oder erschrecken soll. Der Trend ist ein Witz übers Beobachtetwerden; lass ihn einer bleiben."
+              "2": "Lade nur Fotos von dir hoch, und nur wenn du mindestens 18 bist. Keine Fotos anderer Personen, von Kindern oder von Personen des öffentlichen Lebens, und nichts, was jemanden täuschen, belästigen oder erschrecken soll. Der Trend ist ein Witz übers Beobachtetwerden; lass ihn einer bleiben."
             }
           }
         }
@@ -791,7 +799,7 @@
     "generating": "Wird gesendet…",
     "balance": "{count, plural, one {# Credit übrig} other {# Credits übrig}}",
     "buyCredits": "Credits kaufen",
-    "consent": "{photos, plural, one {Ich bestätige, dass das mein Foto ist oder dass die erwachsene Person darauf mir die Erlaubnis gegeben hat.} other {Ich bestätige, dass das meine Fotos sind oder dass die erwachsenen Personen darauf mir die Erlaubnis gegeben haben.}}",
+    "consent": "{photos, plural, one {Ich bestätige, dass dieses Foto mich zeigt und ich mindestens 18 bin.} other {Ich bestätige, dass diese Fotos mich zeigen und ich mindestens 18 bin.}}",
     "historyTitle": "Deine Videos",
     "empty": "Noch keine Videos.",
     "viewAll": "Alle ansehen",
@@ -881,7 +889,7 @@
       "choose": "Foto hierher ziehen oder klicken zum Auswählen",
       "ready": "Foto bereit · {size} MB",
       "replace": "Ersetzen",
-      "tip": "Ein Erwachsener, ab der Hüfte, mit Blick in die Kamera."
+      "tip": "Ein Foto von dir, ab der Hüfte, mit Blick in die Kamera."
     },
     "scene": {
       "title": "Wähl ein Fenster"

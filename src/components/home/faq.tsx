@@ -1,20 +1,21 @@
 import { Plus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { projectConfig } from "project.config";
 import { faqPage, jsonLd } from "@/lib/seo";
 
-const QUESTIONS = ["1", "2", "3", "4", "5", "6", "7"] as const;
+const QUESTIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 // Open on load, as the boards show them.
 const OPEN = ["1", "2"];
 
 // The title on the left; ruled rows on the right, each a question and a plus
 // that turns when open (docs/DESIGN.md, FAQ accordion). The answers state the
 // smallest pack's price and the photo size from the server config, which the
-// page passes in. The same questions and answers are FAQPage structured data
+// page passes in, and the support address for reports. The same questions and answers are FAQPage structured data
 // for search engines.
 export function Faq({ price, size }: { price: string; size: number }) {
   const t = useTranslations("Home.faq");
   const locale = useLocale();
-  const values = { price, size };
+  const values = { price, size, email: projectConfig.supportEmail };
   const data = faqPage(
     locale,
     QUESTIONS.map((key) => ({ question: t(`items.${key}.title`), answer: t(`items.${key}.body`, values) })),

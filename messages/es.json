@@ -10,7 +10,7 @@
       "badge": "En tendencia en TikTok · Reels · Shorts",
       "heading": "Video de window peeper con IA",
       "title": "Alguien te está mirando comer.",
-      "body": "Sube una foto. Recibe el clip de 14 segundos de la tendencia, contigo de protagonista.",
+      "body": "WindowPeeper es un generador de videos con IA para el meme de TikTok del window peeper. Sube una foto tuya y recibe un clip de 14 segundos de terror y comedia, apto para todo público: tú cenando de noche, notando la cámara y cerrando la cortina.",
       "clip": {
         "rec": "REC 01:28:00 AM",
         "caption": "CAM 03 · 0:14 · 9:16",
@@ -54,7 +54,7 @@
       "items": {
         "1": {
           "title": "Sube una foto",
-          "body": "Un adulto, con la cara bien visible, de cintura para arriba y con buena luz. Tu foto o una que tengas permiso para usar."
+          "body": "Solo una foto tuya: un adulto (18+), con la cara bien visible, de cintura para arriba y con buena luz. Nada de fotos de otras personas, niños ni personajes públicos."
         },
         "2": {
           "title": "Elige una ventana",
@@ -131,11 +131,19 @@
         },
         "6": {
           "title": "¿Qué fotos funcionan mejor?",
-          "body": "Una foto de un adulto, de cintura para arriba, mirando a la cámara, con buena luz y sin nada que tape la cara: tuya, o de un adulto que haya dado su permiso. Nada de niños ni personajes públicos. JPG, PNG o WebP, de hasta {size} MB."
+          "body": "Una foto tuya, de cintura para arriba, mirando a la cámara, con buena luz y sin nada que tape la cara. Debes tener 18 años o más. No se permiten fotos de otras personas, niños ni personajes públicos. JPG, PNG o WebP, de hasta {size} MB."
         },
         "7": {
           "title": "¿Cuánto tarda?",
           "body": "Un video Estándar suele estar listo en unos 3 minutos y uno Pro en unos 6. Deja la página abierta y se reproduce ahí; si te vas, igual se termina en tu biblioteca de videos."
+        },
+        "8": {
+          "title": "¿Es seguro WindowPeeper? ¿Qué puede crear?",
+          "body": "Cada video es una de seis escenas cómicas fijas en las que cenas de noche, con ropa y apto para todo público; no hay prompts que escribir. Nunca crea contenido desnudo, sexual o íntimo, y no debe usarse para crear imágenes íntimas de nadie ni videos de personas reales sin su consentimiento. Por eso solo puedes subir una foto tuya, con 18 años o más. Las fotos se borran unas 24 horas después de subirlas y nunca se usan para entrenar IA. Denuncia usos indebidos en {email}."
+        },
+        "9": {
+          "title": "¿Cómo usan mis datos de Google?",
+          "body": "Iniciar sesión con Google solo crea tu cuenta. Recibimos tu nombre, tu correo electrónico y tu foto de perfil, y nada más. No accedemos a tu Google Fotos, Drive ni a ningún otro dato de Google. Nunca los vendemos, y solo compartimos tu correo con los servicios que hacen funcionar el sitio, como el envío de correos y el pago."
         }
       }
     },
@@ -155,7 +163,7 @@
     "photo": {
       "step": "Añade tu foto",
       "choose": "Suelta una foto o haz clic para elegirla",
-      "hint": "Un adulto, cara visible, de cintura para arriba · JPG, PNG, WebP de hasta {size} MB",
+      "hint": "Solo una foto tuya (18+), cara visible, de cintura para arriba · JPG, PNG, WebP de hasta {size} MB",
       "change": "Haz clic para cambiar la foto",
       "size": "Foto lista · {size} MB"
     },
@@ -374,11 +382,11 @@
             "steps": {
               "1": {
                 "title": "Elige una foto",
-                "body": "Abre el <generator>generador de la página de inicio</generator> y elige la foto de un adulto, de cintura para arriba, mirando a la cámara y con buena luz. Debe ser JPEG, PNG o WebP de hasta {size} MB, de {min, number} a {maxSide, number} píxeles por lado."
+                "body": "Abre el <generator>generador de la página de inicio</generator> y elige una foto tuya, de cintura para arriba, mirando a la cámara y con buena luz. Debes tener 18 años o más. Debe ser JPEG, PNG o WebP de hasta {size} MB, de {min, number} a {maxSide, number} píxeles por lado."
               },
               "2": {
                 "title": "Confirma que puedes usarla",
-                "body": "Marca la casilla debajo de las escenas para confirmar que la foto es tuya o que el adulto que aparece aceptó. Sin ella, el botón no se activa."
+                "body": "Marca la casilla debajo de las escenas para confirmar que la foto es tuya y que tienes 18 años o más. Sin ella, el botón no se activa."
               },
               "3": {
                 "title": "Elige Estándar o Pro",
@@ -419,7 +427,7 @@
             "title": "Tu foto y el uso justo",
             "text": {
               "1": "Tu foto solo se usa para hacer tu video y se borra unas 24 horas después de subirla. El video terminado queda en tu biblioteca hasta que borres tu cuenta. La <privacy>Política de privacidad</privacy> tiene los detalles.",
-              "2": "Sube solo fotos tuyas o de un adulto que aceptó. Nada de fotos de niños ni de personajes públicos, y nada para engañar, acosar o asustar a nadie. La tendencia es una broma sobre sentirse observado; que siga siéndolo."
+              "2": "Sube solo fotos tuyas, y solo si tienes 18 años o más. Nada de fotos de otras personas, niños ni personajes públicos, y nada para engañar, acosar o asustar a nadie. La tendencia es una broma sobre sentirse observado; que siga siéndolo."
             }
           }
         }
@@ -791,7 +799,7 @@
     "generating": "Enviando…",
     "balance": "{count, plural, one {Te queda # crédito} other {Te quedan # créditos}}",
     "buyCredits": "Comprar créditos",
-    "consent": "{photos, plural, one {Confirmo que esta foto es mía o que tengo permiso del adulto que aparece en ella.} other {Confirmo que estas fotos son mías o que tengo permiso de los adultos que aparecen en ellas.}}",
+    "consent": "{photos, plural, one {Confirmo que esta foto es mía y que tengo 18 años o más.} other {Confirmo que estas fotos son mías y que tengo 18 años o más.}}",
     "historyTitle": "Tus videos",
     "empty": "Todavía no hay videos.",
     "viewAll": "Ver todos",
@@ -881,7 +889,7 @@
       "choose": "Suelta una foto o haz clic para elegirla",
       "ready": "Foto lista · {size} MB",
       "replace": "Cambiar",
-      "tip": "Un adulto, de cintura para arriba, mirando a la cámara."
+      "tip": "Una foto tuya, de cintura para arriba, mirando a la cámara."
     },
     "scene": {
       "title": "Elige una ventana"
