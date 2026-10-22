@@ -9,6 +9,9 @@ vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ refresh, push: vi.fn(), replace: vi.fn() }),
 }));
 
+const track = vi.fn();
+vi.mock("@/lib/analytics", () => ({ track }));
+
 const { Billing } = await import("./billing");
 type BillingProps = import("./billing").BillingProps;
 
@@ -26,6 +29,7 @@ afterEach(() => {
   fetchMock.mockReset();
   assign.mockReset();
   refresh.mockReset();
+  track.mockReset();
   vi.useRealTimers();
 });
 
@@ -79,6 +83,7 @@ test("sends the browser to the checkout URL for the chosen pack", async () => {
     method: "POST",
     body: JSON.stringify({ packId: "small", locale: "es" }),
   }));
+  expect(track.mock.calls).toEqual([["checkout_clicked", { surface: "billing", pack_id: "small" }]]);
 });
 
 test("says so when checkout can't start", async () => {

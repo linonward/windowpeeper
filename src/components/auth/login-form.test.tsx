@@ -16,12 +16,16 @@ vi.mock("./turnstile", () => ({
   ),
 }));
 
+const track = vi.fn();
+vi.mock("@/lib/analytics", () => ({ track }));
+
 const { LoginForm } = await import("./login-form");
 
 afterEach(() => {
   cleanup();
   social.mockReset();
   magicLink.mockReset();
+  track.mockReset();
 });
 
 function sendMagicLink() {
@@ -194,4 +198,25 @@ test.each([
 
   expect(screen.getByRole("alert").textContent).toBe(message);
   window.history.replaceState(null, "", "/");
+});
+
+test("records a sign-in started with Google, or a link sent by email", async () => {
+  social.mockResolvedValue({ data: { redirect: true }, error: null });
+  magicLink.mockResolvedValueOnce({ data: null, error: { status: 500 } }).mockResolvedValueOnce({ data: {}, error: null });
+  const view = renderWithIntl(<LoginForm />);
+
+  fireEvent.click(screen.getByRole("button", { name: "Continue with Google" }));
+  view.unmount();
+  renderWithIntl(<LoginForm />);
+  // A link that failed to send started nothing.
+  sendMagicLink();
+  await screen.findByRole("alert");
+  sendMagicLink();
+  await screen.findByRole("status");
+
+  expect(track.mock.calls).toEqual([
+    ["sign_in_started", { method: "google" }],
+    ["sign_in_started", { method: "email" }],
+  ]);
+  expect(JSON.stringify(track.mock.calls)).not.toContain("ada@");
 });

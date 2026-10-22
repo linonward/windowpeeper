@@ -6,6 +6,9 @@ import { EffectGenerator, type EffectGeneratorProps } from "./effect-generator";
 const fetchMock = vi.fn();
 const openBuy = vi.fn();
 vi.mock("@/components/billing/buy-credits", () => ({ useBuyCredits: () => ({ open: openBuy }) }));
+// src/lib/analytics.test.ts covers sending; this checks which steps fire.
+const { track } = vi.hoisted(() => ({ track: vi.fn() }));
+vi.mock("@/lib/analytics", () => ({ track }));
 
 beforeEach(() => {
   vi.stubGlobal("fetch", fetchMock);
@@ -20,6 +23,7 @@ afterEach(() => {
   vi.useRealTimers();
   fetchMock.mockReset();
   openBuy.mockReset();
+  track.mockReset();
 });
 
 const props: EffectGeneratorProps = {
@@ -204,4 +208,41 @@ test("a ready video says how long ago it was made, with the current time passed 
   expect(within(recent).getByText("Ready · 5 minutes ago")).toBeTruthy();
   expect(errors.mock.calls.flat().join(" ")).not.toContain("ENVIRONMENT_FALLBACK");
   errors.mockRestore();
+});
+
+test("records the dashboard's funnel steps, without the photo", async () => {
+  fetchMock.mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }));
+  renderWithIntl(<EffectGenerator {...props} />);
+
+  await pick();
+  agree();
+  fireEvent.click(submit());
+
+  await waitFor(() => expect(openBuy).toHaveBeenCalled());
+  expect(track.mock.calls).toEqual([
+    ["photo_selected", { surface: "dashboard" }],
+    ["generate_clicked", { surface: "dashboard", quality: "standard", ratio: "9:16" }],
+    ["paywall_viewed", { surface: "dashboard", quality: "standard", credits_needed: 10 }],
+  ]);
+  expect(JSON.stringify(track.mock.calls)).not.toContain("me.jpg");
+});
+
+test("a short balance records the paywall, not a generate click", () => {
+  renderWithIntl(<EffectGenerator {...props} balance={5} />);
+
+  fireEvent.click(screen.getByRole("button", { name: "Buy credits" }));
+
+  expect(track.mock.calls).toEqual([["paywall_viewed", { surface: "dashboard", quality: "standard", credits_needed: 10 }]]);
+});
+
+test("records downloading a recent video", () => {
+  const ready = { ...pending, status: "succeeded" as const, url: "https://storage.test/new.mp4", createdAt: new Date() };
+  renderWithIntl(<EffectGenerator {...props} videos={[ready]} />);
+
+  const download = screen.getByText("Download MP4");
+  // jsdom doesn't navigate; the click is what counts.
+  download.addEventListener("click", (event) => event.preventDefault());
+  fireEvent.click(download);
+
+  expect(track.mock.calls).toEqual([["video_downloaded", { surface: "dashboard" }]]);
 });

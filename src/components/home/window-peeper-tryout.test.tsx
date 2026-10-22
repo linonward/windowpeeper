@@ -546,10 +546,10 @@ test("records each funnel step once per action, without the photo", async () => 
   await waitFor(() => expect(assign).toHaveBeenCalled());
 
   expect(steps()).toEqual([
-    ["photo_selected"],
-    ["generate_clicked", { quality: "standard", ratio: "9:16" }],
-    ["paywall_viewed", { quality: "standard", credits_needed: 10 }],
-    ["checkout_clicked", { pack_id: "medium", quality: "standard" }],
+    ["photo_selected", { surface: "home" }],
+    ["generate_clicked", { surface: "home", quality: "standard", ratio: "9:16" }],
+    ["paywall_viewed", { surface: "home", quality: "standard", credits_needed: 10 }],
+    ["checkout_clicked", { surface: "home", pack_id: "medium", quality: "standard" }],
   ]);
   expect(JSON.stringify(track.mock.calls)).not.toContain("me.jpg");
 });
@@ -595,7 +595,10 @@ test("records downloading and sharing the video, with how it was shared", async 
   await waitFor(() => expect(share).toHaveBeenCalledTimes(2));
 
   await waitFor(() =>
-    expect(steps().slice(2)).toEqual([["video_downloaded"], ["video_shared", { method: "native" }]]),
+    expect(steps().slice(2)).toEqual([
+      ["video_downloaded", { surface: "home" }],
+      ["video_shared", { surface: "home", method: "native" }],
+    ]),
   );
 });
 
@@ -613,7 +616,7 @@ test("records a copied link as shared by copy", async () => {
   fireEvent.click(await screen.findByRole("button", { name: "Share" }));
 
   await screen.findByText("Link copied");
-  expect(steps().at(-1)).toEqual(["video_shared", { method: "copy" }]);
+  expect(steps().at(-1)).toEqual(["video_shared", { surface: "home", method: "copy" }]);
 });
 
 // The 404 page's scene cards link here with ?scene=.

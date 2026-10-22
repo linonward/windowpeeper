@@ -6,6 +6,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 import { useCredits } from "@/components/dashboard/credits";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { track } from "@/lib/analytics";
 import { type Pack, PackBenefits, PackOptions, useMoney, type VideoPrices } from "./packs";
 import { redirectFrom } from "./redirect";
 
@@ -59,6 +60,7 @@ function BuyCreditsDialog({ packs, prices, featured }: { packs: readonly Pack[];
   const price = money(pack.amount, pack.currency);
 
   async function pay() {
+    track("checkout_clicked", { surface: "buy_dialog", pack_id: pack.id });
     setBuying(true);
     setError(null);
     const code = await redirectFrom("/api/payment/checkout", { packId: pack.id, locale });

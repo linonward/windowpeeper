@@ -10,6 +10,7 @@ import { RecBadge } from "@/components/home/rec-badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { usePendingPoll } from "@/hooks/use-pending-poll";
 import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 import type { ApiBody, ApiErrorCode, GeneratedVideo, Serialized, VideoResponse } from "@/lib/api";
 import { type ImageLimits, limitValues } from "@/lib/image-limits";
 import { type PhotoEffectKind, type Scene, sceneImage, SCENES } from "@/lib/photo-effects";
@@ -105,13 +106,17 @@ export function EffectGenerator(props: EffectGeneratorProps) {
     },
   });
 
+  // Too few credits for the video: the buy-credits dialog.
+  function paywall() {
+    track("paywall_viewed", { surface: "dashboard", quality, credits_needed: cost });
+    buyCredits?.open();
+  }
+
   async function submit(event: React.FormEvent) {
     event.preventDefault();
-    if (!canAfford) {
-      buyCredits?.open();
-      return;
-    }
+    if (!canAfford) return paywall();
     if (!ready || !photo) return;
+    track("generate_clicked", { surface: "dashboard", quality, ratio: RATIO });
     setSubmitting(true);
     setError(null);
     const form = new FormData();
@@ -130,7 +135,7 @@ export function EffectGenerator(props: EffectGeneratorProps) {
       adjustCredits(-video.credits, `video:${video.id}`);
       return;
     }
-    if (body.error === "INSUFFICIENT_CREDITS") buyCredits?.open();
+    if (body.error === "INSUFFICIENT_CREDITS") paywall();
     setError(t(ERRORS[body.error as keyof typeof ERRORS] ?? "errors.failed", messageValues));
   }
 
@@ -175,7 +180,11 @@ export function EffectGenerator(props: EffectGeneratorProps) {
               id="new-photo-input"
               type="file"
               accept="image/jpeg,image/png,image/webp"
-              onChange={(event) => pick("left", event.target.files?.[0] ?? null)}
+              onChange={(event) => {
+                const file = event.target.files?.[0] ?? null;
+                if (file) track("photo_selected", { surface: "dashboard" });
+                pick("left", file);
+              }}
               aria-labelledby="new-photo"
               className="peer sr-only"
             />
@@ -423,6 +432,7 @@ function Recent({ videos }: { videos: Video[] }) {
                         <a
                           href={`/api/videos/${video.id}/download`}
                           download
+                          onClick={() => track("video_downloaded", { surface: "dashboard" })}
                           className="relative w-fit text-xs font-semibold text-primary-text"
                         >
                           {tg("recent.download")}

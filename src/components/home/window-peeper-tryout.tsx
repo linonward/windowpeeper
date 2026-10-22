@@ -217,7 +217,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
   // The packs, after a send the visitor started answered 402. The retries
   // after a payment wait instead, and record nothing.
   function paywall() {
-    track("paywall_viewed", { quality: "standard", credits_needed: credits });
+    track("paywall_viewed", { surface: "home", quality: "standard", credits_needed: credits });
     offerPacks("short");
   }
 
@@ -247,7 +247,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
   async function buy() {
     if (!ready || !photo || !pack) return;
     const draft = { photos: [photo], fields: { [CONSENT]: "yes", [SCENE]: scene, [RATIO]: VERTICAL } };
-    track("checkout_clicked", { pack_id: pack.id, quality: "standard" });
+    track("checkout_clicked", { surface: "home", pack_id: pack.id, quality: "standard" });
     setBuying(true);
     setBuyError(null);
     await savePhotoDraft(DRAFT_KEY, draft);
@@ -298,7 +298,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     event.preventDefault();
     if (!ready || !photo) return;
     const draft = { photos: [photo], fields: { [CONSENT]: "yes", [SCENE]: scene, [RATIO]: VERTICAL } };
-    track("generate_clicked", { quality: "standard", ratio: VERTICAL });
+    track("generate_clicked", { surface: "home", quality: "standard", ratio: VERTICAL });
     setPaid(null);
     // A session still loading goes out too; a 401 asks to sign in.
     if (!session.data && !session.isPending) void askToSignIn(draft);
@@ -310,7 +310,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     if (navigator.share) {
       // Closing the share sheet rejects; there is nothing to report.
       await navigator.share({ title: tt("share.title"), text: tt("share.text"), url }).then(
-        () => track("video_shared", { method: "native" }),
+        () => track("video_shared", { surface: "home", method: "native" }),
         () => {},
       );
       return;
@@ -318,7 +318,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     await navigator.clipboard?.writeText(url).then(
       () => {
         setCopied(true);
-        track("video_shared", { method: "copy" });
+        track("video_shared", { surface: "home", method: "copy" });
       },
       () => {},
     );
@@ -347,7 +347,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
             accept={PHOTO_TYPES.join(",")}
             onChange={(event) => {
               const file = event.target.files?.[0] ?? null;
-              if (file) track("photo_selected");
+              if (file) track("photo_selected", { surface: "home" });
               pick("left", file);
             }}
             aria-labelledby="tryout-photo-label"
@@ -366,7 +366,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
                 setError(t("errors.invalid", messageValues));
                 return;
               }
-              track("photo_selected");
+              track("photo_selected", { surface: "home" });
               pick("left", file);
             }}
             className="-mt-1.5 flex min-w-0 cursor-pointer items-center gap-4 rounded-lg border border-border-strong bg-background px-4 py-4 transition-colors peer-focus-visible:border-ring peer-focus-visible:ring-3 peer-focus-visible:ring-ring/50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 sm:px-5 sm:py-[18px] [@media(hover:hover)]:hover:border-primary/60"
@@ -644,7 +644,7 @@ function Result({
         <a
           href={`/api/videos/${video.id}/download`}
           download
-          onClick={() => track("video_downloaded")}
+          onClick={() => track("video_downloaded", { surface: "home" })}
           className={buttonVariants()}
         >
           <Download />
