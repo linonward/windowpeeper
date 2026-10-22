@@ -69,7 +69,7 @@
     "pricing": {
       "eyebrow": "Preise",
       "title": "Fang mit einem Video an.",
-      "body": "Einmal zahlen, kein Abo. Das Paket wählst du, nachdem du dein Foto hochgeladen hast.",
+      "body": "Einmal zahlen, kein Abo. Kauf ein Paket hier oder nachdem du dein Foto hochgeladen hast.",
       "cta": "Mein Video machen",
       "more": "Alle Preise ansehen"
     },
@@ -546,7 +546,13 @@
       "failed": "Fehlversuche gratis"
     },
     "videosLabel": "{videos, plural, one {Video} other {Videos}}",
-    "perVideoSave": "{price} pro Video · {percent} % sparen"
+    "perVideoSave": "{price} pro Video · {percent} % sparen",
+    "arriving": "Zahlung erhalten. Deine Credits sind in einer Minute da.",
+    "makeVideo": "Video machen",
+    "signIn": {
+      "title": "Melde dich an, um Credits zu kaufen",
+      "body": "Die Bezahlung öffnet sich direkt nach der Anmeldung."
+    }
   },
   "Admin": {
     "title": "Admin",

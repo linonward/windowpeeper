@@ -48,6 +48,24 @@ test("returnTo home sends the buyer back to the home generator", async () => {
   });
 });
 
+test("returnTo pricing sends the buyer back to the price list", async () => {
+  await post({ packId: "small", locale: "de", returnTo: "pricing" });
+
+  expect(urls()).toEqual({
+    successUrl: "https://app.test/de/pricing?checkout=success",
+    cancelUrl: "https://app.test/de/pricing?checkout=cancel",
+  });
+});
+
+test("returnTo packs sends the buyer back to the home page's packs", async () => {
+  await post({ packId: "large", locale: "en", returnTo: "packs" });
+
+  expect(urls()).toEqual({
+    successUrl: "https://app.test/?checkout=success#pricing",
+    cancelUrl: "https://app.test/?checkout=cancel#pricing",
+  });
+});
+
 test("any other returnTo, such as a URL, returns to billing", async () => {
   await post({ packId: "small", locale: "en", returnTo: "https://evil.test/" });
 

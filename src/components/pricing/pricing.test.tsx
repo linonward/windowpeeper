@@ -5,6 +5,7 @@ import { renderWithIntl } from "@/test/intl";
 vi.mock("@/i18n/navigation", () => ({
   Link: ({ href, ...props }: React.ComponentProps<"a">) => <a href={`/en${href}`} {...props} />,
 }));
+vi.mock("@/lib/auth-client", () => ({ authClient: { useSession: () => ({ data: null, isPending: false }) } }));
 
 const { Pricing } = await import("./pricing");
 
@@ -59,13 +60,13 @@ test("only the featured pack is recommended; nothing claims popularity", () => {
   expect(container.textContent).not.toMatch(/most popular/i);
 });
 
-test("each pack's button names the videos and leads to billing for that pack", () => {
+// BuyPack (src/components/billing/buy-pack.test.tsx) opens checkout.
+test("each pack's button names the videos and buys that pack here, not on billing", () => {
   render();
 
-  const buy = screen.getByRole("link", { name: "Buy 50 credits for $29.90" });
+  const buy = screen.getByRole("button", { name: "Buy 50 credits for $29.90" });
   expect(buy.textContent).toBe("Buy 5 videos");
-  expect(buy.getAttribute("href")).toBe("/en/billing?pack=medium");
-  expect(buy.getAttribute("rel")).toBe("nofollow");
+  expect(screen.queryByRole("link", { name: /^Buy / })).toBeNull();
 });
 
 test("the cost table lists each quality's resolution, wait and credits", () => {

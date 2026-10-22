@@ -1,8 +1,7 @@
 import { Check, Infinity as InfinityIcon, RotateCcw, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { BuyPack, CheckoutNotice } from "@/components/billing/buy-pack";
 import { type Pack, packFacts, Recommended, useMoney, type VideoPrices } from "@/components/billing/packs";
-import { buttonVariants } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const TRUST = [
@@ -13,7 +12,8 @@ const TRUST = [
 
 // The public price list (docs/DESIGN.md, Pricing): a centered head over a
 // lamp glow, one card per pack, what each quality costs, and three
-// promises. One-time credit packs only, no subscription. `featured` is the
+// promises. One-time credit packs only, no subscription. Each card buys its
+// pack here; checkout comes back to this page. `featured` is the
 // pack recommended to start with; on phones it comes first.
 export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
   const t = useTranslations("Pricing");
@@ -36,6 +36,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
         <h2 id="pricing-packs" className="sr-only">
           {t("packsTitle")}
         </h2>
+        <CheckoutNotice className="mb-5" />
         <PlanCards packs={packs} featured={featured} prices={prices} />
       </section>
 
@@ -64,8 +65,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
 }
 
 // One card per pack: its name, the price and credits, who it's for, what it
-// buys, and a button to billing for that pack. The links are nofollow:
-// signed out, /billing redirects to the noindex sign-in page.
+// buys, and a button that buys the pack.
 function PlanCards({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
   const t = useTranslations("Pricing");
   const billing = useTranslations("Billing");
@@ -113,14 +113,16 @@ function PlanCards({ packs, featured, prices }: { packs: readonly Pack[]; featur
                 </li>
               ))}
             </ul>
-            <Link
-              href={`/billing?pack=${pack.id}`}
-              rel="nofollow"
+            <BuyPack
+              pack={pack}
+              returnTo="pricing"
               aria-label={billing("buyLabel", { credits, price })}
-              className={cn(buttonVariants({ variant: lit ? "default" : "outline", size: "lg" }), "mt-auto w-full")}
+              variant={lit ? "default" : "outline"}
+              size="lg"
+              className="mt-auto w-full"
             >
               {t("buy", { videos: facts.videos })}
-            </Link>
+            </BuyPack>
           </li>
         );
       })}

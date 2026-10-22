@@ -69,7 +69,7 @@
     "pricing": {
       "eyebrow": "Pricing",
       "title": "Start with one video.",
-      "body": "Pay once, no subscription. You pick a pack after you upload your photo.",
+      "body": "Pay once, no subscription. Buy a pack here, or once your photo is in.",
       "cta": "Make my video",
       "more": "See full pricing"
     },
@@ -546,7 +546,13 @@
       "failed": "Failed renders are free"
     },
     "videosLabel": "{videos, plural, one {video} other {videos}}",
-    "perVideoSave": "{price} a video · save {percent}%"
+    "perVideoSave": "{price} a video · save {percent}%",
+    "arriving": "Payment received. Your credits arrive within a minute.",
+    "makeVideo": "Make a video",
+    "signIn": {
+      "title": "Sign in to buy credits",
+      "body": "Checkout opens right after you sign in."
+    }
   },
   "Admin": {
     "title": "Admin",

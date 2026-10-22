@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { BuyPack, CheckoutNotice } from "@/components/billing/buy-pack";
 import { type Pack, PackBenefits, packFacts, Recommended, useMoney, type VideoPrices } from "@/components/billing/packs";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
@@ -9,10 +10,12 @@ import { cn } from "@/lib/utils";
 import { SectionHeading } from "./section-heading";
 
 // The packs on the home page (`#pricing`): each card shows its videos as a
-// stack of frames, then the price and the price per video; then what every
-// pack includes, a button up to the generator and a link to the price list.
+// stack of frames, then the price, the price per video and a button that
+// buys the pack (checkout comes back here); then what every pack includes, a
+// button up to the generator and a link to the price list.
 export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
   const t = useTranslations("Home.pricing");
+  const tPricing = useTranslations("Pricing");
   const billing = useTranslations("Billing");
   const money = useMoney();
 
@@ -22,6 +25,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
         <SectionHeading eyebrow={t("eyebrow")} id="pricing-title" aside={t("body")}>
           {t("title")}
         </SectionHeading>
+        <CheckoutNotice />
         <ul className="grid gap-4 lg:grid-cols-3">
           {packs.map((pack, index) => {
             const facts = packFacts(pack, packs, prices);
@@ -73,6 +77,18 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
                         : billing("perVideo", { price: money(facts.perVideo, pack.currency) })}
                     </span>
                   </div>
+                  <BuyPack
+                    pack={pack}
+                    returnTo="packs"
+                    aria-label={billing("buyLabel", {
+                      credits: billing("credits", { count: pack.credits }),
+                      price: money(pack.amount, pack.currency),
+                    })}
+                    variant={lit ? "default" : "outline"}
+                    className="mt-auto w-full"
+                  >
+                    {tPricing("buy", { videos: facts.videos })}
+                  </BuyPack>
                 </div>
               </li>
             );

@@ -1,5 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
-import { signIn } from "./support/auth";
+import { randomIp, readMagicLink, signIn, uniqueEmail } from "./support/auth";
 
 // CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper video's prices
 // (src/server/videos/window-peeper.ts).
@@ -40,28 +40,59 @@ test("only the pack to start with is recommended", async ({ page }) => {
   await expect(cards.nth(0)).not.toContainText("Recommended");
   await expect(cards.nth(2)).not.toContainText("Recommended");
   await expect(main).not.toContainText(/most popular/i);
-  await expect(cards.nth(1).getByRole("link")).toHaveText("Buy 5 videos");
+  await expect(cards.nth(1).getByRole("button")).toHaveText("Buy 5 videos");
 });
 
-test("buying opens billing for a signed-in user with the pack picked", async ({ page }) => {
+// Payments are off in E2E, so checkout answers PAYMENTS_DISABLED and the
+// button says so; with payments on, the browser goes to the provider.
+const checkoutFrom = (page: Page) =>
+  page.waitForRequest((request) => request.url().endsWith("/api/payment/checkout") && request.method() === "POST");
+
+test("a signed-in buyer opens checkout straight from the price list", async ({ page }) => {
   await signIn(page);
   await page.goto("/pricing");
 
-  await page.getByRole("link", { name: "Buy 250 credits for $99.90" }).click();
+  const checkout = checkoutFrom(page);
+  await page.getByRole("button", { name: "Buy 250 credits for $99.90" }).click();
 
-  // Payments are off in E2E, so the pay button is disabled.
-  await expect(page).toHaveURL("/billing?pack=large");
-  await expect(page.getByRole("radio", { name: /25-pack/ })).toBeChecked();
-  await expect(page.getByRole("button", { name: "Buy 250 credits for $99.90" })).toBeDisabled();
+  expect((await checkout).postDataJSON()).toEqual({ packId: "large", locale: "en", returnTo: "pricing" });
+  await expect(page.getByRole("main").getByRole("alert")).toHaveText("Payments aren't set up yet.");
+  await expect(page).toHaveURL("/pricing");
 });
 
-test("signed-out visitors keep their choice through sign-in", async ({ page, request }) => {
+test("a signed-out visitor signs in on the price list, then checkout opens for the pack", async ({ page }) => {
+  const email = uniqueEmail();
+  await page.context().setExtraHTTPHeaders({ "x-forwarded-for": randomIp() });
   await page.goto("/pricing");
-  await page.getByRole("link", { name: "Buy 10 credits for $9.90" }).click();
+  await page.getByRole("button", { name: "Buy 10 credits for $9.90" }).click();
 
-  await expect(page).toHaveURL("/sign-in?next=%2Fbilling%3Fpack%3Dsmall");
-  const response = await request.get("/billing?pack=small", { maxRedirects: 0 });
-  expect(response.headers().location).toBe("/sign-in?next=%2Fbilling%3Fpack%3Dsmall");
+  const dialog = page.getByRole("dialog", { name: "Sign in to buy credits" });
+  await dialog.getByLabel("Email").fill(email);
+  await dialog.getByRole("button", { name: "Send magic link" }).click();
+  await page.goto(await readMagicLink(email));
+  const checkout = checkoutFrom(page);
+  await page.getByRole("button", { name: "Continue signing in" }).click();
+
+  expect((await checkout).postDataJSON()).toEqual({ packId: "small", locale: "en", returnTo: "pricing" });
+  await expect(page).toHaveURL("/pricing");
+  await expect(page.getByRole("main").getByRole("alert")).toHaveText("Payments aren't set up yet.");
+});
+
+test("back from checkout, the price list says how it went", async ({ page }) => {
+  await page.goto("/pricing?checkout=success");
+
+  await expect(page.getByRole("status")).toContainText("Payment received. Your credits arrive within a minute.");
+  await expect(page).toHaveURL("/pricing");
+});
+
+test("the home page's packs open checkout and come back to them", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/");
+
+  const checkout = checkoutFrom(page);
+  await page.locator("#pricing").getByRole("button", { name: "Buy 50 credits for $29.90" }).click();
+
+  expect((await checkout).postDataJSON()).toEqual({ packId: "medium", locale: "en", returnTo: "packs" });
 });
 
 test("renders in Spanish, linked from the footer", async ({ page }) => {
