@@ -2,7 +2,7 @@
 
 import { AlertTriangle, ArrowRight, Check, CircleCheck, ImagePlus, LoaderCircle, Play } from "lucide-react";
 import Image from "next/image";
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useNow, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useBuyCredits } from "@/components/billing/buy-credits";
 import { useCreditBalance } from "@/components/dashboard/credits";
@@ -387,6 +387,8 @@ function Recent({ videos }: { videos: Video[] }) {
   const tg = useTranslations("Generator");
   const ts = useTranslations("PhotoEffects.scenes");
   const format = useFormatter();
+  // "Ready · 5 minutes ago" counts from this, and moves on each minute.
+  const now = useNow({ updateInterval: 60_000 });
   const recent = videos.slice(0, RECENT);
 
   return (
@@ -456,7 +458,7 @@ function Recent({ videos }: { videos: Video[] }) {
                   ) : (
                     <>
                       <span className="text-xs text-muted-foreground">
-                        {tg("recent.ready", { time: format.relativeTime(video.createdAt) })}
+                        {tg("recent.ready", { time: format.relativeTime(video.createdAt, now) })}
                       </span>
                       {video.url && (
                         <a
