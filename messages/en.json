@@ -218,16 +218,22 @@
   },
   "SignIn": {
     "title": "Sign in",
-    "subtitle": "No password to remember. We email you a link, or you continue with Google."
+    "subtitle": "New here? Signing in creates your account. No password needed.",
+    "heading": "Sign in to WindowPeeper"
   },
   "LoginForm": {
     "google": "Continue with Google",
     "googleError": "Google sign-in isn't available. Use a magic link instead.",
     "or": "or",
     "email": "Email",
-    "send": "Send magic link",
-    "sent": "Check your email for a sign-in link.",
-    "sendError": "Couldn't send the link. Try again."
+    "send": "Email me a sign-in link",
+    "sent": "Check your email. We sent a sign-in link to {email}. It works once and expires in 5 minutes.",
+    "sendError": "Couldn't send the link. Try again.",
+    "placeholder": "you@example.com",
+    "lastUsed": "Last used",
+    "terms": "By signing in, you agree to our <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+    "linkError": "That sign-in link has expired or was already used. Send a new one.",
+    "signInError": "Sign-in didn't finish. Try again."
   },
   "MagicLinkConfirm": {
     "title": "Finish signing in",

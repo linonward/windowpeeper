@@ -32,7 +32,7 @@ test("switches language and keeps the page", async ({ page }) => {
   await page.getByRole("contentinfo").getByRole("link", { name: "Español" }).click();
 
   await expect(page).toHaveURL("/es/sign-in");
-  await expect(page.getByRole("heading", { name: "Iniciar sesión" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Inicia sesión en WindowPeeper" })).toBeVisible();
 });
 
 test("switches language from the header's menu and keeps the page", async ({ page }) => {

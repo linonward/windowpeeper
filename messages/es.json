@@ -218,16 +218,22 @@
   },
   "SignIn": {
     "title": "Iniciar sesión",
-    "subtitle": "Sin contraseñas que recordar. Te enviamos un enlace por correo electrónico, o continúas con Google."
+    "subtitle": "¿Eres nuevo? Al iniciar sesión se crea tu cuenta. Sin contraseña.",
+    "heading": "Inicia sesión en WindowPeeper"
   },
   "LoginForm": {
     "google": "Continuar con Google",
     "googleError": "El inicio de sesión con Google no está disponible. Usa un enlace mágico.",
     "or": "o",
     "email": "Correo electrónico",
-    "send": "Enviar enlace mágico",
-    "sent": "Revisa tu correo: te enviamos un enlace para iniciar sesión.",
-    "sendError": "No se pudo enviar el enlace. Inténtalo de nuevo."
+    "send": "Envíame un enlace para entrar",
+    "sent": "Revisa tu correo. Enviamos un enlace para iniciar sesión a {email}. Funciona una vez y caduca en 5 minutos.",
+    "sendError": "No se pudo enviar el enlace. Inténtalo de nuevo.",
+    "placeholder": "tu@ejemplo.com",
+    "lastUsed": "Último usado",
+    "terms": "Al iniciar sesión, aceptas nuestros <terms>Términos</terms> y nuestra <privacy>Política de privacidad</privacy>.",
+    "linkError": "Ese enlace para iniciar sesión caducó o ya se usó. Pide uno nuevo.",
+    "signInError": "No se completó el inicio de sesión. Inténtalo de nuevo."
   },
   "MagicLinkConfirm": {
     "title": "Termina de iniciar sesión",
