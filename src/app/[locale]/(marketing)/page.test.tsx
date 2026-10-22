@@ -124,7 +124,7 @@ test("the FAQ states the price and the photo size from the config", () => {
 });
 
 // The site's names and the three steps, for search engines, as the page shows them.
-test.each(["en", "zh"] as const)("the site and the steps are structured data in %s", (locale) => {
+test.each(["en", "es"] as const)("the site and the steps are structured data in %s", (locale) => {
   renderWithIntl(<Page />, locale);
 
   const items = [...document.querySelectorAll('script[type="application/ld+json"]')].map((script) =>
@@ -158,7 +158,7 @@ test("names the searches people use for the trend", () => {
   }
 });
 
-test.each(["es", "de", "zh"] as const)("renders in %s, the h1 and the generator translated", (locale) => {
+test.each(["es", "de", "es"] as const)("renders in %s, the h1 and the generator translated", (locale) => {
   renderWithIntl(<Page />, locale);
 
   expect(screen.getByRole("heading", { level: 1 }).textContent).not.toContain("Someone's watching you eat.");
@@ -166,7 +166,7 @@ test.each(["es", "de", "zh"] as const)("renders in %s, the h1 and the generator 
 });
 
 // Search engines read the FAQ the page shows, word for word.
-test.each(["en", "zh"] as const)("the FAQ is structured data in %s, the same questions and answers", (locale) => {
+test.each(["en", "es"] as const)("the FAQ is structured data in %s, the same questions and answers", (locale) => {
   renderWithIntl(<Page />, locale);
 
   const scripts = [...document.querySelectorAll('script[type="application/ld+json"]')];

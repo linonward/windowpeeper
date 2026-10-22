@@ -83,7 +83,7 @@ Fonts load with `next/font/google` in `src/app/[locale]/layout.tsx`.
 
 | Variable | Font | Use |
 |---|---|---|
-| `--font-display` (`font-display`) | Big Shoulders, then `"PingFang SC"`, `"Noto Sans SC"` | Titles, prices, big numbers, the wordmark |
+| `--font-display` (`font-display`) | Big Shoulders | Titles, prices, big numbers, the wordmark |
 | `--font-sans` (`font-sans`, also `--font-heading`) | Instrument Sans | Body, UI, card titles |
 | `--font-mono` (`font-mono`) | JetBrains Mono | Eyebrows, labels, timecodes, credit amounts, code |
 
@@ -95,11 +95,11 @@ Fonts load with `next/font/google` in `src/app/[locale]/layout.tsx`.
 | Price | `font-display font-black tabular-nums`, 52-60px | Pricing |
 | H3 / card title | Instrument Sans 600, 16-22px | Steps, scenes, cards |
 | Body | Instrument Sans 16px; `text-muted-foreground` for secondary text | Everywhere |
-| Eyebrow | `.eyebrow`: JetBrains Mono 12px, 500, uppercase, `0.16em` tracking (`0.08em` in Chinese), `--primary-text` | Above section titles |
+| Eyebrow | `.eyebrow`: JetBrains Mono 12px, 500, uppercase, `0.16em` tracking, `--primary-text` | Above section titles |
 | Mono label | `font-mono text-[10px]`-`text-[11px] uppercase tracking-[0.1em]`-`[0.15em]`, `text-faint` | Sidebar groups, footer columns, table heads, timecodes |
 | Dashboard page title | `font-display font-extrabold`, 30-40px | `dashboard/page-header.tsx`, the new video page |
 
-`.display-tight` tightens Latin display text (`-0.022em`) and leaves Chinese at normal spacing. `.legal-prose` sets legal text to line-height 1.75 (1.85 in Chinese).
+`.display-tight` tightens English display text (`-0.022em`). `.legal-prose` sets legal text to line-height 1.75.
 
 ## 4. Spacing, Layout & Radius
 

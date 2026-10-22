@@ -20,12 +20,12 @@ test("the sitemap lists the public pages in every locale", async ({ request, bas
   const posts = ["/blog/is-it-safe-to-upload-a-photo"];
   expect(locs.sort()).toEqual(
     [
-      ...pages.flatMap((page) => ["en", "zh", "es", "de"].map((locale) => `${baseURL}/${locale}${page}`)),
-      // Posts, and so blogs, exist in English and Chinese only.
-      ...["/blog", ...posts].flatMap((page) => [`${baseURL}/en${page}`, `${baseURL}/zh${page}`]),
+      ...pages.flatMap((page) => ["en", "es", "de"].map((locale) => `${baseURL}/${locale}${page}`)),
+      // Posts, and so blogs, exist in English only.
+      ...["/blog", ...posts].map((page) => `${baseURL}/en${page}`),
     ].sort(),
   );
-  expect(xml).toContain(`hreflang="zh" href="${baseURL}/zh/privacy"`);
+  expect(xml).toContain(`hreflang="es" href="${baseURL}/es/privacy"`);
   expect(xml).toContain(`hreflang="x-default" href="${baseURL}/en/privacy"`);
 });
 
@@ -35,7 +35,7 @@ test("a blog without posts stays out of search; the others link only blogs with 
 
   await page.goto("/en/blog");
   await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
-  await expect(page.locator('head link[rel="alternate"][hreflang="zh"]')).toHaveCount(1);
+  await expect(page.locator('head link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
   await expect(page.locator('head link[rel="alternate"][hreflang="es"]')).toHaveCount(0);
 });
 
@@ -51,7 +51,7 @@ test("robots.txt keeps crawlers out of the API and points to the sitemap", async
 });
 
 test("the home page names the site and its publisher", async ({ page, baseURL }) => {
-  await page.goto("/zh");
+  await page.goto("/es");
 
   // The FAQ has its own structured data.
   const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
@@ -61,18 +61,18 @@ test("the home page names the site and its publisher", async ({ page, baseURL })
     expect.objectContaining({
       "@type": "WebSite",
       name: "WindowPeeper",
-      inLanguage: "zh",
+      inLanguage: "es",
       url: `${baseURL}/`,
       description: await page.locator('head meta[name="description"]').getAttribute("content"),
     }),
   ]);
 });
 
-test("the blog index names its canonical URL and every locale", async ({ page, baseURL }) => {
-  await page.goto("/zh/blog");
+test("the blog index names its canonical URL and the locales with posts", async ({ page, baseURL }) => {
+  await page.goto("/en/blog");
 
   const head = page.locator("head");
-  await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/zh/blog`);
+  await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/en/blog`);
   await expect(head.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${baseURL}/en/blog`);
   await expect(head.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute("href", `${baseURL}/en/blog`);
 });
@@ -85,10 +85,10 @@ test("the home, guide and legal pages name their canonical URL and every locale"
     "/terms",
     "/refund",
   ]) {
-    await page.goto(`/zh${path}`);
+    await page.goto(`/es${path}`);
 
     const head = page.locator("head");
-    await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/zh${path}`);
+    await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/es${path}`);
     await expect(head.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${baseURL}/en${path}`);
     await expect(head.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute(
       "href",
@@ -101,9 +101,8 @@ test("the home, guide and legal pages name their canonical URL and every locale"
 test("marketing pages carry keyword-first titles", async ({ page }) => {
   const titles = {
     "/en": "Window Peeper AI Video – Make the TikTok Trend From a Photo",
-    "/zh": "Window Peeper AI 视频：一张照片做出 TikTok 窗户梗",
-    "/zh/pricing": "Window Peeper 视频价格 | WindowPeeper",
-    "/zh/blog": "Window Peeper 视频博客：教程与动态 | WindowPeeper",
+    "/es": "Window Peeper IA – El video de la tendencia con una foto",
+    "/es/pricing": "Precios del video de window peeper | WindowPeeper",
     "/en/how-to-make-window-peeper-video": "How to Make the Window Peeper Video | WindowPeeper",
   };
   for (const [path, title] of Object.entries(titles)) {
@@ -127,7 +126,7 @@ test("responses carry no hreflang Link header", async ({ request }) => {
 test("the legal and sign-in pages describe themselves", async ({ page }) => {
   const descriptions = {
     "/en/privacy": "How WindowPeeper collects, uses, shares and protects your personal information.",
-    "/zh/terms": "使用 WindowPeeper 的条款：你的账户、可接受的使用、你的内容和付款。",
+    "/es/terms": "Las condiciones para usar WindowPeeper: tu cuenta, el uso aceptable, tu contenido y los pagos.",
     "/en/refund": "When WindowPeeper refunds a purchase, and how to ask for a refund.",
     "/en/sign-in": "No password to remember. We email you a link, or you continue with Google.",
   };
@@ -183,11 +182,11 @@ test("llms.txt describes the product and links the public pages", async ({ reque
   // The largest photo a visitor may pick; the browser shrinks it to upload.
   expect(text).toContain("JPG, PNG or WebP, up to 10 MB.");
   expect(text).toContain(`- [Privacy Policy](${baseURL}/en/privacy)`);
-  expect(text).toContain(`- [隐私政策](${baseURL}/zh/privacy)`);
+  expect(text).toContain(`- [Política de privacidad](${baseURL}/es/privacy)`);
   expect(text).toContain(`- [Pay for the videos you make](${baseURL}/en/pricing): One Standard video costs 10 credits.`);
   expect(text).toContain(`- [Blog](${baseURL}/en/blog): `);
   expect(text).toContain(`- [How to Make the Window Peeper Video](${baseURL}/en/how-to-make-window-peeper-video): `);
-  expect(text).toContain(`(${baseURL}/zh/how-to-make-window-peeper-video): `);
+  expect(text).toContain(`(${baseURL}/es/how-to-make-window-peeper-video): `);
   expect(text).toContain(
     `- [Is it safe to upload your photo to an AI video generator?](${baseURL}/en/blog/is-it-safe-to-upload-a-photo): `,
   );
@@ -197,7 +196,7 @@ test("llms.txt describes the product and links the public pages", async ({ reque
 });
 
 test("every public page shares a preview image", async ({ page, request }) => {
-  for (const path of ["/en", "/zh/pricing", "/en/blog", "/zh/how-to-make-window-peeper-video"]) {
+  for (const path of ["/en", "/es/pricing", "/en/blog", "/es/how-to-make-window-peeper-video"]) {
     await page.goto(path);
 
     const head = page.locator("head");
@@ -235,7 +234,7 @@ test("a guide shares its own title in social metadata", async ({ page, baseURL }
 });
 
 test("home pages identify the same site in social metadata", async ({ page, baseURL }) => {
-  for (const locale of ["en", "zh"]) {
+  for (const locale of ["en", "es"]) {
     await page.goto(`/${locale}`);
     await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "WindowPeeper");
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", `${baseURL}/${locale}`);

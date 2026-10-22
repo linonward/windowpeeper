@@ -33,8 +33,8 @@ test("has no link past either end, and nothing for one page", () => {
 });
 
 test("renders in Chinese", () => {
-  renderWithIntl(<Pagination pathname="/videos/library" page={1} pageCount={2} />, "zh");
+  renderWithIntl(<Pagination pathname="/videos/library" page={1} pageCount={2} />, "es");
 
-  expect(screen.getByRole("navigation", { name: "分页" })).toBeTruthy();
-  expect(screen.getByRole("link", { name: "下一页" })).toBeTruthy();
+  expect(screen.getByRole("navigation", { name: "Páginas" })).toBeTruthy();
+  expect(screen.getByRole("link", { name: "Siguiente" })).toBeTruthy();
 });

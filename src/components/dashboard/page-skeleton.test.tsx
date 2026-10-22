@@ -22,7 +22,7 @@ test("draws the page header when the page has none outside it", () => {
 });
 
 test("is translated", () => {
-  renderWithIntl(<PageSkeleton />, "zh");
+  renderWithIntl(<PageSkeleton />, "es");
 
-  expect(screen.getByRole("status", { name: "加载中…" })).toBeTruthy();
+  expect(screen.getByRole("status", { name: "Cargando…" })).toBeTruthy();
 });

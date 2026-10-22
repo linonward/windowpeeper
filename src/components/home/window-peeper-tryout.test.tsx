@@ -19,7 +19,7 @@ vi.mock("@/i18n/navigation", () => ({
 
 const { WindowPeeperTryout } = await import("./window-peeper-tryout");
 const { SCENE_EVENT } = await import("./scene-event");
-const zh = (await import("../../../messages/zh.json")).default;
+const es = (await import("../../../messages/es.json")).default;
 
 const fetchMock = vi.fn();
 const signedIn = { data: { user: { id: "u1" } }, isPending: false };
@@ -521,10 +521,10 @@ test("when the effect is off, it says so and the form stays inert", () => {
 
 test("renders in Chinese", () => {
   useSession.mockReturnValue(signedOut);
-  renderWithIntl(<WindowPeeperTryout {...props} />, "zh");
+  renderWithIntl(<WindowPeeperTryout {...props} />, "es");
 
-  expect(screen.getByRole("button", { name: zh.HomeTryout.submit })).toBeDefined();
-  expect(screen.getByRole("radio", { name: zh.PhotoEffects.scenes.burger.short })).toBeDefined();
+  expect(screen.getByRole("button", { name: es.HomeTryout.submit })).toBeDefined();
+  expect(screen.getByRole("radio", { name: es.PhotoEffects.scenes.burger.short })).toBeDefined();
 });
 
 const steps = () => track.mock.calls.map(([event, properties]) => (properties ? [event, properties] : [event]));

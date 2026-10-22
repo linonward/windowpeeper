@@ -261,7 +261,7 @@ Ship the effect first and check it on real photos.
 
 1. Add `src/server/videos/<kind>.ts`: the definition, as in `window-peeper.ts`, with its prompt.
 2. Add the definition to `PHOTO_EFFECTS`, and the kind and its number of photos to `PHOTO_EFFECT_KINDS` (`src/lib/photo-effects.ts`), in the same order.
-3. Add `PhotoEffects.kinds.<kind>` to `messages/en.json` and `messages/zh.json`: `title`, `description`, `left`, `photoHint` and `disabled`.
+3. Add `PhotoEffects.kinds.<kind>` to every `messages/*.json`: `title`, `description`, `left`, `photoHint` and `disabled`.
 4. Run `pnpm test`. `src/test/photo-effects.test.ts` checks the two lists and the copy; `src/server/payment/margins.test.ts` checks every pack sells it above cost.
 5. Deploy. Generate 2 or 3 videos at `/videos/<kind>` with photos of AI-generated people, and check the result.
 
@@ -330,7 +330,7 @@ To test it, send a message the same way: `curl -X POST -H 'Content-Type: applica
 
 ## Landing page and visual system
 
-- Copy lives under `Home` in `messages/en.json` and `messages/zh.json`. Replace it with what your product does; keep sentence case.
+- Copy lives under `Home` in every `messages/*.json`. Replace it with what your product does; keep sentence case.
 - The hero's viewfinder (`src/components/home/hero.tsx`) plays a real window peeper video from `public/landing/windowpeeper/` (`sample.mp4` and `poster.jpg`), made from an AI-generated person; `Home.hero.clip.note` says so. The other stills in `public/landing/` (the scenes and the before/after) are AI placeholders from the design boards; replace them with frames of real videos. To replace the clip, make a video on the site from a photo you may publish, never a clip from TikTok. Encode it as H.264 + AAC, 540×960, `-movflags +faststart`, under 2 MB; the poster is a frame of that MP4. Then set `EXAMPLE_ADDED` and `EXAMPLE_SECONDS` in `src/app/[locale]/(marketing)/page.tsx` and check `Home.hero.clip` still describes it.
 - Colors, radius and fonts are tokens in `src/app/globals.css` (`:root`, `--font-display` for headings). Change them there, not per component.
 - The site is dark only. There is no light theme and no theme choice.
@@ -371,7 +371,7 @@ The route sends every sitemap URL (`src/app/sitemap.ts`) and answers `{ "submitt
 
 ## Languages
 
-The app ships in English (`en`), Chinese (`zh`), Spanish (`es`) and German (`de`). Blog posts exist in English and Chinese only. Language menus list every locale, so adding one needs no UI change. To add a locale, for example `ja`:
+The app ships in English (`en`), Spanish (`es`) and German (`de`). Blog posts exist in English only. Chinese was dropped; old `/zh/*` links redirect to `/en/*` (`next.config.ts`). Language menus list every locale, so adding one needs no UI change. To add a locale, for example `ja`:
 
 1. Add `"ja"` to `locales` in `src/i18n/routing.ts`, and its own name (`ja: "日本語"`) to `LOCALE_NAMES` there.
 2. Copy `messages/en.json` to `messages/ja.json` and translate it. Keep the same keys.
@@ -389,7 +389,7 @@ The app ships in English (`en`), Chinese (`zh`), Spanish (`es`) and German (`de`
 - Legal texts are templates in `content/legal/<locale>/{privacy,terms,refund}.mdx`. Have a lawyer review them, then edit both locales and the "Last updated" line. Search results show each page's one-line summary, `Legal.descriptions.<doc>` in every `messages/*.json`; keep it true to the text.
 - Inside the MDX, use `<ProjectName />` and `<SupportEmail />` instead of typing the values.
 - To add a legal page:
-  1. Add `content/legal/en/<doc>.mdx` and `content/legal/zh/<doc>.mdx`.
+  1. Add `content/legal/<locale>/<doc>.mdx` for every locale.
   2. Add `<doc>` to `LEGAL_DOCS` in `src/lib/content.ts`.
   3. Add its title under `Legal`, and a one-line summary under `Legal.descriptions`, in every `messages/*.json`.
   4. Add `src/app/[locale]/(marketing)/(legal)/<doc>/page.tsx`, copying an existing one.
@@ -399,7 +399,7 @@ The app ships in English (`en`), Chinese (`zh`), Spanish (`es`) and German (`de`
 
 ## Translations
 
-- Put every UI string in `messages/en.json` and `messages/zh.json` under the same key. `pnpm test` (`src/i18n/messages.test.ts`) checks every locale in `src/i18n/routing.ts`: it fails if a locale's file is missing, if its keys differ from `en.json`, or if any message, at any depth, is empty.
+- Put every UI string in every `messages/*.json` under the same key. `pnpm test` (`src/i18n/messages.test.ts`) checks every locale in `src/i18n/routing.ts`: it fails if a locale's file is missing, if its keys differ from `en.json`, or if any message, at any depth, is empty.
 - Read strings with `useTranslations("<Namespace>")` (or `getTranslations` in `generateMetadata`).
 - The browser gets only the namespaces in `CLIENT_NAMESPACES` (`src/i18n/client-messages.ts`). When a client component (a `"use client"` file, or a file one imports) reads a new namespace, add it there. `pnpm test` (`src/i18n/client-messages.test.ts`) fails until you do, and requires a string literal as the namespace.
 - To add a language, follow [Languages](#languages).
@@ -510,8 +510,6 @@ The `Dockerfile` builds a single image that runs the app with Node.js on any hos
      --build-arg NEXT_PUBLIC_SENTRY_DSN= \
      .
    ```
-
-   The build downloads the Chinese font for the preview images from Google Fonts, so it needs network access.
 
 2. Apply the migrations. The `migrate` target holds the migrations and `drizzle-kit`, applies them to `DATABASE_URL` and exits. Use the direct (not pooled) connection string:
 
@@ -664,7 +662,7 @@ Verify with PostHog Activity filtered by `app=windowpeeper`: visit a page, then 
 
 In PostHog, create a Funnels insight filtered by `app = windowpeeper`. For the home generator, use these ordered steps:
 
-1. `$pageview` with `$pathname` = `/en` (or `/zh`).
+1. `$pageview` with `$pathname` = `/en` (or `/es`, `/de`).
 2. `photo_selected`.
 3. `generate_clicked`.
 4. `paywall_viewed`.

@@ -44,8 +44,8 @@ test("back from checkout, the page drops the checkout from its address and sends
 });
 
 test("the generator is translated", async ({ page }) => {
-  await page.goto("/zh");
+  await page.goto("/es");
 
   const generator = page.locator("#generator");
-  await expect(generator).toContainText("Window Peeper 视频尚未配置。");
+  await expect(generator).toContainText("El video de window peeper todavía no está configurado.");
 });

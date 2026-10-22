@@ -4,7 +4,6 @@ import { blogPosting, faqPage, howTo, jsonLd, languageAlternates, videoObject, w
 test("links every locale and defaults to English", () => {
   expect(languageAlternates("/blog")).toEqual({
     en: "/en/blog",
-    zh: "/zh/blog",
     es: "/es/blog",
     de: "/de/blog",
     "x-default": "/en/blog",
@@ -12,26 +11,26 @@ test("links every locale and defaults to English", () => {
 });
 
 test("links only the locales that have the page", () => {
-  expect(languageAlternates("/blog/a", ["zh"], "https://x.test")).toEqual({
-    zh: "https://x.test/zh/blog/a",
-    "x-default": "https://x.test/zh/blog/a",
+  expect(languageAlternates("/blog/a", ["es"], "https://x.test")).toEqual({
+    es: "https://x.test/es/blog/a",
+    "x-default": "https://x.test/es/blog/a",
   });
 });
 
 const post = { slug: "a", title: "A post", description: "What it says.", date: "2026-10-01", tags: ["guides", "news"] };
 
 test("describes a post with what its page shows", () => {
-  expect(blogPosting(post, "zh", "https://x.test")).toEqual({
+  expect(blogPosting(post, "es", "https://x.test")).toEqual({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: "A post",
     description: "What it says.",
     datePublished: "2026-10-01",
     keywords: ["guides", "news"],
-    inLanguage: "zh",
-    url: "https://x.test/zh/blog/a",
-    mainEntityOfPage: "https://x.test/zh/blog/a",
-    author: { "@type": "Organization", name: "WindowPeeper", url: "https://x.test/zh" },
+    inLanguage: "es",
+    url: "https://x.test/es/blog/a",
+    mainEntityOfPage: "https://x.test/es/blog/a",
+    author: { "@type": "Organization", name: "WindowPeeper", url: "https://x.test/es" },
   });
 });
 
@@ -50,7 +49,7 @@ test("escapes < so a title can't close the script tag", () => {
 });
 
 test("names the site and its publisher for the home page", () => {
-  expect(website("zh", "What it does.", "https://x.test")).toEqual({
+  expect(website("es", "What it does.", "https://x.test")).toEqual({
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "Organization", "@id": "https://x.test/#organization", name: "WindowPeeper", url: "https://x.test/" },
@@ -59,7 +58,7 @@ test("names the site and its publisher for the home page", () => {
         "@id": "https://x.test/#website",
         name: "WindowPeeper",
         description: "What it does.",
-        inLanguage: "zh",
+        inLanguage: "es",
         url: "https://x.test/",
         publisher: { "@id": "https://x.test/#organization" },
       },
@@ -83,11 +82,11 @@ test("leaves the site's URLs out without a base URL", () => {
 });
 
 test("lists a page's questions and plain-text answers", () => {
-  expect(faqPage("zh", [{ question: "多少钱？", answer: "10 积分。" }])).toEqual({
+  expect(faqPage("es", [{ question: "¿Cuánto cuesta?", answer: "10 créditos." }])).toEqual({
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    inLanguage: "zh",
-    mainEntity: [{ "@type": "Question", name: "多少钱？", acceptedAnswer: { "@type": "Answer", text: "10 积分。" } }],
+    inLanguage: "es",
+    mainEntity: [{ "@type": "Question", name: "¿Cuánto cuesta?", acceptedAnswer: { "@type": "Answer", text: "10 créditos." } }],
   });
 });
 
@@ -121,14 +120,14 @@ test("leaves the clip's URLs out without a base URL", () => {
 });
 
 test("lists the steps of a how-to in order", () => {
-  expect(howTo("zh", "三步", [{ name: "上传", text: "选照片。" }, { name: "下载", text: "保存 MP4。" }])).toEqual({
+  expect(howTo("es", "Tres pasos", [{ name: "Subir", text: "Elige una foto." }, { name: "Descargar", text: "Guarda el MP4." }])).toEqual({
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "三步",
-    inLanguage: "zh",
+    name: "Tres pasos",
+    inLanguage: "es",
     step: [
-      { "@type": "HowToStep", position: 1, name: "上传", text: "选照片。" },
-      { "@type": "HowToStep", position: 2, name: "下载", text: "保存 MP4。" },
+      { "@type": "HowToStep", position: 1, name: "Subir", text: "Elige una foto." },
+      { "@type": "HowToStep", position: 2, name: "Descargar", text: "Guarda el MP4." },
     ],
   });
 });

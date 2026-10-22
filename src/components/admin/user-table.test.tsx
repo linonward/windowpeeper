@@ -40,7 +40,7 @@ test("says when no user matches the search", () => {
 });
 
 test("shows an empty state without users", () => {
-  renderWithIntl(<UserTable users={[]} />, "zh");
+  renderWithIntl(<UserTable users={[]} />, "es");
 
-  expect(screen.getByText("还没有用户。")).toBeTruthy();
+  expect(screen.getByText("Todavía no hay usuarios.")).toBeTruthy();
 });

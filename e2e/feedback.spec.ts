@@ -18,15 +18,15 @@ test("feedback requires sign-in and administrator access for the list", async ({
 test("submits Chinese feedback from the phone's sidebar", async ({ page }) => {
   await signIn(page);
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/zh/videos");
-  await page.getByRole("button", { name: "打开菜单" }).click();
-  await page.getByRole("link", { name: "意见反馈", exact: true }).click();
-  await expect(page).toHaveURL("/zh/feedback");
-  await page.getByLabel("图片", { exact: true }).setInputFiles(feedbackPng);
+  await page.goto("/es/videos");
+  await page.getByRole("button", { name: "Abrir menú" }).click();
+  await page.getByRole("link", { name: "Comentarios", exact: true }).click();
+  await expect(page).toHaveURL("/es/feedback");
+  await page.getByLabel("Imágenes", { exact: true }).setInputFiles(feedbackPng);
   await expect.poll(() => page.getByAltText("screenshot.png").evaluate((image: HTMLImageElement) => image.naturalWidth)).toBe(1);
-  await page.getByRole("button", { name: "提交反馈", exact: true }).click();
-  await expect(page.getByRole("status")).toHaveText("反馈已提交，谢谢。");
-  await expect(page.getByLabel("反馈内容")).toHaveValue("");
+  await page.getByRole("button", { name: "Enviar comentarios", exact: true }).click();
+  await expect(page.getByRole("status")).toHaveText("Tus comentarios se han enviado. Gracias.");
+  await expect(page.getByLabel("Tus comentarios")).toHaveValue("");
 });
 
 test("validates input, enforces origin and rate limits, and deduplicates retries", async ({ page }) => {

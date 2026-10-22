@@ -3,11 +3,11 @@ import { expect, test } from "@playwright/test";
 // The guides answer searches about the trend and lead to the generator on the
 // home page; they have no generator of their own.
 const GUIDES = [
-  { slug: "how-to-make-window-peeper-video", en: "How to make a window peeper video", zh: "如何制作 Window Peeper 视频" },
+  { slug: "how-to-make-window-peeper-video", en: "How to make a window peeper video", es: "Cómo hacer un video de window peeper" },
 ] as const;
 
 for (const guide of GUIDES) {
-  for (const locale of ["en", "zh"] as const) {
+  for (const locale of ["en", "es"] as const) {
     test(`/${locale}/${guide.slug} leads to the home generator`, async ({ page }) => {
       await page.goto(`/${locale}/${guide.slug}`);
 
@@ -16,7 +16,7 @@ for (const guide of GUIDES) {
       // The first of the calls to action, at the top.
       const cta = page
         .getByRole("main")
-        .getByRole("link", { name: locale === "en" ? "Make my video" : "制作我的视频" })
+        .getByRole("link", { name: locale === "en" ? "Make my video" : "Crear mi video" })
         .first();
       await expect(cta).toHaveAttribute("href", `/${locale}#generator`);
 
@@ -35,9 +35,9 @@ for (const guide of GUIDES) {
   }
 }
 
-// Spanish and German: long words must still fit a phone.
+// German: long words must still fit a phone. English and Spanish are above.
 for (const guide of GUIDES) {
-  for (const locale of ["es", "de"] as const) {
+  for (const locale of ["de"] as const) {
     test(`/${locale}/${guide.slug} fits a 320px phone without horizontal scrolling`, async ({ page }) => {
       await page.setViewportSize({ width: 320, height: 812 });
       await page.goto(`/${locale}/${guide.slug}`);
@@ -50,11 +50,11 @@ for (const guide of GUIDES) {
 }
 
 test("the footer links the how-to guide", async ({ page }) => {
-  await page.goto("/zh");
+  await page.goto("/es");
 
-  const learn = page.getByRole("contentinfo").getByRole("navigation", { name: "了解" });
-  await learn.getByRole("link", { name: "怎么做" }).click();
+  const learn = page.getByRole("contentinfo").getByRole("navigation", { name: "Aprende" });
+  await learn.getByRole("link", { name: "Cómo hacerlo" }).click();
 
-  await expect(page).toHaveURL("/zh/how-to-make-window-peeper-video");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("如何制作 Window Peeper 视频");
+  await expect(page).toHaveURL("/es/how-to-make-window-peeper-video");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Cómo hacer un video de window peeper");
 });

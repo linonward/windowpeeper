@@ -27,9 +27,9 @@ Start when the effect is live at `/videos/<kind>` and has a good real result.
 ### Query and copy
 
 - [ ] Pick one query. The page path is the query (`/ai-dance-video`).
-- [ ] Title: `<Query>: <benefit> | WindowPeeper`, 50–60 characters, so the query itself stays within 35. Description: 120–155 characters. Chinese follows the same shape.
+- [ ] Title: `<Query>: <benefit> | WindowPeeper`, 50–60 characters, so the query itself stays within 35. Description: 120–155 characters. Spanish and German follow the same shape.
 - [ ] One H1 that holds the query. The FAQ H2 names the query (`AI dance video questions`). Leave the other H2s natural.
-- [ ] Copy in `messages/en.json` and `messages/zh.json`, under the page's own namespace (`DanceLanding`).
+- [ ] Copy in every `messages/*.json`, under the page's own namespace (`DanceLanding`).
 
 ### Real result
 
@@ -49,7 +49,7 @@ Start when the effect is live at `/videos/<kind>` and has a good real result.
 
 - [ ] Route `src/app/[locale]/(marketing)/<path>/page.tsx` and `opengraph-image.tsx`.
 - [ ] Build the hero form. No shared landing components exist now: `EffectLanding`, `LandingTryout` and `MoreEffects` were removed with the old effect pages. The home page's `WindowPeeperTryout` (`src/components/home/window-peeper-tryout.tsx`) and `src/lib/photo-draft.ts` show the pattern.
-- [ ] Unit tests: the H1, the form, the real video and frames, the cost, the FAQ heading, en and zh.
+- [ ] Unit tests: the H1, the form, the real video and frames, the cost, the FAQ heading, en and es.
 - [ ] E2E: the signed-out flow (pick photos, sign in in the dialog, the job starts on return).
 
 ### Links

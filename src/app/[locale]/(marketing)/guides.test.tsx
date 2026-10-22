@@ -3,13 +3,13 @@ import { cleanup, screen, within } from "@testing-library/react";
 import { createTranslator } from "next-intl";
 import { renderWithIntl } from "@/test/intl";
 import en from "../../../../messages/en.json";
-import zh from "../../../../messages/zh.json";
+import es from "../../../../messages/es.json";
 
 // generateMetadata reads messages on the server; here they come straight
 // from the files.
 vi.mock("next-intl/server", () => ({
-  getTranslations: async ({ locale, namespace }: { locale: "en" | "zh"; namespace: string }) =>
-    createTranslator({ locale, messages: { en, zh }[locale], namespace: namespace as never }),
+  getTranslations: async ({ locale, namespace }: { locale: "en" | "es"; namespace: string }) =>
+    createTranslator({ locale, messages: { en, es }[locale], namespace: namespace as never }),
 }));
 
 const pages = {
@@ -20,7 +20,7 @@ const slugs = Object.keys(pages) as Slug[];
 
 afterEach(cleanup);
 
-const metadata = (slug: Slug, locale: "en" | "zh") =>
+const metadata = (slug: Slug, locale: "en" | "es") =>
   pages[slug].generateMetadata(
     { params: Promise.resolve({ locale }) } as never,
     Promise.resolve({ openGraph: { images: [{ url: "/og.png" }] } }) as never,
@@ -46,13 +46,12 @@ test.each([
 });
 
 test.each(slugs)("/%s names its title, canonical URL, languages and preview", async (slug) => {
-  const data = await metadata(slug, "zh");
+  const data = await metadata(slug, "es");
 
   expect(data.alternates).toEqual({
-    canonical: `/zh/${slug}`,
+    canonical: `/es/${slug}`,
     languages: {
       en: `/en/${slug}`,
-      zh: `/zh/${slug}`,
       es: `/es/${slug}`,
       de: `/de/${slug}`,
       "x-default": `/en/${slug}`,
@@ -61,7 +60,7 @@ test.each(slugs)("/%s names its title, canonical URL, languages and preview", as
   expect(data.openGraph).toMatchObject({
     images: [{ url: "/og.png" }],
     siteName: "WindowPeeper",
-    url: `/zh/${slug}`,
+    url: `/es/${slug}`,
     title: data.title,
     description: data.description,
   });
@@ -82,7 +81,7 @@ test("the titles lead with each page's query", async () => {
   expect((await metadata("how-to-make-window-peeper-video", "en")).title).toBe("How to Make the Window Peeper Video");
 });
 
-test.each(slugs.flatMap((slug) => (["en", "zh"] as const).map((locale) => [slug, locale] as const)))(
+test.each(slugs.flatMap((slug) => (["en", "es"] as const).map((locale) => [slug, locale] as const)))(
   "/%s in %s leads to the home generator and the other guides",
   (slug, locale) => {
     const { default: Page } = pages[slug];
@@ -137,15 +136,15 @@ test("the how-to states the prices and photo size from the config", () => {
   ]);
 });
 
-test("renders in Chinese, with the same sections", () => {
+test("renders in Spanish, with the same sections", () => {
   for (const slug of slugs) {
     const { default: Page } = pages[slug];
     renderWithIntl(<Page />);
     const english = screen.getAllByRole("heading", { level: 2 }).length;
     cleanup();
-    renderWithIntl(<Page />, "zh");
+    renderWithIntl(<Page />, "es");
     expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(english);
-    expect(screen.getByRole("main").textContent).toMatch(/[一-鿿]/);
+    expect(screen.getByRole("main").textContent).toMatch(/[áéíóúñ¿¡]/);
     cleanup();
   }
 });

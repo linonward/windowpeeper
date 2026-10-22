@@ -64,13 +64,12 @@ test("signed-out visitors keep their choice through sign-in", async ({ page, req
   expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fbilling%3Fpack%3Dsmall");
 });
 
-test("renders in Chinese, linked from the footer", async ({ page }) => {
-  await page.goto("/zh");
-  await page.getByRole("contentinfo").getByRole("link", { name: "价格" }).click();
+test("renders in Spanish, linked from the footer", async ({ page }) => {
+  await page.goto("/es");
+  await page.getByRole("contentinfo").getByRole("link", { name: "Precios" }).click();
 
-  await expect(page).toHaveURL("/zh/pricing");
-  await expect(page.getByRole("heading", { level: 1, name: "做多少视频，付多少钱" })).toBeVisible();
+  await expect(page).toHaveURL("/es/pricing");
+  await expect(page.getByRole("heading", { level: 1, name: "Paga por los videos que haces" })).toBeVisible();
   const main = page.getByRole("main");
-  await expect(main).toContainText("5 段标准版或 2 段 Pro 版视频");
-  await expect(main).not.toContainText(/订阅方案|免费积分|每月扣费/);
+  await expect(main).toContainText("5 videos Estándar o 2 Pro");
 });

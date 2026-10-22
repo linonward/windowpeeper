@@ -115,10 +115,10 @@ test("on a phone, a bar leads back to the generator once it scrolls away", async
 });
 
 test("landing is translated", async ({ page }) => {
-  await page.goto("/zh");
+  await page.goto("/es");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: /^Window Peeper AI 视频 — / }),
+    page.getByRole("heading", { level: 1, name: /^Video de window peeper con IA — / }),
   ).toBeVisible();
 });
 
@@ -134,7 +134,7 @@ test("keyboard users can skip to the main content", async ({ page }) => {
 });
 
 for (const width of [320, 375]) {
-  for (const locale of ["en", "zh", "es", "de"]) {
+  for (const locale of ["en", "es", "de"]) {
     test(`fits a ${width}px phone in ${locale} without horizontal scrolling`, async ({
       page,
     }) => {

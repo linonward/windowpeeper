@@ -70,14 +70,14 @@ test("lists the credit history on the same page", () => {
 
 test("sends the browser to the checkout URL for the chosen pack", async () => {
   fetchMock.mockResolvedValue(Response.json({ url: "https://checkout.test/s" }));
-  renderWithIntl(<Billing {...props} />, "zh");
+  renderWithIntl(<Billing {...props} />, "es");
 
   fireEvent.click(screen.getByRole("button", { name: /100/ }));
 
   await vi.waitFor(() => expect(assign).toHaveBeenCalledWith("https://checkout.test/s"));
   expect(fetchMock).toHaveBeenCalledWith("/api/payment/checkout", expect.objectContaining({
     method: "POST",
-    body: JSON.stringify({ packId: "small", locale: "zh" }),
+    body: JSON.stringify({ packId: "small", locale: "es" }),
   }));
 });
 

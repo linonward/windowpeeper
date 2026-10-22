@@ -34,8 +34,8 @@ test("the locale still reaches the components below", () => {
     <LocalTimeZone>
       <Created />
     </LocalTimeZone>,
-    "zh",
+    "es",
   );
 
-  expect(screen.getByText(/2026年10月15日/)).toBeTruthy();
+  expect(screen.getByText(/^15 oct 2026, /)).toBeTruthy();
 });

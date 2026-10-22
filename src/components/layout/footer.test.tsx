@@ -58,7 +58,6 @@ test("the bottom bar has the copyright, the support email and every language on 
   );
   expect(links("Language")).toEqual([
     ["English", "/en/pricing"],
-    ["中文", "/zh/pricing"],
     ["Español", "/es/pricing"],
     ["Deutsch", "/de/pricing"],
   ]);

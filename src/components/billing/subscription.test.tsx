@@ -51,14 +51,14 @@ test("offers the plan with its monthly credits and price", () => {
 
 test("sends the browser to the subscription checkout", async () => {
   fetchMock.mockResolvedValue(Response.json({ url: "https://checkout.test/sub" }));
-  renderWithIntl(<Subscription plans={plans} current={null} enabled />, "zh");
+  renderWithIntl(<Subscription plans={plans} current={null} enabled />, "es");
 
   fireEvent.click(screen.getByRole("button", { name: /10/ }));
 
   await vi.waitFor(() => expect(assign).toHaveBeenCalledWith("https://checkout.test/sub"));
   expect(fetchMock).toHaveBeenCalledWith(
     "/api/payment/subscribe",
-    expect.objectContaining({ method: "POST", body: JSON.stringify({ planId: "pro", locale: "zh" }) }),
+    expect.objectContaining({ method: "POST", body: JSON.stringify({ planId: "pro", locale: "es" }) }),
   );
 });
 
@@ -113,11 +113,11 @@ test("opens the provider's portal to manage the subscription", async () => {
 });
 
 test("marks the plan chosen on the pricing page and focuses its button", () => {
-  renderWithIntl(<Subscription plans={plans} current={null} enabled selected="pro" />, "zh");
+  renderWithIntl(<Subscription plans={plans} current={null} enabled selected="pro" />, "es");
 
   const subscribe = screen.getByRole("button", { name: /10/ });
   expect(document.activeElement).toBe(subscribe);
-  expect(screen.getByText("已选")).toBeTruthy();
+  expect(screen.getByText("Seleccionado")).toBeTruthy();
 });
 
 test("offers no billing period choice with monthly plans only", () => {

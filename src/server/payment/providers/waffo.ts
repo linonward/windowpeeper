@@ -18,7 +18,7 @@ import {
 
 // Waffo cashier languages. Other locales (de: Waffo has no German) get the
 // English cashier.
-const LANGUAGES: Record<string, CashierLanguage> = { en: "en", zh: "zh-Hans", es: "es-MX" };
+const LANGUAGES: Record<string, CashierLanguage> = { en: "en", es: "es-MX" };
 
 // Waffo order statuses for subscriptions, mapped to ours.
 const STATUSES: Record<string, SubscriptionStatus> = {

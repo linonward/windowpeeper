@@ -14,11 +14,11 @@ test("the credit history fits a phone in Chinese", async ({ page }) => {
   const email = await signIn(page);
   await addPurchase(email, 10);
   await page.setViewportSize({ width: 320, height: 700 });
-  await page.goto("/zh/credits");
+  await page.goto("/es/credits");
 
-  await expect(page).toHaveURL("/zh/billing");
-  await expect(page.getByRole("heading", { level: 1, name: "积分与账单" })).toBeVisible();
-  await expect(page.getByRole("table", { name: "积分记录" })).toContainText("积分包");
+  await expect(page).toHaveURL("/es/billing");
+  await expect(page.getByRole("heading", { level: 1, name: "Créditos y facturación" })).toBeVisible();
+  await expect(page.getByRole("table", { name: "Historial de créditos" })).toContainText("Paquete");
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - window.innerWidth,
   );

@@ -18,13 +18,12 @@ test("lists each guide in every locale, with its languages", async () => {
   for (const guide of ["how-to-make-window-peeper-video"]) {
     const languages = {
       en: `https://x.test/en/${guide}`,
-      zh: `https://x.test/zh/${guide}`,
       es: `https://x.test/es/${guide}`,
       de: `https://x.test/de/${guide}`,
       "x-default": `https://x.test/en/${guide}`,
     };
     expect(entries).toContainEqual({ url: languages.en, alternates: { languages } });
-    for (const locale of ["zh", "es", "de"] as const) {
+    for (const locale of ["es", "de"] as const) {
       expect(entries).toContainEqual({ url: languages[locale], alternates: { languages } });
     }
   }

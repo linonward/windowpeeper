@@ -7,8 +7,8 @@ import { LocaleLinks } from "./locale-switcher";
 vi.mock("@/i18n/routing", async () => {
   const { defineRouting } = await import("next-intl/routing");
   return {
-    routing: defineRouting({ locales: ["en", "zh", "ja"], defaultLocale: "en" }),
-    LOCALE_NAMES: { en: "English", zh: "中文", ja: "日本語" },
+    routing: defineRouting({ locales: ["en", "es", "ja"], defaultLocale: "en" }),
+    LOCALE_NAMES: { en: "English", es: "Español", ja: "日本語" },
   };
 });
 
@@ -25,9 +25,9 @@ test("lists every language, keeps the page and marks the current one", () => {
   const links = screen.getAllByRole("link");
   expect(links.map((link) => [link.textContent, link.getAttribute("href")])).toEqual([
     ["English", "/en/sign-in"],
-    ["中文", "/zh/sign-in"],
+    ["Español", "/es/sign-in"],
     ["日本語", "/ja/sign-in"],
   ]);
   expect(links[0].getAttribute("aria-current")).toBe("true");
-  expect(links[1].getAttribute("lang")).toBe("zh");
+  expect(links[1].getAttribute("lang")).toBe("es");
 });

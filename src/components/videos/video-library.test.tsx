@@ -76,9 +76,9 @@ test("points to the generator when there are no videos", () => {
 });
 
 test("renders in Chinese", () => {
-  renderWithIntl(<VideoLibrary videos={videos} page={1} pageCount={2} />, "zh");
+  renderWithIntl(<VideoLibrary videos={videos} page={1} pageCount={2} />, "es");
 
-  expect(screen.getByRole("list", { name: "全部视频" })).toBeTruthy();
+  expect(screen.getByRole("list", { name: "Todos los videos" })).toBeTruthy();
 });
 
 test("a card shows the video's own poster frame over the first photo", () => {
