@@ -1,0 +1,2 @@
+ALTER TABLE "video" ADD COLUMN "preview" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+CREATE UNIQUE INDEX "video_one_preview_idx" ON "video" USING btree ("user_id") WHERE "video"."preview" and "video"."status" <> 'failed';

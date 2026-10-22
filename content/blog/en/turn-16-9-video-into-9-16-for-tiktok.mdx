@@ -1,0 +1,44 @@
+export const metadata = {
+  title: "Turn a 16:9 video into 9:16 for TikTok, Reels and Shorts",
+  description: "Three ways to post a widescreen video on vertical apps: as it is, cropped to 9:16, or on a blurred background, with ffmpeg commands you can copy.",
+  date: "2026-10-17",
+  tags: ["guides"],
+};
+
+TikTok, Instagram Reels and YouTube Shorts are made for 9:16, a tall phone screen. On <ProjectName />, the easiest way is to pick Vertical in the [generator](/en#generator) before you make the video: the whole scene is filmed at 9:16, at the same price. If you already have a 16:9 video, you have three options.
+
+## 1. Post it as it is
+
+All three apps accept a 16:9 video. They show it in the middle of the screen with empty space above and below. This is the fastest option and keeps the whole dance in view, but the dancer looks small on a phone.
+
+## 2. Crop it to 9:16
+
+Cropping keeps a tall slice from the middle of the frame and fills the whole screen. The dancer looks bigger, but anything near the left and right edges is cut off. In the tip-toe dance, the arms spread wide near the end, so the hands may leave the frame.
+
+Most video apps can crop when you upload: pick the 9:16 shape and move the frame so the dancer stays in the middle. On a computer, the free tool [ffmpeg](https://ffmpeg.org) does it in one command:
+
+```
+ffmpeg -i dance.mp4 -vf "crop=ih*9/16:ih,scale=1080:1920" -c:a copy dance-9x16.mp4
+```
+
+This keeps the middle of the video at full height and scales it to 1080 × 1920. The music is copied as it is.
+
+## 3. Put it on a blurred background
+
+This option fills the tall screen and keeps the whole dance. The video sits in the middle, and a blurred, zoomed copy of it fills the space above and below. With ffmpeg:
+
+```
+ffmpeg -i dance.mp4 -filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=20[bg];[0:v]scale=1080:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2" -c:a copy dance-blur.mp4
+```
+
+## Which one to pick
+
+- To post quickly, post it as it is.
+- To make the dancer big, crop it, and check that the arms stay in the frame.
+- To fill the screen and keep the whole dance, use the blurred background.
+
+## Adding a trending sound
+
+Every video comes with original music. To use a trending sound instead, add it in the app when you post, and lower or mute the original audio there.
+
+Don't have a video yet? Make one from a photo on the [home page](/en#generator).

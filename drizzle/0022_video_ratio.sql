@@ -1,0 +1,1 @@
+ALTER TABLE "video" ADD COLUMN "ratio" text DEFAULT '16:9' NOT NULL;

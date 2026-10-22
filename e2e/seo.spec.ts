@@ -1,0 +1,264 @@
+import { expect, test } from "@playwright/test";
+import { signIn } from "./support/auth";
+
+// Search engines find the public pages in every locale, and nothing behind
+// sign-in or the API.
+test("the sitemap lists the public pages in every locale", async ({ request, baseURL }) => {
+  const response = await request.get("/sitemap.xml");
+
+  expect(response.status()).toBe(200);
+  const xml = await response.text();
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const pages = [
+    "",
+    "/tip-toe-in-my-jordans",
+    "/rumpelstiltskin-meme",
+    "/how-to-make-rumpelstiltskin-video",
+    "/who-is-rumpelstiltskin",
+    "/rumpelstiltskin-movie",
+    "/rumpelstiltskin-1987-movie",
+    "/rumpelstiltskin-dance-scene",
+    "/privacy",
+    "/terms",
+    "/refund",
+    "/pricing",
+  ];
+  const posts = [
+    "/blog/introducing-ai-rumpelstiltskin-video-generator",
+    "/blog/turn-16-9-video-into-9-16-for-tiktok",
+    "/blog/is-it-safe-to-upload-a-photo",
+  ];
+  expect(locs.sort()).toEqual(
+    [
+      ...pages.flatMap((page) => ["en", "zh", "es", "de"].map((locale) => `${baseURL}/${locale}${page}`)),
+      // Posts, and so blogs, exist in English and Chinese only.
+      ...["/blog", ...posts].flatMap((page) => [`${baseURL}/en${page}`, `${baseURL}/zh${page}`]),
+    ].sort(),
+  );
+  expect(xml).toContain(`hreflang="zh" href="${baseURL}/zh/privacy"`);
+  expect(xml).toContain(`hreflang="x-default" href="${baseURL}/en/privacy"`);
+});
+
+test("a blog without posts stays out of search; the others link only blogs with posts", async ({ page }) => {
+  await page.goto("/es/blog");
+  await expect(page.locator('head meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+
+  await page.goto("/en/blog");
+  await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
+  await expect(page.locator('head link[rel="alternate"][hreflang="zh"]')).toHaveCount(1);
+  await expect(page.locator('head link[rel="alternate"][hreflang="es"]')).toHaveCount(0);
+});
+
+test("robots.txt keeps crawlers out of the API and points to the sitemap", async ({ request, baseURL }) => {
+  const response = await request.get("/robots.txt");
+
+  expect(response.status()).toBe(200);
+  const robots = await response.text();
+  expect(robots).toContain("User-Agent: *");
+  expect(robots).toContain("Allow: /");
+  expect(robots).toContain("Disallow: /api/");
+  expect(robots).toContain(`Sitemap: ${baseURL}/sitemap.xml`);
+});
+
+test("the home page names the site and its publisher", async ({ page, baseURL }) => {
+  await page.goto("/zh");
+
+  // The FAQ has its own structured data.
+  const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const data = scripts.map((text) => JSON.parse(text)).find((item) => item["@graph"]);
+  expect(data["@graph"]).toEqual([
+    expect.objectContaining({ "@type": "Organization", name: "AIRumpelstiltskinVideo", url: `${baseURL}/` }),
+    expect.objectContaining({
+      "@type": "WebSite",
+      name: "AIRumpelstiltskinVideo",
+      inLanguage: "zh",
+      url: `${baseURL}/`,
+      description: await page.locator('head meta[name="description"]').getAttribute("content"),
+    }),
+  ]);
+});
+
+test("the blog index names its canonical URL and every locale", async ({ page, baseURL }) => {
+  await page.goto("/zh/blog");
+
+  const head = page.locator("head");
+  await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/zh/blog`);
+  await expect(head.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${baseURL}/en/blog`);
+  await expect(head.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute("href", `${baseURL}/en/blog`);
+});
+
+test("the home, guide and legal pages name their canonical URL and every locale", async ({ page, baseURL }) => {
+  for (const path of [
+    "",
+    "/tip-toe-in-my-jordans",
+    "/rumpelstiltskin-meme",
+    "/how-to-make-rumpelstiltskin-video",
+    "/who-is-rumpelstiltskin",
+    "/rumpelstiltskin-movie",
+    "/rumpelstiltskin-1987-movie",
+    "/rumpelstiltskin-dance-scene",
+    "/privacy",
+    "/terms",
+    "/refund",
+  ]) {
+    await page.goto(`/zh${path}`);
+
+    const head = page.locator("head");
+    await expect(head.locator('link[rel="canonical"]')).toHaveAttribute("href", `${baseURL}/zh${path}`);
+    await expect(head.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${baseURL}/en${path}`);
+    await expect(head.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute(
+      "href",
+      `${baseURL}/en${path}`,
+    );
+  }
+});
+
+// Search titles lead with the keyword; the home title is the keyword alone.
+test("marketing pages carry keyword-first titles", async ({ page }) => {
+  const titles = {
+    "/zh": "侏儒怪表情包 AI 视频 – Tiptoeing in My Jordans",
+    "/zh/pricing": "侏儒怪表情包视频价格 | AIRumpelstiltskinVideo",
+    "/zh/blog": "AI 侏儒怪视频博客：教程与动态 | AIRumpelstiltskinVideo",
+    "/en/tip-toe-in-my-jordans": "Tip Toe in My Jordans Meme | AIRumpelstiltskinVideo",
+    "/en/rumpelstiltskin-meme": "Rumpelstiltskin Meme Explained | AIRumpelstiltskinVideo",
+    "/en/how-to-make-rumpelstiltskin-video": "How to Make a Rumpelstiltskin Video | AIRumpelstiltskinVideo",
+  };
+  for (const [path, title] of Object.entries(titles)) {
+    await page.goto(path);
+
+    await expect(page, path).toHaveTitle(title);
+  }
+});
+
+// The page's own hreflang links are the only ones. A Link header would also
+// name translations that don't exist, such as a post's missing locale.
+test("responses carry no hreflang Link header", async ({ request }) => {
+  for (const path of ["/en", "/en/pricing", "/en/blog"]) {
+    const response = await request.get(path);
+
+    expect(response.headers().link ?? "", path).not.toContain("hreflang");
+  }
+});
+
+// Each page's own summary, not the site's: search results show it under the title.
+test("the legal and sign-in pages describe themselves", async ({ page }) => {
+  const descriptions = {
+    "/en/privacy": "How AIRumpelstiltskinVideo collects, uses, shares and protects your personal information.",
+    "/zh/terms": "使用 AIRumpelstiltskinVideo 的条款：你的账户、可接受的使用、你的内容和付款。",
+    "/en/refund": "When AIRumpelstiltskinVideo refunds a purchase, and how to ask for a refund.",
+    "/en/sign-in": "No password to remember. We email you a link, or you continue with Google.",
+  };
+  for (const [path, description] of Object.entries(descriptions)) {
+    await page.goto(path);
+
+    await expect(page.locator('head meta[name="description"]'), path).toHaveAttribute("content", description);
+  }
+});
+
+test("the sign-in page stays out of search results", async ({ page }) => {
+  await page.goto("/en/sign-in?next=%2Fen%2Fdashboard");
+
+  await expect(page.locator('head meta[name="robots"]')).toHaveAttribute("content", "noindex");
+  await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute("href", /\/en\/sign-in$/);
+});
+
+// Signed-out crawlers get redirected to sign-in, but a signed-in page still
+// says noindex in case that redirect ever fails.
+test("signed-in pages stay out of search results", async ({ page }) => {
+  await signIn(page);
+
+  for (const path of ["/en/videos/library", "/en/billing"]) {
+    await page.goto(path);
+
+    await expect(page.locator('head meta[name="robots"]'), path).toHaveAttribute("content", "noindex");
+  }
+});
+
+// A crawler's first request decides the status. Next.js caches the 404
+// afterwards, so each run asks for paths no earlier request has seen.
+test("an unknown post or tag answers 404 on the first request", async ({ request }) => {
+  const unseen = `unseen-${Date.now()}`;
+  for (const path of [`/en/blog/${unseen}`, `/en/blog/tags/${unseen}`]) {
+    const response = await request.get(path);
+
+    expect(response.status(), path).toBe(404);
+  }
+});
+
+test("llms.txt describes the product and links the public pages", async ({ request, baseURL }) => {
+  const response = await request.get("/llms.txt");
+
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("text/markdown; charset=utf-8");
+  const text = await response.text();
+  const lines = text.split("\n");
+  expect(lines[0]).toBe("# AIRumpelstiltskinVideo");
+  expect(lines[2]).toBe(
+    "> Star in the Rumpelstiltskin meme: upload one photo and get the 12-second Tiptoeing in My Jordans video for TikTok. Free preview, pay once, no subscription.",
+  );
+  expect(text).toMatch(
+    /- How much does it cost\?: A tip-toe video costs \d+ credits\. .* one-time packs: \d+ credits for \$\d+\.\d\d, .* See the pricing page\./,
+  );
+  expect(text).toContain("- How do I contact support?: Email support@airumpelstiltskinvideo.com.");
+  // The largest photo a visitor may pick; the browser shrinks it to upload.
+  expect(text).toContain("JPEG, PNG or WebP, up to 5 MB.");
+  expect(text).toContain(`- [Privacy Policy](${baseURL}/en/privacy)`);
+  expect(text).toContain(`- [隐私政策](${baseURL}/zh/privacy)`);
+  expect(text).toContain(`- [Rumpelstiltskin meme videos, from $4.99](${baseURL}/en/pricing): Try a free 5-second preview first.`);
+  expect(text).toContain(`- [Blog](${baseURL}/en/blog): `);
+  expect(text).toContain(`- [Rumpelstiltskin Meme Explained](${baseURL}/en/rumpelstiltskin-meme): `);
+  expect(text).toContain(`(${baseURL}/zh/how-to-make-rumpelstiltskin-video): `);
+  expect(text).toContain(
+    `- [Is it safe to upload your photo to an AI video generator?](${baseURL}/en/blog/is-it-safe-to-upload-a-photo): `,
+  );
+  expect(text).toContain(`- [Sitemap](${baseURL}/sitemap.xml)`);
+  // No ICU or markup left over.
+  expect(text).not.toMatch(/[{}]|<\/?\w/);
+});
+
+test("every public page shares a preview image", async ({ page, request }) => {
+  for (const path of ["/en", "/zh/pricing", "/en/blog", "/zh/rumpelstiltskin-meme"]) {
+    await page.goto(path);
+
+    const head = page.locator("head");
+    await expect(head.locator('meta[property="og:image:width"]')).toHaveAttribute("content", "1200");
+    await expect(head.locator('meta[property="og:image:height"]')).toHaveAttribute("content", "630");
+    const image = await head.locator('meta[property="og:image"]').getAttribute("content");
+    const response = await request.get(image!);
+    expect(response.status(), image!).toBe(200);
+    expect(response.headers()["content-type"]).toBe("image/png");
+  }
+});
+
+// Search engines read the FAQ the page shows, as plain text.
+test("the home page's FAQ is structured data", async ({ page }) => {
+  await page.goto("/en");
+
+  const scripts = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const faq = scripts.map((text) => JSON.parse(text)).find((data) => data["@type"] === "FAQPage");
+  expect(faq.mainEntity).toHaveLength(12);
+  expect(faq.mainEntity[3]).toEqual({
+    "@type": "Question",
+    name: "How much does it cost?",
+    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^A tip-toe video costs \d+ credits\. .* See the pricing page\.$/) },
+  });
+});
+
+test("a guide shares its own title in social metadata", async ({ page, baseURL }) => {
+  await page.goto("/en/how-to-make-rumpelstiltskin-video");
+
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "How to Make a Rumpelstiltskin Video");
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    `${baseURL}/en/how-to-make-rumpelstiltskin-video`,
+  );
+});
+
+test("home pages identify the same site in social metadata", async ({ page, baseURL }) => {
+  for (const locale of ["en", "zh"]) {
+    await page.goto(`/${locale}`);
+    await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "AIRumpelstiltskinVideo");
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", `${baseURL}/${locale}`);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", await page.title());
+  }
+});

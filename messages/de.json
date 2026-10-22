@@ -1,0 +1,1153 @@
+{
+  "Metadata": {
+    "title": "AIRumpelstiltskinVideo",
+    "homeTitle": "Rumpelstilzchen-Meme KI-Video – Tiptoeing in My Jordans",
+    "tagline": "KI-Rumpelstilzchen-Zehenspitzentanz",
+    "description": "Spiel die Hauptrolle im Rumpelstilzchen-Meme: Foto hochladen, 12-Sekunden-Video Tiptoeing in My Jordans für TikTok bekommen. Gratis-Vorschau, einmal zahlen, kein Abo."
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Gerade im Trend auf TikTok",
+      "heading": "Rumpelstilzchen-Meme als KI-Video",
+      "title": "Spiel mit einem Foto die Hauptrolle in Tiptoeing in My Jordans.",
+      "body": "Lade ein Foto hoch. Du schleichst durchs Stroh, machst „Pst“, grinst und tanzt auf Zehenspitzen, während eine Frau staunt. 12 Sekunden, hochkant, fertig für TikTok."
+    },
+    "example": {
+      "eyebrow": "Sieh dir den Tanz an",
+      "title": "So sieht dein Video aus",
+      "video": "Die Zehenspitzen-Szene: Ein Mann im roten Poloshirt schleicht durch eine Heuscheune, macht „Psst“ in die Kamera und tanzt auf Zehenspitzen an einem verblüfften Mann mit Schirmmütze vorbei, mit Musik",
+      "note": "Dein Video erzählt diese Geschichte mit der Person auf deinem Foto: 12 Sekunden, Hochformat 9:16, mit Musik. Die Einstellungen sind in jedem Video anders."
+    },
+    "strip": {
+      "label": "Das bekommst du",
+      "items": {
+        "1": "Ein Foto",
+        "2": "12 Sekunden",
+        "3": "Originalmusik"
+      }
+    },
+    "steps": {
+      "eyebrow": "So funktioniert’s",
+      "title": "In drei Schritten zum tanzenden Foto",
+      "items": {
+        "1": {
+          "title": "Foto hochladen",
+          "body": "Wähle ein klares Foto von einer erwachsenen Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera."
+        },
+        "2": {
+          "title": "Wir bringen es zum Tanzen",
+          "body": "Die KI setzt die Person auf deinem Foto in die Zehenspitzen-Szene, im Frack und mit Musik. Das dauert ein paar Minuten."
+        },
+        "3": {
+          "title": "Herunterladen & teilen",
+          "body": "Sieh es dir hier an, lade die MP4 herunter und schick den Link an deine Freunde."
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Preise",
+      "title": "Fang mit einem Video an.",
+      "body": "Das kleinste Paket reicht für ein Video. Du zahlst einmal und nutzt die Credits, wann du willst.",
+      "more": "Alle Preise ansehen"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Fragen zum KI-Rumpelstilzchen-Video",
+      "pack": "{credits, plural, one {# Credit} other {# Credits}} für {price}",
+      "items": {
+        "1": {
+          "title": "Was ist der Rumpelstiltskin-KI-Videogenerator?",
+          "body": "Er macht ein Meme-Video: Die Person auf deinem Foto schleicht im cremefarbenen Frack durch eine Heuscheune und tanzt auf Zehenspitzen wie der Zwerg aus dem Märchen, zu Originalmusik. Du lädst ein Foto hoch, und rumpelstiltskin macht daraus ein 12-Sekunden-Video."
+        },
+        "2": {
+          "title": "Welche Fotos kann ich verwenden?",
+          "body": "Ein Foto von dir selbst oder von einer erwachsenen Person, die dir die Erlaubnis gegeben hat. Lade keine Fotos von Kindern hoch. Eine Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. JPEG, PNG oder WebP, bis {size} MB."
+        },
+        "3": {
+          "title": "Wie lang ist das Video, und wie lange dauert es?",
+          "body": "Etwa 12 Sekunden, mit Musik. Die Erstellung dauert meist ein paar Minuten. Lass die Seite offen, dann läuft das Video dort, sobald es fertig ist."
+        },
+        "4": {
+          "title": "Was kostet es?",
+          "body": "Ein Zehenspitzen-Video kostet {credits, plural, one {# Credit} other {# Credits}}. Ein Pro-Video in schärferem 1080p kostet {proCredits, plural, one {# Credit} other {# Credits}}. Credits gibt es in Paketen mit Einmalzahlung: {packs}. Es gibt kein Abo, und Credits verfallen nie. Schlägt ein Video fehl, bekommst du die Credits zurück. Außerdem bekommt jedes Konto eine kostenlose Vorschau: 5 Sekunden mit Wasserzeichen. Mehr auf der <pricing>Preisseite</pricing>."
+        },
+        "5": {
+          "title": "Brauche ich ein Konto?",
+          "body": "Ja, um ein Video zu erstellen. Melde dich mit einem Link per E-Mail oder mit deinem Google-Konto an, ganz ohne Passwort. Dein Foto bleibt ausgewählt, während du dich anmeldest."
+        },
+        "6": {
+          "title": "Wie erreiche ich den Support?",
+          "body": "Schreib eine E-Mail an <email></email>. Wir antworten innerhalb von 3 Werktagen."
+        },
+        "7": {
+          "title": "Kann ich es auf TikTok, Reels oder Shorts posten?",
+          "body": "Ja. Jedes Video ist eine MP4 im Hochformat 9:16, die den Handybildschirm füllt. So kannst du es auf TikTok, Reels und Shorts posten, ohne dass etwas abgeschnitten wird."
+        },
+        "8": {
+          "title": "Stammt der Tanz aus dem Rumpelstiltskin-Film von 1987?",
+          "body": "Nein. 1987 kam zwar ein Realfilm namens „Rumpelstiltskin“ heraus, aber der virale Zehenspitzen-Clip wurde mit KI gemacht. Die Videos hier erstellt eine KI aus deinem Foto, mit Originalmusik."
+        },
+        "9": {
+          "title": "Gibt es dafür einen TikTok-Filter?",
+          "body": "Nein, das ist kein TikTok-Filter oder -Effekt. Es läuft im Browser deines Handys: Foto hochladen, ein paar Minuten warten und die MP4 herunterladen. Dann postest du sie auf TikTok und fügst dort einen Sound hinzu. Wähle „Hochformat“, damit das Video den Bildschirm füllt."
+        },
+        "10": {
+          "title": "Hat das Video Ton?",
+          "body": "Ja. Jedes Video kommt mit eigens dafür gemachter Originalmusik. Den Trend-Song aus dem Meme enthält es nicht. Wenn du einen Trend-Sound willst, füge ihn beim Posten in TikTok, Reels oder Shorts hinzu und dreh dort den Originalton leiser."
+        },
+        "11": {
+          "title": "Sind meine Fotos privat?",
+          "body": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Wir nutzen Fotos und Videos nicht, um KI-Modelle zu trainieren. Deine Videos bleiben in deiner Mediathek, die nur du sehen kannst, bis du dein Konto löschst."
+        },
+        "12": {
+          "title": "Was ist der Unterschied zu Veo oder Kling?",
+          "body": "Veo und Kling sind allgemeine Videomodelle: Du schreibst einen Prompt, wählst die Einstellungen und probierst es so lange, bis es passt. Hier lädst du nur ein Foto hoch. Szene, Einstellungen und Musik sind auf den Zehenspitzentanz abgestimmt, und du zahlst pro Video – schlägt eins fehl, bekommst du die Credits zurück."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Probier’s aus",
+      "title": "Jetzt bist du dran mit Zehenspitzen.",
+      "body": "Ein Foto, etwa 12 Sekunden Tanz, fertig zum Teilen.",
+      "button": "Mein Video erstellen",
+      "points": {
+        "1": "Ein Foto, ein 12-Sekunden-Video",
+        "2": "Credits zurück, wenn es fehlschlägt",
+        "3": "Deutsch, English, Español und 中文"
+      }
+    },
+    "about": {
+      "eyebrow": "Die ausführliche Antwort",
+      "title": "Über den Rumpelstiltskin-KI-Videogenerator",
+      "sections": {
+        "makes": {
+          "title": "Was der Generator macht",
+          "text": {
+            "1": "Dieser KI-Rumpelstilzchen-Videogenerator macht aus einem Foto ein kurzes Tanzvideo. Du lädst ein Bild von einer erwachsenen Person hoch, und die KI macht diese Person zum Star einer Rumpelstilzchen-Szene: Im cremefarbenen Frack schleicht sie durch eine Heuscheune, macht „Psst“ in die Kamera und tanzt mit verschmitztem Grinsen auf Zehenspitzen, während eine Freundin nach Luft schnappt. Das Video ist etwa 12 Sekunden lang, im Breitbild 16:9 oder Hochformat 9:16, mit Originalmusik, und du lädst es als MP4 herunter.",
+            "2": "Du musst nichts filmen und brauchst keine Schnittkenntnisse. Der <generator>Generator oben auf dieser Seite</generator> erledigt alles: Foto auswählen, Standard oder Pro wählen und auf „Generieren“ tippen. Ein Video dauert meist ein paar Minuten und läuft auf der Seite, sobald es fertig ist."
+          }
+        },
+        "motion": {
+          "title": "Ein neues Video, kein Face Swap",
+          "text": {
+            "1": "Viele Videos zum Zehenspitzentanz-Meme im Netz sind Face Swaps: Eine Bearbeitungs-App klebt ein neues Gesicht auf einen bestehenden Clip, und das Gesicht wirkt oft flach oder verrutscht. Dieser Generator arbeitet anders. Die KI analysiert dein Foto und dreht um diese Person herum einen neuen Film: die Scheune, das Kostüm, die Nahaufnahmen und den Tanz. Gesicht, Körper und Kleidung bewegen sich gemeinsam.",
+            "2": "Das Ergebnis ist ein neues Video, keine bearbeitete Kopie eines fremden Clips. Deshalb kommt es auch auf das Foto an. Die KI muss das Gesicht deutlich sehen, also bringt ein Foto von einer Person mit Blick in die Kamera und bei gutem Licht die beste Ähnlichkeit. Ein Selfie funktioniert. Die <howto>Schritt-für-Schritt-Anleitung</howto> zeigt, was ein gutes Foto ausmacht."
+          }
+        },
+        "meme": {
+          "title": "Woher das Zehenspitzentanz-Meme kommt",
+          "text": {
+            "1": "Das Rumpelstiltskin-Meme ist ein kurzer Clip einer kleinen Märchenfigur in altmodischer Kleidung, die auf Zehenspitzen dahinschleicht, als wäre sie gerade mit etwas davongekommen. Benannt wurde es nach Rumpelstilzchen, dem kleinen Männlein aus dem Märchen der Brüder Grimm, das Stroh zu Gold spinnt und ums Feuer tanzt, in der Gewissheit, dass niemand je seinen Namen erraten wird.",
+            "2": "Der Clip verbreitete sich 2026 in Kurzvideo-Apps, und bald setzten die Leute Freunde, Eltern und Kollegen in den Tanz. Lies <meme>was das Rumpelstiltskin-Meme ist</meme> für die ganze Geschichte, oder den <trend>Guide zum Zehenspitzentanz-Trend</trend>, um zu sehen, wie andere ihre Versionen machen."
+          }
+        },
+        "movie": {
+          "title": "Stammt es aus dem Rumpelstiltskin-Film von 1987?",
+          "text": {
+            "1": "Viele suchen nach dem Rumpelstiltskin-Film von 1987, weil der virale Clip wie eine Szene aus einem alten Märchenfilm aussieht. 1987 kam tatsächlich ein Realfilm namens „Rumpelstiltskin“ heraus, mit Billy Barty in der Titelrolle und Amy Irving als Müllerstochter. Der Zehenspitzen-Clip, der 2026 viral ging, wurde jedoch mit KI gemacht. Er stammt weder aus diesem noch aus einem anderen Film.",
+            "2": "Auch die Videos auf dieser Seite sind KI-generiert, und das sagen sie auch. Wir verwenden kein Material aus Filmen oder aus dem viralen Original-Clip. Teile dein Video als Spaß, nicht als echte Aufnahme."
+          }
+        },
+        "music": {
+          "title": "Musik und der Tip-Toe-Sound",
+          "text": {
+            "1": "Auf TikTok und Reels wird der Tanz oft mit einem angesagten Tip-Toe-Sound gepostet. Jedes Video von hier hat stattdessen eigene Originalmusik, damit du es überall posten kannst, ohne dir den Track von jemand anderem zu leihen.",
+            "2": "Wenn du den Trend-Sound willst, füge ihn beim Posten in der App hinzu. In den meisten Kurzvideo-Apps kannst du den Originalton leiser stellen oder stummschalten und einen Sound aus ihrer Bibliothek wählen."
+          }
+        },
+        "social": {
+          "title": "Posten auf TikTok, Reels und Shorts",
+          "text": {
+            "1": "Jedes Video wird in 9:16 gedreht, im Format eines Handybildschirms. So füllt es TikTok, Instagram Reels und YouTube Shorts aus, ohne dass etwas abgeschnitten wird.",
+            "2": "Du kannst die MP4 auch direkt in einen Gruppenchat schicken oder unter dem Video auf „Teilen“ tippen, um das Teilen-Menü deines Handys zu öffnen."
+          }
+        },
+        "quality": {
+          "title": "Standard oder Pro",
+          "text": {
+            "1": "Beide Qualitätsstufen erzeugen dieselbe Zehenspitzen-Szene mit Musik. Ein Standard-Video kostet {credits} Credits und hat 720p. Ein Pro-Video kostet {proCredits} Credits und hat 1080p – schärfer auf großen Bildschirmen, was hilft, wenn du es posten willst.",
+            "2": "Credits gibt es in Paketen mit Einmalzahlung, ohne Abo, und sie verfallen nie. Schlägt ein Video fehl, bekommst du seine Credits automatisch zurück. Alle Pakete findest du auf der <pricing>Preisseite</pricing>, oder geh <back>zurück zum Generator</back> und mach dein eigenes."
+          }
+        }
+      }
+    }
+  },
+  "HomeTryout": {
+    "title": "Erstelle dein Rumpelstilzchen-Meme-Video",
+    "body": "Ein Foto reicht. Die ganze 12-Sekunden-Szene machen wir.",
+    "photo": {
+      "choose": "Foto auswählen",
+      "hint": "Klicke zum Durchsuchen oder zieh es hierher",
+      "change": "Foto ändern"
+    },
+    "quality": {
+      "legend": "Qualität",
+      "standard": {
+        "label": "Standard",
+        "description": "720p, bereit zum Teilen."
+      },
+      "pro": {
+        "label": "Pro",
+        "description": "1080p, ein schärferes Bild."
+      },
+      "credits": "{count, plural, one {# Credit} other {# Credits}}"
+    },
+    "consentNote": "Mit dem Erstellen bestätigst du, dass das Foto deins ist oder die erwachsene Person darauf zugestimmt hat.",
+    "preview": {
+      "button": "Gratis-Vorschau mit 5 Sekunden testen",
+      "note": "5 Sekunden mit Wasserzeichen, einmal pro Konto."
+    },
+    "signIn": {
+      "title": "Melde dich an, um dein Video zu erstellen",
+      "body": "Dein Foto bleibt ausgewählt, und das Video startet, sobald du angemeldet bist."
+    },
+    "close": "Schließen",
+    "credits": "Dieses Video kostet {credits, plural, one {# Credit} other {# Credits}}, und du hast nicht genug.",
+    "packs": {
+      "legend": "Credit-Paket",
+      "body": "Kauf ein Paket, und das Video startet, sobald die Zahlung durch ist.",
+      "pay": "{price} zahlen und mein Video erstellen",
+      "paying": "Kasse wird geöffnet…",
+      "note": "Sichere Zahlung. Einmalzahlung, kein Abo. Credits verfallen nie.",
+      "canceled": "Zahlung abgebrochen. Dir wurde nichts berechnet."
+    },
+    "paid": {
+      "waiting": "Zahlung erhalten. Wir warten auf deine Credits, dann startet dein Video.",
+      "late": "Deine Zahlung wird bearbeitet. Deine Credits erscheinen in Kürze; tippe auf „Generieren“, um es erneut zu versuchen."
+    },
+    "pending": {
+      "title": "Dein Video ist unterwegs",
+      "body": "Das dauert meist ein paar Minuten. Lass diese Seite offen, dann läuft das Video hier, sobald es fertig ist."
+    },
+    "ready": "Dein Zehenspitzen-Video ist fertig",
+    "video": "Dein Zehenspitzentanz-Video",
+    "download": "Herunterladen",
+    "share": {
+      "button": "Teilen",
+      "title": "KI-Rumpelstilzchen-Zehenspitzentanz",
+      "text": "Ich hab mein Foto auf Zehenspitzen tanzen lassen. Mach deins:",
+      "copied": "Link kopiert"
+    },
+    "failed": "Dieses Video hat leider nicht geklappt. Deine {credits, plural, one {# Credit wurde} other {# Credits wurden}} erstattet.",
+    "tryAgain": "Nochmal versuchen",
+    "another": "Noch eins erstellen",
+    "previewUsed": "Du hast deine kostenlose Vorschau schon genutzt. Wähle Standard oder Pro für das ganze Video.",
+    "previewNote": "Das ist deine kostenlose Vorschau: 5 Sekunden mit Wasserzeichen. Für das ganze 12-Sekunden-Video ohne Wasserzeichen wähle Standard oder Pro und erstelle ein neues."
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache",
+    "current": "Sprache: {name}"
+  },
+  "Nav": {
+    "label": "Hauptmenü",
+    "howItWorks": "So funktioniert’s",
+    "pricing": "Preise",
+    "faq": "FAQ"
+  },
+  "Theme": {
+    "label": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "home": "Zur Startseite"
+  },
+  "SignIn": {
+    "title": "Anmelden",
+    "subtitle": "Kein Passwort, das du dir merken musst. Wir schicken dir einen Link per E-Mail, oder du machst mit Google weiter."
+  },
+  "LoginForm": {
+    "google": "Weiter mit Google",
+    "googleError": "Die Anmeldung mit Google ist nicht verfügbar. Nutze stattdessen einen Magic Link.",
+    "or": "oder",
+    "email": "E-Mail",
+    "send": "Magic Link senden",
+    "sent": "Schau in deine E-Mails, dort wartet ein Anmeldelink.",
+    "sendError": "Der Link konnte nicht gesendet werden. Versuch es nochmal."
+  },
+  "MagicLinkConfirm": {
+    "title": "Anmeldung abschließen",
+    "body": "Tippe auf den Button, um dich auf diesem Gerät anzumelden.",
+    "continue": "Anmeldung fortsetzen",
+    "invalid": "Dieser Anmeldelink ist unvollständig oder abgelaufen.",
+    "retry": "Erneut anmelden"
+  },
+  "Profile": {
+    "title": "Profil",
+    "name": "Name",
+    "email": "E-Mail",
+    "emailVerified": "E-Mail bestätigt",
+    "yes": "Ja",
+    "no": "Nein",
+    "memberSince": "Mitglied seit",
+    "deleteTitle": "Konto löschen",
+    "deleteDescription": "Löscht dein Konto dauerhaft und meldet dich überall ab.",
+    "delete": "Konto löschen",
+    "confirmDelete": "Dauerhaft löschen",
+    "cancel": "Abbrechen",
+    "staleSession": "Melde dich zu deiner Sicherheit erneut an, bevor du dein Konto löschst.",
+    "deleteError": "Dein Konto konnte nicht gelöscht werden. Versuch es nochmal.",
+    "confirmTitle": "Dein Konto löschen?",
+    "confirmDescription": "Damit wird <email></email> dauerhaft gelöscht und du wirst auf allen Geräten abgemeldet. Das lässt sich nicht rückgängig machen.",
+    "activeSubscription": "Kündige dein Abo auf der Seite <link>Credits & Abrechnung</link>, bevor du dein Konto löschst.",
+    "description": "Deine Kontodaten."
+  },
+  "Legal": {
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "refund": "Erstattungsrichtlinie",
+    "descriptions": {
+      "privacy": "Wie {name} deine personenbezogenen Daten erhebt, nutzt, weitergibt und schützt.",
+      "terms": "Die Bedingungen für die Nutzung von {name}: dein Konto, zulässige Nutzung, deine Inhalte und Zahlungen.",
+      "refund": "Wann {name} einen Kauf erstattet und wie du eine Erstattung beantragst."
+    },
+    "contact": "Kontakt",
+    "eyebrow": "Rechtliches",
+    "nav": "Rechtliche Dokumente"
+  },
+  "Blog": {
+    "title": "Blog",
+    "metaTitle": "Blog: Anleitungen und News",
+    "metaDescription": "Anleitungen und News von rumpelstiltskin: wie du aus einem Foto das Zehenspitzentanz-Meme machst, wie es gut gelingt und was es Neues auf der Seite gibt.",
+    "eyebrow": "Blog",
+    "description": "Notizen dazu, woran wir arbeiten und wie du es nutzt.",
+    "empty": "Noch keine Beiträge.",
+    "back": "Alle Beiträge",
+    "tagged": "Beiträge mit dem Tag „{tag}“",
+    "taggedDescription": "Alle Beiträge mit dem Tag „{tag}“, die neuesten zuerst."
+  },
+  "Pricing": {
+    "nav": "Preise",
+    "title": "Rumpelstilzchen-Meme-Videos ab {price}",
+    "metaTitle": "Rumpelstilzchen-Meme-Video: Preise",
+    "metaDescription": "Rumpelstilzchen-Meme-Videos ab {price}: erst eine Gratis-Vorschau mit 5 Sekunden, dann einmal zahlen für das ganze 12-Sekunden-Video. Kein Abo; Credits verfallen nie.",
+    "eyebrow": "Preisliste",
+    "description": "Teste zuerst eine Gratis-Vorschau mit 5 Sekunden. Ein ganzes 12-Sekunden-Video gibt es ab {price}. Du zahlst einmal: kein Abo, und Credits verfallen nie.",
+    "packsTitle": "Wähle dein Paket",
+    "spend": "Credits gelten für beide Qualitäten: Standard kostet {standard} pro Video, Pro kostet {pro}.",
+    "includesLabel": "Jedes Paket",
+    "includes": {
+      "1": "Sichere Bezahlung",
+      "2": "Credits in wenigen Minuten da",
+      "3": "Erstattung binnen 14 Tagen, wenn unbenutzt",
+      "4": "Credits zurück, wenn ein Video scheitert"
+    },
+    "faqTitle": "Fragen zum Bezahlen",
+    "faq": {
+      "preview": {
+        "title": "Kann ich es zuerst kostenlos testen?",
+        "body": "Ja. Jedes Konto bekommt eine Gratis-Vorschau: 5 Sekunden mit Wasserzeichen, einmal pro Konto. So siehst du vor dem Bezahlen, wie dein Foto in der Szene aussieht."
+      },
+      "quality": {
+        "title": "Was unterscheidet Pro von Standard?",
+        "body": "Beide erzeugen dieselbe 12-Sekunden-Szene mit Musik. Standard hat 720p und kostet {standard} Credits. Pro hat 1080p, ist auf großen Bildschirmen schärfer und kostet {pro} Credits."
+      },
+      "expire": {
+        "title": "Verfallen Credits?",
+        "body": "Nein. Credits verfallen nie. Nutze sie, wann du willst."
+      },
+      "monthly": {
+        "title": "Werde ich jeden Monat belastet?",
+        "body": "Nein. Jedes Paket ist eine einmalige Zahlung. Es gibt nichts zu kündigen; kauf nur dann ein weiteres Paket, wenn du mehr Videos willst."
+      },
+      "failed": {
+        "title": "Was passiert, wenn ein Video scheitert?",
+        "body": "Die Credits gehen automatisch auf dein Guthaben zurück. Du musst uns nicht kontaktieren."
+      },
+      "refund": {
+        "title": "Kann ich eine Erstattung bekommen?",
+        "body": "Ja, innerhalb von 14 Tagen nach dem Kauf, wenn du noch keine seiner Credits benutzt hast. Details und wie du sie anfragst, stehen in der <refund>Erstattungsrichtlinie</refund> und den <terms>Nutzungsbedingungen</terms>."
+      },
+      "watermark": {
+        "title": "Gibt es ein Wasserzeichen?",
+        "body": "Nur auf der Gratis-Vorschau. Ganze Standard- und Pro-Videos haben kein Wasserzeichen."
+      },
+      "sound": {
+        "title": "Hat das Video Ton?",
+        "body": "Ja. Jedes Video hat eigene Originalmusik. Willst du stattdessen einen Trend-Sound, füge ihn beim Posten in der App hinzu."
+      }
+    }
+  },
+  "Guides": {
+    "eyebrow": "Guide",
+    "cta": "Mein Video erstellen",
+    "ctaNote": "Ab {credits} Credits. Schlägt ein Video fehl, bekommst du die Credits zurück.",
+    "pack": "{credits, plural, one {# Credit} other {# Credits}} für {price}",
+    "related": "Weitere Guides",
+    "note": "Diese Seite ist ein unabhängiges KI-Video-Tool. Sie steht in keiner Verbindung zu einer Marke, einem Künstler oder den Machern des Originalvideos und wird von ihnen weder unterstützt noch gesponsert. Die Videos hier sind neue KI-Videos mit Originalmusik; sie verwenden nie den Original-Clip.",
+    "pages": {
+      "tip-toe-in-my-jordans": {
+        "metaTitle": "Tip Toe in My Jordans – das Meme",
+        "metaDescription": "Mach das virale Zehenspitzentanz-Meme aus einem Foto: was hinter dem Trend steckt, wie andere es machen und wie aus einem Bild ein 12-Sekunden-Video wird.",
+        "nav": "Der Zehenspitzentanz-Meme-Trend",
+        "title": "Tip Toe in My Jordans",
+        "tagline": "Das Zehenspitzentanz-Meme, gemacht aus deinem Foto.",
+        "lead": "Eine kleine Märchenfigur tanzt mit verschmitztem Grinsen auf der Stelle auf Zehenspitzen, und immer wieder setzen Leute ihr neue Gesichter auf. Dieser Guide erklärt den Trend, wie andere ihre eigenen Versionen machen und wie du eine aus einem einzigen Foto erstellst.",
+        "sections": {
+          "what": {
+            "title": "Was hinter dem Trend steckt",
+            "text": {
+              "1": "Das Zehenspitzentanz-Meme ist ein kurzer Loop: Eine Figur schleicht auf Zehenspitzen dahin, die Knie gebeugt, die Arme angezogen, und ist sehr zufrieden mit sich. Die bekanntesten Versionen zeigen ein bärtiges Männlein, das aussieht wie Rumpelstilzchen aus dem Märchen, deshalb nennen viele es das <meme>Rumpelstiltskin-Meme</meme>.",
+              "2": "Der Witz liegt im Kontrast zwischen den übertriebenen Schleichschritten und der Person, die sie macht. Ein ernstes Foto von einem Freund, einem Elternteil oder einer Kollegin tänzelt plötzlich auf Zehenspitzen wie ein Cartoon-Bösewicht, der gerade mit etwas davongekommen ist. Der Clip ist kurz und die Bewegung leicht wiederzuerkennen, darum funktioniert er in jedem Kurzvideo-Feed.",
+              "3": "Gesucht wird es unter mehreren Namen. Der Zehenspitzentanz, das Rumpelstiltskin-Meme und der Spitzname im Titel dieser Seite meinen alle denselben Trend."
+            }
+          },
+          "how": {
+            "title": "Wie andere es machen",
+            "text": {
+              "1": "Die meisten Versionen, die du siehst, entstehen auf eine von drei Arten:"
+            },
+            "list": {
+              "1": "Sie filmen sich selbst beim Tanzen und machen die Schritte von Hand nach.",
+              "2": "Sie schneiden einen bestehenden Clip und tauschen mit einer Bearbeitungs-App das Gesicht aus.",
+              "3": "Sie nutzen ein KI-Video-Tool, das aus einem Foto ein neues Video vom Tanz macht."
+            },
+            "more": {
+              "1": "Filmen braucht Übung und einen freien Nachmittag. Face Swaps wirken oft aufgeklebt. Ein KI-Videogenerator baut die ganze Szene um die Person herum, sodass sie aussieht, als würde sie wirklich tanzen."
+            }
+          },
+          "make": {
+            "title": "Mach dein eigenes aus einem Foto",
+            "text": {
+              "1": "Hier lädst du ein Foto hoch und bekommst ein KI-Video von etwa 12 Sekunden, mit Musik. Die Person auf deinem Foto macht den Zehenspitzentanz, und du musst nichts filmen."
+            },
+            "steps": {
+              "1": {
+                "title": "Foto auswählen",
+                "body": "Eine erwachsene Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera."
+              },
+              "2": {
+                "title": "Einwilligung bestätigen",
+                "body": "Es ist dein Foto, oder die erwachsene Person darauf hat zugestimmt."
+              },
+              "3": {
+                "title": "Qualität wählen",
+                "body": "Standard kostet {credits} Credits; Pro kostet {proCredits} Credits, in schärferem 1080p."
+              },
+              "4": {
+                "title": "Anmelden und bei Bedarf zahlen",
+                "body": "Nutze einen Link per E-Mail oder Google. Kauf ein Credit-Paket, wenn dein Guthaben nicht reicht."
+              },
+              "5": {
+                "title": "Herunterladen und teilen",
+                "body": "Nach ein paar Minuten speicherst du die MP4 oder teilst sie."
+              }
+            },
+            "more": {
+              "1": "Die <howto>Schritt-für-Schritt-Anleitung</howto> erklärt jeden Schritt und was ein gutes Foto ausmacht. Schlägt ein Video fehl, bekommst du deine Credits automatisch zurück."
+            }
+          },
+          "tips": {
+            "title": "Tipps für ein lustiges Ergebnis",
+            "list": {
+              "1": "Nimm ein Foto, auf dem die Person gerade steht und die Arme zu sehen sind. Die KI muss den Körper sehen, um ihn zu bewegen.",
+              "2": "Ein ernstes Gesicht macht den Schleichtanz noch lustiger.",
+              "3": "Schlichte Hintergründe und gutes Licht ergeben sauberere Bewegungen als unruhige, dunkle Fotos.",
+              "4": "Wähle Pro für ein schärferes Bild, etwa für ein Video, das du posten willst."
+            }
+          },
+          "fair": {
+            "title": "Nutze es fair",
+            "text": {
+              "1": "Lade nur Fotos von dir selbst hoch oder von einer erwachsenen Person, die Ja gesagt hat. Verwende keine Fotos von Kindern und mach keine Videos, die Leute glauben lassen könnten, etwas sei wirklich passiert. Die <terms>Nutzungsbedingungen</terms> listen auf, was nicht erlaubt ist."
+            }
+          }
+        }
+      },
+      "rumpelstiltskin-meme": {
+        "metaTitle": "Rumpelstiltskin-Meme erklärt",
+        "metaDescription": "Was das Rumpelstiltskin-Meme ist, wo es anfing, warum der Zehenspitzentanz viral ging und ob die Videos echt oder KI sind. Dann mach deine Version aus einem Foto.",
+        "nav": "Was ist das Rumpelstiltskin-Meme?",
+        "title": "Rumpelstiltskin-Meme",
+        "tagline": "Was der Zehenspitzentanz ist und warum er sich verbreitet hat.",
+        "lead": "Das Rumpelstiltskin-Meme ist ein kurzes Video einer kleinen Märchenfigur, die einen schelmischen Zehenspitzentanz aufführt. Hier erfährst du, was es zeigt, wo es anfing, warum es geteilt wird und wie die Videos auf dieser Seite entstehen.",
+        "sections": {
+          "what": {
+            "title": "Was das Meme zeigt",
+            "text": {
+              "1": "Der Clip zeigt eine kleine, bärtige Gestalt in altmodischer Kleidung. Sie tanzt auf der Stelle auf Zehenspitzen oder schleicht mit gebeugten Knien und verschmitztem Grinsen vorwärts, als kenne sie ein Geheimnis. Die Leute nennen sie Rumpelstilzchen (englisch: Rumpelstiltskin), weil sie aussieht wie das Männlein aus dem Märchen.",
+              "2": "Im Märchen der Brüder Grimm spinnt Rumpelstilzchen für eine Müllerstochter Stroh zu Gold und verlangt dafür ihr erstes Kind. Später tanzt er ums Feuer, in der Gewissheit, dass niemand je seinen Namen erraten wird. Dieses Bild eines schadenfrohen, listigen kleinen Tänzers ist der Grund, warum der Name so gut zum Meme passt."
+            }
+          },
+          "origin": {
+            "title": "Wo das Meme anfing",
+            "list": {
+              "1": "27. August 2026: Ein KI-Künstler postet den Clip auf Instagram, im Stil eines Fantasyfilms der 1980er.",
+              "2": "29. September: Ein TikTok-Nutzer legt einen Rapsong und eine Bildunterschrift über seltsame Träume darüber. Das Video erreicht in einer Woche über 850.000 Aufrufe.",
+              "3": "1. Oktober: Ein Post des Clips auf X erreicht in fünf Tagen 9,8 Millionen Aufrufe.",
+              "4": "Anfang Oktober: Leute setzen neue Gesichter und Figuren in den Tanz, und viele halten den Clip für eine Szene aus dem Film von 1987 oder einem alten sowjetischen Film.",
+              "5": "7. Oktober: <nbc>NBC News</nbc> berichtet, dass der Clip KI-generiert ist.",
+              "6": "18. Oktober: American-Football-Spieler tanzen ihn nach einem Touchdown in London."
+            },
+            "more": {
+              "1": "Der <dance>Guide zur Tanzszene</dance> erzählt den Clip Schritt für Schritt, und der <film1987>Guide zum Film von 1987</film1987> erklärt die Verwechslung mit dem echten Film."
+            }
+          },
+          "why": {
+            "title": "Warum es sich verbreitet hat",
+            "text": {
+              "1": "Einen einzelnen Grund kann niemand nennen, aber ein paar Dinge helfen einem Clip wie diesem, sich zu verbreiten:"
+            },
+            "list": {
+              "1": "Er ist kurz und läuft deshalb gut als Loop in Kurzvideo-Apps.",
+              "2": "Die Bewegung ist leicht wiederzuerkennen, auch mit neuem Gesicht oder neuer Figur.",
+              "3": "Er funktioniert als Reaktion: Leute posten ihn, wenn sie mit einer Kleinigkeit davonkommen, etwa dem letzten Stück Pizza.",
+              "4": "Jeder kann mitmachen, indem er einen Freund, ein Haustier oder sich selbst in den Tanz setzt."
+            },
+            "more": {
+              "1": "Wie viele Memes wurde es oft kopiert, neu geschnitten und wieder hochgeladen."
+            }
+          },
+          "real": {
+            "title": "Echt oder KI?",
+            "text": {
+              "1": "Das hängt vom Clip ab. Manche Versionen im Netz zeigen Leute, die sich selbst filmen, manche sind Bearbeitungen, und viele neuere scheinen KI-generiert zu sein. Wenn du bei einem Clip unsicher bist, geh davon aus, dass er bearbeitet sein könnte.",
+              "2": "Die Videos auf dieser Seite sind KI-generiert. Du lädst ein Foto hoch, und ein KI-Modell erstellt eine neue Szene mit der Person darauf in der Hauptrolle, mit Originalmusik. Wir verwenden weder den viralen Original-Clip noch seinen Ton. Das Ergebnis ist ein neues Video von etwa 12 Sekunden mit einem Tanz, der nie stattgefunden hat – teile es also als Spaß, nicht als echte Aufnahme."
+            }
+          },
+          "make": {
+            "title": "Mach dein eigenes",
+            "text": {
+              "1": "Lade ein klares Foto von dir oder von einer erwachsenen Person, die zugestimmt hat, in den <generator>Generator auf der Startseite</generator>. Ein Standard-Video kostet {credits} Credits, ein Pro-Video in schärferem 1080p kostet {proCredits}. Credit-Pakete gibt es ab {price}, ohne Abo.",
+              "2": "Die <howto>Anleitung</howto> führt dich durch jeden Schritt, und der <jordans>Guide zum Zehenspitzentanz-Trend</jordans> erklärt, wie andere das Meme machen."
+            }
+          }
+        }
+      },
+      "how-to-make-rumpelstiltskin-video": {
+        "metaTitle": "Rumpelstiltskin-Video erstellen",
+        "metaDescription": "Mach aus einem Foto ein Rumpelstiltskin-Video mit Zehenspitzentanz: Foto wählen, Standard oder Pro, anmelden, bei Bedarf zahlen, herunterladen, teilen.",
+        "nav": "So erstellst du ein Rumpelstiltskin-Video",
+        "title": "So erstellst du ein Rumpelstiltskin-Video",
+        "tagline": "Ein Foto, sechs Schritte, ein tanzendes Video.",
+        "lead": "Du brauchst ein Foto und ein paar Minuten. Dieser Guide führt dich durch jeden Schritt im Generator, zeigt, was es kostet, und wie du ein gutes Ergebnis bekommst.",
+        "sections": {
+          "before": {
+            "title": "Bevor du loslegst",
+            "text": {
+              "1": "Du brauchst ein Foto, eine E-Mail-Adresse oder ein Google-Konto zum Anmelden und genug Credits für ein Video. Neue Konten starten ohne Credits. Credit-Pakete sind Einmalzahlungen, kein Abo, und Credits verfallen nie."
+            }
+          },
+          "steps": {
+            "title": "Schritt für Schritt",
+            "steps": {
+              "1": {
+                "title": "Foto auswählen",
+                "body": "Öffne den <generator>Generator auf der Startseite</generator> und wähle ein Foto von einer erwachsenen Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Es muss ein JPEG, PNG oder WebP bis {size} MB sein, mit {min, number} bis {maxSide, number} Pixeln pro Seite."
+              },
+              "2": {
+                "title": "Bestätigen, dass du das Foto nutzen darfst",
+                "body": "Mit dem Tippen auf den Button bestätigst du, dass das Foto deins ist oder dass die erwachsene Person darauf zugestimmt hat. Ein Hinweis unter dem Button sagt das."
+              },
+              "3": {
+                "title": "Standard oder Pro wählen",
+                "body": "Standard kostet {credits} Credits und hat 720p. Pro kostet {proCredits} Credits und hat 1080p. Beide erzeugen dieselbe Szene, etwa 12 Sekunden lang, mit Musik."
+              },
+              "4": {
+                "title": "Anmelden",
+                "body": "Tippe auf „Generieren“. Wenn du nicht angemeldet bist, melde dich im Fenster, das sich öffnet, mit einem Link per E-Mail oder mit Google an. Dein Foto bleibt dabei ausgewählt."
+              },
+              "5": {
+                "title": "Zahlen, wenn du Credits brauchst",
+                "body": "Wenn dein Guthaben nicht reicht, bietet dir der Generator die Pakete an: {packs}. Nach dem Bezahlen kommst du zurück auf die Seite, und das Video startet, sobald die Credits da sind."
+              },
+              "6": {
+                "title": "Warten, dann herunterladen oder teilen",
+                "body": "Ein Video dauert meist ein paar Minuten. Lass die Seite offen, dann läuft es dort, sobald es fertig ist. „Herunterladen“ speichert die MP4. „Teilen“ öffnet das Teilen-Menü deines Geräts oder kopiert einen Link zu dieser Seite."
+              }
+            }
+          },
+          "tips": {
+            "title": "Tipps für gute Ergebnisse",
+            "list": {
+              "1": "Nur eine Person. Gruppenfotos bringen die Bewegung durcheinander.",
+              "2": "Zeig den Körper: Ganzkörper oder ab der Hüfte, mit sichtbaren Armen.",
+              "3": "Blick in die Kamera, nichts vor dem Gesicht.",
+              "4": "Achte auf gleichmäßiges Licht. Dunkle Fotos oder Gegenlicht ergeben verschwommene Bewegungen.",
+              "5": "Verzichte auf starke Filter, Sticker und Text auf dem Foto."
+            }
+          },
+          "wrong": {
+            "title": "Wenn etwas schiefgeht",
+            "text": {
+              "1": "Wenn ein Video fehlschlägt oder nicht innerhalb von 24 Stunden fertig wird, gehen seine Credits automatisch zurück auf dein Guthaben. Du musst uns nicht kontaktieren. Wird ein Foto abgelehnt, probier ein anderes; dafür verlierst du keine Credits.",
+              "2": "Wenn du die Seite verlässt, wird das Video trotzdem fertig. Es erscheint in deiner Video-Mediathek, und wir schicken dir eine E-Mail, sobald es fertig ist. Bei allem anderen schreib an <email></email>."
+            }
+          },
+          "privacy": {
+            "title": "Dein Foto und faire Nutzung",
+            "text": {
+              "1": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Das fertige Video bleibt in deiner Mediathek, bis du dein Konto löschst. Details findest du in der <privacy>Datenschutzerklärung</privacy>.",
+              "2": "Lade nur Fotos von dir selbst hoch oder von einer erwachsenen Person, die zugestimmt hat. Keine Fotos von Kindern und nichts, das jemanden täuschen, belästigen oder sich als jemand anderes ausgeben soll. Woher der Tanz kommt, erfährst du unter <meme>was das Rumpelstiltskin-Meme ist</meme>, oder sieh dir an, <jordans>wie andere das Zehenspitzentanz-Meme machen</jordans>."
+            }
+          }
+        }
+      },
+      "who-is-rumpelstiltskin": {
+        "metaTitle": "Wer ist Rumpelstilzchen? Die Story",
+        "metaDescription": "Wer ist Rumpelstilzchen (engl. Rumpelstiltskin)? Der Wicht aus dem Grimm-Märchen erklärt: seine Geschichte, beide Enden, sein Name und das Tanz-Meme.",
+        "nav": "Wer ist Rumpelstilzchen?",
+        "title": "Wer ist Rumpelstilzchen?",
+        "tagline": "Der Märchenwicht hinter dem Zehenspitzentanz.",
+        "lead": "Rumpelstilzchen ist das Männlein aus einem Märchen, das die Brüder Grimm gesammelt haben: Er spinnt Stroh zu Gold und verlangt dafür einen schrecklichen Preis. Hier erfährst du seine Geschichte, was sein Name bedeutet und wie er zum tanzenden Meme wurde.",
+        "sections": {
+          "story": {
+            "title": "Die Geschichte in Kürze",
+            "text": {
+              "1": "Die Brüder Grimm veröffentlichten das Märchen 1812 in der ersten Auflage ihrer Kinder- und Hausmärchen, dort trägt es die Nummer 55. Ein Müller prahlt vor dem König, seine Tochter könne Stroh zu Gold spinnen. Der König sperrt sie in eine Kammer voller Stroh und befiehlt ihr, es bis zum Morgen zu spinnen.",
+              "2": "Ein kleines Männlein erscheint und spinnt das Stroh für sie. In der ersten Nacht bezahlt sie ihn mit ihrer Halskette, in der zweiten mit ihrem Ring. In der dritten Nacht hat sie nichts mehr, also verspricht sie ihm ihr erstes Kind. Der König heiratet sie, und ein Jahr später bekommt sie ein Baby.",
+              "3": "Das Männlein kommt zurück, um das Kind zu holen. Als die Königin ihn anfleht, gibt er ihr drei Tage, um seinen Namen zu erraten. Am letzten Tag findet ein Bote ihn im Wald, wo er ums Feuer tanzt und singt, dass niemand weiß, dass er Rumpelstilzchen heißt. Die Königin rät richtig."
+            }
+          },
+          "ending": {
+            "title": "Wie die Geschichte endet",
+            "text": {
+              "1": "Das Ende änderte sich von Auflage zu Auflage. In der Ausgabe von 1812 läuft er zornig davon und kommt nie wieder. In der mündlichen Fassung, die die Grimms zuerst gesammelt hatten, fliegt er auf einem Kochlöffel zum Fenster hinaus.",
+              "2": "In der Ausgabe von 1857, die die meisten heute lesen, stampft er mit dem rechten Fuß so fest auf, dass er bis zur Hüfte im Boden versinkt, packt dann seinen linken Fuß und reißt sich selbst mitten entzwei."
+            }
+          },
+          "name": {
+            "title": "Was der Name bedeutet",
+            "text": {
+              "1": "Im deutschen Original heißt er Rumpelstilzchen, auf Englisch Rumpelstiltskin. Der Name wird meist als „kleiner rumpelnder Stelz“ gedeutet: „-chen“ macht ein Wort klein, und ein Rumpelstilz war eine Art Kobold, der Dinge zum Rumpeln bringt. Das Wort ist verwandt mit Rumpelgeist und Poltergeist, schelmischen Geistern, die in einem Haus Lärm machen.",
+              "2": "Der Name ist in der Geschichte wichtig, weil er sein Geheimnis ist. Solange niemand ihn kennt, hat er Macht über die Königin. Sobald sie ihn ausspricht, hat er verloren."
+            }
+          },
+          "relatives": {
+            "title": "Ähnliche Märchen",
+            "text": {
+              "1": "Volkskundler ordnen die Geschichte dem Märchentyp ATU 500 zu, „Der Name des übernatürlichen Helfers“. Andere Länder erzählen ihre eigenen Versionen:"
+            },
+            "list": {
+              "1": "Tom Tit Tot aus England, in Joseph Jacobs’ English Fairy Tales (1890).",
+              "2": "Whuppity Stoorie aus Schottland, in Robert Chambers’ Popular Rhymes of Scotland (1826)."
+            }
+          },
+          "screen": {
+            "title": "Rumpelstilzchen in Film und Fernsehen",
+            "text": {
+              "1": "Er kam in vielen Filmen und Serien vor. Billy Barty spielte ihn 1987 in einem Musicalfilm. In Für immer Shrek (2010) ist er der Hauptbösewicht, und Robert Carlyle spielt in der Serie Once Upon a Time eine Version, die Rumplestiltskin geschrieben wird. Der <movie>Guide zu allen Rumpelstilzchen-Filmen</movie> listet sie der Reihe nach auf."
+            }
+          },
+          "meme": {
+            "title": "Vom Märchen zum Meme",
+            "text": {
+              "1": "2026 ging ein KI-generierter Clip eines kleinen Wichts viral, der in einer Scheune auf Zehenspitzen tanzt, und die Leute benannten ihn nach ihm. Lies, <meme>was das Rumpelstiltskin-Meme ist</meme>, oder <film1987>warum der Clip nicht aus dem Film von 1987 stammt</film1987>.",
+              "2": "Um selbst mitzutanzen, lade ein Foto in den <generator>Generator auf der Startseite</generator>. Videos gibt es ab {credits} Credits."
+            }
+          }
+        }
+      },
+      "rumpelstiltskin-movie": {
+        "metaTitle": "Rumpelstilzchen-Filme im Überblick",
+        "metaDescription": "Alle Rumpelstilzchen-Filme der Reihe nach: deutsche Filme, das Musical „Rumpelstiltskin“ von 1987 mit Billy Barty, der Horrorfilm von 1995 und der KI-Clip.",
+        "nav": "Alle Rumpelstilzchen-Filme",
+        "title": "Rumpelstilzchen-Filme",
+        "tagline": "Die Filme und TV-Versionen der Reihe nach.",
+        "lead": "Du suchst den Rumpelstiltskin-Film? Es gibt mehrere, von deutschen Filmen aus den 1940er- und 1950er-Jahren bis zu einem Musical von 1987 und einem Horrorfilm von 1995. Hier sind sie der Reihe nach, und welcher meistens gemeint ist.",
+        "sections": {
+          "versions": {
+            "title": "Alle Versionen der Reihe nach",
+            "list": {
+              "1": "1940: Rumpelstilzchen, ein deutscher Film von Alf Zengerling.",
+              "2": "1955: Rumpelstilzchen, ein deutscher Film von Herbert B. Fredersdorf.",
+              "3": "1982: eine Folge der Serie Faerie Tale Theatre, Regie Emile Ardolino, mit Hervé Villechaize als Rumpelstiltskin.",
+              "4": "1987: Rumpelstiltskin, ein Musicalfilm von David Irving, mit Amy Irving und Billy Barty.",
+              "5": "1995: Rumpelstiltskin, eine Horrorkomödie von Mark Jones, mit Max Grodénchik in der Titelrolle.",
+              "6": "2009: Rumpelstilzchen, ein deutscher Fernsehfilm von Ulrich König, mit Robert Stadlober.",
+              "7": "2010: Für immer Shrek (Shrek Forever After), ein Animationsfilm, in dem Rumpelstilzchen der Hauptbösewicht ist."
+            },
+            "more": {
+              "1": "Außerdem ist er eine Hauptfigur der Serie Once Upon a Time, in der Robert Carlyle ihn unter der Schreibweise Rumplestiltskin spielt."
+            }
+          },
+          "musical": {
+            "title": "Das Musical von 1987",
+            "text": {
+              "1": "Der Film von 1987 ist der, nach dem die meisten suchen. David Irving führte Regie und schrieb das Drehbuch. Amy Irving spielt Katie, die Müllerstochter, und Billy Barty spielt Rumpelstiltskin, mit Clive Revill als König und Priscilla Pointer als Königin.",
+              "2": "Es ist ein Musical mit Musik von Max Robert und dauert 84 Minuten. Die Cannon Group produzierte es als einen ihrer Märchenfilme und brachte es im April 1987 in den USA heraus. Der <film1987>Guide zum Film von 1987</film1987> beschreibt ihn ausführlich."
+            }
+          },
+          "horror": {
+            "title": "Der Horrorfilm von 1995",
+            "text": {
+              "1": "Der „Rumpelstiltskin“ von 1995 macht aus dem Märchen eine Horrorkomödie. Mark Jones führte Regie, Max Grodénchik spielt den Wicht, und der Film kam im November 1995 in begrenztem Umfang heraus. Er ist ganz anders als das Musical, also prüf das Jahr, bevor du ihn schaust."
+            }
+          },
+          "which": {
+            "title": "Welcher ist gemeint?",
+            "text": {
+              "1": "Viele aktuelle Suchanfragen kommen vom viralen Zehenspitzentanz-Meme. Der Clip darin sieht aus wie eine Szene aus einem alten Märchenfilm, also haben viele danach gesucht. Er stammt aus keinem dieser Filme: Er wurde mit KI gemacht. Lies, <meme>was das Rumpelstiltskin-Meme ist</meme>, und <who>wer Rumpelstilzchen</who> im Originalmärchen ist."
+            }
+          },
+          "make": {
+            "title": "Mach deine eigene Version",
+            "text": {
+              "1": "In den Film von 1987 kannst du nicht hineinspringen, aber du kannst ein KI-Video machen, in dem du selbst den Zehenspitzentanz tanzt. Lade ein Foto in den <generator>Generator auf der Startseite</generator>. Ein Video kostet {credits} Credits, Pakete gibt es ab {price}."
+            }
+          }
+        }
+      },
+      "rumpelstiltskin-1987-movie": {
+        "metaTitle": "Rumpelstiltskin (1987): Film vs. KI",
+        "metaDescription": "Stammt der virale Zehenspitzen-Clip aus dem Rumpelstiltskin-Film von 1987? Nein. Der echte Film mit Billy Barty, wo du ihn legal schaust und woher der KI-Clip kommt.",
+        "nav": "Stammt der Clip aus dem Film von 1987?",
+        "title": "Rumpelstiltskin: der Film von 1987",
+        "tagline": "Der echte Film und der KI-Clip, der für ihn gehalten wird.",
+        "lead": "Ein Clip, in dem ein kleiner Wicht in einer Scheune auf Zehenspitzen tanzt, brachte viele dazu, nach dem Rumpelstiltskin-Film von 1987 zu suchen. Hier ist der echte Film, wo du ihn legal schauen kannst, woher der Clip wirklich stammt und wie du die beiden auseinanderhältst.",
+        "sections": {
+          "answer": {
+            "title": "Die kurze Antwort",
+            "text": {
+              "1": "Nein. Der virale Zehenspitzen-Clip stammt weder aus dem Film von 1987 noch aus irgendeinem anderen Film. Er wurde mit KI gemacht. <kym>Know Your Meme</kym>, das Internet-Memes dokumentiert, bestätigt, dass der Clip KI-generiert ist."
+            }
+          },
+          "film": {
+            "title": "Der echte Film von 1987",
+            "text": {
+              "1": "Rumpelstiltskin (1987) ist ein Realfilm-Musical aus der Märchenfilm-Reihe der Cannon Group. David Irving führte Regie. Amy Irving spielt Katie, die Müllerstochter, und Billy Barty spielt Rumpelstiltskin. Clive Revill und Priscilla Pointer spielen König und Königin.",
+              "2": "Der Film dauert 84 Minuten, mit Songs von Max Robert. Er kam im April 1987 in den USA heraus und eröffnete im Mai Cannons Familienfilm-Festival in Cannes. Er folgt dem Grimm-Märchen: Stroh zu Gold, das versprochene Kind und das Namensraten."
+            }
+          },
+          "clip": {
+            "title": "Woher der KI-Clip stammt",
+            "text": {
+              "1": "Der Clip wurde am 27. August 2026 von einem KI-Künstler zuerst auf Instagram gepostet, als Beispiel dafür, wie echt ein KI-Fantasyfilm aussehen kann. Darin tanzt der Wicht in einer Scheune für eine weinende Frau, verwandelt das Stroh in Goldmünzen und wird nach ihrem Kuss zum Prinzen. Dieser letzte Teil kommt weder im Grimm-Märchen noch im Film von 1987 vor.",
+              "2": "Ende September 2026 unterlegte ein TikTok-Nutzer den Clip mit einem Rapsong von 2014, und im Oktober verbreitete er sich auf TikTok und X. Zuschauer vermuteten, er stamme aus dem Musical von 1987 oder aus einem alten sowjetischen Film, und es dauerte Tage, bis die meisten erfuhren, dass er KI war."
+            }
+          },
+          "tell": {
+            "title": "So unterscheidest du sie",
+            "list": {
+              "1": "Besetzung: Im Film von 1987 spielt Billy Barty Rumpelstiltskin. Der Wicht im viralen Clip ist KI-generiert und hat keinen Darsteller.",
+              "2": "Handlung: Im Film gibt es keine Szene, in der ein Kuss Rumpelstiltskin in einen Prinzen verwandelt.",
+              "3": "Quelle: Der Film hat eine Besetzungsliste, einen Regisseur und ein Erscheinungsdatum. Der Clip tauchte 2026 zuerst in den sozialen Medien auf.",
+              "4": "Wenn du unsicher bist, such den ersten Post eines Clips, bevor du ihn als echt teilst."
+            }
+          },
+          "watch": {
+            "title": "Wo du ihn legal schauen kannst",
+            "text": {
+              "1": "In den USA läuft der Film von 1987 mit Stand Oktober 2026 kostenlos mit Werbung bei Tubi und The Roku Channel. Er ist auch bei Abodiensten wie MGM+ zu sehen, und du kannst ihn auf DVD kaufen.",
+              "2": "Das Angebot ändert sich je nach Land und Monat. Schau deshalb vor dem Bezahlen bei <justwatch>JustWatch</justwatch> nach: Dort steht, wo der Film bei dir läuft. Komplette Uploads des Films auf Videoportalen sind meist nicht lizenziert."
+            }
+          },
+          "make": {
+            "title": "Mach deine eigene KI-Version",
+            "text": {
+              "1": "Auch die Videos auf dieser Seite sind KI-generiert, und wir sagen das offen. Lade ein Foto in den <generator>Generator auf der Startseite</generator>, und die Person darauf macht den Zehenspitzentanz, mit Originalmusik. Ein Video kostet {credits} Credits. Teile es als Spaß, nicht als verschollenen Film.",
+              "2": "Die anderen Filme findest du unter <movie>alle Rumpelstilzchen-Filme</movie>. Die Geschichte dahinter erfährst du unter <who>wer Rumpelstilzchen ist</who>."
+            }
+          }
+        }
+      },
+      "rumpelstiltskin-dance-scene": {
+        "metaTitle": "Die Rumpelstiltskin-Tanzszene",
+        "metaDescription": "Die Rumpelstiltskin-Tanzszene Schritt für Schritt: was im viralen KI-Clip passiert, warum der Zehenspitzentanz wirkt und wie ein Video von dir hier aussieht.",
+        "nav": "Die Tanzszene, Schritt für Schritt",
+        "title": "Rumpelstiltskin-Tanzszene",
+        "tagline": "Der virale Clip Schritt für Schritt, und ein Video von hier im Vergleich.",
+        "lead": "Die Szene, die alle teilen, zeigt einen kleinen Wicht, der in einer Scheune für eine weinende Frau auf Zehenspitzen tanzt. Hier steht, was darin passiert, warum der Tanz wirkt und wie ein Video aus deinem Foto im Vergleich aussieht.",
+        "sections": {
+          "origin": {
+            "title": "Woher die Szene stammt",
+            "text": {
+              "1": "Die Szene stammt aus keinem Film. Ein KI-Künstler hat sie gemacht und am 27. August 2026 auf Instagram gepostet, im Stil eines Fantasyfilms der 1980er. Der <film1987>Guide zum Film von 1987</film1987> erklärt, warum so viele sie für echt hielten.",
+              "2": "Das Märchen hat einen älteren Tanz. Bei den Brüdern Grimm tanzt Rumpelstilzchen nachts um ein Feuer und singt seinen eigenen Namen, sicher, dass ihn niemand errät. Der Clip übernimmt diesen schadenfrohen kleinen Tänzer und fügt die Zehenspitzenschritte hinzu."
+            }
+          },
+          "beats": {
+            "title": "Die Szene, Schritt für Schritt",
+            "list": {
+              "1": "Eine Frau sitzt weinend im Stroh einer Scheune.",
+              "2": "Ein kleiner, bärtiger Wicht in altmodischer Kleidung kommt auf sie zu.",
+              "3": "Er tanzt für sie auf Zehenspitzen, mit gebeugten Knien und einem verschmitzten Grinsen.",
+              "4": "Das Stroh wird zu Goldmünzen.",
+              "5": "Sie küsst ihn, und er wird zum Prinzen."
+            },
+            "more": {
+              "1": "Kuss und Prinz kommen im Grimm-Märchen nicht vor; dort gewinnt der Wicht die Müllerstochter nie. Nachgemacht wird der Tanz in der Mitte: Die Memes setzen neue Gesichter und Figuren hinein."
+            }
+          },
+          "why": {
+            "title": "Warum der Tanz wirkt",
+            "list": {
+              "1": "Die Schritte sind groß und langsam, man erkennt sie auch auf einem kleinen Handybildschirm.",
+              "2": "Das Grinsen und die schleichende Haltung sagen ohne ein Wort: „Ich bin damit durchgekommen.“",
+              "3": "Die albernen Schritte stehen im Kontrast zu einer ernsten, altmodischen Szene.",
+              "4": "Die Bewegung wiederholt sich, also laufen ein paar Sekunden sauber in Schleife."
+            }
+          },
+          "compare": {
+            "title": "Der virale Clip und ein Video von hier",
+            "text": {
+              "1": "Auch die Videos auf dieser Seite sind KI-generiert, aber sie kopieren den Clip nicht. So unterscheiden sie sich:"
+            },
+            "list": {
+              "1": "Tänzer: im Clip ein Wicht, den die KI erfunden hat. Hier die Person auf deinem Foto, in einem cremefarbenen Frack.",
+              "2": "Szene: Beide spielen in einer Heuscheune mit einer Zuschauerin. Hier schleicht sich die Person heran, macht „Pst“ in die Kamera, grinst und tanzt auf Zehenspitzen, ohne Gold und ohne Kuss.",
+              "3": "Ton: Jedes Video hier bekommt eine eigene Märchenmelodie. Es nutzt nie den Clip oder die Songs, die die Memes dazulegen.",
+              "4": "Länge und Format: 12 Sekunden, Hochformat (9:16), in 720p, mit Pro in 1080p.",
+              "5": "Kennzeichnung: Der Clip verbreitete sich, als wäre er ein alter Film. Teile deins als das, was es ist: ein KI-Video."
+            }
+          },
+          "make": {
+            "title": "Mach deine eigene Tanzszene",
+            "text": {
+              "1": "Lade ein klares Foto von dir, oder von einer erwachsenen Person, die zugestimmt hat, in den <generator>Generator auf der Startseite</generator>. Standard kostet {credits} Credits, Pro {proCredits}. Pakete gibt es ab {price}, ohne Abo.",
+              "2": "Die <howto>Anleitung</howto> erklärt jeden Schritt, und <meme>was das Rumpelstiltskin-Meme ist</meme> erklärt den Trend rund um die Szene."
+            }
+          }
+        }
+      }
+    }
+  },
+  "Footer": {
+    "blurb": "KI-Videos vom Rumpelstilzchen-Zehenspitzentanz aus einem Foto.",
+    "product": "Produkt",
+    "support": "Support",
+    "legal": "Rechtliches",
+    "guides": "Guides",
+    "report": "Missbrauch melden",
+    "reportSubject": "Inhaltsmeldung",
+    "rights": "© {name}. Alle Rechte vorbehalten."
+  },
+  "Layout": {
+    "skip": "Zum Hauptinhalt springen"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "loading": "Wird geladen…",
+    "nav": "Dashboard-Navigation",
+    "groups": {
+      "create": "Erstellen",
+      "account": "Konto"
+    },
+    "openMenu": "Menü öffnen",
+    "signOut": "Abmelden",
+    "billing": "Credits & Abrechnung",
+    "admin": "Admin",
+    "adminUsers": "Nutzer",
+    "videos": "Videogenerator",
+    "collapse": "Seitenleiste einklappen",
+    "expand": "Seitenleiste ausklappen",
+    "account": "Kontomenü",
+    "creditsLeft": "{count, plural, one {Credit übrig} other {Credits übrig}}",
+    "profile": "Profil",
+    "language": "Sprache",
+    "pages": "Seiten",
+    "pageOf": "Seite {page} von {pages}",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "videoLibrary": "Alle Videos",
+    "adminOrders": "Bestellungen",
+    "examples": "Beispiele",
+    "adminMetrics": "Kennzahlen",
+    "feedback": "Feedback",
+    "adminFeedback": "Nutzer-Feedback"
+  },
+  "Billing": {
+    "title": "Credits & Abrechnung",
+    "balance": "Credit-Guthaben",
+    "credits": "{count, plural, one {# Credit} other {# Credits}}",
+    "selected": "Ausgewählt",
+    "recommended": "Empfohlen",
+    "buyTitle": "Credits kaufen",
+    "buy": "Kaufen",
+    "buyLabel": "{credits} für {price} kaufen",
+    "buys": "{videos, plural, one {# Video} other {# Videos}}",
+    "buysPro": "{pro, plural, one {# Pro-Video} other {# Pro-Videos}} oder {videos, plural, one {# Video} other {# Videos}}",
+    "packsNote": "Einmalzahlung, kein Abo. Credits verfallen nie.",
+    "disabled": "Zahlungen sind noch nicht eingerichtet.",
+    "checkoutError": "Der Bezahlvorgang konnte nicht gestartet werden. Versuch es nochmal.",
+    "success": "Zahlung erhalten. Deine Credits erscheinen hier innerhalb einer Minute.",
+    "credited": "Zahlung erhalten. Deine Credits sind da.",
+    "canceled": "Bezahlvorgang abgebrochen. Dir wurde nichts berechnet.",
+    "ordersTitle": "Bestellungen",
+    "noOrders": "Noch keine Bestellungen.",
+    "date": "Datum",
+    "pack": "Paket",
+    "amount": "Betrag",
+    "status": "Status",
+    "statuses": {
+      "pending": "Ausstehend",
+      "paid": "Bezahlt",
+      "expired": "Abgelaufen",
+      "failed": "Fehlgeschlagen"
+    },
+    "subscription": {
+      "title": "Abo",
+      "interval": "Abrechnungszeitraum",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich",
+      "perMonth": "{credits} pro Monat",
+      "price": "{price} pro Monat",
+      "pricePerYear": "{price} pro Jahr",
+      "subscribe": "Abonnieren",
+      "subscribeLabel": "Für {price} pro Monat abonnieren",
+      "subscribeLabelYearly": "Für {price} pro Jahr abonnieren",
+      "note": "Nicht genutzte Credits werden übertragen. Jederzeit kündbar.",
+      "active": "Aktiv.",
+      "renewsOn": "Verlängert sich am {date}.",
+      "endsOn": "Endet am {date}. Deine Credits behältst du.",
+      "pastDue": "Die letzte Zahlung ist fehlgeschlagen. Aktualisiere deine Karte, um dein Abo zu behalten.",
+      "manage": "Abo verwalten",
+      "portalError": "Die Abo-Verwaltung konnte nicht geöffnet werden. Versuch es nochmal.",
+      "checkoutPending": "Du hast bereits einen Abo-Bezahlvorgang gestartet. Schließ ihn ab oder versuch es in einer halben Stunde nochmal."
+    },
+    "loading": "Wird geladen…",
+    "description": "Dein Guthaben, Credit-Pakete und Verlauf.",
+    "cardPro": "{pro, plural, one {# Pro-Video} other {# Pro-Videos}}",
+    "orVideos": "oder {videos, plural, one {# Video} other {# Videos}}",
+    "perVideo": "{price} pro Video",
+    "bestValue": "Bester Preis",
+    "buyFor": "Für {price} kaufen",
+    "perks": {
+      "1": "Credits verfallen nie",
+      "2": "Die ganze 12-Sekunden-Szene, mit Musik"
+    }
+  },
+  "Admin": {
+    "title": "Admin",
+    "usersTitle": "Nutzer",
+    "email": "E-Mail",
+    "name": "Name",
+    "noName": "Nicht festgelegt",
+    "joined": "Beigetreten",
+    "count": "{total, plural, one {# Nutzer} other {# Nutzer}} insgesamt.",
+    "searchLabel": "Nutzer suchen",
+    "searchPlaceholder": "E-Mail oder Name",
+    "search": "Suchen",
+    "matches": "{total, plural, one {# Nutzer passt} other {# Nutzer passen}} zu „{query}“.",
+    "noMatch": "Keine Nutzer passen zu „{query}“.",
+    "pages": "Seiten",
+    "pageOf": "Seite {page} von {pages}",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "empty": "Noch keine Nutzer.",
+    "loading": "Wird geladen…",
+    "credits": "Credits",
+    "actions": "Aktionen",
+    "addCredits": "Credits für {email} hinzufügen",
+    "addTitle": "Credits hinzufügen",
+    "addDescription": "Credits für <email></email> hinzufügen. Der Nutzer sieht sie in seinem Credit-Verlauf als „von einem Admin hinzugefügt“.",
+    "amountLabel": "Anzahl Credits",
+    "cancel": "Abbrechen",
+    "add": "Hinzufügen",
+    "addError": "Die Credits konnten nicht hinzugefügt werden. Versuch es nochmal.",
+    "allUsers": "Alle Nutzer",
+    "profile": "Profil",
+    "verification": "E-Mail-Bestätigung",
+    "verified": "Bestätigt",
+    "unverified": "Nicht bestätigt",
+    "subscription": "Abo",
+    "noSubscription": "Kein Abo.",
+    "perMonth": "{credits, number} Credits pro Monat",
+    "active": "Aktiv.",
+    "renewsOn": "Aktiv, verlängert sich am {date}.",
+    "endsOn": "Gekündigt, endet am {date}.",
+    "pastDue": "Die letzte Zahlung ist fehlgeschlagen.",
+    "orders": {
+      "title": "Bestellungen",
+      "count": "{total, plural, one {# Bestellung} other {# Bestellungen}} insgesamt.",
+      "matches": "{total, plural, one {# Bestellung passt} other {# Bestellungen passen}} zu diesen Filtern.",
+      "searchLabel": "Bestellungen suchen",
+      "searchPlaceholder": "E-Mail, Bestell-ID oder Session-ID",
+      "status": "Status",
+      "provider": "Anbieter",
+      "allStatuses": "Alle Status",
+      "allProviders": "Alle Anbieter",
+      "filter": "Filtern",
+      "clear": "Filter zurücksetzen",
+      "buyer": "Käufer",
+      "pack": "Paket",
+      "amount": "Betrag",
+      "date": "Datum",
+      "id": "Bestell-ID",
+      "credits": "{count, plural, one {# Credit} other {# Credits}}",
+      "empty": "Noch keine Bestellungen.",
+      "noMatch": "Keine Bestellungen passen zu diesen Filtern.",
+      "statuses": {
+        "pending": "Ausstehend",
+        "paid": "Bezahlt",
+        "expired": "Abgelaufen",
+        "failed": "Fehlgeschlagen"
+      },
+      "providers": {
+        "stripe": "Stripe",
+        "waffo": "Waffo Pancake"
+      }
+    },
+    "metrics": {
+      "title": "Kennzahlen",
+      "description": "Wie die App im gewählten Zeitraum gelaufen ist.",
+      "range": "Zeitraum",
+      "days": "{count, plural, =1 {24 Stunden} other {# Tage}}",
+      "cards": {
+        "newUsers": "Neue Nutzer",
+        "spent": "Ausgegebene Credits",
+        "bought": "Gekaufte Credits",
+        "paidOrders": "Bezahlte Bestellungen"
+      },
+      "usersTotal": "{count, plural, one {# Nutzer} other {# Nutzer}} insgesamt",
+      "refunded": "{count, number} erstattet",
+      "boughtNote": "Credit-Pakete und Abos, abzüglich erstatteter Zahlungen",
+      "noRevenue": "Kein Umsatz",
+      "generations": "Generierungen",
+      "kind": "Art",
+      "columns": {
+        "jobs": "Jobs",
+        "succeeded": "Erfolgreich",
+        "failed": "Fehlgeschlagen",
+        "pending": "Ausstehend",
+        "successRate": "Erfolgsquote",
+        "median": "Mediane Dauer",
+        "p95": "p95-Dauer"
+      },
+      "kinds": {
+        "video": "Videos"
+      },
+      "timingNote": "Die Zeiten reichen von der Anfrage bis zur gespeicherten Datei, für erfolgreiche Jobs. Die Erfolgsquote lässt ausstehende Jobs außen vor.",
+      "failures": {
+        "video": "Video-Fehlschläge"
+      },
+      "noFailures": {
+        "video": "Keine Video-Fehlschläge."
+      },
+      "costs": {
+        "title": "Modellkosten",
+        "empty": "Keine abgerechnete Modellnutzung in diesem Zeitraum.",
+        "model": "Modell",
+        "columns": {
+          "jobs": "Jobs",
+          "usage": "Nutzung",
+          "credits": "Credits",
+          "cost": "Gesch. Kosten"
+        },
+        "kinds": {
+          "video": "Videos"
+        },
+        "units": {
+          "video": "{count, plural, one {# Sekunde} other {# Sekunden}}"
+        },
+        "total": "Gesamt",
+        "note": "Geschätzt anhand der Listenpreise im Code, in US-Dollar, für erfolgreiche Videos. Ein Strich bedeutet, dass für das Modell kein Preis hinterlegt ist."
+      },
+      "channels": {
+        "title": "Bestellungen nach Erstkontakt-Quelle",
+        "empty": "Keine bezahlten Bestellungen in diesem Zeitraum.",
+        "source": "Quelle",
+        "orders": "Bezahlte Bestellungen",
+        "revenue": "Umsatz",
+        "direct": "Direkt",
+        "note": "Woher jeder Käufer ursprünglich kam: die utm_source seines ersten Besuchs, sonst die verweisende Website, sonst direkt. Käufer, die sich vor Beginn dieser Erfassung registriert haben, zählen als direkt."
+      }
+    },
+    "feedback": {
+      "title": "Nutzer-Feedback",
+      "description": "{total} Einsendungen, die neuesten zuerst.",
+      "empty": "Noch kein Feedback.",
+      "openImage": "Bild {number} öffnen",
+      "image": "Feedback-Bild {number}"
+    }
+  },
+  "Credits": {
+    "balance": "Credit-Guthaben",
+    "credits": "{count, plural, one {# Credit} other {# Credits}}",
+    "historyTitle": "Credit-Verlauf",
+    "date": "Datum",
+    "reason": "Grund",
+    "amount": "Credits",
+    "reasons": {
+      "signup": "Willkommensbonus",
+      "purchase": "Credit-Paket",
+      "subscription": "Abo",
+      "chat": "KI-Chat",
+      "chat refund": "Erstattung KI-Chat",
+      "image": "Bild",
+      "image refund": "Erstattung Bild",
+      "admin": "Von einem Admin hinzugefügt",
+      "video": "Video",
+      "video refund": "Erstattung Video",
+      "refunded payment": "Erstattete Zahlung"
+    },
+    "empty": "Noch keine Credit-Aktivität.",
+    "limited": "Die neuesten {count} Einträge werden angezeigt."
+  },
+  "Videos": {
+    "startImage": "Startbild",
+    "prompt": "Prompt",
+    "duration": "Länge",
+    "seconds": "{count} s",
+    "resolution": "Auflösung",
+    "ratio": "Format",
+    "empty": "Noch keine Videos.",
+    "pending": "Wird generiert… Das dauert 1 bis 5 Minuten.",
+    "failed": "Generierung fehlgeschlagen. Die Credits wurden erstattet.",
+    "download": "Herunterladen",
+    "libraryTitle": "Alle Videos",
+    "libraryDescription": "Alle Videos, die du generiert hast, die neuesten zuerst.",
+    "generateLink": "Video generieren",
+    "detailTitle": "Videodetails",
+    "spent": "Ausgegebene Credits",
+    "credits": "{count, plural, one {# Credit} other {# Credits}}",
+    "status": "Status",
+    "created": "Erstellt",
+    "statuses": {
+      "pending": "Wird generiert",
+      "succeeded": "Fertig",
+      "failed": "Fehlgeschlagen"
+    }
+  },
+  "PhotoEffects": {
+    "generate": "Generieren ({count, plural, one {# Credit} other {# Credits}})",
+    "generating": "Wird gesendet…",
+    "balance": "{count, plural, one {# Credit übrig} other {# Credits übrig}}",
+    "buyCredits": "Credits kaufen",
+    "consent": "{photos, plural, one {Ich bestätige, dass das mein Foto ist oder dass die erwachsene Person darauf mir die Erlaubnis gegeben hat.} other {Ich bestätige, dass das meine Fotos sind oder dass die erwachsenen Personen darauf mir die Erlaubnis gegeben haben.}}",
+    "historyTitle": "Deine Videos",
+    "empty": "Noch keine Videos.",
+    "viewAll": "Alle ansehen",
+    "errors": {
+      "credits": "Nicht genug Credits. Kauf weitere auf der Seite „Credits & Abrechnung“.",
+      "invalid": "{photos, plural, one {Nutze ein JPEG-, PNG- oder WebP-Foto bis {size} MB.} other {Nutze JPEG-, PNG- oder WebP-Fotos bis je {size} MB.}}",
+      "tooLarge": "{photos, plural, one {Dieses Foto ist zu groß zum Hochladen, auch verkleinert. Probier ein anderes Foto.} other {Ein Foto ist zu groß zum Hochladen, auch verkleinert. Probier ein anderes Foto.}}",
+      "imageSize": "{photos, plural, one {Nutze ein Foto mit {min, number} bis {maxSide, number} Pixeln pro Seite, bei dem die lange Seite höchstens {ratio}-mal so lang ist wie die kurze.} other {Nutze Fotos mit {min, number} bis {maxSide, number} Pixeln pro Seite, bei denen die lange Seite höchstens {ratio}-mal so lang ist wie die kurze.}}",
+      "failed": "Generierung fehlgeschlagen. Die Credits wurden erstattet. Versuch es nochmal.",
+      "blocked": "{photos, plural, one {Das Foto wurde von der Inhaltsprüfung blockiert. Probier ein anderes.} other {Ein Foto wurde von der Inhaltsprüfung blockiert. Probier ein anderes.}}",
+      "moderation": "{photos, plural, one {Das Foto konnte gerade nicht geprüft werden. Es wurden keine Credits verbraucht. Versuch es in einer Minute nochmal.} other {Die Fotos konnten gerade nicht geprüft werden. Es wurden keine Credits verbraucht. Versuch es in einer Minute nochmal.}}"
+    },
+    "kinds": {
+      "tiptoe": {
+        "title": "Zehenspitzentanz",
+        "description": "Aus einem Foto wird ein 12-Sekunden-Video: Im cremefarbenen Frack schleichst du durch eine Heuscheune und tanzt auf Zehenspitzen wie ein Märchenzwerg, zu Originalmusik.",
+        "left": {
+          "photo": "Dein Foto",
+          "preview": "Vorschau deines Fotos"
+        },
+        "photoHint": "JPEG, PNG oder WebP, bis {size} MB. Eine Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht.",
+        "disabled": "Der Zehenspitzentanz ist noch nicht eingerichtet."
+      }
+    }
+  },
+  "Feedback": {
+    "title": "Feedback",
+    "description": "Melde ein Problem oder schlag eine Verbesserung vor.",
+    "message": "Dein Feedback",
+    "hint": "Bis zu {max} Zeichen. Administratoren können dein Feedback und die E-Mail-Adresse deines Kontos sehen.",
+    "submit": "Feedback senden",
+    "sending": "Wird gesendet…",
+    "sent": "Dein Feedback wurde gesendet. Danke!",
+    "error": "Das Feedback konnte nicht gesendet werden. Dein Text und deine Bilder bleiben hier erhalten. Bitte versuch es nochmal.",
+    "rateLimited": "Zu viele Einsendungen. Bitte warte eine Minute und versuch es dann nochmal.",
+    "unauthorized": "Deine Sitzung ist abgelaufen. Melde dich erneut an, um Feedback zu senden.",
+    "images": "Bilder",
+    "imagesHint": "Wähle Dateien aus oder füge Bilder in das Feedback-Feld ein. JPEG, PNG oder WebP. Bis zu {count} Bilder, insgesamt {mb} MB.",
+    "invalidImages": "Diese Dateien überschreiten die Limits oder haben ein nicht unterstütztes Bildformat.",
+    "removeImage": "{name} entfernen",
+    "remove": "Entfernen",
+    "storageDisabled": "Bild-Uploads sind nicht verfügbar. Versuch es später nochmal oder sende nur Text."
+  }
+}

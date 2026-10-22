@@ -1,0 +1,10 @@
+# Keep local secrets and build leftovers out of `vercel deploy` uploads.
+# The CLI ignores .gitignore; Vercel reads production values from the
+# project's environment variables instead.
+.env
+.env.*
+!.env.example
+.next
+test-results
+playwright-report
+e2e/.outbox
