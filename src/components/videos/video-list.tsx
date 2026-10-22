@@ -1,7 +1,15 @@
 import { Clapperboard, Download } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { firstFrame } from "@/components/videos/player-frame";
 import { Link } from "@/i18n/navigation";
 import type { GeneratedVideo } from "@/lib/api";
+import { cn } from "@/lib/utils";
+
+// A card's media box: tall for a 9:16 video, so it isn't a strip between
+// wide bars. Cards top-align, as an older 16:9 card is shorter.
+function cardFrame(ratio: string): string {
+  return ratio === "9:16" ? "aspect-[9/16]" : "aspect-video";
+}
 
 // The prompt links to the video's page and stretches over the card; the
 // player and the download link sit above it.
@@ -13,7 +21,7 @@ export function VideoList({
   const format = useFormatter();
 
   return (
-    <ul {...props} className="grid gap-4 sm:grid-cols-2">
+    <ul {...props} className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {videos.map((video) => (
         <li
           key={video.id}
@@ -21,17 +29,20 @@ export function VideoList({
         >
           {video.url ? (
             <video
-              src={video.url}
-              poster={video.posterUrl ?? video.imageUrl ?? undefined}
+              src={firstFrame(video.url)}
+              poster={video.posterUrl ?? undefined}
               aria-label={video.prompt}
               controls
               playsInline
-              preload="none"
-              className="relative z-10 aspect-video w-full bg-muted object-contain"
+              preload="metadata"
+              className={cn("relative z-10 w-full bg-muted object-contain", cardFrame(video.ratio))}
             />
           ) : (
             <div
-              className="flex aspect-video w-full items-center justify-center gap-2 bg-muted bg-cover bg-center p-6 text-center text-sm text-muted-foreground"
+              className={cn(
+                "flex w-full items-center justify-center gap-2 bg-muted bg-cover bg-center p-6 text-center text-sm text-muted-foreground",
+                cardFrame(video.ratio),
+              )}
               style={video.imageUrl ? { backgroundImage: `url(${video.imageUrl})` } : undefined}
             >
               <span className="flex items-center gap-2 rounded-lg bg-background/90 px-3 py-1.5">

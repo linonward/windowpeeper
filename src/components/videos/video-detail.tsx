@@ -2,8 +2,10 @@ import { ArrowLeft, Clapperboard, Download } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { PageHeader } from "@/components/dashboard/page-header";
 import { buttonVariants } from "@/components/ui/button";
+import { firstFrame, playerFrame } from "@/components/videos/player-frame";
 import { Link } from "@/i18n/navigation";
 import type { GeneratedVideo } from "@/lib/api";
+import { cn } from "@/lib/utils";
 
 export function VideoDetail({ video }: { video: GeneratedVideo }) {
   const t = useTranslations("Videos");
@@ -33,20 +35,20 @@ export function VideoDetail({ video }: { video: GeneratedVideo }) {
       </div>
 
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
-        <div className="overflow-hidden rounded-xl border bg-muted">
-          {video.url ? (
-            // No fixed ratio: the player takes the video's own once its
-            // metadata loads, so no strip of background shows beside it.
-            <video
-              src={video.url}
-              poster={video.posterUrl ?? video.imageUrl ?? undefined}
-              aria-label={video.prompt}
-              controls
-              playsInline
-              preload="metadata"
-              className="mx-auto max-h-[75svh] w-full"
-            />
-          ) : (
+        {video.url ? (
+          // Sized to its ratio, so a vertical video isn't a narrow strip in
+          // a page-wide box.
+          <video
+            src={firstFrame(video.url)}
+            poster={video.posterUrl ?? undefined}
+            aria-label={video.prompt}
+            controls
+            playsInline
+            preload="metadata"
+            className={cn("rounded-xl border bg-muted", playerFrame(video.ratio))}
+          />
+        ) : (
+          <div className="overflow-hidden rounded-xl border bg-muted">
             <div
               className="flex aspect-video w-full items-center justify-center bg-cover bg-center p-6 text-center text-sm text-muted-foreground"
               style={video.imageUrl ? { backgroundImage: `url(${video.imageUrl})` } : undefined}
@@ -56,8 +58,8 @@ export function VideoDetail({ video }: { video: GeneratedVideo }) {
                 {t(video.status === "failed" ? "failed" : "pending")}
               </span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="flex flex-col gap-4">
           <dl className="flex flex-col gap-3 rounded-xl border bg-card p-5 text-sm">

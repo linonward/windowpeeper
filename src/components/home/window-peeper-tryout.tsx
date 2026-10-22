@@ -11,7 +11,7 @@ import { redirectFrom } from "@/components/billing/redirect";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useEffectMessages } from "@/components/videos/effect-messages";
-import { playerFrame } from "@/components/videos/player-frame";
+import { firstFrame, playerFrame } from "@/components/videos/player-frame";
 import { usePhotoPicks } from "@/components/videos/use-photo-picks";
 import { usePendingPoll } from "@/hooks/use-pending-poll";
 import { track } from "@/lib/analytics";
@@ -623,8 +623,8 @@ function Result({
     <div className="flex flex-col gap-4">
       <p className="font-display font-semibold">{tt("ready")}</p>
       <video
-        src={video.url}
-        poster={video.posterUrl ?? video.imageUrl ?? undefined}
+        src={firstFrame(video.url)}
+        poster={video.posterUrl ?? undefined}
         aria-label={tt("video")}
         controls
         playsInline

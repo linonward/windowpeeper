@@ -81,10 +81,22 @@ test("renders in Chinese", () => {
   expect(screen.getByRole("list", { name: "Todos los videos" })).toBeTruthy();
 });
 
-test("a card shows the video's own poster frame over the first photo", () => {
+test("a card shows the video's own poster frame, or its first frame, never the uploaded photo", () => {
   const withPoster = { ...videos[0], posterUrl: "https://storage.test/done-poster.jpg" };
   renderWithIntl(<VideoLibrary videos={[withPoster, videos[0]]} page={1} pageCount={1} />);
 
-  const posters = [...document.querySelectorAll("video")].map((video) => video.getAttribute("poster"));
-  expect(posters).toEqual(["https://storage.test/done-poster.jpg", "https://storage.test/done.png"]);
+  const players = [...document.querySelectorAll("video")];
+  expect(players.map((video) => video.getAttribute("poster"))).toEqual(["https://storage.test/done-poster.jpg", null]);
+  expect(players[1].getAttribute("src")).toBe(`${videos[0].url}#t=0.1`);
+  expect(players[1].getAttribute("preload")).toBe("metadata");
+});
+
+test("a vertical video's card is tall, so the video fills it", () => {
+  const vertical = { ...videos[0], ratio: "9:16" };
+  renderWithIntl(<VideoLibrary videos={[vertical, { ...videos[1], ratio: "9:16" }, videos[0]]} page={1} pageCount={1} />);
+
+  const players = [...document.querySelectorAll("video")];
+  expect(players[0].classList).toContain("aspect-[9/16]");
+  expect(players[1].classList).toContain("aspect-video");
+  expect(screen.getByText("Generation failed. The credits were refunded.").closest(".aspect-\\[9\\/16\\]")).toBeTruthy();
 });

@@ -30,8 +30,10 @@ test("plays the video and shows its prompt and details", () => {
   expect(screen.getByRole("heading", { level: 1, name: "Video details" })).toBeTruthy();
   const player = screen.getByLabelText(/The fox turns/);
   expect(player.tagName).toBe("VIDEO");
-  expect(player.getAttribute("src")).toBe(done.url);
-  expect(player.getAttribute("poster")).toBe(done.imageUrl);
+  // Opens on its own first frame: the uploaded photo is not the video.
+  expect(player.getAttribute("src")).toBe(`${done.url}#t=0.1`);
+  expect(player.hasAttribute("poster")).toBe(false);
+  expect(player.getAttribute("preload")).toBe("metadata");
   expect(player.hasAttribute("controls")).toBe(true);
   expect(screen.getByText(/and runs/)).toBeTruthy();
   expect(screen.getByText("10 s")).toBeTruthy();
@@ -75,4 +77,12 @@ test("the player shows the video's own poster frame when it has one", () => {
   renderWithIntl(<VideoDetail video={{ ...done, posterUrl: "https://storage.test/done-poster.jpg" }} />);
 
   expect(screen.getByLabelText(/The fox turns/).getAttribute("poster")).toBe("https://storage.test/done-poster.jpg");
+});
+
+test("a vertical video plays in a tall frame, not stretched across the page", () => {
+  renderWithIntl(<VideoDetail video={{ ...done, ratio: "9:16" }} />);
+
+  const player = screen.getByLabelText(/The fox turns/);
+  expect(player.classList).toContain("aspect-[9/16]");
+  expect(player.classList).not.toContain("w-full");
 });
