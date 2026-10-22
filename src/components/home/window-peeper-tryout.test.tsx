@@ -463,7 +463,9 @@ test("sends the photo, shows progress, then plays the video with download and sh
   expect(fetchMock.mock.calls[1][0]).toBe("/api/videos/v1");
   const player = await screen.findByLabelText("Your window peeper video");
   expect(player.tagName).toBe("VIDEO");
-  expect(player.getAttribute("src")).toBe("https://storage.test/v1.mp4");
+  // Opens on its own first frame: the uploaded photo is not the video.
+  expect(player.getAttribute("src")).toBe("https://storage.test/v1.mp4#t=0.1");
+  expect(player.hasAttribute("poster")).toBe(false);
   expect(player.hasAttribute("controls")).toBe(true);
   expect(screen.getByRole("link", { name: "Download" }).getAttribute("href")).toBe("/api/videos/v1/download");
 
