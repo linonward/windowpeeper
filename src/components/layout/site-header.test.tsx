@@ -2,6 +2,7 @@ import { afterEach, expect, test, vi } from "vitest";
 import { cleanup, screen, within } from "@testing-library/react";
 import { renderWithIntl } from "@/test/intl";
 import { AccountLink, SiteHeader } from "./site-header";
+import { localePath } from "@/i18n/routing";
 
 // The locale switcher reads the current path, which jsdom doesn't provide.
 vi.mock("next/navigation", async (importOriginal) => ({
@@ -16,7 +17,7 @@ test("signed-out visitors get a sign-in button", () => {
 
   const banner = screen.getByRole("banner");
   expect(within(banner).getByRole("link", { name: "Sign in" }).getAttribute("href")).toBe(
-    "/en/sign-in",
+    "/sign-in",
   );
   expect(within(banner).queryByRole("link", { name: "Dashboard" })).toBeNull();
 });
@@ -26,7 +27,7 @@ test("signed-in users get a button to their videos", () => {
 
   const banner = screen.getByRole("banner");
   expect(within(banner).getByRole("link", { name: "Dashboard" }).getAttribute("href")).toBe(
-    "/en/videos",
+    "/videos",
   );
   expect(within(banner).queryByRole("link", { name: "Sign in" })).toBeNull();
 });
@@ -55,15 +56,15 @@ test.each([
       .getAllByRole("link")
       .map((link) => [link.textContent, link.getAttribute("href")]),
   ).toEqual([
-    [names[0], `/${locale}#scenes`],
-    [names[1], `/${locale}#how-it-works`],
-    [names[2], `/${locale}/pricing`],
-    [names[3], `/${locale}/blog`],
+    [names[0], `${localePath(locale)}#scenes`],
+    [names[1], `${localePath(locale)}#how-it-works`],
+    [names[2], localePath(locale, "/pricing")],
+    [names[3], localePath(locale, "/blog")],
   ]);
 });
 
 test("the header's button leads to the generator", () => {
   renderWithIntl(<SiteHeader account={null} />);
 
-  expect(screen.getByRole("link", { name: "Make a video" }).getAttribute("href")).toBe("/en#generator");
+  expect(screen.getByRole("link", { name: "Make a video" }).getAttribute("href")).toBe("/#generator");
 });

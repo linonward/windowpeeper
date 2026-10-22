@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { GUIDES, type Guide } from "@/lib/guides";
 import type { ImageLimits } from "@/lib/image-limits";
+import { localePath, type Locale } from "@/i18n/routing";
 
 type Pack = { credits: number; amount: number; currency: string };
 
@@ -50,7 +51,7 @@ export function GuidePage({ guide, facts }: { guide: Guide; facts: GuideFacts })
   const locale = useLocale();
   const format = useFormatter();
   const page = (key: string) => `pages.${guide}.${key}`;
-  const generator = `/${locale}#generator`;
+  const generator = `${localePath(locale as Locale)}#generator`;
 
   const money = (pack: Pack) =>
     format.number(pack.amount / 100, { style: "currency", currency: pack.currency.toUpperCase() });

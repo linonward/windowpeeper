@@ -80,7 +80,7 @@ test("the scenes section shows the six windows, each leading to the generator", 
   const use = within(scenes).getByRole("link", { name: "Use the Pizza slice scene" });
   expect(use.getAttribute("href")).toBe("#generator");
   expect(within(scenes).getByRole("link", { name: /See all scenes/ }).getAttribute("href")).toBe(
-    "/en/how-to-make-window-peeper-video",
+    "/how-to-make-window-peeper-video",
   );
 });
 
@@ -98,7 +98,7 @@ test("pricing lists the credit packs from the config, the recommended one lit", 
     expect.stringContaining("25-pack · 25 videos$99.90$4.00 a video · save 60%"),
   ]);
   expect(within(pricing).getByRole("link", { name: "Make my video" }).getAttribute("href")).toBe("#generator");
-  expect(within(pricing).getByRole("link", { name: /See full pricing/ }).getAttribute("href")).toBe("/en/pricing");
+  expect(within(pricing).getByRole("link", { name: /See full pricing/ }).getAttribute("href")).toBe("/pricing");
 });
 
 test("the steps go from a photo to a posted video", () => {

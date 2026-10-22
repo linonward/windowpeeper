@@ -221,7 +221,7 @@ test("dropping an image on the zone picks it; another file type shows the error"
 
 test("a signed-out visitor keeps the photo and consent, and signs in on this page", async () => {
   useSession.mockReturnValue(signedOut);
-  window.history.replaceState(null, "", "/en");
+  window.history.replaceState(null, "", "/");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
@@ -254,7 +254,7 @@ test("back from sign-in, the saved photo and consent return and go out once", as
   const photo = new File(["a"], "me.jpg", { type: "image/jpeg" });
   loadPhotoDraft.mockResolvedValue({ photos: [photo], fields: { consent: "yes" } });
   fetchMock.mockResolvedValue(reply(200, { video: pending }));
-  window.history.replaceState(null, "", "/en?try=1");
+  window.history.replaceState(null, "", "/?try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("status");
@@ -273,7 +273,7 @@ test("back from sign-in, the saved photo and consent return and go out once", as
 test("a draft without consent comes back but waits for the box", async () => {
   useSession.mockReturnValue(signedIn);
   loadPhotoDraft.mockResolvedValue({ photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })], fields: {} });
-  window.history.replaceState(null, "", "/en?try=1");
+  window.history.replaceState(null, "", "/?try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("img", { name: "Your photo preview" });
@@ -360,7 +360,7 @@ test("back from a payment, the draft returns and goes out once the credits arriv
     .mockResolvedValueOnce(short)
     .mockResolvedValueOnce(short)
     .mockResolvedValueOnce(reply(200, { video: { ...pending, credits: 20 } }));
-  window.history.replaceState(null, "", "/en?checkout=success&try=1");
+  window.history.replaceState(null, "", "/?checkout=success&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect((await screen.findByRole("status")).textContent).toContain("Payment received");
@@ -385,7 +385,7 @@ test("credits that don't arrive in time leave the form ready, with a message", a
     fields: { consent: "yes", scene: "burger", ratio: "9:16" },
   });
   fetchMock.mockResolvedValue(reply(402, { error: "INSUFFICIENT_CREDITS" }));
-  window.history.replaceState(null, "", "/en?checkout=success&try=1");
+  window.history.replaceState(null, "", "/?checkout=success&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("status");
@@ -410,7 +410,7 @@ test("back from a canceled payment, the draft and the packs return, and nothing 
     photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })],
     fields: { consent: "yes", scene: "couple", ratio: "9:16" },
   });
-  window.history.replaceState(null, "", "/en?checkout=cancel&try=1");
+  window.history.replaceState(null, "", "/?checkout=cancel&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(await screen.findByText("Payment canceled. You weren't charged.")).toBeDefined();
@@ -428,7 +428,7 @@ test("back from a payment without a session, sign-in opens and nothing is sent",
     photos: [new File(["a"], "me.jpg", { type: "image/jpeg" })],
     fields: { consent: "yes", scene: "burger", ratio: "9:16" },
   });
-  window.history.replaceState(null, "", "/en?checkout=success&try=1");
+  window.history.replaceState(null, "", "/?checkout=success&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await screen.findByRole("dialog", { name: "Sign in to make your video" });
@@ -445,7 +445,7 @@ test("sends the photo, shows progress, then plays the video with download and sh
     .mockResolvedValueOnce(
       reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
     );
-  window.history.replaceState(null, "", "/en");
+  window.history.replaceState(null, "", "/");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   const photo = await pick();
@@ -469,7 +469,7 @@ test("sends the photo, shows progress, then plays the video with download and sh
 
   fireEvent.click(screen.getByRole("button", { name: "Share" }));
   await waitFor(() => expect(share).toHaveBeenCalled());
-  expect(share.mock.calls[0][0]).toMatchObject({ url: `${window.location.origin}/en` });
+  expect(share.mock.calls[0][0]).toMatchObject({ url: `${window.location.origin}/` });
 });
 
 test("without the share sheet, sharing copies the home page link", async () => {
@@ -479,7 +479,7 @@ test("without the share sheet, sharing copies the home page link", async () => {
   fetchMock.mockResolvedValueOnce(
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
-  window.history.replaceState(null, "", "/en");
+  window.history.replaceState(null, "", "/");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
@@ -487,7 +487,7 @@ test("without the share sheet, sharing copies the home page link", async () => {
   fireEvent.click(await screen.findByRole("button", { name: "Share" }));
 
   expect(await screen.findByText("Link copied")).toBeDefined();
-  expect(writeText).toHaveBeenCalledWith(`${window.location.origin}/en`);
+  expect(writeText).toHaveBeenCalledWith(`${window.location.origin}/`);
 });
 
 test("a failed video says the credits came back and lets them try again", async () => {
@@ -561,7 +561,7 @@ test("a restored draft and the retries after a payment record no clicks or paywa
     .mockResolvedValue(reply(200, { video: pending }))
     .mockResolvedValueOnce(reply(402, { error: "INSUFFICIENT_CREDITS" }))
     .mockResolvedValueOnce(reply(200, { video: pending }));
-  window.history.replaceState(null, "", "/en?checkout=success&try=1");
+  window.history.replaceState(null, "", "/?checkout=success&try=1");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect((await screen.findByRole("status")).textContent).toContain("Payment received");
@@ -577,7 +577,7 @@ test("records downloading and sharing the video, with how it was shared", async 
   fetchMock.mockResolvedValueOnce(
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
-  window.history.replaceState(null, "", "/en");
+  window.history.replaceState(null, "", "/");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();
@@ -603,7 +603,7 @@ test("records a copied link as shared by copy", async () => {
   fetchMock.mockResolvedValueOnce(
     reply(200, { video: { ...pending, status: "succeeded", url: "https://storage.test/v1.mp4" } }),
   );
-  window.history.replaceState(null, "", "/en");
+  window.history.replaceState(null, "", "/");
   renderWithIntl(<WindowPeeperTryout {...props} />);
 
   await pick();

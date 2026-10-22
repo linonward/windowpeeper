@@ -9,7 +9,7 @@ test("shows the lit window next to the wordmark, and the link is named by the na
   renderWithIntl(<Brand />);
 
   const link = screen.getByRole("link", { name: "WindowPeeper" });
-  expect(link.getAttribute("href")).toBe("/en");
+  expect(link.getAttribute("href")).toBe("/");
   const mark = link.querySelector("svg");
   expect(mark?.getAttribute("aria-hidden")).toBe("true");
   // Four panes; the lower left one is dark (docs/DESIGN.md, Logo).

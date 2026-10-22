@@ -8,7 +8,7 @@ test("magic-link requests are limited per IP, with counters in the database", as
   const ip = `10.250.${Math.floor(Math.random() * 254) + 1}.${Math.floor(Math.random() * 254) + 1}`;
   const ask = () =>
     request.post("/api/auth/sign-in/magic-link", {
-      data: { email: uniqueEmail(), callbackURL: "/en/dashboard" },
+      data: { email: uniqueEmail(), callbackURL: "/dashboard" },
       headers: { origin: BASE_URL, "x-forwarded-for": ip },
     });
 

@@ -26,7 +26,7 @@ test("links each guide in every locale, with its title and description", async (
   const text = await (await GET()).text();
 
   expect(text).toContain(
-    "- [How to Make the Window Peeper Video](https://x.test/en/how-to-make-window-peeper-video): Turn one photo into a window peeper trend video",
+    "- [How to Make the Window Peeper Video](https://x.test/how-to-make-window-peeper-video): Turn one photo into a window peeper trend video",
   );
   expect(text).toContain("- [Cómo hacer un video de window peeper](https://x.test/es/how-to-make-window-peeper-video): ");
   // No ICU or markup left over.

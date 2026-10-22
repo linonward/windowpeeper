@@ -36,7 +36,7 @@ test("shows each order with its buyer, pack, amount, provider and status", () =>
   const table = screen.getByRole("table", { name: "Orders" });
   const [, first, second] = within(table).getAllByRole("row");
   expect(within(first).getByRole("link", { name: "ada@example.com" }).getAttribute("href")).toBe(
-    "/en/admin/users/u1",
+    "/admin/users/u1",
   );
   expect(within(first).getByText("1,200 credits")).toBeTruthy();
   expect(within(first).getByText("$40.00")).toBeTruthy();

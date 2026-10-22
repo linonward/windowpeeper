@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { LoginForm } from "@/components/auth/login-form";
+import { localePath, type Locale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/sign-in">): Promise<Metadata> {
   const { locale } = await params;
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/sign-in"
     title: t("title"),
     description: t("subtitle"),
     robots: { index: false },
-    alternates: { canonical: `/${locale}/sign-in` },
+    alternates: { canonical: localePath(locale as Locale, "/sign-in") },
   };
 }
 

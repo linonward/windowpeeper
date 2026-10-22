@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 // Other sites can't frame the app (clickjacking), browsers don't guess
 // content types, stay on HTTPS once they've seen it, and send other sites
 // only the origin as the referrer.
-for (const path of ["/en", "/en/sign-in", "/api/health"]) {
+for (const path of ["/", "/sign-in", "/api/health"]) {
   test(`${path} sends the security headers`, async ({ request }) => {
     const response = await request.get(path);
     const headers = response.headers();

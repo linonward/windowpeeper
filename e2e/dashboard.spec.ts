@@ -4,18 +4,18 @@ import { getSession, signIn } from "./support/auth";
 test("signed-out visitors are redirected before the page renders", async ({
   request,
 }) => {
-  const response = await request.get("/en/dashboard", { maxRedirects: 0 });
+  const response = await request.get("/dashboard", { maxRedirects: 0 });
 
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Fdashboard");
+  expect(response.headers().location).toBe("/sign-in?next=%2Fdashboard");
 });
 
 test("the dashboard opens the window peeper video in a sidebar shell", async ({ page }) => {
   const email = await signIn(page);
-  await page.goto("/en/dashboard");
+  await page.goto("/dashboard");
 
   // /dashboard opens /videos, which opens the first photo effect.
-  await expect(page).toHaveURL("/en/videos/windowpeeper");
+  await expect(page).toHaveURL("/videos/windowpeeper");
   await expect(page.getByRole("heading", { level: 1, name: "Make a window peeper video" })).toBeVisible();
   const sidebar = page.getByRole("navigation", { name: "Dashboard navigation" });
   await expect(sidebar.getByRole("link", { name: "New video", exact: true })).toHaveAttribute("aria-current", "page");
@@ -26,24 +26,24 @@ test("the dashboard opens the window peeper video in a sidebar shell", async ({ 
 
 test("the account menu opens the profile and keeps the shell", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Profile" }).click();
 
-  await expect(page).toHaveURL("/en/profile");
+  await expect(page).toHaveURL("/profile");
   await expect(page.getByRole("heading", { level: 1, name: "Profile" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Dashboard navigation" })).toBeVisible();
 });
 
 test("signs out from the account menu", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Sign out" }).click();
 
-  await expect(page).toHaveURL("/en/sign-in");
+  await expect(page).toHaveURL("/sign-in");
   expect(await getSession(page)).toBeNull();
 });
 
@@ -73,7 +73,7 @@ test("the account menu shows the balance and switches the language", async ({
   page,
 }) => {
   const email = await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
 
   await page.getByRole("button", { name: "Account menu" }).click();
   const menu = page.getByRole("menu");
@@ -94,7 +94,7 @@ test("the account menu shows the balance and switches the language", async ({
 
 test("the sidebar collapses to icons and stays collapsed after a reload", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en/videos");
+  await page.goto("/videos");
   const link = page
     .getByRole("navigation", { name: "Dashboard navigation" })
     .getByRole("link", { name: "Billing" });
@@ -108,13 +108,13 @@ test("the sidebar collapses to icons and stays collapsed after a reload", async 
   expect(await width()).toBeLessThan(40);
   // The loading skeleton draws the collapsed sidebar too: a script in the
   // server HTML marks <html> from the cookie before first paint.
-  const html = await (await page.request.get("/en/videos")).text();
+  const html = await (await page.request.get("/videos")).text();
   expect(html).toContain('toggleAttribute("data-sidebar-collapsed"');
   await expect(page.locator("html")).toHaveAttribute("data-sidebar-collapsed", "");
 
   // Collapsed links still navigate.
   await link.click();
-  await expect(page).toHaveURL("/en/billing");
+  await expect(page).toHaveURL("/billing");
 
   await page.getByRole("button", { name: "Toggle Sidebar" }).click();
   await expect(page.locator("html")).not.toHaveAttribute("data-sidebar-collapsed");

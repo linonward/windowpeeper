@@ -4,6 +4,7 @@ import { videoPrices } from "@/app/_lib/home-facts";
 import { Pricing } from "@/components/pricing/pricing";
 import { languageAlternates } from "@/lib/seo";
 import { CREDIT_PACKS, DEFAULT_PACK_ID } from "@/server/payment/packs";
+import { localePath, type Locale } from "@/i18n/routing";
 
 // The price list shows packs only: offeredPlans() offers no subscription.
 export async function generateMetadata({ params }: PageProps<"/[locale]/pricing">): Promise<Metadata> {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/pricing"
   return {
     title: t("metaTitle"),
     description: t("metaDescription", { price }),
-    alternates: { canonical: `/${locale}/pricing`, languages: languageAlternates("/pricing") },
+    alternates: { canonical: localePath(locale as Locale, "/pricing"), languages: languageAlternates("/pricing") },
   };
 }
 

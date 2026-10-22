@@ -1,6 +1,6 @@
 import { hasLocale } from "next-intl";
 import { withSession } from "@/app/api/_lib/with-session";
-import { routing } from "@/i18n/routing";
+import { routing, localePath } from "@/i18n/routing";
 import { apiError, type RedirectResponse } from "@/lib/api";
 import { log } from "@/server/log";
 import { createCheckout, PaymentsDisabledError, UnknownPackError } from "@/server/payment/orders";
@@ -20,7 +20,7 @@ export const POST = withSession(async (request, { session }) => {
   const packId = typeof body.packId === "string" ? body.packId : "";
   const locale = hasLocale(routing.locales, body.locale) ? body.locale : routing.defaultLocale;
   const back = body.returnTo === "home" ? RETURNS.home : RETURNS.billing;
-  const page = new URL(`/${locale}${back.path}`, process.env.BETTER_AUTH_URL ?? request.url);
+  const page = new URL(localePath(locale, back.path), process.env.BETTER_AUTH_URL ?? request.url);
 
   try {
     const url = await createCheckout({

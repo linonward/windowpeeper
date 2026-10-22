@@ -10,7 +10,7 @@ test("links landing visits across reload and magic-link sign-in", async ({ page 
     events.push(JSON.parse(route.request().postData()!));
     await route.fulfill({ status: 200, body: "{}", headers: { "access-control-allow-origin": "*" } });
   });
-  await page.goto("/en");
+  await page.goto("/");
   await expect.poll(() => events.length).toBe(1);
   const anonymous = events[0].distinct_id;
   await page.reload();
@@ -32,7 +32,7 @@ test("records the first touch on landing and stores it on the account at signup"
     events.push(JSON.parse(route.request().postData()!));
     await route.fulfill({ status: 200, body: "{}", headers: { "access-control-allow-origin": "*" } });
   });
-  await page.goto("/en/pricing?utm_source=e2e-source&utm_medium=social&utm_campaign=launch&email=a%40b.c");
+  await page.goto("/pricing?utm_source=e2e-source&utm_medium=social&utm_campaign=launch&email=a%40b.c");
 
   await expect.poll(async () => (await context.cookies()).find((cookie) => cookie.name === "rs_ft")).toBeTruthy();
   const cookie = (await context.cookies()).find((each) => each.name === "rs_ft")!;
@@ -40,15 +40,15 @@ test("records the first touch on landing and stores it on the account at signup"
   expect(cookie.value.length).toBeLessThanOrEqual(1024);
   const touch = JSON.parse(decodeURIComponent(cookie.value));
   expect(touch).toMatchObject({
-    utm_source: "e2e-source", utm_medium: "social", utm_campaign: "launch", landing_path: "/en/pricing",
+    utm_source: "e2e-source", utm_medium: "social", utm_campaign: "launch", landing_path: "/pricing",
   });
   expect(cookie.value).not.toContain("a%2540b.c");
   await expect.poll(() => events.find((event) => event.event === "$pageview")?.properties.$set_once).toMatchObject({
-    $initial_utm_source: "e2e-source", $initial_referrer: "$direct", $initial_pathname: "/en/pricing",
+    $initial_utm_source: "e2e-source", $initial_referrer: "$direct", $initial_pathname: "/pricing",
   });
 
   // A later visit with other tags changes nothing.
-  await page.goto("/en?utm_source=other");
+  await page.goto("/?utm_source=other");
   const email = uniqueEmail();
   await signIn(page, email);
 
@@ -57,7 +57,7 @@ test("records the first touch on landing and stores it on the account at signup"
     first_utm_source: "e2e-source",
     first_utm_medium: "social",
     first_utm_campaign: "launch",
-    first_landing_path: "/en/pricing",
+    first_landing_path: "/pricing",
     first_seen_at: expect.any(Date),
   });
 });

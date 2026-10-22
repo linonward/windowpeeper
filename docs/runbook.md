@@ -339,7 +339,7 @@ To test it, send a message the same way: `curl -X POST -H 'Content-Type: applica
 
 ## Blog
 
-Posts are MDX files in `content/blog/<locale>/<slug>.mdx`; the file name is the URL (`/en/blog/<slug>`). Each language has its own posts. Give two translations the same file name, so they share a URL.
+Posts are MDX files in `content/blog/<locale>/<slug>.mdx`; the file name is the URL (`/blog/<slug>` in English, `/es/blog/<slug>` in Spanish). Each language has its own posts. Give two translations the same file name, so they share a URL.
 
 1. Add the file. Use lowercase letters, digits and hyphens for the slug.
 2. Start it with its metadata:
@@ -371,7 +371,7 @@ The route sends every sitemap URL (`src/app/sitemap.ts`) and answers `{ "submitt
 
 ## Languages
 
-The app ships in English (`en`), Spanish (`es`) and German (`de`). Blog posts exist in English only. Chinese was dropped; old `/zh/*` links redirect to `/en/*` (`next.config.ts`). Language menus list every locale, so adding one needs no UI change. To add a locale, for example `ja`:
+The app ships in English (`en`), Spanish (`es`) and German (`de`). Blog posts exist in English only. English URLs have no locale prefix; Spanish and German do (`/es/...`, `/de/...`), and `/en/...` redirects to the unprefixed page. Chinese was dropped; old `/zh/*` links redirect to the English pages (`next.config.ts`). Language menus list every locale, so adding one needs no UI change. To add a locale, for example `ja`:
 
 1. Add `"ja"` to `locales` in `src/i18n/routing.ts`, and its own name (`ja: "日本語"`) to `LOCALE_NAMES` there.
 2. Copy `messages/en.json` to `messages/ja.json` and translate it. Keep the same keys.
@@ -589,7 +589,7 @@ Pages then load `/_vercel/speed-insights/script.js`.
 | Startup log lists `RESEND_API_KEY: required in production` | Set `RESEND_API_KEY` and `EMAIL_FROM`, then restart                                           |
 | `Resend: ...` error                                       | Check the key and that `EMAIL_FROM` uses a verified domain                                     |
 | `MISSING_MESSAGE` in the console, or a key shows instead of text | Add the key to every `messages/*.json` file. In the browser only: add the namespace to `CLIENT_NAMESPACES` in `src/i18n/client-messages.ts` |
-| A link drops the locale (`/sign-in` instead of `/en/sign-in`) | Import `Link` / `useRouter` / `redirect` from `@/i18n/navigation`                                |
+| A link drops the locale (`/sign-in` instead of `/es/sign-in`) | Import `Link` / `useRouter` / `redirect` from `@/i18n/navigation`                                |
 | An API call answers `403 FORBIDDEN_ORIGIN`                 | Requests that change data must carry `Origin` equal to `BETTER_AUTH_URL`'s origin. Browsers send it from the app's pages; set `BETTER_AUTH_URL` to the URL you open the app on. Scripts and tests must send the header themselves |
 | A script's call answers `401 INVALID_API_KEY`             | The key is wrong, expired or revoked. Create a new one; the full key is shown only when it's created |
 | An API call answers `429 RATE_LIMITED`                     | The user passed a per-user limit in `src/app/api/_lib/limits.ts`. Wait `Retry-After` seconds, or raise the limit |
@@ -662,7 +662,7 @@ Verify with PostHog Activity filtered by `app=windowpeeper`: visit a page, then 
 
 In PostHog, create a Funnels insight filtered by `app = windowpeeper`. For the home generator, use these ordered steps:
 
-1. `$pageview` with `$pathname` = `/en` (or `/es`, `/de`).
+1. `$pageview` with `$pathname` = `/` (or `/es`, `/de`).
 2. `photo_selected`.
 3. `generate_clicked`.
 4. `paywall_viewed`.

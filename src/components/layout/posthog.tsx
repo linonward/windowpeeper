@@ -23,9 +23,11 @@ const ROUTES = new Set([
   "admin/users", "admin/orders", "admin/metrics", "admin/feedback", "blog",
 ]);
 function routeName(pathname: string) {
-  const [, language, ...parts] = pathname.split("/");
-  const locale = (routing.locales as readonly string[]).includes(language) ? language : "unknown";
-  const path = parts.join("/").replace(/\/$/, "");
+  // English paths have no prefix (src/i18n/routing.ts); names always do.
+  const [, first, ...rest] = pathname.split("/");
+  const prefixed = (routing.locales as readonly string[]).includes(first);
+  const locale = prefixed ? first : routing.defaultLocale;
+  const path = (prefixed ? rest : [first, ...rest]).join("/").replace(/\/$/, "");
   if (ROUTES.has(path)) return `/${locale}${path ? `/${path}` : ""}`;
   for (const prefix of ["videos", "admin/users", "blog/tags", "blog"]) {
     if (path.startsWith(`${prefix}/`)) return `/${locale}/${prefix}/:id`;

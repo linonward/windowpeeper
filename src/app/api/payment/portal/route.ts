@@ -1,6 +1,6 @@
 import { hasLocale } from "next-intl";
 import { withSession } from "@/app/api/_lib/with-session";
-import { routing } from "@/i18n/routing";
+import { routing, localePath } from "@/i18n/routing";
 import { apiError, type RedirectResponse } from "@/lib/api";
 import { log } from "@/server/log";
 import { createPortalLink, NoSubscriptionError } from "@/server/payment/subscriptions";
@@ -10,7 +10,7 @@ import { createPortalLink, NoSubscriptionError } from "@/server/payment/subscrip
 export const POST = withSession(async (request, { session }) => {
   const body = await request.json().catch(() => ({}));
   const locale = hasLocale(routing.locales, body.locale) ? body.locale : routing.defaultLocale;
-  const billing = new URL(`/${locale}/billing`, process.env.BETTER_AUTH_URL ?? request.url);
+  const billing = new URL(localePath(locale, "/billing"), process.env.BETTER_AUTH_URL ?? request.url);
 
   try {
     const url = await createPortalLink(session.user.id, billing.toString());

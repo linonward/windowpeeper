@@ -14,7 +14,7 @@ async function expectInert(page: Page) {
 }
 
 test("a visitor finds the generator on the home page, off until it is set up", async ({ page }) => {
-  await page.goto("/en");
+  await page.goto("/");
 
   await expectInert(page);
   await expect(page.getByRole("dialog")).toHaveCount(0);
@@ -22,7 +22,7 @@ test("a visitor finds the generator on the home page, off until it is set up", a
 
 test("a signed-in visitor gets the same generator on the home page", async ({ page }) => {
   await signIn(page);
-  await page.goto("/en");
+  await page.goto("/");
 
   await expect(page.getByRole("banner").getByRole("link", { name: "Dashboard" })).toBeVisible();
   await expectInert(page);
@@ -36,8 +36,8 @@ test("back from checkout, the page drops the checkout from its address and sends
   });
 
   for (const checkout of ["success", "cancel"]) {
-    await page.goto(`/en?checkout=${checkout}&try=1#generator`);
-    await expect(page).toHaveURL(/\/en#generator$/);
+    await page.goto(`/?checkout=${checkout}&try=1#generator`);
+    await expect(page).toHaveURL(/\/#generator$/);
     await expectInert(page);
   }
   expect(sent).toEqual([]);

@@ -1,5 +1,5 @@
 import { projectConfig } from "project.config";
-import { type Locale, routing } from "@/i18n/routing";
+import { type Locale, localePath, routing } from "@/i18n/routing";
 import type { Post } from "./content";
 
 // hreflang links for a page that exists in `locales`, keyed by locale plus
@@ -11,7 +11,7 @@ export function languageAlternates(
   locales: readonly Locale[] = routing.locales,
   base = "",
 ): Record<string, string> {
-  const url = (locale: Locale) => `${base}/${locale}${path}`;
+  const url = (locale: Locale) => `${base}${localePath(locale, path)}`;
   const fallback = locales.includes(routing.defaultLocale) ? routing.defaultLocale : locales[0];
   return {
     ...Object.fromEntries(locales.map((locale) => [locale, url(locale)])),
@@ -28,8 +28,8 @@ export function blogPosting(
   base?: string,
 ) {
   const url = (path: string) => (base ? new URL(path, base).href : undefined);
-  const page = url(`/${locale}/blog/${post.slug}`);
-  const home = url(`/${locale}`);
+  const page = url(localePath(locale, `/blog/${post.slug}`));
+  const home = url(localePath(locale));
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

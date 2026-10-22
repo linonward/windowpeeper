@@ -5,12 +5,12 @@ import { signIn } from "./support/auth";
 import { feedbackPng } from "./support/feedback";
 
 test("feedback requires sign-in and administrator access for the list", async ({ page, request }) => {
-  const response = await request.get("/en/feedback", { maxRedirects: 0 });
+  const response = await request.get("/feedback", { maxRedirects: 0 });
   expect(response.status()).toBe(307);
-  expect(response.headers().location).toBe("/en/sign-in?next=%2Fen%2Ffeedback");
+  expect(response.headers().location).toBe("/sign-in?next=%2Ffeedback");
   expect((await request.post("/api/feedback", { data: {} })).status()).toBe(401);
   await signIn(page);
-  await page.goto("/en/admin/feedback");
+  await page.goto("/admin/feedback");
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
   await expect(page.getByRole("list", { name: "User feedback" })).toHaveCount(0);
 });
@@ -63,17 +63,17 @@ test("rejects a disguised SVG and oversized uploads before storage", async ({ pa
 test("the sidebar's Feedback item opens the feedback page from any dashboard page", async ({ page }) => {
   await signIn(page);
   const nav = page.getByRole("navigation", { name: "Dashboard navigation" });
-  for (const path of ["/en/videos", "/en/billing"]) {
+  for (const path of ["/videos", "/billing"]) {
     await page.goto(path);
-    await expect(nav.getByRole("link", { name: "Feedback", exact: true })).toHaveAttribute("href", "/en/feedback");
+    await expect(nav.getByRole("link", { name: "Feedback", exact: true })).toHaveAttribute("href", "/feedback");
   }
   await nav.getByRole("link", { name: "Feedback", exact: true }).click();
-  await expect(page).toHaveURL("/en/feedback");
+  await expect(page).toHaveURL("/feedback");
 });
 
 test("pastes text and a clipboard image, previews it and submits", async ({ page, context }) => {
   await signIn(page);
-  await page.goto("/en/feedback");
+  await page.goto("/feedback");
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   const message = page.getByLabel("Your feedback");
   await message.focus();

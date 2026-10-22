@@ -21,6 +21,7 @@ import { type ImageLimits, limitValues } from "@/lib/image-limits";
 import { clearPhotoDraft, loadPhotoDraft, type PhotoDraft, savePhotoDraft } from "@/lib/photo-draft";
 import { type Scene, sceneImage, SCENES } from "@/lib/photo-effects";
 import { SCENE_EVENT } from "./scene-event";
+import { localePath, type Locale } from "@/i18n/routing";
 
 // The photo types the server takes; a drop of another type is refused here.
 const PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp"];
@@ -297,7 +298,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
   }
 
   async function share() {
-    const url = `${window.location.origin}/${locale}`;
+    const url = `${window.location.origin}${localePath(locale as Locale)}`;
     if (navigator.share) {
       // Closing the share sheet rejects; there is nothing to report.
       await navigator.share({ title: tt("share.title"), text: tt("share.text"), url }).then(

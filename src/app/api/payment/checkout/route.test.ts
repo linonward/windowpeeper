@@ -43,13 +43,13 @@ test("returnTo home sends the buyer back to the home generator", async () => {
   await post({ packId: "medium", locale: "en", returnTo: "home" });
 
   expect(urls()).toEqual({
-    successUrl: "https://app.test/en?checkout=success&try=1#generator",
-    cancelUrl: "https://app.test/en?checkout=cancel&try=1#generator",
+    successUrl: "https://app.test/?checkout=success&try=1#generator",
+    cancelUrl: "https://app.test/?checkout=cancel&try=1#generator",
   });
 });
 
 test("any other returnTo, such as a URL, returns to billing", async () => {
   await post({ packId: "small", locale: "en", returnTo: "https://evil.test/" });
 
-  expect(urls().successUrl).toBe("https://app.test/en/billing?checkout=success");
+  expect(urls().successUrl).toBe("https://app.test/billing?checkout=success");
 });

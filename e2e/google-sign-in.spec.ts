@@ -10,7 +10,7 @@ test("Continue with Google redirects to Google's consent screen", async ({
     route.fulfill({ body: "google" }),
   );
 
-  await page.goto("/en/sign-in");
+  await page.goto("/sign-in");
   await page.getByRole("button", { name: "Continue with Google" }).click();
 
   await page.waitForURL("https://accounts.google.com/**");

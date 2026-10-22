@@ -53,9 +53,9 @@ test("links each range and marks the current one", () => {
   const nav = screen.getByRole("navigation", { name: "Range" });
   const links = within(nav).getAllByRole("link");
   expect(links.map((link) => [link.textContent, link.getAttribute("href")])).toEqual([
-    ["24 hours", "/en/admin/metrics?days=1"],
-    ["7 days", "/en/admin/metrics?days=7"],
-    ["30 days", "/en/admin/metrics?days=30"],
+    ["24 hours", "/admin/metrics?days=1"],
+    ["7 days", "/admin/metrics?days=7"],
+    ["30 days", "/admin/metrics?days=30"],
   ]);
   expect(links[1].getAttribute("aria-current")).toBe("page");
   expect(links[0].getAttribute("aria-current")).toBeNull();
