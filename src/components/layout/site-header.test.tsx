@@ -68,3 +68,9 @@ test("the header's button leads to the generator", () => {
 
   expect(screen.getByRole("link", { name: "Make a video" }).getAttribute("href")).toBe("/#generator");
 });
+
+test("the header has a language menu that shows the current language", () => {
+  renderWithIntl(<SiteHeader account={null} />, "es");
+
+  expect(within(screen.getByRole("banner")).getByRole("button", { name: "Idioma: Español" }).textContent).toBe("ES");
+});

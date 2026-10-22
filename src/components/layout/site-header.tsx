@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Brand } from "./brand";
+import { LocaleSwitcher } from "./locale-switcher";
 import { MobileMenu } from "./mobile-menu";
 
 // The nav's links: two of the home page's sections, the price list and the
@@ -37,6 +38,7 @@ export function SiteHeader({ account }: { account: React.ReactNode }) {
           ))}
         </nav>
         <div className="flex items-center gap-3.5 md:gap-3">
+          <LocaleSwitcher />
           {account}
           <Link href="/#generator" className={cn(buttonVariants(), "hidden md:inline-flex")}>
             {t("cta")}

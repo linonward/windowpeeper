@@ -35,6 +35,27 @@ test("switches language and keeps the page", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Iniciar sesión" })).toBeVisible();
 });
 
+test("switches language from the header's menu and keeps the page", async ({ page }) => {
+  await page.goto("/pricing");
+
+  await page.getByRole("banner").getByRole("button", { name: "Language: English" }).click();
+  await page.getByRole("menuitem", { name: "Deutsch" }).click();
+
+  await expect(page).toHaveURL("/de/pricing");
+  await expect(page.locator("html")).toHaveAttribute("lang", "de");
+  await expect(page.getByRole("banner").getByRole("button", { name: "Sprache: Deutsch" })).toHaveText("DE");
+});
+
+test("switches language from the phone menu", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 720 });
+  await page.goto("/pricing");
+
+  await page.getByRole("button", { name: "Menu" }).click();
+  await page.getByRole("dialog").getByRole("link", { name: "Español" }).click();
+
+  await expect(page).toHaveURL("/es/pricing");
+});
+
 // Chinese was dropped; its old links land on the English pages.
 test("old Chinese links go to the English pages", async ({ page, request }) => {
   const response = await request.get("/zh/pricing", { maxRedirects: 0 });

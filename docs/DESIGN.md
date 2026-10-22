@@ -158,7 +158,7 @@ Checked options (scenes, quality, packs) get a 2px `--primary` border on `--prim
 
 ### Site header and footer (`layout/`)
 
-- Header: the lockup (7.1), then a `nav` (Scenes, How it works, Pricing, Blog: `text-sm text-muted-foreground`, `/#scenes`, `/#how-it-works`, `/pricing`, `/blog`), the Sign in link (Dashboard once signed in) and a primary "Make a video" button to `/#generator`. Below `md` the nav and the button move into a sheet from the right (`layout/mobile-menu.tsx`), opened by a menu icon.
+- Header: the lockup (7.1), then a `nav` (Scenes, How it works, Pricing, Blog: `text-sm text-muted-foreground`, `/#scenes`, `/#how-it-works`, `/pricing`, `/blog`), a language menu (`LocaleSwitcher`: a bordered button with a globe and the current code, "EN"; a menu of every language in its own name, the current one checked), the Sign in link (Dashboard once signed in) and a primary "Make a video" button to `/#generator`. Below `md` the nav, the button and the languages (`LocaleLinks`) move into a sheet from the right (`layout/mobile-menu.tsx`), opened by a menu icon.
 - Footer: the lockup and the independence note in `text-faint`, then three columns under mono titles (Product, Learn, Legal); a bottom bar with the copyright, the support email and the languages (`LocaleLinks`) split by dots.
 
 ### Home (`home/`)
