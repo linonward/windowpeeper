@@ -244,12 +244,6 @@
     "pricing": "Pricing",
     "faq": "FAQ"
   },
-  "Theme": {
-    "label": "Theme",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
-  },
   "NotFound": {
     "title": "Page not found",
     "home": "Go to the home page"

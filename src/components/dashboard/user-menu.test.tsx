@@ -86,30 +86,12 @@ test("switches the language on the current page", async () => {
   );
 });
 
-test("switches the theme without closing the menu", async () => {
+test("offers no theme choice", async () => {
   open();
 
-  expect(
-    (await screen.findByRole("menuitemradio", { name: "Dark" })).getAttribute("aria-checked"),
-  ).toBe("true");
-  fireEvent.click(screen.getByRole("menuitemradio", { name: "Light" }));
-
-  expect(document.documentElement.classList.contains("dark")).toBe(false);
-  expect(localStorage.getItem("theme")).toBe("light");
-  await waitFor(() =>
-    expect(
-      screen.getByRole("menuitemradio", { name: "Light" }).getAttribute("aria-checked"),
-    ).toBe("true"),
-  );
-  expect(screen.getByRole("menu")).toBeTruthy();
-});
-
-test("offers the system theme", async () => {
-  open();
-
-  fireEvent.click(await screen.findByRole("menuitemradio", { name: "System" }));
-
-  expect(localStorage.getItem("theme")).toBe("system");
+  // Dark only (docs/DESIGN.md, Visual Identity).
+  await screen.findByRole("menuitem", { name: "Language: English" });
+  expect(screen.queryAllByRole("menuitemradio")).toEqual([]);
 });
 
 // Every dashboard page shows the menu; only signing out needs Better Auth's

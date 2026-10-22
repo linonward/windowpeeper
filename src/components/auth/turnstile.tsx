@@ -70,8 +70,8 @@ export function Turnstile({
         api = turnstile;
         widgetId = turnstile.render(container.current, {
           sitekey: siteKey,
-          // Match the site's theme, not the system's.
-          theme: document.documentElement.classList.contains("dark") ? "dark" : "light",
+          // The site is dark only, whatever the system's theme.
+          theme: "dark",
           size: "flexible",
           callback: (token) => callback.current(token),
           "expired-callback": () => callback.current(null),

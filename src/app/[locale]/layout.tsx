@@ -5,7 +5,6 @@ import { Geist, Geist_Mono, Martian_Mono } from "next/font/google";
 import { SidebarStateScript } from "@/components/dashboard/sidebar-state-script";
 import { Analytics } from "@/components/layout/analytics";
 import { LocalTimeZone } from "@/components/layout/local-time-zone";
-import { ThemeScript } from "@/components/layout/theme-script";
 import { clientMessages } from "@/i18n/client-messages";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -53,11 +52,10 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} ${martianMono.variable} dark h-full antialiased`}
       style={{ colorScheme: "dark" }}
-      // ThemeScript and SidebarStateScript may change it before hydration.
+      // Dark only (docs/DESIGN.md). SidebarStateScript may change it before hydration.
       suppressHydrationWarning
     >
       <head>
-        <ThemeScript />
         <SidebarStateScript />
       </head>
       <body className="min-h-full flex flex-col">

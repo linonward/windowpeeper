@@ -57,13 +57,14 @@ test("groups support and legal links under headings", () => {
   ]);
 });
 
-test("shows the brand, a blurb, the copyright and the theme switch", () => {
+test("shows the brand, a blurb and the copyright, with no theme switch", () => {
   renderWithIntl(<Footer />);
 
   expect(screen.getByRole("link", { name: "WindowPeeper" }).getAttribute("href")).toBe("/en");
   expect(screen.getByText("Window peeper trend videos from one photo.")).toBeDefined();
   expect(screen.getByText("© WindowPeeper. All rights reserved.")).toBeDefined();
-  expect(screen.getByRole("group", { name: "Theme" })).toBeDefined();
+  // Dark only (docs/DESIGN.md, Visual Identity).
+  expect(screen.queryByRole("group", { name: "Theme" })).toBeNull();
 });
 
 test("is translated", () => {

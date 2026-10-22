@@ -11,12 +11,8 @@ const names = (text: string, pattern: RegExp) => new Set([...text.matchAll(patte
 const declared = names(css, /(--[a-z][a-z0-9-]*)\s*:/g);
 const mentioned = names(doc, /(--[a-z][a-z0-9-]*)/g);
 
-// The theme tokens, from the :root (light) and .dark blocks.
-const themed = new Set(
-  [/:root\s*\{([^}]*)\}/, /\.dark\s*\{([^}]*)\}/].flatMap((block) => [
-    ...names(css.match(block)?.[1] ?? "", /(--[a-z][a-z0-9-]*)\s*:/g),
-  ]),
-);
+// The theme tokens, from the :root block. The site is dark only.
+const themed = names(css.match(/:root\s*\{([^}]*)\}/)?.[1] ?? "", /(--[a-z][a-z0-9-]*)\s*:/g);
 
 test("every token DESIGN.md names exists in globals.css", () => {
   expect([...mentioned].filter((name) => !declared.has(name))).toEqual([]);

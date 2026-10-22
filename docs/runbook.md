@@ -332,8 +332,8 @@ To test it, send a message the same way: `curl -X POST -H 'Content-Type: applica
 
 - Copy lives under `Home` in `messages/en.json` and `messages/zh.json`. Replace it with what your product does; keep sentence case.
 - The home page has no example clip yet: the hero shows no video and the generator stands alone. To add one, put `sample.mp4` and `poster.jpg` in `public/landing/<name>/` (H.264 + AAC, `-movflags +faststart`, under 2 MB; the poster is a frame of that MP4), pass `example` to `Hero` in `src/app/[locale]/(marketing)/page.tsx`, check `Home.example` describes it, and add its `videoObject` structured data (`src/lib/seo.ts`). Use a video made here from a photo you may publish, never a clip from TikTok.
-- Colors, radius and fonts are tokens in `src/app/globals.css` (`:root` for the light theme, `.dark` for the default dark theme, `--font-display` for headings). Change them there, not per component.
-- Dark is the default theme. Users pick light, dark or system (follows the OS, live) in the footer or the account menu; the choice is saved in `localStorage`. The logic is in `src/components/layout/theme.ts`.
+- Colors, radius and fonts are tokens in `src/app/globals.css` (`:root`, `--font-display` for headings). Change them there, not per component.
+- The site is dark only. There is no light theme and no theme choice.
 - Icons come from `lucide-react` only; ESLint blocks other icon libraries. Stroke width is set once in `globals.css` (`svg.lucide`). Icons are `aria-hidden` by default; give icon-only buttons an `aria-label`.
 - Icon motion uses `.icon-nudge` (arrow on hover), `.icon-turn` (plus in an open `<details>`) and `.icon-swap` (cross-fade). All turn off with reduced motion.
 
