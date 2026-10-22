@@ -33,7 +33,7 @@ export function MobileBar() {
         >
           <Menu className="size-[22px]" />
         </button>
-        <Brand href="/videos" className="text-xl" />
+        <Brand className="text-xl" />
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <NotificationBell />
