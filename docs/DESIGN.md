@@ -8,7 +8,7 @@ Change a value here and in the code together. When they disagree, the code wins 
 
 **Keywords:** dark only · one lit window · lamp amber · condensed display type · mono timecodes
 
-One lit window at night: warm light, a curious stare, no horror. A night canvas with one warm accent, lamp (2.2). Big Shoulders titles, Instrument Sans sentences, JetBrains Mono labels and timecodes (3). Timecodes like `REC ● 02:14 AM` frame every video; they are the brand's voice, not decoration. The site is dark only: there is no light theme and no theme choice.
+One lit window at night: warm light, a curious stare, no horror. A night canvas with one warm accent, lamp (2.2). Big Shoulders titles, Instrument Sans sentences, JetBrains Mono labels and timecodes (3). Timecodes like `REC ● 01:28 AM` frame every video; they are the brand's voice, not decoration. The site is dark only: there is no light theme and no theme choice.
 
 Voice: short, plain, a little deadpan. Talk about the clip and the stare, not about AI.
 

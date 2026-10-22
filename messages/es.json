@@ -40,7 +40,7 @@
       "eyebrow": "Seis ventanas",
       "title": "Elige tu ventana",
       "aside": "Elige una aquí y quedará lista en el generador.",
-      "rec": "02:14 AM · CAM 01",
+      "rec": "01:28 AM · CAM 01",
       "original": "La original",
       "use": "Usar esta escena",
       "useLabel": "Usar la escena {scene}",
@@ -140,7 +140,7 @@
       }
     },
     "cta": {
-      "rec": "REC 02:14:07 AM · CAM 03",
+      "rec": "REC 01:28:00 AM · CAM 03",
       "title": "Tu ventana está abierta.",
       "body": "Una foto. 14 segundos. Alguien está mirando.",
       "button": "Crear mi video"
@@ -774,7 +774,7 @@
       "burger": {
         "name": "Hamburguesa de noche",
         "short": "Hamburguesa",
-        "time": "02:14 AM",
+        "time": "01:28 AM",
         "note": "El clip que todos copian: bocado, pausa, mirada, cortina."
       },
       "noodles": {

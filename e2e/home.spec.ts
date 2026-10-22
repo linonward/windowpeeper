@@ -169,11 +169,13 @@ test("the REC dot blinks, but not for reduced motion", async ({ browser }) => {
   }
 });
 
-test("the example clip's timecode reads 01:28:00 AM", async ({ page }) => {
+test("the home page's timecodes read 01:28", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/");
 
   await expect(page.getByText("REC 01:28:00 AM", { exact: true })).toBeVisible();
+  await expect(page.getByText("REC 01:28:00 AM · CAM 03", { exact: true })).toBeVisible();
+  await expect(page.getByText("02:14")).toHaveCount(0);
 });
 
 test("body uses the Instrument Sans font", async ({ page }) => {

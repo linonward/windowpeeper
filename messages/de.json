@@ -40,7 +40,7 @@
       "eyebrow": "Sechs Fenster",
       "title": "Wähl dein Fenster",
       "aside": "Wähl hier eins, und es ist im Generator bereit.",
-      "rec": "02:14 AM · CAM 01",
+      "rec": "01:28 AM · CAM 01",
       "original": "Das Original",
       "use": "Diese Szene nehmen",
       "useLabel": "Die Szene {scene} nehmen",
@@ -140,7 +140,7 @@
       }
     },
     "cta": {
-      "rec": "REC 02:14:07 AM · CAM 03",
+      "rec": "REC 01:28:00 AM · CAM 03",
       "title": "Dein Fenster ist offen.",
       "body": "Ein Foto. 14 Sekunden. Jemand schaut zu.",
       "button": "Mein Video erstellen"
@@ -774,7 +774,7 @@
       "burger": {
         "name": "Burger bei Nacht",
         "short": "Burger",
-        "time": "02:14 AM",
+        "time": "01:28 AM",
         "note": "Der Clip, den alle nachmachen: Bissen, Erstarren, Blick, Vorhang."
       },
       "noodles": {
