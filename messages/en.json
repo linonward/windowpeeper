@@ -438,7 +438,8 @@
     "nav": "Dashboard navigation",
     "groups": {
       "create": "Create",
-      "account": "Account"
+      "account": "Account",
+      "admin": "Admin"
     },
     "openMenu": "Open menu",
     "signOut": "Sign out",
