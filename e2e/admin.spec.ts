@@ -95,9 +95,8 @@ test("admins open a user's details from the list and add credits there", async (
   await expect(page).toHaveURL(/\/admin\/users\/[^/?]+$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(user.split("@")[0]);
   await expect(page.getByRole("region", { name: "Profile" })).toContainText(user);
-  await expect(page.getByRole("region", { name: "Subscription" })).toContainText(
-    "No subscription.",
-  );
+  // V1 sells one-time packs only.
+  await expect(page.getByRole("region", { name: "Subscription" })).toHaveCount(0);
   await expect(sidebar(page).getByRole("link", { name: "Users" })).not.toHaveAttribute(
     "aria-current",
   );
