@@ -646,7 +646,7 @@
       },
       "usersTotal": "{count, plural, one {# user} other {# users}} in total",
       "refunded": "{count, number} refunded",
-      "boughtNote": "Credit packs and subscriptions, less refunded payments",
+      "boughtNote": "Credit packs, less refunded payments",
       "noRevenue": "No revenue",
       "generations": "Generations",
       "kind": "Kind",

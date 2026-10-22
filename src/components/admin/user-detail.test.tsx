@@ -32,7 +32,7 @@ const subscription = {
   currentPeriodEnd: new Date("2026-11-01T00:00:00Z"),
 };
 
-test("shows the profile, balance, subscription and credit history", () => {
+test("shows the profile, balance and credit history", () => {
   renderWithIntl(
     <UserDetail user={user} subscription={subscription} transactions={transactions} />,
   );
@@ -46,16 +46,14 @@ test("shows the profile, balance, subscription and credit history", () => {
   expect(within(profile).getByText("Verified")).toBeTruthy();
   expect(screen.getByText("1,250 credits")).toBeTruthy();
   expect(screen.getByRole("button", { name: "Add credits to ada@example.com" })).toBeTruthy();
-  const sub = screen.getByRole("region", { name: "Subscription" });
-  expect(sub.textContent).toContain("1,000 credits per month");
-  expect(sub.textContent).toContain("$9.00");
-  expect(sub.textContent).toContain("Active, renews on Nov 1, 2026.");
+  // V1 sells one-time packs only, so the subscription section is off.
+  expect(screen.queryByRole("region", { name: "Subscription" })).toBeNull();
   const history = screen.getByRole("table", { name: "Credit history" });
   expect(history.textContent).toContain("Added by an admin");
   expect(history.textContent).toContain("+25");
 });
 
-test("says when the user has no name, no subscription and an unverified email", () => {
+test("says when the user has no name and an unverified email", () => {
   renderWithIntl(
     <UserDetail
       user={{ ...user, name: "", emailVerified: false }}
@@ -68,5 +66,5 @@ test("says when the user has no name, no subscription and an unverified email", 
   const profile = screen.getByRole("region", { name: "Perfil" });
   expect(within(profile).getByText("Sin definir")).toBeTruthy();
   expect(within(profile).getByText("Sin verificar")).toBeTruthy();
-  expect(screen.getByRole("region", { name: "Suscripción" }).textContent).toContain("Sin suscripción.");
+  expect(screen.queryByRole("region", { name: "Suscripción" })).toBeNull();
 });

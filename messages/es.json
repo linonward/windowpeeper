@@ -646,7 +646,7 @@
       },
       "usersTotal": "{count, plural, one {# usuario} other {# usuarios}} en total",
       "refunded": "{count, number} reembolsados",
-      "boughtNote": "Paquetes de créditos y suscripciones, menos los pagos reembolsados",
+      "boughtNote": "Paquetes de créditos, menos los pagos reembolsados",
       "noRevenue": "Sin ingresos",
       "generations": "Generaciones",
       "kind": "Tipo",

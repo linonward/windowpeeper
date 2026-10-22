@@ -70,6 +70,7 @@ test("shows users, credits and orders with their notes", () => {
   expect(card("Credits spent").textContent).toContain("5,400");
   expect(card("Credits spent").textContent).toContain("120 refunded");
   expect(card("Credits bought").textContent).toContain("9,000");
+  expect(card("Credits bought").textContent).toContain("Credit packs, less refunded payments");
   expect(card("Paid orders").textContent).toContain("12");
   expect(card("Paid orders").textContent).toContain("$480.00");
   expect(card("Paid orders").textContent).toContain("CN¥99.00");

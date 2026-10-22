@@ -24,7 +24,7 @@ type Subscription = {
 
 export function UserDetail({
   user,
-  subscription,
+  // subscription,
   transactions,
 }: {
   user: User;
@@ -87,6 +87,9 @@ export function UserDetail({
         <AddCredits userId={user.id} email={user.email} />
       </section>
 
+      {/* V1 sells one-time credit packs only, so the
+          subscription section is off. Uncomment it, with `status` below and
+          `subscription` in the props, when plans are sold.
       <section aria-labelledby="user-subscription" className="flex flex-col gap-4">
         <h2 id="user-subscription" className="font-display text-lg font-semibold">
           {t("subscription")}
@@ -108,15 +111,16 @@ export function UserDetail({
           </p>
         )}
       </section>
+      */}
 
       <CreditTransactions transactions={transactions} />
     </>
   );
 
-  function status({ status, currentPeriodEnd }: Subscription) {
-    if (status === "past_due") return t("pastDue");
-    if (!currentPeriodEnd) return t("active");
-    const on = date(currentPeriodEnd);
-    return status === "canceling" ? t("endsOn", { date: on }) : t("renewsOn", { date: on });
-  }
+  // function status({ status, currentPeriodEnd }: Subscription) {
+  //   if (status === "past_due") return t("pastDue");
+  //   if (!currentPeriodEnd) return t("active");
+  //   const on = date(currentPeriodEnd);
+  //   return status === "canceling" ? t("endsOn", { date: on }) : t("renewsOn", { date: on });
+  // }
 }

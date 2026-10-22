@@ -646,7 +646,7 @@
       },
       "usersTotal": "{count, plural, one {# Nutzer} other {# Nutzer}} insgesamt",
       "refunded": "{count, number} erstattet",
-      "boughtNote": "Credit-Pakete und Abos, abzüglich erstatteter Zahlungen",
+      "boughtNote": "Credit-Pakete, abzüglich erstatteter Zahlungen",
       "noRevenue": "Kein Umsatz",
       "generations": "Generierungen",
       "kind": "Art",
