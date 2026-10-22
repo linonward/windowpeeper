@@ -33,8 +33,8 @@ afterEach(() => {
 
 it("records the first visit's source, UTM tags, landing path, language and time", () => {
   visit(
-    "/en/tip-toe-in-my-jordans?utm_source=tiktok&utm_medium=social&utm_campaign=launch&utm_term=tip%20toe&utm_content=clip-1&email=a%40b.c#faq",
-    "https://www.google.com/search?q=rumpelstiltskin",
+    "/en/how-to-make-window-peeper-video?utm_source=tiktok&utm_medium=social&utm_campaign=launch&utm_term=window%20peeper&utm_content=clip-1&email=a%40b.c#faq",
+    "https://www.google.com/search?q=window+peeper",
   );
 
   const touch = recordFirstTouch(now);
@@ -44,9 +44,9 @@ it("records the first visit's source, UTM tags, landing path, language and time"
     utm_source: "tiktok",
     utm_medium: "social",
     utm_campaign: "launch",
-    utm_term: "tip toe",
+    utm_term: "window peeper",
     utm_content: "clip-1",
-    landing_path: "/en/tip-toe-in-my-jordans",
+    landing_path: "/en/how-to-make-window-peeper-video",
     locale: "en-US",
     seen_at: now.toISOString(),
   };

@@ -11,14 +11,14 @@ const PACKS = [
 // The cards, without the perks listed inside each.
 const cardsIn = (page: Page) => page.getByRole("region", { name: "Pick your pack" }).locator(":scope > ul > li");
 
-test("signed-out visitors see the meme's price list: the lowest price, the packs and what every pack includes", async ({ page }) => {
+test("signed-out visitors see the price list: the lowest price, the packs and what every pack includes", async ({ page }) => {
   const response = await page.goto("/en/pricing");
 
   expect(response?.status()).toBe(200);
   await expect(page).toHaveURL("/en/pricing");
-  await expect(page.getByRole("heading", { level: 1, name: "Rumpelstiltskin meme videos, from $4.99" })).toBeVisible();
-  await expect(page).toHaveTitle("Rumpelstiltskin Meme Video Pricing | AIRumpelstiltskinVideo");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Rumpelstiltskin meme videos from \$4\.99:/);
+  await expect(page.getByRole("heading", { level: 1, name: "Window peeper videos, from $4.99" })).toBeVisible();
+  await expect(page).toHaveTitle("Window Peeper Video Pricing | WindowPeeper");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Window peeper videos from \$4\.99:/);
   const cards = cardsIn(page);
   for (const [index, [title, price, line]] of PACKS.entries()) {
     const card = cards.nth(index);
@@ -75,7 +75,7 @@ test("renders in Chinese, linked from the footer", async ({ page }) => {
   await page.getByRole("contentinfo").getByRole("link", { name: "价格" }).click();
 
   await expect(page).toHaveURL("/zh/pricing");
-  await expect(page.getByRole("heading", { level: 1, name: /^侏儒怪表情包视频，.*4\.99 起$/ })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /^Window Peeper 视频，.*4\.99 起$/ })).toBeVisible();
   const main = page.getByRole("main");
   await expect(main).toContainText("1 个 Pro 视频");
   await expect(main).toContainText("或 2 个视频");

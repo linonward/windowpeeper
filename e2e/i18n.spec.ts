@@ -12,7 +12,7 @@ test("renders Chinese under /zh", async ({ page }) => {
 
   await expect(page.locator("html")).toHaveAttribute("lang", "zh");
   await expect(page.getByRole("heading", { name: "登录" })).toBeVisible();
-  await expect(page).toHaveTitle("登录 | AIRumpelstiltskinVideo");
+  await expect(page).toHaveTitle("登录 | WindowPeeper");
 });
 
 test("switches language and keeps the page", async ({ page }) => {
@@ -32,7 +32,7 @@ test("switches to Spanish and German from the language menu", async ({ page }) =
   await page.getByRole("menuitem", { name: "Español" }).click();
   await expect(page).toHaveURL("/es/sign-in");
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
-  await expect(page).toHaveTitle("Iniciar sesión | AIRumpelstiltskinVideo");
+  await expect(page).toHaveTitle("Iniciar sesión | WindowPeeper");
 
   await page.goto("/de/privacy");
   await expect(page.locator("html")).toHaveAttribute("lang", "de");

@@ -75,7 +75,7 @@ The table lists every variable in `.env.example` and every `process.env` read in
 | `WAFFO_STORE_ID`     | With Waffo subscriptions | Store ID (`STO_...`) for customer portal links          |
 | `WAFFO_SUBSCRIPTION_YEARLY_PRODUCT_ID` | With Waffo yearly plans | Yearly subscription product the yearly plans are sold as (`PROD_...`). Empty hides the yearly plans |
 | `WAFFO_ENVIRONMENT`  | No                | `test` or `prod` (default). Webhooks from the other environment are rejected |
-| `DASHSCOPE_API_KEY`  | No                | Alibaba Cloud Model Studio (Bailian) API key. Empty turns the tip-toe dance off |
+| `DASHSCOPE_API_KEY`  | No                | Alibaba Cloud Model Studio (Bailian) API key. Empty turns the window peeper video off |
 | `DASHSCOPE_BASE_URL` | No                | API host for the key's region. Default `https://dashscope.aliyuncs.com` (Beijing) |
 | `IMAGE_MODERATION`   | No                | `seeapi` checks the photos of the photo effects with SeeAPI's NSFW filter. Empty turns the check off |
 | `SEEAPI_API_KEY`     | With `IMAGE_MODERATION` | SeeAPI API key                                          |
@@ -164,7 +164,7 @@ New accounts start with no credits: `signupCredits` in `src/server/credits/confi
 
 ## Payments
 
-Users buy one-time credit packs on `/billing`. Packs live in `src/server/payment/packs.ts` (amounts in cents): `small` 10 credits for $4.99, `medium` 20 for $7.99, `large` 30 for $11.99. A tip-toe video costs 10 credits and a Pro one 20 (`src/server/videos/window-peeper.ts`), so the packs buy one video, one Pro video or two videos, and three videos. `/pricing` lists the packs, what each buys and what a video costs, and recommends `DEFAULT_PACK_ID` (`small`); its buttons open `/billing?pack=<id>`, which signs visitors in first and focuses the chosen pack. The home page's generator also sells packs: when a video costs more than the balance, it lists the packs, picks the smallest that pays for it, and checkout returns to the generator, which makes the video once the webhook adds the credits (it retries every 3 seconds for 90 seconds). Set `PAYMENT_PROVIDER` to switch providers, then restart. Orders and subscriptions from the old provider keep working while its webhook stays configured.
+Users buy one-time credit packs on `/billing`. Packs live in `src/server/payment/packs.ts` (amounts in cents): `small` 10 credits for $4.99, `medium` 20 for $7.99, `large` 30 for $11.99. A window peeper video costs 10 credits and a Pro one 20 (`src/server/videos/window-peeper.ts`), so the packs buy one video, one Pro video or two videos, and three videos. `/pricing` lists the packs, what each buys and what a video costs, and recommends `DEFAULT_PACK_ID` (`small`); its buttons open `/billing?pack=<id>`, which signs visitors in first and focuses the chosen pack. The home page's generator also sells packs: when a video costs more than the balance, it lists the packs, picks the smallest that pays for it, and checkout returns to the generator, which makes the video once the webhook adds the credits (it retries every 3 seconds for 90 seconds). Set `PAYMENT_PROVIDER` to switch providers, then restart. Orders and subscriptions from the old provider keep working while its webhook stays configured.
 
 Subscriptions aren't sold. `PLANS_ON_SALE` in `src/server/payment/plans.ts` is empty, so no page shows a plan and `POST /api/payment/subscribe` answers 400 `UNKNOWN_PLAN`. Subscriptions already bought keep renewing, and `/billing` shows them to their subscribers. To sell a plan again, add its ID to `PLANS_ON_SALE`, restore the plan copy on `/pricing` and run `pnpm test`. The rest of this list covers subscriptions already bought.
 
@@ -220,7 +220,7 @@ The store name under Settings → General shows at checkout. You can change it a
 
 ## Bailian and storage
 
-The tip-toe dance runs on Alibaba Cloud Model Studio (Bailian). Finished videos are copied to a private bucket.
+The window peeper video runs on Alibaba Cloud Model Studio (Bailian). Finished videos are copied to a private bucket.
 
 1. In the [Model Studio console](https://bailian.console.aliyun.com/), create an API key in the Beijing region. Copy it into `DASHSCOPE_API_KEY`.
 2. For another region, set `DASHSCOPE_BASE_URL` to that region's host. Keys and hosts from different regions don't mix.
@@ -244,7 +244,7 @@ Signed-in users make videos on `/videos/<kind>` (`/videos` opens the window peep
 - Older rows may name a provider the app dropped with the image-to-video generator (`fal`, `seeapi`). Production had none. Such a row still pending fails on its next poll or sweep with `Provider <id> was removed` and refunds its credits.
 - Deleting an account deletes its `video` rows and its files under `videos/<userId>/`, uploaded photos included. It also deletes files under `images/<userId>/` and the account's rows in `apikey`, left from text-to-image and API keys, which the app no longer has. If storage fails then, the server logs `storage.user_files_not_deleted`; delete those folders by hand.
 
-### Photo effects: the tip-toe dance (Bailian wan2.7-r2v)
+### Photo effects: the window peeper video (Bailian wan2.7-r2v)
 
 `/videos/<kind>` and the home page turn one photo into a video: Bailian makes the effect's prompt into a multi-shot video that stars the photo's subject, with generated music. `PHOTO_EFFECTS` (`src/server/videos/photo-effects.ts`) lists the effects; the window peeper video (`src/server/videos/window-peeper.ts`) is the only one. It lasts 12 seconds and costs 10 credits at 720P, or 20 in Pro (1080P), refunded on failure. Each video is new: the shots differ from one photo to the next.
 
@@ -331,7 +331,7 @@ To test it, send a message the same way: `curl -X POST -H 'Content-Type: applica
 ## Landing page and visual system
 
 - Copy lives under `Home` in `messages/en.json` and `messages/zh.json`. Replace it with what your product does; keep sentence case.
-- The "See the dance" card (`src/components/home/example.tsx`) beside the generator plays a tip-toe clip from `public/landing/tiptoe/` (`sample.mp4` and `poster.jpg`). To show another result, replace both files (H.264 + AAC, `-movflags +faststart`, 960×540, under 2 MB; the poster is a frame of that MP4) and rewrite `Home.example`. Set `EXAMPLE_ADDED` and `seconds` in `src/app/[locale]/(marketing)/page.tsx` to the new clip.
+- The home page has no example clip yet: the hero shows no video and the generator stands alone. To add one, put `sample.mp4` and `poster.jpg` in `public/landing/<name>/` (H.264 + AAC, `-movflags +faststart`, under 2 MB; the poster is a frame of that MP4), pass `example` to `Hero` in `src/app/[locale]/(marketing)/page.tsx`, check `Home.example` describes it, and add its `videoObject` structured data (`src/lib/seo.ts`). Use a video made here from a photo you may publish, never a clip from TikTok.
 - Colors, radius and fonts are tokens in `src/app/globals.css` (`:root` for the light theme, `.dark` for the default dark theme, `--font-display` for headings). Change them there, not per component.
 - Dark is the default theme. Users pick light, dark or system (follows the OS, live) in the footer or the account menu; the choice is saved in `localStorage`. The logic is in `src/components/layout/theme.ts`.
 - Icons come from `lucide-react` only; ESLint blocks other icon libraries. Stroke width is set once in `globals.css` (`svg.lucide`). Icons are `aria-hidden` by default; give icon-only buttons an `aria-label`.
@@ -384,7 +384,7 @@ The app ships in English (`en`), Chinese (`zh`), Spanish (`es`) and German (`de`
 - Set `ADMIN_EMAILS` (comma-separated), then restart. Admins see "Admin" in the sidebar; everyone else gets the 404 page on every admin page. E2E sets its own admin (`ADMIN_EMAIL` in `playwright.config.ts`).
   - `/admin` opens `/admin/users`: 50 users per page, newest first, searched by part of an email or name. An email opens `/admin/users/<id>`: profile, balance, subscription and credit history. On both, a row's + button adds 1 to 1,000,000 credits; the user sees "Added by an admin" on `/billing`, and the log records the admin.
   - `/admin/orders` lists credit-pack orders, 50 per page, newest first, filtered by status and provider. Search matches part of the buyer's email, or an order or provider session ID exactly. It is read-only and lists no subscriptions.
-  - `/admin/metrics` covers 24 hours, 7 days (default) or 30 days: new users; credits spent, refunded and bought; paid pack orders with revenue per currency. For videos: jobs by status, success rate (pending left out), median and p95 time to stored file of successes, and the 5 most common failure reasons. Model costs: per model (`wan2.7-r2v 720P` or `1080P`, by the resolution a tip-toe dance stored; dances made earlier with animate-move count as 720P; older videos as provider and resolution), the jobs, usage (seconds of video), credits and estimated cost in US dollars, with a total. Jobs and credits count by creation time, orders by payment time.
+  - `/admin/metrics` covers 24 hours, 7 days (default) or 30 days: new users; credits spent, refunded and bought; paid pack orders with revenue per currency. For videos: jobs by status, success rate (pending left out), median and p95 time to stored file of successes, and the 5 most common failure reasons. Model costs: per model (`wan2.7-r2v 720P` or `1080P`, by the resolution a video stored; older videos as provider and resolution), the jobs, usage (seconds of video), credits and estimated cost in US dollars, with a total. Jobs and credits count by creation time, orders by payment time.
   - Model costs are estimates from list prices kept in the code. Update them when Bailian changes its prices: `REFERENCE_COST_PER_SECOND` (`src/server/videos/config.ts`, dollars per second). Only videos that succeeded count. A model without a price (older videos from dropped generators) shows a dash and adds nothing to the total.
 - Legal texts are templates in `content/legal/<locale>/{privacy,terms,refund}.mdx`. Have a lawyer review them, then edit both locales and the "Last updated" line. Search results show each page's one-line summary, `Legal.descriptions.<doc>` in every `messages/*.json`; keep it true to the text.
 - Inside the MDX, use `<ProjectName />` and `<SupportEmail />` instead of typing the values.
@@ -600,8 +600,8 @@ Pages then load `/_vercel/speed-insights/script.js`.
 | `pnpm typecheck` can't find `LayoutProps`                 | Use `pnpm typecheck`, not bare `tsc`; it runs `next typegen` first                             |
 | Playwright: `Executable doesn't exist`                    | Run `pnpm exec playwright install chromium`                                                    |
 | Videos fail; the log says `Bailian 401 InvalidApiKey` | The key is wrong or from another region. Match `DASHSCOPE_BASE_URL` to the key's region |
-| A tip-toe task is refunded but the log says `Bailian task ... SUCCEEDED` | Check the deployed result parser. Motion transfer returns `output.results.video_url`; older image-to-video tasks returned `output.video_url`. The parser must accept both. A task already marked failed stays refunded; do not replay its success event or change its ledger entry to make analytics pass. Run a new task after deploying the fix |
-| Every tip-toe upload answers 503 `MODERATION_UNAVAILABLE` with the local MinIO | `IMAGE_MODERATION=seeapi` needs a bucket SeeAPI can download from. Use one reachable from the internet, or leave `IMAGE_MODERATION` empty locally |
+| A window peeper task is refunded but the log says `Bailian task ... SUCCEEDED` | Check the deployed result parser. Motion transfer returns `output.results.video_url`; older image-to-video tasks returned `output.video_url`. The parser must accept both. A task already marked failed stays refunded; do not replay its success event or change its ledger entry to make analytics pass. Run a new task after deploying the fix |
+| Every window peeper upload answers 503 `MODERATION_UNAVAILABLE` with the local MinIO | `IMAGE_MODERATION=seeapi` needs a bucket SeeAPI can download from. Use one reachable from the internet, or leave `IMAGE_MODERATION` empty locally |
 | Videos fail; the log shows an S3 error (`NoSuchBucket`, `AccessDenied`, `ECONNREFUSED`) | Run `docker compose up -d --wait` locally. Elsewhere, check the bucket name, the key's permissions and `STORAGE_ENDPOINT` |
 | "Payments aren't set up yet." on `/billing`               | Set `PAYMENT_PROVIDER` and that provider's keys, then restart                                   |
 | "Couldn't open subscription management"                  | Stripe: save the Customer portal settings in the Dashboard. Waffo: set `WAFFO_STORE_ID`        |

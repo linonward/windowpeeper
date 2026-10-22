@@ -18,7 +18,7 @@ A new effect ships in two steps:
 
 ## Guides
 
-Guides are text pages for searches about the meme itself, not about one effect: `/tip-toe-in-my-jordans`, `/rumpelstiltskin-meme` and `/how-to-make-rumpelstiltskin-video`. They have no form; their calls to action lead to the home generator (`/<locale>#generator`). Add one as [`runbook.md`](runbook.md) describes under the legal pages. Keep their claims about the original viral clip general: no dates, creators or view counts. Name no brand, artist or song in the body; a meme's nickname may appear only in its own page's title and h1 (`guides.test.tsx` checks it).
+Guides are text pages for searches about the trend itself, not about one effect: `/how-to-make-window-peeper-video`. They have no form; their calls to action lead to the home generator (`/<locale>#generator`). Add one as [`runbook.md`](runbook.md) describes under the legal pages. Keep their claims about the trend general: no dates, creators or view counts we can't source. Name TikTok and CapCut only to describe the trend, never to suggest a link with them (`guides.test.tsx` checks the disclaimer).
 
 ## Checklist for a new landing page
 
@@ -27,7 +27,7 @@ Start when the effect is live at `/videos/<kind>` and has a good real result.
 ### Query and copy
 
 - [ ] Pick one query. The page path is the query (`/ai-dance-video`).
-- [ ] Title: `<Query>: <benefit> | AIRumpelstiltskinVideo`, 50–60 characters, so the query itself stays within 35. Description: 120–155 characters. Chinese follows the same shape.
+- [ ] Title: `<Query>: <benefit> | WindowPeeper`, 50–60 characters, so the query itself stays within 35. Description: 120–155 characters. Chinese follows the same shape.
 - [ ] One H1 that holds the query. The FAQ H2 names the query (`AI dance video questions`). Leave the other H2s natural.
 - [ ] Copy in `messages/en.json` and `messages/zh.json`, under the page's own namespace (`DanceLanding`).
 

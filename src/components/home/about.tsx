@@ -4,13 +4,13 @@ import { cn } from "cn";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "./section-heading";
 
-const SECTIONS = ["makes", "motion", "meme", "movie", "music", "social", "quality"] as const;
+const SECTIONS = ["makes", "template", "trend", "filter", "music", "social", "quality"] as const;
 
 const LINK = "font-medium text-primary-text underline underline-offset-4";
 
 // The long answer under the steps: one topic per row, an h3 in the left
 // third and muted paragraphs beside it, as on the guides (docs/DESIGN.md,
-// Home). Each topic links the guide that covers it in full.
+// Home). A topic links the guide that covers it in full.
 export function About({ credits, proCredits }: { credits: number; proCredits: number }) {
   const t = useTranslations("Home.about");
   const page = (href: string) =>
@@ -31,15 +31,13 @@ export function About({ credits, proCredits }: { credits: number; proCredits: nu
     proCredits,
     generator,
     back: generator,
-    meme: page("/rumpelstiltskin-meme"),
-    howto: page("/how-to-make-rumpelstiltskin-video"),
-    trend: page("/tip-toe-in-my-jordans"),
+    howto: page("/how-to-make-window-peeper-video"),
     pricing: page("/pricing"),
   };
 
   return (
     <section aria-labelledby="about" className="flex flex-col gap-12 border-t py-20">
-      {/* "Rumpelstiltskin" can't wrap: smaller on phones, as the FAQ title. */}
+      {/* Smaller on phones, as the FAQ title. */}
       <SectionHeading eyebrow={t("eyebrow")} id="about" className="text-[clamp(1.5rem,8.2vw,1.875rem)] sm:text-4xl">
         {t("title")}
       </SectionHeading>

@@ -1,10 +1,10 @@
 import { useTranslations } from "next-intl";
 
-// The window peeper video a video follows, from public/: its MP4 and a poster
-// frame. The copy describes that clip as the dance, not as a result.
+// The scene a video follows, from public/: its MP4 and a poster frame. The
+// copy describes that clip as the scene, not as a result.
 export type HomeExample = { sample: string; poster: string };
 
-// "See the dance": a card beside the generator. Nothing shows without a clip.
+// "See the scene": a card beside the generator. Nothing shows without a clip.
 export function Example({ example }: { example?: HomeExample }) {
   const t = useTranslations("Home.example");
   if (!example) return null;

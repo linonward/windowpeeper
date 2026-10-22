@@ -1,22 +1,22 @@
 {
   "Metadata": {
-    "title": "AIRumpelstiltskinVideo",
-    "homeTitle": "Rumpelstilzchen-Meme KI-Video – Tiptoeing in My Jordans",
-    "tagline": "KI-Rumpelstilzchen-Zehenspitzentanz",
-    "description": "Spiel die Hauptrolle im Rumpelstilzchen-Meme: Foto hochladen, 12-Sekunden-Video Tiptoeing in My Jordans für TikTok bekommen. Gratis-Vorschau, einmal zahlen, kein Abo."
+    "title": "WindowPeeper",
+    "homeTitle": "Window Peeper KI-Video – Der TikTok-Trend aus einem Foto",
+    "tagline": "Window-Peeper-KI-Video aus einem Foto",
+    "description": "Mach das Window-Peeper-Trendvideo aus einem Foto: beim Essen im hellen Fenster erwischt, ein langer Blick, dann der Vorhang. Ohne CapCut-Vorlage."
   },
   "Home": {
     "hero": {
-      "eyebrow": "Gerade im Trend auf TikTok",
-      "heading": "Rumpelstilzchen-Meme als KI-Video",
-      "title": "Spiel mit einem Foto die Hauptrolle in Tiptoeing in My Jordans.",
-      "body": "Lade ein Foto hoch. Du schleichst durchs Stroh, machst „Pst“, grinst und tanzt auf Zehenspitzen, während eine Frau staunt. 12 Sekunden, hochkant, fertig für TikTok."
+      "eyebrow": "Der Window-Peeper-Trend auf TikTok",
+      "heading": "Window-Peeper-KI-Video",
+      "title": "Lass dich mit einem Foto im Fenster erwischen.",
+      "body": "Lade ein Foto hoch. Nachts beim Essen im hellen Fenster erwischt, starrst du in die Linse und reißt den Vorhang zu. 12 Sekunden, bereit für TikTok."
     },
     "example": {
-      "eyebrow": "Sieh dir den Tanz an",
+      "eyebrow": "Sieh dir die Szene an",
       "title": "So sieht dein Video aus",
-      "video": "Die Zehenspitzen-Szene: Ein Mann im roten Poloshirt schleicht durch eine Heuscheune, macht „Psst“ in die Kamera und tanzt auf Zehenspitzen an einem verblüfften Mann mit Schirmmütze vorbei, mit Musik",
-      "note": "Dein Video erzählt diese Geschichte mit der Person auf deinem Foto: 12 Sekunden, Hochformat 9:16, mit Musik. Die Einstellungen sind in jedem Video anders."
+      "video": "Die Window-Peeper-Szene: Nachts fährt eine Kamera auf ein erleuchtetes Fenster zu, die Person drinnen erstarrt mitten im Bissen, starrt in die Linse und zieht den Vorhang zu.",
+      "note": "Dein Video erzählt diese Geschichte mit der Person auf deinem Foto: 12 Sekunden, hochkant 9:16, mit Musik. Die Einstellungen ändern sich von Video zu Video ein wenig."
     },
     "strip": {
       "label": "Das bekommst du",
@@ -28,19 +28,19 @@
     },
     "steps": {
       "eyebrow": "So funktioniert’s",
-      "title": "In drei Schritten zum tanzenden Foto",
+      "title": "In drei Schritten zu deinem Window-Peeper-Video",
       "items": {
         "1": {
           "title": "Foto hochladen",
-          "body": "Wähle ein klares Foto von einer erwachsenen Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera."
+          "body": "Wähle ein klares Foto eines Erwachsenen, ab der Hüfte, mit Blick in die Kamera. Deine Kleidung bleibt im Video gleich."
         },
         "2": {
-          "title": "Wir bringen es zum Tanzen",
-          "body": "Die KI setzt die Person auf deinem Foto in die Zehenspitzen-Szene, im Frack und mit Musik. Das dauert ein paar Minuten."
+          "title": "Wir drehen die Szene",
+          "body": "Die KI setzt die Person auf deinem Foto nachts hinter ein erleuchtetes Fenster: der Bissen, der Blick und der Vorhang, mit Musik. Das dauert ein paar Minuten."
         },
         "3": {
-          "title": "Herunterladen & teilen",
-          "body": "Sieh es dir hier an, lade die MP4 herunter und schick den Link an deine Freunde."
+          "title": "Herunterladen & posten",
+          "body": "Lade die MP4 herunter und poste sie mit #windowpeeper auf TikTok, Reels oder Shorts."
         }
       }
     },
@@ -52,63 +52,63 @@
     },
     "faq": {
       "eyebrow": "FAQ",
-      "title": "Fragen zum KI-Rumpelstilzchen-Video",
+      "title": "Fragen zum Window-Peeper-Video",
       "pack": "{credits, plural, one {# Credit} other {# Credits}} für {price}",
       "items": {
         "1": {
-          "title": "Was ist der Rumpelstiltskin-KI-Videogenerator?",
-          "body": "Er macht ein Meme-Video: Die Person auf deinem Foto schleicht im cremefarbenen Frack durch eine Heuscheune und tanzt auf Zehenspitzen wie der Zwerg aus dem Märchen, zu Originalmusik. Du lädst ein Foto hoch, und rumpelstiltskin macht daraus ein 12-Sekunden-Video."
+          "title": "Was ist der Window-Peeper-Trend?",
+          "body": "Ein inszenierter Comedy-Sketch auf TikTok. Nachts fährt eine Kamera auf das einzige erleuchtete Fenster eines dunklen Hauses zu. Die Person drinnen isst, bemerkt die Kamera, erstarrt, starrt viel zu lange in die Linse und zieht dann den Vorhang zu. Die Person im Fenster ist die Person, die das Video postet."
         },
         "2": {
           "title": "Welche Fotos kann ich verwenden?",
-          "body": "Ein Foto von dir selbst oder von einer erwachsenen Person, die dir die Erlaubnis gegeben hat. Lade keine Fotos von Kindern hoch. Eine Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. JPEG, PNG oder WebP, bis {size} MB."
+          "body": "Ein Foto von dir oder von einem Erwachsenen, der zugestimmt hat. Lade keine Fotos von Kindern oder Personen des öffentlichen Lebens hoch. Eine Person, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. JPEG, PNG oder WebP, bis {size} MB."
         },
         "3": {
-          "title": "Wie lang ist das Video, und wie lange dauert es?",
-          "body": "Etwa 12 Sekunden, mit Musik. Die Erstellung dauert meist ein paar Minuten. Lass die Seite offen, dann läuft das Video dort, sobald es fertig ist."
+          "title": "Wie lang ist das Video und wie lange dauert es?",
+          "body": "Etwa 12 Sekunden, mit Musik. Die Erstellung dauert meist ein paar Minuten. Lass die Seite offen, dann spielt das Video dort ab, sobald es fertig ist."
         },
         "4": {
           "title": "Was kostet es?",
-          "body": "Ein Zehenspitzen-Video kostet {credits, plural, one {# Credit} other {# Credits}}. Ein Pro-Video in schärferem 1080p kostet {proCredits, plural, one {# Credit} other {# Credits}}. Credits gibt es in Paketen mit Einmalzahlung: {packs}. Es gibt kein Abo, und Credits verfallen nie. Schlägt ein Video fehl, bekommst du die Credits zurück. Außerdem bekommt jedes Konto eine kostenlose Vorschau: 5 Sekunden mit Wasserzeichen. Mehr auf der <pricing>Preisseite</pricing>."
+          "body": "Ein Window-Peeper-Video kostet {credits, plural, one {# Credit} other {# Credits}}. Ein Pro-Video in schärferem 1080p kostet {proCredits, plural, one {# Credit} other {# Credits}}. Credits gibt es in Paketen mit Einmalzahlung: {packs}. Es gibt kein Abo, und Credits verfallen nicht. Schlägt ein Video fehl, bekommst du die Credits zurück. Jedes Konto bekommt außerdem eine kostenlose Vorschau: 5 Sekunden mit Wasserzeichen. Siehe die <pricing>Preisseite</pricing>."
         },
         "5": {
-          "title": "Brauche ich ein Konto?",
-          "body": "Ja, um ein Video zu erstellen. Melde dich mit einem Link per E-Mail oder mit deinem Google-Konto an, ganz ohne Passwort. Dein Foto bleibt ausgewählt, während du dich anmeldest."
+          "title": "Ist das Window-Peeper-Video kostenlos?",
+          "body": "Die Vorschau ist es. Jedes Konto bekommt eine kostenlose 5-Sekunden-Vorschau mit Wasserzeichen, damit du dein Foto in der Szene siehst, bevor du zahlst. Das volle 12-Sekunden-Video ohne Wasserzeichen kostet Credits."
         },
         "6": {
-          "title": "Wie erreiche ich den Support?",
-          "body": "Schreib eine E-Mail an <email></email>. Wir antworten innerhalb von 3 Werktagen."
+          "title": "Brauche ich die CapCut-Vorlage?",
+          "body": "Nein. Eine Window-Peeper-Vorlage in CapCut klebt dein Gesicht in das Material von jemand anderem, in der App. Diese Seite macht ein neues Video von der Person auf deinem Foto, in deiner eigenen Kleidung, im Browser von Handy oder Computer. Du lädst nur die MP4 herunter."
         },
         "7": {
-          "title": "Kann ich es auf TikTok, Reels oder Shorts posten?",
-          "body": "Ja. Jedes Video ist eine MP4 im Hochformat 9:16, die den Handybildschirm füllt. So kannst du es auf TikTok, Reels und Shorts posten, ohne dass etwas abgeschnitten wird."
+          "title": "Gibt es einen Window-Peeper-Filter auf TikTok?",
+          "body": "Keinen, der die ganze Szene inszeniert. Ein Kamerafilter verändert das Livebild; er kann kein Haus bei Nacht filmen, auf ein Fenster zufahren und einen Vorhang schließen. Deshalb nutzen die Leute für diesen Trend Vorlagen oder KI-Video. Hier lädst du ein Foto hoch und bekommst den fertigen Clip."
         },
         "8": {
-          "title": "Stammt der Tanz aus dem Rumpelstiltskin-Film von 1987?",
-          "body": "Nein. 1987 kam zwar ein Realfilm namens „Rumpelstiltskin“ heraus, aber der virale Zehenspitzen-Clip wurde mit KI gemacht. Die Videos hier erstellt eine KI aus deinem Foto, mit Originalmusik."
+          "title": "Kann ich es auf TikTok, Reels oder Shorts posten?",
+          "body": "Ja. Jedes Video von der Startseite ist eine hochkante 9:16-MP4, die den Handybildschirm füllt. Poste es mit #windowpeeper und füge den Trend-Sound in der App hinzu, wenn du ihn willst."
         },
         "9": {
-          "title": "Gibt es dafür einen TikTok-Filter?",
-          "body": "Nein, das ist kein TikTok-Filter oder -Effekt. Es läuft im Browser deines Handys: Foto hochladen, ein paar Minuten warten und die MP4 herunterladen. Dann postest du sie auf TikTok und fügst dort einen Sound hinzu. Wähle „Hochformat“, damit das Video den Bildschirm füllt."
+          "title": "Hat das Video Ton?",
+          "body": "Ja. Jedes Video hat eigens gemachte Originalmusik. Den Sound des Trends enthält es nicht. Den fügst du beim Posten in TikTok, Reels oder Shorts hinzu und regelst dort den Originalton herunter."
         },
         "10": {
-          "title": "Hat das Video Ton?",
-          "body": "Ja. Jedes Video kommt mit eigens dafür gemachter Originalmusik. Den Trend-Song aus dem Meme enthält es nicht. Wenn du einen Trend-Sound willst, füge ihn beim Posten in TikTok, Reels oder Shorts hinzu und dreh dort den Originalton leiser."
+          "title": "Brauche ich ein Konto?",
+          "body": "Ja, um ein Video zu erstellen. Melde dich mit einem E-Mail-Link oder deinem Google-Konto an, ohne Passwort. Dein Foto bleibt ausgewählt, während du dich anmeldest."
         },
         "11": {
           "title": "Sind meine Fotos privat?",
-          "body": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Wir nutzen Fotos und Videos nicht, um KI-Modelle zu trainieren. Deine Videos bleiben in deiner Mediathek, die nur du sehen kannst, bis du dein Konto löschst."
+          "body": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Wir nutzen Fotos und Videos nicht zum Trainieren von KI-Modellen. Deine Videos bleiben in deiner Bibliothek, die nur du siehst, bis du dein Konto löschst."
         },
         "12": {
-          "title": "Was ist der Unterschied zu Veo oder Kling?",
-          "body": "Veo und Kling sind allgemeine Videomodelle: Du schreibst einen Prompt, wählst die Einstellungen und probierst es so lange, bis es passt. Hier lädst du nur ein Foto hoch. Szene, Einstellungen und Musik sind auf den Zehenspitzentanz abgestimmt, und du zahlst pro Video – schlägt eins fehl, bekommst du die Credits zurück."
+          "title": "Wie erreiche ich den Support?",
+          "body": "Schreib an <email></email>. Wir antworten innerhalb von 3 Werktagen."
         }
       }
     },
     "cta": {
       "eyebrow": "Probier’s aus",
-      "title": "Jetzt bist du dran mit Zehenspitzen.",
-      "body": "Ein Foto, etwa 12 Sekunden Tanz, fertig zum Teilen.",
+      "title": "Jetzt bist du im Fenster dran.",
+      "body": "Ein Foto, ein 12-Sekunden-Window-Peeper-Video, bereit zum Posten.",
       "button": "Mein Video erstellen",
       "points": {
         "1": "Ein Foto, ein 12-Sekunden-Video",
@@ -118,55 +118,55 @@
     },
     "about": {
       "eyebrow": "Die ausführliche Antwort",
-      "title": "Über den Rumpelstiltskin-KI-Videogenerator",
+      "title": "Über das Window-Peeper-KI-Video",
       "sections": {
         "makes": {
           "title": "Was der Generator macht",
           "text": {
-            "1": "Dieser KI-Rumpelstilzchen-Videogenerator macht aus einem Foto ein kurzes Tanzvideo. Du lädst ein Bild von einer erwachsenen Person hoch, und die KI macht diese Person zum Star einer Rumpelstilzchen-Szene: Im cremefarbenen Frack schleicht sie durch eine Heuscheune, macht „Psst“ in die Kamera und tanzt mit verschmitztem Grinsen auf Zehenspitzen, während eine Freundin nach Luft schnappt. Das Video ist etwa 12 Sekunden lang, im Breitbild 16:9 oder Hochformat 9:16, mit Originalmusik, und du lädst es als MP4 herunter.",
-            "2": "Du musst nichts filmen und brauchst keine Schnittkenntnisse. Der <generator>Generator oben auf dieser Seite</generator> erledigt alles: Foto auswählen, Standard oder Pro wählen und auf „Generieren“ tippen. Ein Video dauert meist ein paar Minuten und läuft auf der Seite, sobald es fertig ist."
+            "1": "Dieser Window-Peeper-KI-Generator macht aus einem Foto das Video des Trends. Du lädst das Foto eines Erwachsenen hoch, und die KI filmt diese Person nachts in einem erleuchteten Fenster: Die Kamera kommt näher, die Person erstarrt mitten im Bissen, starrt in die Linse und reißt den Vorhang zu. Das Video ist etwa 12 Sekunden lang, hochkant 9:16 oder breit 16:9, mit Originalmusik, und du lädst es als MP4 herunter.",
+            "2": "Du filmst nichts und brauchst keine Schnittkenntnisse. Der <generator>Generator oben auf dieser Seite</generator> erledigt alles: Foto wählen, Standard oder Pro wählen und Generieren drücken. Die <howto>Schritt-für-Schritt-Anleitung</howto> erklärt es."
           }
         },
-        "motion": {
-          "title": "Ein neues Video, kein Face Swap",
+        "template": {
+          "title": "Ein neues Video, keine CapCut-Vorlage",
           "text": {
-            "1": "Viele Videos zum Zehenspitzentanz-Meme im Netz sind Face Swaps: Eine Bearbeitungs-App klebt ein neues Gesicht auf einen bestehenden Clip, und das Gesicht wirkt oft flach oder verrutscht. Dieser Generator arbeitet anders. Die KI analysiert dein Foto und dreht um diese Person herum einen neuen Film: die Scheune, das Kostüm, die Nahaufnahmen und den Tanz. Gesicht, Körper und Kleidung bewegen sich gemeinsam.",
-            "2": "Das Ergebnis ist ein neues Video, keine bearbeitete Kopie eines fremden Clips. Deshalb kommt es auch auf das Foto an. Die KI muss das Gesicht deutlich sehen, also bringt ein Foto von einer Person mit Blick in die Kamera und bei gutem Licht die beste Ähnlichkeit. Ein Selfie funktioniert. Die <howto>Schritt-für-Schritt-Anleitung</howto> zeigt, was ein gutes Foto ausmacht."
+            "1": "Die meisten Window-Peeper-Videos entstehen mit einer CapCut-Vorlage: einem fertigen Schnitt mit einem Platz für dein Gesicht. Körper, Tisch und Zimmer stammen aus dem Material von jemand anderem, deshalb sehen so viele Posts gleich aus.",
+            "2": "Dieser Generator dreht eine neue Szene mit der Person auf deinem Foto. Gesicht, Haare und Kleidung bewegen sich zusammen. Darum zählt das Foto: eine Person, mit Blick in die Kamera, bei gutem Licht, ergibt die beste Ähnlichkeit."
           }
         },
-        "meme": {
-          "title": "Woher das Zehenspitzentanz-Meme kommt",
+        "trend": {
+          "title": "Was der Window-Peeper-Trend ist",
           "text": {
-            "1": "Das Rumpelstiltskin-Meme ist ein kurzer Clip einer kleinen Märchenfigur in altmodischer Kleidung, die auf Zehenspitzen dahinschleicht, als wäre sie gerade mit etwas davongekommen. Benannt wurde es nach Rumpelstilzchen, dem kleinen Männlein aus dem Märchen der Brüder Grimm, das Stroh zu Gold spinnt und ums Feuer tanzt, in der Gewissheit, dass niemand je seinen Namen erraten wird.",
-            "2": "Der Clip verbreitete sich 2026 in Kurzvideo-Apps, und bald setzten die Leute Freunde, Eltern und Kollegen in den Tanz. Lies <meme>was das Rumpelstiltskin-Meme ist</meme> für die ganze Geschichte, oder den <trend>Guide zum Zehenspitzentanz-Trend</trend>, um zu sehen, wie andere ihre Versionen machen."
+            "1": "Der Window-Peeper-Trend ist ein kurzer Comedy-Sketch. Von der anderen Straßenseite aus leuchtet ein Fenster in einem dunklen Haus. Drinnen isst jemand allein. Die Person bemerkt die Kamera, hört auf zu kauen, starrt viel zu lange zurück, steht dann auf und zieht den Vorhang zu.",
+            "2": "Der Witz ist der Blick. Niemand späht wirklich: Die Person im Fenster hat den Clip selbst gemacht, und das Video zeigt das. Bleib dabei und mach Videos von dir oder von Freunden, die eingeweiht sind."
           }
         },
-        "movie": {
-          "title": "Stammt es aus dem Rumpelstiltskin-Film von 1987?",
+        "filter": {
+          "title": "Filter, Effekt oder KI-Video?",
           "text": {
-            "1": "Viele suchen nach dem Rumpelstiltskin-Film von 1987, weil der virale Clip wie eine Szene aus einem alten Märchenfilm aussieht. 1987 kam tatsächlich ein Realfilm namens „Rumpelstiltskin“ heraus, mit Billy Barty in der Titelrolle und Amy Irving als Müllerstochter. Der Zehenspitzen-Clip, der 2026 viral ging, wurde jedoch mit KI gemacht. Er stammt weder aus diesem noch aus einem anderen Film.",
-            "2": "Auch die Videos auf dieser Seite sind KI-generiert, und das sagen sie auch. Wir verwenden kein Material aus Filmen oder aus dem viralen Original-Clip. Teile dein Video als Spaß, nicht als echte Aufnahme."
+            "1": "Viele suchen nach einem Window-Peeper-Filter oder -Effekt, aber ein Kamerafilter verändert nur das Livebild. Er kann kein Haus bei Nacht inszenieren, auf ein Fenster zufahren und auf Kommando einen Vorhang schließen.",
+            "2": "Die Clips, die du siehst, sind CapCut-Vorlagen oder KI-Videos wie die von hier. Lade im <back>Generator</back> ein Foto hoch, und du bekommst den ganzen Effekt als eine Videodatei."
           }
         },
         "music": {
-          "title": "Musik und der Tip-Toe-Sound",
+          "title": "Musik und der Sound des Trends",
           "text": {
-            "1": "Auf TikTok und Reels wird der Tanz oft mit einem angesagten Tip-Toe-Sound gepostet. Jedes Video von hier hat stattdessen eigene Originalmusik, damit du es überall posten kannst, ohne dir den Track von jemand anderem zu leihen.",
-            "2": "Wenn du den Trend-Sound willst, füge ihn beim Posten in der App hinzu. In den meisten Kurzvideo-Apps kannst du den Originalton leiser stellen oder stummschalten und einen Sound aus ihrer Bibliothek wählen."
+            "1": "Auf TikTok wird der Trend meist mit einem Trend-Sound gepostet. Jedes Video von hier hat stattdessen eigene Originalmusik, damit du es überall posten kannst, ohne fremde Musik zu leihen.",
+            "2": "Wenn du den Trend-Sound willst, füge ihn beim Posten in der App hinzu. Die meisten Kurzvideo-Apps lassen dich den Originalton leiser stellen oder stummschalten und einen Sound aus ihrer Bibliothek wählen."
           }
         },
         "social": {
-          "title": "Posten auf TikTok, Reels und Shorts",
+          "title": "Auf TikTok, Reels und Shorts posten",
           "text": {
-            "1": "Jedes Video wird in 9:16 gedreht, im Format eines Handybildschirms. So füllt es TikTok, Instagram Reels und YouTube Shorts aus, ohne dass etwas abgeschnitten wird.",
-            "2": "Du kannst die MP4 auch direkt in einen Gruppenchat schicken oder unter dem Video auf „Teilen“ tippen, um das Teilen-Menü deines Handys zu öffnen."
+            "1": "Videos von der Startseite sind 9:16, das Format eines Handybildschirms, und füllen TikTok, Instagram Reels und YouTube Shorts ohne Abschnitt.",
+            "2": "Du kannst die MP4 auch direkt in einen Gruppenchat schicken oder unter dem Video auf Teilen tippen, um das Teilen-Menü deines Handys zu öffnen."
           }
         },
         "quality": {
           "title": "Standard oder Pro",
           "text": {
-            "1": "Beide Qualitätsstufen erzeugen dieselbe Zehenspitzen-Szene mit Musik. Ein Standard-Video kostet {credits} Credits und hat 720p. Ein Pro-Video kostet {proCredits} Credits und hat 1080p – schärfer auf großen Bildschirmen, was hilft, wenn du es posten willst.",
-            "2": "Credits gibt es in Paketen mit Einmalzahlung, ohne Abo, und sie verfallen nie. Schlägt ein Video fehl, bekommst du seine Credits automatisch zurück. Alle Pakete findest du auf der <pricing>Preisseite</pricing>, oder geh <back>zurück zum Generator</back> und mach dein eigenes."
+            "1": "Beide Qualitäten machen dieselbe Window-Peeper-Szene mit Musik. Ein Standard-Video kostet {credits} Credits und hat 720p. Ein Pro-Video kostet {proCredits} Credits und hat 1080p, schärfer auf großen Bildschirmen.",
+            "2": "Credits gibt es in Paketen mit Einmalzahlung, ohne Abo, und sie verfallen nicht. Schlägt ein Video fehl, kommen die Credits automatisch zurück. Alle Pakete stehen auf der <pricing>Preisseite</pricing>."
           }
         }
       }
@@ -310,7 +310,7 @@
   "Blog": {
     "title": "Blog",
     "metaTitle": "Blog: Anleitungen und News",
-    "metaDescription": "Anleitungen und News von rumpelstiltskin: wie du aus einem Foto das Zehenspitzentanz-Meme machst, wie es gut gelingt und was es Neues auf der Seite gibt.",
+    "metaDescription": "Anleitungen und Neuigkeiten von WindowPeeper: wie du das Window-Peeper-Video aus einem Foto machst, wie es gut wird und was es Neues gibt.",
     "eyebrow": "Blog",
     "description": "Notizen dazu, woran wir arbeiten und wie du es nutzt.",
     "empty": "Noch keine Beiträge.",
@@ -320,9 +320,9 @@
   },
   "Pricing": {
     "nav": "Preise",
-    "title": "Rumpelstilzchen-Meme-Videos ab {price}",
-    "metaTitle": "Rumpelstilzchen-Meme-Video: Preise",
-    "metaDescription": "Rumpelstilzchen-Meme-Videos ab {price}: erst eine Gratis-Vorschau mit 5 Sekunden, dann einmal zahlen für das ganze 12-Sekunden-Video. Kein Abo; Credits verfallen nie.",
+    "title": "Window-Peeper-Videos ab {price}",
+    "metaTitle": "Window-Peeper-Video: Preise",
+    "metaDescription": "Window-Peeper-Videos ab {price}: Teste eine kostenlose 5-Sekunden-Vorschau, dann zahl einmal für das volle 12-Sekunden-Video. Kein Abo.",
     "eyebrow": "Preisliste",
     "description": "Teste zuerst eine Gratis-Vorschau mit 5 Sekunden. Ein ganzes 12-Sekunden-Video gibt es ab {price}. Du zahlst einmal: kein Abo, und Credits verfallen nie.",
     "packsTitle": "Wähle dein Paket",
@@ -376,428 +376,73 @@
     "ctaNote": "Ab {credits} Credits. Schlägt ein Video fehl, bekommst du die Credits zurück.",
     "pack": "{credits, plural, one {# Credit} other {# Credits}} für {price}",
     "related": "Weitere Guides",
-    "note": "Diese Seite ist ein unabhängiges KI-Video-Tool. Sie steht in keiner Verbindung zu einer Marke, einem Künstler oder den Machern des Originalvideos und wird von ihnen weder unterstützt noch gesponsert. Die Videos hier sind neue KI-Videos mit Originalmusik; sie verwenden nie den Original-Clip.",
+    "note": "Diese Seite ist ein unabhängiges KI-Video-Tool. Sie ist nicht mit TikTok, CapCut oder den Machern einer Vorlage oder eines Clips verbunden und wird von ihnen weder unterstützt noch gesponsert. Die Videos hier sind neue KI-Videos mit Originalmusik; sie nutzen nie fremdes Material.",
     "pages": {
-      "tip-toe-in-my-jordans": {
-        "metaTitle": "Tip Toe in My Jordans – das Meme",
-        "metaDescription": "Mach das virale Zehenspitzentanz-Meme aus einem Foto: was hinter dem Trend steckt, wie andere es machen und wie aus einem Bild ein 12-Sekunden-Video wird.",
-        "nav": "Der Zehenspitzentanz-Meme-Trend",
-        "title": "Tip Toe in My Jordans",
-        "tagline": "Das Zehenspitzentanz-Meme, gemacht aus deinem Foto.",
-        "lead": "Eine kleine Märchenfigur tanzt mit verschmitztem Grinsen auf der Stelle auf Zehenspitzen, und immer wieder setzen Leute ihr neue Gesichter auf. Dieser Guide erklärt den Trend, wie andere ihre eigenen Versionen machen und wie du eine aus einem einzigen Foto erstellst.",
-        "sections": {
-          "what": {
-            "title": "Was hinter dem Trend steckt",
-            "text": {
-              "1": "Das Zehenspitzentanz-Meme ist ein kurzer Loop: Eine Figur schleicht auf Zehenspitzen dahin, die Knie gebeugt, die Arme angezogen, und ist sehr zufrieden mit sich. Die bekanntesten Versionen zeigen ein bärtiges Männlein, das aussieht wie Rumpelstilzchen aus dem Märchen, deshalb nennen viele es das <meme>Rumpelstiltskin-Meme</meme>.",
-              "2": "Der Witz liegt im Kontrast zwischen den übertriebenen Schleichschritten und der Person, die sie macht. Ein ernstes Foto von einem Freund, einem Elternteil oder einer Kollegin tänzelt plötzlich auf Zehenspitzen wie ein Cartoon-Bösewicht, der gerade mit etwas davongekommen ist. Der Clip ist kurz und die Bewegung leicht wiederzuerkennen, darum funktioniert er in jedem Kurzvideo-Feed.",
-              "3": "Gesucht wird es unter mehreren Namen. Der Zehenspitzentanz, das Rumpelstiltskin-Meme und der Spitzname im Titel dieser Seite meinen alle denselben Trend."
-            }
-          },
-          "how": {
-            "title": "Wie andere es machen",
-            "text": {
-              "1": "Die meisten Versionen, die du siehst, entstehen auf eine von drei Arten:"
-            },
-            "list": {
-              "1": "Sie filmen sich selbst beim Tanzen und machen die Schritte von Hand nach.",
-              "2": "Sie schneiden einen bestehenden Clip und tauschen mit einer Bearbeitungs-App das Gesicht aus.",
-              "3": "Sie nutzen ein KI-Video-Tool, das aus einem Foto ein neues Video vom Tanz macht."
-            },
-            "more": {
-              "1": "Filmen braucht Übung und einen freien Nachmittag. Face Swaps wirken oft aufgeklebt. Ein KI-Videogenerator baut die ganze Szene um die Person herum, sodass sie aussieht, als würde sie wirklich tanzen."
-            }
-          },
-          "make": {
-            "title": "Mach dein eigenes aus einem Foto",
-            "text": {
-              "1": "Hier lädst du ein Foto hoch und bekommst ein KI-Video von etwa 12 Sekunden, mit Musik. Die Person auf deinem Foto macht den Zehenspitzentanz, und du musst nichts filmen."
-            },
-            "steps": {
-              "1": {
-                "title": "Foto auswählen",
-                "body": "Eine erwachsene Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera."
-              },
-              "2": {
-                "title": "Einwilligung bestätigen",
-                "body": "Es ist dein Foto, oder die erwachsene Person darauf hat zugestimmt."
-              },
-              "3": {
-                "title": "Qualität wählen",
-                "body": "Standard kostet {credits} Credits; Pro kostet {proCredits} Credits, in schärferem 1080p."
-              },
-              "4": {
-                "title": "Anmelden und bei Bedarf zahlen",
-                "body": "Nutze einen Link per E-Mail oder Google. Kauf ein Credit-Paket, wenn dein Guthaben nicht reicht."
-              },
-              "5": {
-                "title": "Herunterladen und teilen",
-                "body": "Nach ein paar Minuten speicherst du die MP4 oder teilst sie."
-              }
-            },
-            "more": {
-              "1": "Die <howto>Schritt-für-Schritt-Anleitung</howto> erklärt jeden Schritt und was ein gutes Foto ausmacht. Schlägt ein Video fehl, bekommst du deine Credits automatisch zurück."
-            }
-          },
-          "tips": {
-            "title": "Tipps für ein lustiges Ergebnis",
-            "list": {
-              "1": "Nimm ein Foto, auf dem die Person gerade steht und die Arme zu sehen sind. Die KI muss den Körper sehen, um ihn zu bewegen.",
-              "2": "Ein ernstes Gesicht macht den Schleichtanz noch lustiger.",
-              "3": "Schlichte Hintergründe und gutes Licht ergeben sauberere Bewegungen als unruhige, dunkle Fotos.",
-              "4": "Wähle Pro für ein schärferes Bild, etwa für ein Video, das du posten willst."
-            }
-          },
-          "fair": {
-            "title": "Nutze es fair",
-            "text": {
-              "1": "Lade nur Fotos von dir selbst hoch oder von einer erwachsenen Person, die Ja gesagt hat. Verwende keine Fotos von Kindern und mach keine Videos, die Leute glauben lassen könnten, etwas sei wirklich passiert. Die <terms>Nutzungsbedingungen</terms> listen auf, was nicht erlaubt ist."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-meme": {
-        "metaTitle": "Rumpelstiltskin-Meme erklärt",
-        "metaDescription": "Was das Rumpelstiltskin-Meme ist, wo es anfing, warum der Zehenspitzentanz viral ging und ob die Videos echt oder KI sind. Dann mach deine Version aus einem Foto.",
-        "nav": "Was ist das Rumpelstiltskin-Meme?",
-        "title": "Rumpelstiltskin-Meme",
-        "tagline": "Was der Zehenspitzentanz ist und warum er sich verbreitet hat.",
-        "lead": "Das Rumpelstiltskin-Meme ist ein kurzes Video einer kleinen Märchenfigur, die einen schelmischen Zehenspitzentanz aufführt. Hier erfährst du, was es zeigt, wo es anfing, warum es geteilt wird und wie die Videos auf dieser Seite entstehen.",
-        "sections": {
-          "what": {
-            "title": "Was das Meme zeigt",
-            "text": {
-              "1": "Der Clip zeigt eine kleine, bärtige Gestalt in altmodischer Kleidung. Sie tanzt auf der Stelle auf Zehenspitzen oder schleicht mit gebeugten Knien und verschmitztem Grinsen vorwärts, als kenne sie ein Geheimnis. Die Leute nennen sie Rumpelstilzchen (englisch: Rumpelstiltskin), weil sie aussieht wie das Männlein aus dem Märchen.",
-              "2": "Im Märchen der Brüder Grimm spinnt Rumpelstilzchen für eine Müllerstochter Stroh zu Gold und verlangt dafür ihr erstes Kind. Später tanzt er ums Feuer, in der Gewissheit, dass niemand je seinen Namen erraten wird. Dieses Bild eines schadenfrohen, listigen kleinen Tänzers ist der Grund, warum der Name so gut zum Meme passt."
-            }
-          },
-          "origin": {
-            "title": "Wo das Meme anfing",
-            "list": {
-              "1": "27. August 2026: Ein KI-Künstler postet den Clip auf Instagram, im Stil eines Fantasyfilms der 1980er.",
-              "2": "29. September: Ein TikTok-Nutzer legt einen Rapsong und eine Bildunterschrift über seltsame Träume darüber. Das Video erreicht in einer Woche über 850.000 Aufrufe.",
-              "3": "1. Oktober: Ein Post des Clips auf X erreicht in fünf Tagen 9,8 Millionen Aufrufe.",
-              "4": "Anfang Oktober: Leute setzen neue Gesichter und Figuren in den Tanz, und viele halten den Clip für eine Szene aus dem Film von 1987 oder einem alten sowjetischen Film.",
-              "5": "7. Oktober: <nbc>NBC News</nbc> berichtet, dass der Clip KI-generiert ist.",
-              "6": "18. Oktober: American-Football-Spieler tanzen ihn nach einem Touchdown in London."
-            },
-            "more": {
-              "1": "Der <dance>Guide zur Tanzszene</dance> erzählt den Clip Schritt für Schritt, und der <film1987>Guide zum Film von 1987</film1987> erklärt die Verwechslung mit dem echten Film."
-            }
-          },
-          "why": {
-            "title": "Warum es sich verbreitet hat",
-            "text": {
-              "1": "Einen einzelnen Grund kann niemand nennen, aber ein paar Dinge helfen einem Clip wie diesem, sich zu verbreiten:"
-            },
-            "list": {
-              "1": "Er ist kurz und läuft deshalb gut als Loop in Kurzvideo-Apps.",
-              "2": "Die Bewegung ist leicht wiederzuerkennen, auch mit neuem Gesicht oder neuer Figur.",
-              "3": "Er funktioniert als Reaktion: Leute posten ihn, wenn sie mit einer Kleinigkeit davonkommen, etwa dem letzten Stück Pizza.",
-              "4": "Jeder kann mitmachen, indem er einen Freund, ein Haustier oder sich selbst in den Tanz setzt."
-            },
-            "more": {
-              "1": "Wie viele Memes wurde es oft kopiert, neu geschnitten und wieder hochgeladen."
-            }
-          },
-          "real": {
-            "title": "Echt oder KI?",
-            "text": {
-              "1": "Das hängt vom Clip ab. Manche Versionen im Netz zeigen Leute, die sich selbst filmen, manche sind Bearbeitungen, und viele neuere scheinen KI-generiert zu sein. Wenn du bei einem Clip unsicher bist, geh davon aus, dass er bearbeitet sein könnte.",
-              "2": "Die Videos auf dieser Seite sind KI-generiert. Du lädst ein Foto hoch, und ein KI-Modell erstellt eine neue Szene mit der Person darauf in der Hauptrolle, mit Originalmusik. Wir verwenden weder den viralen Original-Clip noch seinen Ton. Das Ergebnis ist ein neues Video von etwa 12 Sekunden mit einem Tanz, der nie stattgefunden hat – teile es also als Spaß, nicht als echte Aufnahme."
-            }
-          },
-          "make": {
-            "title": "Mach dein eigenes",
-            "text": {
-              "1": "Lade ein klares Foto von dir oder von einer erwachsenen Person, die zugestimmt hat, in den <generator>Generator auf der Startseite</generator>. Ein Standard-Video kostet {credits} Credits, ein Pro-Video in schärferem 1080p kostet {proCredits}. Credit-Pakete gibt es ab {price}, ohne Abo.",
-              "2": "Die <howto>Anleitung</howto> führt dich durch jeden Schritt, und der <jordans>Guide zum Zehenspitzentanz-Trend</jordans> erklärt, wie andere das Meme machen."
-            }
-          }
-        }
-      },
-      "how-to-make-rumpelstiltskin-video": {
-        "metaTitle": "Rumpelstiltskin-Video erstellen",
-        "metaDescription": "Mach aus einem Foto ein Rumpelstiltskin-Video mit Zehenspitzentanz: Foto wählen, Standard oder Pro, anmelden, bei Bedarf zahlen, herunterladen, teilen.",
-        "nav": "So erstellst du ein Rumpelstiltskin-Video",
-        "title": "So erstellst du ein Rumpelstiltskin-Video",
-        "tagline": "Ein Foto, sechs Schritte, ein tanzendes Video.",
-        "lead": "Du brauchst ein Foto und ein paar Minuten. Dieser Guide führt dich durch jeden Schritt im Generator, zeigt, was es kostet, und wie du ein gutes Ergebnis bekommst.",
+      "how-to-make-window-peeper-video": {
+        "metaTitle": "So machst du ein Window-Peeper-Video",
+        "metaDescription": "Mach aus einem Foto ein Window-Peeper-Video: Foto wählen, Standard oder Pro, anmelden, bei Bedarf zahlen, dann herunterladen und auf TikTok posten.",
+        "nav": "So machst du ein Window-Peeper-Video",
+        "title": "So machst du ein Window-Peeper-Video",
+        "tagline": "Ein Foto, sechs Schritte, ein Blick.",
+        "lead": "Du brauchst ein Foto und ein paar Minuten. Diese Anleitung geht jeden Schritt im Generator durch, sagt, was es kostet, und wie das Ergebnis gut wird.",
         "sections": {
           "before": {
-            "title": "Bevor du loslegst",
+            "title": "Bevor du anfängst",
             "text": {
-              "1": "Du brauchst ein Foto, eine E-Mail-Adresse oder ein Google-Konto zum Anmelden und genug Credits für ein Video. Neue Konten starten ohne Credits. Credit-Pakete sind Einmalzahlungen, kein Abo, und Credits verfallen nie."
+              "1": "Du brauchst ein Foto, eine E-Mail-Adresse oder ein Google-Konto zum Anmelden und genug Credits für ein Video, oder deine eine kostenlose Vorschau. Credit-Pakete sind Einmalzahlungen, kein Abo, und Credits verfallen nie."
             }
           },
           "steps": {
             "title": "Schritt für Schritt",
             "steps": {
               "1": {
-                "title": "Foto auswählen",
-                "body": "Öffne den <generator>Generator auf der Startseite</generator> und wähle ein Foto von einer erwachsenen Person, Ganzkörper oder ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Es muss ein JPEG, PNG oder WebP bis {size} MB sein, mit {min, number} bis {maxSide, number} Pixeln pro Seite."
+                "title": "Foto wählen",
+                "body": "Öffne den <generator>Generator auf der Startseite</generator> und wähle ein Foto eines Erwachsenen, ab der Hüfte, mit Blick in die Kamera, bei gutem Licht. Es muss ein JPEG, PNG oder WebP bis {size} MB sein, mit {min, number} bis {maxSide, number} Pixeln pro Seite."
               },
               "2": {
-                "title": "Bestätigen, dass du das Foto nutzen darfst",
-                "body": "Mit dem Tippen auf den Button bestätigst du, dass das Foto deins ist oder dass die erwachsene Person darauf zugestimmt hat. Ein Hinweis unter dem Button sagt das."
+                "title": "Bestätigen, dass du es nutzen darfst",
+                "body": "Mit dem Druck auf die Schaltfläche bestätigst du, dass das Foto dir gehört oder der Erwachsene darauf zugestimmt hat. Ein Hinweis unter der Schaltfläche sagt das."
               },
               "3": {
                 "title": "Standard oder Pro wählen",
-                "body": "Standard kostet {credits} Credits und hat 720p. Pro kostet {proCredits} Credits und hat 1080p. Beide erzeugen dieselbe Szene, etwa 12 Sekunden lang, mit Musik."
+                "body": "Standard kostet {credits} Credits und hat 720p. Pro kostet {proCredits} Credits und hat 1080p. Beide machen dieselbe Szene, etwa 12 Sekunden lang, mit Musik. Um dein Foto vorher in der Szene zu sehen, probier die kostenlose 5-Sekunden-Vorschau."
               },
               "4": {
                 "title": "Anmelden",
-                "body": "Tippe auf „Generieren“. Wenn du nicht angemeldet bist, melde dich im Fenster, das sich öffnet, mit einem Link per E-Mail oder mit Google an. Dein Foto bleibt dabei ausgewählt."
+                "body": "Drück auf Generieren. Wenn du nicht angemeldet bist, melde dich im Fenster, das sich öffnet, mit einem E-Mail-Link oder Google an. Dein Foto bleibt dabei ausgewählt."
               },
               "5": {
-                "title": "Zahlen, wenn du Credits brauchst",
-                "body": "Wenn dein Guthaben nicht reicht, bietet dir der Generator die Pakete an: {packs}. Nach dem Bezahlen kommst du zurück auf die Seite, und das Video startet, sobald die Credits da sind."
+                "title": "Bei Bedarf Credits kaufen",
+                "body": "Reicht dein Guthaben nicht, bietet der Generator die Pakete an: {packs}. Nach dem Bezahlen kommst du auf die Seite zurück, und das Video startet, sobald die Credits da sind."
               },
               "6": {
-                "title": "Warten, dann herunterladen oder teilen",
-                "body": "Ein Video dauert meist ein paar Minuten. Lass die Seite offen, dann läuft es dort, sobald es fertig ist. „Herunterladen“ speichert die MP4. „Teilen“ öffnet das Teilen-Menü deines Geräts oder kopiert einen Link zu dieser Seite."
+                "title": "Warten, herunterladen und posten",
+                "body": "Ein Video dauert meist ein paar Minuten. Lass die Seite offen, dann spielt es dort ab, sobald es fertig ist. Herunterladen speichert die MP4. Poste sie mit #windowpeeper auf TikTok und füge den Trend-Sound in der App hinzu, wenn du ihn willst."
               }
             }
           },
           "tips": {
-            "title": "Tipps für gute Ergebnisse",
+            "title": "Tipps für einen guten Blick",
             "list": {
-              "1": "Nur eine Person. Gruppenfotos bringen die Bewegung durcheinander.",
-              "2": "Zeig den Körper: Ganzkörper oder ab der Hüfte, mit sichtbaren Armen.",
-              "3": "Blick in die Kamera, nichts vor dem Gesicht.",
-              "4": "Achte auf gleichmäßiges Licht. Dunkle Fotos oder Gegenlicht ergeben verschwommene Bewegungen.",
+              "1": "Nur eine Person. In der Szene sitzt eine Person am Tisch.",
+              "2": "Ab der Hüfte, mit Blick in die Kamera, nichts verdeckt das Gesicht.",
+              "3": "Trag, was du im Video tragen willst. Die Kleidung kommt aus dem Foto.",
+              "4": "Nutze gleichmäßiges Licht. Dunkle Fotos oder Gegenlicht ergeben ein unscharfes Gesicht.",
               "5": "Verzichte auf starke Filter, Sticker und Text auf dem Foto."
             }
           },
           "wrong": {
             "title": "Wenn etwas schiefgeht",
             "text": {
-              "1": "Wenn ein Video fehlschlägt oder nicht innerhalb von 24 Stunden fertig wird, gehen seine Credits automatisch zurück auf dein Guthaben. Du musst uns nicht kontaktieren. Wird ein Foto abgelehnt, probier ein anderes; dafür verlierst du keine Credits.",
-              "2": "Wenn du die Seite verlässt, wird das Video trotzdem fertig. Es erscheint in deiner Video-Mediathek, und wir schicken dir eine E-Mail, sobald es fertig ist. Bei allem anderen schreib an <email></email>."
+              "1": "Schlägt ein Video fehl oder wird es nicht innerhalb von 24 Stunden fertig, gehen die Credits automatisch auf dein Guthaben zurück. Du musst uns nicht schreiben. Wird ein Foto abgelehnt, probier ein anderes; du verlierst dafür keine Credits.",
+              "2": "Wenn du die Seite verlässt, wird das Video trotzdem fertig. Es erscheint in deiner Videobibliothek, und wir schicken dir eine E-Mail, wenn es bereit ist. Für alles andere schreib an <email></email>."
             }
           },
           "privacy": {
             "title": "Dein Foto und faire Nutzung",
             "text": {
-              "1": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Das fertige Video bleibt in deiner Mediathek, bis du dein Konto löschst. Details findest du in der <privacy>Datenschutzerklärung</privacy>.",
-              "2": "Lade nur Fotos von dir selbst hoch oder von einer erwachsenen Person, die zugestimmt hat. Keine Fotos von Kindern und nichts, das jemanden täuschen, belästigen oder sich als jemand anderes ausgeben soll. Woher der Tanz kommt, erfährst du unter <meme>was das Rumpelstiltskin-Meme ist</meme>, oder sieh dir an, <jordans>wie andere das Zehenspitzentanz-Meme machen</jordans>."
-            }
-          }
-        }
-      },
-      "who-is-rumpelstiltskin": {
-        "metaTitle": "Wer ist Rumpelstilzchen? Die Story",
-        "metaDescription": "Wer ist Rumpelstilzchen (engl. Rumpelstiltskin)? Der Wicht aus dem Grimm-Märchen erklärt: seine Geschichte, beide Enden, sein Name und das Tanz-Meme.",
-        "nav": "Wer ist Rumpelstilzchen?",
-        "title": "Wer ist Rumpelstilzchen?",
-        "tagline": "Der Märchenwicht hinter dem Zehenspitzentanz.",
-        "lead": "Rumpelstilzchen ist das Männlein aus einem Märchen, das die Brüder Grimm gesammelt haben: Er spinnt Stroh zu Gold und verlangt dafür einen schrecklichen Preis. Hier erfährst du seine Geschichte, was sein Name bedeutet und wie er zum tanzenden Meme wurde.",
-        "sections": {
-          "story": {
-            "title": "Die Geschichte in Kürze",
-            "text": {
-              "1": "Die Brüder Grimm veröffentlichten das Märchen 1812 in der ersten Auflage ihrer Kinder- und Hausmärchen, dort trägt es die Nummer 55. Ein Müller prahlt vor dem König, seine Tochter könne Stroh zu Gold spinnen. Der König sperrt sie in eine Kammer voller Stroh und befiehlt ihr, es bis zum Morgen zu spinnen.",
-              "2": "Ein kleines Männlein erscheint und spinnt das Stroh für sie. In der ersten Nacht bezahlt sie ihn mit ihrer Halskette, in der zweiten mit ihrem Ring. In der dritten Nacht hat sie nichts mehr, also verspricht sie ihm ihr erstes Kind. Der König heiratet sie, und ein Jahr später bekommt sie ein Baby.",
-              "3": "Das Männlein kommt zurück, um das Kind zu holen. Als die Königin ihn anfleht, gibt er ihr drei Tage, um seinen Namen zu erraten. Am letzten Tag findet ein Bote ihn im Wald, wo er ums Feuer tanzt und singt, dass niemand weiß, dass er Rumpelstilzchen heißt. Die Königin rät richtig."
-            }
-          },
-          "ending": {
-            "title": "Wie die Geschichte endet",
-            "text": {
-              "1": "Das Ende änderte sich von Auflage zu Auflage. In der Ausgabe von 1812 läuft er zornig davon und kommt nie wieder. In der mündlichen Fassung, die die Grimms zuerst gesammelt hatten, fliegt er auf einem Kochlöffel zum Fenster hinaus.",
-              "2": "In der Ausgabe von 1857, die die meisten heute lesen, stampft er mit dem rechten Fuß so fest auf, dass er bis zur Hüfte im Boden versinkt, packt dann seinen linken Fuß und reißt sich selbst mitten entzwei."
-            }
-          },
-          "name": {
-            "title": "Was der Name bedeutet",
-            "text": {
-              "1": "Im deutschen Original heißt er Rumpelstilzchen, auf Englisch Rumpelstiltskin. Der Name wird meist als „kleiner rumpelnder Stelz“ gedeutet: „-chen“ macht ein Wort klein, und ein Rumpelstilz war eine Art Kobold, der Dinge zum Rumpeln bringt. Das Wort ist verwandt mit Rumpelgeist und Poltergeist, schelmischen Geistern, die in einem Haus Lärm machen.",
-              "2": "Der Name ist in der Geschichte wichtig, weil er sein Geheimnis ist. Solange niemand ihn kennt, hat er Macht über die Königin. Sobald sie ihn ausspricht, hat er verloren."
-            }
-          },
-          "relatives": {
-            "title": "Ähnliche Märchen",
-            "text": {
-              "1": "Volkskundler ordnen die Geschichte dem Märchentyp ATU 500 zu, „Der Name des übernatürlichen Helfers“. Andere Länder erzählen ihre eigenen Versionen:"
-            },
-            "list": {
-              "1": "Tom Tit Tot aus England, in Joseph Jacobs’ English Fairy Tales (1890).",
-              "2": "Whuppity Stoorie aus Schottland, in Robert Chambers’ Popular Rhymes of Scotland (1826)."
-            }
-          },
-          "screen": {
-            "title": "Rumpelstilzchen in Film und Fernsehen",
-            "text": {
-              "1": "Er kam in vielen Filmen und Serien vor. Billy Barty spielte ihn 1987 in einem Musicalfilm. In Für immer Shrek (2010) ist er der Hauptbösewicht, und Robert Carlyle spielt in der Serie Once Upon a Time eine Version, die Rumplestiltskin geschrieben wird. Der <movie>Guide zu allen Rumpelstilzchen-Filmen</movie> listet sie der Reihe nach auf."
-            }
-          },
-          "meme": {
-            "title": "Vom Märchen zum Meme",
-            "text": {
-              "1": "2026 ging ein KI-generierter Clip eines kleinen Wichts viral, der in einer Scheune auf Zehenspitzen tanzt, und die Leute benannten ihn nach ihm. Lies, <meme>was das Rumpelstiltskin-Meme ist</meme>, oder <film1987>warum der Clip nicht aus dem Film von 1987 stammt</film1987>.",
-              "2": "Um selbst mitzutanzen, lade ein Foto in den <generator>Generator auf der Startseite</generator>. Videos gibt es ab {credits} Credits."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-movie": {
-        "metaTitle": "Rumpelstilzchen-Filme im Überblick",
-        "metaDescription": "Alle Rumpelstilzchen-Filme der Reihe nach: deutsche Filme, das Musical „Rumpelstiltskin“ von 1987 mit Billy Barty, der Horrorfilm von 1995 und der KI-Clip.",
-        "nav": "Alle Rumpelstilzchen-Filme",
-        "title": "Rumpelstilzchen-Filme",
-        "tagline": "Die Filme und TV-Versionen der Reihe nach.",
-        "lead": "Du suchst den Rumpelstiltskin-Film? Es gibt mehrere, von deutschen Filmen aus den 1940er- und 1950er-Jahren bis zu einem Musical von 1987 und einem Horrorfilm von 1995. Hier sind sie der Reihe nach, und welcher meistens gemeint ist.",
-        "sections": {
-          "versions": {
-            "title": "Alle Versionen der Reihe nach",
-            "list": {
-              "1": "1940: Rumpelstilzchen, ein deutscher Film von Alf Zengerling.",
-              "2": "1955: Rumpelstilzchen, ein deutscher Film von Herbert B. Fredersdorf.",
-              "3": "1982: eine Folge der Serie Faerie Tale Theatre, Regie Emile Ardolino, mit Hervé Villechaize als Rumpelstiltskin.",
-              "4": "1987: Rumpelstiltskin, ein Musicalfilm von David Irving, mit Amy Irving und Billy Barty.",
-              "5": "1995: Rumpelstiltskin, eine Horrorkomödie von Mark Jones, mit Max Grodénchik in der Titelrolle.",
-              "6": "2009: Rumpelstilzchen, ein deutscher Fernsehfilm von Ulrich König, mit Robert Stadlober.",
-              "7": "2010: Für immer Shrek (Shrek Forever After), ein Animationsfilm, in dem Rumpelstilzchen der Hauptbösewicht ist."
-            },
-            "more": {
-              "1": "Außerdem ist er eine Hauptfigur der Serie Once Upon a Time, in der Robert Carlyle ihn unter der Schreibweise Rumplestiltskin spielt."
-            }
-          },
-          "musical": {
-            "title": "Das Musical von 1987",
-            "text": {
-              "1": "Der Film von 1987 ist der, nach dem die meisten suchen. David Irving führte Regie und schrieb das Drehbuch. Amy Irving spielt Katie, die Müllerstochter, und Billy Barty spielt Rumpelstiltskin, mit Clive Revill als König und Priscilla Pointer als Königin.",
-              "2": "Es ist ein Musical mit Musik von Max Robert und dauert 84 Minuten. Die Cannon Group produzierte es als einen ihrer Märchenfilme und brachte es im April 1987 in den USA heraus. Der <film1987>Guide zum Film von 1987</film1987> beschreibt ihn ausführlich."
-            }
-          },
-          "horror": {
-            "title": "Der Horrorfilm von 1995",
-            "text": {
-              "1": "Der „Rumpelstiltskin“ von 1995 macht aus dem Märchen eine Horrorkomödie. Mark Jones führte Regie, Max Grodénchik spielt den Wicht, und der Film kam im November 1995 in begrenztem Umfang heraus. Er ist ganz anders als das Musical, also prüf das Jahr, bevor du ihn schaust."
-            }
-          },
-          "which": {
-            "title": "Welcher ist gemeint?",
-            "text": {
-              "1": "Viele aktuelle Suchanfragen kommen vom viralen Zehenspitzentanz-Meme. Der Clip darin sieht aus wie eine Szene aus einem alten Märchenfilm, also haben viele danach gesucht. Er stammt aus keinem dieser Filme: Er wurde mit KI gemacht. Lies, <meme>was das Rumpelstiltskin-Meme ist</meme>, und <who>wer Rumpelstilzchen</who> im Originalmärchen ist."
-            }
-          },
-          "make": {
-            "title": "Mach deine eigene Version",
-            "text": {
-              "1": "In den Film von 1987 kannst du nicht hineinspringen, aber du kannst ein KI-Video machen, in dem du selbst den Zehenspitzentanz tanzt. Lade ein Foto in den <generator>Generator auf der Startseite</generator>. Ein Video kostet {credits} Credits, Pakete gibt es ab {price}."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-1987-movie": {
-        "metaTitle": "Rumpelstiltskin (1987): Film vs. KI",
-        "metaDescription": "Stammt der virale Zehenspitzen-Clip aus dem Rumpelstiltskin-Film von 1987? Nein. Der echte Film mit Billy Barty, wo du ihn legal schaust und woher der KI-Clip kommt.",
-        "nav": "Stammt der Clip aus dem Film von 1987?",
-        "title": "Rumpelstiltskin: der Film von 1987",
-        "tagline": "Der echte Film und der KI-Clip, der für ihn gehalten wird.",
-        "lead": "Ein Clip, in dem ein kleiner Wicht in einer Scheune auf Zehenspitzen tanzt, brachte viele dazu, nach dem Rumpelstiltskin-Film von 1987 zu suchen. Hier ist der echte Film, wo du ihn legal schauen kannst, woher der Clip wirklich stammt und wie du die beiden auseinanderhältst.",
-        "sections": {
-          "answer": {
-            "title": "Die kurze Antwort",
-            "text": {
-              "1": "Nein. Der virale Zehenspitzen-Clip stammt weder aus dem Film von 1987 noch aus irgendeinem anderen Film. Er wurde mit KI gemacht. <kym>Know Your Meme</kym>, das Internet-Memes dokumentiert, bestätigt, dass der Clip KI-generiert ist."
-            }
-          },
-          "film": {
-            "title": "Der echte Film von 1987",
-            "text": {
-              "1": "Rumpelstiltskin (1987) ist ein Realfilm-Musical aus der Märchenfilm-Reihe der Cannon Group. David Irving führte Regie. Amy Irving spielt Katie, die Müllerstochter, und Billy Barty spielt Rumpelstiltskin. Clive Revill und Priscilla Pointer spielen König und Königin.",
-              "2": "Der Film dauert 84 Minuten, mit Songs von Max Robert. Er kam im April 1987 in den USA heraus und eröffnete im Mai Cannons Familienfilm-Festival in Cannes. Er folgt dem Grimm-Märchen: Stroh zu Gold, das versprochene Kind und das Namensraten."
-            }
-          },
-          "clip": {
-            "title": "Woher der KI-Clip stammt",
-            "text": {
-              "1": "Der Clip wurde am 27. August 2026 von einem KI-Künstler zuerst auf Instagram gepostet, als Beispiel dafür, wie echt ein KI-Fantasyfilm aussehen kann. Darin tanzt der Wicht in einer Scheune für eine weinende Frau, verwandelt das Stroh in Goldmünzen und wird nach ihrem Kuss zum Prinzen. Dieser letzte Teil kommt weder im Grimm-Märchen noch im Film von 1987 vor.",
-              "2": "Ende September 2026 unterlegte ein TikTok-Nutzer den Clip mit einem Rapsong von 2014, und im Oktober verbreitete er sich auf TikTok und X. Zuschauer vermuteten, er stamme aus dem Musical von 1987 oder aus einem alten sowjetischen Film, und es dauerte Tage, bis die meisten erfuhren, dass er KI war."
-            }
-          },
-          "tell": {
-            "title": "So unterscheidest du sie",
-            "list": {
-              "1": "Besetzung: Im Film von 1987 spielt Billy Barty Rumpelstiltskin. Der Wicht im viralen Clip ist KI-generiert und hat keinen Darsteller.",
-              "2": "Handlung: Im Film gibt es keine Szene, in der ein Kuss Rumpelstiltskin in einen Prinzen verwandelt.",
-              "3": "Quelle: Der Film hat eine Besetzungsliste, einen Regisseur und ein Erscheinungsdatum. Der Clip tauchte 2026 zuerst in den sozialen Medien auf.",
-              "4": "Wenn du unsicher bist, such den ersten Post eines Clips, bevor du ihn als echt teilst."
-            }
-          },
-          "watch": {
-            "title": "Wo du ihn legal schauen kannst",
-            "text": {
-              "1": "In den USA läuft der Film von 1987 mit Stand Oktober 2026 kostenlos mit Werbung bei Tubi und The Roku Channel. Er ist auch bei Abodiensten wie MGM+ zu sehen, und du kannst ihn auf DVD kaufen.",
-              "2": "Das Angebot ändert sich je nach Land und Monat. Schau deshalb vor dem Bezahlen bei <justwatch>JustWatch</justwatch> nach: Dort steht, wo der Film bei dir läuft. Komplette Uploads des Films auf Videoportalen sind meist nicht lizenziert."
-            }
-          },
-          "make": {
-            "title": "Mach deine eigene KI-Version",
-            "text": {
-              "1": "Auch die Videos auf dieser Seite sind KI-generiert, und wir sagen das offen. Lade ein Foto in den <generator>Generator auf der Startseite</generator>, und die Person darauf macht den Zehenspitzentanz, mit Originalmusik. Ein Video kostet {credits} Credits. Teile es als Spaß, nicht als verschollenen Film.",
-              "2": "Die anderen Filme findest du unter <movie>alle Rumpelstilzchen-Filme</movie>. Die Geschichte dahinter erfährst du unter <who>wer Rumpelstilzchen ist</who>."
-            }
-          }
-        }
-      },
-      "rumpelstiltskin-dance-scene": {
-        "metaTitle": "Die Rumpelstiltskin-Tanzszene",
-        "metaDescription": "Die Rumpelstiltskin-Tanzszene Schritt für Schritt: was im viralen KI-Clip passiert, warum der Zehenspitzentanz wirkt und wie ein Video von dir hier aussieht.",
-        "nav": "Die Tanzszene, Schritt für Schritt",
-        "title": "Rumpelstiltskin-Tanzszene",
-        "tagline": "Der virale Clip Schritt für Schritt, und ein Video von hier im Vergleich.",
-        "lead": "Die Szene, die alle teilen, zeigt einen kleinen Wicht, der in einer Scheune für eine weinende Frau auf Zehenspitzen tanzt. Hier steht, was darin passiert, warum der Tanz wirkt und wie ein Video aus deinem Foto im Vergleich aussieht.",
-        "sections": {
-          "origin": {
-            "title": "Woher die Szene stammt",
-            "text": {
-              "1": "Die Szene stammt aus keinem Film. Ein KI-Künstler hat sie gemacht und am 27. August 2026 auf Instagram gepostet, im Stil eines Fantasyfilms der 1980er. Der <film1987>Guide zum Film von 1987</film1987> erklärt, warum so viele sie für echt hielten.",
-              "2": "Das Märchen hat einen älteren Tanz. Bei den Brüdern Grimm tanzt Rumpelstilzchen nachts um ein Feuer und singt seinen eigenen Namen, sicher, dass ihn niemand errät. Der Clip übernimmt diesen schadenfrohen kleinen Tänzer und fügt die Zehenspitzenschritte hinzu."
-            }
-          },
-          "beats": {
-            "title": "Die Szene, Schritt für Schritt",
-            "list": {
-              "1": "Eine Frau sitzt weinend im Stroh einer Scheune.",
-              "2": "Ein kleiner, bärtiger Wicht in altmodischer Kleidung kommt auf sie zu.",
-              "3": "Er tanzt für sie auf Zehenspitzen, mit gebeugten Knien und einem verschmitzten Grinsen.",
-              "4": "Das Stroh wird zu Goldmünzen.",
-              "5": "Sie küsst ihn, und er wird zum Prinzen."
-            },
-            "more": {
-              "1": "Kuss und Prinz kommen im Grimm-Märchen nicht vor; dort gewinnt der Wicht die Müllerstochter nie. Nachgemacht wird der Tanz in der Mitte: Die Memes setzen neue Gesichter und Figuren hinein."
-            }
-          },
-          "why": {
-            "title": "Warum der Tanz wirkt",
-            "list": {
-              "1": "Die Schritte sind groß und langsam, man erkennt sie auch auf einem kleinen Handybildschirm.",
-              "2": "Das Grinsen und die schleichende Haltung sagen ohne ein Wort: „Ich bin damit durchgekommen.“",
-              "3": "Die albernen Schritte stehen im Kontrast zu einer ernsten, altmodischen Szene.",
-              "4": "Die Bewegung wiederholt sich, also laufen ein paar Sekunden sauber in Schleife."
-            }
-          },
-          "compare": {
-            "title": "Der virale Clip und ein Video von hier",
-            "text": {
-              "1": "Auch die Videos auf dieser Seite sind KI-generiert, aber sie kopieren den Clip nicht. So unterscheiden sie sich:"
-            },
-            "list": {
-              "1": "Tänzer: im Clip ein Wicht, den die KI erfunden hat. Hier die Person auf deinem Foto, in einem cremefarbenen Frack.",
-              "2": "Szene: Beide spielen in einer Heuscheune mit einer Zuschauerin. Hier schleicht sich die Person heran, macht „Pst“ in die Kamera, grinst und tanzt auf Zehenspitzen, ohne Gold und ohne Kuss.",
-              "3": "Ton: Jedes Video hier bekommt eine eigene Märchenmelodie. Es nutzt nie den Clip oder die Songs, die die Memes dazulegen.",
-              "4": "Länge und Format: 12 Sekunden, Hochformat (9:16), in 720p, mit Pro in 1080p.",
-              "5": "Kennzeichnung: Der Clip verbreitete sich, als wäre er ein alter Film. Teile deins als das, was es ist: ein KI-Video."
-            }
-          },
-          "make": {
-            "title": "Mach deine eigene Tanzszene",
-            "text": {
-              "1": "Lade ein klares Foto von dir, oder von einer erwachsenen Person, die zugestimmt hat, in den <generator>Generator auf der Startseite</generator>. Standard kostet {credits} Credits, Pro {proCredits}. Pakete gibt es ab {price}, ohne Abo.",
-              "2": "Die <howto>Anleitung</howto> erklärt jeden Schritt, und <meme>was das Rumpelstiltskin-Meme ist</meme> erklärt den Trend rund um die Szene."
+              "1": "Dein Foto wird nur für dein Video verwendet und etwa 24 Stunden nach dem Hochladen gelöscht. Das fertige Video bleibt in deiner Bibliothek, bis du dein Konto löschst. Die <privacy>Datenschutzerklärung</privacy> hat die Details.",
+              "2": "Lade nur Fotos von dir hoch oder von einem Erwachsenen, der zugestimmt hat. Keine Fotos von Kindern oder Personen des öffentlichen Lebens, und nichts, was jemanden täuschen, belästigen oder erschrecken soll. Der Trend ist ein Witz übers Beobachtetwerden; lass ihn einer bleiben."
             }
           }
         }
@@ -805,7 +450,7 @@
     }
   },
   "Footer": {
-    "blurb": "KI-Videos vom Rumpelstilzchen-Zehenspitzentanz aus einem Foto.",
+    "blurb": "Window-Peeper-Trendvideos aus einem Foto.",
     "product": "Produkt",
     "support": "Support",
     "legal": "Rechtliches",

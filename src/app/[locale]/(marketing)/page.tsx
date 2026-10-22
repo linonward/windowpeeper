@@ -11,7 +11,7 @@ import { HowItWorks } from "@/components/home/how-it-works";
 import { Pricing } from "@/components/home/pricing";
 import { Strip } from "@/components/home/strip";
 import type { Locale } from "@/i18n/routing";
-import { howTo, jsonLd, languageAlternates, videoObject, website } from "@/lib/seo";
+import { howTo, jsonLd, languageAlternates, website } from "@/lib/seo";
 
 // The description comes from the locale layout. The title says what the site
 // is next to its name: the layout's template would only add the name again.
@@ -36,12 +36,7 @@ export async function generateMetadata(
   };
 }
 
-// The tip-toe dance clip beside the generator, from public/, and when it was
-// added, for its structured data. Change the date with the clip.
-const EXAMPLE = { sample: "/landing/tiptoe/sample.mp4", poster: "/landing/tiptoe/poster.jpg" };
-const EXAMPLE_ADDED = "2026-10-19";
-
-// The tip-toe generator in the hero does the whole job on this page; the
+// The window peeper generator in the hero does the whole job on this page; the
 // sections below explain it. The session is read in the browser, so the
 // page stays prerendered.
 export default function Home() {
@@ -50,7 +45,7 @@ export default function Home() {
   return (
     <main id="main-content" className="w-full flex-1">
       <SiteData />
-      <Hero tryout={tryout} example={EXAMPLE} />
+      <Hero tryout={tryout} />
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <Strip />
         <HowItWorks />
@@ -70,10 +65,10 @@ export default function Home() {
 
 // The names people search for the site by, in both word orders. English in
 // every locale, as people search them.
-const SITE_NAMES = ["AI Rumpelstiltskin Video Generator", "Rumpelstiltskin AI Video Generator"];
+const SITE_NAMES = ["Window Peeper AI Video Generator", "AI Window Peeper Video Generator"];
 
-// For search engines: the site's name and publisher, the example clip and
-// the three steps, as the page shows them.
+// For search engines: the site's name and publisher and the three steps, as
+// the page shows them.
 function SiteData() {
   const locale = useLocale() as Locale;
   const t = useTranslations();
@@ -85,18 +80,6 @@ function SiteData() {
   }));
   const data = {
     site: website(locale, t("Metadata.description"), base, SITE_NAMES),
-    video: videoObject(
-      {
-        name: t("Home.example.title"),
-        description: t("Home.example.video"),
-        contentPath: EXAMPLE.sample,
-        thumbnailPath: EXAMPLE.poster,
-        uploadDate: EXAMPLE_ADDED,
-        seconds: 9,
-      },
-      locale,
-      base,
-    ),
     steps: howTo(locale, t("Home.steps.title"), steps),
   };
   return Object.entries(data).map(([key, item]) => (

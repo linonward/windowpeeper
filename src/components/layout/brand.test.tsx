@@ -8,7 +8,7 @@ afterEach(cleanup);
 test("shows the logo mark next to the name, and the link is named by the name alone", () => {
   renderWithIntl(<Brand />);
 
-  const link = screen.getByRole("link", { name: "AIRumpelstiltskinVideo" });
+  const link = screen.getByRole("link", { name: "WindowPeeper" });
   expect(link.getAttribute("href")).toBe("/en");
   const mark = link.querySelector("svg");
   expect(mark?.getAttribute("aria-hidden")).toBe("true");

@@ -74,12 +74,12 @@ test("alerts when at least 30% of at least 5 jobs that finished in the last hour
 
   expect(sendEmail.mock.calls.map(([email]) => email.to)).toEqual(["ops@example.com", "owner@example.com"]);
   expect(sendEmail.mock.calls[0][0]).toMatchObject({
-    subject: "[AIRumpelstiltskinVideo] Generation failure rate 38%",
+    subject: "[WindowPeeper] Generation failure rate 38%",
     text: expect.stringContaining("3 of 8 videos (38%)"),
   });
   expect(sendEmail.mock.calls[0][0].text).toContain("https://app.example.com/en/admin/metrics?days=1");
   expect(fetcher).toHaveBeenCalledExactlyOnceWith("https://hooks.slack.test/services/T0/B0/x", expect.objectContaining({ method: "POST" }));
-  expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({ text: expect.stringMatching(/^\[AIRumpelstiltskinVideo\] 3 of 8/) });
+  expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({ text: expect.stringMatching(/^\[WindowPeeper\] 3 of 8/) });
 });
 
 test("stays quiet below the threshold or with too few jobs", async () => {
@@ -125,7 +125,7 @@ test("alerts at once on a balance or quota code, and not on others", async () =>
 
   expect(sendEmail).toHaveBeenCalledTimes(2);
   expect(sendEmail.mock.calls[0][0]).toMatchObject({
-    subject: "[AIRumpelstiltskinVideo] Bailian balance or quota: Arrearage",
+    subject: "[WindowPeeper] Bailian balance or quota: Arrearage",
     text: expect.stringContaining("Bailian refused a video job with Arrearage"),
   });
 });
@@ -137,7 +137,7 @@ test("posts Feishu's own message shape to a Feishu bot", async () => {
 
   expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({
     msg_type: "text",
-    content: { text: "[AIRumpelstiltskinVideo] Body" },
+    content: { text: "[WindowPeeper] Body" },
   });
 });
 

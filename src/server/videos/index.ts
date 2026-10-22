@@ -404,7 +404,7 @@ export function videoMetrics(window: { since: Date; until: Date }) {
 // Videos that succeeded between `since` and `until` (failed ones aren't
 // billed), per model: their seconds, the credits they spent and their cost.
 // A photo effect's video is priced at REFERENCE_COST_PER_SECOND for its
-// resolution, as "wan2.7-r2v <resolution>". Tip-toe videos made before it
+// resolution, as "wan2.7-r2v <resolution>". Effect videos made before it
 // (wan2.2-animate-move, 720p) count as 720P. Older videos, from dropped
 // generators, show as "<provider> <resolution>" without a price (null).
 export async function videoCosts({ since, until }: { since: Date; until: Date }) {
