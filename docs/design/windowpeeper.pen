@@ -2001,7 +2001,7 @@
                           "id": "mDOqq",
                           "name": "Label",
                           "fill": "$w-text",
-                          "content": "Rendering · about 3 min",
+                          "content": "Rendering · about 8 min",
                           "fontFamily": "$font-body",
                           "fontSize": 13,
                           "fontWeight": "normal"
@@ -7674,7 +7674,7 @@
                           "id": "NigZh",
                           "name": "Note",
                           "fill": "$w-faint",
-                          "content": "Ready in about 3 min. If the video fails, the 10 credits come back.",
+                          "content": "Ready in about 8 min. If the video fails, the 10 credits come back.",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -9124,7 +9124,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "~3 min",
+                      "content": "~8 min",
                       "fontFamily": "$font-body",
                       "fontSize": 15,
                       "fontWeight": "normal"
@@ -9187,7 +9187,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "~6 min",
+                      "content": "~10 min",
                       "fontFamily": "$font-body",
                       "fontSize": 15,
                       "fontWeight": "normal"
@@ -10686,7 +10686,7 @@
                                       "id": "zSWY4",
                                       "name": "Desc",
                                       "fill": "$w-muted",
-                                      "content": "720p · ready in ~3 min",
+                                      "content": "720p · ready in ~8 min",
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
                                       "fontWeight": "normal"
@@ -10751,7 +10751,7 @@
                                       "id": "GddMT",
                                       "name": "Desc",
                                       "fill": "$w-muted",
-                                      "content": "1080p · sharper face · ~6 min",
+                                      "content": "1080p · sharper face · ~10 min",
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
                                       "fontWeight": "normal"
@@ -17924,7 +17924,7 @@
                           "id": "vAzBd",
                           "name": "D",
                           "fill": "$w-muted",
-                          "content": "720p · ~3 min",
+                          "content": "720p · ~8 min",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -17979,7 +17979,7 @@
                           "id": "q38BW",
                           "name": "D",
                           "fill": "$w-muted",
-                          "content": "1080p · ~6 min",
+                          "content": "1080p · ~10 min",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
