@@ -32,7 +32,7 @@
         "curtain": "La cortina"
       },
       "beatAlt": "{beat}: un fotograma del video de ejemplo.",
-      "label": "Tu video · 14 s · 9:16 · música original",
+      "label": "Tu video · 14 s · 9:16",
       "note": "Ejemplo hecho con la foto de una persona generada por IA.",
       "short": "Tu video · 14 s"
     },
@@ -62,7 +62,7 @@
         },
         "3": {
           "title": "Descarga y publica",
-          "body": "Recibe un MP4 de 14 segundos en 9:16 con música original. Publícalo en TikTok, Reels o Shorts."
+          "body": "Recibe un MP4 de 14 segundos en 9:16. Publícalo en TikTok, Reels o Shorts."
         }
       }
     },
@@ -361,7 +361,7 @@
     "ctaNote": "Desde {credits} créditos. Si un video falla, recuperas los créditos.",
     "pack": "{credits, plural, one {# crédito} other {# créditos}} por {price}",
     "related": "Más guías",
-    "note": "Este sitio es una herramienta independiente de video con IA. No está afiliado, respaldado ni patrocinado por TikTok, CapCut ni por los creadores de ninguna plantilla o clip. Los videos hechos aquí son videos nuevos con IA y música original; nunca usan imágenes de otras personas.",
+    "note": "Este sitio es una herramienta independiente de video con IA. No está afiliado, respaldado ni patrocinado por TikTok, CapCut ni por los creadores de ninguna plantilla o clip. Los videos hechos aquí son videos nuevos con IA; nunca usan imágenes de otras personas.",
     "pages": {
       "how-to-make-window-peeper-video": {
         "metaTitle": "Cómo hacer un video de window peeper",
@@ -390,7 +390,7 @@
               },
               "3": {
                 "title": "Elige Estándar o Pro",
-                "body": "Estándar cuesta {credits} créditos y es 720p. Pro cuesta {proCredits} créditos y es 1080p. Las dos hacen la escena que elijas, de unos 14 segundos, con música."
+                "body": "Estándar cuesta {credits} créditos y es 720p. Pro cuesta {proCredits} créditos y es 1080p. Las dos hacen la escena que elijas, de unos 14 segundos."
               },
               "4": {
                 "title": "Inicia sesión",
@@ -936,7 +936,7 @@
     "kinds": {
       "windowpeeper": {
         "title": "Window peeper",
-        "description": "Una foto se convierte en un video de 14 segundos: de noche, una cámara se acerca a tu ventana iluminada, te congelas a mitad de bocado, miras fijo a la cámara y cierras la cortina. Con música original.",
+        "description": "Una foto se convierte en un video de 14 segundos: de noche, una cámara se acerca a tu ventana iluminada, te congelas a mitad de bocado, miras fijo a la cámara y cierras la cortina.",
         "left": {
           "photo": "Tu foto",
           "preview": "Vista previa de tu foto"

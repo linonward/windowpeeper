@@ -32,7 +32,7 @@
         "curtain": "The curtain"
       },
       "beatAlt": "{beat}: a still from the example video.",
-      "label": "Your video · 14 s · 9:16 · original music",
+      "label": "Your video · 14 s · 9:16",
       "note": "Example made from a photo of an AI-generated person.",
       "short": "Your video · 14 s"
     },
@@ -62,7 +62,7 @@
         },
         "3": {
           "title": "Download and post",
-          "body": "Get a 14-second 9:16 MP4 with original music. Post it to TikTok, Reels or Shorts."
+          "body": "Get a 14-second 9:16 MP4. Post it to TikTok, Reels or Shorts."
         }
       }
     },
@@ -361,7 +361,7 @@
     "ctaNote": "From {credits} credits. If a video fails, the credits come back.",
     "pack": "{credits, plural, one {# credit} other {# credits}} for {price}",
     "related": "More guides",
-    "note": "This site is an independent AI video tool. It isn't affiliated with, endorsed by or sponsored by TikTok, CapCut or the creators of any template or clip. Videos made here are new AI videos with original music; they never use anyone else's footage.",
+    "note": "This site is an independent AI video tool. It isn't affiliated with, endorsed by or sponsored by TikTok, CapCut or the creators of any template or clip. Videos made here are new AI videos; they never use anyone else's footage.",
     "pages": {
       "how-to-make-window-peeper-video": {
         "metaTitle": "How to Make the Window Peeper Video",
@@ -390,7 +390,7 @@
               },
               "3": {
                 "title": "Choose Standard or Pro",
-                "body": "Standard costs {credits} credits and is 720p. Pro costs {proCredits} credits and is 1080p. Both make the scene you pick, about 14 seconds long, with music."
+                "body": "Standard costs {credits} credits and is 720p. Pro costs {proCredits} credits and is 1080p. Both make the scene you pick, about 14 seconds long."
               },
               "4": {
                 "title": "Sign in",
@@ -936,7 +936,7 @@
     "kinds": {
       "windowpeeper": {
         "title": "Window peeper",
-        "description": "One photo becomes a 14-second video: a camera creeps up to your lit window at night, you freeze mid-bite, stare into the lens and pull the curtain shut. With original music.",
+        "description": "One photo becomes a 14-second video: a camera creeps up to your lit window at night, you freeze mid-bite, stare into the lens and pull the curtain shut.",
         "left": {
           "photo": "Your photo",
           "preview": "Your photo preview"
