@@ -12907,6 +12907,74 @@
                   "fontWeight": "normal"
                 }
               ]
+            },
+            {
+              "type": "frame",
+              "id": "u7lZ36",
+              "name": "Example clip",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                12,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "Erg7Q",
+                  "type": "ref",
+                  "ref": "LIaQW",
+                  "name": "Hero clip",
+                  "width": 340,
+                  "height": 604,
+                  "descendants": {
+                    "oiMGf": {
+                      "width": 340,
+                      "height": 604,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "generated-6.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "ykKAZ": {
+                      "y": 384,
+                      "width": 340,
+                      "height": 220
+                    },
+                    "HDb9l": {
+                      "x": 308
+                    },
+                    "y2J7s": {
+                      "y": 572
+                    },
+                    "U85whq": {
+                      "x": 308,
+                      "y": 572
+                    },
+                    "VHxUc": {
+                      "y": 556
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "psfd2",
+                  "name": "Note",
+                  "fill": "$w-faint",
+                  "textGrowth": "fixed-width",
+                  "width": 340,
+                  "content": "A real video made here. The person in it is AI-generated.",
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
             }
           ]
         },
