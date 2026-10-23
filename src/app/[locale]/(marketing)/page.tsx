@@ -42,8 +42,8 @@ export async function generateMetadata(
 // AI-generated person, and when it was added, for its structured data.
 // Change the date and the seconds with the clip.
 const EXAMPLE = { sample: "/landing/windowpeeper/sample.mp4", poster: "/landing/windowpeeper/poster.jpg" };
-const EXAMPLE_ADDED = "2026-10-22";
-const EXAMPLE_SECONDS = 12;
+const EXAMPLE_ADDED = "2026-10-23";
+const EXAMPLE_SECONDS = 14;
 
 // The window peeper generator in the hero does the whole job on this page; the
 // sections below explain it. The session is read in the browser, so the

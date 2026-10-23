@@ -131,7 +131,7 @@ test.each(["en", "es"] as const)("the site and the steps are structured data in 
     JSON.parse(script.textContent ?? ""),
   );
   const video = items.find((item) => item["@type"] === "VideoObject");
-  expect(video).toMatchObject({ duration: "PT12S", uploadDate: "2026-10-22", inLanguage: locale });
+  expect(video).toMatchObject({ duration: "PT14S", uploadDate: "2026-10-23", inLanguage: locale });
   const site = items.find((item) => item["@graph"])["@graph"].find((node: { "@type": string }) => node["@type"] === "WebSite");
   expect(site.alternateName).toEqual(["Window Peeper AI Video Generator", "AI Window Peeper Video Generator"]);
   const howTo = items.find((item) => item["@type"] === "HowTo");
