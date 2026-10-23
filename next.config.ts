@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
   // which file tracing doesn't follow, so the OpenNext build can't find it.
   outputFileTracingIncludes: { "/**": ["./node_modules/pg-cloudflare/**/*"] },
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
+  // The Worker has no Cloudflare Images binding, so /_next/image would only
+  // pass each original through the Worker. Images go out as the static
+  // files they are; keep the ones in public/ small.
+  images: { unoptimized: true },
   // Moved pages. Keeps old links, bookmarks and search results working.
   redirects: async () => [
     // Chinese was dropped; its old pages go to the English ones, which have

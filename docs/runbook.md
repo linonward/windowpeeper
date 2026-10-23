@@ -435,7 +435,7 @@ The startup check of the environment throws instead of logging, so its message i
 
 ## Deploy to Cloudflare Workers
 
-The production setup: a Cloudflare Worker runs the app and the sweep ([`wrangler.jsonc`](../wrangler.jsonc)), Neon hosts Postgres and Cloudflare R2 stores the generated files. `@opennextjs/cloudflare` turns the `next build` output into the Worker (`pnpm cf:build`, [`open-next.config.ts`](../open-next.config.ts)); [`worker.ts`](../worker.ts) wraps it and adds the Cron Trigger.
+The production setup: a Cloudflare Worker runs the app and the sweep ([`wrangler.jsonc`](../wrangler.jsonc)), Neon hosts Postgres and Cloudflare R2 stores the generated files. `@opennextjs/cloudflare` turns the `next build` output into the Worker (`pnpm cf:build`, [`open-next.config.ts`](../open-next.config.ts)); [`worker.ts`](../worker.ts) wraps it and adds the Cron Trigger. `pnpm cf:build` also copies the prerendered pages into the Worker's static assets (`populateCache local`); the Worker serves them from there (`x-nextjs-cache: HIT`) and renders only dynamic routes, so a public page changes only with a deploy. Images skip `/_next/image` (`images.unoptimized`, [`next.config.ts`](../next.config.ts)): the Worker has no Cloudflare Images binding, so keep the files in `public/` small.
 
 > **Warning:** use the Workers **Paid** plan. The Worker is about 6 MB gzipped (the Free plan allows 3 MB), and rendering a page takes more than the Free plan's 10 ms of CPU. `pnpm exec wrangler deploy --dry-run` prints the size after `pnpm cf:build`.
 
