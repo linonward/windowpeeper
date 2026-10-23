@@ -7,7 +7,7 @@ import { WindowPeeperTryout, type WindowPeeperTryoutProps } from "./window-peepe
 
 // The first screen: the REC badge, the headline and the generator on the
 // left, the example clip in a viewfinder on the right. Phones show a small
-// before/after strip in place of the clip, above the generator.
+// before/after strip above the generator, and the clip under it.
 // A real window peeper video from public/: the clip and its poster.
 export type HomeExample = { sample: string; poster: string };
 
@@ -20,7 +20,7 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
         aria-hidden
         className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_55%_at_80%_0%,color-mix(in_oklab,var(--primary)_14%,transparent),transparent)]"
       />
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-[72px] px-5 pt-6 pb-14 sm:px-8 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-5 pt-6 pb-14 sm:px-8 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-[72px]">
         <div className="flex min-w-0 flex-col gap-[18px]">
           <RecBadge className="border bg-card max-sm:text-[10px]">{t("badge")}</RecBadge>
           {/* The h1 leads with the query the page targets, then the tagline. */}
@@ -36,7 +36,7 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
           <PhoneStrip />
           <WindowPeeperTryout {...tryout} />
         </div>
-        <figure className="hidden flex-col gap-3 lg:flex">
+        <figure className="mx-auto flex w-full max-w-[340px] flex-col gap-3">
           <Viewfinder
             src={example.poster}
             video={example.sample}
@@ -45,7 +45,7 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
             caption={t("clip.caption")}
             sizes="340px"
             priority
-            className="h-[604px] w-[340px]"
+            className="aspect-[340/604] w-full"
           />
           <figcaption className="text-xs text-faint">{t("clip.note")}</figcaption>
         </figure>
