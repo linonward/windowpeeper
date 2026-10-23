@@ -30,10 +30,11 @@ export const TWO_PHOTO_DURATION = 15;
 // Videos per page of /videos/library.
 export const VIDEOS_PAGE_SIZE = 24;
 
-// The request that submits a video finishes within minutes, so one still
+// The request that submits a video finishes within seconds, so one still
 // unsubmitted after this was abandoned by a crash. Submitted videos older
-// than this get collected even if nobody has the page open.
-export const VIDEO_STALE_AFTER_MS = 15 * 60_000;
+// than this get collected even if nobody has the page open. Bailian takes
+// about 6m40s for a 14-second video, so the sweep looks just after that.
+export const VIDEO_STALE_AFTER_MS = 7 * 60_000;
 
 // Providers finish within minutes; a job still pending after this is lost.
 export const VIDEO_GIVE_UP_AFTER_MS = 24 * 60 * 60_000;
