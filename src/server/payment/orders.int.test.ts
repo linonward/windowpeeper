@@ -91,7 +91,7 @@ test("records a pending order with the active provider's session", async () => {
   expect(row).toMatchObject({
     packId: "small",
     credits: 10,
-    amount: 990,
+    amount: 590,
     currency: "usd",
     status: "pending",
     provider: "stripe",
@@ -278,5 +278,5 @@ test("deleting the user removes their orders and credits", async () => {
 
 test("captures checkout only after the provider creates it", async () => {
   await checkout("small");
-  expect(capture).toHaveBeenCalledWith("checkout_started", userId, { payment_kind: "pack", provider: "stripe", product_id: "small", credits: 10, catalogue_amount_minor: 990, currency: "usd" });
+  expect(capture).toHaveBeenCalledWith("checkout_started", userId, { payment_kind: "pack", provider: "stripe", product_id: "small", credits: 10, catalogue_amount_minor: 590, currency: "usd" });
 });

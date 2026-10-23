@@ -109,11 +109,11 @@ test("keeps the consent box, the quality and the button together", () => {
 test("Pro changes the price on the button and the wait in the note", () => {
   renderWithIntl(<EffectGenerator {...props} />);
 
-  expect(screen.getByText(/^Ready in about 3 min\./)).toBeTruthy();
+  expect(screen.getByText(/^Ready in about 8 min\./)).toBeTruthy();
   fireEvent.click(screen.getByRole("radio", { name: "Pro 1080p" }));
 
   expect(submit("Make my video · 20 credits")).toBeTruthy();
-  expect(screen.getByText("Sharper face. Ready in about 6 min. If the video fails, the 20 credits come back.")).toBeTruthy();
+  expect(screen.getByText("Sharper face. Ready in about 10 min. If the video fails, the 20 credits come back.")).toBeTruthy();
 });
 
 test("sends the photo, scene, quality and a vertical frame, then polls until the video is ready", async () => {

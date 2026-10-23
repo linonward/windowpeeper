@@ -75,7 +75,7 @@ test("creates a checkout session for the pack's own product, priced from the pac
   const session = await waffoProvider.createCheckout({
     userId: "user-1",
     orderId: "order-1",
-    pack: { id: "small", credits: 10, amount: 990, currency: "usd" },
+    pack: { id: "small", credits: 10, amount: 590, currency: "usd" },
     email: "ada@example.com",
     locale: "es",
     successUrl: "https://app.test/es/billing?checkout=success",
@@ -87,7 +87,7 @@ test("creates a checkout session for the pack's own product, priced from the pac
     expect.objectContaining({
       productId: "PROD_small",
       currency: "USD",
-      priceSnapshot: expect.objectContaining({ amount: "9.90" }),
+      priceSnapshot: expect.objectContaining({ amount: "5.90" }),
       buyerEmail: "ada@example.com",
       orderMerchantExternalId: "order-1",
       successUrl: "https://app.test/es/billing?checkout=success",
@@ -106,7 +106,7 @@ test.each([
   await waffoProvider.createCheckout({
     userId: "user-1",
     orderId: "order-1",
-    pack: { id: "small", credits: 10, amount: 990, currency: "usd" },
+    pack: { id: "small", credits: 10, amount: 590, currency: "usd" },
     email: "ada@example.com",
     locale,
     successUrl: `https://app.test/${locale}/billing?checkout=success`,

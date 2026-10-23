@@ -54,7 +54,7 @@ test("downloads the video in place", () => {
 
 test("explains a pending or failed video and has nothing to play or download", () => {
   renderWithIntl(<VideoDetail video={{ ...done, status: "pending", url: null }} />);
-  expect(screen.getByText("Generating… This takes 1 to 5 minutes.")).toBeTruthy();
+  expect(screen.getByText("Generating… This takes about 8 to 10 minutes.")).toBeTruthy();
   expect(screen.getByText("Generating")).toBeTruthy();
   expect(screen.queryByRole("link", { name: "Download" })).toBeNull();
   expect(document.querySelector("video")).toBeNull();

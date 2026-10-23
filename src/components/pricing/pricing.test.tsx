@@ -13,9 +13,9 @@ afterEach(cleanup);
 
 // CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper prices.
 const packs = [
-  { id: "small", credits: 10, amount: 990, currency: "usd" },
-  { id: "medium", credits: 50, amount: 2990, currency: "usd" },
-  { id: "large", credits: 250, amount: 9990, currency: "usd" },
+  { id: "small", credits: 10, amount: 590, currency: "usd" },
+  { id: "medium", credits: 50, amount: 1990, currency: "usd" },
+  { id: "large", credits: 250, amount: 6990, currency: "usd" },
 ];
 const prices = { standard: 10, pro: 20 };
 const render = (locale?: "en" | "es") =>
@@ -39,15 +39,15 @@ test("each card names the pack, its price and credits, who it's for and what it 
 
   const [single, five, twentyFive] = cards();
   expect(within(single).getByRole("heading", { level: 3 }).textContent).toBe("Single");
-  expect(single.textContent).toContain("$9.90");
+  expect(single.textContent).toContain("$5.90");
   expect(single.textContent).toContain("10 credits");
   expect(single.textContent).toContain("For one try");
   expect(single.textContent).toContain("Any of the 6 scenes");
   expect(within(five).getByRole("heading", { level: 3 }).textContent).toBe("5-pack");
   expect(five.textContent).toContain("5 Standard or 2 Pro videos");
-  expect(five.textContent).toContain("$5.98 a video, save 40%");
+  expect(five.textContent).toContain("$3.98 a video, save 33%");
   expect(twentyFive.textContent).toContain("25 Standard or 12 Pro videos");
-  expect(twentyFive.textContent).toContain("$4.00 a video, save 60%");
+  expect(twentyFive.textContent).toContain("$2.80 a video, save 53%");
 });
 
 test("only the featured pack is recommended; nothing claims popularity", () => {
@@ -64,7 +64,7 @@ test("only the featured pack is recommended; nothing claims popularity", () => {
 test("each pack's button names the videos and buys that pack here, not on billing", () => {
   render();
 
-  const buy = screen.getByRole("button", { name: "Buy 50 credits for $29.90" });
+  const buy = screen.getByRole("button", { name: "Buy 50 credits for $19.90" });
   expect(buy.textContent).toBe("Buy 5 videos");
   expect(screen.queryByRole("link", { name: /^Buy / })).toBeNull();
 });
@@ -75,8 +75,8 @@ test("the cost table lists each quality's resolution, wait and credits", () => {
   const rows = within(screen.getByRole("table")).getAllByRole("row");
   expect(rows.map((row) => Array.from(row.children).map((cell) => cell.textContent))).toEqual([
     ["Quality", "Resolution", "Ready in", "Credits"],
-    ["Standard", "720p · 9:16", "~3 min", "10"],
-    ["Pro", "1080p · 9:16", "~6 min", "20"],
+    ["Standard", "720p · 9:16", "~8 min", "10"],
+    ["Pro", "1080p · 9:16", "~10 min", "20"],
   ]);
 });
 

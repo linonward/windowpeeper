@@ -2001,7 +2001,7 @@
                           "id": "mDOqq",
                           "name": "Label",
                           "fill": "$w-text",
-                          "content": "Rendering · about 3 min",
+                          "content": "Rendering · about 8 min",
                           "fontFamily": "$font-body",
                           "fontSize": 13,
                           "fontWeight": "normal"
@@ -2745,7 +2745,7 @@
                       "id": "T4uYf",
                       "name": "Fine print",
                       "fill": "$w-faint",
-                      "content": "From $9.90 for one video · No app, no CapCut · Sign in with email or Google",
+                      "content": "From $5.90 for one video · No app, no CapCut · Sign in with email or Google",
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -4545,7 +4545,7 @@
                               "id": "Et4ww",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$9.90",
+                              "content": "$5.90",
                               "lineHeight": 0.9,
                               "fontFamily": "$font-display",
                               "fontSize": 52,
@@ -4556,7 +4556,7 @@
                               "id": "OYwWo",
                               "name": "Per",
                               "fill": "$w-muted",
-                              "content": "$9.90 a video",
+                              "content": "$5.90 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -4804,7 +4804,7 @@
                               "id": "ogUx4",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$29.90",
+                              "content": "$19.90",
                               "lineHeight": 0.9,
                               "fontFamily": "$font-display",
                               "fontSize": 52,
@@ -4815,7 +4815,7 @@
                               "id": "M2YWmU",
                               "name": "Per",
                               "fill": "$w-muted",
-                              "content": "$5.98 a video · save 40%",
+                              "content": "$3.98 a video · save 33%",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -5079,7 +5079,7 @@
                               "id": "ztyFo",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$99.90",
+                              "content": "$69.90",
                               "lineHeight": 0.9,
                               "fontFamily": "$font-display",
                               "fontSize": 52,
@@ -5090,7 +5090,7 @@
                               "id": "Nx3j3",
                               "name": "Per",
                               "fill": "$w-muted",
-                              "content": "$4.00 a video · save 60%",
+                              "content": "$2.80 a video · save 53%",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -5875,7 +5875,7 @@
                       "fill": "$w-muted",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "No. Each video costs credits, from $9.90 for one. If the render fails, the credits come back to your balance.",
+                      "content": "No. Each video costs credits, from $5.90 for one. If the render fails, the credits come back to your balance.",
                       "lineHeight": 1.55,
                       "fontFamily": "$font-body",
                       "fontSize": 16,
@@ -7674,7 +7674,7 @@
                           "id": "NigZh",
                           "name": "Note",
                           "fill": "$w-faint",
-                          "content": "Ready in about 3 min. If the video fails, the 10 credits come back.",
+                          "content": "Ready in about 8 min. If the video fails, the 10 credits come back.",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -8380,7 +8380,7 @@
                       "id": "AZUbN",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$9.90",
+                      "content": "$5.90",
                       "lineHeight": 1,
                       "fontFamily": "$font-display",
                       "fontSize": 60,
@@ -8608,7 +8608,7 @@
                       "id": "fikws",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$29.90",
+                      "content": "$19.90",
                       "lineHeight": 1,
                       "fontFamily": "$font-display",
                       "fontSize": 60,
@@ -8711,7 +8711,7 @@
                           "fill": "$w-muted",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$5.98 a video, save 40%",
+                          "content": "$3.98 a video, save 33%",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -8815,7 +8815,7 @@
                       "id": "ed9Ho",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$99.90",
+                      "content": "$69.90",
                       "lineHeight": 1,
                       "fontFamily": "$font-display",
                       "fontSize": 60,
@@ -8918,7 +8918,7 @@
                           "fill": "$w-muted",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$4.00 a video, save 60%",
+                          "content": "$2.80 a video, save 53%",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -9124,7 +9124,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "~3 min",
+                      "content": "~8 min",
                       "fontFamily": "$font-body",
                       "fontSize": 15,
                       "fontWeight": "normal"
@@ -9187,7 +9187,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "~6 min",
+                      "content": "~10 min",
                       "fontFamily": "$font-body",
                       "fontSize": 15,
                       "fontWeight": "normal"
@@ -10686,7 +10686,7 @@
                                       "id": "zSWY4",
                                       "name": "Desc",
                                       "fill": "$w-muted",
-                                      "content": "720p · ready in ~3 min",
+                                      "content": "720p · ready in ~8 min",
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
                                       "fontWeight": "normal"
@@ -10751,7 +10751,7 @@
                                       "id": "GddMT",
                                       "name": "Desc",
                                       "fill": "$w-muted",
-                                      "content": "1080p · sharper face · ~6 min",
+                                      "content": "1080p · sharper face · ~10 min",
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
                                       "fontWeight": "normal"
@@ -11653,7 +11653,7 @@
                               "id": "nptUW",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "10 credits · $9.90 a video",
+                              "content": "10 credits · $5.90 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -11673,7 +11673,7 @@
                               "id": "K8P4Ze",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$9.90",
+                              "content": "$5.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -11765,7 +11765,7 @@
                               "id": "vcIJn",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "50 credits · $5.98 a video",
+                              "content": "50 credits · $3.98 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -11785,7 +11785,7 @@
                               "id": "j79ZwT",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$29.90",
+                              "content": "$19.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -11864,7 +11864,7 @@
                               "id": "X1Ma9",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "250 credits · $4.00 a video",
+                              "content": "250 credits · $2.80 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -11884,7 +11884,7 @@
                               "id": "viyAk",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$99.90",
+                              "content": "$69.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -11953,7 +11953,7 @@
                   ],
                   "descendants": {
                     "nom4t": {
-                      "content": "Pay $29.90",
+                      "content": "Pay $19.90",
                       "fontSize": 16
                     },
                     "fEFyQ": {
@@ -12900,7 +12900,7 @@
                   "fill": "$w-faint",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "From $9.90 · Failed renders are free",
+                  "content": "From $5.90 · Failed renders are free",
                   "textAlign": "center",
                   "fontFamily": "$font-body",
                   "fontSize": 12,
@@ -14086,7 +14086,7 @@
                       "id": "n09tP",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$9.90",
+                      "content": "$5.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 40,
@@ -14097,7 +14097,7 @@
                       "id": "IIB5V",
                       "name": "Per",
                       "fill": "$w-muted",
-                      "content": "$9.90 a video",
+                      "content": "$5.90 a video",
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -14333,7 +14333,7 @@
                       "id": "bImQj",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$29.90",
+                      "content": "$19.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 40,
@@ -14344,7 +14344,7 @@
                       "id": "U6Ecyi",
                       "name": "Per",
                       "fill": "$w-muted",
-                      "content": "$5.98 a video · save 40%",
+                      "content": "$3.98 a video · save 33%",
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -14599,7 +14599,7 @@
                       "id": "MFPPi",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$99.90",
+                      "content": "$69.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 40,
@@ -14610,7 +14610,7 @@
                       "id": "y6klH",
                       "name": "Per",
                       "fill": "$w-muted",
-                      "content": "$4.00 a video · save 60%",
+                      "content": "$2.80 a video · save 53%",
                       "fontFamily": "$font-body",
                       "fontSize": 12,
                       "fontWeight": "normal"
@@ -15542,7 +15542,7 @@
                   "fill": "$w-muted",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "No. Each video costs credits, from $9.90 for one. If the render fails, the credits come back to your balance.",
+                  "content": "No. Each video costs credits, from $5.90 for one. If the render fails, the credits come back to your balance.",
                   "lineHeight": 1.5,
                   "fontFamily": "$font-body",
                   "fontSize": 14,
@@ -17310,7 +17310,7 @@
                       "id": "R3wiA9",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$29.90",
+                      "content": "$19.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 52,
@@ -17403,7 +17403,7 @@
                           "fill": "$w-muted",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$5.98 a video, save 40%",
+                          "content": "$3.98 a video, save 33%",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -17508,7 +17508,7 @@
                       "id": "cPuET",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$9.90",
+                      "content": "$5.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 52,
@@ -17703,7 +17703,7 @@
                       "id": "f8EoQA",
                       "name": "Amount",
                       "fill": "$w-text",
-                      "content": "$99.90",
+                      "content": "$69.90",
                       "lineHeight": 0.9,
                       "fontFamily": "$font-display",
                       "fontSize": 52,
@@ -17796,7 +17796,7 @@
                           "fill": "$w-muted",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$4.00 a video, save 60%",
+                          "content": "$2.80 a video, save 53%",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -17924,7 +17924,7 @@
                           "id": "vAzBd",
                           "name": "D",
                           "fill": "$w-muted",
-                          "content": "720p · ~3 min",
+                          "content": "720p · ~8 min",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -17979,7 +17979,7 @@
                           "id": "q38BW",
                           "name": "D",
                           "fill": "$w-muted",
-                          "content": "1080p · ~6 min",
+                          "content": "1080p · ~10 min",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -19020,7 +19020,7 @@
                   "id": "iYODU",
                   "name": "S",
                   "fill": "$w-muted",
-                  "content": "From $9.90 · 14 s",
+                  "content": "From $5.90 · 14 s",
                   "fontFamily": "$font-body",
                   "fontSize": 12,
                   "fontWeight": "normal"
@@ -24907,7 +24907,7 @@
                               "id": "wytYa",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "10 credits · $9.90 a video",
+                              "content": "10 credits · $5.90 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -24927,7 +24927,7 @@
                               "id": "QWX9K",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$9.90",
+                              "content": "$5.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -25019,7 +25019,7 @@
                               "id": "D4H5K",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "50 credits · $5.98 a video",
+                              "content": "50 credits · $3.98 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -25039,7 +25039,7 @@
                               "id": "sVtgR",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$29.90",
+                              "content": "$19.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -25118,7 +25118,7 @@
                               "id": "wE9GG",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "250 credits · $4.00 a video",
+                              "content": "250 credits · $2.80 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -25138,7 +25138,7 @@
                               "id": "tbrbk",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$99.90",
+                              "content": "$69.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -25172,7 +25172,7 @@
                   ],
                   "descendants": {
                     "nom4t": {
-                      "content": "Pay $29.90",
+                      "content": "Pay $19.90",
                       "fontSize": 16
                     },
                     "fEFyQ": {
@@ -25705,7 +25705,7 @@
                           "fill": "$w-text",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$29.90",
+                          "content": "$19.90",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -25765,7 +25765,7 @@
                           "fill": "$w-text",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "$9.90",
+                          "content": "$5.90",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -26088,7 +26088,7 @@
                               "id": "kqqzs",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "10 credits · $9.90 a video",
+                              "content": "10 credits · $5.90 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -26108,7 +26108,7 @@
                               "id": "n3t0oy",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$9.90",
+                              "content": "$5.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -26201,7 +26201,7 @@
                               "id": "ALRjV",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "50 credits · $5.98 a video",
+                              "content": "50 credits · $3.98 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -26221,7 +26221,7 @@
                               "id": "oMDwW",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$29.90",
+                              "content": "$19.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -26300,7 +26300,7 @@
                               "id": "d66C2r",
                               "name": "Meta",
                               "fill": "$w-muted",
-                              "content": "250 credits · $4.00 a video",
+                              "content": "250 credits · $2.80 a video",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -26320,7 +26320,7 @@
                               "id": "zKRYS",
                               "name": "Amount",
                               "fill": "$w-text",
-                              "content": "$99.90",
+                              "content": "$69.90",
                               "fontFamily": "$font-display",
                               "fontSize": 30,
                               "fontWeight": "800"
@@ -26354,7 +26354,7 @@
                   ],
                   "descendants": {
                     "nom4t": {
-                      "content": "Pay $29.90",
+                      "content": "Pay $19.90",
                       "fontSize": 16
                     },
                     "fEFyQ": {
@@ -26916,7 +26916,7 @@
                           "fill": "$w-text",
                           "textGrowth": "fixed-width",
                           "width": 62,
-                          "content": "$29.90",
+                          "content": "$19.90",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -26978,7 +26978,7 @@
                           "fill": "$w-text",
                           "textGrowth": "fixed-width",
                           "width": 62,
-                          "content": "$9.90",
+                          "content": "$5.90",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "normal"
@@ -44878,7 +44878,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": 80,
-                      "content": "$29.90",
+                      "content": "$19.90",
                       "textAlign": "right",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -45001,7 +45001,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": 80,
-                      "content": "$9.90",
+                      "content": "$5.90",
                       "textAlign": "right",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -45124,7 +45124,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": 80,
-                      "content": "$99.90",
+                      "content": "$69.90",
                       "textAlign": "right",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -45247,7 +45247,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": 80,
-                      "content": "$9.90",
+                      "content": "$5.90",
                       "textAlign": "right",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -45366,7 +45366,7 @@
                       "fill": "$w-text",
                       "textGrowth": "fixed-width",
                       "width": 80,
-                      "content": "$29.90",
+                      "content": "$19.90",
                       "textAlign": "right",
                       "fontFamily": "$font-body",
                       "fontSize": 14,

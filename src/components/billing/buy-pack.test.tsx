@@ -18,7 +18,7 @@ const fetchMock = vi.fn();
 const assign = vi.fn();
 const signedIn = { data: { user: { id: "u1" } }, isPending: false };
 const signedOut = { data: null, isPending: false };
-const pack = { id: "medium", credits: 50, amount: 2990, currency: "usd" };
+const pack = { id: "medium", credits: 50, amount: 1990, currency: "usd" };
 const reply = (status: number, body: object) => ({ ok: status < 300, status, json: async () => body });
 
 // The address bar's path after the last replaceState, as the stubbed

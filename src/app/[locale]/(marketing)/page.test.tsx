@@ -35,7 +35,7 @@ test("the generator sits in the hero, with the photo, the scenes and one button"
   expect(within(generator).getAllByRole("radio")).toHaveLength(6);
   expect(within(generator).getByRole("button", { name: "Make my video" })).toBeDefined();
   // The smallest pack's price, from the config.
-  expect(generator.textContent).toContain("From $9.90 for one video");
+  expect(generator.textContent).toContain("From $5.90 for one video");
 });
 
 // A real clip, made from an AI-generated person, and the page says so.
@@ -93,9 +93,9 @@ test("pricing lists the credit packs from the config, the recommended one lit", 
   expect(pricing.id).toBe("pricing");
   const packs = Array.from(pricing.querySelector("ul")!.children) as HTMLElement[];
   expect(packs.map((pack) => pack.textContent)).toEqual([
-    expect.stringContaining("Single · 1 video$9.90$9.90 a video"),
-    expect.stringContaining("5-pack · 5 videosRecommended$29.90$5.98 a video · save 40%"),
-    expect.stringContaining("25-pack · 25 videos$99.90$4.00 a video · save 60%"),
+    expect.stringContaining("Single · 1 video$5.90$5.90 a video"),
+    expect.stringContaining("5-pack · 5 videosRecommended$19.90$3.98 a video · save 33%"),
+    expect.stringContaining("25-pack · 25 videos$69.90$2.80 a video · save 53%"),
   ]);
   expect(within(pricing).getByRole("link", { name: "Make my video" }).getAttribute("href")).toBe("#generator");
   expect(within(pricing).getByRole("link", { name: /See full pricing/ }).getAttribute("href")).toBe("/pricing");
@@ -118,7 +118,7 @@ test("the FAQ states the price and the photo size from the config", () => {
   const faq = screen.getByRole("region", { name: "Window peeper AI video questions" });
   const pay = within(faq).getByText("Can I see the video before I pay?").closest("details") as HTMLElement;
   expect(pay.hasAttribute("open")).toBe(true);
-  expect(pay.textContent).toContain("from $9.90 for one");
+  expect(pay.textContent).toContain("from $5.90 for one");
   const photos = within(faq).getByText("Which photos work best?").closest("details") as HTMLElement;
   expect(photos.textContent).toContain("up to 10 MB");
 });
