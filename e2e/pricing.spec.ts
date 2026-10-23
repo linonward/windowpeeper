@@ -4,9 +4,9 @@ import { randomIp, readMagicLink, signIn, uniqueEmail } from "./support/auth";
 // CREDIT_PACKS (src/server/payment/packs.ts) and the window peeper video's prices
 // (src/server/videos/window-peeper.ts).
 const PACKS = [
-  ["Single", "$9.90", "Any of the 6 scenes"],
-  ["5-pack", "$29.90", "5 Standard or 2 Pro videos"],
-  ["25-pack", "$99.90", "$4.00 a video, save 60%"],
+  ["Single", "$5.90", "Any of the 6 scenes"],
+  ["5-pack", "$19.90", "5 Standard or 2 Pro videos"],
+  ["25-pack", "$69.90", "$2.80 a video, save 53%"],
 ];
 const cardsIn = (page: Page) => page.locator('[aria-labelledby="pricing-packs"] > ul > li');
 
@@ -16,8 +16,8 @@ test("signed-out visitors see the price list: the packs, what a video costs and 
   expect(response?.status()).toBe(200);
   await expect(page).toHaveURL("/pricing");
   await expect(page.getByRole("heading", { level: 1, name: "Pay for the videos you make" })).toBeVisible();
-  await expect(page).toHaveTitle("Window Peeper Video Pricing – From $9.90 | WindowPeeper");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Window peeper videos from \$9\.90:/);
+  await expect(page).toHaveTitle("Window Peeper Video Pricing – From $5.90 | WindowPeeper");
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^Window peeper videos from \$5\.90:/);
   const cards = cardsIn(page);
   for (const [index, [name, price, line]] of PACKS.entries()) {
     const card = cards.nth(index);
@@ -53,7 +53,7 @@ test("a signed-in buyer opens checkout straight from the price list", async ({ p
   await page.goto("/pricing");
 
   const checkout = checkoutFrom(page);
-  await page.getByRole("button", { name: "Buy 250 credits for $99.90" }).click();
+  await page.getByRole("button", { name: "Buy 250 credits for $69.90" }).click();
 
   expect((await checkout).postDataJSON()).toEqual({ packId: "large", locale: "en", returnTo: "pricing" });
   await expect(page.getByRole("main").getByRole("alert")).toHaveText("Payments aren't set up yet.");
@@ -64,7 +64,7 @@ test("a signed-out visitor signs in on the price list, then checkout opens for t
   const email = uniqueEmail();
   await page.context().setExtraHTTPHeaders({ "x-forwarded-for": randomIp() });
   await page.goto("/pricing");
-  await page.getByRole("button", { name: "Buy 10 credits for $9.90" }).click();
+  await page.getByRole("button", { name: "Buy 10 credits for $5.90" }).click();
 
   const dialog = page.getByRole("dialog", { name: "Sign in to buy credits" });
   await dialog.getByLabel("Email").fill(email);
@@ -90,7 +90,7 @@ test("the home page's packs open checkout and come back to them", async ({ page 
   await page.goto("/");
 
   const checkout = checkoutFrom(page);
-  await page.locator("#pricing").getByRole("button", { name: "Buy 50 credits for $29.90" }).click();
+  await page.locator("#pricing").getByRole("button", { name: "Buy 50 credits for $19.90" }).click();
 
   expect((await checkout).postDataJSON()).toEqual({ packId: "medium", locale: "en", returnTo: "packs" });
 });

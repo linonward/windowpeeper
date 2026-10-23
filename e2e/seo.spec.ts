@@ -102,7 +102,7 @@ test("marketing pages carry keyword-first titles", async ({ page }) => {
   const titles = {
     "/": "Window Peeper AI Video Generator – Make the TikTok Trend From a Photo",
     "/es": "Generador de videos Window Peeper con IA – La tendencia con una foto",
-    "/es/pricing": "Precios del video de window peeper – Desde 9,90 US$ | WindowPeeper",
+    "/es/pricing": "Precios del video de window peeper – Desde 5,90 US$ | WindowPeeper",
     "/how-to-make-window-peeper-video": "How to Make the Window Peeper Video | WindowPeeper",
   };
   for (const [path, title] of Object.entries(titles)) {
@@ -178,7 +178,7 @@ test("llms.txt describes the product and links the public pages", async ({ reque
   expect(lines[2]).toBe(
     "> Make the window peeper trend video from one photo: caught mid-bite in a lit window, a long stare, then the curtain. Six scenes, no CapCut template.",
   );
-  expect(text).toContain("- Can I see the video before I pay?: No. Each video costs credits, from $9.90 for one.");
+  expect(text).toContain("- Can I see the video before I pay?: No. Each video costs credits, from $5.90 for one.");
   // The largest photo a visitor may pick; the browser shrinks it to upload.
   expect(text).toContain("JPG, PNG or WebP, up to 10 MB.");
   expect(text).toContain(`- [Privacy Policy](${baseURL}/privacy)`);
@@ -219,7 +219,7 @@ test("the home page's FAQ is structured data", async ({ page }) => {
   expect(faq.mainEntity[1]).toEqual({
     "@type": "Question",
     name: "Can I see the video before I pay?",
-    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^No\. Each video costs credits, from \$9\.90 for one\./) },
+    acceptedAnswer: { "@type": "Answer", text: expect.stringMatching(/^No\. Each video costs credits, from \$5\.90 for one\./) },
   });
 });
 

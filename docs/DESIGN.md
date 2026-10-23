@@ -155,7 +155,7 @@ Checked options (scenes, quality, packs) get a 2px `--primary` border on `--prim
 
 ### Packs (`billing/packs.tsx`)
 
-`packFacts` gives a pack's videos, Pro videos, price per video and its saving against the smallest pack. `PackOptions` is the radio list the buy-credits dialog, the home generator's offer and `/billing` share: name ("5-pack · 5 videos") with the lamp `Recommended` tag, "50 credits · $5.98 a video", the price in `font-display` and "Save 40%" in `--ok` mono. `PackBenefits` lists No watermark, Post anywhere, Never expire and Failed renders are free, as small notes or in lamp-soft tiles.
+`packFacts` gives a pack's videos, Pro videos, price per video and its saving against the smallest pack. `PackOptions` is the radio list the buy-credits dialog, the home generator's offer and `/billing` share: name ("5-pack · 5 videos") with the lamp `Recommended` tag, "50 credits · $3.98 a video", the price in `font-display` and "Save 33%" in `--ok` mono. `PackBenefits` lists No watermark, Post anywhere, Never expire and Failed renders are free, as small notes or in lamp-soft tiles.
 
 ### Site header and footer (`layout/`)
 

@@ -32,9 +32,9 @@ const props = {
   imageLimits: { minSide: 240, maxSide: 8000, maxRatio: 8 },
   enabled: true,
   packs: [
-    { id: "small", credits: 10, amount: 990, currency: "usd" },
-    { id: "medium", credits: 50, amount: 2990, currency: "usd" },
-    { id: "large", credits: 250, amount: 9990, currency: "usd" },
+    { id: "small", credits: 10, amount: 590, currency: "usd" },
+    { id: "medium", credits: 50, amount: 1990, currency: "usd" },
+    { id: "large", credits: 250, amount: 6990, currency: "usd" },
   ],
   featured: "medium",
 };
@@ -55,7 +55,7 @@ const pending = {
 };
 const CONSENT = "I confirm this is a photo of me and I am 18 or older.";
 const GENERATE = "Make my video";
-const PAY = "Pay $29.90 and make my video";
+const PAY = "Pay $19.90 and make my video";
 
 beforeEach(() => {
   vi.stubGlobal("fetch", fetchMock);
@@ -296,16 +296,16 @@ test("without enough credits, it names the price and offers the packs, the recom
   const packs = screen.getByRole("radiogroup", { name: /Buy a pack/ });
   const five = within(packs).getByRole("radio", { name: /5-pack · 5 videos/ }) as HTMLInputElement;
   expect(five.checked).toBe(true);
-  expect(five.closest("label")?.textContent).toContain("$29.90");
+  expect(five.closest("label")?.textContent).toContain("$19.90");
   expect(five.closest("label")?.textContent).toContain("Recommended");
-  expect(five.closest("label")?.textContent).toContain("Save 40%");
+  expect(five.closest("label")?.textContent).toContain("Save 33%");
   expect(screen.getByRole("button", { name: PAY })).toBeDefined();
   expect(screen.getByText("Secure checkout. One-time payment, no subscription.")).toBeDefined();
   expect(screen.getByRole("img", { name: "Your photo preview" })).toBeDefined();
 
   // Another pack changes the price on the button.
   fireEvent.click(within(packs).getByRole("radio", { name: /25-pack/ }));
-  expect(screen.getByRole("button", { name: "Pay $99.90 and make my video" })).toBeDefined();
+  expect(screen.getByRole("button", { name: "Pay $69.90 and make my video" })).toBeDefined();
 });
 
 test("paying saves the draft, then opens checkout that returns to the generator", async () => {

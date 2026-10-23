@@ -25,7 +25,7 @@ test("the sidebar opens billing with the balance, the packs and the credit histo
   // New accounts start with no credits (signupCredits in src/server/credits/config.ts).
   await expect(page.getByText("Credit balance").locator("+ p")).toHaveText("0 credits");
   // The recommended pack starts picked; buying is off without a provider.
-  await expect(page.getByRole("button", { name: "Buy 50 credits for $29.90" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Buy 50 credits for $19.90" })).toBeDisabled();
   await expect(page.getByText("Payments aren't set up yet.")).toBeVisible();
   await expect(page.getByText("No orders yet.")).toBeVisible();
   await expect(page.getByText("No credit activity yet.")).toBeVisible();
@@ -40,9 +40,9 @@ test("offers the three packs with what each buys, and no subscription", async ({
   const main = page.getByRole("main");
   const packs = main.getByRole("radiogroup", { name: "Buy credits" });
   for (const [name, text] of [
-    ["Single · 1 video", "10 credits · $9.90 a video$9.90"],
-    ["5-pack · 5 videos", "50 credits · $5.98 a video$29.90Save 40%"],
-    ["25-pack · 25 videos", "250 credits · $4.00 a video$99.90Save 60%"],
+    ["Single · 1 video", "10 credits · $5.90 a video$5.90"],
+    ["5-pack · 5 videos", "50 credits · $3.98 a video$19.90Save 33%"],
+    ["25-pack · 25 videos", "250 credits · $2.80 a video$69.90Save 53%"],
   ]) {
     await expect(packs.locator("label").filter({ hasText: name })).toContainText(text);
   }

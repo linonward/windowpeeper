@@ -184,21 +184,21 @@ test("lists each pack by the videos it buys, with its price per video and what i
       {...props}
       featured="medium"
       packs={[
-        { id: "small", credits: 10, amount: 990, currency: "usd" },
-        { id: "medium", credits: 50, amount: 2990, currency: "usd" },
-        { id: "large", credits: 250, amount: 9990, currency: "usd" },
+        { id: "small", credits: 10, amount: 590, currency: "usd" },
+        { id: "medium", credits: 50, amount: 1990, currency: "usd" },
+        { id: "large", credits: 250, amount: 6990, currency: "usd" },
       ]}
     />,
   );
 
   const row = (name: RegExp) => screen.getByRole("radio", { name }).closest("label")!;
-  expect(row(/Single · 1 video/).textContent).toContain("10 credits · $9.90 a video");
+  expect(row(/Single · 1 video/).textContent).toContain("10 credits · $5.90 a video");
   expect(row(/5-pack · 5 videos/).textContent).toContain("Recommended");
-  expect(row(/5-pack · 5 videos/).textContent).toContain("Save 40%");
-  expect(row(/25-pack · 25 videos/).textContent).toContain("$4.00 a video");
+  expect(row(/5-pack · 5 videos/).textContent).toContain("Save 33%");
+  expect(row(/25-pack · 25 videos/).textContent).toContain("$2.80 a video");
   expect(screen.getAllByText("Recommended")).toHaveLength(1);
   // The recommended pack starts picked, and the button pays for it.
-  expect(screen.getByRole("button", { name: "Buy 50 credits for $29.90" }).textContent).toBe("Pay $29.90");
+  expect(screen.getByRole("button", { name: "Buy 50 credits for $19.90" }).textContent).toBe("Pay $19.90");
   expect(screen.getByText("Secure checkout. One-time payment, no subscription.")).toBeTruthy();
 });
 

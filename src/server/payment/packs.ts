@@ -5,9 +5,9 @@
 // design boards, docs/design/windowpeeper.pen). Waffo sells each pack as the
 // product its ID maps to, so keep the IDs.
 export const CREDIT_PACKS = [
-  { id: "small", credits: 10, amount: 990, currency: "usd" },
-  { id: "medium", credits: 50, amount: 2990, currency: "usd" },
-  { id: "large", credits: 250, amount: 9990, currency: "usd" },
+  { id: "small", credits: 10, amount: 590, currency: "usd" },
+  { id: "medium", credits: 50, amount: 1990, currency: "usd" },
+  { id: "large", credits: 250, amount: 6990, currency: "usd" },
 ] as const;
 
 // The pack the pricing and billing pages highlight.

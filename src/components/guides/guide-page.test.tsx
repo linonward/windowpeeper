@@ -12,7 +12,7 @@ afterEach(cleanup);
 const facts = {
   credits: 10,
   proCredits: 20,
-  packs: [{ credits: 10, amount: 990, currency: "usd" }],
+  packs: [{ credits: 10, amount: 590, currency: "usd" }],
   maxPickBytes: 10 * 1024 * 1024,
   imageLimits: { minSide: 240, maxSide: 8000, maxRatio: 8 },
 };

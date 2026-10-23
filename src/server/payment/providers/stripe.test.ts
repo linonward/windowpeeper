@@ -65,7 +65,7 @@ test("creates a Checkout Session priced from the pack", async () => {
   const session = await stripeProvider.createCheckout({
     ...base,
     orderId: "order-1",
-    pack: { id: "small", credits: 10, amount: 990, currency: "usd" },
+    pack: { id: "small", credits: 10, amount: 590, currency: "usd" },
   });
 
   expect(session).toEqual({ sessionId: "cs_1", url: "https://checkout.stripe.com/c/pay/cs_1" });
@@ -77,7 +77,7 @@ test("creates a Checkout Session priced from the pack", async () => {
       line_items: [
         expect.objectContaining({
           quantity: 1,
-          price_data: expect.objectContaining({ currency: "usd", unit_amount: 990 }),
+          price_data: expect.objectContaining({ currency: "usd", unit_amount: 590 }),
         }),
       ],
       success_url: base.successUrl,
