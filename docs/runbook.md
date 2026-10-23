@@ -483,16 +483,16 @@ The app checks the variables when the Worker starts and answers every request wi
 
 ### 4. Builds
 
-Cloudflare builds and deploys each push to `main` (Workers Builds). Setup, done once in the Cloudflare dashboard:
+Cloudflare builds and deploys the `production` branch (Workers Builds). CI's `promote` job moves `production` to each `main` commit whose checks all pass ([`ci.yml`](../.github/workflows/ci.yml)), so a broken `main` never goes live. Never push `production` by hand. A push that changes only Markdown runs no CI, so it deploys with the next code change. Setup, done once in the Cloudflare dashboard:
 
 1. **Workers & Pages → Create → Import a repository** → `linonward/windowpeeper`. For an existing `windowpeeper` Worker, use **Settings → Builds → Connect** instead.
 2. Build settings:
    - Build command: `pnpm cf:build`
    - Deploy command: `npx wrangler deploy`
-   - Production branch: `main`; preview builds off
+   - Production branch: `production`; preview builds off
    - Build variables: `BETTER_AUTH_URL=https://windowpeeper.org` and any `NEXT_PUBLIC_*` you use. `next build` reads them; the Worker's own `vars` and secrets don't reach the build.
    - Node.js comes from [`.node-version`](../.node-version); pnpm from `packageManager` in `package.json`.
-3. Push to `main` and confirm in **Deployments** that the commit builds and deploys.
+3. Merge to `main`. When CI passes, `promote` moves `production` (the first run creates it). Confirm in **Deployments** that the commit builds and deploys. If no CI run started for a push, rerun it: `gh workflow run CI --ref main`.
 
 > **Warning:** OpenNext copies `.env` files into the Worker bundle. Don't run `pnpm cf:deploy` from a checkout whose `.env` holds secrets: they would ship inside the code. Workers Builds has no `.env`. To test the Worker locally, run `pnpm cf:preview` with the settings in a git-ignored `.dev.vars`.
 
@@ -515,7 +515,7 @@ Workers Logs is on (`observability` in `wrangler.jsonc`), with query strings rem
 ### 7. Each deploy
 
 1. If the change adds a migration, apply it first ([1. Database (Neon)](#1-database-neon), step 2).
-2. Merge to `main`. Check the deployment in the dashboard and that the domain serves it.
+2. Merge to `main`. Wait for CI to pass and promote it, then check the deployment in the dashboard and that the domain serves it.
 3. If the change adds or changes public pages, submit the sitemap to [IndexNow](#indexnow):
 
    ```sh

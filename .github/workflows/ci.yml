@@ -8,6 +8,9 @@ on:
   push:
     branches: [main]
     paths: ["**", "!**/*.md", "docs/DESIGN.md", "docs/runbook.md"]
+  # Rerun `main` by hand when GitHub drops a push event and no run starts:
+  # `gh workflow run CI --ref main`. It checks and promotes like a push.
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -157,3 +160,20 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
+
+  # Workers Builds deploys the `production` branch (docs/runbook.md). Move
+  # it to this commit only after `main` passes, so a broken `main` never
+  # goes live. A plain push is fast-forward only: an older commit can't
+  # replace a newer one.
+  promote:
+    name: Promote to production
+    needs: [check, worker, integration, e2e]
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git push origin "$GITHUB_SHA:refs/heads/production"

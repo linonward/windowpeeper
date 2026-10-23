@@ -18,3 +18,15 @@ test("CI's E2E image matches the installed Playwright version", () => {
 test("CI doesn't install browsers with apt", () => {
   expect(read(".github/workflows/ci.yml")).not.toContain("playwright install");
 });
+
+// Workers Builds deploys the `production` branch (docs/runbook.md), which
+// CI moves to a `main` commit only after every other job passed.
+test("CI promotes main to production only after every check passes", () => {
+  const ci = read(".github/workflows/ci.yml");
+  const jobs = [...ci.split(/^jobs:$/m)[1].matchAll(/^  ([a-z0-9-]+):$/gm)].map(([, name]) => name).filter((name) => name !== "promote");
+  const promote = ci.split(/^  promote:$/m)[1] ?? "";
+
+  expect(promote.match(/needs: \[(.*)\]/)?.[1].split(", ").sort()).toEqual(jobs.sort());
+  expect(promote).toContain('git push origin "$GITHUB_SHA:refs/heads/production"');
+  expect(promote).toContain("github.ref == 'refs/heads/main'");
+});
