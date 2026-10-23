@@ -37,6 +37,21 @@ test("on a phone, the photo zone shows in the first screen", async ({ page }) =>
   await expect(page.getByRole("region", { name: "Make your window peeper video" }).getByText("Drop a photo or click to choose")).toBeInViewport();
 });
 
+test("on a phone, the example clip plays under the generator, inside the screen width", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const generator = page.getByRole("region", { name: "Make your window peeper video" });
+  const video = page.locator("main video").first();
+  await video.scrollIntoViewIfNeeded();
+  await expect(video).toBeVisible();
+  await expect(page.getByText("A real video made here. The person in it is AI-generated.")).toBeVisible();
+  const [form, clip] = [await generator.boundingBox(), await video.boundingBox()];
+  expect(clip!.y).toBeGreaterThan(form!.y + form!.height);
+  expect(clip!.x).toBeGreaterThanOrEqual(0);
+  expect(clip!.x + clip!.width).toBeLessThanOrEqual(390);
+});
+
 test("the header offers sign-in to visitors and the dashboard once signed in", async ({
   page,
 }) => {
