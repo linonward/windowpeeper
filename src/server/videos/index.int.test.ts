@@ -478,6 +478,17 @@ test("the sweep collects a finished video nobody polled", async () => {
   expect(storage.putObject).toHaveBeenCalledWith(`videos/${userId}/${id}.mp4`, mp4, "video/mp4");
 });
 
+// Bailian takes about 6m40s for a 14-second video, so the sweep looks soon
+// after: a closed page gets its video within one cron run of that.
+test("the sweep collects a video seven minutes after it was made", async () => {
+  dashscope.result.mockResolvedValue({ status: "succeeded", url: "https://dashscope.test/out.mp4" });
+  const id = await staleVideo(7 + 1 / 60, `dashscope-${randomUUID()}`);
+
+  await sweepStaleVideos();
+
+  expect(await statusOf(id)).toBe("succeeded");
+});
+
 // Emails sent to this test's user. The database is shared, so the sweep
 // may settle other tests' videos too. The links need the site URL, which
 // CI has no .env for.

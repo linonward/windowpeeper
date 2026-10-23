@@ -281,8 +281,8 @@ Photo effects take no prompt, so only photos are checked (`src/server/moderation
 
 A crash during generation leaves a video `pending` with its credits spent, and a video finishes only while someone polls it. `POST /api/cron/sweep` settles them:
 
-- Never submitted after 15 minutes: fail and refund.
-- Submitted more than 15 minutes ago: collect from the provider, 20 per run, least recently checked first (`checked_at`; never checked first), 4 at a time.
+- Never submitted after 7 minutes: fail and refund.
+- Submitted more than 7 minutes ago: collect from the provider, 20 per run, least recently checked first (`checked_at`; never checked first), 4 at a time.
 - Not finished after a day: fail and refund.
 
 Each run fails at most 100 videos, oldest first. A refund reuses the request's own idempotency key, so nothing is refunded twice.
