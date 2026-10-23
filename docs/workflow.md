@@ -70,3 +70,5 @@ git worktree prune
 ```
 
 Run `git branch -D` only after `gh pr merge` succeeds.
+
+The merge deploys once CI passes on `main`: its `promote` job moves the `production` branch, which Cloudflare builds ([runbook § Builds](runbook.md#4-builds)).
