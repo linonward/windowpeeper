@@ -2,6 +2,7 @@ import { Plus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { projectConfig } from "project.config";
 import { faqPage, jsonLd } from "@/lib/seo";
+import { InView } from "./in-view";
 
 const QUESTIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 // Open on load, as the boards show them.
@@ -11,7 +12,7 @@ const OPEN = ["1", "2"];
 // that turns when open (docs/DESIGN.md, FAQ accordion). The answers state the
 // smallest pack's price and the photo size from the server config, which the
 // page passes in, and the support address for reports. The same questions and answers are FAQPage structured data
-// for search engines.
+// for search engines. Settles in once in view (globals.css, Home motion).
 export function Faq({ price, size }: { price: string; size: number }) {
   const t = useTranslations("Home.faq");
   const locale = useLocale();
@@ -24,14 +25,18 @@ export function Faq({ price, size }: { price: string; size: number }) {
   return (
     <section id="faq" aria-labelledby="faq-title" className="scroll-mt-16 border-t">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(data) }} />
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20 lg:py-24">
+      <InView
+        motion="settle"
+        threshold={0.15}
+        className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20 lg:py-24"
+      >
         <div className="flex flex-col gap-3">
-          <p className="eyebrow">{t("eyebrow")}</p>
-          <h2 id="faq-title" className="font-display text-[clamp(2.25rem,9vw,3rem)] leading-none font-extrabold text-balance">
+          <p className="eyebrow settle-text">{t("eyebrow")}</p>
+          <h2 id="faq-title" className="settle-text font-display text-[clamp(2.25rem,9vw,3rem)] leading-none font-extrabold text-balance">
             {t("title")}
           </h2>
         </div>
-        <div>
+        <div className="settle-text">
           {QUESTIONS.map((key) => (
             <details key={key} open={OPEN.includes(key)} className="group border-b">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-[22px] [&::-webkit-details-marker]:hidden">
@@ -46,7 +51,7 @@ export function Faq({ price, size }: { price: string; size: number }) {
             </details>
           ))}
         </div>
-      </div>
+      </InView>
     </section>
   );
 }

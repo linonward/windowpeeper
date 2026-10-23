@@ -49652,6 +49652,3851 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "kjWs7",
+      "x": 8810,
+      "y": 3023,
+      "name": "/ Home — Motion spec",
+      "clip": true,
+      "width": 1440,
+      "fill": "$w-bg",
+      "layout": "vertical",
+      "gap": 112,
+      "padding": [
+        96,
+        184,
+        120,
+        184
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "iml6l",
+          "name": "Spec header",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "VhB6C",
+              "name": "Eyebrow",
+              "fill": "$w-lamp-text",
+              "content": "MOTION SPEC · HOME",
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.4
+            },
+            {
+              "type": "text",
+              "id": "NBcsF",
+              "name": "Title",
+              "fill": "$w-text",
+              "content": "Four motions, one camera.",
+              "lineHeight": 1,
+              "fontFamily": "$font-display",
+              "fontSize": 64,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "hs9Va",
+              "name": "Rules",
+              "fill": "$w-muted",
+              "textGrowth": "fixed-width",
+              "width": 760,
+              "content": "Every motion borrows from the camera that is watching: it focuses, the windows light up, the tape plays, the lens settles. Each one runs once, the first time its section comes into view, with CSS transitions and IntersectionObserver, no new library. With reduced motion turned on, every element shows its final state at once. Phones get the same motions with shorter distances.",
+              "lineHeight": 1.55,
+              "fontFamily": "$font-body",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "n9QT55",
+          "name": "01 Hero focus",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "children": [
+            {
+              "type": "frame",
+              "id": "c8GSw",
+              "name": "Motion head",
+              "width": "fill_container",
+              "gap": 64,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "E3RiXT",
+                  "name": "Title block",
+                  "width": 420,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M0IwvT",
+                      "name": "Number",
+                      "fill": "$w-lamp-text",
+                      "content": "01 · HERO",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "hZa6k",
+                      "name": "Motion title",
+                      "fill": "$w-text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The camera finds focus",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$font-display",
+                      "fontSize": 40,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gcP5a",
+                  "name": "Spec",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "x62gP6",
+                      "name": "Spec row Trigger",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Q0PXV1",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TRIGGER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "o7XhdH",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Page load, once.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lNtQQ",
+                      "name": "Spec row Duration",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "I16U3a",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "DURATION",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "BrYRF",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "800 ms, cubic-bezier(0.2, 0.8, 0.2, 1).",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "F0dYj",
+                      "name": "Spec row Video",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KFZJj",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "VIDEO",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "EimgD",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Blur 14 px → 0, scale 1.06 → 1, opacity 0.6 → 1.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZuBSt",
+                      "name": "Spec row Corners",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nvPmM",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "CORNERS",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "gQzLM",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Start 14 px outside, close in to their marks.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HRhQN",
+                      "name": "Spec row Timecode",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "azIyV",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TIMECODE",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "q8z1C2",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "REC counts up in real time, one tick a second. The red dot keeps its blink.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fvFx3",
+              "name": "Keyframes",
+              "width": "fill_container",
+              "gap": 36,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "R8DM8",
+                  "name": "Keyframe 0 ms · out of focus",
+                  "width": 340,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "id": "nbam6",
+                      "type": "ref",
+                      "ref": "LIaQW",
+                      "name": "Viewfinder",
+                      "width": 340,
+                      "height": 604,
+                      "descendants": {
+                        "oiMGf": {
+                          "effect": {
+                            "type": "blur",
+                            "radius": 14
+                          },
+                          "opacity": 0.55,
+                          "width": 340,
+                          "height": 604,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-6.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "ykKAZ": {
+                          "y": 384,
+                          "width": 340,
+                          "height": 220
+                        },
+                        "aqC6u": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "HDb9l": {
+                          "x": 322,
+                          "y": 0
+                        },
+                        "y2J7s": {
+                          "x": 0,
+                          "y": 586
+                        },
+                        "U85whq": {
+                          "x": 322,
+                          "y": 586
+                        },
+                        "Holxz/a8tqI": {
+                          "content": "REC 01:28:00 AM"
+                        },
+                        "VHxUc": {
+                          "y": 556
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "tUpGl",
+                      "name": "Label",
+                      "fill": "$w-muted",
+                      "content": "0 MS · OUT OF FOCUS",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BS7Sl",
+                  "name": "Keyframe 400 ms · finding it",
+                  "width": 340,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "id": "I1wtz",
+                      "type": "ref",
+                      "ref": "LIaQW",
+                      "name": "Viewfinder",
+                      "width": 340,
+                      "height": 604,
+                      "descendants": {
+                        "oiMGf": {
+                          "effect": {
+                            "type": "blur",
+                            "radius": 5
+                          },
+                          "opacity": 0.85,
+                          "width": 340,
+                          "height": 604,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-6.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "ykKAZ": {
+                          "y": 384,
+                          "width": 340,
+                          "height": 220
+                        },
+                        "aqC6u": {
+                          "x": 7,
+                          "y": 7
+                        },
+                        "HDb9l": {
+                          "x": 315,
+                          "y": 7
+                        },
+                        "y2J7s": {
+                          "x": 7,
+                          "y": 579
+                        },
+                        "U85whq": {
+                          "x": 315,
+                          "y": 579
+                        },
+                        "Holxz/a8tqI": {
+                          "content": "REC 01:28:00 AM"
+                        },
+                        "VHxUc": {
+                          "y": 556
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "fpgRc",
+                      "name": "Label",
+                      "fill": "$w-muted",
+                      "content": "400 MS · FINDING IT",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jmCej",
+                  "name": "Keyframe 800 ms · in focus, ticking",
+                  "width": 340,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "id": "s2ZXy",
+                      "type": "ref",
+                      "ref": "LIaQW",
+                      "name": "Viewfinder",
+                      "width": 340,
+                      "height": 604,
+                      "descendants": {
+                        "oiMGf": {
+                          "width": 340,
+                          "height": 604,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-6.png",
+                            "mode": "cover"
+                          }
+                        },
+                        "ykKAZ": {
+                          "y": 384,
+                          "width": 340,
+                          "height": 220
+                        },
+                        "HDb9l": {
+                          "x": 308
+                        },
+                        "y2J7s": {
+                          "y": 572
+                        },
+                        "U85whq": {
+                          "x": 308,
+                          "y": 572
+                        },
+                        "Holxz/a8tqI": {
+                          "content": "REC 01:28:01 AM"
+                        },
+                        "VHxUc": {
+                          "y": 556
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "I3kOQ",
+                      "name": "Label",
+                      "fill": "$w-muted",
+                      "content": "800 MS · IN FOCUS, TICKING",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "peA6m",
+          "name": "02 Windows light up",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "children": [
+            {
+              "type": "frame",
+              "id": "F4COhe",
+              "name": "Motion head",
+              "width": "fill_container",
+              "gap": 64,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "J2jzgk",
+                  "name": "Title block",
+                  "width": 420,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "p9KNHy",
+                      "name": "Number",
+                      "fill": "$w-lamp-text",
+                      "content": "02 · PICK YOUR WINDOW · SIGNATURE",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "JWyay",
+                      "name": "Motion title",
+                      "fill": "$w-text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The windows light up, one by one",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$font-display",
+                      "fontSize": 40,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DlJCW",
+                  "name": "Spec",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jr5aN",
+                      "name": "Spec row Trigger",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PYsR0",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TRIGGER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "NJex9",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Grid 30% in view, once.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "waXDW",
+                      "name": "Spec row Order",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "kar6o",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "ORDER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "KOl6D",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Reading order: burger, noodles, pizza, wave, through the glass, couple. 150 ms apart.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "f2FQNk",
+                      "name": "Spec row Each window",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZMzmU",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "EACH WINDOW",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "U45ygz",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Dark (image brightness 0.2) → two quick flickers (60 ms each) → lit over 500 ms. Text and buttons fade in with the light.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "oAlta",
+                      "name": "Spec row Total",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KyOou",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TOTAL",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "Y6S2EF",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "About 1.3 s for all six.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aJmIn",
+                      "name": "Spec row Hover",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ujhl8",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "HOVER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "ROkrU",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "One 120 ms dim-and-back flicker on the card under the pointer.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rOQPV",
+              "name": "Keyframe grid · 450 ms",
+              "width": "fill_container",
+              "height": 580,
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wesDz",
+                  "name": "Featured · Burger at night",
+                  "clip": true,
+                  "width": 420,
+                  "height": "fill_container",
+                  "fill": [
+                    {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "generated-6.png",
+                      "mode": "cover"
+                    },
+                    {
+                      "type": "gradient",
+                      "gradientType": "linear",
+                      "enabled": true,
+                      "rotation": 180,
+                      "size": {
+                        "height": 1
+                      },
+                      "colors": [
+                        {
+                          "color": "#090C1300",
+                          "position": 0.45
+                        },
+                        {
+                          "color": "#090C13F0",
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "cornerRadius": "$r-lg",
+                  "stroke": "$w-lamp",
+                  "strokeWidth": 2,
+                  "layout": "vertical",
+                  "padding": 20,
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "nvsqZ",
+                      "name": "Top",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "x6dNO",
+                          "type": "ref",
+                          "ref": "I9V4Cp",
+                          "name": "REC",
+                          "descendants": {
+                            "a8tqI": {
+                              "content": "01:28 AM · CAM 01"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "cp82V",
+                          "name": "Tag",
+                          "fill": "$w-lamp",
+                          "cornerRadius": 4,
+                          "padding": [
+                            5,
+                            9
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "bZZGE",
+                              "name": "L",
+                              "fill": "$w-on-lamp",
+                              "content": "THE ORIGINAL",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xU4Qy",
+                      "name": "Bottom",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "F9mbmW",
+                          "name": "Name",
+                          "fill": "$w-text",
+                          "content": "Burger at night",
+                          "fontFamily": "$font-display",
+                          "fontSize": 40,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Jhd9A",
+                          "name": "Note",
+                          "fill": "$w-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The clip everyone is copying: bite, freeze, stare, curtain.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "TA6p2",
+                          "name": "Btn wrap",
+                          "width": "fill_container",
+                          "padding": [
+                            8,
+                            0,
+                            0,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "id": "rVXUU",
+                              "type": "ref",
+                              "ref": "X3THzN",
+                              "name": "Use",
+                              "width": "fill_container",
+                              "descendants": {
+                                "nom4t": {
+                                  "content": "Use this scene"
+                                },
+                                "fEFyQ": {
+                                  "icon": "arrow-up"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KjxH3",
+                      "layoutPosition": "absolute",
+                      "x": 164,
+                      "y": 273,
+                      "name": "Order badge",
+                      "width": 92,
+                      "height": 34,
+                      "fill": "$w-lamp",
+                      "cornerRadius": 17,
+                      "gap": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TBTah",
+                          "name": "N",
+                          "fill": "$w-on-lamp",
+                          "content": "1",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ocXZs",
+                          "name": "At",
+                          "fill": "$w-on-lamp",
+                          "content": "0 ms",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NJoP0",
+                  "name": "Others",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fJYht",
+                      "name": "Row 1",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "onzlr",
+                          "name": "Midnight noodles",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": [
+                            {
+                              "type": "image",
+                              "enabled": true,
+                              "url": "generated-1.png",
+                              "mode": "cover"
+                            },
+                            {
+                              "type": "gradient",
+                              "gradientType": "linear",
+                              "enabled": true,
+                              "rotation": 180,
+                              "size": {
+                                "height": 1
+                              },
+                              "colors": [
+                                {
+                                  "color": "#090C1300",
+                                  "position": 0.4
+                                },
+                                {
+                                  "color": "#090C13F0",
+                                  "position": 1
+                                }
+                              ]
+                            }
+                          ],
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": 14,
+                          "justifyContent": "space_between",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s7kuSk",
+                              "name": "Time",
+                              "fill": "$w-text",
+                              "content": "01:47 AM",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "GOWTS",
+                              "name": "Bottom",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HtDIG",
+                                  "name": "Name",
+                                  "fill": "$w-text",
+                                  "content": "Midnight noodles",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "f6nvu",
+                                  "name": "Use",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "xyIqb",
+                                      "name": "L",
+                                      "fill": "$w-lamp-text",
+                                      "content": "Use this scene",
+                                      "fontFamily": "$font-body",
+                                      "fontSize": 13,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "icon",
+                                      "id": "Rm9Ef",
+                                      "name": "I",
+                                      "width": 14,
+                                      "height": 14,
+                                      "icon": "arrow-up",
+                                      "library": "lucide",
+                                      "fill": "$w-lamp-text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "gcyJP",
+                              "layoutPosition": "absolute",
+                              "x": 54.66666666666667,
+                              "y": 124,
+                              "name": "Order badge",
+                              "width": 92,
+                              "height": 34,
+                              "fill": "$w-lamp",
+                              "cornerRadius": 17,
+                              "gap": 8,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "qSJo7",
+                                  "name": "N",
+                                  "fill": "$w-on-lamp",
+                                  "content": "2",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "I18po",
+                                  "name": "At",
+                                  "fill": "$w-on-lamp",
+                                  "content": "150 ms",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hiMm1",
+                          "name": "Pizza slice",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": [
+                            {
+                              "type": "image",
+                              "enabled": true,
+                              "url": "generated-3.png",
+                              "mode": "cover"
+                            },
+                            {
+                              "type": "gradient",
+                              "gradientType": "linear",
+                              "enabled": true,
+                              "rotation": 180,
+                              "size": {
+                                "height": 1
+                              },
+                              "colors": [
+                                {
+                                  "color": "#090C1300",
+                                  "position": 0.4
+                                },
+                                {
+                                  "color": "#090C13F0",
+                                  "position": 1
+                                }
+                              ]
+                            }
+                          ],
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": 14,
+                          "justifyContent": "space_between",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "DBIU0",
+                              "name": "Time",
+                              "fill": "$w-text",
+                              "content": "11:58 PM",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "RrqLb",
+                              "name": "Bottom",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "W8GmWD",
+                                  "name": "Name",
+                                  "fill": "$w-text",
+                                  "content": "Pizza slice",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "EOLjT",
+                                  "name": "Use",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "jJtXR",
+                                      "name": "L",
+                                      "fill": "$w-lamp-text",
+                                      "content": "Use this scene",
+                                      "fontFamily": "$font-body",
+                                      "fontSize": 13,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "icon",
+                                      "id": "vhpQb",
+                                      "name": "I",
+                                      "width": 14,
+                                      "height": 14,
+                                      "icon": "arrow-up",
+                                      "library": "lucide",
+                                      "fill": "$w-lamp-text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "xhGds",
+                              "layoutPosition": "absolute",
+                              "x": 54.66666666666667,
+                              "y": 124,
+                              "name": "Order badge",
+                              "width": 92,
+                              "height": 34,
+                              "fill": "$w-lamp",
+                              "cornerRadius": 17,
+                              "gap": 8,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Hb3WH",
+                                  "name": "N",
+                                  "fill": "$w-on-lamp",
+                                  "content": "3",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "QBYMS",
+                                  "name": "At",
+                                  "fill": "$w-on-lamp",
+                                  "content": "300 ms",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "W5MsMt",
+                          "name": "Caught and wave",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": [
+                            {
+                              "type": "image",
+                              "enabled": true,
+                              "url": "generated-5.png",
+                              "mode": "cover"
+                            },
+                            {
+                              "type": "gradient",
+                              "gradientType": "linear",
+                              "enabled": true,
+                              "rotation": 180,
+                              "size": {
+                                "height": 1
+                              },
+                              "colors": [
+                                {
+                                  "color": "#090C1300",
+                                  "position": 0.4
+                                },
+                                {
+                                  "color": "#090C13F0",
+                                  "position": 1
+                                }
+                              ]
+                            }
+                          ],
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": 14,
+                          "justifyContent": "space_between",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "E0OeF4",
+                              "name": "Time",
+                              "fill": "$w-text",
+                              "content": "03:02 AM",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "zF1ND",
+                              "name": "Bottom",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "bGvEw",
+                                  "name": "Name",
+                                  "fill": "$w-text",
+                                  "content": "Caught and wave",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "miiFB",
+                                  "name": "Use",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "h9p7kh",
+                                      "name": "L",
+                                      "fill": "$w-lamp-text",
+                                      "content": "Use this scene",
+                                      "fontFamily": "$font-body",
+                                      "fontSize": 13,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "icon",
+                                      "id": "Wzssi",
+                                      "name": "I",
+                                      "width": 14,
+                                      "height": 14,
+                                      "icon": "arrow-up",
+                                      "library": "lucide",
+                                      "fill": "$w-lamp-text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "kXypC",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Light off (flicker)",
+                              "fill": "#05070B80",
+                              "width": 201.33333333333331,
+                              "height": 282
+                            },
+                            {
+                              "type": "frame",
+                              "id": "K3kLuZ",
+                              "layoutPosition": "absolute",
+                              "x": 54.66666666666666,
+                              "y": 124,
+                              "name": "Order badge",
+                              "width": 92,
+                              "height": 34,
+                              "fill": "$w-lamp",
+                              "cornerRadius": 17,
+                              "gap": 8,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Il9oK",
+                                  "name": "N",
+                                  "fill": "$w-on-lamp",
+                                  "content": "4",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "btnm3",
+                                  "name": "At",
+                                  "fill": "$w-on-lamp",
+                                  "content": "450 ms",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rbjEr",
+                      "name": "Row 2",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "pLlvH",
+                          "name": "Through the glass",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": [
+                            {
+                              "type": "image",
+                              "enabled": true,
+                              "url": "generated.png",
+                              "mode": "cover"
+                            },
+                            {
+                              "type": "gradient",
+                              "gradientType": "linear",
+                              "enabled": true,
+                              "rotation": 180,
+                              "size": {
+                                "height": 1
+                              },
+                              "colors": [
+                                {
+                                  "color": "#090C1300",
+                                  "position": 0.4
+                                },
+                                {
+                                  "color": "#090C13F0",
+                                  "position": 1
+                                }
+                              ]
+                            }
+                          ],
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": 14,
+                          "justifyContent": "space_between",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "G0fix",
+                              "name": "Time",
+                              "fill": "$w-text",
+                              "content": "12:31 AM",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "A2D65",
+                              "name": "Bottom",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "BwgHo",
+                                  "name": "Name",
+                                  "fill": "$w-text",
+                                  "content": "Through the glass",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "w4mOHJ",
+                                  "name": "Use",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "F0NYH",
+                                      "name": "L",
+                                      "fill": "$w-lamp-text",
+                                      "content": "Use this scene",
+                                      "fontFamily": "$font-body",
+                                      "fontSize": 13,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "icon",
+                                      "id": "r7FiO",
+                                      "name": "I",
+                                      "width": 14,
+                                      "height": 14,
+                                      "icon": "arrow-up",
+                                      "library": "lucide",
+                                      "fill": "$w-lamp-text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "LTx5u",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Light off (dark)",
+                              "fill": "#05070BDE",
+                              "width": 201.33333333333334,
+                              "height": 282
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Q6hx8h",
+                              "layoutPosition": "absolute",
+                              "x": 54.66666666666667,
+                              "y": 124,
+                              "name": "Order badge",
+                              "width": 92,
+                              "height": 34,
+                              "fill": "#0E121BCC",
+                              "cornerRadius": 17,
+                              "stroke": "$w-border-strong",
+                              "strokeWidth": 1,
+                              "gap": 8,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HACuj",
+                                  "name": "N",
+                                  "fill": "$w-text",
+                                  "content": "5",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "i1FxA",
+                                  "name": "At",
+                                  "fill": "$w-muted",
+                                  "content": "600 ms",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "visWe",
+                          "name": "Couple dinner",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": [
+                            {
+                              "type": "image",
+                              "enabled": true,
+                              "url": "generated-4.png",
+                              "mode": "cover"
+                            },
+                            {
+                              "type": "gradient",
+                              "gradientType": "linear",
+                              "enabled": true,
+                              "rotation": 180,
+                              "size": {
+                                "height": 1
+                              },
+                              "colors": [
+                                {
+                                  "color": "#090C1300",
+                                  "position": 0.4
+                                },
+                                {
+                                  "color": "#090C13F0",
+                                  "position": 1
+                                }
+                              ]
+                            }
+                          ],
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "padding": 14,
+                          "justifyContent": "space_between",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Udx8Q",
+                              "name": "Time",
+                              "fill": "$w-text",
+                              "content": "10:40 PM",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "CQJuT",
+                              "name": "Bottom",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "c1Dho",
+                                  "name": "Name",
+                                  "fill": "$w-text",
+                                  "content": "Couple dinner",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "R3ox5n",
+                                  "name": "Use",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "iWhat",
+                                      "name": "L",
+                                      "fill": "$w-lamp-text",
+                                      "content": "Use this scene",
+                                      "fontFamily": "$font-body",
+                                      "fontSize": 13,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "icon",
+                                      "id": "GUrR8",
+                                      "name": "I",
+                                      "width": 14,
+                                      "height": 14,
+                                      "icon": "arrow-up",
+                                      "library": "lucide",
+                                      "fill": "$w-lamp-text"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "nGtmj",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Light off (dark)",
+                              "fill": "#05070BDE",
+                              "width": 201.33333333333334,
+                              "height": 282
+                            },
+                            {
+                              "type": "frame",
+                              "id": "xli2M",
+                              "layoutPosition": "absolute",
+                              "x": 54.66666666666667,
+                              "y": 124,
+                              "name": "Order badge",
+                              "width": 92,
+                              "height": 34,
+                              "fill": "#0E121BCC",
+                              "cornerRadius": 17,
+                              "stroke": "$w-border-strong",
+                              "strokeWidth": 1,
+                              "gap": 8,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HI6f9",
+                                  "name": "N",
+                                  "fill": "$w-text",
+                                  "content": "6",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "O7kJT",
+                                  "name": "At",
+                                  "fill": "$w-muted",
+                                  "content": "750 ms",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "e6Xjl",
+                          "name": "See all scenes",
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "fill": "$w-bg",
+                          "cornerRadius": "$r-md",
+                          "stroke": "$w-border-strong",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 10,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "mZcuC",
+                              "name": "Icon",
+                              "width": 44,
+                              "height": 44,
+                              "fill": "$w-lamp-soft",
+                              "cornerRadius": 22,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "g0XD3",
+                                  "name": "I",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "layout-grid",
+                                  "library": "lucide",
+                                  "fill": "$w-lamp-text"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "N51QyW",
+                              "name": "L",
+                              "fill": "$w-text",
+                              "content": "See all scenes",
+                              "fontFamily": "$font-body",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "I8tpo",
+                              "name": "S",
+                              "fill": "$w-muted",
+                              "content": "Prompts, tips and examples",
+                              "fontFamily": "$font-body",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ZDveU",
+              "name": "Caption",
+              "fill": "$w-muted",
+              "content": "SNAPSHOT AT 450 MS: THREE WINDOWS LIT, THE FOURTH FLICKERING, TWO STILL DARK",
+              "fontFamily": "$font-mono",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 1.4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "i05u1k",
+          "name": "03 Shot list playhead",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "children": [
+            {
+              "type": "frame",
+              "id": "skKwi",
+              "name": "Motion head",
+              "width": "fill_container",
+              "gap": 64,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eELH1",
+                  "name": "Title block",
+                  "width": 420,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SzdFq",
+                      "name": "Number",
+                      "fill": "$w-lamp-text",
+                      "content": "03 · 14 SECONDS, FIVE BEATS",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "u1QR8",
+                      "name": "Motion title",
+                      "fill": "$w-text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The tape plays the five beats",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$font-display",
+                      "fontSize": 40,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "No5c3",
+                  "name": "Spec",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "YWReE",
+                      "name": "Spec row Trigger",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZSzIS",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TRIGGER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "w4q7B",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Timeline 50% in view, once.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "F0t8u",
+                      "name": "Spec row Playhead",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZFKkk",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "PLAYHEAD",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "HnD2B",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The amber bar runs 00:00 → 00:14 in 3.5 s (4× speed), linear.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "L16tT2",
+                      "name": "Spec row Beats",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gGati",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "BEATS",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "PwnGb",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Each beat lights as the bar reaches it: the time turns amber and the title goes from muted to white, 200 ms.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D5GOh1",
+                      "name": "Spec row End",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DaKAN",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "END",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "u7baW",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Holds on the full bar. Every beat lit.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AIeOL",
+              "name": "Keyframe T = 00:00 · 0 MS",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "W4bgoG",
+                  "name": "Label",
+                  "fill": "$w-muted",
+                  "content": "T = 00:00 · 0 MS",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.4
+                },
+                {
+                  "type": "frame",
+                  "id": "Eb0Ig",
+                  "name": "Timeline",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jH6ou",
+                      "name": "Track",
+                      "width": "fill_container",
+                      "height": 4,
+                      "fill": "$w-border",
+                      "cornerRadius": 2,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 2,
+                          "id": "ixH4q",
+                          "name": "Progress",
+                          "fill": "$w-lamp",
+                          "width": 6,
+                          "height": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Y6bMVI",
+                      "name": "Beats",
+                      "width": "fill_container",
+                      "gap": 24,
+                      "padding": [
+                        24,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "gqxhB",
+                          "name": "Beat 1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Djmaf",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:00",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "GBD4n",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The window",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "g9zDzH",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "A lit window on a dark street. You're inside, eating.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Zi9qV",
+                          "name": "Beat 2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Pm8Eb",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:03",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "qSSXj",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The bite",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "WACee",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You take a big bite. Nothing is wrong yet.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "lAQce",
+                          "name": "Beat 3",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ew4qV",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:06",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "OK1Eu",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The freeze",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "jOGAv",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You stop chewing. Something is out there.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "VlScM",
+                          "name": "Beat 4",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "X96f2J",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:09",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "StKhV",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The stare",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "zAAgb",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You look straight into the camera. Hold it.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Y5GHg2",
+                          "name": "Beat 5",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UUOVz",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:12",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "mRzK4",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The curtain",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Ka3xV",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You pull the curtain shut. Black.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bZ0eG",
+              "name": "Keyframe T = 00:06 · 1.5 S",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZIz70",
+                  "name": "Label",
+                  "fill": "$w-muted",
+                  "content": "T = 00:06 · 1.5 S",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.4
+                },
+                {
+                  "type": "frame",
+                  "id": "SxUaN",
+                  "name": "Timeline",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "U9gTo",
+                      "name": "Track",
+                      "width": "fill_container",
+                      "height": 4,
+                      "fill": "$w-border",
+                      "cornerRadius": 2,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 2,
+                          "id": "HMvtf",
+                          "name": "Progress",
+                          "fill": "$w-lamp",
+                          "width": 438,
+                          "height": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MLQI6",
+                      "name": "Beats",
+                      "width": "fill_container",
+                      "gap": 24,
+                      "padding": [
+                        24,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "llbFt",
+                          "name": "Beat 1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Jd6kM",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:00",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "J3gFqN",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The window",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Bsf6X",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "A lit window on a dark street. You're inside, eating.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Af5VO",
+                          "name": "Beat 2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ozK5D",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:03",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "S8t4N",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The bite",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mCkx4",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You take a big bite. Nothing is wrong yet.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "QfT6r",
+                          "name": "Beat 3",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "nEHc3",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:06",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "R0nA6",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The freeze",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "oGX81",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You stop chewing. Something is out there.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Nwqj4",
+                          "name": "Beat 4",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "sUXPn",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:09",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "dsd5a",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The stare",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "wtEDY",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You look straight into the camera. Hold it.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oEwnf",
+                          "name": "Beat 5",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "HlOz5",
+                              "name": "Time",
+                              "fill": "$w-faint",
+                              "content": "00:12",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "l5Xbe4",
+                              "name": "Title",
+                              "fill": "$w-muted",
+                              "content": "The curtain",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "sD3pZ",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You pull the curtain shut. Black.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Pg6Fi",
+              "name": "Keyframe T = 00:14 · 3.5 S",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ItnMj",
+                  "name": "Label",
+                  "fill": "$w-muted",
+                  "content": "T = 00:14 · 3.5 S",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.4
+                },
+                {
+                  "type": "frame",
+                  "id": "guCvS",
+                  "name": "Timeline",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HzlKb",
+                      "name": "Track",
+                      "width": "fill_container",
+                      "height": 4,
+                      "fill": "$w-border",
+                      "cornerRadius": 2,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 2,
+                          "id": "q697N",
+                          "name": "Progress",
+                          "fill": "$w-lamp",
+                          "width": 1072,
+                          "height": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "e7SkWr",
+                      "name": "Beats",
+                      "width": "fill_container",
+                      "gap": 24,
+                      "padding": [
+                        24,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "D2Z8qr",
+                          "name": "Beat 1",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "x94DD",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:00",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "ufgI5",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The window",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "gWEz6",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "A lit window on a dark street. You're inside, eating.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "NH7Bv",
+                          "name": "Beat 2",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "TAXs9",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:03",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "VhpFE",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The bite",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "SJXro",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You take a big bite. Nothing is wrong yet.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "d0Dem2",
+                          "name": "Beat 3",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "J2r93N",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:06",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "FSTh0",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The freeze",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "iwPif",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You stop chewing. Something is out there.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nAU43",
+                          "name": "Beat 4",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lsGWk",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:09",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "VR1Le",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The stare",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "h8NCY",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You look straight into the camera. Hold it.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "EMH1O",
+                          "name": "Beat 5",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "a1L9g",
+                              "name": "Time",
+                              "fill": "$w-lamp-text",
+                              "content": "00:12",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 13,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "lcbqp",
+                              "name": "Title",
+                              "fill": "$w-text",
+                              "content": "The curtain",
+                              "fontFamily": "$font-display",
+                              "fontSize": 28,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "oJLkr",
+                              "name": "Body",
+                              "fill": "$w-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You pull the curtain shut. Black.",
+                              "lineHeight": 1.5,
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gIta4",
+          "name": "04 Scroll push-in",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "children": [
+            {
+              "type": "frame",
+              "id": "wVTCu",
+              "name": "Motion head",
+              "width": "fill_container",
+              "gap": 64,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gyEio",
+                  "name": "Title block",
+                  "width": 420,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IJClF",
+                      "name": "Number",
+                      "fill": "$w-lamp-text",
+                      "content": "04 · EVERY SECTION BELOW THE HERO",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1.4
+                    },
+                    {
+                      "type": "text",
+                      "id": "jh0c1",
+                      "name": "Motion title",
+                      "fill": "$w-text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The lens settles as you scroll",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$font-display",
+                      "fontSize": 40,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "r8mHyS",
+                  "name": "Spec",
+                  "width": 560,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "RzfAx",
+                      "name": "Spec row Trigger",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "k2gPML",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TRIGGER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "fDXLH",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Each section 15% in view, once.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "d7nPe",
+                      "name": "Spec row Media",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dhNTY",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "MEDIA",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "RfoVr",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Photos, videos and cards: scale 1.06 → 1, blur 6 px → 0, opacity 0.3 → 1, 700 ms, ease-out. Like a zoom lens settling.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BFqX2",
+                      "name": "Spec row Text",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "P39PVs",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "TEXT",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "sRqL7",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Eyebrow, heading and body: opacity 0 → 1, 12 px up, 400 ms, starting 80 ms after the media.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "C3lxE",
+                      "name": "Spec row Where",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nAdlb",
+                          "name": "Key",
+                          "fill": "$w-faint",
+                          "textGrowth": "fixed-width",
+                          "width": 110,
+                          "content": "WHERE",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1.4
+                        },
+                        {
+                          "type": "text",
+                          "id": "wp8Zq",
+                          "name": "Value",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Before / After, How it works, Pricing, FAQ and the final CTA. Not the hero or the scenes grid, which have their own.",
+                          "lineHeight": 1.55,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LU39v",
+              "name": "Keyframe 0 MS · ARRIVING",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "x6eog1",
+                  "name": "Label",
+                  "fill": "$w-muted",
+                  "content": "0 MS · ARRIVING",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.4
+                },
+                {
+                  "type": "frame",
+                  "id": "JD8NQ",
+                  "name": "Section head",
+                  "opacity": 0.05,
+                  "width": "fill_container",
+                  "gap": 48,
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "P3VTnI",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "e1M9F",
+                          "name": "Eyebrow",
+                          "fill": "$w-lamp-text",
+                          "content": "BEFORE / AFTER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "MVW7i",
+                          "name": "H2",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "One photo. You, in the window.",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-display",
+                          "fontSize": 56,
+                          "fontWeight": "800"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "k5VV9",
+                      "name": "Aside",
+                      "fill": "$w-muted",
+                      "textGrowth": "fixed-width",
+                      "width": 320,
+                      "content": "Same face, same hair. The scene, the light and the stare come from the trend.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zkgYf",
+                  "name": "Section media",
+                  "opacity": 0.3,
+                  "width": "fill_container",
+                  "effect": {
+                    "type": "blur",
+                    "radius": 6
+                  },
+                  "gap": 28,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qBzYO",
+                      "name": "Before",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$r-md",
+                          "id": "SxN9W",
+                          "name": "Photo",
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-7.png",
+                            "mode": "cover"
+                          },
+                          "width": 220,
+                          "height": 290,
+                          "stroke": "$w-border-strong",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "n2AsiZ",
+                          "name": "Label",
+                          "fill": "$w-muted",
+                          "content": "YOUR PHOTO",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vexIY",
+                      "name": "Arrow",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Di7Bh",
+                          "name": "Circle",
+                          "width": 52,
+                          "height": 52,
+                          "fill": "$w-lamp",
+                          "cornerRadius": 26,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "oQz1W",
+                              "name": "Icon",
+                              "width": 24,
+                              "height": 24,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$w-on-lamp"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "baNN6",
+                          "name": "Time",
+                          "fill": "$w-muted",
+                          "content": "~3 MIN",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kOlBC",
+                      "name": "After",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "SkNt6",
+                          "name": "Frames",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "U2jNc",
+                              "name": "THE BITE",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "cWudx",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-9.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "D1Qjw",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:03",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Djfli",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE BITE",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "a5HOT",
+                              "name": "THE FREEZE",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "IkG5J",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-8.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "I0adq",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:06",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "NTWUN",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE FREEZE",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "tuZyN",
+                              "name": "THE CURTAIN",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "izg2Y",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-10.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "slcys",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:12",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "FeIMU",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE CURTAIN",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "mV82s",
+                          "name": "Label",
+                          "fill": "$w-lamp-text",
+                          "content": "YOUR VIDEO · 14 S · 9:16 · TREND SOUND",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jt05k",
+              "name": "Keyframe 700 MS · SETTLED",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ALzTD",
+                  "name": "Label",
+                  "fill": "$w-muted",
+                  "content": "700 MS · SETTLED",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.4
+                },
+                {
+                  "type": "frame",
+                  "id": "U4wjf",
+                  "name": "Section head",
+                  "width": "fill_container",
+                  "gap": 48,
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MP1Fb",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Bz31f",
+                          "name": "Eyebrow",
+                          "fill": "$w-lamp-text",
+                          "content": "BEFORE / AFTER",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "cTmd2",
+                          "name": "H2",
+                          "fill": "$w-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "One photo. You, in the window.",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-display",
+                          "fontSize": 56,
+                          "fontWeight": "800"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "NlEea",
+                      "name": "Aside",
+                      "fill": "$w-muted",
+                      "textGrowth": "fixed-width",
+                      "width": 320,
+                      "content": "Same face, same hair. The scene, the light and the stare come from the trend.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RsFR7",
+                  "name": "Section media",
+                  "width": "fill_container",
+                  "gap": 28,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XIkiP",
+                      "name": "Before",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$r-md",
+                          "id": "PNWtz",
+                          "name": "Photo",
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "generated-7.png",
+                            "mode": "cover"
+                          },
+                          "width": 220,
+                          "height": 290,
+                          "stroke": "$w-border-strong",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "T3xcI",
+                          "name": "Label",
+                          "fill": "$w-muted",
+                          "content": "YOUR PHOTO",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bsXq4",
+                      "name": "Arrow",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ulCfG",
+                          "name": "Circle",
+                          "width": 52,
+                          "height": 52,
+                          "fill": "$w-lamp",
+                          "cornerRadius": 26,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "c1Ss8",
+                              "name": "Icon",
+                              "width": 24,
+                              "height": 24,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$w-on-lamp"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "TjgEv",
+                          "name": "Time",
+                          "fill": "$w-muted",
+                          "content": "~3 MIN",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "epQ2X",
+                      "name": "After",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "AtMHS",
+                          "name": "Frames",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "D0PHE",
+                              "name": "THE BITE",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "Xt23Y",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-9.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "Nlskb",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:03",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "tedoK",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE BITE",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "G1UnlR",
+                              "name": "THE FREEZE",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "CRczT",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-8.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "w5J5j",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:06",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jx9BO",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE FREEZE",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "JfMPE",
+                              "name": "THE CURTAIN",
+                              "clip": true,
+                              "width": 186,
+                              "height": 330,
+                              "fill": "$w-surface-2",
+                              "cornerRadius": "$r-md",
+                              "stroke": "$w-border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "padding": 10,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "HAxV1",
+                                  "layoutPosition": "absolute",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "generated-10.png",
+                                    "mode": "cover",
+                                    "transform": [
+                                      1.9,
+                                      0,
+                                      0,
+                                      1.9,
+                                      -0.45,
+                                      -0.42
+                                    ]
+                                  },
+                                  "width": 186,
+                                  "height": 330
+                                },
+                                {
+                                  "id": "N9p5u",
+                                  "type": "ref",
+                                  "ref": "I9V4Cp",
+                                  "name": "REC",
+                                  "descendants": {
+                                    "a8tqI": {
+                                      "content": "00:12",
+                                      "fontSize": 10
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "oVwyA",
+                                  "name": "Beat",
+                                  "fill": "$w-text",
+                                  "content": "THE CURTAIN",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": 1.5
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "KI3vW",
+                          "name": "Label",
+                          "fill": "$w-lamp-text",
+                          "content": "YOUR VIDEO · 14 S · 9:16 · TREND SOUND",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {

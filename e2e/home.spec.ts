@@ -188,7 +188,8 @@ test("the home page's timecodes read 01:28", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/");
 
-  await expect(page.getByText("REC 01:28:00 AM", { exact: true })).toBeVisible();
+  // The hero's timecode counts up from 01:28:00.
+  await expect(page.getByText(/^REC 01:28:\d\d AM$/)).toBeVisible();
   await expect(page.getByText("REC 01:28:00 AM · CAM 03", { exact: true })).toBeVisible();
   await expect(page.getByText("02:14")).toHaveCount(0);
 });
@@ -197,4 +198,66 @@ test("body uses the Instrument Sans font", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.locator("body")).toHaveCSS("font-family", /Instrument Sans/);
+});
+
+// docs/DESIGN.md, Motion: four one-shot motions on the home page, each off
+// for reduced motion, where every element shows its end state at once.
+test("the hero's camera finds focus on load, and its timecode counts up", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  const viewfinder = page.locator("figure.focus-in").first();
+  await expect(viewfinder.locator("img")).toHaveCSS("animation-name", "focus-in");
+  await expect(viewfinder.locator(".corner").first()).toHaveCSS("animation-name", "corner-in");
+  await expect(viewfinder.getByText(/^REC 01:28:0[1-9] AM$/)).toBeVisible({ timeout: 5000 });
+});
+
+test("the scene windows light up one by one once the grid is in view", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  const last = page.locator("#scenes .window-dark").last();
+  const text = page.locator("#scenes .window-text").last();
+  await expect(last).toHaveCSS("opacity", "0.8");
+  await expect(text).toHaveCSS("opacity", "0");
+  await page.locator("#scenes ul").scrollIntoViewIfNeeded();
+  await expect(last).toHaveCSS("opacity", "0", { timeout: 5000 });
+  await expect(text).toHaveCSS("opacity", "1", { timeout: 5000 });
+});
+
+test("the shot list's playhead runs and lights every beat once in view", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  const playhead = page.locator(".playhead");
+  const lastTime = page.locator(".beat-time").last();
+  await expect(playhead).toHaveCSS("scale", "0 1");
+  await expect(lastTime).toHaveCSS("color", "rgb(100, 108, 128)");
+  await playhead.scrollIntoViewIfNeeded();
+  await expect(playhead).toHaveCSS("scale", "none", { timeout: 8000 });
+  await expect(lastTime).toHaveCSS("color", "rgb(255, 200, 119)", { timeout: 8000 });
+});
+
+test("the sections below the hero settle as they scroll in", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  const title = page.locator("#how-it-works-title");
+  await expect(title).toHaveCSS("opacity", "0");
+  await title.scrollIntoViewIfNeeded();
+  await expect(title).toHaveCSS("opacity", "1", { timeout: 5000 });
+});
+
+test("reduced motion shows every motion's end state at once", async ({ browser }) => {
+  const page = await browser.newPage({ reducedMotion: "reduce", viewport: { width: 1280, height: 800 } });
+  await page.goto("/");
+
+  await expect(page.locator("figure.focus-in img").first()).toHaveCSS("animation-name", "none");
+  await expect(page.locator("#scenes .window-dark").last()).toHaveCSS("opacity", "0");
+  await expect(page.locator(".playhead")).toHaveCSS("scale", "none");
+  await expect(page.locator(".beat-time").last()).toHaveCSS("color", "rgb(255, 200, 119)");
+  await expect(page.locator("#how-it-works-title")).toHaveCSS("opacity", "1");
+  await page.waitForTimeout(1500);
+  await expect(page.getByText("REC 01:28:00 AM", { exact: true })).toBeVisible();
+  await page.close();
 });

@@ -6,7 +6,7 @@ import { RecBadge } from "./rec-badge";
 // muted in a loop over its poster, a shade at the bottom, four corner marks,
 // the REC stamp at the top and a mono caption at the bottom (docs/DESIGN.md,
 // Viewfinder). With reduced motion the clip hides and the poster stays. The
-// parent sets the size.
+// parent sets the size; its `focus-in` class focuses the camera on load.
 export function Viewfinder({
   src,
   video,
@@ -21,7 +21,7 @@ export function Viewfinder({
   src: string;
   video?: string;
   alt: string;
-  rec?: string;
+  rec?: React.ReactNode;
   caption?: string;
   sizes: string;
   priority?: boolean;
@@ -54,15 +54,16 @@ export function Viewfinder({
   );
 }
 
-// Four 18px corner marks, inset by the parent's `inset-*` class.
+// Four 18px corner marks, inset by the parent's `inset-*` class. --x and --y
+// point each one outward, for the motion that closes them in.
 export function Corners({ className }: { className?: string }) {
-  const corner = "absolute size-[18px] border-foreground/80";
+  const corner = "corner absolute size-[18px] border-foreground/80";
   return (
     <div aria-hidden className={cn("pointer-events-none absolute", className)}>
-      <span className={cn(corner, "top-0 left-0 border-t-2 border-l-2")} />
-      <span className={cn(corner, "top-0 right-0 border-t-2 border-r-2")} />
-      <span className={cn(corner, "bottom-0 left-0 border-b-2 border-l-2")} />
-      <span className={cn(corner, "right-0 bottom-0 border-r-2 border-b-2")} />
+      <span className={cn(corner, "top-0 left-0 border-t-2 border-l-2 [--x:-1] [--y:-1]")} />
+      <span className={cn(corner, "top-0 right-0 border-t-2 border-r-2 [--x:1] [--y:-1]")} />
+      <span className={cn(corner, "bottom-0 left-0 border-b-2 border-l-2 [--x:-1] [--y:1]")} />
+      <span className={cn(corner, "right-0 bottom-0 border-r-2 border-b-2 [--x:1] [--y:1]")} />
     </div>
   );
 }
