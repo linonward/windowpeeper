@@ -722,7 +722,7 @@ test("a window peeper video is the burger scene unless another is picked", async
 test.each([
   ["noodles", "noodles"],
   ["pizza", "pizza"],
-  ["wave", "waves"],
+  ["wave", "polite wave"],
   ["glass", "rain"],
   ["couple", "partner"],
 ])("the %s scene queues its own prompt at the same price and keeps the scene", async (scene, word) => {

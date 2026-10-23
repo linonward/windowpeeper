@@ -246,7 +246,7 @@ Signed-in users make videos on `/videos/<kind>` (`/videos` opens the window peep
 
 ### Photo effects: the window peeper video (Bailian wan2.7-r2v)
 
-`/videos/<kind>` and the home page turn one photo into a video: Bailian makes the effect's prompt into a multi-shot video that stars the photo's subject, with generated music. `PHOTO_EFFECTS` (`src/server/videos/photo-effects.ts`) lists the effects; the window peeper video (`src/server/videos/window-peeper.ts`) is the only one. It lasts 14 seconds and costs 10 credits at 720P, or 20 in Pro (1080P), refunded on failure. The buyer picks one of six scenes (`SCENES` in `window-peeper.ts`); each is its own prompt at the same price. Each video is new: the shots differ from one photo to the next.
+`/videos/<kind>` and the home page turn one photo into a video: Bailian makes the effect's prompt into a video that stars the photo's subject, with generated sound and no music. The window peeper prompts ask for one continuous handheld shot. `PHOTO_EFFECTS` (`src/server/videos/photo-effects.ts`) lists the effects; the window peeper video (`src/server/videos/window-peeper.ts`) is the only one. It lasts 14 seconds and costs 10 credits at 720P, or 20 in Pro (1080P), refunded on failure. The buyer picks one of six scenes (`SCENES` in `window-peeper.ts`); each is its own prompt at the same price. Each video is new: the shots differ from one photo to the next.
 
 1. Set `DASHSCOPE_API_KEY` (and `DASHSCOPE_BASE_URL` outside Beijing) and the `STORAGE_*` variables, as in [Bailian and storage](#bailian-and-storage). Photo effects use Bailian `wan2.7-r2v`.
 2. Rebuild and restart: the prerendered home page reads these at build time.

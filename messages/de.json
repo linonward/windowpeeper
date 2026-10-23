@@ -32,7 +32,7 @@
         "curtain": "Der Vorhang"
       },
       "beatAlt": "{beat}: ein Standbild aus dem Beispielvideo.",
-      "label": "Dein Video · 14 s · 9:16 · Originalmusik",
+      "label": "Dein Video · 14 s · 9:16",
       "note": "Beispiel aus dem Foto einer KI-generierten Person.",
       "short": "Dein Video · 14 s"
     },
@@ -62,7 +62,7 @@
         },
         "3": {
           "title": "Herunterladen und posten",
-          "body": "Du bekommst eine 14-Sekunden-MP4 in 9:16 mit Originalmusik. Poste sie auf TikTok, Reels oder Shorts."
+          "body": "Du bekommst eine 14-Sekunden-MP4 in 9:16. Poste sie auf TikTok, Reels oder Shorts."
         }
       }
     },
@@ -361,7 +361,7 @@
     "ctaNote": "Ab {credits} Credits. Schlägt ein Video fehl, bekommst du die Credits zurück.",
     "pack": "{credits, plural, one {# Credit} other {# Credits}} für {price}",
     "related": "Weitere Guides",
-    "note": "Diese Seite ist ein unabhängiges KI-Video-Tool. Sie ist nicht mit TikTok, CapCut oder den Machern einer Vorlage oder eines Clips verbunden und wird von ihnen weder unterstützt noch gesponsert. Die Videos hier sind neue KI-Videos mit Originalmusik; sie nutzen nie fremdes Material.",
+    "note": "Diese Seite ist ein unabhängiges KI-Video-Tool. Sie ist nicht mit TikTok, CapCut oder den Machern einer Vorlage oder eines Clips verbunden und wird von ihnen weder unterstützt noch gesponsert. Die Videos hier sind neue KI-Videos; sie nutzen nie fremdes Material.",
     "pages": {
       "how-to-make-window-peeper-video": {
         "metaTitle": "So machst du ein Window-Peeper-Video",
@@ -390,7 +390,7 @@
               },
               "3": {
                 "title": "Standard oder Pro wählen",
-                "body": "Standard kostet {credits} Credits und hat 720p. Pro kostet {proCredits} Credits und hat 1080p. Beide machen die Szene, die du wählst, etwa 14 Sekunden lang, mit Musik."
+                "body": "Standard kostet {credits} Credits und hat 720p. Pro kostet {proCredits} Credits und hat 1080p. Beide machen die Szene, die du wählst, etwa 14 Sekunden lang."
               },
               "4": {
                 "title": "Anmelden",
@@ -936,7 +936,7 @@
     "kinds": {
       "windowpeeper": {
         "title": "Window Peeper",
-        "description": "Aus einem Foto wird ein 14-Sekunden-Video: Nachts fährt eine Kamera auf dein erleuchtetes Fenster zu, du erstarrst mitten im Bissen, starrst in die Linse und ziehst den Vorhang zu. Mit Originalmusik.",
+        "description": "Aus einem Foto wird ein 14-Sekunden-Video: Nachts fährt eine Kamera auf dein erleuchtetes Fenster zu, du erstarrst mitten im Bissen, starrst in die Linse und ziehst den Vorhang zu.",
         "left": {
           "photo": "Dein Foto",
           "preview": "Vorschau deines Fotos"
