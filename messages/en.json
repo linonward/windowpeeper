@@ -25,7 +25,7 @@
       "aside": "Same face, same hair. The scene, the light and the stare come from the trend.",
       "photo": "Your photo",
       "photoAlt": "The photo the example was made from: a woman, waist up, facing the camera.",
-      "time": "~3 min",
+      "time": "~8 min",
       "beats": {
         "bite": "The bite",
         "freeze": "The freeze",
@@ -135,7 +135,7 @@
         },
         "7": {
           "title": "How long does it take?",
-          "body": "A Standard video is usually ready in about 3 minutes, a Pro video in about 6. Keep the page open and it plays there; if you leave, it still finishes in your video library."
+          "body": "A Standard video is usually ready in about 8 minutes, a Pro video in about 10. Keep the page open and it plays there; if you leave, it still finishes in your video library."
         },
         "8": {
           "title": "Is WindowPeeper safe? What can it make?",
@@ -332,12 +332,12 @@
       "standard": {
         "name": "Standard",
         "resolution": "720p · 9:16",
-        "time": "~3 min"
+        "time": "~8 min"
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p · 9:16",
-        "time": "~6 min"
+        "time": "~10 min"
       }
     },
     "trust": {
@@ -898,7 +898,7 @@
     "resolution": "Resolution",
     "ratio": "Format",
     "empty": "No videos yet.",
-    "pending": "Generating… This takes 1 to 5 minutes.",
+    "pending": "Generating… This takes about 8 to 10 minutes.",
     "failed": "Generation failed. The credits were refunded.",
     "download": "Download",
     "libraryTitle": "All videos",
@@ -1020,12 +1020,12 @@
       "standard": {
         "name": "Standard",
         "resolution": "720p",
-        "time": "Ready in about 3 min."
+        "time": "Ready in about 8 min."
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p",
-        "time": "Sharper face. Ready in about 6 min."
+        "time": "Sharper face. Ready in about 10 min."
       }
     },
     "submit": "Make my video · {count} cr",

@@ -75,8 +75,8 @@ test("the cost table lists each quality's resolution, wait and credits", () => {
   const rows = within(screen.getByRole("table")).getAllByRole("row");
   expect(rows.map((row) => Array.from(row.children).map((cell) => cell.textContent))).toEqual([
     ["Quality", "Resolution", "Ready in", "Credits"],
-    ["Standard", "720p · 9:16", "~3 min", "10"],
-    ["Pro", "1080p · 9:16", "~6 min", "20"],
+    ["Standard", "720p · 9:16", "~8 min", "10"],
+    ["Pro", "1080p · 9:16", "~10 min", "20"],
   ]);
 });
 

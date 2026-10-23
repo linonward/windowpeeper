@@ -25,7 +25,7 @@
       "aside": "La misma cara, el mismo pelo. La escena, la luz y la mirada vienen de la tendencia.",
       "photo": "Tu foto",
       "photoAlt": "La foto con la que se hizo el ejemplo: una mujer de cintura para arriba, mirando a la cámara.",
-      "time": "~3 min",
+      "time": "~8 min",
       "beats": {
         "bite": "El bocado",
         "freeze": "La pausa",
@@ -135,7 +135,7 @@
         },
         "7": {
           "title": "¿Cuánto tarda?",
-          "body": "Un video Estándar suele estar listo en unos 3 minutos y uno Pro en unos 6. Deja la página abierta y se reproduce ahí; si te vas, igual se termina en tu biblioteca de videos."
+          "body": "Un video Estándar suele estar listo en unos 8 minutos y uno Pro en unos 10. Deja la página abierta y se reproduce ahí; si te vas, igual se termina en tu biblioteca de videos."
         },
         "8": {
           "title": "¿Es seguro WindowPeeper? ¿Qué puede crear?",
@@ -332,12 +332,12 @@
       "standard": {
         "name": "Estándar",
         "resolution": "720p · 9:16",
-        "time": "~3 min"
+        "time": "~8 min"
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p · 9:16",
-        "time": "~6 min"
+        "time": "~10 min"
       }
     },
     "trust": {
@@ -898,7 +898,7 @@
     "resolution": "Resolución",
     "ratio": "Formato",
     "empty": "Todavía no hay videos.",
-    "pending": "Generando… Tarda entre 1 y 5 minutos.",
+    "pending": "Generando… Tarda unos 8 a 10 minutos.",
     "failed": "La generación falló. Te devolvimos los créditos.",
     "download": "Descargar",
     "libraryTitle": "Todos los videos",
@@ -1020,12 +1020,12 @@
       "standard": {
         "name": "Estándar",
         "resolution": "720p",
-        "time": "Listo en unos 3 min."
+        "time": "Listo en unos 8 min."
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p",
-        "time": "Cara más nítida. Listo en unos 6 min."
+        "time": "Cara más nítida. Listo en unos 10 min."
       }
     },
     "submit": "Hacer mi video · {count} cr",

@@ -25,7 +25,7 @@
       "aside": "Gleiches Gesicht, gleiche Haare. Szene, Licht und Blick kommen aus dem Trend.",
       "photo": "Dein Foto",
       "photoAlt": "Das Foto, aus dem das Beispiel entstand: eine Frau, ab der Hüfte, mit Blick in die Kamera.",
-      "time": "~3 Min.",
+      "time": "~8 Min.",
       "beats": {
         "bite": "Der Bissen",
         "freeze": "Das Erstarren",
@@ -135,7 +135,7 @@
         },
         "7": {
           "title": "Wie lange dauert es?",
-          "body": "Ein Standard-Video ist meist in etwa 3 Minuten fertig, ein Pro-Video in etwa 6. Lass die Seite offen, dann spielt es dort ab; gehst du weg, wird es trotzdem in deiner Videobibliothek fertig."
+          "body": "Ein Standard-Video ist meist in etwa 8 Minuten fertig, ein Pro-Video in etwa 10. Lass die Seite offen, dann spielt es dort ab; gehst du weg, wird es trotzdem in deiner Videobibliothek fertig."
         },
         "8": {
           "title": "Ist WindowPeeper sicher? Was kann es erstellen?",
@@ -332,12 +332,12 @@
       "standard": {
         "name": "Standard",
         "resolution": "720p · 9:16",
-        "time": "~3 Min."
+        "time": "~8 Min."
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p · 9:16",
-        "time": "~6 Min."
+        "time": "~10 Min."
       }
     },
     "trust": {
@@ -898,7 +898,7 @@
     "resolution": "Auflösung",
     "ratio": "Format",
     "empty": "Noch keine Videos.",
-    "pending": "Wird generiert… Das dauert 1 bis 5 Minuten.",
+    "pending": "Wird generiert… Das dauert etwa 8 bis 10 Minuten.",
     "failed": "Generierung fehlgeschlagen. Die Credits wurden erstattet.",
     "download": "Herunterladen",
     "libraryTitle": "Alle Videos",
@@ -1020,12 +1020,12 @@
       "standard": {
         "name": "Standard",
         "resolution": "720p",
-        "time": "Fertig in etwa 3 Min."
+        "time": "Fertig in etwa 8 Min."
       },
       "pro": {
         "name": "Pro",
         "resolution": "1080p",
-        "time": "Schärferes Gesicht. Fertig in etwa 6 Min."
+        "time": "Schärferes Gesicht. Fertig in etwa 10 Min."
       }
     },
     "submit": "Mein Video machen · {count} Cr",
