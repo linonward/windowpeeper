@@ -2,11 +2,13 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { RecBadge } from "./rec-badge";
+import { Timecode } from "./timecode";
 import { Viewfinder } from "./viewfinder";
 import { WindowPeeperTryout, type WindowPeeperTryoutProps } from "./window-peeper-tryout";
 
 // The first screen: the REC badge, the headline and the generator on the
-// left, the example clip in a viewfinder on the right. Phones show a small
+// left, the example clip in a viewfinder on the right, which focuses on load
+// while its timecode counts up. Phones show a small
 // before/after strip above the generator, and the clip under it.
 // A real window peeper video from public/: the clip and its poster.
 export type HomeExample = { sample: string; poster: string };
@@ -41,11 +43,11 @@ export function Hero({ tryout, example }: { tryout: WindowPeeperTryoutProps; exa
             src={example.poster}
             video={example.sample}
             alt={t("clip.description")}
-            rec={t("clip.rec")}
+            rec={<Timecode start={t("clip.rec")} />}
             caption={t("clip.caption")}
             sizes="340px"
             priority
-            className="aspect-[340/604] w-full"
+            className="focus-in aspect-[340/604] w-full"
           />
           <figcaption className="text-xs text-faint">{t("clip.note")}</figcaption>
         </figure>

@@ -7,12 +7,14 @@ import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { sceneImage, SCENES } from "@/lib/photo-effects";
 import { cn } from "@/lib/utils";
+import { InView } from "./in-view";
 import { SectionHeading } from "./section-heading";
 
 // The packs on the home page (`#pricing`): each card shows its videos as a
 // stack of frames, then the price, the price per video and a button that
 // buys the pack (checkout comes back here); then what every pack includes, a
-// button up to the generator and a link to the price list.
+// button up to the generator and a link to the price list. Settles in once
+// in view (globals.css, Home motion).
 export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; featured: string; prices: VideoPrices }) {
   const t = useTranslations("Home.pricing");
   const tPricing = useTranslations("Pricing");
@@ -21,7 +23,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
 
   return (
     <section aria-labelledby="pricing-title" id="pricing" className="scroll-mt-16">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-6 pb-20 sm:px-8 lg:pb-28">
+      <InView motion="settle" threshold={0.15} className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 pt-6 pb-20 sm:px-8 lg:pb-28">
         <SectionHeading eyebrow={t("eyebrow")} id="pricing-title" aside={t("body")}>
           {t("title")}
         </SectionHeading>
@@ -34,7 +36,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
               <li
                 key={pack.id}
                 className={cn(
-                  "flex overflow-hidden rounded-xl border bg-card max-lg:flex-row lg:flex-col",
+                  "settle-media flex overflow-hidden rounded-xl border bg-card max-lg:flex-row lg:flex-col",
                   lit && "border-2 border-primary bg-primary-soft",
                 )}
               >
@@ -94,8 +96,8 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
             );
           })}
         </ul>
-        <PackBenefits className="rounded-lg border bg-card px-6 py-[18px] max-lg:flex-col" />
-        <div className="flex flex-col items-center gap-5 pt-2 sm:flex-row sm:justify-center">
+        <PackBenefits className="settle-text rounded-lg border bg-card px-6 py-[18px] max-lg:flex-col" />
+        <div className="settle-text flex flex-col items-center gap-5 pt-2 sm:flex-row sm:justify-center">
           {/* A plain anchor, as Link would add the locale. */}
           <a href="#generator" className={cn(buttonVariants({ size: "lg" }), "max-sm:w-full")}>
             {t("cta")}
@@ -105,7 +107,7 @@ export function Pricing({ packs, featured, prices }: { packs: readonly Pack[]; f
             {t("more")} →
           </Link>
         </div>
-      </div>
+      </InView>
     </section>
   );
 }

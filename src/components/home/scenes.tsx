@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { GUIDES } from "@/lib/guides";
 import { type Scene, sceneImage, SCENES } from "@/lib/photo-effects";
 import { cn } from "@/lib/utils";
+import { InView } from "./in-view";
 import { RecBadge } from "./rec-badge";
 import { SceneButton } from "./scene-button";
 import { SectionHeading } from "./section-heading";
@@ -14,7 +15,8 @@ const [ORIGINAL, ...OTHERS] = SCENES;
 
 // The six windows: the original large on the left, the other five and a
 // link to the guide in a grid on the right. "Use this scene" picks it in
-// the generator.
+// the generator. Once 30% of the grid is in view, the windows light up in
+// reading order, the original first (globals.css, Home motion).
 export function Scenes() {
   const t = useTranslations("Home.scenes");
   const ts = useTranslations("PhotoEffects.scenes");
@@ -25,16 +27,23 @@ export function Scenes() {
         <SectionHeading eyebrow={t("eyebrow")} id="scenes-title" aside={t("aside")}>
           {t("title")}
         </SectionHeading>
-        <div className="grid grid-cols-1 gap-4 lg:h-[580px] lg:grid-cols-[420px_minmax(0,1fr)]">
-          <article className="relative isolate flex min-h-[460px] flex-col justify-between overflow-hidden rounded-xl border-2 border-primary p-5">
+        <InView
+          motion="windows"
+          threshold={0.3}
+          className="grid grid-cols-1 gap-4 lg:h-[580px] lg:grid-cols-[420px_minmax(0,1fr)]"
+        >
+          <article
+            style={order(0)}
+            className="scene-window relative isolate flex min-h-[460px] flex-col justify-between overflow-hidden rounded-xl border-2 border-primary p-5"
+          >
             <SceneStill scene={ORIGINAL} sizes="(min-width: 1024px) 420px, 100vw" />
-            <div className="flex items-center justify-between gap-3">
+            <div className="window-text flex items-center justify-between gap-3">
               <RecBadge>{t("rec")}</RecBadge>
               <span className="rounded-[4px] bg-primary px-[9px] py-[5px] font-mono text-[10px] leading-none font-bold tracking-[0.1em] text-primary-foreground uppercase">
                 {t("original")}
               </span>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="window-text flex flex-col gap-2">
               <h3 className="font-display text-[2.5rem] leading-none font-extrabold">{ts(`${ORIGINAL}.name`)}</h3>
               <p className="text-sm leading-normal text-muted-foreground">{ts(`${ORIGINAL}.note`)}</p>
               <SceneButton
@@ -48,14 +57,15 @@ export function Scenes() {
             </div>
           </article>
           <ul className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:grid-rows-2">
-            {OTHERS.map((scene) => (
+            {OTHERS.map((scene, index) => (
               <li
                 key={scene}
-                className="relative isolate flex min-h-[220px] flex-col justify-between overflow-hidden rounded-lg border p-3.5"
+                style={order(index + 1)}
+                className="scene-window relative isolate flex min-h-[220px] flex-col justify-between overflow-hidden rounded-lg border p-3.5"
               >
                 <SceneStill scene={scene} sizes="(min-width: 1024px) 210px, 50vw" />
-                <span className="font-mono text-[10px] tracking-[0.1em]">{ts(`${scene}.time`)}</span>
-                <div className="flex flex-col gap-1.5">
+                <span className="window-text font-mono text-[10px] tracking-[0.1em]">{ts(`${scene}.time`)}</span>
+                <div className="window-text flex flex-col gap-1.5">
                   <h3 className="font-semibold">{ts(`${scene}.name`)}</h3>
                   <SceneButton
                     scene={scene}
@@ -81,18 +91,25 @@ export function Scenes() {
               </Link>
             </li>
           </ul>
-        </div>
+        </InView>
       </div>
     </section>
   );
 }
 
-// A scene's placeholder still behind a card, shaded toward the bottom.
+// A window's place in the order they light up in.
+function order(index: number) {
+  return { "--i": index } as React.CSSProperties;
+}
+
+// A scene's placeholder still behind a card, shaded toward the bottom, and
+// the dark that hides it until its window lights up.
 function SceneStill({ scene, sizes }: { scene: Scene; sizes: string }) {
   return (
     <>
       <Image src={sceneImage(scene)} alt="" fill sizes={sizes} className="-z-20 object-cover" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-linear-to-b from-background/10 via-transparent to-background/90" />
+      <div aria-hidden className="window-dark absolute inset-0 -z-10 bg-black opacity-0" />
     </>
   );
 }

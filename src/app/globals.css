@@ -209,3 +209,138 @@
     }
   }
 }
+
+/* Home motion (docs/DESIGN.md, Motion): the camera that is watching. Each
+   motion runs once. Outside any layer, so a motion's held-back state wins
+   over the utilities that set the end state. Reduced motion and pages
+   without scripts get the end state only. */
+@media (prefers-reduced-motion: no-preference) {
+  /* 01: the hero's camera finds focus on load, and its corners close in. */
+  .focus-in :is(img, video) {
+    animation: focus-in 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .focus-in .corner {
+    animation: corner-in 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  /* 02: the scene windows hover-flicker once. */
+  @media (hover: hover) {
+    .scene-window:hover > img {
+      animation: window-flicker 120ms linear;
+    }
+  }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  /* 02: the windows light up one by one, in reading order (--i), 150ms
+     apart: dark, two quick flickers, then lit over 500ms; their text fades
+     in with the light. */
+  [data-motion="windows"]:not([data-shown]) .window-dark {
+    opacity: 0.8;
+  }
+  [data-motion="windows"]:not([data-shown]) .window-text {
+    opacity: 0;
+  }
+  [data-motion="windows"][data-shown] .window-dark {
+    animation: window-light 740ms linear calc(var(--i) * 150ms) both;
+  }
+  [data-motion="windows"][data-shown] .window-text {
+    animation: fade-in 500ms ease-out calc(var(--i) * 150ms + 240ms) both;
+  }
+
+  /* 03: the playhead runs the 14 seconds in 3.5s and lights each beat
+     (--i) as it reaches it, every 750ms. */
+  [data-motion="playhead"] .playhead {
+    transform-origin: left;
+  }
+  [data-motion="playhead"]:not([data-shown]) .playhead {
+    scale: 0 1;
+  }
+  [data-motion="playhead"]:not([data-shown]) .beat {
+    border-color: var(--border);
+  }
+  [data-motion="playhead"]:not([data-shown]) .beat-time {
+    color: var(--faint);
+  }
+  [data-motion="playhead"]:not([data-shown]) .beat-title {
+    color: var(--muted-foreground);
+  }
+  [data-motion="playhead"][data-shown] .playhead {
+    transition: scale 3500ms linear;
+  }
+  [data-motion="playhead"][data-shown] :is(.beat, .beat-time, .beat-title) {
+    transition: color 200ms ease-out, border-color 200ms ease-out;
+    transition-delay: calc(var(--i) * 750ms);
+  }
+
+  /* 04: below the hero, media settle like a zoom lens and the text follows
+     80ms later. Phones move less. */
+  [data-motion="settle"] .settle-media {
+    transition:
+      opacity 700ms ease-out,
+      scale 700ms ease-out,
+      filter 700ms ease-out;
+  }
+  [data-motion="settle"] .settle-text {
+    transition:
+      opacity 400ms ease-out 80ms,
+      translate 400ms ease-out 80ms;
+  }
+  [data-motion="settle"]:not([data-shown]) .settle-media {
+    opacity: 0.3;
+    scale: 1.06;
+    filter: blur(6px);
+  }
+  [data-motion="settle"]:not([data-shown]) .settle-text {
+    opacity: 0;
+    translate: 0 12px;
+  }
+  @media (width < 40rem) {
+    [data-motion="settle"]:not([data-shown]) .settle-media {
+      scale: 1.03;
+    }
+    [data-motion="settle"]:not([data-shown]) .settle-text {
+      translate: 0 8px;
+    }
+  }
+}
+
+@keyframes focus-in {
+  from {
+    filter: blur(14px);
+    scale: 1.06;
+    opacity: 0.6;
+  }
+}
+@keyframes corner-in {
+  from {
+    translate: calc(var(--x) * 14px) calc(var(--y) * 14px);
+  }
+}
+/* Dark, two 60ms flickers of light, then lit over the last 500ms. */
+@keyframes window-light {
+  0%,
+  8.2%,
+  16.2%,
+  24.4%,
+  32.4% {
+    opacity: 0.8;
+  }
+  0.1%,
+  8.1%,
+  16.3%,
+  24.3%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes window-flicker {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

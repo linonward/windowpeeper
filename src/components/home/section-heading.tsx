@@ -2,6 +2,7 @@ import { cn } from "cn";
 
 // A section's mono eyebrow and Big Shoulders title, with an optional aside
 // that sits at the bottom right on large screens (docs/DESIGN.md, Typography).
+// Inside a settling section, its text settles in (globals.css, Home motion).
 export function SectionHeading({
   eyebrow,
   id,
@@ -19,18 +20,18 @@ export function SectionHeading({
   return (
     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
       <div className="flex min-w-0 flex-col gap-3">
-        <p className="eyebrow">{eyebrow}</p>
+        <p className="eyebrow settle-text">{eyebrow}</p>
         <h2
           id={id}
           className={cn(
-            "scroll-mt-24 font-display text-[clamp(2.5rem,10vw,3.5rem)] leading-none font-extrabold text-balance",
+            "settle-text scroll-mt-24 font-display text-[clamp(2.5rem,10vw,3.5rem)] leading-none font-extrabold text-balance",
             className,
           )}
         >
           {children}
         </h2>
       </div>
-      {aside && <p className="max-w-[22rem] shrink-0 text-[15px] leading-normal text-pretty text-muted-foreground">{aside}</p>}
+      {aside && <p className="settle-text max-w-[22rem] shrink-0 text-[15px] leading-normal text-pretty text-muted-foreground">{aside}</p>}
     </div>
   );
 }

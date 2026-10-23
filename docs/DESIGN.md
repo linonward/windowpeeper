@@ -215,7 +215,7 @@ They keep their structure on the new tokens: `.eyebrow`, display titles, base ca
 
 ## 8. Motion
 
-Transform and opacity only, 120-200ms; `.rec-blink` is the one loop. Every class below turns off under `prefers-reduced-motion`.
+Transform and opacity only, 120-200ms; `.rec-blink` is the one loop. Every class below turns off under `prefers-reduced-motion`. The home page's one-shot entrances (§8.1) are longer.
 
 | Class | Motion |
 |---|---|
@@ -225,6 +225,17 @@ Transform and opacity only, 120-200ms; `.rec-blink` is the one loop. Every class
 | `.rec-blink` | The REC dot fades to 20% and back every 1.6s, like a recording camera |
 
 Cards change only their border color on hover. Hover styles apply only on devices that hover (`@media (hover: hover)`).
+
+### 8.1 Home motion
+
+The board `/ Home — Motion spec` holds the keyframes. Every motion borrows from the camera that is watching, and runs once: on load for the hero, else the first time its section comes into view. `InView` (`home/in-view.tsx`) sets `data-shown` on a box marked `data-motion`; `globals.css` holds the box back until then, only under `@media (scripting: enabled)`, so pages without scripts show the end state. Reduced motion shows the end state at once. Blur is the one exception to transform and opacity, and runs only in these entrances.
+
+| # | Where | Trigger | Motion |
+|---|---|---|---|
+| 01 | Hero viewfinder (`.focus-in`) | Page load | The clip goes from blur 14px, scale 1.06 and opacity 0.6 to sharp in 800ms, `cubic-bezier(0.2, 0.8, 0.2, 1)`; the corners start 14px outside and close in. The REC timecode counts up a second at a time (`home/timecode.tsx`). |
+| 02 | Scenes grid (`windows`) | 30% in view | The windows light up in reading order, 150ms apart: dark (a black layer at 80%), two 60ms flickers, then lit over 500ms; their text fades in with the light. About 1.5s for all six. On hover, the still dims and comes back once in 120ms. |
+| 03 | Shot list (`playhead`) | 50% in view | The lamp playhead runs 00:00 → 00:14 in 3.5s, linear. Each beat lights as the bar reaches it, every 750ms: the time turns lamp and the title white in 200ms. It ends on the full bar with every beat lit. |
+| 04 | Before / After, How it works, Pricing, FAQ, Final CTA (`settle`) | 15% in view | Photos and cards (`.settle-media`) settle from scale 1.06, blur 6px and opacity 0.3 in 700ms, ease-out. Text (`.settle-text`) rises 12px and fades in over 400ms, 80ms later. Phones use scale 1.03 and 8px. |
 
 ## 9. Dashboard
 

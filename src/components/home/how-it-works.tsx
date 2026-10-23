@@ -1,5 +1,6 @@
 import { AppWindow, Download, Upload } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { InView } from "./in-view";
 
 const STEPS = [
   { key: "1", icon: Upload },
@@ -8,26 +9,31 @@ const STEPS = [
 ] as const;
 
 // The title and a line on the left; three ruled rows on the right, each a
-// big lamp number, a title and a body, and an icon.
+// big lamp number, a title and a body, and an icon. Settles in once in view
+// (globals.css, Home motion).
 export function HowItWorks() {
   const t = useTranslations("Home.steps");
 
   return (
     <section id="how-it-works" aria-labelledby="how-it-works-title" className="scroll-mt-16">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20 lg:py-28">
+      <InView
+        motion="settle"
+        threshold={0.15}
+        className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20 lg:py-28"
+      >
         <div className="flex flex-col gap-4">
-          <p className="eyebrow">{t("eyebrow")}</p>
+          <p className="eyebrow settle-text">{t("eyebrow")}</p>
           <h2
             id="how-it-works-title"
-            className="font-display text-[clamp(2.5rem,10vw,3.25rem)] leading-none font-extrabold text-balance"
+            className="settle-text font-display text-[clamp(2.5rem,10vw,3.25rem)] leading-none font-extrabold text-balance"
           >
             {t("title")}
           </h2>
-          <p className="leading-normal text-muted-foreground">{t("body")}</p>
+          <p className="settle-text leading-normal text-muted-foreground">{t("body")}</p>
         </div>
         <ol>
           {STEPS.map(({ key, icon: Icon }) => (
-            <li key={key} className="flex gap-5 border-b py-7 last:border-b-0 sm:gap-7">
+            <li key={key} className="settle-text flex gap-5 border-b py-7 last:border-b-0 sm:gap-7">
               <span aria-hidden className="font-display text-[3.5rem] leading-[0.9] font-black text-primary">
                 {key.padStart(2, "0")}
               </span>
@@ -39,7 +45,7 @@ export function HowItWorks() {
             </li>
           ))}
         </ol>
-      </div>
+      </InView>
     </section>
   );
 }
