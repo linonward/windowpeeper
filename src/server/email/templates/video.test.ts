@@ -32,3 +32,15 @@ test("shortens a long prompt", () => {
   expect(email.text).toContain(`“${"x".repeat(99)}…”`);
   expect(email.text).not.toContain("x".repeat(101));
 });
+
+test("uses the sign-in email's layout: the lockup, a titled card and a button", () => {
+  const email = videoReadyEmail("ada@example.com", "A fox", page);
+
+  expect(email.html).toContain("<title>Your Acme &amp; Co video is ready</title>");
+  expect(email.html).toContain('src="http://localhost:3000/icon.png"');
+  expect(email.html).toMatch(/<h1 [^>]*>Your Acme &amp; Co video is ready<\/h1>/);
+  // The button and the copy-paste link.
+  expect(email.html.split(`href="${page}"`)).toHaveLength(3);
+  expect(email.html).toContain(">Watch your video</a>");
+  expect(email.text).toMatch(/Acme & Co - Window peeper AI video - localhost:3000$/);
+});
