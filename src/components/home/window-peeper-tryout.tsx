@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useEffectMessages } from "@/components/videos/effect-messages";
 import { firstFrame, playerFrame } from "@/components/videos/player-frame";
 import { usePhotoPicks } from "@/components/videos/use-photo-picks";
+import { useEffectsEnabled } from "@/hooks/use-effects-enabled";
 import { usePendingPoll } from "@/hooks/use-pending-poll";
 import { track } from "@/lib/analytics";
 import type { ApiBody, ApiErrorCode, GeneratedVideo, Serialized, VideoResponse } from "@/lib/api";
@@ -36,8 +37,6 @@ export type WindowPeeperTryoutProps = {
   maxPickBytes: number;
   maxUploadBytes: number;
   imageLimits: ImageLimits;
-  // False without Bailian or storage.
-  enabled: boolean;
   // The credit packs on sale, smallest first, offered when credits run short,
   // and the one recommended to start with.
   packs: readonly Pack[];
@@ -95,6 +94,8 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
   const tb = useTranslations("Billing");
   const locale = useLocale();
   const session = authClient.useSession();
+  // Off without Bailian or storage.
+  const enabled = useEffectsEnabled();
   const [scene, setScene] = useState<Scene>(SCENES[0]);
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -132,7 +133,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     },
   });
   const photo = photos.left;
-  const ready = props.enabled && photo !== null && consent;
+  const ready = enabled && photo !== null && consent;
   // A Standard video's price, in the 402 message.
   const credits = props.credits;
   const prices: VideoPrices = { standard: props.credits, pro: props.proCredits };
@@ -275,7 +276,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
       if (checkout === "cancel") return offerPacks("canceled");
       // A draft from before the consent note waits for the button, which confirms it.
       if (!agreed) return;
-      if (checkout === "success" && props.enabled) setPaid("waiting");
+      if (checkout === "success" && enabled) setPaid("waiting");
       setResume({ draft, paid: checkout === "success" });
     });
     // Once, on the page sign-in or checkout returned to.
@@ -283,7 +284,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
   }, []);
 
   useEffect(() => {
-    if (!resume || !props.enabled || resumed.current || session.isPending) return;
+    if (!resume || !enabled || resumed.current || session.isPending) return;
     resumed.current = true;
     if (!session.data) void askToSignIn(resume.draft, resume.paid);
     // Sending starts here, as the plain send below does.
@@ -292,7 +293,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
     else void send(resume.draft).then((outcome) => outcome && paywall());
     // send reads only props, refs and stable setters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resume, props.enabled, session.isPending, session.data]);
+  }, [resume, enabled, session.isPending, session.data]);
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -334,8 +335,8 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
 
       {/* Hidden, not unmounted, while a video shows: the picked file stays in its input. */}
       <form onSubmit={submit} hidden={video !== null} className="flex flex-col gap-4">
-        {!props.enabled && <p className="text-sm text-muted-foreground">{t("disabled")}</p>}
-        <fieldset disabled={!props.enabled} className="flex min-w-0 flex-col gap-4">
+        {!enabled && <p className="text-sm text-muted-foreground">{t("disabled")}</p>}
+        <fieldset disabled={!enabled} className="flex min-w-0 flex-col gap-4">
           <Step number="01" id="tryout-photo-label">
             {tt("photo.step")}
           </Step>
@@ -360,7 +361,7 @@ export function WindowPeeperTryout(props: WindowPeeperTryoutProps) {
             onDrop={(event) => {
               event.preventDefault();
               const file = event.dataTransfer.files[0];
-              if (!props.enabled || !file) return;
+              if (!enabled || !file) return;
               if (!PHOTO_TYPES.includes(file.type)) {
                 setOffer(null);
                 setError(t("errors.invalid", messageValues));

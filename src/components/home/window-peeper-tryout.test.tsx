@@ -10,6 +10,9 @@ vi.mock("@/lib/auth-client", () => ({
   authClient: { useSession, signIn: { social: vi.fn(), magicLink: vi.fn() } },
 }));
 vi.mock("@/lib/photo-draft", () => ({ savePhotoDraft, loadPhotoDraft, clearPhotoDraft }));
+// src/hooks/use-effects-enabled.test.ts covers asking the server.
+const useEffectsEnabled = vi.fn(() => true);
+vi.mock("@/hooks/use-effects-enabled", () => ({ useEffectsEnabled }));
 // src/lib/analytics.test.ts covers sending; this checks which steps fire.
 const track = vi.fn();
 vi.mock("@/lib/analytics", () => ({ track }));
@@ -30,7 +33,6 @@ const props = {
   maxPickBytes: 10 * 1024 * 1024,
   maxUploadBytes: 4 * 1024 * 1024,
   imageLimits: { minSide: 240, maxSide: 8000, maxRatio: 8 },
-  enabled: true,
   packs: [
     { id: "small", credits: 10, amount: 590, currency: "usd" },
     { id: "medium", credits: 50, amount: 1990, currency: "usd" },
@@ -65,6 +67,7 @@ beforeEach(() => {
   loadPhotoDraft.mockResolvedValue(null);
   savePhotoDraft.mockResolvedValue(undefined);
   clearPhotoDraft.mockResolvedValue(undefined);
+  useEffectsEnabled.mockReturnValue(true);
 });
 
 afterEach(() => {
@@ -512,9 +515,10 @@ test("a failed video says the credits came back and lets them try again", async 
   expect(screen.getByRole("button", { name: GENERATE }).hasAttribute("disabled")).toBe(false);
 });
 
-test("when the effect is off, it says so and the form stays inert", () => {
+test("when the server says the effect is off, it says so and the form stays inert", () => {
   useSession.mockReturnValue(signedIn);
-  renderWithIntl(<WindowPeeperTryout {...props} enabled={false} />);
+  useEffectsEnabled.mockReturnValue(false);
+  renderWithIntl(<WindowPeeperTryout {...props} />);
 
   expect(screen.getByText("The window peeper video isn't set up yet.")).toBeDefined();
   expect(photoInput().matches(":disabled")).toBe(true);

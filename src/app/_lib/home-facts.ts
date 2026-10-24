@@ -10,12 +10,12 @@ export function videoPrices(): { standard: number; pro: number } {
 }
 
 // What the home page's window peeper generator checks and its copy states, from
-// the server config. The page is prerendered, so `enabled` reflects the
-// environment at build time, as the copy's prices do.
+// the server config. The page is prerendered, so these come from the code, not
+// the environment: the build doesn't see the Worker's secrets. The generator
+// asks the server whether the effect is on (useEffectsEnabled).
 export function homeFacts() {
   const { standard, pro } = videoPrices();
   return {
-    enabled: effectOptions("windowpeeper").enabled,
     credits: standard,
     proCredits: pro,
     // The copy states the pick limit; the upload limit is what the browser
