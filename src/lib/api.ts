@@ -78,6 +78,8 @@ export type AppNotification = { id: string; readAt: Date | null; createdAt: Date
 );
 
 export type VideoResponse = { video: GeneratedVideo };
+// Whether the photo effects are set up on the server.
+export type EffectsEnabledResponse = { enabled: boolean };
 export type BalanceResponse = { balance: number };
 // The newest notifications and how many are unread.
 export type NotificationsResponse = { notifications: AppNotification[]; unread: number };
